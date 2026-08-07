@@ -1,0 +1,1158 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Cloud Infra Interview Q&A — Kaopiz + Reusable</title>
+  <link href="https://api.fontshare.com/v2/css?f[]=satoshi@400,500,700&f[]=general-sans@400,500,600,700&display=swap" rel="stylesheet">
+  <style>
+    :root, [data-theme="light"] {
+      --text-xs: clamp(0.75rem, 0.7rem + 0.25vw, 0.875rem);
+      --text-sm: clamp(0.875rem, 0.8rem + 0.35vw, 1rem);
+      --text-base: clamp(1rem, 0.95rem + 0.25vw, 1.125rem);
+      --text-lg: clamp(1.125rem, 1rem + 0.75vw, 1.5rem);
+      --text-xl: clamp(1.5rem, 1.2rem + 1.25vw, 2.25rem);
+      --space-1: 0.25rem; --space-2: 0.5rem; --space-3: 0.75rem; --space-4: 1rem;
+      --space-5: 1.25rem; --space-6: 1.5rem; --space-8: 2rem; --space-10: 2.5rem;
+      --space-12: 3rem; --space-16: 4rem;
+      --color-bg: #f7f6f2;
+      --color-surface: #f9f8f5;
+      --color-surface-2: #fbfbf9;
+      --color-surface-offset: #edeae5;
+      --color-border: #d4d1ca;
+      --color-divider: #dcd9d5;
+      --color-text: #28251d;
+      --color-text-muted: #6f6c65;
+      --color-text-faint: #98958f;
+      --color-primary: #01696f;
+      --color-primary-hover: #0c4e54;
+      --color-primary-highlight: #d8e6e3;
+      --color-success: #437a22;
+      --color-warning: #964219;
+      --radius-sm: 0.375rem;
+      --radius-md: 0.5rem;
+      --radius-lg: 0.75rem;
+      --radius-xl: 1rem;
+      --shadow-sm: 0 1px 2px rgba(30, 27, 22, 0.06);
+      --shadow-md: 0 10px 30px rgba(30, 27, 22, 0.08);
+      --font-display: 'General Sans', 'Inter', sans-serif;
+      --font-body: 'Satoshi', 'Inter', sans-serif;
+    }
+
+    [data-theme="dark"] {
+      --color-bg: #171614;
+      --color-surface: #1c1b19;
+      --color-surface-2: #201f1d;
+      --color-surface-offset: #2a2826;
+      --color-border: #393836;
+      --color-divider: #2f2e2c;
+      --color-text: #e1dfdb;
+      --color-text-muted: #adaaa4;
+      --color-text-faint: #7c7974;
+      --color-primary: #4f98a3;
+      --color-primary-hover: #6aafba;
+      --color-primary-highlight: rgba(79,152,163,0.16);
+      --color-success: #79b95a;
+      --color-warning: #d08b60;
+      --shadow-sm: 0 1px 2px rgba(0,0,0,0.18);
+      --shadow-md: 0 10px 30px rgba(0,0,0,0.3);
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      font-family: var(--font-body);
+      font-size: var(--text-base);
+      color: var(--color-text);
+      background: var(--color-bg);
+      line-height: 1.65;
+    }
+
+    a { color: inherit; text-decoration: none; }
+    .page {
+      max-width: 1600px;
+      margin: 0 auto;
+      padding: var(--space-6);
+    }
+
+    .topbar {
+      position: sticky;
+      top: 0;
+      z-index: 30;
+      backdrop-filter: blur(10px);
+      background: color-mix(in srgb, var(--color-bg) 88%, transparent);
+      border-bottom: 1px solid var(--color-divider);
+    }
+
+    .topbar-inner {
+      max-width: 1600px;
+      margin: 0 auto;
+      padding: var(--space-4) var(--space-6);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: var(--space-4);
+    }
+
+    .brand h1 {
+      margin: 0;
+      font-family: var(--font-display);
+      font-size: var(--text-xl);
+      line-height: 1.05;
+      letter-spacing: -0.03em;
+    }
+
+    .brand p {
+      margin: var(--space-2) 0 0;
+      color: var(--color-text-muted);
+      font-size: var(--text-sm);
+      max-width: 72ch;
+    }
+
+    .top-actions {
+      display: flex;
+      align-items: center;
+      gap: var(--space-3);
+      flex-wrap: wrap;
+    }
+
+    .btn {
+      border: 1px solid var(--color-border);
+      background: var(--color-surface);
+      color: var(--color-text);
+      border-radius: var(--radius-full, 999px);
+      padding: 0.72rem 1rem;
+      font-size: var(--text-sm);
+      font-weight: 600;
+      box-shadow: var(--shadow-sm);
+      cursor: pointer;
+    }
+
+    .btn:hover { background: var(--color-surface-2); }
+    .theme-toggle { min-width: 44px; min-height: 44px; display: inline-flex; align-items: center; justify-content: center; }
+
+    .hero {
+      display: grid;
+      grid-template-columns: 1.2fr 0.8fr;
+      gap: var(--space-6);
+      margin: var(--space-6) 0 var(--space-8);
+    }
+
+    .hero-card, .toc-card, .question-card {
+      background: var(--color-surface);
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius-xl);
+      box-shadow: var(--shadow-sm);
+    }
+
+    .hero-card { padding: var(--space-6); }
+    .hero-kpis {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: var(--space-3);
+      margin-top: var(--space-5);
+    }
+
+    .kpi {
+      background: var(--color-surface-2);
+      border: 1px solid var(--color-divider);
+      border-radius: var(--radius-lg);
+      padding: var(--space-4);
+    }
+
+    .kpi strong {
+      display: block;
+      font-size: var(--text-lg);
+      font-family: var(--font-display);
+      margin-bottom: var(--space-2);
+    }
+
+    .kpi span {
+      font-size: var(--text-sm);
+      color: var(--color-text-muted);
+    }
+
+    .toc-card {
+      padding: var(--space-6);
+      background: linear-gradient(180deg, var(--color-surface) 0%, var(--color-surface-2) 100%);
+    }
+
+    .section-label {
+      display: inline-flex;
+      align-items: center;
+      gap: var(--space-2);
+      padding: 0.35rem 0.7rem;
+      border-radius: 999px;
+      background: var(--color-primary-highlight);
+      color: var(--color-primary);
+      font-size: var(--text-xs);
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      margin-bottom: var(--space-4);
+    }
+
+    .toc-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: var(--space-3);
+      margin-top: var(--space-4);
+    }
+
+    .toc-link {
+      display: block;
+      padding: var(--space-4);
+      border-radius: var(--radius-lg);
+      background: var(--color-bg);
+      border: 1px solid var(--color-divider);
+      min-height: 100%;
+    }
+
+    .toc-link:hover {
+      border-color: var(--color-primary);
+      background: var(--color-primary-highlight);
+    }
+
+    .toc-link small {
+      display: block;
+      color: var(--color-text-faint);
+      margin-bottom: var(--space-2);
+      font-size: var(--text-xs);
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+    }
+
+    .toc-link strong {
+      display: block;
+      font-size: var(--text-sm);
+      line-height: 1.45;
+    }
+
+    .questions {
+      display: grid;
+      gap: var(--space-5);
+      padding-bottom: var(--space-16);
+    }
+
+    .question-card {
+      overflow: hidden;
+      scroll-margin-top: 100px;
+    }
+
+    .question-head {
+      padding: var(--space-5) var(--space-5) var(--space-4);
+      border-bottom: 1px solid var(--color-divider);
+      background: var(--color-surface-2);
+    }
+
+    .question-head h2 {
+      margin: 0;
+      font-family: var(--font-display);
+      font-size: var(--text-lg);
+      line-height: 1.15;
+      letter-spacing: -0.02em;
+    }
+
+    .question-head p {
+      margin: var(--space-2) 0 0;
+      color: var(--color-text-muted);
+      font-size: var(--text-sm);
+    }
+
+    .grid4 {
+      display: grid;
+      grid-template-columns: 0.8fr 1.2fr 0.8fr 1.2fr;
+    }
+
+    .cell {
+      padding: var(--space-5);
+      border-right: 1px solid var(--color-divider);
+      border-bottom: 1px solid var(--color-divider);
+      min-width: 0;
+    }
+
+    .grid4 .cell:nth-child(4n) { border-right: none; }
+    .row-head {
+      background: var(--color-surface-2);
+      font-size: var(--text-xs);
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      font-weight: 700;
+      color: var(--color-text-muted);
+      padding-top: var(--space-4);
+      padding-bottom: var(--space-4);
+    }
+
+    .cell.question {
+      background: color-mix(in srgb, var(--color-surface-2) 70%, var(--color-bg));
+      font-weight: 600;
+    }
+
+    .cell.answer {
+      background: var(--color-surface);
+    }
+
+    .cell p { margin: 0; }
+    .cell p + p { margin-top: var(--space-3); }
+
+    .note {
+      padding: var(--space-4) var(--space-5);
+      background: color-mix(in srgb, var(--color-primary-highlight) 55%, var(--color-surface));
+      border-top: 1px solid var(--color-divider);
+      color: var(--color-text-muted);
+      font-size: var(--text-sm);
+    }
+
+    .tag-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: var(--space-2);
+      margin-top: var(--space-4);
+    }
+
+    .tag {
+      padding: 0.35rem 0.7rem;
+      border: 1px solid var(--color-divider);
+      border-radius: 999px;
+      background: var(--color-bg);
+      color: var(--color-text-muted);
+      font-size: var(--text-xs);
+      font-weight: 600;
+    }
+
+    .footer-note {
+      margin-top: var(--space-8);
+      color: var(--color-text-muted);
+      font-size: var(--text-sm);
+      text-align: center;
+    }
+
+    @media (max-width: 1180px) {
+      .hero { grid-template-columns: 1fr; }
+      .grid4 { grid-template-columns: 1fr 1fr; }
+      .grid4 .cell:nth-child(2n) { border-right: none; }
+      .grid4 .cell:nth-child(4n) { border-right: none; }
+      .row-head { display: none; }
+      .cell.question { border-bottom: 1px solid var(--color-divider); }
+    }
+
+    
+    .section-nav {
+      display: flex;
+      flex-wrap: wrap;
+      gap: var(--space-2);
+      margin-top: var(--space-4);
+    }
+    .section-nav a {
+      padding: 0.4rem 0.75rem;
+      border: 1px solid var(--color-divider);
+      border-radius: 999px;
+      background: var(--color-bg);
+      font-size: var(--text-xs);
+      font-weight: 700;
+      color: var(--color-text-muted);
+    }
+    .section-nav a:hover {
+      border-color: var(--color-primary);
+      color: var(--color-primary);
+      background: var(--color-primary-highlight);
+    }
+    .section-block {
+      scroll-margin-top: 110px;
+      margin-top: var(--space-8);
+    }
+    .section-block > h2 {
+      font-family: var(--font-display);
+      font-size: var(--text-lg);
+      letter-spacing: -0.02em;
+      margin: 0 0 var(--space-4);
+    }
+    .crib {
+      padding: var(--space-4) var(--space-5);
+      background: color-mix(in srgb, var(--color-warning) 8%, var(--color-surface));
+      border-top: 1px solid var(--color-divider);
+      font-size: var(--text-sm);
+      color: var(--color-text-muted);
+    }
+    .crib p { margin: 0; }
+    .crib p + p { margin-top: var(--space-2); }
+    .crib strong { color: var(--color-text); }
+
+@media (max-width: 720px) {
+      .page, .topbar-inner { padding-left: var(--space-4); padding-right: var(--space-4); }
+      .topbar-inner { align-items: flex-start; flex-direction: column; }
+      .hero-kpis { grid-template-columns: 1fr; }
+      .toc-grid { grid-template-columns: 1fr; }
+      .grid4 { grid-template-columns: 1fr; }
+      .cell { border-right: none !important; }
+      .question-head h2 { font-size: 1.2rem; }
+    }
+  </style>
+</head>
+<body>
+  <div class="topbar">
+    <div class="topbar-inner">
+      <div class="brand">
+        <h1>Cloud / Infrastructure Interview Cheat Sheet</h1>
+        <p>Spoken bilingual Q&A for Kaopiz today — reusable for future Cloud/Infra interviews. Aligned to your CV: Linux, GCP, Docker, CI/CD, plus fundamentals.</p>
+      </div>
+      <div class="top-actions">
+        <button class="btn theme-toggle" data-theme-toggle aria-label="Switch theme">☾</button>
+        <a class="btn" href="globant.html">Globant prep</a>
+        <a class="btn" href="cv.html">CV deep-dive</a>
+        <a class="btn" href="#toc">Go to contents</a>
+      </div>
+    </div>
+  </div>
+
+  <main class="page">
+    <section class="hero">
+      <div class="hero-card">
+        <div class="section-label">Interview Focus</div>
+        <p>Open this before the call. Say answers out loud — don’t memorize word-for-word. Lead with what you’ve actually done (GCP, Linux, Docker, CI/CD). Stay honest on Terraform and Kubernetes depth.</p>
+        <nav class="section-nav" aria-label="Sections">
+          <a href="#sec-behavioral">Behavioral</a>
+          <a href="#sec-cloud">Cloud</a>
+          <a href="#sec-iac">IaC</a>
+          <a href="#sec-containers">Containers</a>
+          <a href="#sec-cicd">CI/CD</a>
+          <a href="#sec-observability">Observability</a>
+          <a href="#sec-linux">Linux / Net</a>
+          <a href="#sec-security">Security / Data</a>
+          <a href="#sec-close">Close</a>
+        </nav>
+        <div class="hero-kpis">
+          <div class="kpi">
+            <strong>44</strong>
+            <span>Interview topics</span>
+          </div>
+          <div class="kpi">
+            <strong>Spoken</strong>
+            <span>Natural EN + VI answers</span>
+          </div>
+          <div class="kpi">
+            <strong>Crib notes</strong>
+            <span>Know · Trap · Follow-up</span>
+          </div>
+        </div>
+        <div class="tag-list">
+          <span class="tag">Linux</span>
+          <span class="tag">GCP</span>
+          <span class="tag">Docker</span>
+          <span class="tag">CI/CD</span>
+          <span class="tag">Terraform</span>
+          <span class="tag">Monitoring</span>
+          <span class="tag">Logging</span>
+          <span class="tag">Networking</span>
+        </div>
+      </div>
+
+      <aside class="toc-card" id="toc">
+        <div class="section-label">Table of contents</div>
+        <p>Jump to any topic. Technical cards include crib notes under the answers.</p>
+        <div class="toc-grid">
+          <a class="toc-link" href="#q1"><small>01</small><strong>Tell me about yourself</strong></a>
+          <a class="toc-link" href="#q2"><small>02</small><strong>Why are you looking for a new role?</strong></a>
+          <a class="toc-link" href="#q3"><small>03</small><strong>Why Kaopiz / this role?</strong></a>
+          <a class="toc-link" href="#q4"><small>04</small><strong>Why should we hire you?</strong></a>
+          <a class="toc-link" href="#q5"><small>05</small><strong>What are your strengths?</strong></a>
+          <a class="toc-link" href="#q6"><small>06</small><strong>What is your weakness?</strong></a>
+          <a class="toc-link" href="#q7"><small>07</small><strong>Explain your current role</strong></a>
+          <a class="toc-link" href="#q8"><small>08</small><strong>Difficult technical problem</strong></a>
+          <a class="toc-link" href="#q9"><small>09</small><strong>Learning quickly</strong></a>
+          <a class="toc-link" href="#q10"><small>10</small><strong>Explain your cloud experience</strong></a>
+          <a class="toc-link" href="#q11"><small>11</small><strong>VM vs Cloud Run vs GKE</strong></a>
+          <a class="toc-link" href="#q12"><small>12</small><strong>Storage and Cloud SQL</strong></a>
+          <a class="toc-link" href="#q13"><small>13</small><strong>Cloud networking basics</strong></a>
+          <a class="toc-link" href="#q14"><small>14</small><strong>IAM basics</strong></a>
+          <a class="toc-link" href="#q15"><small>15</small><strong>Serverless concepts</strong></a>
+          <a class="toc-link" href="#q16"><small>16</small><strong>What is Terraform / IaC</strong></a>
+          <a class="toc-link" href="#q17"><small>17</small><strong>Terraform workflow</strong></a>
+          <a class="toc-link" href="#q18"><small>18</small><strong>Terraform state</strong></a>
+          <a class="toc-link" href="#q19"><small>19</small><strong>Terraform modules</strong></a>
+          <a class="toc-link" href="#q20"><small>20</small><strong>Terraform ramp-up / mistakes</strong></a>
+          <a class="toc-link" href="#q21"><small>21</small><strong>Explain Docker</strong></a>
+          <a class="toc-link" href="#q22"><small>22</small><strong>Docker volumes and networking</strong></a>
+          <a class="toc-link" href="#q23"><small>23</small><strong>Cloud Run experience</strong></a>
+          <a class="toc-link" href="#q24"><small>24</small><strong>Kubernetes awareness</strong></a>
+          <a class="toc-link" href="#q25"><small>25</small><strong>Explain CI/CD</strong></a>
+          <a class="toc-link" href="#q26"><small>26</small><strong>Pipeline you built</strong></a>
+          <a class="toc-link" href="#q27"><small>27</small><strong>Multi-environment deployment</strong></a>
+          <a class="toc-link" href="#q28"><small>28</small><strong>CI/CD tools landscape</strong></a>
+          <a class="toc-link" href="#q29"><small>29</small><strong>Monitoring vs logging vs tracing</strong></a>
+          <a class="toc-link" href="#q30"><small>30</small><strong>Metrics you’d alert on</strong></a>
+          <a class="toc-link" href="#q31"><small>31</small><strong>Prometheus and Grafana</strong></a>
+          <a class="toc-link" href="#q32"><small>32</small><strong>Logging options</strong></a>
+          <a class="toc-link" href="#q33"><small>33</small><strong>Incident flow</strong></a>
+          <a class="toc-link" href="#q34"><small>34</small><strong>Linux troubleshooting checklist</strong></a>
+          <a class="toc-link" href="#q35"><small>35</small><strong>Useful Linux commands</strong></a>
+          <a class="toc-link" href="#q36"><small>36</small><strong>Networking mindset</strong></a>
+          <a class="toc-link" href="#q37"><small>37</small><strong>SSH, permissions, systemd</strong></a>
+          <a class="toc-link" href="#q38"><small>38</small><strong>Bash / Python automation</strong></a>
+          <a class="toc-link" href="#q39"><small>39</small><strong>Secrets management</strong></a>
+          <a class="toc-link" href="#q40"><small>40</small><strong>Encryption / CMEK / Cloud Armor</strong></a>
+          <a class="toc-link" href="#q41"><small>41</small><strong>Databases: SQL / Postgres / Redis</strong></a>
+          <a class="toc-link" href="#q42"><small>42</small><strong>AI integration experience</strong></a>
+          <a class="toc-link" href="#q43"><small>43</small><strong>Questions for the interviewer</strong></a>
+          <a class="toc-link" href="#q44"><small>44</small><strong>60-second closing pitch</strong></a>
+        </div>
+      </aside>
+    </section>
+
+    <section class="questions">
+    <section class="section-block" id="sec-behavioral">
+      <h2>A. Behavioral / Fit</h2>
+      <article class="question-card" id="q1">
+        <div class="question-head"><h2>01. Tell me about yourself</h2><p>Keep it clear, confident, and technical.</p></div>
+        <div class="grid4">
+          <div class="cell row-head">Question EN</div><div class="cell row-head">Answer EN</div><div class="cell row-head">Question VI</div><div class="cell row-head">Answer VI</div>
+          <div class="cell question"><p>Tell me about yourself.</p></div>
+          <div class="cell answer"><p>I’m a full-stack engineer with about five years across web, mobile, and SaaS. Day to day I also touch Linux servers, CI/CD, and Google Cloud deployments. So I’m not only writing features — I’m involved in how things get shipped and kept stable. Now I want to go deeper into cloud and infrastructure work.</p></div>
+          <div class="cell question"><p>Hãy giới thiệu về bản thân bạn.</p></div>
+          <div class="cell answer"><p>Tôi là full-stack engineer khoảng năm năm, làm web, mobile và SaaS. Hằng ngày tôi cũng làm việc với Linux server, CI/CD và deploy trên Google Cloud. Tức là tôi không chỉ code feature, mà còn tham gia shipping và giữ hệ thống ổn định. Hiện tôi muốn đi sâu hơn vào cloud và infrastructure.</p></div>
+        </div>
+      </article>
+      <article class="question-card" id="q2">
+        <div class="question-head"><h2>02. Why are you looking for a new role?</h2><p>Stay positive and forward-looking.</p></div>
+        <div class="grid4">
+          <div class="cell row-head">Question EN</div><div class="cell row-head">Answer EN</div><div class="cell row-head">Question VI</div><div class="cell row-head">Answer VI</div>
+          <div class="cell question"><p>Why are you looking for a new role?</p></div>
+          <div class="cell answer"><p>I’ve built a solid base in full-stack and cloud operations. Now I want more focused work on infrastructure, automation, and reliability. Roles that live in Terraform, CI/CD, monitoring, and cloud design feel like the natural next step for me.</p></div>
+          <div class="cell question"><p>Tại sao bạn đang tìm công việc mới?</p></div>
+          <div class="cell answer"><p>Tôi đã có nền tảng tốt ở full-stack và cloud operations. Giờ tôi muốn tập trung hơn vào infrastructure, automation và reliability. Những vị trí làm nhiều với Terraform, CI/CD, monitoring và cloud design với tôi là bước tiếp theo khá tự nhiên.</p></div>
+        </div>
+      </article>
+      <article class="question-card" id="q3">
+        <div class="question-head"><h2>03. Why Kaopiz / this role?</h2><p>Connect JD to your direction.</p></div>
+        <div class="grid4">
+          <div class="cell row-head">Question EN</div><div class="cell row-head">Answer EN</div><div class="cell row-head">Question VI</div><div class="cell row-head">Answer VI</div>
+          <div class="cell question"><p>Why do you want this role at Kaopiz?</p></div>
+          <div class="cell answer"><p>The JD matches where I want to grow. You design and estimate cloud systems, use IaC, build CI/CD, and own monitoring and logging. I’ve already done parts of that on GCP, Linux, Docker, and pipelines. I want to do it more systematically, across providers and projects, in a team that takes infra seriously.</p></div>
+          <div class="cell question"><p>Tại sao bạn muốn vị trí này tại Kaopiz?</p></div>
+          <div class="cell answer"><p>JD khớp với hướng tôi muốn phát triển. Các bạn thiết kế và estimate hệ thống cloud, dùng IaC, dựng CI/CD, và làm monitoring/logging. Tôi đã làm một phần việc đó với GCP, Linux, Docker và pipeline. Tôi muốn làm bài bản hơn, trên nhiều provider và dự án, trong team coi trọng infrastructure.</p></div>
+        </div>
+      </article>
+      <article class="question-card" id="q4">
+        <div class="question-head"><h2>04. Why should we hire you?</h2><p>App + ops bridge.</p></div>
+        <div class="grid4">
+          <div class="cell row-head">Question EN</div><div class="cell row-head">Answer EN</div><div class="cell row-head">Question VI</div><div class="cell row-head">Answer VI</div>
+          <div class="cell question"><p>Why should we hire you?</p></div>
+          <div class="cell answer"><p>I bridge application and operations. I understand what the app needs, then I can help with deploy, reliability, and troubleshooting with that context. I learn fast, I document clearly, and I’m comfortable owning issues end to end.</p></div>
+          <div class="cell question"><p>Tại sao chúng tôi nên tuyển bạn?</p></div>
+          <div class="cell answer"><p>Tôi kết nối được phía application và operations. Tôi hiểu app cần gì, rồi hỗ trợ deploy, reliability và troubleshooting với góc nhìn đó. Tôi học nhanh, viết tài liệu rõ, và thoải mái nhận ownership từ đầu đến cuối.</p></div>
+        </div>
+      </article>
+      <article class="question-card" id="q5">
+        <div class="question-head"><h2>05. What are your strengths?</h2><p>Practical and job-relevant.</p></div>
+        <div class="grid4">
+          <div class="cell row-head">Question EN</div><div class="cell row-head">Answer EN</div><div class="cell row-head">Question VI</div><div class="cell row-head">Answer VI</div>
+          <div class="cell question"><p>What are your strengths?</p></div>
+          <div class="cell answer"><p>Hands-on problem solving, ownership, and adaptability. I can move between code, servers, pipelines, and incident investigation without freezing. I also write things down, which helps when multiple environments or teammates are involved.</p></div>
+          <div class="cell question"><p>Điểm mạnh của bạn là gì?</p></div>
+          <div class="cell answer"><p>Giải quyết vấn đề thực tế, ownership và thích nghi. Tôi chuyển được giữa code, server, pipeline và điều tra sự cố mà không bị kẹt. Tôi cũng hay ghi chép rõ, hữu ích khi có nhiều môi trường hoặc nhiều người cùng làm.</p></div>
+        </div>
+      </article>
+      <article class="question-card" id="q6">
+        <div class="question-head"><h2>06. What is your weakness?</h2><p>Safe weakness + improvement.</p></div>
+        <div class="grid4">
+          <div class="cell row-head">Question EN</div><div class="cell row-head">Answer EN</div><div class="cell row-head">Question VI</div><div class="cell row-head">Answer VI</div>
+          <div class="cell question"><p>What is your weakness?</p></div>
+          <div class="cell answer"><p>I can over-invest in making a fix clean and stable. That’s usually good, but sometimes speed matters more. I’ve gotten better at asking: what’s the business impact, and what’s the smallest safe fix right now?</p></div>
+          <div class="cell question"><p>Điểm yếu của bạn là gì?</p></div>
+          <div class="cell answer"><p>Đôi khi tôi dành hơi nhiều thời gian để làm bản fix sạch và ổn định. Thường thì tốt, nhưng có lúc cần tốc độ hơn. Tôi đang cải thiện bằng cách hỏi: impact business là gì, và fix nhỏ nhất nhưng vẫn an toàn lúc này là gì?</p></div>
+        </div>
+      </article>
+      <article class="question-card" id="q7">
+        <div class="question-head"><h2>07. Explain your current role</h2><p>Day-to-day ownership.</p></div>
+        <div class="grid4">
+          <div class="cell row-head">Question EN</div><div class="cell row-head">Answer EN</div><div class="cell row-head">Question VI</div><div class="cell row-head">Answer VI</div>
+          <div class="cell question"><p>Can you explain your current role?</p></div>
+          <div class="cell answer"><p>At Akktis I do both development and ops-ish work. On infra, I manage Linux environments, keep CI/CD moving, deploy on Google Cloud — Cloud Run, Cloud SQL, Storage — and troubleshoot when things break. On the app side I work with Laravel, WordPress/WooCommerce, and integrations for web and mobile.</p></div>
+          <div class="cell question"><p>Bạn mô tả công việc hiện tại thế nào?</p></div>
+          <div class="cell answer"><p>Ở Akktis tôi làm cả development và phần gần với ops. Về infra, tôi quản lý Linux, duy trì CI/CD, deploy trên Google Cloud — Cloud Run, Cloud SQL, Storage — và troubleshoot khi có sự cố. Phía app tôi làm Laravel, WordPress/WooCommerce và các tích hợp web/mobile.</p></div>
+        </div>
+      </article>
+      <article class="question-card" id="q8">
+        <div class="question-head"><h2>08. Difficult technical problem</h2><p>Symptom → root cause → document.</p></div>
+        <div class="grid4">
+          <div class="cell row-head">Question EN</div><div class="cell row-head">Answer EN</div><div class="cell row-head">Question VI</div><div class="cell row-head">Answer VI</div>
+          <div class="cell question"><p>Tell me about a difficult technical problem you solved.</p></div>
+          <div class="cell answer"><p>A common hard case for me is when the app looks broken, but the root cause is config, environment drift, or a bad deploy. I start from the symptom, check logs, recent changes, and differences between environments. Then I fix the smallest safe thing, verify, and write down what happened so we don’t repeat it.</p></div>
+          <div class="cell question"><p>Kể về một vấn đề kỹ thuật khó bạn đã xử lý.</p></div>
+          <div class="cell answer"><p>Dạng khó tôi hay gặp là app trông như lỗi, nhưng gốc nằm ở config, lệch môi trường, hoặc deploy sai. Tôi bắt đầu từ triệu chứng, xem log, thay đổi gần đây và khác biệt giữa các môi trường. Rồi fix nhỏ nhất nhưng an toàn, verify, và ghi lại để team không lặp lại.</p></div>
+        </div>
+      </article>
+      <article class="question-card" id="q9">
+        <div class="question-head"><h2>09. Learning quickly</h2><p>Goal → risk → enough depth.</p></div>
+        <div class="grid4">
+          <div class="cell row-head">Question EN</div><div class="cell row-head">Answer EN</div><div class="cell row-head">Question VI</div><div class="cell row-head">Answer VI</div>
+          <div class="cell question"><p>Tell me about a time you had to learn something quickly.</p></div>
+          <div class="cell answer"><p>I’ve had to jump between web, mobile, SaaS, cloud tasks, and even AI features with short ramp-up. My approach is: understand the business goal first, find the highest-risk technical part, then learn just deep enough to deliver safely. I don’t try to master everything on day one.</p></div>
+          <div class="cell question"><p>Kể về lần bạn phải học rất nhanh.</p></div>
+          <div class="cell answer"><p>Tôi từng phải nhảy giữa web, mobile, SaaS, cloud và cả tính năng AI với thời gian làm quen ngắn. Cách của tôi: hiểu mục tiêu business trước, tìm phần kỹ thuật rủi ro cao nhất, rồi học đủ sâu để làm an toàn. Tôi không cố master hết trong ngày đầu.</p></div>
+        </div>
+      </article>
+    </section>
+    <section class="section-block" id="sec-cloud">
+      <h2>B. Cloud Platforms</h2>
+      <article class="question-card" id="q10">
+        <div class="question-head"><h2>10. Explain your cloud experience</h2><p>Be specific; lead with GCP.</p></div>
+        <div class="grid4">
+          <div class="cell row-head">Question EN</div><div class="cell row-head">Answer EN</div><div class="cell row-head">Question VI</div><div class="cell row-head">Answer VI</div>
+          <div class="cell question"><p>What cloud experience do you have?</p></div>
+          <div class="cell answer"><p>My strongest hands-on experience is Google Cloud. I’ve deployed and operated services with Cloud Run, Cloud SQL, and Storage. Day to day that means deploy, config, troubleshooting, and keeping things stable across environments. I also understand the main AWS and Azure building blocks — compute, storage, networking, IAM — even if GCP is where I’ve worked most.</p></div>
+          <div class="cell question"><p>Bạn có kinh nghiệm gì về cloud?</p></div>
+          <div class="cell answer"><p>Kinh nghiệm thực tế mạnh nhất của tôi là Google Cloud. Tôi đã deploy và vận hành với Cloud Run, Cloud SQL và Storage. Hằng ngày là deploy, config, troubleshoot và giữ ổn định qua các môi trường. Tôi cũng hiểu các khối cơ bản trên AWS và Azure — compute, storage, networking, IAM — dù GCP là nơi tôi làm nhiều nhất.</p></div>
+        </div>
+        <div class="crib">
+          <p><strong>Know:</strong> GCP services you used + what you actually did with them.</p>
+          <p><strong>Trap:</strong> Don’t claim multi-year AWS production if your depth is GCP.</p>
+          <p><strong>Follow-up:</strong> Why Cloud Run instead of a VM or GKE?</p>
+        </div>
+      </article>
+      <article class="question-card" id="q11">
+        <div class="question-head"><h2>11. VM vs Cloud Run vs GKE</h2><p>Show decision thinking.</p></div>
+        <div class="grid4">
+          <div class="cell row-head">Question EN</div><div class="cell row-head">Answer EN</div><div class="cell row-head">Question VI</div><div class="cell row-head">Answer VI</div>
+          <div class="cell question"><p>When would you choose a VM, Cloud Run, or Kubernetes?</p></div>
+          <div class="cell answer"><p>I think in tradeoffs. A VM is simple when you need full control or long-running custom setups. Cloud Run is great for containerized apps that scale with traffic and you don’t want to manage nodes. Kubernetes or GKE fits when you have many services, complex networking, and a team ready to operate the cluster. For many web backends I’ve worked with, Cloud Run hits a sweet spot.</p></div>
+          <div class="cell question"><p>Khi nào chọn VM, Cloud Run hay Kubernetes?</p></div>
+          <div class="cell answer"><p>Tôi nghĩ theo tradeoff. VM hợp khi cần kiểm soát đầy đủ hoặc setup lâu dài, tùy biến. Cloud Run hợp app container, scale theo traffic và không muốn quản lý node. Kubernetes/GKE hợp khi nhiều service, networking phức tạp và team sẵn sàng vận hành cluster. Với nhiều web backend tôi từng làm, Cloud Run là điểm cân bằng tốt.</p></div>
+        </div>
+        <div class="crib">
+          <p><strong>Know:</strong> Match runtime needs to ops cost: control vs convenience vs complexity.</p>
+          <p><strong>Trap:</strong> Saying “Kubernetes always” without ops cost is a red flag.</p>
+          <p><strong>Follow-up:</strong> What are Cloud Run’s limitations?</p>
+        </div>
+      </article>
+      <article class="question-card" id="q12">
+        <div class="question-head"><h2>12. Storage and Cloud SQL</h2><p>Link storage to app needs.</p></div>
+        <div class="grid4">
+          <div class="cell row-head">Question EN</div><div class="cell row-head">Answer EN</div><div class="cell row-head">Question VI</div><div class="cell row-head">Answer VI</div>
+          <div class="cell question"><p>How have you used cloud storage and databases?</p></div>
+          <div class="cell answer"><p>I’ve used Cloud Storage for files and artifacts, and Cloud SQL for managed relational databases behind apps. From an ops view I care about connectivity, backups, access control, and how the app connects safely. From an app view I still care about schema and query behavior, because that affects reliability.</p></div>
+          <div class="cell question"><p>Bạn dùng cloud storage và database thế nào?</p></div>
+          <div class="cell answer"><p>Tôi dùng Cloud Storage cho file/artifact, và Cloud SQL cho database quan hệ managed phía sau app. Góc ops tôi quan tâm kết nối, backup, quyền truy cập và cách app connect an toàn. Góc app tôi vẫn quan tâm schema và query, vì nó ảnh hưởng reliability.</p></div>
+        </div>
+        <div class="crib">
+          <p><strong>Know:</strong> Object storage vs managed SQL: different jobs.</p>
+          <p><strong>Trap:</strong> Don’t mix “Storage bucket” with “database backup strategy” as the same thing.</p>
+          <p><strong>Follow-up:</strong> How would you connect Cloud Run securely to Cloud SQL?</p>
+        </div>
+      </article>
+      <article class="question-card" id="q13">
+        <div class="question-head"><h2>13. Cloud networking basics</h2><p>VPC vocabulary.</p></div>
+        <div class="grid4">
+          <div class="cell row-head">Question EN</div><div class="cell row-head">Answer EN</div><div class="cell row-head">Question VI</div><div class="cell row-head">Answer VI</div>
+          <div class="cell question"><p>Explain VPC, subnet, firewall, and load balancer.</p></div>
+          <div class="cell answer"><p>A VPC is your private network in the cloud. Subnets split that network, usually by region or tier. Firewall rules control what traffic is allowed. A load balancer distributes traffic to healthy backends. In interviews I keep it practical: isolate environments, open only needed ports, and put public entry points behind a load balancer when needed.</p></div>
+          <div class="cell question"><p>Giải thích VPC, subnet, firewall và load balancer.</p></div>
+          <div class="cell answer"><p>VPC là mạng riêng trên cloud. Subnet chia mạng đó, thường theo region hoặc tầng. Firewall rule quyết định traffic nào được phép. Load balancer phân phối traffic tới backend khỏe. Trong interview tôi nói thực tế: tách môi trường, chỉ mở port cần thiết, và đặt cổng vào public sau load balancer khi cần.</p></div>
+        </div>
+        <div class="crib">
+          <p><strong>Know:</strong> Private network + segmentation + allow rules + traffic distribution.</p>
+          <p><strong>Trap:</strong> Don’t say firewall = security complete. IAM and app auth still matter.</p>
+          <p><strong>Follow-up:</strong> Public subnet vs private subnet — what’s the difference?</p>
+        </div>
+      </article>
+      <article class="question-card" id="q14">
+        <div class="question-head"><h2>14. IAM basics</h2><p>Least privilege.</p></div>
+        <div class="grid4">
+          <div class="cell row-head">Question EN</div><div class="cell row-head">Answer EN</div><div class="cell row-head">Question VI</div><div class="cell row-head">Answer VI</div>
+          <div class="cell question"><p>What is IAM and least privilege?</p></div>
+          <div class="cell answer"><p>IAM decides who can do what on which resource. Least privilege means giving only the permissions needed for the job — no more. In practice I prefer service accounts for apps, human users with limited roles, and reviewing wide roles like Owner or Admin carefully.</p></div>
+          <div class="cell question"><p>IAM và least privilege là gì?</p></div>
+          <div class="cell answer"><p>IAM quyết định ai được làm gì trên resource nào. Least privilege nghĩa là chỉ cấp đúng quyền cần cho việc — không hơn. Thực tế tôi ưu tiên service account cho app, user người với role giới hạn, và thận trọng với role rộng như Owner/Admin.</p></div>
+        </div>
+        <div class="crib">
+          <p><strong>Know:</strong> Identity + permission binding on resources.</p>
+          <p><strong>Trap:</strong> Using Owner everywhere “to make it work” is a common trap.</p>
+          <p><strong>Follow-up:</strong> What’s the difference between a user account and a service account?</p>
+        </div>
+      </article>
+      <article class="question-card" id="q15">
+        <div class="question-head"><h2>15. Serverless concepts</h2><p>Pros and ops tradeoffs.</p></div>
+        <div class="grid4">
+          <div class="cell row-head">Question EN</div><div class="cell row-head">Answer EN</div><div class="cell row-head">Question VI</div><div class="cell row-head">Answer VI</div>
+          <div class="cell question"><p>What is serverless, and when is it a good fit?</p></div>
+          <div class="cell answer"><p>Serverless means you deploy code or containers and the platform handles most scaling and server management. Cloud Run is close to that model for containers. It’s great for variable traffic and faster ops. The tradeoff is less low-level control, cold starts in some cases, and you need to design for request-driven or event-driven limits.</p></div>
+          <div class="cell question"><p>Serverless là gì và khi nào hợp?</p></div>
+          <div class="cell answer"><p>Serverless là bạn deploy code hoặc container, còn platform lo phần lớn scale và quản lý server. Cloud Run gần với model đó cho container. Hợp traffic biến động và giảm ops. Tradeoff là ít kiểm soát tầng thấp, đôi khi cold start, và phải thiết kế theo giới hạn request/event-driven.</p></div>
+        </div>
+        <div class="crib">
+          <p><strong>Know:</strong> Managed scale + less server babysitting.</p>
+          <p><strong>Trap:</strong> Serverless ≠ zero ops. Still need IAM, networking, monitoring, cost control.</p>
+          <p><strong>Follow-up:</strong> How do you debug a serverless service in production?</p>
+        </div>
+      </article>
+    </section>
+    <section class="section-block" id="sec-iac">
+      <h2>C. Infrastructure as Code / Terraform</h2>
+      <article class="question-card" id="q16">
+        <div class="question-head"><h2>16. What is Terraform / IaC</h2><p>Honest beginner–intermediate.</p></div>
+        <div class="grid4">
+          <div class="cell row-head">Question EN</div><div class="cell row-head">Answer EN</div><div class="cell row-head">Question VI</div><div class="cell row-head">Answer VI</div>
+          <div class="cell question"><p>What is Infrastructure as Code, and what is Terraform?</p></div>
+          <div class="cell answer"><p>IaC means defining infrastructure in code so it’s repeatable and reviewable, not click-by-click in the console. Terraform is a popular IaC tool with a declarative style — you describe the desired state, then plan and apply. I’ve studied the concepts and I’m ready to apply them on real projects. I haven’t owned large production Terraform estates yet, and I’m upfront about that.</p></div>
+          <div class="cell question"><p>IaC và Terraform là gì?</p></div>
+          <div class="cell answer"><p>IaC là định nghĩa hạ tầng bằng code để lặp lại và review được, không click tay trên console. Terraform là công cụ IaC phổ biến, kiểu declarative — mô tả trạng thái mong muốn, rồi plan và apply. Tôi đã học khái niệm và sẵn sàng áp dụng trên dự án thật. Tôi chưa sở hữu Terraform production quy mô lớn, và tôi nói thẳng điều đó.</p></div>
+        </div>
+        <div class="crib">
+          <p><strong>Know:</strong> Desired state in code → plan → apply.</p>
+          <p><strong>Trap:</strong> Don’t claim years of Terraform ownership if you haven’t run it in prod.</p>
+          <p><strong>Follow-up:</strong> Terraform vs CloudFormation — when might a team pick one?</p>
+        </div>
+      </article>
+      <article class="question-card" id="q17">
+        <div class="question-head"><h2>17. Terraform workflow</h2><p>init → plan → apply.</p></div>
+        <div class="grid4">
+          <div class="cell row-head">Question EN</div><div class="cell row-head">Answer EN</div><div class="cell row-head">Question VI</div><div class="cell row-head">Answer VI</div>
+          <div class="cell question"><p>Walk me through a basic Terraform workflow.</p></div>
+          <div class="cell answer"><p>Usually: write config, run terraform init to set up providers and backend, terraform plan to preview changes, then terraform apply after review. In a team, plan output matters a lot — you want people to see what will change before it hits prod.</p></div>
+          <div class="cell question"><p>Quy trình Terraform cơ bản thế nào?</p></div>
+          <div class="cell answer"><p>Thường là: viết config, terraform init để setup provider và backend, terraform plan để xem trước thay đổi, rồi terraform apply sau khi review. Trong team, output của plan rất quan trọng — mọi người cần thấy sẽ đổi gì trước khi đụng prod.</p></div>
+        </div>
+        <div class="crib">
+          <p><strong>Know:</strong> init sets up; plan previews; apply changes real infra.</p>
+          <p><strong>Trap:</strong> Skipping plan in shared environments is risky.</p>
+          <p><strong>Follow-up:</strong> What belongs in version control vs what should stay out?</p>
+        </div>
+      </article>
+      <article class="question-card" id="q18">
+        <div class="question-head"><h2>18. Terraform state</h2><p>Why remote state matters.</p></div>
+        <div class="grid4">
+          <div class="cell row-head">Question EN</div><div class="cell row-head">Answer EN</div><div class="cell row-head">Question VI</div><div class="cell row-head">Answer VI</div>
+          <div class="cell question"><p>What is Terraform state, and why does remote state matter?</p></div>
+          <div class="cell answer"><p>State is Terraform’s memory of what it manages and the real resource IDs. Local state is fine for learning, but teams need remote state — usually in object storage with locking — so people don’t overwrite each other and so CI can use the same source of truth.</p></div>
+          <div class="cell question"><p>State của Terraform là gì và vì sao cần remote state?</p></div>
+          <div class="cell answer"><p>State là bộ nhớ của Terraform về những gì nó quản lý và ID resource thật. Local state ổn để học, nhưng team cần remote state — thường trên object storage kèm locking — để không ghi đè nhau và CI dùng chung một nguồn sự thật.</p></div>
+        </div>
+        <div class="crib">
+          <p><strong>Know:</strong> State maps config to real cloud resources.</p>
+          <p><strong>Trap:</strong> Editing state by hand or sharing local state files casually is dangerous.</p>
+          <p><strong>Follow-up:</strong> What is state locking and why does it matter?</p>
+        </div>
+      </article>
+      <article class="question-card" id="q19">
+        <div class="question-head"><h2>19. Terraform modules</h2><p>Concept level.</p></div>
+        <div class="grid4">
+          <div class="cell row-head">Question EN</div><div class="cell row-head">Answer EN</div><div class="cell row-head">Question VI</div><div class="cell row-head">Answer VI</div>
+          <div class="cell question"><p>What are Terraform modules?</p></div>
+          <div class="cell answer"><p>Modules are reusable packages of Terraform config — like functions for infra. You put common patterns in a module, then call it for each environment or project with different variables. It helps keep things consistent and avoids copy-paste.</p></div>
+          <div class="cell question"><p>Module trong Terraform là gì?</p></div>
+          <div class="cell answer"><p>Module là gói config Terraform tái sử dụng — giống hàm cho hạ tầng. Bạn gom pattern chung vào module, rồi gọi cho từng môi trường hoặc dự án với biến khác nhau. Giúp đồng nhất và tránh copy-paste.</p></div>
+        </div>
+        <div class="crib">
+          <p><strong>Know:</strong> Reusable building blocks with inputs/outputs.</p>
+          <p><strong>Trap:</strong> Giant modules that do everything become hard to change.</p>
+          <p><strong>Follow-up:</strong> Root module vs child module — what’s the difference?</p>
+        </div>
+      </article>
+      <article class="question-card" id="q20">
+        <div class="question-head"><h2>20. Terraform ramp-up / mistakes</h2><p>How you’d learn on the job.</p></div>
+        <div class="grid4">
+          <div class="cell row-head">Question EN</div><div class="cell row-head">Answer EN</div><div class="cell row-head">Question VI</div><div class="cell row-head">Answer VI</div>
+          <div class="cell question"><p>What are common Terraform mistakes, and how would you ramp up on a real project?</p></div>
+          <div class="cell answer"><p>Common mistakes: manual console changes that drift from code, huge blasts in one apply, secrets in plain text, and weak state handling. On a real project I’d start by reading existing modules and state setup, run plan in a safe environment first, pair with whoever owns infra, and change small pieces with review. I’m honest that I’m still building depth, but I know how to learn safely inside an existing codebase.</p></div>
+          <div class="cell question"><p>Sai lầm Terraform phổ biến và bạn sẽ ramp-up thế nào?</p></div>
+          <div class="cell answer"><p>Sai phổ biến: sửa tay trên console làm lệch code, apply quá lớn một lần, để secret plaintext, và xử lý state kém. Trên dự án thật tôi sẽ đọc module và state hiện có, plan ở môi trường an toàn trước, pair với người đang own infra, và đổi từng phần nhỏ có review. Tôi thừa nhận đang xây độ sâu, nhưng biết cách học an toàn trong codebase có sẵn.</p></div>
+        </div>
+        <div class="crib">
+          <p><strong>Know:</strong> Drift, blast radius, secrets, state.</p>
+          <p><strong>Trap:</strong> Big-bang rewrite of all Terraform on week one.</p>
+          <p><strong>Follow-up:</strong> How do you detect drift between Terraform and the console?</p>
+        </div>
+      </article>
+    </section>
+    <section class="section-block" id="sec-containers">
+      <h2>D. Containers</h2>
+      <article class="question-card" id="q21">
+        <div class="question-head"><h2>21. Explain Docker</h2><p>Image vs container.</p></div>
+        <div class="grid4">
+          <div class="cell row-head">Question EN</div><div class="cell row-head">Answer EN</div><div class="cell row-head">Question VI</div><div class="cell row-head">Answer VI</div>
+          <div class="cell question"><p>Can you explain Docker?</p></div>
+          <div class="cell answer"><p>Docker packages an app with its dependencies into an image. A container is a running instance of that image. So instead of “works on my machine,” the team shares a more reproducible runtime. In cloud work it makes builds and deploys more predictable.</p></div>
+          <div class="cell question"><p>Bạn giải thích Docker thế nào?</p></div>
+          <div class="cell answer"><p>Docker đóng gói app cùng dependency thành image. Container là instance đang chạy của image đó. Thay vì “máy tôi chạy được,” team có runtime dễ tái tạo hơn. Trong cloud, nó giúp build và deploy dễ dự đoán hơn.</p></div>
+        </div>
+        <div class="crib">
+          <p><strong>Know:</strong> Image = package; container = running process from image.</p>
+          <p><strong>Trap:</strong> Docker ≠ Kubernetes. Docker is packaging/runtime; K8s orchestrates.</p>
+          <p><strong>Follow-up:</strong> What’s the difference between CMD and ENTRYPOINT?</p>
+        </div>
+      </article>
+      <article class="question-card" id="q22">
+        <div class="question-head"><h2>22. Docker volumes and networking</h2><p>Practical level.</p></div>
+        <div class="grid4">
+          <div class="cell row-head">Question EN</div><div class="cell row-head">Answer EN</div><div class="cell row-head">Question VI</div><div class="cell row-head">Answer VI</div>
+          <div class="cell question"><p>How do volumes and networking work in Docker, at a practical level?</p></div>
+          <div class="cell answer"><p>Volumes keep data outside the container lifecycle — useful for databases or files you don’t want to lose when the container restarts. Networking lets containers talk to each other and to the host. In real work I care most about: what must persist, which ports are exposed, and how services find each other.</p></div>
+          <div class="cell question"><p>Volume và networking trong Docker thực tế thế nào?</p></div>
+          <div class="cell answer"><p>Volume giữ data ngoài vòng đời container — hữu ích cho database hoặc file không muốn mất khi restart. Networking để container nói chuyện với nhau và với host. Thực tế tôi quan tâm nhất: cái gì phải persist, port nào expose, và service tìm nhau thế nào.</p></div>
+        </div>
+        <div class="crib">
+          <p><strong>Know:</strong> Persist data with volumes; connect services with networks/ports.</p>
+          <p><strong>Trap:</strong> Storing important data only in the writable container layer.</p>
+          <p><strong>Follow-up:</strong> How would you give one container access to another’s port?</p>
+        </div>
+      </article>
+      <article class="question-card" id="q23">
+        <div class="question-head"><h2>23. Cloud Run experience</h2><p>Your real strength.</p></div>
+        <div class="grid4">
+          <div class="cell row-head">Question EN</div><div class="cell row-head">Answer EN</div><div class="cell row-head">Question VI</div><div class="cell row-head">Answer VI</div>
+          <div class="cell question"><p>Tell me about your Cloud Run experience.</p></div>
+          <div class="cell answer"><p>I’ve deployed services to Cloud Run for web and backend workloads. The flow is usually: containerize the app, push the image, deploy the service, then check logs and revisions when something fails. I like it because it removes a lot of server babysitting while still feeling familiar if you already know Docker.</p></div>
+          <div class="cell question"><p>Kể về kinh nghiệm Cloud Run của bạn.</p></div>
+          <div class="cell answer"><p>Tôi đã deploy service lên Cloud Run cho web và backend. Flow thường là: đóng gói container, push image, deploy service, rồi xem log và revision khi có lỗi. Tôi thích vì giảm babysitting server mà vẫn quen nếu đã biết Docker.</p></div>
+        </div>
+        <div class="crib">
+          <p><strong>Know:</strong> Managed container platform on GCP.</p>
+          <p><strong>Trap:</strong> Treating Cloud Run exactly like a long-lived SSH server.</p>
+          <p><strong>Follow-up:</strong> How do you roll back a bad Cloud Run revision?</p>
+        </div>
+      </article>
+      <article class="question-card" id="q24">
+        <div class="question-head"><h2>24. Kubernetes awareness</h2><p>Honest awareness level.</p></div>
+        <div class="grid4">
+          <div class="cell row-head">Question EN</div><div class="cell row-head">Answer EN</div><div class="cell row-head">Question VI</div><div class="cell row-head">Answer VI</div>
+          <div class="cell question"><p>Do you know Kubernetes?</p></div>
+          <div class="cell answer"><p>I know the basics: a Pod runs containers, a Deployment keeps desired replicas, a Service gives stable networking to Pods. I haven’t been a day-to-day Kubernetes operator yet. If a project uses GKE, I’d ramp up from manifests, workloads, and how deploys and rollbacks work — with support from the team.</p></div>
+          <div class="cell question"><p>Bạn biết Kubernetes không?</p></div>
+          <div class="cell answer"><p>Tôi biết phần cơ bản: Pod chạy container, Deployment giữ số replica mong muốn, Service cho networking ổn định tới Pod. Tôi chưa vận hành Kubernetes hằng ngày. Nếu dự án dùng GKE, tôi sẽ ramp-up từ manifest, workload, và cách deploy/rollback — với hỗ trợ từ team.</p></div>
+        </div>
+        <div class="crib">
+          <p><strong>Know:</strong> Pod / Deployment / Service are the starter vocabulary.</p>
+          <p><strong>Trap:</strong> Claiming deep K8s production ownership without cluster scars.</p>
+          <p><strong>Follow-up:</strong> What problem does Kubernetes solve that Docker alone doesn’t?</p>
+        </div>
+      </article>
+    </section>
+    <section class="section-block" id="sec-cicd">
+      <h2>E. CI/CD</h2>
+      <article class="question-card" id="q25">
+        <div class="question-head"><h2>25. Explain CI/CD</h2><p>Purpose over tools.</p></div>
+        <div class="grid4">
+          <div class="cell row-head">Question EN</div><div class="cell row-head">Answer EN</div><div class="cell row-head">Question VI</div><div class="cell row-head">Answer VI</div>
+          <div class="cell question"><p>What is CI/CD?</p></div>
+          <div class="cell answer"><p>CI is continuously integrating and verifying changes — usually build and test on every push. CD is getting those verified changes to environments in a repeatable way. The point isn’t the tool name. It’s fewer manual mistakes and faster, safer releases.</p></div>
+          <div class="cell question"><p>CI/CD là gì?</p></div>
+          <div class="cell answer"><p>CI là liên tục tích hợp và kiểm tra thay đổi — thường build/test mỗi lần push. CD là đưa thay đổi đã verify lên môi trường một cách lặp lại được. Điểm chính không phải tên tool. Là giảm lỗi tay và release nhanh, an toàn hơn.</p></div>
+        </div>
+        <div class="crib">
+          <p><strong>Know:</strong> CI = verify often; CD = deliver repeatably.</p>
+          <p><strong>Trap:</strong> Calling any deploy script “full CI/CD” without tests or promotion rules.</p>
+          <p><strong>Follow-up:</strong> What’s the difference between continuous delivery and continuous deployment?</p>
+        </div>
+      </article>
+      <article class="question-card" id="q26">
+        <div class="question-head"><h2>26. Pipeline you built</h2><p>Use your real story.</p></div>
+        <div class="grid4">
+          <div class="cell row-head">Question EN</div><div class="cell row-head">Answer EN</div><div class="cell row-head">Question VI</div><div class="cell row-head">Answer VI</div>
+          <div class="cell question"><p>Tell me about a CI/CD pipeline you built or maintained.</p></div>
+          <div class="cell answer"><p>I’ve designed and maintained pipelines for mobile apps and web servers across multiple environments. In practice that means automating build, checks, and deploy steps so releases aren’t a fragile manual checklist. When something fails, I look at the pipeline logs first, then the environment difference.</p></div>
+          <div class="cell question"><p>Kể về pipeline CI/CD bạn từng dựng hoặc maintain.</p></div>
+          <div class="cell answer"><p>Tôi đã thiết kế và duy trì pipeline cho mobile app và web server trên nhiều môi trường. Thực tế là tự động hóa build, check và deploy để release không còn là checklist tay dễ vỡ. Khi fail, tôi xem log pipeline trước, rồi khác biệt môi trường.</p></div>
+        </div>
+        <div class="crib">
+          <p><strong>Know:</strong> Automate build → verify → deploy across envs.</p>
+          <p><strong>Trap:</strong> No artifact versioning / no way to know what is in prod.</p>
+          <p><strong>Follow-up:</strong> How do you keep secrets out of the pipeline logs?</p>
+        </div>
+      </article>
+      <article class="question-card" id="q27">
+        <div class="question-head"><h2>27. Multi-environment deployment</h2><p>dev / staging / prod.</p></div>
+        <div class="grid4">
+          <div class="cell row-head">Question EN</div><div class="cell row-head">Answer EN</div><div class="cell row-head">Question VI</div><div class="cell row-head">Answer VI</div>
+          <div class="cell question"><p>What is multi-environment deployment and why does it matter?</p></div>
+          <div class="cell answer"><p>It means separate environments like dev, staging, and production. You promote changes instead of developing straight on prod. That reduces risk and makes debugging easier, because you can compare “works in staging, fails in prod” with config and data differences in mind.</p></div>
+          <div class="cell question"><p>Multi-environment deployment là gì và vì sao quan trọng?</p></div>
+          <div class="cell answer"><p>Nghĩa là có các môi trường tách như dev, staging, production. Bạn promote thay đổi thay vì code thẳng lên prod. Giảm rủi ro và debug dễ hơn, vì có thể so “staging chạy, prod lỗi” với khác biệt config và data.</p></div>
+        </div>
+        <div class="crib">
+          <p><strong>Know:</strong> Promote through environments to reduce blast radius.</p>
+          <p><strong>Trap:</strong> Same names, different hidden config — silent drift.</p>
+          <p><strong>Follow-up:</strong> How do you keep env parity without making staging identical to prod data?</p>
+        </div>
+      </article>
+      <article class="question-card" id="q28">
+        <div class="question-head"><h2>28. CI/CD tools landscape</h2><p>Concepts across tools.</p></div>
+        <div class="grid4">
+          <div class="cell row-head">Question EN</div><div class="cell row-head">Answer EN</div><div class="cell row-head">Question VI</div><div class="cell row-head">Answer VI</div>
+          <div class="cell question"><p>What’s the difference between tools like GitLab CI, GitHub Actions, Jenkins, CodeBuild, Bamboo?</p></div>
+          <div class="cell answer"><p>They all automate pipelines, but the packaging differs. GitHub Actions and GitLab CI are close to the git platform. Jenkins is very flexible and self-hosted, but you maintain more. Cloud Build or CodeBuild sit near the cloud provider. Bamboo is more Atlassian-ecosystem. I care less about brand loyalty and more about: where code lives, secrets, runners, and how environments are promoted.</p></div>
+          <div class="cell question"><p>Khác nhau giữa GitLab CI, GitHub Actions, Jenkins, CodeBuild, Bamboo?</p></div>
+          <div class="cell answer"><p>Đều tự động hóa pipeline, nhưng đóng gói khác nhau. GitHub Actions và GitLab CI gắn với nền tảng git. Jenkins rất linh hoạt, self-hosted, nhưng phải maintain nhiều hơn. Cloud Build hay CodeBuild gần cloud provider. Bamboo thiên ecosystem Atlassian. Tôi ít trung thành thương hiệu, quan tâm hơn: code nằm đâu, secrets, runner, và promote môi trường thế nào.</p></div>
+        </div>
+        <div class="crib">
+          <p><strong>Know:</strong> Same job, different hosting and ecosystem fit.</p>
+          <p><strong>Trap:</strong> Memorizing YAML syntax without explaining pipeline stages.</p>
+          <p><strong>Follow-up:</strong> If the company uses Bamboo and you’ve used GitHub Actions, how do you transfer?</p>
+        </div>
+      </article>
+    </section>
+    <section class="section-block" id="sec-observability">
+      <h2>F. Observability</h2>
+      <article class="question-card" id="q29">
+        <div class="question-head"><h2>29. Monitoring vs logging vs tracing</h2><p>Three pillars.</p></div>
+        <div class="grid4">
+          <div class="cell row-head">Question EN</div><div class="cell row-head">Answer EN</div><div class="cell row-head">Question VI</div><div class="cell row-head">Answer VI</div>
+          <div class="cell question"><p>What’s the difference between monitoring, logging, and tracing?</p></div>
+          <div class="cell answer"><p>Monitoring watches health with metrics and alerts — CPU, latency, error rate. Logging records detailed events for investigation. Tracing follows a request across services. Monitoring tells you something’s wrong; logs and traces help explain why.</p></div>
+          <div class="cell question"><p>Khác nhau giữa monitoring, logging và tracing?</p></div>
+          <div class="cell answer"><p>Monitoring theo dõi sức khỏe bằng metric và alert — CPU, latency, error rate. Logging ghi sự kiện chi tiết để điều tra. Tracing lần theo một request qua các service. Monitoring nói có vấn đề; log và trace giúp giải thích vì sao.</p></div>
+        </div>
+        <div class="crib">
+          <p><strong>Know:</strong> Metrics detect; logs explain; traces connect the path.</p>
+          <p><strong>Trap:</strong> Only collecting logs with no alerts — you find out from users.</p>
+          <p><strong>Follow-up:</strong> What is observability vs traditional monitoring?</p>
+        </div>
+      </article>
+      <article class="question-card" id="q30">
+        <div class="question-head"><h2>30. Metrics you’d alert on</h2><p>Practical alerts.</p></div>
+        <div class="grid4">
+          <div class="cell row-head">Question EN</div><div class="cell row-head">Answer EN</div><div class="cell row-head">Question VI</div><div class="cell row-head">Answer VI</div>
+          <div class="cell question"><p>What metrics would you alert on?</p></div>
+          <div class="cell answer"><p>It depends on the service, but I usually start with: is it up, error rate, latency, and saturation — CPU, memory, disk, connection pools. For user-facing apps I’d also watch request success rate. Alerts should be actionable. Too many noisy alerts and people ignore them.</p></div>
+          <div class="cell question"><p>Bạn sẽ alert những metric nào?</p></div>
+          <div class="cell answer"><p>Tùy service, nhưng tôi thường bắt đầu: còn sống không, error rate, latency, và saturation — CPU, memory, disk, connection pool. App user-facing thì thêm tỉ lệ request thành công. Alert phải actionable. Nhiễu quá thì mọi người bỏ qua.</p></div>
+        </div>
+        <div class="crib">
+          <p><strong>Know:</strong> Golden signals mindset: latency, traffic, errors, saturation.</p>
+          <p><strong>Trap:</strong> Alerting on every tiny CPU blip.</p>
+          <p><strong>Follow-up:</strong> How do you reduce alert fatigue?</p>
+        </div>
+      </article>
+      <article class="question-card" id="q31">
+        <div class="question-head"><h2>31. Prometheus and Grafana</h2><p>Concept level.</p></div>
+        <div class="grid4">
+          <div class="cell row-head">Question EN</div><div class="cell row-head">Answer EN</div><div class="cell row-head">Question VI</div><div class="cell row-head">Answer VI</div>
+          <div class="cell question"><p>What are Prometheus and Grafana used for?</p></div>
+          <div class="cell answer"><p>Prometheus scrapes and stores metrics, and it can alert on them. Grafana visualizes metrics with dashboards. Together they’re a common open-source monitoring stack. I haven’t run a large Prometheus estate day to day yet, but I understand the model and how it pairs with logs and traces.</p></div>
+          <div class="cell question"><p>Prometheus và Grafana dùng để làm gì?</p></div>
+          <div class="cell answer"><p>Prometheus thu thập và lưu metric, và có thể alert. Grafana vẽ dashboard. Cùng nhau là stack monitoring open-source phổ biến. Tôi chưa vận hành Prometheus quy mô lớn hằng ngày, nhưng hiểu model và cách nó đi cùng log/trace.</p></div>
+        </div>
+        <div class="crib">
+          <p><strong>Know:</strong> Prometheus = metrics/time-series; Grafana = dashboards.</p>
+          <p><strong>Trap:</strong> Confusing Grafana with a log store.</p>
+          <p><strong>Follow-up:</strong> What is a Prometheus exporter?</p>
+        </div>
+      </article>
+      <article class="question-card" id="q32">
+        <div class="question-head"><h2>32. Logging options</h2><p>Choose by need.</p></div>
+        <div class="grid4">
+          <div class="cell row-head">Question EN</div><div class="cell row-head">Answer EN</div><div class="cell row-head">Question VI</div><div class="cell row-head">Answer VI</div>
+          <div class="cell question"><p>How do you choose between Cloud Logging, Loki, ELK, or Graylog?</p></div>
+          <div class="cell answer"><p>I’d match the project. Cloud provider logging is fast to start if you’re already in GCP or AWS. Loki is lighter and Grafana-friendly. ELK is powerful for search-heavy needs but heavier to operate. Graylog is another centralized option some teams already know. The real questions are: volume, retention, search needs, and who will operate it.</p></div>
+          <div class="cell question"><p>Chọn Cloud Logging, Loki, ELK hay Graylog thế nào?</p></div>
+          <div class="cell answer"><p>Tôi khớp với dự án. Logging của cloud provider nhanh nếu đã ở GCP/AWS. Loki nhẹ và thân Grafana. ELK mạnh cho search nhưng nặng vận hành. Graylog là lựa chọn tập trung khác mà một số team đã quen. Câu hỏi thật: volume, retention, nhu cầu search, và ai vận hành.</p></div>
+        </div>
+        <div class="crib">
+          <p><strong>Know:</strong> Centralize logs; choose ops cost vs search power.</p>
+          <p><strong>Trap:</strong> Building ELK for a tiny app that only needed basic cloud logs.</p>
+          <p><strong>Follow-up:</strong> What log fields do you always want for debugging deploys?</p>
+        </div>
+      </article>
+      <article class="question-card" id="q33">
+        <div class="question-head"><h2>33. Incident flow</h2><p>Detect → fix → learn.</p></div>
+        <div class="grid4">
+          <div class="cell row-head">Question EN</div><div class="cell row-head">Answer EN</div><div class="cell row-head">Question VI</div><div class="cell row-head">Answer VI</div>
+          <div class="cell question"><p>How do you handle an incident?</p></div>
+          <div class="cell answer"><p>Detect, triage impact, mitigate first if users are hurting, then find root cause. After recovery I like a short write-up: what happened, what we changed, and how to prevent it. Blameless is important — fix the system, not the person.</p></div>
+          <div class="cell question"><p>Bạn xử lý incident thế nào?</p></div>
+          <div class="cell answer"><p>Phát hiện, đánh giá impact, giảm thiệt hại trước nếu user đang bị ảnh hưởng, rồi tìm root cause. Sau khi phục hồi tôi thích ghi ngắn: chuyện gì xảy ra, đã đổi gì, và cách phòng. Blameless quan trọng — sửa hệ thống, không đổ lỗi người.</p></div>
+        </div>
+        <div class="crib">
+          <p><strong>Know:</strong> Mitigate impact before perfect root cause.</p>
+          <p><strong>Trap:</strong> Debugging forever while users stay down.</p>
+          <p><strong>Follow-up:</strong> What’s the difference between an incident and a known bug?</p>
+        </div>
+      </article>
+    </section>
+    <section class="section-block" id="sec-linux">
+      <h2>G. Linux &amp; Networking Fundamentals</h2>
+      <article class="question-card" id="q34">
+        <div class="question-head"><h2>34. Linux troubleshooting checklist</h2><p>Structured approach.</p></div>
+        <div class="grid4">
+          <div class="cell row-head">Question EN</div><div class="cell row-head">Answer EN</div><div class="cell row-head">Question VI</div><div class="cell row-head">Answer VI</div>
+          <div class="cell question"><p>How do you troubleshoot a Linux server issue?</p></div>
+          <div class="cell answer"><p>I clarify the symptom first — down, slow, deploy failed, or one service broken. Then I check service status, logs, disk, memory, CPU, network reachability, open ports, and recent changes. Fix the safest thing, verify, and document if it might return.</p></div>
+          <div class="cell question"><p>Bạn troubleshoot Linux server thế nào?</p></div>
+          <div class="cell answer"><p>Tôi làm rõ triệu chứng trước — down, chậm, deploy fail, hay một service hỏng. Rồi kiểm tra trạng thái service, log, disk, memory, CPU, mạng, port, và thay đổi gần đây. Fix cách an toàn nhất, verify, và ghi lại nếu có thể tái diễn.</p></div>
+        </div>
+        <div class="crib">
+          <p><strong>Know:</strong> Symptom → resources → logs → recent change → verify.</p>
+          <p><strong>Trap:</strong> Rebooting first without collecting evidence.</p>
+          <p><strong>Follow-up:</strong> What do you check if the disk is full?</p>
+        </div>
+      </article>
+      <article class="question-card" id="q35">
+        <div class="question-head"><h2>35. Useful Linux commands</h2><p>Name real tools.</p></div>
+        <div class="grid4">
+          <div class="cell row-head">Question EN</div><div class="cell row-head">Answer EN</div><div class="cell row-head">Question VI</div><div class="cell row-head">Answer VI</div>
+          <div class="cell question"><p>Which Linux commands do you use often for ops?</p></div>
+          <div class="cell answer"><p>For processes and resources: top or htop, ps, free, df, du. For services: systemctl status/restart. For logs: journalctl or app log files under /var/log. For network: ss or netstat, curl, ping. I don’t memorize every flag — I know which tool answers which question.</p></div>
+          <div class="cell question"><p>Bạn hay dùng lệnh Linux nào cho ops?</p></div>
+          <div class="cell answer"><p>Process và tài nguyên: top/htop, ps, free, df, du. Service: systemctl status/restart. Log: journalctl hoặc file dưới /var/log. Mạng: ss/netstat, curl, ping. Tôi không thuộc mọi flag — tôi biết tool nào trả lời câu hỏi nào.</p></div>
+        </div>
+        <div class="crib">
+          <p><strong>Know:</strong> Map question → command family.</p>
+          <p><strong>Trap:</strong> Listing 20 commands with no scenario.</p>
+          <p><strong>Follow-up:</strong> How do you find which process is using port 8080?</p>
+        </div>
+      </article>
+      <article class="question-card" id="q36">
+        <div class="question-head"><h2>36. Networking mindset</h2><p>DNS and connectivity.</p></div>
+        <div class="grid4">
+          <div class="cell row-head">Question EN</div><div class="cell row-head">Answer EN</div><div class="cell row-head">Question VI</div><div class="cell row-head">Answer VI</div>
+          <div class="cell question"><p>How do you debug a network connectivity issue?</p></div>
+          <div class="cell answer"><p>I ask: can we resolve DNS, can we reach the IP, is the port open, and is the app listening? Tools like ping, curl, dig or nslookup, and checking firewall rules help narrow it. A lot of “network bugs” are actually DNS, TLS, or security group mistakes.</p></div>
+          <div class="cell question"><p>Bạn debug lỗi kết nối mạng thế nào?</p></div>
+          <div class="cell answer"><p>Tôi hỏi: resolve DNS được không, tới được IP không, port mở không, app có đang listen không? ping, curl, dig/nslookup và kiểm tra firewall giúp thu hẹp. Nhiều “lỗi mạng” thực ra là DNS, TLS, hoặc security group.</p></div>
+        </div>
+        <div class="crib">
+          <p><strong>Know:</strong> DNS → route → port → process listening.</p>
+          <p><strong>Trap:</strong> Blaming the network before checking the app is down.</p>
+          <p><strong>Follow-up:</strong> curl works by IP but not by hostname — what do you suspect?</p>
+        </div>
+      </article>
+      <article class="question-card" id="q37">
+        <div class="question-head"><h2>37. SSH, permissions, systemd</h2><p>Daily Linux ops.</p></div>
+        <div class="grid4">
+          <div class="cell row-head">Question EN</div><div class="cell row-head">Answer EN</div><div class="cell row-head">Question VI</div><div class="cell row-head">Answer VI</div>
+          <div class="cell question"><p>How do you use SSH, file permissions, and systemd in daily work?</p></div>
+          <div class="cell answer"><p>SSH is how I get onto servers securely — keys preferred over passwords. Permissions and ownership matter so services can read configs but random users can’t. systemd manages services: start, stop, enable on boot, and inspect status. Together they’re the basics of keeping a Linux box operable.</p></div>
+          <div class="cell question"><p>SSH, permission và systemd dùng thế nào trong việc hằng ngày?</p></div>
+          <div class="cell answer"><p>SSH để vào server an toàn — ưu tiên key hơn password. Permission và ownership để service đọc được config nhưng user linh tinh thì không. systemd quản lý service: start, stop, enable lúc boot, xem status. Đó là nền tảng giữ Linux vận hành được.</p></div>
+        </div>
+        <div class="crib">
+          <p><strong>Know:</strong> Access + permission boundary + service lifecycle.</p>
+          <p><strong>Trap:</strong> chmod 777 to “just make it work.”</p>
+          <p><strong>Follow-up:</strong> What’s the difference between systemctl restart and reboot?</p>
+        </div>
+      </article>
+      <article class="question-card" id="q38">
+        <div class="question-head"><h2>38. Bash / Python automation</h2><p>Scripting for toil.</p></div>
+        <div class="grid4">
+          <div class="cell row-head">Question EN</div><div class="cell row-head">Answer EN</div><div class="cell row-head">Question VI</div><div class="cell row-head">Answer VI</div>
+          <div class="cell question"><p>How do you use scripting for automation?</p></div>
+          <div class="cell answer"><p>I use Bash for quick glue — deploy helpers, checks, log greps, wrapping CLI tools. Python when the logic gets heavier: parsing, APIs, retries, clearer structure. The goal is removing repetitive manual steps that cause human error.</p></div>
+          <div class="cell question"><p>Bạn dùng scripting để automation thế nào?</p></div>
+          <div class="cell answer"><p>Bash cho việc nhanh — helper deploy, check, grep log, bọc CLI. Python khi logic nặng hơn: parse, gọi API, retry, cấu trúc rõ. Mục tiêu là bỏ bước tay lặp lại dễ gây lỗi người.</p></div>
+        </div>
+        <div class="crib">
+          <p><strong>Know:</strong> Bash for glue; Python for richer logic.</p>
+          <p><strong>Trap:</strong> Giant unreadable Bash for a real program.</p>
+          <p><strong>Follow-up:</strong> How do you make a script safe to re-run?</p>
+        </div>
+      </article>
+    </section>
+    <section class="section-block" id="sec-security">
+      <h2>H. Security &amp; Data</h2>
+      <article class="question-card" id="q39">
+        <div class="question-head"><h2>39. Secrets management</h2><p>Mindset over tool brand.</p></div>
+        <div class="grid4">
+          <div class="cell row-head">Question EN</div><div class="cell row-head">Answer EN</div><div class="cell row-head">Question VI</div><div class="cell row-head">Answer VI</div>
+          <div class="cell question"><p>How should secrets be managed?</p></div>
+          <div class="cell answer"><p>Don’t put secrets in git or plain env files that get copied around. Prefer a secret manager or at least encrypted CI secrets, rotate when people leave, and give apps only what they need. If something leaks, rotate first, then investigate.</p></div>
+          <div class="cell question"><p>Nên quản lý secret thế nào?</p></div>
+          <div class="cell answer"><p>Đừng để secret trong git hay file env plaintext chuyền tay. Ưu tiên secret manager hoặc ít nhất secret mã hóa trên CI, rotate khi người nghỉ, và app chỉ nhận đúng thứ cần. Nếu lộ, rotate trước rồi mới điều tra.</p></div>
+        </div>
+        <div class="crib">
+          <p><strong>Know:</strong> Store secrets centrally; inject at runtime; rotate.</p>
+          <p><strong>Trap:</strong> Committing .env with production credentials.</p>
+          <p><strong>Follow-up:</strong> Where would you store a database password for Cloud Run?</p>
+        </div>
+      </article>
+      <article class="question-card" id="q40">
+        <div class="question-head"><h2>40. Encryption / CMEK / Cloud Armor</h2><p>Honest awareness.</p></div>
+        <div class="grid4">
+          <div class="cell row-head">Question EN</div><div class="cell row-head">Answer EN</div><div class="cell row-head">Question VI</div><div class="cell row-head">Answer VI</div>
+          <div class="cell question"><p>What do you know about CMEK, Cloud Armor, or cloud encryption?</p></div>
+          <div class="cell answer"><p>I understand the ideas. Encryption at rest and in transit protect data. CMEK means customer-managed keys — more control and responsibility. Cloud Armor is roughly edge protection / WAF-style controls on Google Cloud. I haven’t deep-operated CMEK or Armor in production yet, but I know when to raise them in a design discussion and I’d learn the project’s exact setup quickly.</p></div>
+          <div class="cell question"><p>Bạn biết gì về CMEK, Cloud Armor hoặc mã hóa trên cloud?</p></div>
+          <div class="cell answer"><p>Tôi hiểu ý tưởng. Mã hóa at rest và in transit bảo vệ dữ liệu. CMEK là key do khách quản lý — thêm quyền kiểm soát và trách nhiệm. Cloud Armor gần với bảo vệ cạnh / WAF trên Google Cloud. Tôi chưa deep-operate CMEK hay Armor trên production, nhưng biết khi nào nên nêu trong thiết kế và sẽ học setup cụ thể của dự án nhanh.</p></div>
+        </div>
+        <div class="crib">
+          <p><strong>Know:</strong> Provider-managed vs customer-managed keys; edge protections.</p>
+          <p><strong>Trap:</strong> Name-dropping CMEK without knowing key rotation responsibility.</p>
+          <p><strong>Follow-up:</strong> When would a customer ask for CMEK instead of default encryption?</p>
+        </div>
+      </article>
+      <article class="question-card" id="q41">
+        <div class="question-head"><h2>41. Databases: SQL / Postgres / Redis</h2><p>App + ops view.</p></div>
+        <div class="grid4">
+          <div class="cell row-head">Question EN</div><div class="cell row-head">Answer EN</div><div class="cell row-head">Question VI</div><div class="cell row-head">Answer VI</div>
+          <div class="cell question"><p>What’s your experience with databases like Cloud SQL, PostgreSQL, or Redis?</p></div>
+          <div class="cell answer"><p>I’ve worked with relational databases from both app and ops angles — including Cloud SQL. That means schema, queries, and also connectivity, backups, and performance symptoms. Redis I understand as an in-memory cache or fast store for sessions and hot data. I choose tools based on consistency needs vs speed.</p></div>
+          <div class="cell question"><p>Kinh nghiệm của bạn với Cloud SQL, PostgreSQL hay Redis?</p></div>
+          <div class="cell answer"><p>Tôi làm database quan hệ từ cả góc app và ops — gồm Cloud SQL. Tức là schema, query, cũng như kết nối, backup và triệu chứng performance. Redis tôi hiểu như cache in-memory hoặc store nhanh cho session và hot data. Chọn tool theo nhu cầu consistency so với tốc độ.</p></div>
+        </div>
+        <div class="crib">
+          <p><strong>Know:</strong> SQL for durable relational data; Redis for speed/cache patterns.</p>
+          <p><strong>Trap:</strong> Using Redis as the only source of truth for critical business data without a plan.</p>
+          <p><strong>Follow-up:</strong> How do you decide cache vs database read?</p>
+        </div>
+      </article>
+      <article class="question-card" id="q42">
+        <div class="question-head"><h2>42. AI integration experience</h2><p>JD plus — keep concrete.</p></div>
+        <div class="grid4">
+          <div class="cell row-head">Question EN</div><div class="cell row-head">Answer EN</div><div class="cell row-head">Question VI</div><div class="cell row-head">Answer VI</div>
+          <div class="cell question"><p>Can you explain your AI integration experience?</p></div>
+          <div class="cell answer"><p>I’ve shipped AI features like chat completion, text-to-speech, and speech-to-text in real product flows — for example in an IELTS AI Tutor app linking teacher and student workflows. I also used Langfuse for observability so we could see how the AI parts behaved. For infra roles, that experience helps when projects touch Vertex AI or similar stacks — I already think about reliability and observability, not only demos.</p></div>
+          <div class="cell question"><p>Bạn mô tả kinh nghiệm tích hợp AI thế nào?</p></div>
+          <div class="cell answer"><p>Tôi đã ship tính năng AI như chat completion, text-to-speech và speech-to-text trong flow sản phẩm thật — ví dụ app IELTS AI Tutor nối giáo viên và học viên. Tôi cũng dùng Langfuse cho observability để xem phần AI vận hành ra sao. Với role infra, trải nghiệm đó hữu ích khi dự án đụng Vertex AI hay stack tương tự — tôi nghĩ tới reliability và observability, không chỉ demo.</p></div>
+        </div>
+        <div class="crib">
+          <p><strong>Know:</strong> Product AI features + observability mindset.</p>
+          <p><strong>Trap:</strong> Overclaiming ML platform engineering if you built app integrations.</p>
+          <p><strong>Follow-up:</strong> What infra concerns appear when AI APIs are in the critical path?</p>
+        </div>
+      </article>
+    </section>
+    <section class="section-block" id="sec-close">
+      <h2>I. Close</h2>
+      <article class="question-card" id="q43">
+        <div class="question-head"><h2>43. Questions for the interviewer</h2><p>Ask 2–3 at the end.</p></div>
+        <div class="grid4">
+          <div class="cell row-head">Question EN</div><div class="cell row-head">Answer EN</div><div class="cell row-head">Question VI</div><div class="cell row-head">Answer VI</div>
+          <div class="cell question"><p>What questions should you ask us?</p></div>
+          <div class="cell answer"><p>Which cloud do you use most right now? How much of the role is build versus support and incidents? How is infra managed today — console, Terraform, or mixed? What monitoring and logging stack is standard? What would good look like in my first three months?</p></div>
+          <div class="cell question"><p>Bạn nên hỏi chúng tôi những gì?</p></div>
+          <div class="cell answer"><p>Hiện team dùng cloud nào nhiều nhất? Tỉ lệ build so với support và incident thế nào? Infra đang quản lý ra sao — console, Terraform, hay mix? Monitoring và logging chuẩn là gì? Ba tháng đầu thế nào là làm tốt?</p></div>
+        </div>
+      </article>
+      <article class="question-card" id="q44">
+        <div class="question-head"><h2>44. 60-second closing pitch</h2><p>Calm and honest.</p></div>
+        <div class="grid4">
+          <div class="cell row-head">Question EN</div><div class="cell row-head">Answer EN</div><div class="cell row-head">Question VI</div><div class="cell row-head">Answer VI</div>
+          <div class="cell question"><p>Do you have anything else you’d like to add?</p></div>
+          <div class="cell answer"><p>Just briefly: I bring hands-on GCP, Linux, Docker, and CI/CD experience from real shipping work, plus an application background that helps me debug faster. I’m intentionally moving deeper into infrastructure — IaC, monitoring, multi-cloud delivery — and I’m honest about where I’m strong versus where I’m still ramping. I’m motivated to learn quickly inside Kaopiz’s project environment and contribute from day one on deploy, reliability, and support.</p></div>
+          <div class="cell question"><p>Bạn còn muốn bổ sung gì không?</p></div>
+          <div class="cell answer"><p>Ngắn gọn: tôi mang kinh nghiệm thực tế GCP, Linux, Docker và CI/CD từ việc ship thật, cộng nền tảng application giúp debug nhanh hơn. Tôi chủ đích đi sâu vào infrastructure — IaC, monitoring, multi-cloud — và nói thẳng chỗ mạnh với chỗ đang ramp-up. Tôi muốn học nhanh trong môi trường dự án Kaopiz và đóng góp từ sớm ở deploy, reliability và support.</p></div>
+        </div>
+      </article>
+    </section>
+
+    </section>
+
+    <p class="footer-note">Built for Kaopiz prep and reuse at other Cloud/Infra interviews — spoken answers, section jumps, crib notes.</p>
+  </main>
+
+  <script>
+    (function () {
+      const btn = document.querySelector('[data-theme-toggle]');
+      const root = document.documentElement;
+      let theme = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+      root.setAttribute('data-theme', theme);
+      const sync = () => { btn.textContent = theme === 'dark' ? '☀' : '☾'; };
+      sync();
+      btn.addEventListener('click', () => {
+        theme = theme === 'dark' ? 'light' : 'dark';
+        root.setAttribute('data-theme', theme);
+        sync();
+      });
+    })();
+  </script>
+</body>
+</html>

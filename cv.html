@@ -1,0 +1,1045 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>CV Deep-Dive Interview Q&A</title>
+  <link href="https://api.fontshare.com/v2/css?f[]=satoshi@400,500,700&f[]=general-sans@400,500,600,700&display=swap" rel="stylesheet">
+  <style>
+    :root, [data-theme="light"] {
+      --text-xs: clamp(0.75rem, 0.7rem + 0.25vw, 0.875rem);
+      --text-sm: clamp(0.875rem, 0.8rem + 0.35vw, 1rem);
+      --text-base: clamp(1rem, 0.95rem + 0.25vw, 1.125rem);
+      --text-lg: clamp(1.125rem, 1rem + 0.75vw, 1.5rem);
+      --text-xl: clamp(1.5rem, 1.2rem + 1.25vw, 2.25rem);
+      --space-1: 0.25rem; --space-2: 0.5rem; --space-3: 0.75rem; --space-4: 1rem;
+      --space-5: 1.25rem; --space-6: 1.5rem; --space-8: 2rem; --space-10: 2.5rem;
+      --space-12: 3rem; --space-16: 4rem;
+      --color-bg: #f7f6f2;
+      --color-surface: #f9f8f5;
+      --color-surface-2: #fbfbf9;
+      --color-surface-offset: #edeae5;
+      --color-border: #d4d1ca;
+      --color-divider: #dcd9d5;
+      --color-text: #28251d;
+      --color-text-muted: #6f6c65;
+      --color-text-faint: #98958f;
+      --color-primary: #01696f;
+      --color-primary-hover: #0c4e54;
+      --color-primary-highlight: #d8e6e3;
+      --color-success: #437a22;
+      --color-warning: #964219;
+      --radius-sm: 0.375rem;
+      --radius-md: 0.5rem;
+      --radius-lg: 0.75rem;
+      --radius-xl: 1rem;
+      --shadow-sm: 0 1px 2px rgba(30, 27, 22, 0.06);
+      --shadow-md: 0 10px 30px rgba(30, 27, 22, 0.08);
+      --font-display: 'General Sans', 'Inter', sans-serif;
+      --font-body: 'Satoshi', 'Inter', sans-serif;
+    }
+
+    [data-theme="dark"] {
+      --color-bg: #171614;
+      --color-surface: #1c1b19;
+      --color-surface-2: #201f1d;
+      --color-surface-offset: #2a2826;
+      --color-border: #393836;
+      --color-divider: #2f2e2c;
+      --color-text: #e1dfdb;
+      --color-text-muted: #adaaa4;
+      --color-text-faint: #7c7974;
+      --color-primary: #4f98a3;
+      --color-primary-hover: #6aafba;
+      --color-primary-highlight: rgba(79,152,163,0.16);
+      --color-success: #79b95a;
+      --color-warning: #d08b60;
+      --shadow-sm: 0 1px 2px rgba(0,0,0,0.18);
+      --shadow-md: 0 10px 30px rgba(0,0,0,0.3);
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      font-family: var(--font-body);
+      font-size: var(--text-base);
+      color: var(--color-text);
+      background: var(--color-bg);
+      line-height: 1.65;
+    }
+
+    a { color: inherit; text-decoration: none; }
+    .page {
+      max-width: 1600px;
+      margin: 0 auto;
+      padding: var(--space-6);
+    }
+
+    .topbar {
+      position: sticky;
+      top: 0;
+      z-index: 30;
+      backdrop-filter: blur(10px);
+      background: color-mix(in srgb, var(--color-bg) 88%, transparent);
+      border-bottom: 1px solid var(--color-divider);
+    }
+
+    .topbar-inner {
+      max-width: 1600px;
+      margin: 0 auto;
+      padding: var(--space-4) var(--space-6);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: var(--space-4);
+    }
+
+    .brand h1 {
+      margin: 0;
+      font-family: var(--font-display);
+      font-size: var(--text-xl);
+      line-height: 1.05;
+      letter-spacing: -0.03em;
+    }
+
+    .brand p {
+      margin: var(--space-2) 0 0;
+      color: var(--color-text-muted);
+      font-size: var(--text-sm);
+      max-width: 72ch;
+    }
+
+    .top-actions {
+      display: flex;
+      align-items: center;
+      gap: var(--space-3);
+      flex-wrap: wrap;
+    }
+
+    .btn {
+      border: 1px solid var(--color-border);
+      background: var(--color-surface);
+      color: var(--color-text);
+      border-radius: var(--radius-full, 999px);
+      padding: 0.72rem 1rem;
+      font-size: var(--text-sm);
+      font-weight: 600;
+      box-shadow: var(--shadow-sm);
+      cursor: pointer;
+    }
+
+    .btn:hover { background: var(--color-surface-2); }
+    .theme-toggle { min-width: 44px; min-height: 44px; display: inline-flex; align-items: center; justify-content: center; }
+
+    .hero {
+      display: grid;
+      grid-template-columns: 1.2fr 0.8fr;
+      gap: var(--space-6);
+      margin: var(--space-6) 0 var(--space-8);
+    }
+
+    .hero-card, .toc-card, .question-card {
+      background: var(--color-surface);
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius-xl);
+      box-shadow: var(--shadow-sm);
+    }
+
+    .hero-card { padding: var(--space-6); }
+    .hero-kpis {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: var(--space-3);
+      margin-top: var(--space-5);
+    }
+
+    .kpi {
+      background: var(--color-surface-2);
+      border: 1px solid var(--color-divider);
+      border-radius: var(--radius-lg);
+      padding: var(--space-4);
+    }
+
+    .kpi strong {
+      display: block;
+      font-size: var(--text-lg);
+      font-family: var(--font-display);
+      margin-bottom: var(--space-2);
+    }
+
+    .kpi span {
+      font-size: var(--text-sm);
+      color: var(--color-text-muted);
+    }
+
+    .toc-card {
+      padding: var(--space-6);
+      background: linear-gradient(180deg, var(--color-surface) 0%, var(--color-surface-2) 100%);
+    }
+
+    .section-label {
+      display: inline-flex;
+      align-items: center;
+      gap: var(--space-2);
+      padding: 0.35rem 0.7rem;
+      border-radius: 999px;
+      background: var(--color-primary-highlight);
+      color: var(--color-primary);
+      font-size: var(--text-xs);
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      margin-bottom: var(--space-4);
+    }
+
+    .toc-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: var(--space-3);
+      margin-top: var(--space-4);
+    }
+
+    .toc-link {
+      display: block;
+      padding: var(--space-4);
+      border-radius: var(--radius-lg);
+      background: var(--color-bg);
+      border: 1px solid var(--color-divider);
+      min-height: 100%;
+    }
+
+    .toc-link:hover {
+      border-color: var(--color-primary);
+      background: var(--color-primary-highlight);
+    }
+
+    .toc-link small {
+      display: block;
+      color: var(--color-text-faint);
+      margin-bottom: var(--space-2);
+      font-size: var(--text-xs);
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+    }
+
+    .toc-link strong {
+      display: block;
+      font-size: var(--text-sm);
+      line-height: 1.45;
+    }
+
+    .questions {
+      display: grid;
+      gap: var(--space-5);
+      padding-bottom: var(--space-16);
+    }
+
+    .question-card {
+      overflow: hidden;
+      scroll-margin-top: 100px;
+    }
+
+    .question-head {
+      padding: var(--space-5) var(--space-5) var(--space-4);
+      border-bottom: 1px solid var(--color-divider);
+      background: var(--color-surface-2);
+    }
+
+    .question-head h2 {
+      margin: 0;
+      font-family: var(--font-display);
+      font-size: var(--text-lg);
+      line-height: 1.15;
+      letter-spacing: -0.02em;
+    }
+
+    .question-head p {
+      margin: var(--space-2) 0 0;
+      color: var(--color-text-muted);
+      font-size: var(--text-sm);
+    }
+
+    .grid4 {
+      display: grid;
+      grid-template-columns: 0.8fr 1.2fr 0.8fr 1.2fr;
+    }
+
+    .cell {
+      padding: var(--space-5);
+      border-right: 1px solid var(--color-divider);
+      border-bottom: 1px solid var(--color-divider);
+      min-width: 0;
+    }
+
+    .grid4 .cell:nth-child(4n) { border-right: none; }
+    .row-head {
+      background: var(--color-surface-2);
+      font-size: var(--text-xs);
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      font-weight: 700;
+      color: var(--color-text-muted);
+      padding-top: var(--space-4);
+      padding-bottom: var(--space-4);
+    }
+
+    .cell.question {
+      background: color-mix(in srgb, var(--color-surface-2) 70%, var(--color-bg));
+      font-weight: 600;
+    }
+
+    .cell.answer {
+      background: var(--color-surface);
+    }
+
+    .cell p { margin: 0; }
+    .cell p + p { margin-top: var(--space-3); }
+
+    .note {
+      padding: var(--space-4) var(--space-5);
+      background: color-mix(in srgb, var(--color-primary-highlight) 55%, var(--color-surface));
+      border-top: 1px solid var(--color-divider);
+      color: var(--color-text-muted);
+      font-size: var(--text-sm);
+    }
+
+    .tag-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: var(--space-2);
+      margin-top: var(--space-4);
+    }
+
+    .tag {
+      padding: 0.35rem 0.7rem;
+      border: 1px solid var(--color-divider);
+      border-radius: 999px;
+      background: var(--color-bg);
+      color: var(--color-text-muted);
+      font-size: var(--text-xs);
+      font-weight: 600;
+    }
+
+    .footer-note {
+      margin-top: var(--space-8);
+      color: var(--color-text-muted);
+      font-size: var(--text-sm);
+      text-align: center;
+    }
+
+    @media (max-width: 1180px) {
+      .hero { grid-template-columns: 1fr; }
+      .grid4 { grid-template-columns: 1fr 1fr; }
+      .grid4 .cell:nth-child(2n) { border-right: none; }
+      .grid4 .cell:nth-child(4n) { border-right: none; }
+      .row-head { display: none; }
+      .cell.question { border-bottom: 1px solid var(--color-divider); }
+    }
+
+    
+    .section-nav {
+      display: flex;
+      flex-wrap: wrap;
+      gap: var(--space-2);
+      margin-top: var(--space-4);
+    }
+    .section-nav a {
+      padding: 0.4rem 0.75rem;
+      border: 1px solid var(--color-divider);
+      border-radius: 999px;
+      background: var(--color-bg);
+      font-size: var(--text-xs);
+      font-weight: 700;
+      color: var(--color-text-muted);
+    }
+    .section-nav a:hover {
+      border-color: var(--color-primary);
+      color: var(--color-primary);
+      background: var(--color-primary-highlight);
+    }
+    .section-block {
+      scroll-margin-top: 110px;
+      margin-top: var(--space-8);
+    }
+    .section-block > h2 {
+      font-family: var(--font-display);
+      font-size: var(--text-lg);
+      letter-spacing: -0.02em;
+      margin: 0 0 var(--space-4);
+    }
+    .crib {
+      padding: var(--space-4) var(--space-5);
+      background: color-mix(in srgb, var(--color-warning) 8%, var(--color-surface));
+      border-top: 1px solid var(--color-divider);
+      font-size: var(--text-sm);
+      color: var(--color-text-muted);
+    }
+    .crib p { margin: 0; }
+    .crib p + p { margin-top: var(--space-2); }
+    .crib strong { color: var(--color-text); }
+
+@media (max-width: 720px) {
+      .page, .topbar-inner { padding-left: var(--space-4); padding-right: var(--space-4); }
+      .topbar-inner { align-items: flex-start; flex-direction: column; }
+      .hero-kpis { grid-template-columns: 1fr; }
+      .toc-grid { grid-template-columns: 1fr; }
+      .grid4 { grid-template-columns: 1fr; }
+      .cell { border-right: none !important; }
+      .question-head h2 { font-size: 1.2rem; }
+    }
+  
+    .star {
+      padding: var(--space-4) var(--space-5);
+      background: color-mix(in srgb, var(--color-primary-highlight) 70%, var(--color-surface));
+      border-top: 1px solid var(--color-divider);
+      font-size: var(--text-sm);
+      color: var(--color-text-muted);
+    }
+    .star p { margin: 0; }
+    .star p + p { margin-top: var(--space-2); }
+    .star strong { color: var(--color-text); }
+    .say {
+      margin-top: var(--space-3);
+      padding-top: var(--space-3);
+      border-top: 1px dashed var(--color-divider);
+      color: var(--color-primary);
+      font-weight: 600;
+    }
+</style>
+</head>
+<body>
+  <div class="topbar">
+    <div class="topbar-inner">
+      <div class="brand">
+        <h1>CV Deep-Dive Cheat Sheet</h1>
+        <p>Questions interviewers ask from your CV — what you did, what you fixed. Spoken EN/VI + STAR notes. Source: Full-stack SE CV (Akktis, BaseVN, IELTS AI Tutor).</p>
+      </div>
+      <div class="top-actions">
+        <button class="btn theme-toggle" data-theme-toggle aria-label="Switch theme">☾</button>
+        <a class="btn" href="globant.html">Globant prep</a>
+        <a class="btn" href="index.html">Fundamentals sheet</a>
+        <a class="btn" href="#toc">Contents</a>
+      </div>
+    </div>
+  </div>
+
+  <main class="page">
+    <section class="hero">
+      <div class="hero-card">
+        <div class="section-label">CV Defense</div>
+        <p>Use this when they point at a bullet on your CV. Section F is for “tell me a hard problem you fixed.” Answer short out loud, then use STAR if they dig. Don’t invent metrics that aren’t on the CV.</p>
+        <nav class="section-nav" aria-label="Sections">
+          <a href="#sec-walk">Walkthrough</a>
+          <a href="#sec-akktis">Akktis</a>
+          <a href="#sec-ielts">IELTS</a>
+          <a href="#sec-base">BaseVN</a>
+          <a href="#sec-other">Other</a>
+          <a href="#sec-issues">Hard fixes</a>
+        </nav>
+        <div class="hero-kpis">
+          <div class="kpi"><strong>30</strong><span>CV-based questions</span></div>
+          <div class="kpi"><strong>STAR</strong><span>Under every answer</span></div>
+          <div class="kpi"><strong>Honest</strong><span>Only CV-backed stories</span></div>
+        </div>
+        <div class="tag-list">
+          <span class="tag">Akktis</span>
+          <span class="tag">GCP</span>
+          <span class="tag">Linux</span>
+          <span class="tag">CI/CD</span>
+          <span class="tag">IELTS AI Tutor</span>
+          <span class="tag">BaseVN</span>
+          <span class="tag">MySQL</span>
+        </div>
+      </div>
+      <aside class="toc-card" id="toc">
+        <div class="section-label">Table of contents</div>
+        <p>Jump to the CV bullet they’ll likely probe.</p>
+        <div class="toc-grid">
+          <a class="toc-link" href="#c1"><small>01</small><strong>Walk me through your CV</strong></a>
+          <a class="toc-link" href="#c2"><small>02</small><strong>Why move from BaseVN to Akktis?</strong></a>
+          <a class="toc-link" href="#c3"><small>03</small><strong>Akktis day-to-day</strong></a>
+          <a class="toc-link" href="#c4"><small>04</small><strong>Linux server management</strong></a>
+          <a class="toc-link" href="#c5"><small>05</small><strong>CI/CD multi-environment</strong></a>
+          <a class="toc-link" href="#c6"><small>06</small><strong>GCP Cloud Run / SQL / Storage</strong></a>
+          <a class="toc-link" href="#c7"><small>07</small><strong>LiteSpeed and Apache</strong></a>
+          <a class="toc-link" href="#c8"><small>08</small><strong>Legacy migration to MySQL/Apache</strong></a>
+          <a class="toc-link" href="#c9"><small>09</small><strong>Docs and security hardening</strong></a>
+          <a class="toc-link" href="#c10"><small>10</small><strong>France-based / remote collaboration</strong></a>
+          <a class="toc-link" href="#c11"><small>11</small><strong>IELTS AI Tutor overview</strong></a>
+          <a class="toc-link" href="#c12"><small>12</small><strong>Cloud Run for IELTS backend</strong></a>
+          <a class="toc-link" href="#c13"><small>13</small><strong>AI features chat / TTS / STT</strong></a>
+          <a class="toc-link" href="#c14"><small>14</small><strong>Langfuse observability</strong></a>
+          <a class="toc-link" href="#c15"><small>15</small><strong>App and teacher portal</strong></a>
+          <a class="toc-link" href="#c16"><small>16</small><strong>Base VSS sync pipelines</strong></a>
+          <a class="toc-link" href="#c17"><small>17</small><strong>Base PIT 500k+ records</strong></a>
+          <a class="toc-link" href="#c18"><small>18</small><strong>Base E-Hiring API integrations</strong></a>
+          <a class="toc-link" href="#c19"><small>19</small><strong>Looneyes multilingual SEO site</strong></a>
+          <a class="toc-link" href="#c20"><small>20</small><strong>Jimdo Switzerland site</strong></a>
+          <a class="toc-link" href="#c21"><small>21</small><strong>Biggest production issue from your CV</strong></a>
+          <a class="toc-link" href="#c22"><small>22</small><strong>Deploy works in staging, fails in prod</strong></a>
+          <a class="toc-link" href="#c23"><small>23</small><strong>Cloud Run app can’t reach Cloud SQL</strong></a>
+          <a class="toc-link" href="#c24"><small>24</small><strong>Linux disk full / service down</strong></a>
+          <a class="toc-link" href="#c25"><small>25</small><strong>CI/CD pipeline broken mid-release</strong></a>
+          <a class="toc-link" href="#c26"><small>26</small><strong>MySQL slow on large PIT dataset</strong></a>
+          <a class="toc-link" href="#c27"><small>27</small><strong>Data sync mismatch between VSS / HRM / Payroll</strong></a>
+          <a class="toc-link" href="#c28"><small>28</small><strong>Flaky third-party API (job boards)</strong></a>
+          <a class="toc-link" href="#c29"><small>29</small><strong>Legacy migration: fear of data loss</strong></a>
+          <a class="toc-link" href="#c30"><small>30</small><strong>AI feature works in demo, weird in real use</strong></a>
+        </div>
+      </aside>
+    </section>
+
+    <section class="questions">
+    <section class="section-block" id="sec-walk">
+      <h2>A. CV Walkthrough</h2>
+      <article class="question-card" id="c1">
+        <div class="question-head"><h2>01. Walk me through your CV</h2><p>90-second story, newest first.</p></div>
+        <div class="grid4">
+          <div class="cell row-head">Question EN</div><div class="cell row-head">Answer EN</div><div class="cell row-head">Question VI</div><div class="cell row-head">Answer VI</div>
+          <div class="cell question"><p>Walk me through your CV.</p></div>
+          <div class="cell answer"><p>Sure. I’m a full-stack engineer with about five years across SaaS, web, mobile, and cloud. Most recently at Akktis I’ve been doing DevOps and full-stack — Linux servers, CI/CD, Google Cloud, and PHP apps. On the side I ship client products like IELTS AI Tutor on Cloud Run. Before that at BaseVN I worked on large HRM/Payroll/e-gov SaaS — sync pipelines, heavy MySQL work, and third-party APIs.</p></div>
+          <div class="cell question"><p>Hãy đi qua CV của bạn.</p></div>
+          <div class="cell answer"><p>Vâng. Tôi là full-stack khoảng năm năm, làm SaaS, web, mobile và cloud. Gần đây nhất ở Akktis tôi làm DevOps và full-stack — Linux, CI/CD, Google Cloud và app PHP. Bên cạnh đó tôi ship sản phẩm khách như IELTS AI Tutor trên Cloud Run. Trước đó ở BaseVN tôi làm SaaS HRM/Payroll/e-gov — pipeline đồng bộ, MySQL lớn, và API bên thứ ba.</p></div>
+        </div>
+        <div class="star">
+          <p><strong>S:</strong> CV spans BaseVN SaaS → Akktis infra/full-stack → independent cloud/mobile products.</p>
+          <p><strong>T:</strong> Explain path without reading every bullet.</p>
+          <p><strong>A:</strong> Lead with Akktis + GCP, then BaseVN scale problems, then IELTS as ownership proof.</p>
+          <p><strong>R:</strong> Clear progression toward cloud/infra ownership.</p>
+          <p class="say"><strong>Say this:</strong> Newest first: Akktis ops → side projects on GCP → BaseVN SaaS depth.</p>
+        </div>
+      </article>
+      <article class="question-card" id="c2">
+        <div class="question-head"><h2>02. Why move from BaseVN to Akktis?</h2><p>Show intentional growth.</p></div>
+        <div class="grid4">
+          <div class="cell row-head">Question EN</div><div class="cell row-head">Answer EN</div><div class="cell row-head">Question VI</div><div class="cell row-head">Answer VI</div>
+          <div class="cell question"><p>Why did you move from BaseVN to Akktis?</p></div>
+          <div class="cell answer"><p>At BaseVN I got strong product and backend depth on big SaaS. I wanted more ownership on servers, deploy, and cloud day to day. Akktis gave me that mix — still shipping features, but also Linux, CI/CD, and GCP in an international setup.</p></div>
+          <div class="cell question"><p>Vì sao bạn chuyển từ BaseVN sang Akktis?</p></div>
+          <div class="cell answer"><p>Ở BaseVN tôi có nền tảng product và backend trên SaaS lớn. Tôi muốn own nhiều hơn phần server, deploy và cloud hằng ngày. Akktis cho mix đó — vẫn ship feature, nhưng thêm Linux, CI/CD và GCP trong môi trường quốc tế.</p></div>
+        </div>
+        <div class="star">
+          <p><strong>S:</strong> After SaaS feature work, wanted deeper infra/deploy ownership.</p>
+          <p><strong>T:</strong> Find a role that mixes app + ops.</p>
+          <p><strong>A:</strong> Joined Akktis DevOps &amp; full-stack; took Linux, pipelines, GCP responsibility.</p>
+          <p><strong>R:</strong> Broader end-to-end ownership from code to running systems.</p>
+          <p class="say"><strong>Say this:</strong> I wanted to own the path from code to production, not only features.</p>
+        </div>
+      </article>
+    </section>
+    <section class="section-block" id="sec-akktis">
+      <h2>B. Akktis (DevOps &amp; Full-stack)</h2>
+      <article class="question-card" id="c3">
+        <div class="question-head"><h2>03. Akktis day-to-day</h2><p>Make it concrete.</p></div>
+        <div class="grid4">
+          <div class="cell row-head">Question EN</div><div class="cell row-head">Answer EN</div><div class="cell row-head">Question VI</div><div class="cell row-head">Answer VI</div>
+          <div class="cell question"><p>What do you do day to day at Akktis?</p></div>
+          <div class="cell answer"><p>It depends on the project, but usually I’m either shipping web/mobile features or keeping environments healthy. That means SSH into Linux boxes, checking deploys, fixing CI/CD, working with Cloud Run or Cloud SQL, and supporting Laravel/WordPress/PrestaShop apps when something breaks.</p></div>
+          <div class="cell question"><p>Công việc hằng ngày ở Akktis của bạn là gì?</p></div>
+          <div class="cell answer"><p>Tùy dự án, nhưng thường tôi hoặc ship feature web/mobile, hoặc giữ môi trường khỏe. Tức là SSH vào Linux, kiểm tra deploy, sửa CI/CD, làm với Cloud Run hoặc Cloud SQL, và support Laravel/WordPress/PrestaShop khi có sự cố.</p></div>
+        </div>
+        <div class="star">
+          <p><strong>S:</strong> International outsourcing/consulting with mixed app + infra work.</p>
+          <p><strong>T:</strong> Keep delivery moving and systems stable.</p>
+          <p><strong>A:</strong> Split time across Linux ops, pipelines, GCP services, and PHP app work.</p>
+          <p><strong>R:</strong> Clients get both feature delivery and operational support.</p>
+          <p class="say"><strong>Say this:</strong> Half builder, half firefighter — always with deploy context.</p>
+        </div>
+      </article>
+      <article class="question-card" id="c4">
+        <div class="question-head"><h2>04. Linux server management</h2><p>SSH + troubleshooting story.</p></div>
+        <div class="grid4">
+          <div class="cell row-head">Question EN</div><div class="cell row-head">Answer EN</div><div class="cell row-head">Question VI</div><div class="cell row-head">Answer VI</div>
+          <div class="cell question"><p>You wrote that you manage Linux servers via SSH. What does that look like?</p></div>
+          <div class="cell answer"><p>I connect over SSH to Ubuntu or Debian hosts, deploy or restart services, check logs, disk, memory, and service status, then fix whatever’s broken. A lot of it is structured troubleshooting — symptom first, then resources, logs, and recent changes.</p></div>
+          <div class="cell question"><p>Bạn quản lý Linux qua SSH như thế nào?</p></div>
+          <div class="cell answer"><p>Tôi SSH vào Ubuntu/Debian, deploy hoặc restart service, xem log, disk, memory và status, rồi sửa. Nhiều việc là troubleshoot có cấu trúc — triệu chứng trước, rồi tài nguyên, log, thay đổi gần đây.</p></div>
+        </div>
+        <div class="star">
+          <p><strong>S:</strong> Multiple Ubuntu/Debian app servers in client environments.</p>
+          <p><strong>T:</strong> Keep services up, deploy safely, diagnose issues remotely.</p>
+          <p><strong>A:</strong> SSH in; check systemctl/logs/disk/CPU; apply safest fix; verify.</p>
+          <p><strong>R:</strong> Faster recovery and fewer blind restarts.</p>
+          <p class="say"><strong>Say this:</strong> I don’t reboot first — I collect evidence, then fix.</p>
+        </div>
+      </article>
+      <article class="question-card" id="c5">
+        <div class="question-head"><h2>05. CI/CD multi-environment</h2><p>Mobile + web pipelines.</p></div>
+        <div class="grid4">
+          <div class="cell row-head">Question EN</div><div class="cell row-head">Answer EN</div><div class="cell row-head">Question VI</div><div class="cell row-head">Answer VI</div>
+          <div class="cell question"><p>Tell me about the CI/CD pipelines you designed or maintained.</p></div>
+          <div class="cell answer"><p>I built and maintain pipelines for mobile apps and web servers across multiple environments. The idea is the same: automate build and deploy so releases aren’t a fragile manual checklist, and keep env promotion clearer between dev, staging, and prod-like setups.</p></div>
+          <div class="cell question"><p>Kể về CI/CD pipeline bạn thiết kế hoặc maintain.</p></div>
+          <div class="cell answer"><p>Tôi dựng và maintain pipeline cho mobile app và web server trên nhiều môi trường. Ý tưởng giống nhau: tự động build/deploy để release không còn checklist tay dễ vỡ, và promote rõ hơn giữa dev, staging và môi trường giống prod.</p></div>
+        </div>
+        <div class="star">
+          <p><strong>S:</strong> Multi-env web and mobile delivery needed repeatable deploys.</p>
+          <p><strong>T:</strong> Reduce manual release risk.</p>
+          <p><strong>A:</strong> Designed/maintained CI/CD across environments with Git-based workflows.</p>
+          <p><strong>R:</strong> More repeatable releases and easier failure diagnosis from pipeline logs.</p>
+          <p class="say"><strong>Say this:</strong> Pipelines exist so humans don’t invent a new deploy every time.</p>
+        </div>
+      </article>
+      <article class="question-card" id="c6">
+        <div class="question-head"><h2>06. GCP Cloud Run / SQL / Storage</h2><p>Name real services + what you did.</p></div>
+        <div class="grid4">
+          <div class="cell row-head">Question EN</div><div class="cell row-head">Answer EN</div><div class="cell row-head">Question VI</div><div class="cell row-head">Answer VI</div>
+          <div class="cell question"><p>What have you done on Google Cloud?</p></div>
+          <div class="cell answer"><p>I’ve deployed and managed services on Cloud Run, used Cloud SQL for managed databases, and Storage for files or artifacts. Typical flow: containerize, deploy, watch logs and revisions, and fix config or connectivity when the app can’t reach the database or storage correctly.</p></div>
+          <div class="cell question"><p>Bạn đã làm gì trên Google Cloud?</p></div>
+          <div class="cell answer"><p>Tôi deploy và quản lý service trên Cloud Run, dùng Cloud SQL cho database managed, và Storage cho file/artifact. Flow thường: đóng gói container, deploy, xem log và revision, sửa config hoặc kết nối khi app không tới được DB hoặc storage.</p></div>
+        </div>
+        <div class="star">
+          <p><strong>S:</strong> Need managed cloud runtime for web/mobile backends.</p>
+          <p><strong>T:</strong> Run services without babysitting VMs all day.</p>
+          <p><strong>A:</strong> Deploy on Cloud Run; wire Cloud SQL and Storage; operate via logs/revisions.</p>
+          <p><strong>R:</strong> Stable cloud deploys with less server overhead.</p>
+          <p class="say"><strong>Say this:</strong> Cloud Run is where my Docker knowledge becomes production.</p>
+        </div>
+      </article>
+      <article class="question-card" id="c7">
+        <div class="question-head"><h2>07. LiteSpeed and Apache</h2><p>Web server ops.</p></div>
+        <div class="grid4">
+          <div class="cell row-head">Question EN</div><div class="cell row-head">Answer EN</div><div class="cell row-head">Question VI</div><div class="cell row-head">Answer VI</div>
+          <div class="cell question"><p>What’s your experience with LiteSpeed and Apache?</p></div>
+          <div class="cell answer"><p>I configure and optimize them for multiple applications — virtual hosts, basic performance settings, and troubleshooting when a site is slow or not serving correctly. It’s practical ops work tied to real client apps on Linux.</p></div>
+          <div class="cell question"><p>Kinh nghiệm LiteSpeed và Apache của bạn?</p></div>
+          <div class="cell answer"><p>Tôi cấu hình và tối ưu cho nhiều ứng dụng — virtual host, setting hiệu năng cơ bản, và troubleshoot khi site chậm hoặc không serve đúng. Đây là ops thực tế gắn với app khách trên Linux.</p></div>
+        </div>
+        <div class="star">
+          <p><strong>S:</strong> Multiple PHP/CMS apps needed stable web server configs.</p>
+          <p><strong>T:</strong> Serve apps reliably and fix web-server level issues.</p>
+          <p><strong>A:</strong> Configured/optimized LiteSpeed and Apache across apps; debugged serving problems.</p>
+          <p><strong>R:</strong> Sites stay reachable and performance issues get isolated faster.</p>
+          <p class="say"><strong>Say this:</strong> When HTTP is wrong, I check the web server before blaming only the app.</p>
+        </div>
+      </article>
+      <article class="question-card" id="c8">
+        <div class="question-head"><h2>08. Legacy migration to MySQL/Apache</h2><p>Strong STAR story.</p></div>
+        <div class="grid4">
+          <div class="cell row-head">Question EN</div><div class="cell row-head">Answer EN</div><div class="cell row-head">Question VI</div><div class="cell row-head">Answer VI</div>
+          <div class="cell question"><p>Tell me about the legacy infrastructure migration on your CV.</p></div>
+          <div class="cell answer"><p>We migrated from a custom database management setup to MySQL on Apache. My focus was keeping data integrity, reducing risk during cutover, validating the app still worked, and making the new setup easier to operate and document.</p></div>
+          <div class="cell question"><p>Kể về migration hạ tầng legacy trên CV.</p></div>
+          <div class="cell answer"><p>Chúng tôi migrate từ quản lý database kiểu custom sang MySQL trên Apache. Tôi tập trung giữ toàn vẹn dữ liệu, giảm rủi ro lúc cắt chuyển, xác nhận app vẫn chạy, và làm setup mới dễ vận hành cũng như tài liệu hóa hơn.</p></div>
+        </div>
+        <div class="star">
+          <p><strong>S:</strong> Legacy custom DB approach was harder to maintain.</p>
+          <p><strong>T:</strong> Move to a standard MySQL + Apache setup with less risk.</p>
+          <p><strong>A:</strong> Supported migration planning/execution, validation, and clearer ops docs.</p>
+          <p><strong>R:</strong> More maintainable stack and safer ongoing support.</p>
+          <p class="say"><strong>Say this:</strong> Migration isn’t only move data — it’s leave the system easier to run.</p>
+        </div>
+      </article>
+      <article class="question-card" id="c9">
+        <div class="question-head"><h2>09. Docs and security hardening</h2><p>Show maturity.</p></div>
+        <div class="grid4">
+          <div class="cell row-head">Question EN</div><div class="cell row-head">Answer EN</div><div class="cell row-head">Question VI</div><div class="cell row-head">Answer VI</div>
+          <div class="cell question"><p>You mentioned infrastructure documentation and security hardening. What did you contribute?</p></div>
+          <div class="cell answer"><p>I helped improve how we document workflows and harden basics — clearer runbooks, less tribal knowledge, and practical security improvements in an international team. I’m not claiming I ran a full security audit, but I care about making systems safer and easier to hand off.</p></div>
+          <div class="cell question"><p>Bạn đóng góp gì về tài liệu hạ tầng và security hardening?</p></div>
+          <div class="cell answer"><p>Tôi hỗ trợ cải thiện cách ghi workflow và harden phần cơ bản — runbook rõ hơn, ít kiến thức trong đầu người, và cải thiện bảo mật thực tế trong team quốc tế. Tôi không nhận là đã chạy full security audit, nhưng tôi quan tâm hệ thống an toàn hơn và dễ bàn giao hơn.</p></div>
+        </div>
+        <div class="star">
+          <p><strong>S:</strong> International team needed shared understanding of infra workflows.</p>
+          <p><strong>T:</strong> Reduce tribal knowledge and tighten basic security posture.</p>
+          <p><strong>A:</strong> Wrote/improved docs; contributed hardening and workflow clarity.</p>
+          <p><strong>R:</strong> Easier onboarding and safer day-to-day operations.</p>
+          <p class="say"><strong>Say this:</strong> If only I understand the server, that’s a risk — I document it.</p>
+        </div>
+      </article>
+      <article class="question-card" id="c10">
+        <div class="question-head"><h2>10. France-based / remote collaboration</h2><p>Soft skill from CV.</p></div>
+        <div class="grid4">
+          <div class="cell row-head">Question EN</div><div class="cell row-head">Answer EN</div><div class="cell row-head">Question VI</div><div class="cell row-head">Answer VI</div>
+          <div class="cell question"><p>How do you work with an international or France-based team?</p></div>
+          <div class="cell answer"><p>I keep communication written, clear, and practical because of time zones. Status updates, docs, and explicit decisions matter more than long meetings. That habit also helps when infra issues need to be understood by people in different roles.</p></div>
+          <div class="cell question"><p>Bạn làm việc với team quốc tế/Pháp thế nào?</p></div>
+          <div class="cell answer"><p>Tôi giữ giao tiếp viết, rõ và thực tế vì lệch múi giờ. Cập nhật status, tài liệu và quyết định minh bạch quan trọng hơn họp dài. Thói quen đó cũng giúp khi issue infra cần được hiểu bởi người ở vai trò khác nhau.</p></div>
+        </div>
+        <div class="star">
+          <p><strong>S:</strong> Akktis is France-based; collaboration across time zones.</p>
+          <p><strong>T:</strong> Deliver without constant sync meetings.</p>
+          <p><strong>A:</strong> Async updates, clear docs, explicit technical decisions.</p>
+          <p><strong>R:</strong> Less confusion and smoother handoffs.</p>
+          <p class="say"><strong>Say this:</strong> I write so the next person — or tomorrow-me — can continue.</p>
+        </div>
+      </article>
+    </section>
+    <section class="section-block" id="sec-ielts">
+      <h2>C. IELTS AI Tutor</h2>
+      <article class="question-card" id="c11">
+        <div class="question-head"><h2>11. IELTS AI Tutor overview</h2><p>Ownership story.</p></div>
+        <div class="grid4">
+          <div class="cell row-head">Question EN</div><div class="cell row-head">Answer EN</div><div class="cell row-head">Question VI</div><div class="cell row-head">Answer VI</div>
+          <div class="cell question"><p>Tell me about the IELTS AI Tutor project.</p></div>
+          <div class="cell answer"><p>It’s a mobile IELTS learning app for iOS and Android, plus a teacher assignment portal. I built the mobile side, AI-supported practice features, and kept backend services running on Google Cloud Run. It’s live on Google Play and the App Store.</p></div>
+          <div class="cell question"><p>Kể về dự án IELTS AI Tutor.</p></div>
+          <div class="cell answer"><p>Đây là app học IELTS trên iOS/Android, kèm portal giao bài cho giáo viên. Tôi làm phía mobile, tính năng AI hỗ trợ luyện tập, và giữ backend trên Google Cloud Run. App đã lên Google Play và App Store.</p></div>
+        </div>
+        <div class="star">
+          <p><strong>S:</strong> Client needed IELTS practice app with teacher workflows.</p>
+          <p><strong>T:</strong> Ship mobile + connected backend/portal with AI features.</p>
+          <p><strong>A:</strong> Built RN/TS app, portal workflows, AI features, Cloud Run backend.</p>
+          <p><strong>R:</strong> Published on both stores with ongoing cloud operations.</p>
+          <p class="say"><strong>Say this:</strong> End-to-end ownership: mobile, portal link, cloud backend.</p>
+        </div>
+      </article>
+      <article class="question-card" id="c12">
+        <div class="question-head"><h2>12. Cloud Run for IELTS backend</h2><p>Infra angle for Kaopiz.</p></div>
+        <div class="grid4">
+          <div class="cell row-head">Question EN</div><div class="cell row-head">Answer EN</div><div class="cell row-head">Question VI</div><div class="cell row-head">Answer VI</div>
+          <div class="cell question"><p>Why Cloud Run for the IELTS backend, and what did you maintain?</p></div>
+          <div class="cell answer"><p>Cloud Run fit a containerized backend without managing nodes. I deployed and maintained those services — releases, logs, and day-to-day cloud operations so the mobile app and portal stayed connected.</p></div>
+          <div class="cell question"><p>Vì sao Cloud Run cho backend IELTS và bạn maintain gì?</p></div>
+          <div class="cell answer"><p>Cloud Run hợp backend container mà không phải quản lý node. Tôi deploy và maintain các service đó — release, log, và vận hành cloud hằng ngày để app và portal vẫn kết nối được.</p></div>
+        </div>
+        <div class="star">
+          <p><strong>S:</strong> Needed managed hosting for app/portal backend APIs.</p>
+          <p><strong>T:</strong> Reliable deploy with low ops overhead.</p>
+          <p><strong>A:</strong> Containerize and run on Cloud Run; monitor logs/revisions; fix runtime issues.</p>
+          <p><strong>R:</strong> Backend stays shippable while I focus on product features too.</p>
+          <p class="say"><strong>Say this:</strong> Same Cloud Run muscle I use at Akktis, applied to my own product.</p>
+        </div>
+      </article>
+      <article class="question-card" id="c13">
+        <div class="question-head"><h2>13. AI features chat / TTS / STT</h2><p>What you built, not ML research.</p></div>
+        <div class="grid4">
+          <div class="cell row-head">Question EN</div><div class="cell row-head">Answer EN</div><div class="cell row-head">Question VI</div><div class="cell row-head">Answer VI</div>
+          <div class="cell question"><p>What AI features did you implement?</p></div>
+          <div class="cell answer"><p>I integrated chat completion, text-to-speech, and speech-to-text into the learning workflows — so students can practice and get AI-supported feedback inside the real app, not as a separate demo.</p></div>
+          <div class="cell question"><p>Bạn triển khai AI features nào?</p></div>
+          <div class="cell answer"><p>Tôi tích hợp chat completion, text-to-speech và speech-to-text vào workflow học — học viên luyện và nhận hỗ trợ AI ngay trong app thật, không phải demo tách rời.</p></div>
+        </div>
+        <div class="star">
+          <p><strong>S:</strong> IELTS practice needs interactive AI support for skills.</p>
+          <p><strong>T:</strong> Wire AI capabilities into product flows safely.</p>
+          <p><strong>A:</strong> Implemented chat/TTS/STT features connected to backend services.</p>
+          <p><strong>R:</strong> Learners get practice support inside the shipped app.</p>
+          <p class="say"><strong>Say this:</strong> I integrate AI into workflows — I’m not claiming I trained the models.</p>
+        </div>
+      </article>
+      <article class="question-card" id="c14">
+        <div class="question-head"><h2>14. Langfuse observability</h2><p>Why it matters.</p></div>
+        <div class="grid4">
+          <div class="cell row-head">Question EN</div><div class="cell row-head">Answer EN</div><div class="cell row-head">Question VI</div><div class="cell row-head">Answer VI</div>
+          <div class="cell question"><p>Why did you use Langfuse?</p></div>
+          <div class="cell answer"><p>I used Langfuse so we could observe and analyze how the AI parts behaved in real use — not only whether the API called succeeded, but how the feature felt in practice. That mindset transfers well to infra observability later.</p></div>
+          <div class="cell question"><p>Vì sao dùng Langfuse?</p></div>
+          <div class="cell answer"><p>Tôi dùng Langfuse để quan sát và phân tích phần AI chạy thật — không chỉ API thành công hay không, mà feature vận hành ra sao. Mindset đó chuyển tốt sang observability hạ tầng sau này.</p></div>
+        </div>
+        <div class="star">
+          <p><strong>S:</strong> AI features are hard to debug with only app logs.</p>
+          <p><strong>T:</strong> See behavior and quality signals of AI interactions.</p>
+          <p><strong>A:</strong> Integrated Langfuse for analysis/observability on AI flows.</p>
+          <p><strong>R:</strong> Faster understanding of AI feature behavior in production use.</p>
+          <p class="say"><strong>Say this:</strong> If I can’t observe it, I can’t improve it.</p>
+        </div>
+      </article>
+      <article class="question-card" id="c15">
+        <div class="question-head"><h2>15. App and teacher portal</h2><p>Integration story.</p></div>
+        <div class="grid4">
+          <div class="cell row-head">Question EN</div><div class="cell row-head">Answer EN</div><div class="cell row-head">Question VI</div><div class="cell row-head">Answer VI</div>
+          <div class="cell question"><p>How do the mobile app and teacher portal work together?</p></div>
+          <div class="cell answer"><p>Teachers use the portal for assignments and workflows; students practice on mobile. I supported the communication between app and portal and the cloud operations behind that link, so both sides stay in sync for learning tasks.</p></div>
+          <div class="cell question"><p>App mobile và portal giáo viên nối với nhau thế nào?</p></div>
+          <div class="cell answer"><p>Giáo viên dùng portal để giao bài và workflow; học viên luyện trên mobile. Tôi hỗ trợ giao tiếp app–portal và phần cloud phía sau, để hai bên đồng bộ cho việc học.</p></div>
+        </div>
+        <div class="star">
+          <p><strong>S:</strong> Teachers and students needed connected workflows.</p>
+          <p><strong>T:</strong> Keep assignment/practice flow working across two clients.</p>
+          <p><strong>A:</strong> Built portal connection points and maintained cloud-backed communication.</p>
+          <p><strong>R:</strong> One product experience across teacher and student sides.</p>
+          <p class="say"><strong>Say this:</strong> Two clients, one backend — integration is the product.</p>
+        </div>
+      </article>
+    </section>
+    <section class="section-block" id="sec-base">
+      <h2>D. BaseVN SaaS</h2>
+      <article class="question-card" id="c16">
+        <div class="question-head"><h2>16. Base VSS sync pipelines</h2><p>Data integration STAR.</p></div>
+        <div class="grid4">
+          <div class="cell row-head">Question EN</div><div class="cell row-head">Answer EN</div><div class="cell row-head">Question VI</div><div class="cell row-head">Answer VI</div>
+          <div class="cell question"><p>Tell me about Base VSS and the sync work you did.</p></div>
+          <div class="cell answer"><p>VSS is Vietnam Social Security related. I built and maintained sync pipelines between VSS, HRM, and Payroll, plus Excel import/export and XML export for tax-authority style compliance. It was integration-heavy production work.</p></div>
+          <div class="cell question"><p>Kể về Base VSS và phần sync bạn làm.</p></div>
+          <div class="cell answer"><p>VSS liên quan bảo hiểm xã hội. Tôi dựng và maintain pipeline đồng bộ giữa VSS, HRM và Payroll, kèm import/export Excel và export XML phục vụ compliance với cơ quan thuế. Đây là việc production nặng về tích hợp.</p></div>
+        </div>
+        <div class="star">
+          <p><strong>S:</strong> Gov-related SaaS needed reliable data exchange across HRM/Payroll/VSS.</p>
+          <p><strong>T:</strong> Keep sync and export flows correct and operable.</p>
+          <p><strong>A:</strong> Built/maintained sync pipelines; Excel/XML export; deployment support.</p>
+          <p><strong>R:</strong> Products could exchange required data for compliance workflows.</p>
+          <p class="say"><strong>Say this:</strong> Sync bugs are business bugs — I treat data pipelines like production features.</p>
+        </div>
+      </article>
+      <article class="question-card" id="c17">
+        <div class="question-head"><h2>17. Base PIT 500k+ records</h2><p>Performance + launch.</p></div>
+        <div class="grid4">
+          <div class="cell row-head">Question EN</div><div class="cell row-head">Answer EN</div><div class="cell row-head">Question VI</div><div class="cell row-head">Answer VI</div>
+          <div class="cell question"><p>What was hard about Base PIT?</p></div>
+          <div class="cell answer"><p>PIT handled personal income tax flows with a large dataset — I designed schema, optimized queries for 500,000+ records, built Excel/XML reporting sync with HRM/Payroll, and supported a reliable launch. Performance and correctness both mattered.</p></div>
+          <div class="cell question"><p>Phần khó của Base PIT là gì?</p></div>
+          <div class="cell answer"><p>PIT xử lý thuế TNCN với dataset lớn — tôi thiết kế schema, tối ưu query cho 500,000+ bản ghi, làm báo cáo Excel/XML đồng bộ HRM/Payroll, và hỗ trợ launch ổn định. Cả hiệu năng và độ đúng đều quan trọng.</p></div>
+        </div>
+        <div class="star">
+          <p><strong>S:</strong> Tax product needed to handle large employee datasets at launch.</p>
+          <p><strong>T:</strong> Make schema/queries and reporting pipelines production-ready.</p>
+          <p><strong>A:</strong> Designed schema; optimized queries; built Excel/XML sync; supported launch.</p>
+          <p><strong>R:</strong> System handled large record volumes with improved reliability at go-live.</p>
+          <p class="say"><strong>Say this:</strong> 500k records taught me that schema and queries are infrastructure too.</p>
+        </div>
+      </article>
+      <article class="question-card" id="c18">
+        <div class="question-head"><h2>18. Base E-Hiring API integrations</h2><p>Third-party APIs.</p></div>
+        <div class="grid4">
+          <div class="cell row-head">Question EN</div><div class="cell row-head">Answer EN</div><div class="cell row-head">Question VI</div><div class="cell row-head">Answer VI</div>
+          <div class="cell question"><p>What did you do on Base E-Hiring?</p></div>
+          <div class="cell answer"><p>I integrated APIs like VietnamWorks and TopCV so jobs and candidates could sync automatically. I also improved performance, reporting, Excel workflows, and helped with email server functionality and monitoring.</p></div>
+          <div class="cell question"><p>Bạn làm gì trên Base E-Hiring?</p></div>
+          <div class="cell answer"><p>Tôi tích hợp API như VietnamWorks và TopCV để job và ứng viên đồng bộ tự động. Tôi cũng cải thiện hiệu năng, reporting, Excel workflow, và hỗ trợ chức năng email server cùng monitoring.</p></div>
+        </div>
+        <div class="star">
+          <p><strong>S:</strong> ATS needed external job-board and candidate sync.</p>
+          <p><strong>T:</strong> Automate posting/sync and keep ops pieces healthy.</p>
+          <p><strong>A:</strong> Integrated third-party APIs; improved reporting/Excel; supported email monitoring.</p>
+          <p><strong>R:</strong> Less manual recruiting ops and better system visibility.</p>
+          <p class="say"><strong>Say this:</strong> API integration fails in production — so I plan for retries and monitoring.</p>
+        </div>
+      </article>
+    </section>
+    <section class="section-block" id="sec-other">
+      <h2>E. Other projects &amp; close</h2>
+      <article class="question-card" id="c19">
+        <div class="question-head"><h2>19. Looneyes multilingual SEO site</h2><p>Client delivery.</p></div>
+        <div class="grid4">
+          <div class="cell row-head">Question EN</div><div class="cell row-head">Answer EN</div><div class="cell row-head">Question VI</div><div class="cell row-head">Answer VI</div>
+          <div class="cell question"><p>Tell me about the Looneyes Studio website work.</p></div>
+          <div class="cell answer"><p>It was a multilingual site for a drone show company across EN, JP, and CN domains. I designed and deployed the pages and added SEO basics like meta tags and schema markup.</p></div>
+          <div class="cell question"><p>Kể về việc làm website Looneyes Studio.</p></div>
+          <div class="cell answer"><p>Đây là site đa ngôn ngữ cho công ty drone show trên domain EN, JP, CN. Tôi thiết kế và deploy trang, thêm SEO cơ bản như meta tag và schema markup.</p></div>
+        </div>
+        <div class="star">
+          <p><strong>S:</strong> Client needed multi-domain brand sites.</p>
+          <p><strong>T:</strong> Ship EN/JP/CN presence with basic SEO.</p>
+          <p><strong>A:</strong> Built/deployed WordPress pages; added meta/schema SEO elements.</p>
+          <p><strong>R:</strong> Live multi-domain sites with clearer search presentation.</p>
+          <p class="say"><strong>Say this:</strong> Smaller project, but still real ownership of deploy and SEO details.</p>
+        </div>
+      </article>
+      <article class="question-card" id="c20">
+        <div class="question-head"><h2>20. Jimdo Switzerland site</h2><p>Keep brief.</p></div>
+        <div class="grid4">
+          <div class="cell row-head">Question EN</div><div class="cell row-head">Answer EN</div><div class="cell row-head">Question VI</div><div class="cell row-head">Answer VI</div>
+          <div class="cell question"><p>What about the Jimdo educational site?</p></div>
+          <div class="cell answer"><p>For a Switzerland client I built and maintained a responsive Jimdo site for a healthy schools initiative — layouts, updates, and content presentation. It’s more CMS delivery than deep infra, but it shows client ownership end to end.</p></div>
+          <div class="cell question"><p>Còn site Jimdo cho khách Thụy Sĩ?</p></div>
+          <div class="cell answer"><p>Với khách Thụy Sĩ tôi dựng và maintain site Jimdo responsive cho sáng kiến healthy schools — layout, cập nhật và trình bày nội dung. Thiên về giao CMS hơn là infra sâu, nhưng thể hiện ownership end-to-end với khách.</p></div>
+        </div>
+        <div class="star">
+          <p><strong>S:</strong> Client needed a simple maintained educational site.</p>
+          <p><strong>T:</strong> Deliver and update a responsive CMS site.</p>
+          <p><strong>A:</strong> Built on Jimdo; managed responsive layout and ongoing updates.</p>
+          <p><strong>R:</strong> Client had a live, maintainable site for their initiative.</p>
+          <p class="say"><strong>Say this:</strong> Not every project is Kubernetes — ownership still matters.</p>
+        </div>
+      </article>
+      <article class="question-card" id="c21">
+        <div class="question-head"><h2>21. Biggest production issue from your CV</h2><p>Pick one coherent story.</p></div>
+        <div class="grid4">
+          <div class="cell row-head">Question EN</div><div class="cell row-head">Answer EN</div><div class="cell row-head">Question VI</div><div class="cell row-head">Answer VI</div>
+          <div class="cell question"><p>What’s the biggest production-style problem you’ve solved, based on your CV?</p></div>
+          <div class="cell answer"><p>I’d pick either the Base PIT scale/launch work or the Akktis legacy migration. In PIT, large data and reporting correctness under launch pressure. In migration, moving off a custom DB approach without breaking the app. In both cases I start from risk: data integrity, rollback thinking, and verify after change.</p></div>
+          <div class="cell question"><p>Vấn đề kiểu production lớn nhất bạn giải quyết dựa trên CV?</p></div>
+          <div class="cell answer"><p>Tôi chọn Base PIT lúc scale/launch, hoặc migration legacy ở Akktis. PIT: dữ liệu lớn và độ đúng báo cáo dưới áp lực launch. Migration: rời cách quản lý DB custom mà không làm vỡ app. Cả hai tôi bắt đầu từ rủi ro: toàn vẹn dữ liệu, nghĩ rollback, và verify sau thay đổi.</p></div>
+        </div>
+        <div class="star">
+          <p><strong>S:</strong> Production pressure around data correctness or infra change.</p>
+          <p><strong>T:</strong> Protect users/data while shipping the change.</p>
+          <p><strong>A:</strong> Structured troubleshooting + careful cutover/validation + docs.</p>
+          <p><strong>R:</strong> System launched or migrated with fewer surprises afterward.</p>
+          <p class="say"><strong>Say this:</strong> I optimize for safe outcomes, not heroic last-minute fixes.</p>
+        </div>
+      </article>
+    </section>
+
+    </section>
+
+    <section class="section-block" id="sec-issues">
+      <h2>F. Difficult issues I faced &amp; fixed</h2>
+      <article class="question-card" id="c22">
+        <div class="question-head"><h2>22. Deploy works in staging, fails in prod</h2><p>Env drift classic.</p></div>
+        <div class="grid4">
+          <div class="cell row-head">Question EN</div><div class="cell row-head">Answer EN</div><div class="cell row-head">Question VI</div><div class="cell row-head">Answer VI</div>
+          <div class="cell question"><p>Tell me about a time deploy worked in one environment but failed in another.</p></div>
+          <div class="cell answer"><p>This showed up a lot with multi-env CI/CD. Staging looked fine, prod failed after release. I compared recent commits, env config, secrets, and service versions first. Usually it was a missing env var, different web-server config, or a dependency only present in one environment. I fixed the config, redeployed, and updated the checklist so the same gap wouldn’t repeat.</p></div>
+          <div class="cell question"><p>Kể về lần deploy chạy ở một môi trường nhưng fail ở môi trường khác.</p></div>
+          <div class="cell answer"><p>Hay gặp với CI/CD nhiều môi trường. Staging ổn, prod fail sau release. Tôi so commit gần đây, config env, secret và version service trước. Thường là thiếu env var, cấu hình web server khác, hoặc dependency chỉ có ở một bên. Tôi sửa config, deploy lại, và cập nhật checklist để không lặp.</p></div>
+        </div>
+        <div class="star">
+          <p><strong>S:</strong> Multi-env web/mobile pipelines at Akktis.</p>
+          <p><strong>T:</strong> Find why prod failed while staging passed.</p>
+          <p><strong>A:</strong> Diff env/config/secrets/versions; fix gap; verify; document checklist.</p>
+          <p><strong>R:</strong> Prod recovered; fewer repeat env-drift surprises.</p>
+          <p class="say"><strong>Say this:</strong> When staging ≠ prod, I diff environments before rewriting code.</p>
+        </div>
+      </article>
+      <article class="question-card" id="c23">
+        <div class="question-head"><h2>23. Cloud Run app can’t reach Cloud SQL</h2><p>Connectivity / IAM style issue.</p></div>
+        <div class="grid4">
+          <div class="cell row-head">Question EN</div><div class="cell row-head">Answer EN</div><div class="cell row-head">Question VI</div><div class="cell row-head">Answer VI</div>
+          <div class="cell question"><p>Describe a cloud connectivity issue you had to fix.</p></div>
+          <div class="cell answer"><p>A common Cloud Run pain is the app deploys, but database calls fail. I check logs first, then connection string, network path, and service account permissions. Often it’s wrong DB host/socket setup or the runtime identity missing access. I fix the connection config and permissions, redeploy, and confirm with a health check query.</p></div>
+          <div class="cell question"><p>Mô tả một lỗi kết nối cloud bạn đã xử lý.</p></div>
+          <div class="cell answer"><p>Cloud Run hay gặp: deploy được nhưng gọi database fail. Tôi xem log trước, rồi connection string, đường mạng, và quyền service account. Thường sai host/socket DB hoặc identity thiếu quyền. Tôi sửa config kết nối và permission, deploy lại, rồi confirm bằng health check query.</p></div>
+        </div>
+        <div class="star">
+          <p><strong>S:</strong> GCP backends on Cloud Run + Cloud SQL.</p>
+          <p><strong>T:</strong> Restore app↔DB connectivity safely.</p>
+          <p><strong>A:</strong> Logs → connection config → IAM/network → fix → verify.</p>
+          <p><strong>R:</strong> Service healthy again without guessing restarts.</p>
+          <p class="say"><strong>Say this:</strong> Cloud errors are often identity or connection config, not ‘the code randomly died’.</p>
+        </div>
+      </article>
+      <article class="question-card" id="c24">
+        <div class="question-head"><h2>24. Linux disk full / service down</h2><p>Ops firefighter.</p></div>
+        <div class="grid4">
+          <div class="cell row-head">Question EN</div><div class="cell row-head">Answer EN</div><div class="cell row-head">Question VI</div><div class="cell row-head">Answer VI</div>
+          <div class="cell question"><p>Tell me about a Linux production issue you fixed.</p></div>
+          <div class="cell answer"><p>One pattern I hit on Ubuntu/Debian boxes is a site suddenly failing because disk is full — logs or uploads filled the volume. I confirm with df/du, free space safely, rotate or clean logs, restart the affected service, and add a note so monitoring catches disk early next time.</p></div>
+          <div class="cell question"><p>Kể về sự cố Linux production bạn đã sửa.</p></div>
+          <div class="cell answer"><p>Một pattern trên Ubuntu/Debian là site đột ngột lỗi vì đầy disk — log hoặc upload làm đầy volume. Tôi confirm bằng df/du, giải phóng an toàn, rotate/dọn log, restart service liên quan, và ghi chú để lần sau monitor disk sớm hơn.</p></div>
+        </div>
+        <div class="star">
+          <p><strong>S:</strong> Linux servers serving client apps via SSH.</p>
+          <p><strong>T:</strong> Restore service without destroying important data.</p>
+          <p><strong>A:</strong> Check disk/process/logs; clean safely; restart; verify HTTP/service.</p>
+          <p><strong>R:</strong> Site back; root cause documented.</p>
+          <p class="say"><strong>Say this:</strong> I free space carefully — never delete blindly in /var.</p>
+        </div>
+      </article>
+      <article class="question-card" id="c25">
+        <div class="question-head"><h2>25. CI/CD pipeline broken mid-release</h2><p>Delivery under pressure.</p></div>
+        <div class="grid4">
+          <div class="cell row-head">Question EN</div><div class="cell row-head">Answer EN</div><div class="cell row-head">Question VI</div><div class="cell row-head">Answer VI</div>
+          <div class="cell question"><p>What do you do when the pipeline breaks during a release?</p></div>
+          <div class="cell answer"><p>I stop the bleeding first — don’t keep retrying blindly. I read the failing job logs, check whether it’s build, test, or deploy stage, and whether secrets or runners changed. Then I apply the smallest fix, re-run, and only promote when green. Afterward I tighten the pipeline so the same failure is louder earlier.</p></div>
+          <div class="cell question"><p>Khi pipeline gãy giữa lúc release bạn làm gì?</p></div>
+          <div class="cell answer"><p>Tôi chặn thiệt hại trước — không retry mù. Đọc log job fail, xem fail ở build, test hay deploy, và secret/runner có đổi không. Rồi sửa nhỏ nhất, chạy lại, chỉ promote khi xanh. Sau đó siết pipeline để lỗi tương tự báo sớm hơn.</p></div>
+        </div>
+        <div class="star">
+          <p><strong>S:</strong> CI/CD for mobile apps and web servers across envs.</p>
+          <p><strong>T:</strong> Unblock release safely.</p>
+          <p><strong>A:</strong> Read stage logs; isolate cause; minimal fix; green run; improve signal.</p>
+          <p><strong>R:</strong> Release completed with clearer pipeline failure signals.</p>
+          <p class="say"><strong>Say this:</strong> A red pipeline is information — I read it, I don’t spam retry.</p>
+        </div>
+      </article>
+      <article class="question-card" id="c26">
+        <div class="question-head"><h2>26. MySQL slow on large PIT dataset</h2><p>BaseVN performance.</p></div>
+        <div class="grid4">
+          <div class="cell row-head">Question EN</div><div class="cell row-head">Answer EN</div><div class="cell row-head">Question VI</div><div class="cell row-head">Answer VI</div>
+          <div class="cell question"><p>Tell me about a database performance problem you solved.</p></div>
+          <div class="cell answer"><p>On Base PIT we had to handle 500,000+ records for tax flows. Slow screens or exports usually meant heavy queries or weak indexing around report/sync paths. I inspected slow queries, adjusted schema/indexes and query patterns, and re-tested the Excel/XML reporting flows that mattered for launch.</p></div>
+          <div class="cell question"><p>Kể về vấn đề hiệu năng database bạn đã giải quyết.</p></div>
+          <div class="cell answer"><p>Ở Base PIT phải xử lý 500,000+ bản ghi cho luồng thuế. Màn hình/export chậm thường do query nặng hoặc index yếu quanh report/sync. Tôi xem slow query, chỉnh schema/index và cách query, rồi test lại flow Excel/XML quan trọng lúc launch.</p></div>
+        </div>
+        <div class="star">
+          <p><strong>S:</strong> PIT launch with large employee/tax datasets.</p>
+          <p><strong>T:</strong> Make reporting/sync usable at scale.</p>
+          <p><strong>A:</strong> Profile queries; tune schema/indexes; validate export pipelines.</p>
+          <p><strong>R:</strong> Large-record flows became reliable enough for launch support.</p>
+          <p class="say"><strong>Say this:</strong> At 500k rows, ‘it works on my laptop’ is not a performance strategy.</p>
+        </div>
+      </article>
+      <article class="question-card" id="c27">
+        <div class="question-head"><h2>27. Data sync mismatch between VSS / HRM / Payroll</h2><p>Integration correctness.</p></div>
+        <div class="grid4">
+          <div class="cell row-head">Question EN</div><div class="cell row-head">Answer EN</div><div class="cell row-head">Question VI</div><div class="cell row-head">Answer VI</div>
+          <div class="cell question"><p>Describe a data synchronization bug you fixed.</p></div>
+          <div class="cell answer"><p>With VSS syncing to HRM and Payroll, the scary bugs are silent mismatches — counts look fine until finance or compliance notices wrong data. I reproduce with a small known dataset, compare source vs destination fields, check transform/export rules, then fix the mapping or job order and add clearer validation around the sync.</p></div>
+          <div class="cell question"><p>Mô tả bug đồng bộ dữ liệu bạn đã sửa.</p></div>
+          <div class="cell answer"><p>Khi VSS đồng bộ với HRM và Payroll, bug đáng sợ là lệch thầm — số lượng nhìn ổn đến khi finance/compliance phát hiện sai. Tôi reproduce với dataset nhỏ đã biết, so field nguồn–đích, kiểm tra rule transform/export, rồi sửa mapping hoặc thứ tự job và thêm validation rõ hơn quanh sync.</p></div>
+        </div>
+        <div class="star">
+          <p><strong>S:</strong> Base VSS pipelines across VSS, HRM, Payroll.</p>
+          <p><strong>T:</strong> Restore correct sync without corrupting production data.</p>
+          <p><strong>A:</strong> Reproduce small; diff fields; fix mapping/job order; add validation.</p>
+          <p><strong>R:</strong> Sync trusted again for compliance-related exports.</p>
+          <p class="say"><strong>Say this:</strong> For sync bugs I prove correctness with a tiny known sample first.</p>
+        </div>
+      </article>
+      <article class="question-card" id="c28">
+        <div class="question-head"><h2>28. Flaky third-party API (job boards)</h2><p>E-Hiring integrations.</p></div>
+        <div class="grid4">
+          <div class="cell row-head">Question EN</div><div class="cell row-head">Answer EN</div><div class="cell row-head">Question VI</div><div class="cell row-head">Answer VI</div>
+          <div class="cell question"><p>How did you handle unreliable third-party API integrations?</p></div>
+          <div class="cell answer"><p>On E-Hiring, VietnamWorks/TopCV style integrations fail because of rate limits, auth expiry, or response shape changes. I add clearer error handling, retries where safe, logging of request/response IDs, and monitoring around the sync jobs so failures are visible instead of silent.</p></div>
+          <div class="cell question"><p>Bạn xử lý API bên thứ ba không ổn định thế nào?</p></div>
+          <div class="cell answer"><p>Ở E-Hiring, tích hợp kiểu VietnamWorks/TopCV fail vì rate limit, auth hết hạn, hoặc response đổi shape. Tôi thêm error handling rõ, retry khi an toàn, log request/response ID, và monitoring quanh job sync để lỗi hiện ra thay vì im lặng.</p></div>
+        </div>
+        <div class="star">
+          <p><strong>S:</strong> ATS depended on external job/candidate APIs.</p>
+          <p><strong>T:</strong> Keep posting/sync resilient and observable.</p>
+          <p><strong>A:</strong> Harden error/retry/logging; watch job health; fix auth/contract breaks.</p>
+          <p><strong>R:</strong> Fewer silent sync failures; easier vendor debugging.</p>
+          <p class="say"><strong>Say this:</strong> Third-party APIs fail — my job is make failure loud and recoverable.</p>
+        </div>
+      </article>
+      <article class="question-card" id="c29">
+        <div class="question-head"><h2>29. Legacy migration: fear of data loss</h2><p>Akktis migration pressure.</p></div>
+        <div class="grid4">
+          <div class="cell row-head">Question EN</div><div class="cell row-head">Answer EN</div><div class="cell row-head">Question VI</div><div class="cell row-head">Answer VI</div>
+          <div class="cell question"><p>What was the hardest part of the legacy-to-MySQL/Apache migration?</p></div>
+          <div class="cell answer"><p>The hardest part wasn’t clicking migrate — it was confidence. Custom DB setups hide assumptions. I focused on backup/rollback thinking, validating app reads/writes after cutover, and documenting the new Apache/MySQL path so support wouldn’t depend on one person’s memory.</p></div>
+          <div class="cell question"><p>Phần khó nhất của migration legacy sang MySQL/Apache là gì?</p></div>
+          <div class="cell answer"><p>Khó nhất không phải bấm migrate — mà là sự tự tin. Setup DB custom giấu nhiều giả định. Tôi tập trung backup/rollback, validate app đọc/ghi sau cắt chuyển, và tài liệu hóa đường Apache/MySQL mới để support không phụ thuộc trí nhớ một người.</p></div>
+        </div>
+        <div class="star">
+          <p><strong>S:</strong> Moving off custom DB management to MySQL on Apache.</p>
+          <p><strong>T:</strong> Cut over without data loss or long downtime surprises.</p>
+          <p><strong>A:</strong> Backup mindset; validate critically; document new ops path.</p>
+          <p><strong>R:</strong> More standard, maintainable stack after migration.</p>
+          <p class="say"><strong>Say this:</strong> I migrate for operability, not just for ‘new stack’ bragging.</p>
+        </div>
+      </article>
+      <article class="question-card" id="c30">
+        <div class="question-head"><h2>30. AI feature works in demo, weird in real use</h2><p>IELTS + Langfuse.</p></div>
+        <div class="grid4">
+          <div class="cell row-head">Question EN</div><div class="cell row-head">Answer EN</div><div class="cell row-head">Question VI</div><div class="cell row-head">Answer VI</div>
+          <div class="cell question"><p>Tell me about debugging an AI feature in production-like use.</p></div>
+          <div class="cell answer"><p>With IELTS AI features, demos can look fine while real users hit odd answers, slow TTS/STT, or failed calls. I separate product bugs from provider issues using logs and Langfuse traces — was the prompt/flow wrong, or did the upstream API fail? Then I fix the workflow or error handling and re-check observability.</p></div>
+          <div class="cell question"><p>Kể về debug một AI feature khi dùng thật.</p></div>
+          <div class="cell answer"><p>Với AI trên IELTS, demo có thể ổn nhưng user thật gặp câu trả lời lạ, TTS/STT chậm, hoặc gọi fail. Tôi tách bug product khỏi lỗi provider bằng log và Langfuse — sai prompt/flow hay API upstream fail? Rồi sửa workflow hoặc error handling và kiểm tra lại observability.</p></div>
+        </div>
+        <div class="star">
+          <p><strong>S:</strong> Chat/TTS/STT features in a live learning app.</p>
+          <p><strong>T:</strong> Make AI behavior debuggable and reliable enough for users.</p>
+          <p><strong>A:</strong> Use Langfuse/logs; isolate app vs provider; fix flow/handling; verify.</p>
+          <p><strong>R:</strong> Clearer diagnosis path for AI issues in real workflows.</p>
+          <p class="say"><strong>Say this:</strong> AI bugs need traces — I don’t argue with a black box.</p>
+        </div>
+      </article>
+    </section>
+
+    <p class="footer-note"><a href="index.html">← Back to Cloud/Infra fundamentals sheet</a> · Includes hard-issue stories with STAR fixes · Defend every CV bullet in under 90 seconds.</p>
+  </main>
+
+  <script>
+    (function () {
+      const btn = document.querySelector('[data-theme-toggle]');
+      const root = document.documentElement;
+      let theme = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+      root.setAttribute('data-theme', theme);
+      const sync = () => { btn.textContent = theme === 'dark' ? '☀' : '☾'; };
+      sync();
+      btn.addEventListener('click', () => {
+        theme = theme === 'dark' ? 'light' : 'dark';
+        root.setAttribute('data-theme', theme);
+        sync();
+      });
+    })();
+  </script>
+</body>
+</html>
