@@ -393,48 +393,29 @@
     .star p{margin:0}.star p+p{margin-top:var(--space-2)}.star strong{color:var(--color-text)}
     .say{margin-top:var(--space-3);padding-top:var(--space-3);border-top:1px dashed var(--color-divider);color:var(--color-primary);font-weight:600}
 
-    /* Full-width hero; floating right TOC after scroll */
+    /* Left full Contents + right Parts-only rail */
     body.has-side-toc { overflow-x: hidden; }
     .shell {
-      display: block;
-      max-width: 1100px;
+      display: grid;
+      grid-template-columns: minmax(240px, 300px) minmax(0, 1fr);
+      gap: 0;
+      align-items: start;
+      max-width: 1800px;
       margin: 0 auto;
       position: relative;
     }
     .side-toc {
-      position: fixed;
+      position: sticky;
       top: 88px;
-      right: max(0.75rem, calc((100vw - 1100px) / 2 - 16px));
-      width: min(300px, 26vw);
-      max-width: 300px;
-      height: calc(100vh - 104px);
+      height: calc(100vh - 100px);
       overflow: auto;
       padding: var(--space-4);
-      margin: 0;
+      margin: var(--space-4) 0 var(--space-4) var(--space-4);
       background: var(--color-surface);
       border: 1px solid var(--color-border);
       border-radius: var(--radius-xl);
-      box-shadow: var(--shadow-md, 0 10px 30px rgba(0,0,0,0.12));
-      z-index: 30;
-      opacity: 0;
-      visibility: hidden;
-      pointer-events: none;
-      transform: translateX(18px);
-      transition: opacity 0.2s ease, transform 0.2s ease, visibility 0.2s;
-    }
-    body.toc-right-docked .side-toc {
-      opacity: 1;
-      visibility: visible;
-      pointer-events: auto;
-      transform: translateX(0);
-    }
-    /* Keep reading column clear of the right rail on mid widths */
-    @media (min-width: 1101px) and (max-width: 1480px) {
-      body.toc-right-docked .shell {
-        max-width: min(1100px, calc(100vw - 340px));
-        margin-left: var(--space-4);
-        margin-right: 320px;
-      }
+      box-shadow: var(--shadow-sm);
+      z-index: 20;
     }
     .side-toc-head {
       position: sticky;
@@ -526,55 +507,116 @@
       color: color-mix(in srgb, var(--color-primary) 70%, var(--color-text-faint));
     }
 
+    /* Right: Parts only */
+    .parts-rail {
+      display: none;
+    }
+    @media (min-width: 1280px) {
+      .shell {
+        grid-template-columns: minmax(240px, 300px) minmax(0, 1fr);
+        max-width: 1800px;
+        padding-right: 0;
+      }
+      .parts-rail {
+        display: block;
+        position: fixed;
+        top: 96px;
+        right: 0;
+        width: 168px;
+        max-height: calc(100vh - 112px);
+        overflow: auto;
+        padding: 0.75rem 0.65rem;
+        background: var(--color-surface);
+        border: 1px solid var(--color-border);
+        border-radius: var(--radius-xl);
+        box-shadow: var(--shadow-sm);
+        z-index: 25;
+      }
+      .parts-rail-head {
+        font-family: var(--font-display);
+        font-size: 0.72rem;
+        font-weight: 700;
+        letter-spacing: 0.03em;
+        text-transform: uppercase;
+        color: var(--color-text-faint);
+        margin: 0 0 0.55rem;
+        padding: 0 0.35rem 0.45rem;
+        border-bottom: 1px solid var(--color-divider);
+      }
+      .parts-rail-list {
+        display: flex;
+        flex-direction: column;
+        gap: 2px;
+      }
+      .parts-rail-link {
+        display: block;
+        padding: 0.4rem 0.45rem;
+        border-radius: var(--radius-md);
+        color: var(--color-text-muted);
+        font-size: 0.7rem;
+        line-height: 1.3;
+        border: 1px solid transparent;
+      }
+      .parts-rail-link strong {
+        display: block;
+        font-family: var(--font-display);
+        font-size: 0.72rem;
+        font-weight: 700;
+        color: var(--color-text);
+      }
+      .parts-rail-link span {
+        display: block;
+        margin-top: 0.1rem;
+        font-size: 0.62rem;
+        font-variant-numeric: tabular-nums;
+        color: var(--color-text-faint);
+        font-weight: 600;
+      }
+      .parts-rail-link:hover {
+        background: var(--color-primary-highlight);
+      }
+      .parts-rail-link:hover strong { color: var(--color-primary); }
+      .parts-rail-link.is-active {
+        background: var(--color-primary-highlight);
+        border-color: color-mix(in srgb, var(--color-primary) 35%, var(--color-border));
+      }
+      .parts-rail-link.is-active strong { color: var(--color-primary); }
+      /* leave room so content doesn't sit under the rail */
+      .page.with-side-toc {
+        padding-right: 188px;
+      }
+    }
+
     .page.with-side-toc {
       max-width: none;
       padding-left: var(--space-4);
-      padding-right: var(--space-4);
+      padding-right: var(--space-6);
     }
     .hero.with-side-toc {
-      grid-template-columns: 1.15fr 0.85fr;
+      grid-template-columns: 1fr;
     }
-    /* Top of page: show hero Contents card. After scroll: use right floating TOC. */
-    .hero.with-side-toc .toc-card { display: block; }
-    body.toc-right-docked .hero.with-side-toc .toc-card { opacity: 0.55; }
+    .hero.with-side-toc .toc-card { display: none; }
     .toc-mobile-btn {
       display: none;
     }
     @media (max-width: 1100px) {
-      .shell {
-        max-width: none;
-        margin: 0;
-      }
-      .hero.with-side-toc {
-        grid-template-columns: 1fr;
-      }
-      .hero.with-side-toc .toc-card { display: none; }
+      .shell { grid-template-columns: 1fr; }
+      .parts-rail { display: none !important; }
       .side-toc {
         position: fixed;
         left: 0;
-        right: auto;
         top: 0;
         bottom: 0;
         width: min(86vw, 320px);
-        max-width: none;
         height: 100vh;
         margin: 0;
         border-radius: 0;
         border-right: 1px solid var(--color-border);
-        opacity: 1;
-        visibility: visible;
-        pointer-events: auto;
         transform: translateX(-105%);
         transition: transform 0.2s ease;
         z-index: 50;
       }
-      body.toc-right-docked .side-toc {
-        transform: translateX(-105%);
-      }
-      .side-toc.is-open,
-      body.toc-right-docked .side-toc.is-open {
-        transform: translateX(0);
-      }
+      .side-toc.is-open { transform: translateX(0); }
       .toc-backdrop {
         display: none;
         position: fixed;
@@ -610,7 +652,7 @@
     <aside class="side-toc" id="side-toc" aria-label="Question contents">
       <div class="side-toc-head">
         <strong>Contents</strong>
-        <span>Parts A–Q · floats on the right while you scroll</span>
+        <span>Full list · Parts A–R · click to jump</span>
       </div>
       <nav class="side-toc-list" data-side-toc>
         <div class="side-toc-part" data-part="sec-fit">
@@ -682,7 +724,7 @@
           <span class="side-toc-part-range">Q45–50</span>
         </div>
         <a class="side-toc-link" href="#g15" data-target="g15" data-part="sec-workflow"><span class="side-toc-num">45</span><span class="side-toc-title">Dashboards and workflows</span></a>
-        <a class="side-toc-link" href="#g111" data-target="g111" data-part="sec-workflow"><span class="side-toc-num">46</span><span class="side-toc-title">What's important when developing a workflow?</span></a>
+        <a class="side-toc-link" href="#g111" data-target="g111" data-part="sec-workflow"><span class="side-toc-num">46</span><span class="side-toc-title">What&#x27;s important when developing a workflow?</span></a>
         <a class="side-toc-link" href="#g112" data-target="g112" data-part="sec-workflow"><span class="side-toc-num">47</span><span class="side-toc-title">What should we focus on in a workflow?</span></a>
         <a class="side-toc-link" href="#g113" data-target="g113" data-part="sec-workflow"><span class="side-toc-num">48</span><span class="side-toc-title">How do you process building a workflow?</span></a>
         <a class="side-toc-link" href="#g114" data-target="g114" data-part="sec-workflow"><span class="side-toc-num">49</span><span class="side-toc-title">FE vs BE in a workflow</span></a>
@@ -712,7 +754,7 @@
         <a class="side-toc-link" href="#g63" data-target="g63" data-part="sec-state"><span class="side-toc-num">69</span><span class="side-toc-title">Example: dashboard filter store (research)</span></a>
         <a class="side-toc-link" href="#g132" data-target="g132" data-part="sec-state"><span class="side-toc-num">70</span><span class="side-toc-title">End-to-end: filter change with Zustand</span></a>
         <a class="side-toc-link" href="#g64" data-target="g64" data-part="sec-state"><span class="side-toc-num">71</span><span class="side-toc-title">Why Globant JD made you research Zustand</span></a>
-        <a class="side-toc-link" href="#g45" data-target="g45" data-part="sec-state"><span class="side-toc-num">72</span><span class="side-toc-title">How you'd learn Zustand on the job</span></a>
+        <a class="side-toc-link" href="#g45" data-target="g45" data-part="sec-state"><span class="side-toc-num">72</span><span class="side-toc-title">How you&#x27;d learn Zustand on the job</span></a>
         <div class="side-toc-part" data-part="sec-dash-libs">
           <a class="side-toc-part-link" href="#sec-dash-libs">Part H · Dashboard / workflow libs</a>
           <span class="side-toc-part-range">Q73–86</span>
@@ -770,61 +812,105 @@
         <a class="side-toc-link" href="#g30" data-target="g30" data-part="sec-debug"><span class="side-toc-num">107</span><span class="side-toc-title">Hotfix vs long-term fix</span></a>
         <a class="side-toc-link" href="#g31" data-target="g31" data-part="sec-debug"><span class="side-toc-num">108</span><span class="side-toc-title">End-to-end debug walkthrough</span></a>
         <div class="side-toc-part" data-part="sec-quality">
-          <a class="side-toc-part-link" href="#sec-quality">Part M · Quality / Agile</a>
-          <span class="side-toc-part-range">Q109–111</span>
+          <a class="side-toc-part-link" href="#sec-quality">Part M · Quality / Agile / Scrum + soft skills</a>
+          <span class="side-toc-part-range">Q109–120</span>
         </div>
         <a class="side-toc-link" href="#g32" data-target="g32" data-part="sec-quality"><span class="side-toc-num">109</span><span class="side-toc-title">Code review habits</span></a>
         <a class="side-toc-link" href="#g33" data-target="g33" data-part="sec-quality"><span class="side-toc-num">110</span><span class="side-toc-title">Agile / Scrum</span></a>
-        <a class="side-toc-link" href="#g34" data-target="g34" data-part="sec-quality"><span class="side-toc-num">111</span><span class="side-toc-title">Clean maintainable code</span></a>
+        <a class="side-toc-link" href="#g145" data-target="g145" data-part="sec-quality"><span class="side-toc-num">111</span><span class="side-toc-title">How does your current team use Agile/Scrum?</span></a>
+        <a class="side-toc-link" href="#g146" data-target="g146" data-part="sec-quality"><span class="side-toc-num">112</span><span class="side-toc-title">Scrum ceremonies you join</span></a>
+        <a class="side-toc-link" href="#g147" data-target="g147" data-part="sec-quality"><span class="side-toc-num">113</span><span class="side-toc-title">Breaking down stories / estimation</span></a>
+        <a class="side-toc-link" href="#g148" data-target="g148" data-part="sec-quality"><span class="side-toc-num">114</span><span class="side-toc-title">Blockers and mid-sprint change</span></a>
+        <a class="side-toc-link" href="#g149" data-target="g149" data-part="sec-quality"><span class="side-toc-num">115</span><span class="side-toc-title">Definition of Done</span></a>
+        <a class="side-toc-link" href="#g160" data-target="g160" data-part="sec-quality"><span class="side-toc-num">116</span><span class="side-toc-title">Are you familiar with Agile / Scrum?</span></a>
+        <a class="side-toc-link" href="#g159" data-target="g159" data-part="sec-quality"><span class="side-toc-num">117</span><span class="side-toc-title">How do you measure task complexity?</span></a>
+        <a class="side-toc-link" href="#g34" data-target="g34" data-part="sec-quality"><span class="side-toc-num">118</span><span class="side-toc-title">Clean maintainable code</span></a>
+        <a class="side-toc-link" href="#g157" data-target="g157" data-part="sec-quality"><span class="side-toc-num">119</span><span class="side-toc-title">Strong disagreement with colleague or client</span></a>
+        <a class="side-toc-link" href="#g158" data-target="g158" data-part="sec-quality"><span class="side-toc-num">120</span><span class="side-toc-title">How do you keep up with new technology?</span></a>
+        <div class="side-toc-part" data-part="sec-ai">
+          <a class="side-toc-part-link" href="#sec-ai">Part N · AI-assisted coding</a>
+          <span class="side-toc-part-range">Q121–127</span>
+        </div>
+        <a class="side-toc-link" href="#g150" data-target="g150" data-part="sec-ai"><span class="side-toc-num">121</span><span class="side-toc-title">Do you use AI for coding?</span></a>
+        <a class="side-toc-link" href="#g151" data-target="g151" data-part="sec-ai"><span class="side-toc-num">122</span><span class="side-toc-title">How you use Cursor day to day</span></a>
+        <a class="side-toc-link" href="#g152" data-target="g152" data-part="sec-ai"><span class="side-toc-num">123</span><span class="side-toc-title">Cursor vs Claude — when which</span></a>
+        <a class="side-toc-link" href="#g153" data-target="g153" data-part="sec-ai"><span class="side-toc-num">124</span><span class="side-toc-title">Superpowers plugin — how you use it</span></a>
+        <a class="side-toc-link" href="#g154" data-target="g154" data-part="sec-ai"><span class="side-toc-num">125</span><span class="side-toc-title">How you review AI-generated code</span></a>
+        <a class="side-toc-link" href="#g155" data-target="g155" data-part="sec-ai"><span class="side-toc-num">126</span><span class="side-toc-title">Limits of AI in your work</span></a>
+        <a class="side-toc-link" href="#g156" data-target="g156" data-part="sec-ai"><span class="side-toc-num">127</span><span class="side-toc-title">AI for learning a new stack</span></a>
         <div class="side-toc-part" data-part="sec-hard">
-          <a class="side-toc-part-link" href="#sec-hard">Part N · Hard fixes</a>
-          <span class="side-toc-part-range">Q112–114</span>
+          <a class="side-toc-part-link" href="#sec-hard">Part O · Hard fixes / under pressure</a>
+          <span class="side-toc-part-range">Q128–131</span>
         </div>
-        <a class="side-toc-link" href="#g35" data-target="g35" data-part="sec-hard"><span class="side-toc-num">112</span><span class="side-toc-title">Wrong data after sync</span></a>
-        <a class="side-toc-link" href="#g36" data-target="g36" data-part="sec-hard"><span class="side-toc-num">113</span><span class="side-toc-title">UI bug that was actually API</span></a>
-        <a class="side-toc-link" href="#g37" data-target="g37" data-part="sec-hard"><span class="side-toc-num">114</span><span class="side-toc-title">Performance complaint on list/report</span></a>
+        <a class="side-toc-link" href="#g161" data-target="g161" data-part="sec-hard"><span class="side-toc-num">128</span><span class="side-toc-title">Under pressure — production / requirement change</span></a>
+        <a class="side-toc-link" href="#g35" data-target="g35" data-part="sec-hard"><span class="side-toc-num">129</span><span class="side-toc-title">Wrong data after sync</span></a>
+        <a class="side-toc-link" href="#g36" data-target="g36" data-part="sec-hard"><span class="side-toc-num">130</span><span class="side-toc-title">UI bug that was actually API</span></a>
+        <a class="side-toc-link" href="#g37" data-target="g37" data-part="sec-hard"><span class="side-toc-num">131</span><span class="side-toc-title">Performance complaint on list/report</span></a>
         <div class="side-toc-part" data-part="sec-design">
-          <a class="side-toc-part-link" href="#sec-design">Part O · System design · Scalability · Sync/Asy…</a>
-          <span class="side-toc-part-range">Q115–128</span>
+          <a class="side-toc-part-link" href="#sec-design">Part P · System design · Scalability · Sync/Asy…</a>
+          <span class="side-toc-part-range">Q132–145</span>
         </div>
-        <a class="side-toc-link" href="#g46" data-target="g46" data-part="sec-design"><span class="side-toc-num">115</span><span class="side-toc-title">How you approach system design</span></a>
-        <a class="side-toc-link" href="#g47" data-target="g47" data-part="sec-design"><span class="side-toc-num">116</span><span class="side-toc-title">Design a reporting dashboard</span></a>
-        <a class="side-toc-link" href="#g48" data-target="g48" data-part="sec-design"><span class="side-toc-num">117</span><span class="side-toc-title">What is scalability?</span></a>
-        <a class="side-toc-link" href="#g49" data-target="g49" data-part="sec-design"><span class="side-toc-num">118</span><span class="side-toc-title">Scale PHP + MySQL + React</span></a>
-        <a class="side-toc-link" href="#g50" data-target="g50" data-part="sec-design"><span class="side-toc-num">119</span><span class="side-toc-title">Bottlenecks checklist</span></a>
-        <a class="side-toc-link" href="#g51" data-target="g51" data-part="sec-design"><span class="side-toc-num">120</span><span class="side-toc-title">Synchronous vs asynchronous</span></a>
-        <a class="side-toc-link" href="#g52" data-target="g52" data-part="sec-design"><span class="side-toc-num">121</span><span class="side-toc-title">When sync vs async in real apps</span></a>
-        <a class="side-toc-link" href="#g53" data-target="g53" data-part="sec-design"><span class="side-toc-num">122</span><span class="side-toc-title">Queues and background jobs</span></a>
-        <a class="side-toc-link" href="#g54" data-target="g54" data-part="sec-design"><span class="side-toc-num">123</span><span class="side-toc-title">Consistency tradeoffs</span></a>
-        <a class="side-toc-link" href="#g55" data-target="g55" data-part="sec-design"><span class="side-toc-num">124</span><span class="side-toc-title">Problem-solving framework</span></a>
-        <a class="side-toc-link" href="#g56" data-target="g56" data-part="sec-design"><span class="side-toc-num">125</span><span class="side-toc-title">Ambiguous requirements</span></a>
-        <a class="side-toc-link" href="#g57" data-target="g57" data-part="sec-design"><span class="side-toc-num">126</span><span class="side-toc-title">Tradeoff decisions</span></a>
-        <a class="side-toc-link" href="#g58" data-target="g58" data-part="sec-design"><span class="side-toc-num">127</span><span class="side-toc-title">Traffic spike 10x</span></a>
-        <a class="side-toc-link" href="#g59" data-target="g59" data-part="sec-design"><span class="side-toc-num">128</span><span class="side-toc-title">Unreliable third-party API</span></a>
+        <a class="side-toc-link" href="#g46" data-target="g46" data-part="sec-design"><span class="side-toc-num">132</span><span class="side-toc-title">How you approach system design</span></a>
+        <a class="side-toc-link" href="#g47" data-target="g47" data-part="sec-design"><span class="side-toc-num">133</span><span class="side-toc-title">Design a reporting dashboard</span></a>
+        <a class="side-toc-link" href="#g48" data-target="g48" data-part="sec-design"><span class="side-toc-num">134</span><span class="side-toc-title">What is scalability?</span></a>
+        <a class="side-toc-link" href="#g49" data-target="g49" data-part="sec-design"><span class="side-toc-num">135</span><span class="side-toc-title">Scale PHP + MySQL + React</span></a>
+        <a class="side-toc-link" href="#g50" data-target="g50" data-part="sec-design"><span class="side-toc-num">136</span><span class="side-toc-title">Bottlenecks checklist</span></a>
+        <a class="side-toc-link" href="#g51" data-target="g51" data-part="sec-design"><span class="side-toc-num">137</span><span class="side-toc-title">Synchronous vs asynchronous</span></a>
+        <a class="side-toc-link" href="#g52" data-target="g52" data-part="sec-design"><span class="side-toc-num">138</span><span class="side-toc-title">When sync vs async in real apps</span></a>
+        <a class="side-toc-link" href="#g53" data-target="g53" data-part="sec-design"><span class="side-toc-num">139</span><span class="side-toc-title">Queues and background jobs</span></a>
+        <a class="side-toc-link" href="#g54" data-target="g54" data-part="sec-design"><span class="side-toc-num">140</span><span class="side-toc-title">Consistency tradeoffs</span></a>
+        <a class="side-toc-link" href="#g55" data-target="g55" data-part="sec-design"><span class="side-toc-num">141</span><span class="side-toc-title">Problem-solving framework</span></a>
+        <a class="side-toc-link" href="#g56" data-target="g56" data-part="sec-design"><span class="side-toc-num">142</span><span class="side-toc-title">Ambiguous requirements</span></a>
+        <a class="side-toc-link" href="#g57" data-target="g57" data-part="sec-design"><span class="side-toc-num">143</span><span class="side-toc-title">Tradeoff decisions</span></a>
+        <a class="side-toc-link" href="#g58" data-target="g58" data-part="sec-design"><span class="side-toc-num">144</span><span class="side-toc-title">Traffic spike 10x</span></a>
+        <a class="side-toc-link" href="#g59" data-target="g59" data-part="sec-design"><span class="side-toc-num">145</span><span class="side-toc-title">Unreliable third-party API</span></a>
         <div class="side-toc-part" data-part="sec-spoken">
-          <a class="side-toc-part-link" href="#sec-spoken">Part P · Spoken English — interview conversation</a>
-          <span class="side-toc-part-range">Q129–142</span>
+          <a class="side-toc-part-link" href="#sec-spoken">Part Q · Spoken English — interview conversation</a>
+          <span class="side-toc-part-range">Q146–159</span>
         </div>
-        <a class="side-toc-link" href="#g65" data-target="g65" data-part="sec-spoken"><span class="side-toc-num">129</span><span class="side-toc-title">Opening the interview</span></a>
-        <a class="side-toc-link" href="#g66" data-target="g66" data-part="sec-spoken"><span class="side-toc-num">130</span><span class="side-toc-title">Buy a few seconds to think</span></a>
-        <a class="side-toc-link" href="#g67" data-target="g67" data-part="sec-spoken"><span class="side-toc-num">131</span><span class="side-toc-title">Didn't hear clearly</span></a>
-        <a class="side-toc-link" href="#g68" data-target="g68" data-part="sec-spoken"><span class="side-toc-num">132</span><span class="side-toc-title">Clarify before answering</span></a>
-        <a class="side-toc-link" href="#g69" data-target="g69" data-part="sec-spoken"><span class="side-toc-num">133</span><span class="side-toc-title">Start your answer smoothly</span></a>
-        <a class="side-toc-link" href="#g70" data-target="g70" data-part="sec-spoken"><span class="side-toc-num">134</span><span class="side-toc-title">Give yourself structure out loud</span></a>
-        <a class="side-toc-link" href="#g71" data-target="g71" data-part="sec-spoken"><span class="side-toc-num">135</span><span class="side-toc-title">Agree / show you're on the same page</span></a>
-        <a class="side-toc-link" href="#g72" data-target="g72" data-part="sec-spoken"><span class="side-toc-num">136</span><span class="side-toc-title">Soft disagreement / different view</span></a>
-        <a class="side-toc-link" href="#g73" data-target="g73" data-part="sec-spoken"><span class="side-toc-num">137</span><span class="side-toc-title">When you don't know</span></a>
-        <a class="side-toc-link" href="#g74" data-target="g74" data-part="sec-spoken"><span class="side-toc-num">138</span><span class="side-toc-title">Bridge to an example</span></a>
-        <a class="side-toc-link" href="#g75" data-target="g75" data-part="sec-spoken"><span class="side-toc-num">139</span><span class="side-toc-title">Check if they want more detail</span></a>
-        <a class="side-toc-link" href="#g76" data-target="g76" data-part="sec-spoken"><span class="side-toc-num">140</span><span class="side-toc-title">Show interest in the company/team</span></a>
-        <a class="side-toc-link" href="#g77" data-target="g77" data-part="sec-spoken"><span class="side-toc-num">141</span><span class="side-toc-title">Closing politely</span></a>
-        <a class="side-toc-link" href="#g78" data-target="g78" data-part="sec-spoken"><span class="side-toc-num">142</span><span class="side-toc-title">If English feels stuck</span></a>
+        <a class="side-toc-link" href="#g65" data-target="g65" data-part="sec-spoken"><span class="side-toc-num">146</span><span class="side-toc-title">Opening the interview</span></a>
+        <a class="side-toc-link" href="#g66" data-target="g66" data-part="sec-spoken"><span class="side-toc-num">147</span><span class="side-toc-title">Buy a few seconds to think</span></a>
+        <a class="side-toc-link" href="#g67" data-target="g67" data-part="sec-spoken"><span class="side-toc-num">148</span><span class="side-toc-title">Didn&#x27;t hear clearly</span></a>
+        <a class="side-toc-link" href="#g68" data-target="g68" data-part="sec-spoken"><span class="side-toc-num">149</span><span class="side-toc-title">Clarify before answering</span></a>
+        <a class="side-toc-link" href="#g69" data-target="g69" data-part="sec-spoken"><span class="side-toc-num">150</span><span class="side-toc-title">Start your answer smoothly</span></a>
+        <a class="side-toc-link" href="#g70" data-target="g70" data-part="sec-spoken"><span class="side-toc-num">151</span><span class="side-toc-title">Give yourself structure out loud</span></a>
+        <a class="side-toc-link" href="#g71" data-target="g71" data-part="sec-spoken"><span class="side-toc-num">152</span><span class="side-toc-title">Agree / show you&#x27;re on the same page</span></a>
+        <a class="side-toc-link" href="#g72" data-target="g72" data-part="sec-spoken"><span class="side-toc-num">153</span><span class="side-toc-title">Soft disagreement / different view</span></a>
+        <a class="side-toc-link" href="#g73" data-target="g73" data-part="sec-spoken"><span class="side-toc-num">154</span><span class="side-toc-title">When you don&#x27;t know</span></a>
+        <a class="side-toc-link" href="#g74" data-target="g74" data-part="sec-spoken"><span class="side-toc-num">155</span><span class="side-toc-title">Bridge to an example</span></a>
+        <a class="side-toc-link" href="#g75" data-target="g75" data-part="sec-spoken"><span class="side-toc-num">156</span><span class="side-toc-title">Check if they want more detail</span></a>
+        <a class="side-toc-link" href="#g76" data-target="g76" data-part="sec-spoken"><span class="side-toc-num">157</span><span class="side-toc-title">Show interest in the company/team</span></a>
+        <a class="side-toc-link" href="#g77" data-target="g77" data-part="sec-spoken"><span class="side-toc-num">158</span><span class="side-toc-title">Closing politely</span></a>
+        <a class="side-toc-link" href="#g78" data-target="g78" data-part="sec-spoken"><span class="side-toc-num">159</span><span class="side-toc-title">If English feels stuck</span></a>
         <div class="side-toc-part" data-part="sec-close">
-          <a class="side-toc-part-link" href="#sec-close">Part Q · Questions + close</a>
-          <span class="side-toc-part-range">Q143–144</span>
+          <a class="side-toc-part-link" href="#sec-close">Part R · Questions + close</a>
+          <span class="side-toc-part-range">Q160–161</span>
         </div>
-        <a class="side-toc-link" href="#g38" data-target="g38" data-part="sec-close"><span class="side-toc-num">143</span><span class="side-toc-title">Questions for Globant</span></a>
-        <a class="side-toc-link" href="#g39" data-target="g39" data-part="sec-close"><span class="side-toc-num">144</span><span class="side-toc-title">60-second closing pitch</span></a>
+        <a class="side-toc-link" href="#g38" data-target="g38" data-part="sec-close"><span class="side-toc-num">160</span><span class="side-toc-title">Questions for Globant</span></a>
+        <a class="side-toc-link" href="#g39" data-target="g39" data-part="sec-close"><span class="side-toc-num">161</span><span class="side-toc-title">60-second closing pitch</span></a>
+      </nav>
+    </aside>
+    <aside class="parts-rail" id="parts-rail" aria-label="Parts only">
+      <p class="parts-rail-head">Parts</p>
+      <nav class="parts-rail-list" data-parts-rail>
+        <a class="parts-rail-link" href="#sec-fit" data-part="sec-fit"><strong>Part A · Fit / Intro</strong><span>Q01–05</span></a>
+        <a class="parts-rail-link" href="#sec-php" data-part="sec-php"><strong>Part B · PHP Backend</strong><span>Q06–10</span></a>
+        <a class="parts-rail-link" href="#sec-pure-php" data-part="sec-pure-php"><strong>Part C · Pure PHP / PHP thuần</strong><span>Q11–21</span></a>
+        <a class="parts-rail-link" href="#sec-react" data-part="sec-react"><strong>Part D · React + TypeScript + classic fundament…</strong><span>Q22–37</span></a>
+        <a class="parts-rail-link" href="#sec-react-libs" data-part="sec-react-libs"><strong>Part E · React libraries</strong><span>Q38–44</span></a>
+        <a class="parts-rail-link" href="#sec-workflow" data-part="sec-workflow"><strong>Part F · Workflow & dashboards</strong><span>Q45–50</span></a>
+        <a class="parts-rail-link" href="#sec-state" data-part="sec-state"><strong>Part G · Zustand</strong><span>Q51–72</span></a>
+        <a class="parts-rail-link" href="#sec-dash-libs" data-part="sec-dash-libs"><strong>Part H · Dashboard / workflow libs</strong><span>Q73–86</span></a>
+        <a class="parts-rail-link" href="#sec-why-stack" data-part="sec-why-stack"><strong>Part I · Why this stack?</strong><span>Q87–95</span></a>
+        <a class="parts-rail-link" href="#sec-enterprise" data-part="sec-enterprise"><strong>Part J · Enterprise app stories</strong><span>Q96–98</span></a>
+        <a class="parts-rail-link" href="#sec-integ" data-part="sec-integ"><strong>Part K · Fullstack integration</strong><span>Q99–100</span></a>
+        <a class="parts-rail-link" href="#sec-debug" data-part="sec-debug"><strong>Part L · Debug: Frontend vs Backend</strong><span>Q101–108</span></a>
+        <a class="parts-rail-link" href="#sec-quality" data-part="sec-quality"><strong>Part M · Quality / Agile / Scrum + soft skills</strong><span>Q109–120</span></a>
+        <a class="parts-rail-link" href="#sec-ai" data-part="sec-ai"><strong>Part N · AI-assisted coding</strong><span>Q121–127</span></a>
+        <a class="parts-rail-link" href="#sec-hard" data-part="sec-hard"><strong>Part O · Hard fixes / under pressure</strong><span>Q128–131</span></a>
+        <a class="parts-rail-link" href="#sec-design" data-part="sec-design"><strong>Part P · System design · Scalability · Sync/Asy…</strong><span>Q132–145</span></a>
+        <a class="parts-rail-link" href="#sec-spoken" data-part="sec-spoken"><strong>Part Q · Spoken English — interview conversation</strong><span>Q146–159</span></a>
+        <a class="parts-rail-link" href="#sec-close" data-part="sec-close"><strong>Part R · Questions + close</strong><span>Q160–161</span></a>
       </nav>
     </aside>
   <main class="page with-side-toc">
@@ -836,7 +922,7 @@
           <a href="#sec-fit">Fit</a>
           <a href="#sec-php">PHP</a>
           <a href="#sec-pure-php">PHP thuần</a>
-          <a href="#sec-react">React</a>
+          <a href="#sec-react">React classics</a>
           <a href="#sec-react-libs">React libs</a>
           <a href="#sec-workflow">Workflow</a>
           <a href="#sec-state">Zustand</a>
@@ -845,14 +931,15 @@
           <a href="#sec-enterprise">Enterprise</a>
           <a href="#sec-integ">Integration</a>
           <a href="#sec-debug">FE/BE debug</a>
-          <a href="#sec-quality">Quality</a>
-          <a href="#sec-hard">Hard fixes</a>
+          <a href="#sec-quality">Agile + soft skills</a>
+          <a href="#sec-ai">AI coding</a>
+          <a href="#sec-hard">Under pressure</a>
           <a href="#sec-design">Design / Scale</a>
           <a href="#sec-spoken">Spoken English</a>
           <a href="#sec-close">Close</a>
         </nav>
         <div class="hero-kpis">
-          <div class="kpi"><strong>144</strong><span>Prep topics</span></div>
+          <div class="kpi"><strong>161</strong><span>Prep topics</span></div>
           <div class="kpi"><strong>FE↔BE</strong><span>Debug playbook</span></div>
           <div class="kpi"><strong>Honest</strong><span>Zustand = research only</span></div>
         </div>
@@ -985,51 +1072,69 @@
           <a class="toc-link" href="#g29"><small>106</small><strong>API wrong or slow</strong></a>
           <a class="toc-link" href="#g30"><small>107</small><strong>Hotfix vs long-term fix</strong></a>
           <a class="toc-link" href="#g31"><small>108</small><strong>End-to-end debug walkthrough</strong></a>
-          <div class="toc-part-banner" style="grid-column:1/-1;margin-top:0.75rem;padding:0.4rem 0;border-top:1px solid var(--color-divider);font-family:var(--font-display);font-size:var(--text-xs);font-weight:700"><a href="#sec-quality">Part M · Quality / Agile</a> <span style="color:var(--color-text-faint);font-weight:600"> · Q109–111</span></div>
+          <div class="toc-part-banner" style="grid-column:1/-1;margin-top:0.75rem;padding:0.4rem 0;border-top:1px solid var(--color-divider);font-family:var(--font-display);font-size:var(--text-xs);font-weight:700"><a href="#sec-quality">Part M · Quality / Agile / Scrum + soft skills</a> <span style="color:var(--color-text-faint);font-weight:600"> · Q109–120</span></div>
           <a class="toc-link" href="#g32"><small>109</small><strong>Code review habits</strong></a>
           <a class="toc-link" href="#g33"><small>110</small><strong>Agile / Scrum</strong></a>
-          <a class="toc-link" href="#g34"><small>111</small><strong>Clean maintainable code</strong></a>
-          <div class="toc-part-banner" style="grid-column:1/-1;margin-top:0.75rem;padding:0.4rem 0;border-top:1px solid var(--color-divider);font-family:var(--font-display);font-size:var(--text-xs);font-weight:700"><a href="#sec-hard">Part N · Hard fixes</a> <span style="color:var(--color-text-faint);font-weight:600"> · Q112–114</span></div>
-          <a class="toc-link" href="#g35"><small>112</small><strong>Wrong data after sync</strong></a>
-          <a class="toc-link" href="#g36"><small>113</small><strong>UI bug that was actually API</strong></a>
-          <a class="toc-link" href="#g37"><small>114</small><strong>Performance complaint on list/report</strong></a>
-          <div class="toc-part-banner" style="grid-column:1/-1;margin-top:0.75rem;padding:0.4rem 0;border-top:1px solid var(--color-divider);font-family:var(--font-display);font-size:var(--text-xs);font-weight:700"><a href="#sec-design">Part O · System design · Scalability · Sync/Asy…</a> <span style="color:var(--color-text-faint);font-weight:600"> · Q115–128</span></div>
-          <a class="toc-link" href="#g46"><small>115</small><strong>How you approach system design</strong></a>
-          <a class="toc-link" href="#g47"><small>116</small><strong>Design a reporting dashboard</strong></a>
-          <a class="toc-link" href="#g48"><small>117</small><strong>What is scalability?</strong></a>
-          <a class="toc-link" href="#g49"><small>118</small><strong>Scale PHP + MySQL + React</strong></a>
-          <a class="toc-link" href="#g50"><small>119</small><strong>Bottlenecks checklist</strong></a>
-          <a class="toc-link" href="#g51"><small>120</small><strong>Synchronous vs asynchronous</strong></a>
-          <a class="toc-link" href="#g52"><small>121</small><strong>When sync vs async in real apps</strong></a>
-          <a class="toc-link" href="#g53"><small>122</small><strong>Queues and background jobs</strong></a>
-          <a class="toc-link" href="#g54"><small>123</small><strong>Consistency tradeoffs</strong></a>
-          <a class="toc-link" href="#g55"><small>124</small><strong>Problem-solving framework</strong></a>
-          <a class="toc-link" href="#g56"><small>125</small><strong>Ambiguous requirements</strong></a>
-          <a class="toc-link" href="#g57"><small>126</small><strong>Tradeoff decisions</strong></a>
-          <a class="toc-link" href="#g58"><small>127</small><strong>Traffic spike 10x</strong></a>
-          <a class="toc-link" href="#g59"><small>128</small><strong>Unreliable third-party API</strong></a>
-          <div class="toc-part-banner" style="grid-column:1/-1;margin-top:0.75rem;padding:0.4rem 0;border-top:1px solid var(--color-divider);font-family:var(--font-display);font-size:var(--text-xs);font-weight:700"><a href="#sec-spoken">Part P · Spoken English — interview conversation</a> <span style="color:var(--color-text-faint);font-weight:600"> · Q129–142</span></div>
-          <a class="toc-link" href="#g65"><small>129</small><strong>Opening the interview</strong></a>
-          <a class="toc-link" href="#g66"><small>130</small><strong>Buy a few seconds to think</strong></a>
-          <a class="toc-link" href="#g67"><small>131</small><strong>Didn&#x27;t hear clearly</strong></a>
-          <a class="toc-link" href="#g68"><small>132</small><strong>Clarify before answering</strong></a>
-          <a class="toc-link" href="#g69"><small>133</small><strong>Start your answer smoothly</strong></a>
-          <a class="toc-link" href="#g70"><small>134</small><strong>Give yourself structure out loud</strong></a>
-          <a class="toc-link" href="#g71"><small>135</small><strong>Agree / show you&#x27;re on the same page</strong></a>
-          <a class="toc-link" href="#g72"><small>136</small><strong>Soft disagreement / different view</strong></a>
-          <a class="toc-link" href="#g73"><small>137</small><strong>When you don&#x27;t know</strong></a>
-          <a class="toc-link" href="#g74"><small>138</small><strong>Bridge to an example</strong></a>
-          <a class="toc-link" href="#g75"><small>139</small><strong>Check if they want more detail</strong></a>
-          <a class="toc-link" href="#g76"><small>140</small><strong>Show interest in the company/team</strong></a>
-          <a class="toc-link" href="#g77"><small>141</small><strong>Closing politely</strong></a>
-          <a class="toc-link" href="#g78"><small>142</small><strong>If English feels stuck</strong></a>
-          <div class="toc-part-banner" style="grid-column:1/-1;margin-top:0.75rem;padding:0.4rem 0;border-top:1px solid var(--color-divider);font-family:var(--font-display);font-size:var(--text-xs);font-weight:700"><a href="#sec-close">Part Q · Questions + close</a> <span style="color:var(--color-text-faint);font-weight:600"> · Q143–144</span></div>
-          <a class="toc-link" href="#g38"><small>143</small><strong>Questions for Globant</strong></a>
-          <a class="toc-link" href="#g39"><small>144</small><strong>60-second closing pitch</strong></a>
+          <a class="toc-link" href="#g145"><small>111</small><strong>How does your current team use Agile/Scrum?</strong></a>
+          <a class="toc-link" href="#g146"><small>112</small><strong>Scrum ceremonies you join</strong></a>
+          <a class="toc-link" href="#g147"><small>113</small><strong>Breaking down stories / estimation</strong></a>
+          <a class="toc-link" href="#g148"><small>114</small><strong>Blockers and mid-sprint change</strong></a>
+          <a class="toc-link" href="#g149"><small>115</small><strong>Definition of Done</strong></a>
+          <a class="toc-link" href="#g160"><small>116</small><strong>Are you familiar with Agile / Scrum?</strong></a>
+          <a class="toc-link" href="#g159"><small>117</small><strong>How do you measure task complexity?</strong></a>
+          <a class="toc-link" href="#g34"><small>118</small><strong>Clean maintainable code</strong></a>
+          <a class="toc-link" href="#g157"><small>119</small><strong>Strong disagreement with colleague or client</strong></a>
+          <a class="toc-link" href="#g158"><small>120</small><strong>How do you keep up with new technology?</strong></a>
+          <div class="toc-part-banner" style="grid-column:1/-1;margin-top:0.75rem;padding:0.4rem 0;border-top:1px solid var(--color-divider);font-family:var(--font-display);font-size:var(--text-xs);font-weight:700"><a href="#sec-ai">Part N · AI-assisted coding</a> <span style="color:var(--color-text-faint);font-weight:600"> · Q121–127</span></div>
+          <a class="toc-link" href="#g150"><small>121</small><strong>Do you use AI for coding?</strong></a>
+          <a class="toc-link" href="#g151"><small>122</small><strong>How you use Cursor day to day</strong></a>
+          <a class="toc-link" href="#g152"><small>123</small><strong>Cursor vs Claude — when which</strong></a>
+          <a class="toc-link" href="#g153"><small>124</small><strong>Superpowers plugin — how you use it</strong></a>
+          <a class="toc-link" href="#g154"><small>125</small><strong>How you review AI-generated code</strong></a>
+          <a class="toc-link" href="#g155"><small>126</small><strong>Limits of AI in your work</strong></a>
+          <a class="toc-link" href="#g156"><small>127</small><strong>AI for learning a new stack</strong></a>
+          <div class="toc-part-banner" style="grid-column:1/-1;margin-top:0.75rem;padding:0.4rem 0;border-top:1px solid var(--color-divider);font-family:var(--font-display);font-size:var(--text-xs);font-weight:700"><a href="#sec-hard">Part O · Hard fixes / under pressure</a> <span style="color:var(--color-text-faint);font-weight:600"> · Q128–131</span></div>
+          <a class="toc-link" href="#g161"><small>128</small><strong>Under pressure — production / requirement change</strong></a>
+          <a class="toc-link" href="#g35"><small>129</small><strong>Wrong data after sync</strong></a>
+          <a class="toc-link" href="#g36"><small>130</small><strong>UI bug that was actually API</strong></a>
+          <a class="toc-link" href="#g37"><small>131</small><strong>Performance complaint on list/report</strong></a>
+          <div class="toc-part-banner" style="grid-column:1/-1;margin-top:0.75rem;padding:0.4rem 0;border-top:1px solid var(--color-divider);font-family:var(--font-display);font-size:var(--text-xs);font-weight:700"><a href="#sec-design">Part P · System design · Scalability · Sync/Asy…</a> <span style="color:var(--color-text-faint);font-weight:600"> · Q132–145</span></div>
+          <a class="toc-link" href="#g46"><small>132</small><strong>How you approach system design</strong></a>
+          <a class="toc-link" href="#g47"><small>133</small><strong>Design a reporting dashboard</strong></a>
+          <a class="toc-link" href="#g48"><small>134</small><strong>What is scalability?</strong></a>
+          <a class="toc-link" href="#g49"><small>135</small><strong>Scale PHP + MySQL + React</strong></a>
+          <a class="toc-link" href="#g50"><small>136</small><strong>Bottlenecks checklist</strong></a>
+          <a class="toc-link" href="#g51"><small>137</small><strong>Synchronous vs asynchronous</strong></a>
+          <a class="toc-link" href="#g52"><small>138</small><strong>When sync vs async in real apps</strong></a>
+          <a class="toc-link" href="#g53"><small>139</small><strong>Queues and background jobs</strong></a>
+          <a class="toc-link" href="#g54"><small>140</small><strong>Consistency tradeoffs</strong></a>
+          <a class="toc-link" href="#g55"><small>141</small><strong>Problem-solving framework</strong></a>
+          <a class="toc-link" href="#g56"><small>142</small><strong>Ambiguous requirements</strong></a>
+          <a class="toc-link" href="#g57"><small>143</small><strong>Tradeoff decisions</strong></a>
+          <a class="toc-link" href="#g58"><small>144</small><strong>Traffic spike 10x</strong></a>
+          <a class="toc-link" href="#g59"><small>145</small><strong>Unreliable third-party API</strong></a>
+          <div class="toc-part-banner" style="grid-column:1/-1;margin-top:0.75rem;padding:0.4rem 0;border-top:1px solid var(--color-divider);font-family:var(--font-display);font-size:var(--text-xs);font-weight:700"><a href="#sec-spoken">Part Q · Spoken English — interview conversation</a> <span style="color:var(--color-text-faint);font-weight:600"> · Q146–159</span></div>
+          <a class="toc-link" href="#g65"><small>146</small><strong>Opening the interview</strong></a>
+          <a class="toc-link" href="#g66"><small>147</small><strong>Buy a few seconds to think</strong></a>
+          <a class="toc-link" href="#g67"><small>148</small><strong>Didn&#x27;t hear clearly</strong></a>
+          <a class="toc-link" href="#g68"><small>149</small><strong>Clarify before answering</strong></a>
+          <a class="toc-link" href="#g69"><small>150</small><strong>Start your answer smoothly</strong></a>
+          <a class="toc-link" href="#g70"><small>151</small><strong>Give yourself structure out loud</strong></a>
+          <a class="toc-link" href="#g71"><small>152</small><strong>Agree / show you&#x27;re on the same page</strong></a>
+          <a class="toc-link" href="#g72"><small>153</small><strong>Soft disagreement / different view</strong></a>
+          <a class="toc-link" href="#g73"><small>154</small><strong>When you don&#x27;t know</strong></a>
+          <a class="toc-link" href="#g74"><small>155</small><strong>Bridge to an example</strong></a>
+          <a class="toc-link" href="#g75"><small>156</small><strong>Check if they want more detail</strong></a>
+          <a class="toc-link" href="#g76"><small>157</small><strong>Show interest in the company/team</strong></a>
+          <a class="toc-link" href="#g77"><small>158</small><strong>Closing politely</strong></a>
+          <a class="toc-link" href="#g78"><small>159</small><strong>If English feels stuck</strong></a>
+          <div class="toc-part-banner" style="grid-column:1/-1;margin-top:0.75rem;padding:0.4rem 0;border-top:1px solid var(--color-divider);font-family:var(--font-display);font-size:var(--text-xs);font-weight:700"><a href="#sec-close">Part R · Questions + close</a> <span style="color:var(--color-text-faint);font-weight:600"> · Q160–161</span></div>
+          <a class="toc-link" href="#g38"><small>160</small><strong>Questions for Globant</strong></a>
+          <a class="toc-link" href="#g39"><small>161</small><strong>60-second closing pitch</strong></a>
         </div>
       </aside>
     </section>
-    <section class="questions">
+            <section class="questions">
     <section class="section-block" id="sec-fit">
       <h2>A. Fit / Intro (Globant)</h2>
 <article class="question-card" id="g1">
@@ -1163,7 +1268,7 @@
     </section>
     <section class="section-block" id="sec-pure-php">
       <h2>C. Pure PHP / PHP thuần (interviewer tip)</h2>
-      <p style="color:var(--color-text-muted);font-size:var(--text-sm);margin:0 0 var(--space-4)">Team tip: xem kỹ PHP thuần — PDO, session, OOP, security, request lifecycle — không chỉ Laravel helpers.</p>
+      <p style="color:var(--color-text-muted);font-size:var(--text-sm);margin:0 0 var(--space-4)">Team tip: xem kỹ PHP thuần — PDO, session, OOP, security, request lifecycle.</p>
 <article class="question-card" id="g86">
         <div class="question-head"><h2>11. What is PHP thuần / pure PHP?</h2><p>Interviewer asked to review this carefully.</p></div>
         <div class="grid4">
@@ -1332,7 +1437,7 @@
     </section>
     <section class="section-block" id="sec-react">
       <h2>D. React + TypeScript + classic fundamentals</h2>
-      <p style="color:var(--color-text-muted);font-size:var(--text-sm);margin:0 0 var(--space-4)">Experience first, then classic interview topics: lifecycle, Virtual DOM, keys, props/state, controlled inputs, re-renders, memo.</p>
+      <p style="color:var(--color-text-muted);font-size:var(--text-sm);margin:0 0 var(--space-4)">Experience first, then classic interview topics.</p>
 <article class="question-card" id="g11">
         <div class="question-head"><h2>22. React experience</h2><p>Honest: web + RN.</p></div>
         <div class="grid4">
@@ -1553,7 +1658,6 @@
     </section>
     <section class="section-block" id="sec-react-libs">
       <h2>E. React libraries (interviewer tip)</h2>
-      <p style="color:var(--color-text-muted);font-size:var(--text-sm);margin:0 0 var(--space-4)">Team tip: ôn thêm các thư viện quanh React. Nói thẳng phần đã dùng vs mới research.</p>
 <article class="question-card" id="g79">
         <div class="question-head"><h2>38. React ecosystem overview</h2><p>Interviewer tip: know common libraries.</p></div>
         <div class="grid4">
@@ -1662,7 +1766,6 @@
     </section>
     <section class="section-block" id="sec-workflow">
       <h2>F. Workflow & dashboards (experience + how-to)</h2>
-      <p style="color:var(--color-text-muted);font-size:var(--text-sm);margin:0 0 var(--space-4)">E-Hiring ATS experience + how you design workflows. Chart lib at Base: say you do not remember.</p>
 <article class="question-card" id="g15">
         <div class="question-head"><h2>45. Dashboards and workflows</h2><p>Yes — Base E-Hiring; honest on stack/libs.</p></div>
         <div class="grid4">
@@ -1757,7 +1860,6 @@
     </section>
     <section class="section-block" id="sec-state">
       <h2>G. Zustand (honesty + deep dive)</h2>
-      <p style="color:var(--color-text-muted);font-size:var(--text-sm);margin:0 0 var(--space-4)">Never used in production — researched for JD. Order: intro → how it works → vs useState/Redux → dashboard/workflow use → learn plan.</p>
 <article class="question-card" id="g16">
         <div class="question-head"><h2>51. What is Zustand?</h2><p>Keep it light — researched from the JD, not production war stories.</p></div>
         <div class="grid4">
@@ -2081,7 +2183,6 @@
     </section>
     <section class="section-block" id="sec-dash-libs">
       <h2>H. Dashboard / workflow libs (interviewer hint)</h2>
-      <p style="color:var(--color-text-muted);font-size:var(--text-sm);margin:0 0 var(--space-4)">Hint stack: AnyChart.js · react-grid-layout · React Flow · AG-Grid · custom HTML elements · Zustand.</p>
 <article class="question-card" id="g97">
         <div class="question-head"><h2>73. Dashboard stack overview</h2><p>How the hint libs fit together.</p></div>
         <div class="grid4">
@@ -2296,7 +2397,6 @@
     </section>
     <section class="section-block" id="sec-why-stack">
       <h2>I. Why this stack? (Zustand + workflow + visualization)</h2>
-      <p style="color:var(--color-text-muted);font-size:var(--text-sm);margin:0 0 var(--space-4)">Understand the why — so you sound product-aware, not just listing libraries.</p>
 <article class="question-card" id="g116">
         <div class="question-head"><h2>87. Why this stack for enterprise apps?</h2><p>Big picture.</p></div>
         <div class="grid4">
@@ -2635,7 +2735,7 @@
       </article>
     </section>
     <section class="section-block" id="sec-quality">
-      <h2>M. Quality / Agile</h2>
+      <h2>M. Quality / Agile / Scrum + soft skills</h2>
 <article class="question-card" id="g32">
         <div class="question-head"><h2>109. Code review habits</h2><p>JD: participate in reviews.</p></div>
         <div class="grid4">
@@ -2656,9 +2756,9 @@
         <div class="grid4">
           <div class="cell row-head">Question EN</div><div class="cell row-head">Answer EN</div><div class="cell row-head">Question VI</div><div class="cell row-head">Answer VI</div>
           <div class="cell question"><p>How do you work in Agile/Scrum teams?</p></div>
-          <div class="cell answer"><p>I like clear user stories, small shippable slices, and honest status. In standups I talk blockers early. I estimate with uncertainty in mind, and I prefer demos of working software over perfect docs — though I still write the docs that save the next person.</p></div>
+          <div class="cell answer"><p>I work in Scrum-style teams: sprint goals, backlog, standups, and demos. I like clear user stories, small shippable slices, and honest status. In standups I talk blockers early — not just “still working.” I estimate with uncertainty in mind, and I prefer demos of working software over perfect docs — though I still write the docs that save the next person.</p></div>
           <div class="cell question"><p>Bạn làm việc trong Agile/Scrum thế nào?</p></div>
-          <div class="cell answer"><p>Tôi thích user story rõ, slice nhỏ ship được, và status thật. Standup thì nói blocker sớm. Estimate có tính bất định, và thích demo phần chạy được hơn docs hoàn hảo — dù tôi vẫn viết docs cứu người sau.</p></div>
+          <div class="cell answer"><p>Tôi làm trong team kiểu Scrum: sprint goal, backlog, standup và demo. Thích user story rõ, slice nhỏ ship được, status thật. Standup nói blocker sớm — không chỉ “đang làm.” Estimate có tính bất định, thích demo phần chạy được hơn docs hoàn hảo — dù vẫn viết docs cứu người sau.</p></div>
         </div>
         <div class="crib">
           <p><strong>Know:</strong> Ship value in slices; surface blockers early.</p>
@@ -2666,8 +2766,101 @@
           <p><strong>Follow-up:</strong> What if requirements change mid-sprint?</p>
         </div>
       </article>
+<article class="question-card" id="g145">
+        <div class="question-head"><h2>111. How does your current team use Agile/Scrum?</h2><p>Practical team process.</p></div>
+        <div class="grid4">
+          <div class="cell row-head">Question EN</div><div class="cell row-head">Answer EN</div><div class="cell row-head">Question VI</div><div class="cell row-head">Answer VI</div>
+          <div class="cell question"><p>How does your current team use Agile or Scrum day to day?</p></div>
+          <div class="cell answer"><p>We work in sprints with a backlog of tickets. We plan what fits the sprint, have short daily standups for progress and blockers, and review/demo what we shipped. Tickets usually have acceptance criteria so “done” is clear. It's not ceremony for ceremony — the useful parts are shared priority, early blockers, and a demo of working software. When process gets heavy, I still focus on delivering a thin vertical slice FE+BE rather than perfect paperwork.</p></div>
+          <div class="cell question"><p>Team hiện tại dùng Agile/Scrum thế nào?</p></div>
+          <div class="cell answer"><p>Chúng tôi làm theo sprint với backlog ticket. Plan việc vừa sprint, standup ngắn về tiến độ và blocker, rồi review/demo phần đã ship. Ticket thường có acceptance criteria để “done” rõ. Không phải nghi thức vì nghi thức — phần hữu ích là ưu tiên chung, blocker sớm, và demo phần chạy được. Khi process nặng, tôi vẫn tập trung ship slice mỏng FE+BE hơn paperwork hoàn hảo.</p></div>
+        </div>
+        <div class="crib">
+          <p><strong>Know:</strong> Sprint · backlog · standup · demo · acceptance criteria · vertical slice.</p>
+          <p><strong>Trap:</strong> Claiming perfect SAFe/ceremony expert if you only do light Scrum.</p>
+        </div>
+      </article>
+<article class="question-card" id="g146">
+        <div class="question-head"><h2>112. Scrum ceremonies you join</h2><p>Sprint rituals.</p></div>
+        <div class="grid4">
+          <div class="cell row-head">Question EN</div><div class="cell row-head">Answer EN</div><div class="cell row-head">Question VI</div><div class="cell row-head">Answer VI</div>
+          <div class="cell question"><p>Which Scrum ceremonies do you participate in, and why do they help?</p></div>
+          <div class="cell answer"><p>Planning — agree scope and break work. Daily standup — sync and surface blockers in minutes. Review/demo — show working software to stakeholders. Retro — what to improve next sprint. I treat them as communication tools. If a ceremony doesn't help the team ship safer, I'd suggest simplifying it — but I follow the team's cadence first.</p></div>
+          <div class="cell question"><p>Bạn tham gia ceremony Scrum nào, vì sao hữu ích?</p></div>
+          <div class="cell answer"><p>Planning — chốt scope và tách việc. Standup hàng ngày — sync và nêu blocker trong vài phút. Review/demo — show phần chạy cho stakeholder. Retro — cải thiện sprint sau. Tôi coi chúng là công cụ giao tiếp. Nếu ceremony không giúp ship an toàn hơn, tôi đề xuất đơn giản hóa — nhưng trước hết theo cadence của team.</p></div>
+        </div>
+        <div class="crib">
+          <p><strong>Know:</strong> Plan · standup · review · retro.</p>
+        </div>
+      </article>
+<article class="question-card" id="g147">
+        <div class="question-head"><h2>113. Breaking down stories / estimation</h2><p>How you plan work.</p></div>
+        <div class="grid4">
+          <div class="cell row-head">Question EN</div><div class="cell row-head">Answer EN</div><div class="cell row-head">Question VI</div><div class="cell row-head">Answer VI</div>
+          <div class="cell question"><p>How do you break down a big feature into sprint work?</p></div>
+          <div class="cell answer"><p>I split by user-visible value or risk: API contract first, then UI happy path, then edge cases, then polish. For a workflow feature that might mean: status model + transition API, then pipeline UI, then permissions, then reports. I avoid “all backend this sprint, all frontend next” when possible — a thin vertical slice is easier to demo and test. Estimation is a range with assumptions, not a promise to the minute.</p></div>
+          <div class="cell question"><p>Bạn tách feature lớn thành việc trong sprint thế nào?</p></div>
+          <div class="cell answer"><p>Tôi tách theo giá trị user thấy hoặc rủi ro: contract API trước, rồi UI happy path, rồi edge case, rồi polish. Feature workflow có thể: model status + API transition, rồi UI pipeline, rồi permission, rồi report. Tránh “sprint này toàn BE, sprint sau toàn FE” nếu được — slice dọc mỏng dễ demo và test hơn. Estimate là khoảng có giả định, không hứa từng phút.</p></div>
+        </div>
+        <div class="crib">
+          <p><strong>Know:</strong> Vertical slices · risk-first · estimate = range + assumptions.</p>
+        </div>
+      </article>
+<article class="question-card" id="g148">
+        <div class="question-head"><h2>114. Blockers and mid-sprint change</h2><p>Realistic Agile.</p></div>
+        <div class="grid4">
+          <div class="cell row-head">Question EN</div><div class="cell row-head">Answer EN</div><div class="cell row-head">Question VI</div><div class="cell row-head">Answer VI</div>
+          <div class="cell question"><p>What do you do when you're blocked, or requirements change mid-sprint?</p></div>
+          <div class="cell answer"><p>If blocked — say it in standup or ping ASAP: waiting on API, design, or access. Don't sit silent. If requirements change mid-sprint, I clarify impact with PM/lead: what drops or moves to next sprint so quality doesn't collapse. I'd rather renegotiate scope than ship a half-broken feature and call it done.</p></div>
+          <div class="cell question"><p>Khi bị block, hoặc requirement đổi giữa sprint, bạn làm gì?</p></div>
+          <div class="cell answer"><p>Nếu block — nói trong standup hoặc ping sớm: chờ API, design, hoặc access. Không im. Nếu requirement đổi giữa sprint, tôi làm rõ impact với PM/lead: cái gì bỏ hoặc đẩy sprint sau để chất lượng không sụp. Thà renegotiate scope còn hơn ship feature nửa vời rồi gọi là done.</p></div>
+        </div>
+        <div class="crib">
+          <p><strong>Know:</strong> Surface blockers early · renegotiate scope vs silent overcommit.</p>
+        </div>
+      </article>
+<article class="question-card" id="g149">
+        <div class="question-head"><h2>115. Definition of Done</h2><p>What “finished” means.</p></div>
+        <div class="grid4">
+          <div class="cell row-head">Question EN</div><div class="cell row-head">Answer EN</div><div class="cell row-head">Question VI</div><div class="cell row-head">Answer VI</div>
+          <div class="cell question"><p>What is your Definition of Done for a ticket?</p></div>
+          <div class="cell answer"><p>Code merged with review, acceptance criteria met, basic happy-path and key edge cases checked, no known critical bugs, and enough note for the next person — especially for APIs and data migrations. For fullstack tickets I also check FE and BE together in the real flow, not only unit tests in isolation.</p></div>
+          <div class="cell question"><p>Definition of Done của bạn cho một ticket là gì?</p></div>
+          <div class="cell answer"><p>Code merge có review, đạt acceptance criteria, check happy path và edge case chính, không còn bug critical biết trước, và ghi chú đủ cho người sau — đặc biệt API và migration data. Ticket fullstack tôi check FE và BE cùng lúc trên flow thật, không chỉ unit test tách rời.</p></div>
+        </div>
+        <div class="crib">
+          <p><strong>Know:</strong> AC · review · FE+BE flow · notes for next person.</p>
+        </div>
+      </article>
+<article class="question-card" id="g160">
+        <div class="question-head"><h2>116. Are you familiar with Agile / Scrum?</h2><p>They said the team works in Scrum.</p></div>
+        <div class="grid4">
+          <div class="cell row-head">Question EN</div><div class="cell row-head">Answer EN</div><div class="cell row-head">Question VI</div><div class="cell row-head">Answer VI</div>
+          <div class="cell question"><p>Are you familiar with Agile methodologies and Scrum? Our team works in Scrum.</p></div>
+          <div class="cell answer"><p>Yes. I've worked in Scrum-style teams with sprints, backlog, daily standups, planning, and demos/reviews. I'm comfortable with that cadence — committing to a sprint goal, surfacing blockers early, and demoing working software. I don't need a perfect textbook Scrum; I follow the team's process and focus on delivering thin, shippable slices. Joining a Scrum team at Globant is familiar ground for me.</p></div>
+          <div class="cell question"><p>Bạn quen Agile/Scrum không? Team chúng tôi làm Scrum.</p></div>
+          <div class="cell answer"><p>Có. Tôi đã làm trong team kiểu Scrum với sprint, backlog, standup hàng ngày, planning và demo/review. Tôi quen cadence đó — commit sprint goal, nêu blocker sớm, demo phần chạy được. Không cần Scrum sách giáo khoa hoàn hảo; tôi theo process của team và tập trung ship slice mỏng. Join team Scrum ở Globant với tôi là quen thuộc.</p></div>
+        </div>
+        <div class="crib">
+          <p><strong>Say this:</strong> Yes — sprints, standup, planning, demo. Happy to follow your Scrum.</p>
+        </div>
+      </article>
+<article class="question-card" id="g159">
+        <div class="question-head"><h2>117. How do you measure task complexity?</h2><p>Story points / estimation.</p></div>
+        <div class="grid4">
+          <div class="cell row-head">Question EN</div><div class="cell row-head">Answer EN</div><div class="cell row-head">Question VI</div><div class="cell row-head">Answer VI</div>
+          <div class="cell question"><p>During planning, how did you measure the complexity of a task? Story points?</p></div>
+          <div class="cell answer"><p>Yes — usually relative sizing, often story points or a similar scale the team agrees on, not exact hours. I estimate by comparing to past tickets: uncertainty, how many layers (PHP API + React UI + DB), unknown third-party APIs, test effort, and risk of production impact. A simple UI text change is small; a sync mapping with edge cases and reporting is larger. If the team uses Fibonacci story points, I'm fine with that. If something is unclear, I ask for a spike or split the story before committing a big number.</p></div>
+          <div class="cell question"><p>Khi planning, bạn đo độ phức tạp task thế nào? Story points?</p></div>
+          <div class="cell answer"><p>Có — thường size tương đối, hay story points hoặc thang team thống nhất, không phải giờ chính xác. Tôi ước bằng so với ticket cũ: độ bất định, bao nhiêu lớp (PHP API + React UI + DB), API bên thứ ba lạ, effort test, và rủi ro production. Đổi text UI thì nhỏ; sync mapping nhiều edge case và report thì lớn. Team dùng Fibonacci story points thì tôi ổn. Nếu chưa rõ, tôi xin spike hoặc tách story trước khi commit số lớn.</p></div>
+        </div>
+        <div class="crib">
+          <p><strong>Know:</strong> Relative / story points · compare to past work · uncertainty + layers + risk · spike if unclear.</p>
+          <p><strong>Trap:</strong> Promising exact hours; padding without explaining assumptions.</p>
+        </div>
+      </article>
 <article class="question-card" id="g34">
-        <div class="question-head"><h2>111. Clean maintainable code</h2><p>JD language.</p></div>
+        <div class="question-head"><h2>118. Clean maintainable code</h2><p>JD language.</p></div>
         <div class="grid4">
           <div class="cell row-head">Question EN</div><div class="cell row-head">Answer EN</div><div class="cell row-head">Question VI</div><div class="cell row-head">Answer VI</div>
           <div class="cell question"><p>What does clean, maintainable code mean to you?</p></div>
@@ -2681,11 +2874,153 @@
           <p><strong>Follow-up:</strong> When is duplication better than the wrong abstraction?</p>
         </div>
       </article>
+<article class="question-card" id="g157">
+        <div class="question-head"><h2>119. Strong disagreement with colleague or client</h2><p>Behavioral — stay calm and factual.</p></div>
+        <div class="grid4">
+          <div class="cell row-head">Question EN</div><div class="cell row-head">Answer EN</div><div class="cell row-head">Question VI</div><div class="cell row-head">Answer VI</div>
+          <div class="cell question"><p>Have you ever had a strong disagreement with a colleague or client — technical or about methodology?</p></div>
+          <div class="cell answer"><p>Yes — usually technical, not personal. One pattern I've seen: someone wants a quick UI hotfix while I believe the root cause is backend data or an API contract. I don't argue to “win.” I bring evidence — Network tab, a small reproduce, impact on users — and propose options: short-term mitigation plus a proper fix. With a client or PM, if they push scope mid-sprint, I explain tradeoffs calmly: what we can ship safely this sprint versus what should move. Goal is shared outcome: correct product and trust, not ego.</p></div>
+          <div class="cell question"><p>Bạn từng bất đồng mạnh với đồng nghiệp hoặc client chưa — kỹ thuật hoặc methodology?</p></div>
+          <div class="cell answer"><p>Có — thường là kỹ thuật, không phải cá nhân. Một pattern: người khác muốn hotfix UI nhanh, còn tôi nghĩ gốc là data backend hoặc contract API. Tôi không cãi để “thắng.” Tôi mang bằng chứng — Network tab, reproduce nhỏ, impact user — và đề xuất: giảm đau ngắn hạn cộng fix đúng. Với client/PM nếu họ đẩy scope giữa sprint, tôi giải thích tradeoff bình tĩnh: sprint này ship an toàn được gì, cái gì nên đẩy. Mục tiêu là kết quả chung: product đúng và trust, không phải cái tôi.</p></div>
+        </div>
+        <div class="crib">
+          <p><strong>Structure:</strong> Situation → evidence → options → agree on outcome.</p>
+          <p><strong>Example hook:</strong> FE hotfix vs BE root cause; scope vs quality mid-sprint.</p>
+          <p><strong>Trap:</strong> Blaming people; “I always win arguments.”</p>
+        </div>
+      </article>
+<article class="question-card" id="g158">
+        <div class="question-head"><h2>120. How do you keep up with new technology?</h2><p>Learning habits.</p></div>
+        <div class="grid4">
+          <div class="cell row-head">Question EN</div><div class="cell row-head">Answer EN</div><div class="cell row-head">Question VI</div><div class="cell row-head">Answer VI</div>
+          <div class="cell question"><p>How do you keep yourself updated with the newest technology?</p></div>
+          <div class="cell answer"><p>I learn with a purpose — usually from the job or a role I'm targeting. I read official docs and release notes for tools we actually use, follow a few trusted sources, and try small spikes in a side project or a sandbox. I also use Cursor/Claude to explore unfamiliar APIs faster, then I verify by building something real. For this Globant interview I researched Zustand and dashboard libraries from the JD — not to pretend production expertise, but to understand why teams pick them. I don't chase every hype library; I deepen what helps me ship.</p></div>
+          <div class="cell question"><p>Bạn cập nhật công nghệ mới thế nào?</p></div>
+          <div class="cell answer"><p>Tôi học có mục đích — thường từ công việc hoặc role đang aim. Đọc docs chính thức và release notes của tool đang dùng, theo vài nguồn tin cậy, và thử spike nhỏ ở side project hoặc sandbox. Cũng dùng Cursor/Claude để explore API lạ nhanh hơn, rồi verify bằng cách build thứ thật. Cho interview Globant tôi research Zustand và lib dashboard từ JD — không giả production, mà hiểu vì sao team chọn. Không đuổi mọi lib hot; đào sâu thứ giúp ship.</p></div>
+        </div>
+        <div class="crib">
+          <p><strong>Know:</strong> Purpose-driven · docs · small spikes · AI to explore · verify by building · not every hype.</p>
+        </div>
+      </article>
+    </section>
+    <section class="section-block" id="sec-ai">
+      <h2>N. AI-assisted coding (Cursor / Claude / Superpowers)</h2>
+      <p style="color:var(--color-text-muted);font-size:var(--text-sm);margin:0 0 var(--space-4)">Mainly Cursor, sometimes Claude, Superpowers workflows. You still own review.</p>
+<article class="question-card" id="g150">
+        <div class="question-head"><h2>121. Do you use AI for coding?</h2><p>Yes — with ownership.</p></div>
+        <div class="grid4">
+          <div class="cell row-head">Question EN</div><div class="cell row-head">Answer EN</div><div class="cell row-head">Question VI</div><div class="cell row-head">Answer VI</div>
+          <div class="cell question"><p>Do you use AI tools when coding?</p></div>
+          <div class="cell answer"><p>Yes. I use AI as a coding partner every day — mainly Cursor in the IDE, and sometimes Claude for longer reasoning. It helps me move faster on boilerplate, explore unfamiliar APIs, draft tests, and debug with a second pair of eyes. I never paste blindly into production: I read the diff, run the flow, and keep ownership of the design and edge cases. AI speeds me up; it doesn't replace engineering judgment.</p></div>
+          <div class="cell question"><p>Bạn có dùng AI khi code không?</p></div>
+          <div class="cell answer"><p>Có. Tôi dùng AI như partner code hằng ngày — chủ yếu Cursor trong IDE, đôi khi Claude cho reasoning dài. Nó giúp nhanh hơn với boilerplate, tìm hiểu API lạ, draft test, và debug thêm một góc nhìn. Tôi không paste mù vào production: đọc diff, chạy flow, và vẫn own design cùng edge case. AI tăng tốc; không thay judgment kỹ thuật.</p></div>
+        </div>
+        <div class="crib">
+          <p><strong>Say this:</strong> Accelerator + reviewer still me.</p>
+          <p><strong>Trap:</strong> “AI writes everything” or “I never use AI.”</p>
+        </div>
+      </article>
+<article class="question-card" id="g151">
+        <div class="question-head"><h2>122. How you use Cursor day to day</h2><p>Your main tool.</p></div>
+        <div class="grid4">
+          <div class="cell row-head">Question EN</div><div class="cell row-head">Answer EN</div><div class="cell row-head">Question VI</div><div class="cell row-head">Answer VI</div>
+          <div class="cell question"><p>How do you use Cursor in your daily work?</p></div>
+          <div class="cell answer"><p>Cursor is my main environment. Typical loop: I describe the goal in chat or inline edit, point it at the relevant files, let it propose a change, then I review the diff carefully. I use it to navigate a codebase, implement a feature slice, write or update tests, and explain unfamiliar code. For bugs I paste the error/stack and ask for hypotheses, then I verify with Network tab, logs, or a small reproduce — I don't stop at the first AI guess. Multi-file refactors I do in small steps with git so I can revert.</p></div>
+          <div class="cell question"><p>Bạn dùng Cursor hằng ngày thế nào?</p></div>
+          <div class="cell answer"><p>Cursor là môi trường chính. Loop thường: mô tả goal trong chat hoặc inline edit, chỉ đúng file liên quan, để nó đề xuất thay đổi, rồi tôi review diff kỹ. Dùng để navigate codebase, implement một slice feature, viết/cập nhật test, và giải thích code lạ. Với bug tôi đưa error/stack, xin giả thuyết, rồi tự verify bằng Network, log, hoặc reproduce nhỏ — không dừng ở đoán đầu của AI. Refactor nhiều file thì làm từng bước nhỏ có git để revert được.</p></div>
+        </div>
+        <div class="crib">
+          <p><strong>Loop:</strong> Goal → scoped context → AI draft → review diff → run/verify → commit small.</p>
+        </div>
+      </article>
+<article class="question-card" id="g152">
+        <div class="question-head"><h2>123. Cursor vs Claude — when which</h2><p>Honest split.</p></div>
+        <div class="grid4">
+          <div class="cell row-head">Question EN</div><div class="cell row-head">Answer EN</div><div class="cell row-head">Question VI</div><div class="cell row-head">Answer VI</div>
+          <div class="cell question"><p>When do you use Cursor vs Claude?</p></div>
+          <div class="cell answer"><p>Almost everything in the repo I do in Cursor — it sees the files, applies edits, and stays in my workflow. I use Claude more for longer design talk, comparing approaches, or drafting a plan before I touch code. If I'm already deep in the project, Cursor wins because context and apply-to-codebase matter. I'm not tool-religious — I pick what gets a correct change into git faster with me still reviewing.</p></div>
+          <div class="cell question"><p>Khi nào dùng Cursor, khi nào Claude?</p></div>
+          <div class="cell answer"><p>Gần như mọi việc trong repo tôi làm trên Cursor — nó thấy file, apply edit, nằm trong workflow. Claude tôi dùng nhiều hơn cho design dài, so sánh hướng, hoặc draft plan trước khi đụng code. Nếu đang sâu trong project, Cursor thắng vì context và apply vào codebase quan trọng. Tôi không cuồng tool — chọn thứ đưa thay đổi đúng vào git nhanh hơn mà vẫn do tôi review.</p></div>
+        </div>
+        <div class="crib">
+          <p><strong>Know:</strong> Cursor = in-repo edits; Claude = longer reasoning/planning. Mostly Cursor.</p>
+        </div>
+      </article>
+<article class="question-card" id="g153">
+        <div class="question-head"><h2>124. Superpowers plugin — how you use it</h2><p>Your workflow enhancer.</p></div>
+        <div class="grid4">
+          <div class="cell row-head">Question EN</div><div class="cell row-head">Answer EN</div><div class="cell row-head">Question VI</div><div class="cell row-head">Answer VI</div>
+          <div class="cell question"><p>You mentioned Superpowers — what is it and how do you use it?</p></div>
+          <div class="cell answer"><p>Superpowers is a Cursor plugin/skill pack that gives the agent structured workflows — for example brainstorming before building, writing a short design/spec, then an implementation plan, then executing in steps, and using systematic debugging instead of random fixes. I use it when the task is bigger than a one-line change: clarify the goal, lock an approach, then implement. That keeps AI from jumping straight into messy code. For interview prep and cheatsheets I've used that same “spec → plan → build” discipline. Day to day I still drive: I approve the plan, check the diff, and own the result.</p></div>
+          <div class="cell question"><p>Bạn nói Superpowers — nó là gì và bạn dùng thế nào?</p></div>
+          <div class="cell answer"><p>Superpowers là plugin/skill pack trên Cursor giúp agent có workflow có cấu trúc — ví dụ brainstorm trước khi build, viết design/spec ngắn, rồi plan implement, rồi làm từng bước, và debug có hệ thống thay vì sửa đoán mò. Tôi dùng khi việc lớn hơn một dòng: làm rõ goal, chốt hướng, rồi mới code. Như vậy AI ít nhảy thẳng vào code loạn. Cho interview prep và cheatsheet tôi cũng dùng kỷ luật “spec → plan → build”. Hằng ngày tôi vẫn cầm lái: duyệt plan, check diff, own kết quả.</p></div>
+        </div>
+        <div class="crib">
+          <p><strong>Know:</strong> Structured agent workflows: brainstorm → spec → plan → execute → systematic debug.</p>
+          <p><strong>Say this:</strong> Process reduces AI chaos; I still approve.</p>
+        </div>
+      </article>
+<article class="question-card" id="g154">
+        <div class="question-head"><h2>125. How you review AI-generated code</h2><p>They care about this.</p></div>
+        <div class="grid4">
+          <div class="cell row-head">Question EN</div><div class="cell row-head">Answer EN</div><div class="cell row-head">Question VI</div><div class="cell row-head">Answer VI</div>
+          <div class="cell question"><p>How do you review code that AI wrote?</p></div>
+          <div class="cell answer"><p>Same bar as a junior PR — maybe stricter. I check: does it match the real requirement, are edge cases handled, is security okay (SQL, auth, XSS), did it invent APIs that don't exist, and is the style consistent with the repo. I run the path myself. For PHP/React I watch for wrong assumptions about our framework and silent error swallowing. If I can't explain the change, I don't merge it.</p></div>
+          <div class="cell question"><p>Bạn review code AI viết thế nào?</p></div>
+          <div class="cell answer"><p>Cùng tiêu chuẩn PR junior — thậm chí chặt hơn. Tôi check: có khớp requirement thật không, edge case, bảo mật (SQL, auth, XSS), có bịa API không tồn tại không, style có khớp repo không. Tôi tự chạy flow. Với PHP/React để ý assumption sai về framework và nuốt lỗi im lặng. Nếu không giải thích được thay đổi, tôi không merge.</p></div>
+        </div>
+        <div class="crib">
+          <p><strong>Know:</strong> Requirements · security · inventing APIs · run it · explainability.</p>
+        </div>
+      </article>
+<article class="question-card" id="g155">
+        <div class="question-head"><h2>126. Limits of AI in your work</h2><p>Shows maturity.</p></div>
+        <div class="grid4">
+          <div class="cell row-head">Question EN</div><div class="cell row-head">Answer EN</div><div class="cell row-head">Question VI</div><div class="cell row-head">Answer VI</div>
+          <div class="cell question"><p>When do you NOT trust AI for coding?</p></div>
+          <div class="cell answer"><p>I don't trust it alone on production data migrations, security-sensitive auth, unclear business rules, or “looks green but wrong” sync/mapping bugs. AI is weak when context is missing — private Base frameworks, odd legacy PHP, or domain rules only in someone's head. Then I slow down: read code, talk to the team, reproduce with real data. Also I never put secrets into prompts.</p></div>
+          <div class="cell question"><p>Khi nào bạn KHÔNG tin AI để code?</p></div>
+          <div class="cell answer"><p>Tôi không tin một mình AI cho migration data production, auth nhạy cảm, business rule mơ hồ, hoặc bug sync/mapping “trông ổn nhưng sai.” AI yếu khi thiếu context — framework private Base, PHP legacy lạ, hoặc rule chỉ nằm trong đầu ai đó. Lúc đó tôi chậm lại: đọc code, hỏi team, reproduce với data thật. Và không đưa secret vào prompt.</p></div>
+        </div>
+        <div class="crib">
+          <p><strong>Know:</strong> No secrets in prompts · weak on missing domain context · verify migrations/security.</p>
+        </div>
+      </article>
+<article class="question-card" id="g156">
+        <div class="question-head"><h2>127. AI for learning a new stack</h2><p>Ties to Globant / Zustand honesty.</p></div>
+        <div class="grid4">
+          <div class="cell row-head">Question EN</div><div class="cell row-head">Answer EN</div><div class="cell row-head">Question VI</div><div class="cell row-head">Answer VI</div>
+          <div class="cell question"><p>How would you use AI to learn Globant's stack faster?</p></div>
+          <div class="cell answer"><p>I'd point Cursor at the real repo: “show me how we create a Zustand store,” “where do dashboard filters live,” “how does this React Flow page save to PHP.” I use AI to map the codebase and draft a small first PR in team style — then I verify by reading existing patterns, not inventing a new architecture. For interview prep I already used that approach: research Zustand and dashboard libs honestly as “studied for this role,” not fake production experience. On the job the source of truth is your codebase + your review.</p></div>
+          <div class="cell question"><p>Bạn dùng AI học stack Globant nhanh thế nào?</p></div>
+          <div class="cell answer"><p>Tôi chỉ Cursor vào repo thật: “chỉ tôi cách tạo Zustand store,” “filter dashboard nằm đâu,” “trang React Flow lưu xuống PHP thế nào.” Dùng AI để map codebase và draft PR nhỏ theo style team — rồi verify bằng cách đọc pattern có sẵn, không invent kiến trúc mới. Cho interview tôi đã dùng cách đó: research Zustand và lib dashboard một cách thật thà là “học cho role này,” không bịa production. Khi đi làm, nguồn sự thật là codebase của bạn + review của tôi.</p></div>
+        </div>
+        <div class="crib">
+          <p><strong>Say this:</strong> AI maps the repo; team patterns + my review ship the PR.</p>
+        </div>
+      </article>
     </section>
     <section class="section-block" id="sec-hard">
-      <h2>N. Hard fixes (STAR)</h2>
+      <h2>O. Hard fixes / under pressure (STAR)</h2>
+<article class="question-card" id="g161">
+        <div class="question-head"><h2>128. Under pressure — production / requirement change</h2><p>STAR behavioral.</p></div>
+        <div class="grid4">
+          <div class="cell row-head">Question EN</div><div class="cell row-head">Answer EN</div><div class="cell row-head">Question VI</div><div class="cell row-head">Answer VI</div>
+          <div class="cell question"><p>Describe a situation where you were under pressure — production bug, requirement change, or similar — and how you handled it.</p></div>
+          <div class="cell answer"><p>One case: wrong or missing data after a sync looked fine in the UI until users complained — high pressure because hiring/ops data must be trusted. I stayed calm: reproduce with a small known dataset, check Network/API vs DB, find the mapping/order bug, ship a focused fix, then add validation so silent mismatches are harder. Another pressure pattern is requirement change mid-sprint — I clarify impact, renegotiate what still fits the sprint, and protect quality instead of promising everything. Under pressure I prioritize evidence and the smallest safe fix first.</p></div>
+          <div class="cell question"><p>Kể tình huống bạn bị áp lực — bug production, đổi requirement, hoặc tương tự — và cách xử lý.</p></div>
+          <div class="cell answer"><p>Một case: data sai/thiếu sau sync, UI trông ổn đến khi user phản ánh — áp lực cao vì data tuyển dụng/ops phải đáng tin. Tôi giữ bình tĩnh: reproduce dataset nhỏ, check Network/API vs DB, tìm bug mapping/thứ tự, ship fix tập trung, rồi thêm validation. Pattern khác là đổi requirement giữa sprint — làm rõ impact, renegotiate phần còn vừa sprint, bảo vệ chất lượng thay vì hứa hết. Dưới áp lực tôi ưu tiên bằng chứng và fix nhỏ nhất nhưng an toàn trước.</p></div>
+        </div>
+        <div class="star">
+          <p><strong>S:</strong> Sync/data issue under user pressure (or mid-sprint scope change).</p>
+          <p><strong>T:</strong> Restore trust fast without making it worse.</p>
+          <p><strong>A:</strong> Reproduce → evidence → focused fix → prevent repeat / renegotiate scope.</p>
+          <p><strong>R:</strong> Correct data + clearer process next time.</p>
+          <p class="say"><strong>Say this:</strong> Calm + evidence + smallest safe fix.</p>
+        </div>
+      </article>
 <article class="question-card" id="g35">
-        <div class="question-head"><h2>112. Wrong data after sync</h2><p>STAR — BaseVN style.</p></div>
+        <div class="question-head"><h2>129. Wrong data after sync</h2><p>STAR — BaseVN style.</p></div>
         <div class="grid4">
           <div class="cell row-head">Question EN</div><div class="cell row-head">Answer EN</div><div class="cell row-head">Question VI</div><div class="cell row-head">Answer VI</div>
           <div class="cell question"><p>Tell me about a difficult bug you fixed.</p></div>
@@ -2702,7 +3037,7 @@
         </div>
       </article>
 <article class="question-card" id="g36">
-        <div class="question-head"><h2>113. UI bug that was actually API</h2><p>FE/BE detective STAR.</p></div>
+        <div class="question-head"><h2>130. UI bug that was actually API</h2><p>FE/BE detective STAR.</p></div>
         <div class="grid4">
           <div class="cell row-head">Question EN</div><div class="cell row-head">Answer EN</div><div class="cell row-head">Question VI</div><div class="cell row-head">Answer VI</div>
           <div class="cell question"><p>Tell me about a time the bug looked like frontend but wasn't.</p></div>
@@ -2719,7 +3054,7 @@
         </div>
       </article>
 <article class="question-card" id="g37">
-        <div class="question-head"><h2>114. Performance complaint on list/report</h2><p>Fullstack perf.</p></div>
+        <div class="question-head"><h2>131. Performance complaint on list/report</h2><p>Fullstack perf.</p></div>
         <div class="grid4">
           <div class="cell row-head">Question EN</div><div class="cell row-head">Answer EN</div><div class="cell row-head">Question VI</div><div class="cell row-head">Answer VI</div>
           <div class="cell question"><p>How did you fix a performance issue users felt in the UI?</p></div>
@@ -2737,9 +3072,9 @@
       </article>
     </section>
     <section class="section-block" id="sec-design">
-      <h2>O. System design · Scalability · Sync/Async · Problem solving</h2>
+      <h2>P. System design · Scalability · Sync/Async · Problem solving</h2>
 <article class="question-card" id="g46">
-        <div class="question-head"><h2>115. How you approach system design</h2><p>Fullstack level — not FAANG mega-scale.</p></div>
+        <div class="question-head"><h2>132. How you approach system design</h2><p>Fullstack level — not FAANG mega-scale.</p></div>
         <div class="grid4">
           <div class="cell row-head">Question EN</div><div class="cell row-head">Answer EN</div><div class="cell row-head">Question VI</div><div class="cell row-head">Answer VI</div>
           <div class="cell question"><p>How do you approach a system design question?</p></div>
@@ -2754,7 +3089,7 @@
         </div>
       </article>
 <article class="question-card" id="g47">
-        <div class="question-head"><h2>116. Design a reporting dashboard</h2><p>Use a familiar shape.</p></div>
+        <div class="question-head"><h2>133. Design a reporting dashboard</h2><p>Use a familiar shape.</p></div>
         <div class="grid4">
           <div class="cell row-head">Question EN</div><div class="cell row-head">Answer EN</div><div class="cell row-head">Question VI</div><div class="cell row-head">Answer VI</div>
           <div class="cell question"><p>Design a feature: a reporting dashboard that loads data from PHP and shows it in React.</p></div>
@@ -2769,7 +3104,7 @@
         </div>
       </article>
 <article class="question-card" id="g48">
-        <div class="question-head"><h2>117. What is scalability?</h2><p>Plain language.</p></div>
+        <div class="question-head"><h2>134. What is scalability?</h2><p>Plain language.</p></div>
         <div class="grid4">
           <div class="cell row-head">Question EN</div><div class="cell row-head">Answer EN</div><div class="cell row-head">Question VI</div><div class="cell row-head">Answer VI</div>
           <div class="cell question"><p>What does scalability mean to you?</p></div>
@@ -2784,7 +3119,7 @@
         </div>
       </article>
 <article class="question-card" id="g49">
-        <div class="question-head"><h2>118. Scale PHP + MySQL + React</h2><p>Practical fullstack answer.</p></div>
+        <div class="question-head"><h2>135. Scale PHP + MySQL + React</h2><p>Practical fullstack answer.</p></div>
         <div class="grid4">
           <div class="cell row-head">Question EN</div><div class="cell row-head">Answer EN</div><div class="cell row-head">Question VI</div><div class="cell row-head">Answer VI</div>
           <div class="cell question"><p>How would you scale a PHP + MySQL + React application?</p></div>
@@ -2799,7 +3134,7 @@
         </div>
       </article>
 <article class="question-card" id="g50">
-        <div class="question-head"><h2>119. Bottlenecks checklist</h2><p>Interview checklist.</p></div>
+        <div class="question-head"><h2>136. Bottlenecks checklist</h2><p>Interview checklist.</p></div>
         <div class="grid4">
           <div class="cell row-head">Question EN</div><div class="cell row-head">Answer EN</div><div class="cell row-head">Question VI</div><div class="cell row-head">Answer VI</div>
           <div class="cell question"><p>What bottlenecks do you look for in a web system?</p></div>
@@ -2814,7 +3149,7 @@
         </div>
       </article>
 <article class="question-card" id="g51">
-        <div class="question-head"><h2>120. Synchronous vs asynchronous</h2><p>Core concept — memorize.</p></div>
+        <div class="question-head"><h2>137. Synchronous vs asynchronous</h2><p>Core concept — memorize.</p></div>
         <div class="grid4">
           <div class="cell row-head">Question EN</div><div class="cell row-head">Answer EN</div><div class="cell row-head">Question VI</div><div class="cell row-head">Answer VI</div>
           <div class="cell question"><p>What is the difference between synchronous and asynchronous processing?</p></div>
@@ -2829,7 +3164,7 @@
         </div>
       </article>
 <article class="question-card" id="g52">
-        <div class="question-head"><h2>121. When sync vs async in real apps</h2><p>Tie to CV.</p></div>
+        <div class="question-head"><h2>138. When sync vs async in real apps</h2><p>Tie to CV.</p></div>
         <div class="grid4">
           <div class="cell row-head">Question EN</div><div class="cell row-head">Answer EN</div><div class="cell row-head">Question VI</div><div class="cell row-head">Answer VI</div>
           <div class="cell question"><p>When do you choose synchronous vs asynchronous in a real app?</p></div>
@@ -2844,7 +3179,7 @@
         </div>
       </article>
 <article class="question-card" id="g53">
-        <div class="question-head"><h2>122. Queues and background jobs</h2><p>Concept level — honest.</p></div>
+        <div class="question-head"><h2>139. Queues and background jobs</h2><p>Concept level — honest.</p></div>
         <div class="grid4">
           <div class="cell row-head">Question EN</div><div class="cell row-head">Answer EN</div><div class="cell row-head">Question VI</div><div class="cell row-head">Answer VI</div>
           <div class="cell question"><p>What are background jobs or queues for?</p></div>
@@ -2859,7 +3194,7 @@
         </div>
       </article>
 <article class="question-card" id="g54">
-        <div class="question-head"><h2>123. Consistency tradeoffs</h2><p>Light system-design vocab.</p></div>
+        <div class="question-head"><h2>140. Consistency tradeoffs</h2><p>Light system-design vocab.</p></div>
         <div class="grid4">
           <div class="cell row-head">Question EN</div><div class="cell row-head">Answer EN</div><div class="cell row-head">Question VI</div><div class="cell row-head">Answer VI</div>
           <div class="cell question"><p>Have you heard of consistency tradeoffs when scaling?</p></div>
@@ -2874,7 +3209,7 @@
         </div>
       </article>
 <article class="question-card" id="g55">
-        <div class="question-head"><h2>124. Problem-solving framework</h2><p>How you think under pressure.</p></div>
+        <div class="question-head"><h2>141. Problem-solving framework</h2><p>How you think under pressure.</p></div>
         <div class="grid4">
           <div class="cell row-head">Question EN</div><div class="cell row-head">Answer EN</div><div class="cell row-head">Question VI</div><div class="cell row-head">Answer VI</div>
           <div class="cell question"><p>How do you approach solving a hard technical problem?</p></div>
@@ -2889,7 +3224,7 @@
         </div>
       </article>
 <article class="question-card" id="g56">
-        <div class="question-head"><h2>125. Ambiguous requirements</h2><p>Soft + hard skill.</p></div>
+        <div class="question-head"><h2>142. Ambiguous requirements</h2><p>Soft + hard skill.</p></div>
         <div class="grid4">
           <div class="cell row-head">Question EN</div><div class="cell row-head">Answer EN</div><div class="cell row-head">Question VI</div><div class="cell row-head">Answer VI</div>
           <div class="cell question"><p>What do you do when requirements are unclear?</p></div>
@@ -2904,7 +3239,7 @@
         </div>
       </article>
 <article class="question-card" id="g57">
-        <div class="question-head"><h2>126. Tradeoff decisions</h2><p>Show judgment.</p></div>
+        <div class="question-head"><h2>143. Tradeoff decisions</h2><p>Show judgment.</p></div>
         <div class="grid4">
           <div class="cell row-head">Question EN</div><div class="cell row-head">Answer EN</div><div class="cell row-head">Question VI</div><div class="cell row-head">Answer VI</div>
           <div class="cell question"><p>Tell me about a technical tradeoff you made.</p></div>
@@ -2921,7 +3256,7 @@
         </div>
       </article>
 <article class="question-card" id="g58">
-        <div class="question-head"><h2>127. Traffic spike 10x</h2><p>Scalability scenario.</p></div>
+        <div class="question-head"><h2>144. Traffic spike 10x</h2><p>Scalability scenario.</p></div>
         <div class="grid4">
           <div class="cell row-head">Question EN</div><div class="cell row-head">Answer EN</div><div class="cell row-head">Question VI</div><div class="cell row-head">Answer VI</div>
           <div class="cell question"><p>What would you do if traffic suddenly spiked 10x?</p></div>
@@ -2936,7 +3271,7 @@
         </div>
       </article>
 <article class="question-card" id="g59">
-        <div class="question-head"><h2>128. Unreliable third-party API</h2><p>Problem-solving + async.</p></div>
+        <div class="question-head"><h2>145. Unreliable third-party API</h2><p>Problem-solving + async.</p></div>
         <div class="grid4">
           <div class="cell row-head">Question EN</div><div class="cell row-head">Answer EN</div><div class="cell row-head">Question VI</div><div class="cell row-head">Answer VI</div>
           <div class="cell question"><p>How would you design around an unreliable third-party API?</p></div>
@@ -2952,10 +3287,9 @@
       </article>
     </section>
     <section class="section-block" id="sec-spoken">
-      <h2>P. Spoken English — interview conversation (non-tech)</h2>
-      <p style="color:var(--color-text-muted);font-size:var(--text-sm);margin:0 0 var(--space-4)">Nghĩa VI = Vietnamese meaning of the English phrase. Use EN in the interview.</p>
+      <h2>Q. Spoken English — interview conversation (non-tech)</h2>
 <article class="question-card" id="g65">
-        <div class="question-head"><h2>129. Opening the interview</h2><p>Warm, simple, confident.</p></div>
+        <div class="question-head"><h2>146. Opening the interview</h2><p>Warm, simple, confident.</p></div>
         <div class="grid4">
           <div class="cell row-head">Situation EN</div><div class="cell row-head">Say this EN</div><div class="cell row-head">Situation VI</div><div class="cell row-head">Nghĩa VI</div>
           <div class="cell question"><p>How do you start the conversation?</p></div>
@@ -2968,7 +3302,7 @@
         </div>
       </article>
 <article class="question-card" id="g66">
-        <div class="question-head"><h2>130. Buy a few seconds to think</h2><p>Better than awkward silence or rushing.</p></div>
+        <div class="question-head"><h2>147. Buy a few seconds to think</h2><p>Better than awkward silence or rushing.</p></div>
         <div class="grid4">
           <div class="cell row-head">Situation EN</div><div class="cell row-head">Say this EN</div><div class="cell row-head">Situation VI</div><div class="cell row-head">Nghĩa VI</div>
           <div class="cell question"><p>You need a moment before answering.</p></div>
@@ -2981,7 +3315,7 @@
         </div>
       </article>
 <article class="question-card" id="g67">
-        <div class="question-head"><h2>131. Didn't hear clearly</h2><p>Polite — never guess what they said.</p></div>
+        <div class="question-head"><h2>148. Didn't hear clearly</h2><p>Polite — never guess what they said.</p></div>
         <div class="grid4">
           <div class="cell row-head">Situation EN</div><div class="cell row-head">Say this EN</div><div class="cell row-head">Situation VI</div><div class="cell row-head">Nghĩa VI</div>
           <div class="cell question"><p>You missed part of the question.</p></div>
@@ -2994,7 +3328,7 @@
         </div>
       </article>
 <article class="question-card" id="g68">
-        <div class="question-head"><h2>132. Clarify before answering</h2><p>Shows you listen carefully.</p></div>
+        <div class="question-head"><h2>149. Clarify before answering</h2><p>Shows you listen carefully.</p></div>
         <div class="grid4">
           <div class="cell row-head">Situation EN</div><div class="cell row-head">Say this EN</div><div class="cell row-head">Situation VI</div><div class="cell row-head">Nghĩa VI</div>
           <div class="cell question"><p>The question is a bit broad or unclear.</p></div>
@@ -3007,7 +3341,7 @@
         </div>
       </article>
 <article class="question-card" id="g69">
-        <div class="question-head"><h2>133. Start your answer smoothly</h2><p>Natural openers — not robotic.</p></div>
+        <div class="question-head"><h2>150. Start your answer smoothly</h2><p>Natural openers — not robotic.</p></div>
         <div class="grid4">
           <div class="cell row-head">Situation EN</div><div class="cell row-head">Say this EN</div><div class="cell row-head">Situation VI</div><div class="cell row-head">Nghĩa VI</div>
           <div class="cell question"><p>How do you begin an answer?</p></div>
@@ -3020,7 +3354,7 @@
         </div>
       </article>
 <article class="question-card" id="g70">
-        <div class="question-head"><h2>134. Give yourself structure out loud</h2><p>Helps interviewer follow you.</p></div>
+        <div class="question-head"><h2>151. Give yourself structure out loud</h2><p>Helps interviewer follow you.</p></div>
         <div class="grid4">
           <div class="cell row-head">Situation EN</div><div class="cell row-head">Say this EN</div><div class="cell row-head">Situation VI</div><div class="cell row-head">Nghĩa VI</div>
           <div class="cell question"><p>You want to sound organized.</p></div>
@@ -3033,7 +3367,7 @@
         </div>
       </article>
 <article class="question-card" id="g71">
-        <div class="question-head"><h2>135. Agree / show you're on the same page</h2><p>Conversational, not tech.</p></div>
+        <div class="question-head"><h2>152. Agree / show you're on the same page</h2><p>Conversational, not tech.</p></div>
         <div class="grid4">
           <div class="cell row-head">Situation EN</div><div class="cell row-head">Say this EN</div><div class="cell row-head">Situation VI</div><div class="cell row-head">Nghĩa VI</div>
           <div class="cell question"><p>Interviewer makes a point and you agree.</p></div>
@@ -3046,7 +3380,7 @@
         </div>
       </article>
 <article class="question-card" id="g72">
-        <div class="question-head"><h2>136. Soft disagreement / different view</h2><p>Respectful, not argumentative.</p></div>
+        <div class="question-head"><h2>153. Soft disagreement / different view</h2><p>Respectful, not argumentative.</p></div>
         <div class="grid4">
           <div class="cell row-head">Situation EN</div><div class="cell row-head">Say this EN</div><div class="cell row-head">Situation VI</div><div class="cell row-head">Nghĩa VI</div>
           <div class="cell question"><p>You see it a bit differently.</p></div>
@@ -3059,7 +3393,7 @@
         </div>
       </article>
 <article class="question-card" id="g73">
-        <div class="question-head"><h2>137. When you don't know</h2><p>Honest + still useful.</p></div>
+        <div class="question-head"><h2>154. When you don't know</h2><p>Honest + still useful.</p></div>
         <div class="grid4">
           <div class="cell row-head">Situation EN</div><div class="cell row-head">Say this EN</div><div class="cell row-head">Situation VI</div><div class="cell row-head">Nghĩa VI</div>
           <div class="cell question"><p>You truly don't know the answer.</p></div>
@@ -3072,7 +3406,7 @@
         </div>
       </article>
 <article class="question-card" id="g74">
-        <div class="question-head"><h2>138. Bridge to an example</h2><p>Sound natural, not scripted.</p></div>
+        <div class="question-head"><h2>155. Bridge to an example</h2><p>Sound natural, not scripted.</p></div>
         <div class="grid4">
           <div class="cell row-head">Situation EN</div><div class="cell row-head">Say this EN</div><div class="cell row-head">Situation VI</div><div class="cell row-head">Nghĩa VI</div>
           <div class="cell question"><p>You want to give a concrete story.</p></div>
@@ -3085,7 +3419,7 @@
         </div>
       </article>
 <article class="question-card" id="g75">
-        <div class="question-head"><h2>139. Check if they want more detail</h2><p>Avoid over-talking.</p></div>
+        <div class="question-head"><h2>156. Check if they want more detail</h2><p>Avoid over-talking.</p></div>
         <div class="grid4">
           <div class="cell row-head">Situation EN</div><div class="cell row-head">Say this EN</div><div class="cell row-head">Situation VI</div><div class="cell row-head">Nghĩa VI</div>
           <div class="cell question"><p>You finished a short answer and aren't sure if they want more.</p></div>
@@ -3098,7 +3432,7 @@
         </div>
       </article>
 <article class="question-card" id="g76">
-        <div class="question-head"><h2>140. Show interest in the company/team</h2><p>Human, not salesy.</p></div>
+        <div class="question-head"><h2>157. Show interest in the company/team</h2><p>Human, not salesy.</p></div>
         <div class="grid4">
           <div class="cell row-head">Situation EN</div><div class="cell row-head">Say this EN</div><div class="cell row-head">Situation VI</div><div class="cell row-head">Nghĩa VI</div>
           <div class="cell question"><p>They ask if you have questions / you want to show interest.</p></div>
@@ -3111,7 +3445,7 @@
         </div>
       </article>
 <article class="question-card" id="g77">
-        <div class="question-head"><h2>141. Closing politely</h2><p>Leave a good last impression.</p></div>
+        <div class="question-head"><h2>158. Closing politely</h2><p>Leave a good last impression.</p></div>
         <div class="grid4">
           <div class="cell row-head">Situation EN</div><div class="cell row-head">Say this EN</div><div class="cell row-head">Situation VI</div><div class="cell row-head">Nghĩa VI</div>
           <div class="cell question"><p>How do you end the interview?</p></div>
@@ -3124,7 +3458,7 @@
         </div>
       </article>
 <article class="question-card" id="g78">
-        <div class="question-head"><h2>142. If English feels stuck</h2><p>Rescue phrases — keep talking.</p></div>
+        <div class="question-head"><h2>159. If English feels stuck</h2><p>Rescue phrases — keep talking.</p></div>
         <div class="grid4">
           <div class="cell row-head">Situation EN</div><div class="cell row-head">Say this EN</div><div class="cell row-head">Situation VI</div><div class="cell row-head">Nghĩa VI</div>
           <div class="cell question"><p>You lose the word mid-sentence.</p></div>
@@ -3138,9 +3472,9 @@
       </article>
     </section>
     <section class="section-block" id="sec-close">
-      <h2>Q. Questions + close</h2>
+      <h2>R. Questions + close</h2>
 <article class="question-card" id="g38">
-        <div class="question-head"><h2>143. Questions for Globant</h2><p>Ask 2–3.</p></div>
+        <div class="question-head"><h2>160. Questions for Globant</h2><p>Ask 2–3.</p></div>
         <div class="grid4">
           <div class="cell row-head">Question EN</div><div class="cell row-head">Answer EN</div><div class="cell row-head">Question VI</div><div class="cell row-head">Answer VI</div>
           <div class="cell question"><p>What questions do you have for us?</p></div>
@@ -3150,7 +3484,7 @@
         </div>
       </article>
 <article class="question-card" id="g39">
-        <div class="question-head"><h2>144. 60-second closing pitch</h2><p>Calm + honest Zustand.</p></div>
+        <div class="question-head"><h2>161. 60-second closing pitch</h2><p>Calm + honest Zustand.</p></div>
         <div class="grid4">
           <div class="cell row-head">Question EN</div><div class="cell row-head">Answer EN</div><div class="cell row-head">Question VI</div><div class="cell row-head">Answer VI</div>
           <div class="cell question"><p>Anything else you'd like to add?</p></div>
@@ -3187,6 +3521,7 @@
 
       const links = Array.from(tocRoot.querySelectorAll('.side-toc-link'));
       const partEls = Array.from(tocRoot.querySelectorAll('.side-toc-part'));
+      const partsRailLinks = Array.from(document.querySelectorAll('[data-parts-rail] .parts-rail-link'));
       const idToLink = new Map(links.map((a) => [a.getAttribute('data-target'), a]));
       const targets = links
         .map((a) => document.getElementById(a.getAttribute('data-target')))
@@ -3200,6 +3535,7 @@
         const active = idToLink.get(id);
         const partId = active ? active.getAttribute('data-part') : null;
         partEls.forEach((p) => p.classList.toggle('is-active', p.getAttribute('data-part') === partId));
+        partsRailLinks.forEach((a) => a.classList.toggle('is-active', a.getAttribute('data-part') === partId));
         if (active && sideToc) {
           const aTop = active.offsetTop;
           const aBottom = aTop + active.offsetHeight;
@@ -3221,28 +3557,9 @@
         setActive(current);
       };
 
+
       window.addEventListener('scroll', onScroll, { passive: true });
       onScroll();
-
-      // After hero leaves view → dock Contents as fixed right rail
-      const heroEl = document.querySelector('.hero');
-      const desktopMq = window.matchMedia('(min-width: 1101px)');
-      const syncDock = () => {
-        if (!desktopMq.matches) {
-          document.body.classList.remove('toc-right-docked');
-          return;
-        }
-        if (!heroEl) {
-          document.body.classList.add('toc-right-docked');
-          return;
-        }
-        const heroBottom = heroEl.getBoundingClientRect().bottom;
-        document.body.classList.toggle('toc-right-docked', heroBottom < 96);
-      };
-      window.addEventListener('scroll', syncDock, { passive: true });
-      window.addEventListener('resize', syncDock);
-      desktopMq.addEventListener('change', syncDock);
-      syncDock();
 
       const closeMobile = () => {
         sideToc && sideToc.classList.remove('is-open');
