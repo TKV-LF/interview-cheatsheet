@@ -629,15 +629,15 @@
       .page.with-side-toc { padding-left: var(--space-4); padding-right: var(--space-4); }
     }
 
-/* Injected by gen_vnpt.py before </style> — parts-rail toggle + mobile polish */
+/* Injected by gen_vnpt.py before style close — parts-rail toggle + mobile polish */
 
     .parts-rail-head-row {
       display: flex;
       align-items: center;
       justify-content: space-between;
-      gap: 0.35rem;
+      gap: 0.4rem;
       margin: 0 0 0.55rem;
-      padding: 0 0.15rem 0.45rem;
+      padding: 0 0.1rem 0.5rem;
       border-bottom: 1px solid var(--color-divider);
     }
     .parts-rail-head-row .parts-rail-head {
@@ -649,35 +649,40 @@
     }
     .parts-rail-toggle {
       flex-shrink: 0;
-      width: 32px;
-      height: 32px;
+      width: 34px;
+      height: 34px;
       display: inline-flex;
       align-items: center;
       justify-content: center;
       border: 1px solid var(--color-border);
-      border-radius: var(--radius-md);
-      background: var(--color-surface-2);
-      color: var(--color-text-muted);
-      font-size: 1rem;
-      line-height: 1;
+      border-radius: 999px;
+      background: color-mix(in srgb, var(--color-surface) 80%, var(--color-primary-highlight));
+      color: var(--color-primary);
       cursor: pointer;
       box-shadow: var(--shadow-sm);
+      transition: background 0.15s ease, border-color 0.15s ease, transform 0.15s ease;
+    }
+    .parts-rail-toggle svg {
+      width: 16px;
+      height: 16px;
+      display: block;
     }
     .parts-rail-toggle:hover {
-      color: var(--color-primary);
       border-color: var(--color-primary);
       background: var(--color-primary-highlight);
+      transform: translateX(1px);
     }
+    .parts-rail-toggle:active { transform: scale(0.96); }
     .parts-rail-show {
       display: none;
       position: fixed;
       top: 104px;
-      right: 0.65rem;
+      right: 0.75rem;
       z-index: 28;
       align-items: center;
-      gap: 0.35rem;
+      gap: 0.4rem;
       min-height: 40px;
-      padding: 0.45rem 0.7rem;
+      padding: 0.5rem 0.85rem 0.5rem 0.65rem;
       border: 1px solid var(--color-border);
       border-radius: 999px;
       background: var(--color-surface);
@@ -686,11 +691,19 @@
       font-weight: 700;
       box-shadow: var(--shadow-md);
       cursor: pointer;
+      transition: background 0.15s ease, border-color 0.15s ease, transform 0.15s ease;
+    }
+    .parts-rail-show svg {
+      width: 15px;
+      height: 15px;
+      color: var(--color-primary);
+      flex-shrink: 0;
     }
     .parts-rail-show:hover {
       border-color: var(--color-primary);
       color: var(--color-primary);
       background: var(--color-primary-highlight);
+      transform: translateX(-1px);
     }
     .side-toc-close {
       display: none;
@@ -709,27 +722,41 @@
     }
     .top-actions .btn-link-secondary { display: inline-flex; }
 
+    /* Parts rail is outside .shell — fixed overlay only */
     @media (min-width: 1280px) {
       .parts-rail {
-        transition: opacity 0.18s ease, transform 0.18s ease, width 0.18s ease;
+        display: block !important;
+        position: fixed;
+        top: 96px;
         right: 0.65rem;
+        width: 168px;
+        max-height: calc(100vh - 112px);
+        overflow: auto;
+        padding: 0.75rem 0.65rem;
+        background: var(--color-surface);
+        border: 1px solid var(--color-border);
+        border-radius: var(--radius-xl);
+        box-shadow: var(--shadow-sm);
+        z-index: 25;
+        transition: opacity 0.18s ease, transform 0.18s ease;
+      }
+      .page.with-side-toc {
+        padding-right: 188px !important;
       }
       body.parts-rail-collapsed .parts-rail {
-        width: 0 !important;
-        min-width: 0;
-        padding: 0 !important;
-        border: none !important;
-        opacity: 0;
-        pointer-events: none;
-        transform: translateX(12px);
-        overflow: hidden;
+        display: none !important;
       }
       body.parts-rail-collapsed .page.with-side-toc {
         padding-right: var(--space-6) !important;
       }
       body.parts-rail-collapsed .parts-rail-show {
-        display: inline-flex;
+        display: inline-flex !important;
       }
+    }
+
+    @media (max-width: 1279px) {
+      .parts-rail,
+      .parts-rail-show { display: none !important; }
     }
 
     /* Mobile / tablet polish */
@@ -806,6 +833,20 @@
       .hero-card { padding: var(--space-4); }
       .tag-list { gap: 0.35rem; }
       .tag { font-size: 0.65rem; }
+    }
+
+
+    /* Collapse works even if a media block is dropped */
+    body.parts-rail-collapsed .parts-rail {
+      display: none !important;
+      visibility: hidden !important;
+      pointer-events: none !important;
+    }
+    body.parts-rail-collapsed .parts-rail-show {
+      display: inline-flex !important;
+    }
+    body.parts-rail-collapsed .page.with-side-toc {
+      padding-right: var(--space-6) !important;
     }
 
 </style>
@@ -1077,38 +1118,6 @@
 
       </nav>
     </aside>
-    <aside class="parts-rail" id="parts-rail" aria-label="Parts only">
-      <div class="parts-rail-head-row">
-        <p class="parts-rail-head">Parts</p>
-        <button class="parts-rail-toggle" data-parts-rail-toggle type="button" aria-expanded="true" aria-controls="parts-rail" aria-label="Hide parts rail" title="Hide parts">›</button>
-      </div>
-      <nav class="parts-rail-list" data-parts-rail>
-
-        <a class="parts-rail-link" href="#sec-jd" data-part="sec-jd"><strong>Part 0 · JD map</strong><span>V01–05</span></a>
-        <a class="parts-rail-link" href="#sec-tips" data-part="sec-tips"><strong>Part 0b · Exam tips + MCQ</strong><span>V06–23</span></a>
-        <a class="parts-rail-link" href="#sec-devops" data-part="sec-devops"><strong>Part 1 · IT &amp; DevOps</strong><span>V24–30</span></a>
-        <a class="parts-rail-link" href="#sec-linux" data-part="sec-linux"><strong>Part 2 · Linux</strong><span>V31–39</span></a>
-        <a class="parts-rail-link" href="#sec-os" data-part="sec-os"><strong>Part 3 · OS fundamentals</strong><span>V40–47</span></a>
-        <a class="parts-rail-link" href="#sec-network" data-part="sec-network"><strong>Part 4 · Network</strong><span>V48–54</span></a>
-        <a class="parts-rail-link" href="#sec-security" data-part="sec-security"><strong>Part 5 · Security / ATTT</strong><span>V55–61</span></a>
-        <a class="parts-rail-link" href="#sec-git" data-part="sec-git"><strong>Part 6 · Git + collab</strong><span>V62–67</span></a>
-        <a class="parts-rail-link" href="#sec-cicd" data-part="sec-cicd"><strong>Part 7 · CI/CD</strong><span>V68–75</span></a>
-        <a class="parts-rail-link" href="#sec-automation" data-part="sec-automation"><strong>Part 8 · Automation</strong><span>V76–82</span></a>
-        <a class="parts-rail-link" href="#sec-docker" data-part="sec-docker"><strong>Part 9 · Docker</strong><span>V83–90</span></a>
-        <a class="parts-rail-link" href="#sec-k8s" data-part="sec-k8s"><strong>Part 10 · Kubernetes + HA</strong><span>V91–100</span></a>
-        <a class="parts-rail-link" href="#sec-web" data-part="sec-web"><strong>Part 11 · Web servers</strong><span>V101–106</span></a>
-        <a class="parts-rail-link" href="#sec-monitor" data-part="sec-monitor"><strong>Part 12 · Monitoring</strong><span>V107–114</span></a>
-        <a class="parts-rail-link" href="#sec-backup" data-part="sec-backup"><strong>Part 13 · Backup &amp; recovery</strong><span>V115–120</span></a>
-        <a class="parts-rail-link" href="#sec-arch" data-part="sec-arch"><strong>Part 14 · Architecture</strong><span>V121–126</span></a>
-        <a class="parts-rail-link" href="#sec-lang" data-part="sec-lang"><strong>Part 15 · Languages</strong><span>V127–131</span></a>
-        <a class="parts-rail-link" href="#sec-ai" data-part="sec-ai"><strong>Part 16 · AI/LLM</strong><span>V132–137</span></a>
-        <a class="parts-rail-link" href="#sec-fit" data-part="sec-fit"><strong>Part 17 · Fit / intro</strong><span>V138–143</span></a>
-        <a class="parts-rail-link" href="#sec-scenario" data-part="sec-scenario"><strong>Part 18 · Scenarios</strong><span>V144–151</span></a>
-        <a class="parts-rail-link" href="#sec-close" data-part="sec-close"><strong>Part 19 · Closing</strong><span>V152–154</span></a>
-
-      </nav>
-    </aside>
-    <button class="parts-rail-show" data-parts-rail-show type="button" hidden aria-label="Show parts rail">‹ Parts</button>
   <main class="page with-side-toc">
     <section class="hero with-side-toc">
       <div class="hero-card">
@@ -3168,6 +3177,45 @@ histogram_quantile(0.95, sum by (le) (rate(http_request_duration_seconds_bucket[
   </main>
   </div>
 
+
+    <aside class="parts-rail" id="parts-rail" aria-label="Parts only">
+      <div class="parts-rail-head-row">
+        <p class="parts-rail-head">Parts</p>
+        <button class="parts-rail-toggle" data-parts-rail-toggle type="button" aria-expanded="true" aria-controls="parts-rail" aria-label="Hide parts panel" title="Hide parts">
+          <svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="16" rx="2"></rect><path d="M15 4v16"></path><path d="M11 9l-3 3 3 3"></path></svg>
+        </button>
+      </div>
+      <nav class="parts-rail-list" data-parts-rail>
+
+        <a class="parts-rail-link" href="#sec-jd" data-part="sec-jd"><strong>Part 0 · JD map</strong><span>V01–05</span></a>
+        <a class="parts-rail-link" href="#sec-tips" data-part="sec-tips"><strong>Part 0b · Exam tips + MCQ</strong><span>V06–23</span></a>
+        <a class="parts-rail-link" href="#sec-devops" data-part="sec-devops"><strong>Part 1 · IT &amp; DevOps</strong><span>V24–30</span></a>
+        <a class="parts-rail-link" href="#sec-linux" data-part="sec-linux"><strong>Part 2 · Linux</strong><span>V31–39</span></a>
+        <a class="parts-rail-link" href="#sec-os" data-part="sec-os"><strong>Part 3 · OS fundamentals</strong><span>V40–47</span></a>
+        <a class="parts-rail-link" href="#sec-network" data-part="sec-network"><strong>Part 4 · Network</strong><span>V48–54</span></a>
+        <a class="parts-rail-link" href="#sec-security" data-part="sec-security"><strong>Part 5 · Security / ATTT</strong><span>V55–61</span></a>
+        <a class="parts-rail-link" href="#sec-git" data-part="sec-git"><strong>Part 6 · Git + collab</strong><span>V62–67</span></a>
+        <a class="parts-rail-link" href="#sec-cicd" data-part="sec-cicd"><strong>Part 7 · CI/CD</strong><span>V68–75</span></a>
+        <a class="parts-rail-link" href="#sec-automation" data-part="sec-automation"><strong>Part 8 · Automation</strong><span>V76–82</span></a>
+        <a class="parts-rail-link" href="#sec-docker" data-part="sec-docker"><strong>Part 9 · Docker</strong><span>V83–90</span></a>
+        <a class="parts-rail-link" href="#sec-k8s" data-part="sec-k8s"><strong>Part 10 · Kubernetes + HA</strong><span>V91–100</span></a>
+        <a class="parts-rail-link" href="#sec-web" data-part="sec-web"><strong>Part 11 · Web servers</strong><span>V101–106</span></a>
+        <a class="parts-rail-link" href="#sec-monitor" data-part="sec-monitor"><strong>Part 12 · Monitoring</strong><span>V107–114</span></a>
+        <a class="parts-rail-link" href="#sec-backup" data-part="sec-backup"><strong>Part 13 · Backup &amp; recovery</strong><span>V115–120</span></a>
+        <a class="parts-rail-link" href="#sec-arch" data-part="sec-arch"><strong>Part 14 · Architecture</strong><span>V121–126</span></a>
+        <a class="parts-rail-link" href="#sec-lang" data-part="sec-lang"><strong>Part 15 · Languages</strong><span>V127–131</span></a>
+        <a class="parts-rail-link" href="#sec-ai" data-part="sec-ai"><strong>Part 16 · AI/LLM</strong><span>V132–137</span></a>
+        <a class="parts-rail-link" href="#sec-fit" data-part="sec-fit"><strong>Part 17 · Fit / intro</strong><span>V138–143</span></a>
+        <a class="parts-rail-link" href="#sec-scenario" data-part="sec-scenario"><strong>Part 18 · Scenarios</strong><span>V144–151</span></a>
+        <a class="parts-rail-link" href="#sec-close" data-part="sec-close"><strong>Part 19 · Closing</strong><span>V152–154</span></a>
+
+      </nav>
+    </aside>
+    <button class="parts-rail-show" data-parts-rail-show type="button" hidden aria-label="Show parts panel">
+      <svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="16" rx="2"></rect><path d="M15 4v16"></path><path d="M8 9l3 3-3 3"></path></svg>
+      <span>Parts</span>
+    </button>
+
   <script>
     (function () {
       const btn = document.querySelector('[data-theme-toggle]');
@@ -3254,40 +3302,57 @@ histogram_quantile(0.95, sum by (le) (rate(http_request_duration_seconds_bucket[
           setTimeout(closeMobile, 50);
         }
       });
-    
-      // Parts rail collapse (desktop) + mobile drawer close
-      const partsRail = document.getElementById('parts-rail');
-      const railHideBtn = document.querySelector('[data-parts-rail-toggle]');
-      const railShowBtn = document.querySelector('[data-parts-rail-show]');
-      const tocCloseBtn = document.querySelector('[data-toc-close]');
-      const RAIL_KEY = 'vnpt-parts-rail-collapsed';
-
-      const setRailCollapsed = (collapsed) => {
-        document.body.classList.toggle('parts-rail-collapsed', collapsed);
-        if (railHideBtn) {
-          railHideBtn.setAttribute('aria-expanded', collapsed ? 'false' : 'true');
-          railHideBtn.setAttribute('aria-label', collapsed ? 'Show parts rail' : 'Hide parts rail');
-          railHideBtn.title = collapsed ? 'Show parts' : 'Hide parts';
-        }
-        if (railShowBtn) {
-          railShowBtn.hidden = !collapsed;
-          railShowBtn.setAttribute('aria-hidden', collapsed ? 'false' : 'true');
-        }
-        try { localStorage.setItem(RAIL_KEY, collapsed ? '1' : '0'); } catch (_) {}
-      };
-
-      if (partsRail && railHideBtn && railShowBtn) {
-        let collapsed = false;
-        try { collapsed = localStorage.getItem(RAIL_KEY) === '1'; } catch (_) {}
-        setRailCollapsed(collapsed);
-        railHideBtn.addEventListener('click', () => setRailCollapsed(true));
-        railShowBtn.addEventListener('click', () => setRailCollapsed(false));
-      }
-
-      tocCloseBtn && tocCloseBtn.addEventListener('click', closeMobile);
-
     })();
   </script>
+
+
+<script>
+(function () {
+  const partsRail = document.getElementById('parts-rail');
+  const hideBtn = document.querySelector('[data-parts-rail-toggle]');
+  const showBtn = document.querySelector('[data-parts-rail-show]');
+  const tocCloseBtn = document.querySelector('[data-toc-close]');
+  const sideToc = document.getElementById('side-toc');
+  const backdrop = document.querySelector('[data-toc-backdrop]');
+  const RAIL_KEY = 'vnpt-parts-rail-collapsed';
+  if (!partsRail || !hideBtn || !showBtn) return;
+
+  const setCollapsed = (collapsed) => {
+    document.body.classList.toggle('parts-rail-collapsed', !!collapsed);
+    hideBtn.setAttribute('aria-expanded', collapsed ? 'false' : 'true');
+    hideBtn.setAttribute('aria-label', collapsed ? 'Show parts panel' : 'Hide parts panel');
+    hideBtn.title = collapsed ? 'Show parts' : 'Hide parts';
+    if (collapsed) showBtn.removeAttribute('hidden');
+    else showBtn.setAttribute('hidden', '');
+    try { localStorage.setItem(RAIL_KEY, collapsed ? '1' : '0'); } catch (_) {}
+  };
+
+  let collapsed = false;
+  try { collapsed = localStorage.getItem(RAIL_KEY) === '1'; } catch (_) {}
+  setCollapsed(collapsed);
+
+  hideBtn.addEventListener('click', (e) => {
+    e.preventDefault();
+    e.stopPropagation();
+    setCollapsed(true);
+  });
+  showBtn.addEventListener('click', (e) => {
+    e.preventDefault();
+    e.stopPropagation();
+    setCollapsed(false);
+  });
+
+  if (tocCloseBtn && sideToc) {
+    tocCloseBtn.addEventListener('click', () => {
+      sideToc.classList.remove('is-open');
+      if (backdrop) {
+        backdrop.classList.remove('is-open');
+        backdrop.hidden = true;
+      }
+    });
+  }
+})();
+</script>
 
 </body>
 </html>

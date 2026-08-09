@@ -209,41 +209,56 @@ def main() -> None:
     if "</style>" in head:
         head = head.replace("</style>", ux_css + "\n</style>", 1)
     script = SCRIPT.read_text()
-    # UX_JS_INJECTED
-    _ux_js = """
-      // Parts rail collapse (desktop) + mobile drawer close
-      const partsRail = document.getElementById('parts-rail');
-      const railHideBtn = document.querySelector('[data-parts-rail-toggle]');
-      const railShowBtn = document.querySelector('[data-parts-rail-show]');
-      const tocCloseBtn = document.querySelector('[data-toc-close]');
-      const RAIL_KEY = 'vnpt-parts-rail-collapsed';
+    # Dedicated rail script (outside TOC IIFE) so hide/show always binds.
+    rail_script = """
+<script>
+(function () {
+  const partsRail = document.getElementById('parts-rail');
+  const hideBtn = document.querySelector('[data-parts-rail-toggle]');
+  const showBtn = document.querySelector('[data-parts-rail-show]');
+  const tocCloseBtn = document.querySelector('[data-toc-close]');
+  const sideToc = document.getElementById('side-toc');
+  const backdrop = document.querySelector('[data-toc-backdrop]');
+  const RAIL_KEY = 'vnpt-parts-rail-collapsed';
+  if (!partsRail || !hideBtn || !showBtn) return;
 
-      const setRailCollapsed = (collapsed) => {
-        document.body.classList.toggle('parts-rail-collapsed', collapsed);
-        if (railHideBtn) {
-          railHideBtn.setAttribute('aria-expanded', collapsed ? 'false' : 'true');
-          railHideBtn.setAttribute('aria-label', collapsed ? 'Show parts rail' : 'Hide parts rail');
-          railHideBtn.title = collapsed ? 'Show parts' : 'Hide parts';
-        }
-        if (railShowBtn) {
-          railShowBtn.hidden = !collapsed;
-          railShowBtn.setAttribute('aria-hidden', collapsed ? 'false' : 'true');
-        }
-        try { localStorage.setItem(RAIL_KEY, collapsed ? '1' : '0'); } catch (_) {}
-      };
+  const setCollapsed = (collapsed) => {
+    document.body.classList.toggle('parts-rail-collapsed', !!collapsed);
+    hideBtn.setAttribute('aria-expanded', collapsed ? 'false' : 'true');
+    hideBtn.setAttribute('aria-label', collapsed ? 'Show parts panel' : 'Hide parts panel');
+    hideBtn.title = collapsed ? 'Show parts' : 'Hide parts';
+    if (collapsed) showBtn.removeAttribute('hidden');
+    else showBtn.setAttribute('hidden', '');
+    try { localStorage.setItem(RAIL_KEY, collapsed ? '1' : '0'); } catch (_) {}
+  };
 
-      if (partsRail && railHideBtn && railShowBtn) {
-        let collapsed = false;
-        try { collapsed = localStorage.getItem(RAIL_KEY) === '1'; } catch (_) {}
-        setRailCollapsed(collapsed);
-        railHideBtn.addEventListener('click', () => setRailCollapsed(true));
-        railShowBtn.addEventListener('click', () => setRailCollapsed(false));
+  let collapsed = false;
+  try { collapsed = localStorage.getItem(RAIL_KEY) === '1'; } catch (_) {}
+  setCollapsed(collapsed);
+
+  hideBtn.addEventListener('click', (e) => {
+    e.preventDefault();
+    e.stopPropagation();
+    setCollapsed(true);
+  });
+  showBtn.addEventListener('click', (e) => {
+    e.preventDefault();
+    e.stopPropagation();
+    setCollapsed(false);
+  });
+
+  if (tocCloseBtn && sideToc) {
+    tocCloseBtn.addEventListener('click', () => {
+      sideToc.classList.remove('is-open');
+      if (backdrop) {
+        backdrop.classList.remove('is-open');
+        backdrop.hidden = true;
       }
-
-      tocCloseBtn && tocCloseBtn.addEventListener('click', closeMobile);
+    });
+  }
+})();
+</script>
 """
-    if "})();" in script:
-        script = script.replace("})();", _ux_js + "\n    })();", 1)
 
     html: list[str] = [head.rstrip()]
     if "</head>" not in head:
@@ -278,23 +293,9 @@ def main() -> None:
     )
     html.append("\n".join(toc_bits))
     html.append(
-        """
-      </nav>
-    </aside>
-    <aside class="parts-rail" id="parts-rail" aria-label="Parts only">
-      <div class="parts-rail-head-row">
-        <p class="parts-rail-head">Parts</p>
-        <button class="parts-rail-toggle" data-parts-rail-toggle type="button" aria-expanded="true" aria-controls="parts-rail" aria-label="Hide parts rail" title="Hide parts">›</button>
-      </div>
-      <nav class="parts-rail-list" data-parts-rail>
-"""
-    )
-    html.append("\n".join(rail_bits))
-    html.append(
         f"""
       </nav>
     </aside>
-    <button class="parts-rail-show" data-parts-rail-show type="button" hidden aria-label="Show parts rail">‹ Parts</button>
   <main class="page with-side-toc">
     <section class="hero with-side-toc">
       <div class="hero-card">
@@ -330,7 +331,44 @@ def main() -> None:
   </div>
 """
     )
+    # Parts rail OUTSIDE .shell so it cannot steal the main grid column
+    icon_hide = (
+        '<svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" '
+        'stroke-width="2" stroke-linecap="round" stroke-linejoin="round">'
+        '<rect x="3" y="4" width="18" height="16" rx="2"></rect>'
+        '<path d="M15 4v16"></path><path d="M11 9l-3 3 3 3"></path></svg>'
+    )
+    icon_show = (
+        '<svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" '
+        'stroke-width="2" stroke-linecap="round" stroke-linejoin="round">'
+        '<rect x="3" y="4" width="18" height="16" rx="2"></rect>'
+        '<path d="M15 4v16"></path><path d="M8 9l3 3-3 3"></path></svg>'
+    )
+    html.append(
+        f"""
+    <aside class="parts-rail" id="parts-rail" aria-label="Parts only">
+      <div class="parts-rail-head-row">
+        <p class="parts-rail-head">Parts</p>
+        <button class="parts-rail-toggle" data-parts-rail-toggle type="button" aria-expanded="true" aria-controls="parts-rail" aria-label="Hide parts panel" title="Hide parts">
+          {icon_hide}
+        </button>
+      </div>
+      <nav class="parts-rail-list" data-parts-rail>
+"""
+    )
+    html.append("\n".join(rail_bits))
+    html.append(
+        f"""
+      </nav>
+    </aside>
+    <button class="parts-rail-show" data-parts-rail-show type="button" hidden aria-label="Show parts panel">
+      {icon_show}
+      <span>Parts</span>
+    </button>
+"""
+    )
     html.append(script)
+    html.append(rail_script)
     html.append("</body>\n</html>\n")
 
     OUT.write_text("\n".join(html), encoding="utf-8")
