@@ -14,9 +14,11 @@ from cards_part1a import CARDS as C1A  # noqa: E402
 from cards_part1b import CARDS as C1B  # noqa: E402
 from cards_part1c import CARDS as C1C  # noqa: E402
 from cards_part2 import CARDS as C2  # noqa: E402
+from cards_tips_mcq import CARDS as CTIPS  # noqa: E402
 
 SECTIONS = [
     ("sec-jd", "0 · JD map", "Part 0 · JD map"),
+    ("sec-tips", "0b · Exam tips + MCQ (VNPTips #2)", "Part 0b · Exam tips + MCQ"),
     ("sec-devops", "1 · IT & DevOps fundamentals", "Part 1 · IT & DevOps"),
     ("sec-linux", "2 · Linux essentials", "Part 2 · Linux"),
     ("sec-os", "3 · OS fundamentals", "Part 3 · OS fundamentals"),
@@ -45,6 +47,16 @@ def esc(s: str) -> str:
 
 def p_html(text: str) -> str:
     parts = [f"<p>{esc(p)}</p>" for p in text.split("\n\n") if p.strip()]
+    return "".join(parts) if parts else "<p></p>"
+
+
+def p_br(text: str) -> str:
+    """Paragraphs on blank lines; single newlines become <br> (for MCQ options)."""
+    parts = []
+    for para in text.split("\n\n"):
+        if not para.strip():
+            continue
+        parts.append("<p>" + "<br>\n".join(esc(line) for line in para.split("\n")) + "</p>")
     return "".join(parts) if parts else "<p></p>"
 
 
@@ -100,8 +112,36 @@ def render_interview(num: int, card: dict) -> str:
     return "\n".join(out)
 
 
+def render_mcq(num: int, card: dict) -> str:
+    cid = f"v{num}"
+    q_en = f"{card['q_en']}\n\n{card['opts_en']}"
+    q_vi = f"{card['q_vi']}\n\n{card['opts_vi']}"
+    out = [
+        f'<article class="question-card" id="{cid}">',
+        f'  <div class="question-head"><h2>{num:02d}. {esc(card["title"])}</h2>'
+        f'<p>MCQ · {esc(card.get("sub", ""))}</p></div>',
+        '  <div class="grid4">',
+        '    <div class="cell row-head">Question EN</div><div class="cell row-head">Answer EN</div>'
+        '<div class="cell row-head">Question VI</div><div class="cell row-head">Answer VI</div>',
+        f'    <div class="cell question">{p_br(q_en)}</div>',
+        f'    <div class="cell answer">{p_br(card["ans_en"])}</div>',
+        f'    <div class="cell question">{p_br(q_vi)}</div>',
+        f'    <div class="cell answer">{p_br(card["ans_vi"])}</div>',
+        "  </div>",
+    ]
+    if card.get("crib"):
+        out.append(
+            f'  <div class="crib"><p><strong>Elimination tip:</strong> {esc(card["crib"])}</p></div>'
+        )
+    out.append("</article>")
+    return "\n".join(out)
+
+
 def main() -> None:
-    cards = list(C1A) + list(C1B) + list(C1C) + list(C2)
+    # Tips/MCQ inserted after JD map cards for study order
+    jd = [c for c in C1A if c["sec"] == "sec-jd"]
+    rest_a = [c for c in C1A if c["sec"] != "sec-jd"]
+    cards = jd + list(CTIPS) + rest_a + list(C1B) + list(C1C) + list(C2)
     by_sec: dict[str, list[tuple[int, dict]]] = {sid: [] for sid, _, _ in SECTIONS}
     for i, card in enumerate(cards, start=1):
         by_sec[card["sec"]].append((i, card))
@@ -149,14 +189,18 @@ def main() -> None:
         body_bits.append(f'    <section class="section-block" id="{sid}">')
         body_bits.append(f"      <h2>{esc(label)}</h2>")
         for num, card in items:
-            if card["kind"] == "interview":
+            kind = card["kind"]
+            if kind == "interview":
                 body_bits.append(render_interview(num, card))
+            elif kind == "mcq":
+                body_bits.append(render_mcq(num, card))
             else:
                 body_bits.append(render_concept(num, card))
         body_bits.append("    </section>")
     body_bits.append("    </section>")
 
     total = len(cards)
+    nsec = sum(1 for sid, _, _ in SECTIONS if by_sec[sid])
     head = HEAD.read_text().replace(
         "Globant Fullstack PHP + React Interview Prep",
         "VNPT DevOps Fundamentals + Interview Prep",
@@ -172,7 +216,7 @@ def main() -> None:
     <div class="topbar-inner">
       <div class="brand">
         <h1>VNPT · DevOps Engineer</h1>
-        <p>Pre-test fundamentals + spoken EN/VI interview prep — Linux, CI/CD, Docker/K8s, monitoring, security, AI/LLM</p>
+        <p>VNPTips #2: vòng thi thường là trắc nghiệm — theory + tình huống + ứng dụng DevOps. Then spoken EN/VI interview prep.</p>
       </div>
       <div class="top-actions">
         <button class="btn toc-mobile-btn" data-toc-open type="button">Contents</button>
@@ -188,7 +232,7 @@ def main() -> None:
     <aside class="side-toc" id="side-toc" aria-label="Question contents">
       <div class="side-toc-head">
         <strong>Contents</strong>
-        <span>Full list · Parts 0–19 · click to jump</span>
+        <span>Full list · JD → Exam tips/MCQ → fundamentals → interview</span>
       </div>
       <nav class="side-toc-list" data-side-toc>
 """
@@ -212,16 +256,17 @@ def main() -> None:
     <section class="hero with-side-toc">
       <div class="hero-card">
         <div class="section-label">VNPT DevOps prep</div>
-        <p>Lead with fundamentals for the pre-test, then spoken fit + scenarios. Honesty: strong hands-on CI/CD, Docker/K8s, monitoring — AI/LLM as practical assistants (scripts, logs, docs), not invented VNPT-internal platforms.</p>
+        <p>Per VNPTips #2: prepare for <strong>trắc nghiệm</strong> (theory + situational + job-applied), use elimination/time strategy, then interview fit/scenarios. Hands-on voice on CI/CD, Docker/K8s, monitoring — AI/LLM as practical assistants only.</p>
         <nav class="section-nav" aria-label="Sections">
           {nav}
         </nav>
         <div class="hero-kpis">
           <div class="kpi"><strong>{total}</strong><span>Bilingual cards</span></div>
-          <div class="kpi"><strong>20</strong><span>Sections (0–19)</span></div>
-          <div class="kpi"><strong>EN + VI</strong><span>Study + spoken prep</span></div>
+          <div class="kpi"><strong>{nsec}</strong><span>Sections</span></div>
+          <div class="kpi"><strong>MCQ</strong><span>Trắc nghiệm drills</span></div>
         </div>
         <div class="tag-list">
+          <span class="tag">Trắc nghiệm</span><span class="tag">VNPTips #2</span>
           <span class="tag">Jenkins</span><span class="tag">GitLab</span><span class="tag">Docker</span><span class="tag">Kubernetes</span>
           <span class="tag">Ansible</span><span class="tag">Prometheus</span><span class="tag">Grafana</span><span class="tag">ELK</span>
           <span class="tag">Nginx</span><span class="tag">ATTT</span><span class="tag">AI/LLM</span>
@@ -229,7 +274,7 @@ def main() -> None:
       </div>
       <aside class="toc-card" id="toc">
         <div class="section-label">Table of contents</div>
-        <p>Use the left Contents rail. Priority tonight: Linux/OS/Network/Security → CI/CD → Docker/K8s → Monitoring → Interview scenarios.</p>
+        <p>Tonight: <a href="#sec-tips">Exam tips + MCQ</a> → Linux/OS/Network/Security → CI/CD → Docker/K8s → Monitoring. Easy questions first; mark hard ones; review before submit.</p>
       </aside>
     </section>
 """
