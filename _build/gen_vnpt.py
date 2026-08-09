@@ -205,7 +205,45 @@ def main() -> None:
         "Globant Fullstack PHP + React Interview Prep",
         "VNPT DevOps Fundamentals + Interview Prep",
     )
+    ux_css = (Path(__file__).with_name("ux_overrides.css")).read_text()
+    if "</style>" in head:
+        head = head.replace("</style>", ux_css + "\n</style>", 1)
     script = SCRIPT.read_text()
+    # UX_JS_INJECTED
+    _ux_js = """
+      // Parts rail collapse (desktop) + mobile drawer close
+      const partsRail = document.getElementById('parts-rail');
+      const railHideBtn = document.querySelector('[data-parts-rail-toggle]');
+      const railShowBtn = document.querySelector('[data-parts-rail-show]');
+      const tocCloseBtn = document.querySelector('[data-toc-close]');
+      const RAIL_KEY = 'vnpt-parts-rail-collapsed';
+
+      const setRailCollapsed = (collapsed) => {
+        document.body.classList.toggle('parts-rail-collapsed', collapsed);
+        if (railHideBtn) {
+          railHideBtn.setAttribute('aria-expanded', collapsed ? 'false' : 'true');
+          railHideBtn.setAttribute('aria-label', collapsed ? 'Show parts rail' : 'Hide parts rail');
+          railHideBtn.title = collapsed ? 'Show parts' : 'Hide parts';
+        }
+        if (railShowBtn) {
+          railShowBtn.hidden = !collapsed;
+          railShowBtn.setAttribute('aria-hidden', collapsed ? 'false' : 'true');
+        }
+        try { localStorage.setItem(RAIL_KEY, collapsed ? '1' : '0'); } catch (_) {}
+      };
+
+      if (partsRail && railHideBtn && railShowBtn) {
+        let collapsed = false;
+        try { collapsed = localStorage.getItem(RAIL_KEY) === '1'; } catch (_) {}
+        setRailCollapsed(collapsed);
+        railHideBtn.addEventListener('click', () => setRailCollapsed(true));
+        railShowBtn.addEventListener('click', () => setRailCollapsed(false));
+      }
+
+      tocCloseBtn && tocCloseBtn.addEventListener('click', closeMobile);
+"""
+    if "})();" in script:
+        script = script.replace("})();", _ux_js + "\n    })();", 1)
 
     html: list[str] = [head.rstrip()]
     if "</head>" not in head:
@@ -221,15 +259,16 @@ def main() -> None:
       <div class="top-actions">
         <button class="btn toc-mobile-btn" data-toc-open type="button">Contents</button>
         <button class="btn theme-toggle" data-theme-toggle aria-label="Switch theme">☾</button>
-        <a class="btn" href="index.html">Cloud sheet</a>
-        <a class="btn" href="globant.html">PHP/React sheet</a>
-        <a class="btn" href="cv.html">CV deep-dive</a>
+        <a class="btn btn-link-secondary" href="index.html">Cloud</a>
+        <a class="btn btn-link-secondary" href="globant.html">Globant</a>
+        <a class="btn btn-link-secondary" href="cv.html">CV</a>
       </div>
     </div>
   </div>
     <div class="toc-backdrop" data-toc-backdrop hidden></div>
   <div class="shell">
     <aside class="side-toc" id="side-toc" aria-label="Question contents">
+      <button class="side-toc-close" data-toc-close type="button" aria-label="Close contents">×</button>
       <div class="side-toc-head">
         <strong>Contents</strong>
         <span>Full list · JD → Exam tips/MCQ → fundamentals → interview</span>
@@ -243,7 +282,10 @@ def main() -> None:
       </nav>
     </aside>
     <aside class="parts-rail" id="parts-rail" aria-label="Parts only">
-      <p class="parts-rail-head">Parts</p>
+      <div class="parts-rail-head-row">
+        <p class="parts-rail-head">Parts</p>
+        <button class="parts-rail-toggle" data-parts-rail-toggle type="button" aria-expanded="true" aria-controls="parts-rail" aria-label="Hide parts rail" title="Hide parts">›</button>
+      </div>
       <nav class="parts-rail-list" data-parts-rail>
 """
     )
@@ -252,6 +294,7 @@ def main() -> None:
         f"""
       </nav>
     </aside>
+    <button class="parts-rail-show" data-parts-rail-show type="button" hidden aria-label="Show parts rail">‹ Parts</button>
   <main class="page with-side-toc">
     <section class="hero with-side-toc">
       <div class="hero-card">
