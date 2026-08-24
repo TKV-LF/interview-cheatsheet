@@ -1,0 +1,2540 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>DevOps Interview Prep — Real Experience</title>
+  <link href="https://api.fontshare.com/v2/css?f[]=satoshi@400,500,700&f[]=general-sans@400,500,600,700&display=swap" rel="stylesheet">
+  <style>
+    :root, [data-theme="light"] {
+      --text-xs: clamp(0.75rem, 0.7rem + 0.25vw, 0.875rem);
+      --text-sm: clamp(0.875rem, 0.8rem + 0.35vw, 1rem);
+      --text-base: clamp(1rem, 0.95rem + 0.25vw, 1.125rem);
+      --text-lg: clamp(1.125rem, 1rem + 0.75vw, 1.5rem);
+      --text-xl: clamp(1.5rem, 1.2rem + 1.25vw, 2.25rem);
+      --space-1: 0.25rem; --space-2: 0.5rem; --space-3: 0.75rem; --space-4: 1rem;
+      --space-5: 1.25rem; --space-6: 1.5rem; --space-8: 2rem; --space-10: 2.5rem;
+      --space-12: 3rem; --space-16: 4rem;
+      --color-bg: #f7f6f2;
+      --color-surface: #f9f8f5;
+      --color-surface-2: #fbfbf9;
+      --color-surface-offset: #edeae5;
+      --color-border: #d4d1ca;
+      --color-divider: #dcd9d5;
+      --color-text: #28251d;
+      --color-text-muted: #6f6c65;
+      --color-text-faint: #98958f;
+      --color-primary: #01696f;
+      --color-primary-hover: #0c4e54;
+      --color-primary-highlight: #d8e6e3;
+      --color-success: #437a22;
+      --color-warning: #964219;
+      --radius-sm: 0.375rem;
+      --radius-md: 0.5rem;
+      --radius-lg: 0.75rem;
+      --radius-xl: 1rem;
+      --shadow-sm: 0 1px 2px rgba(30, 27, 22, 0.06);
+      --shadow-md: 0 10px 30px rgba(30, 27, 22, 0.08);
+      --font-display: 'General Sans', 'Inter', sans-serif;
+      --font-body: 'Satoshi', 'Inter', sans-serif;
+    }
+
+    [data-theme="dark"] {
+      --color-bg: #171614;
+      --color-surface: #1c1b19;
+      --color-surface-2: #201f1d;
+      --color-surface-offset: #2a2826;
+      --color-border: #393836;
+      --color-divider: #2f2e2c;
+      --color-text: #e1dfdb;
+      --color-text-muted: #adaaa4;
+      --color-text-faint: #7c7974;
+      --color-primary: #4f98a3;
+      --color-primary-hover: #6aafba;
+      --color-primary-highlight: rgba(79,152,163,0.16);
+      --color-success: #79b95a;
+      --color-warning: #d08b60;
+      --shadow-sm: 0 1px 2px rgba(0,0,0,0.18);
+      --shadow-md: 0 10px 30px rgba(0,0,0,0.3);
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      font-family: var(--font-body);
+      font-size: var(--text-base);
+      color: var(--color-text);
+      background: var(--color-bg);
+      line-height: 1.65;
+    }
+
+    a { color: inherit; text-decoration: none; }
+    .page {
+      max-width: 1600px;
+      margin: 0 auto;
+      padding: var(--space-6);
+    }
+
+    .topbar {
+      position: sticky;
+      top: 0;
+      z-index: 30;
+      backdrop-filter: blur(10px);
+      background: color-mix(in srgb, var(--color-bg) 88%, transparent);
+      border-bottom: 1px solid var(--color-divider);
+    }
+
+    .topbar-inner {
+      max-width: 1600px;
+      margin: 0 auto;
+      padding: var(--space-4) var(--space-6);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: var(--space-4);
+    }
+
+    .brand h1 {
+      margin: 0;
+      font-family: var(--font-display);
+      font-size: var(--text-xl);
+      line-height: 1.05;
+      letter-spacing: -0.03em;
+    }
+
+    .brand p {
+      margin: var(--space-2) 0 0;
+      color: var(--color-text-muted);
+      font-size: var(--text-sm);
+      max-width: 72ch;
+    }
+
+    .top-actions {
+      display: flex;
+      align-items: center;
+      gap: var(--space-3);
+      flex-wrap: wrap;
+    }
+
+    .btn {
+      border: 1px solid var(--color-border);
+      background: var(--color-surface);
+      color: var(--color-text);
+      border-radius: var(--radius-full, 999px);
+      padding: 0.72rem 1rem;
+      font-size: var(--text-sm);
+      font-weight: 600;
+      box-shadow: var(--shadow-sm);
+      cursor: pointer;
+    }
+
+    .btn:hover { background: var(--color-surface-2); }
+    .theme-toggle { min-width: 44px; min-height: 44px; display: inline-flex; align-items: center; justify-content: center; }
+
+    .hero {
+      display: grid;
+      grid-template-columns: 1.2fr 0.8fr;
+      gap: var(--space-6);
+      margin: var(--space-6) 0 var(--space-8);
+    }
+
+    .hero-card, .toc-card, .question-card {
+      background: var(--color-surface);
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius-xl);
+      box-shadow: var(--shadow-sm);
+    }
+
+    .hero-card { padding: var(--space-6); }
+    .hero-kpis {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: var(--space-3);
+      margin-top: var(--space-5);
+    }
+
+    .kpi {
+      background: var(--color-surface-2);
+      border: 1px solid var(--color-divider);
+      border-radius: var(--radius-lg);
+      padding: var(--space-4);
+    }
+
+    .kpi strong {
+      display: block;
+      font-size: var(--text-lg);
+      font-family: var(--font-display);
+      margin-bottom: var(--space-2);
+    }
+
+    .kpi span {
+      font-size: var(--text-sm);
+      color: var(--color-text-muted);
+    }
+
+    .toc-card {
+      padding: var(--space-6);
+      background: linear-gradient(180deg, var(--color-surface) 0%, var(--color-surface-2) 100%);
+    }
+
+    .section-label {
+      display: inline-flex;
+      align-items: center;
+      gap: var(--space-2);
+      padding: 0.35rem 0.7rem;
+      border-radius: 999px;
+      background: var(--color-primary-highlight);
+      color: var(--color-primary);
+      font-size: var(--text-xs);
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      margin-bottom: var(--space-4);
+    }
+
+    .toc-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: var(--space-3);
+      margin-top: var(--space-4);
+    }
+
+    .toc-link {
+      display: block;
+      padding: var(--space-4);
+      border-radius: var(--radius-lg);
+      background: var(--color-bg);
+      border: 1px solid var(--color-divider);
+      min-height: 100%;
+    }
+
+    .toc-link:hover {
+      border-color: var(--color-primary);
+      background: var(--color-primary-highlight);
+    }
+
+    .toc-link small {
+      display: block;
+      color: var(--color-text-faint);
+      margin-bottom: var(--space-2);
+      font-size: var(--text-xs);
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+    }
+
+    .toc-link strong {
+      display: block;
+      font-size: var(--text-sm);
+      line-height: 1.45;
+    }
+
+    .questions {
+      display: grid;
+      gap: var(--space-5);
+      padding-bottom: var(--space-16);
+    }
+
+    .question-card {
+      overflow: hidden;
+      scroll-margin-top: 100px;
+    }
+
+    .question-head {
+      padding: var(--space-5) var(--space-5) var(--space-4);
+      border-bottom: 1px solid var(--color-divider);
+      background: var(--color-surface-2);
+    }
+
+    .question-head h2 {
+      margin: 0;
+      font-family: var(--font-display);
+      font-size: var(--text-lg);
+      line-height: 1.15;
+      letter-spacing: -0.02em;
+    }
+
+    .question-head p {
+      margin: var(--space-2) 0 0;
+      color: var(--color-text-muted);
+      font-size: var(--text-sm);
+    }
+
+    .grid4 {
+      display: grid;
+      grid-template-columns: 0.8fr 1.2fr 0.8fr 1.2fr;
+    }
+
+    .cell {
+      padding: var(--space-5);
+      border-right: 1px solid var(--color-divider);
+      border-bottom: 1px solid var(--color-divider);
+      min-width: 0;
+    }
+
+    .grid4 .cell:nth-child(4n) { border-right: none; }
+    .row-head {
+      background: var(--color-surface-2);
+      font-size: var(--text-xs);
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      font-weight: 700;
+      color: var(--color-text-muted);
+      padding-top: var(--space-4);
+      padding-bottom: var(--space-4);
+    }
+
+    .cell.question {
+      background: color-mix(in srgb, var(--color-surface-2) 70%, var(--color-bg));
+      font-weight: 600;
+    }
+
+    .cell.answer {
+      background: var(--color-surface);
+    }
+
+    .cell p { margin: 0; }
+    .cell p + p { margin-top: var(--space-3); }
+
+    .note {
+      padding: var(--space-4) var(--space-5);
+      background: color-mix(in srgb, var(--color-primary-highlight) 55%, var(--color-surface));
+      border-top: 1px solid var(--color-divider);
+      color: var(--color-text-muted);
+      font-size: var(--text-sm);
+    }
+
+    .tag-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: var(--space-2);
+      margin-top: var(--space-4);
+    }
+
+    .tag {
+      padding: 0.35rem 0.7rem;
+      border: 1px solid var(--color-divider);
+      border-radius: 999px;
+      background: var(--color-bg);
+      color: var(--color-text-muted);
+      font-size: var(--text-xs);
+      font-weight: 600;
+    }
+
+    .footer-note {
+      margin-top: var(--space-8);
+      color: var(--color-text-muted);
+      font-size: var(--text-sm);
+      text-align: center;
+    }
+
+    @media (max-width: 1180px) {
+      .hero { grid-template-columns: 1fr; }
+      .grid4 { grid-template-columns: 1fr 1fr; }
+      .grid4 .cell:nth-child(2n) { border-right: none; }
+      .grid4 .cell:nth-child(4n) { border-right: none; }
+      .row-head { display: none; }
+      .cell.question { border-bottom: 1px solid var(--color-divider); }
+    }
+
+    
+    .section-nav {
+      display: flex;
+      flex-wrap: wrap;
+      gap: var(--space-2);
+      margin-top: var(--space-4);
+    }
+    .section-nav a {
+      padding: 0.4rem 0.75rem;
+      border: 1px solid var(--color-divider);
+      border-radius: 999px;
+      background: var(--color-bg);
+      font-size: var(--text-xs);
+      font-weight: 700;
+      color: var(--color-text-muted);
+    }
+    .section-nav a:hover {
+      border-color: var(--color-primary);
+      color: var(--color-primary);
+      background: var(--color-primary-highlight);
+    }
+    .section-block {
+      scroll-margin-top: 110px;
+      margin-top: var(--space-8);
+    }
+    .section-block > h2 {
+      font-family: var(--font-display);
+      font-size: var(--text-lg);
+      letter-spacing: -0.02em;
+      margin: 0 0 var(--space-4);
+    }
+    .crib {
+      padding: var(--space-4) var(--space-5);
+      background: color-mix(in srgb, var(--color-warning) 8%, var(--color-surface));
+      border-top: 1px solid var(--color-divider);
+      font-size: var(--text-sm);
+      color: var(--color-text-muted);
+    }
+    .crib p { margin: 0; }
+    .crib p + p { margin-top: var(--space-2); }
+    .crib strong { color: var(--color-text); }
+
+@media (max-width: 720px) {
+      .page, .topbar-inner { padding-left: var(--space-4); padding-right: var(--space-4); }
+      .topbar-inner { align-items: flex-start; flex-direction: column; }
+      .hero-kpis { grid-template-columns: 1fr; }
+      .toc-grid { grid-template-columns: 1fr; }
+      .grid4 { grid-template-columns: 1fr; }
+      .cell { border-right: none !important; }
+      .question-head h2 { font-size: 1.2rem; }
+    }
+  
+    .star{padding:var(--space-4) var(--space-5);background:color-mix(in srgb,var(--color-primary-highlight) 70%,var(--color-surface));border-top:1px solid var(--color-divider);font-size:var(--text-sm);color:var(--color-text-muted)}
+    .star p{margin:0}.star p+p{margin-top:var(--space-2)}.star strong{color:var(--color-text)}
+    .say{margin-top:var(--space-3);padding-top:var(--space-3);border-top:1px dashed var(--color-divider);color:var(--color-primary);font-weight:600}
+
+    /* Left full Contents + right Parts-only rail */
+    body.has-side-toc { overflow-x: hidden; }
+    .shell {
+      display: grid;
+      grid-template-columns: minmax(240px, 300px) minmax(0, 1fr);
+      gap: 0;
+      align-items: start;
+      max-width: 1800px;
+      margin: 0 auto;
+      position: relative;
+    }
+    .side-toc {
+      position: sticky;
+      top: 88px;
+      height: calc(100vh - 100px);
+      overflow: auto;
+      padding: var(--space-4);
+      margin: var(--space-4) 0 var(--space-4) var(--space-4);
+      background: var(--color-surface);
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius-xl);
+      box-shadow: var(--shadow-sm);
+      z-index: 20;
+    }
+    .side-toc-head {
+      position: sticky;
+      top: 0;
+      background: var(--color-surface);
+      padding-bottom: var(--space-3);
+      margin-bottom: var(--space-3);
+      border-bottom: 1px solid var(--color-divider);
+      z-index: 1;
+    }
+    .side-toc-head strong {
+      display: block;
+      font-family: var(--font-display);
+      font-size: var(--text-sm);
+      letter-spacing: -0.02em;
+    }
+    .side-toc-head span {
+      display: block;
+      margin-top: 0.25rem;
+      color: var(--color-text-faint);
+      font-size: var(--text-xs);
+    }
+    .side-toc-list {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+    }
+    .side-toc-link {
+      display: grid;
+      grid-template-columns: 2.2rem 1fr;
+      gap: 0.45rem;
+      align-items: start;
+      padding: 0.45rem 0.55rem;
+      border-radius: var(--radius-md);
+      color: var(--color-text-muted);
+      font-size: var(--text-xs);
+      line-height: 1.35;
+      border: 1px solid transparent;
+    }
+    .side-toc-link:hover {
+      background: var(--color-primary-highlight);
+      color: var(--color-primary);
+    }
+    .side-toc-link.is-active {
+      background: var(--color-primary-highlight);
+      border-color: color-mix(in srgb, var(--color-primary) 35%, var(--color-border));
+      color: var(--color-primary);
+      font-weight: 600;
+    }
+    .side-toc-num {
+      font-variant-numeric: tabular-nums;
+      color: var(--color-text-faint);
+      font-weight: 700;
+    }
+    .side-toc-link.is-active .side-toc-num { color: var(--color-primary); }
+    .side-toc-title { min-width: 0; }
+
+    .side-toc-part {
+      display: block;
+      margin: 0.85rem 0 0.35rem;
+      padding: 0.5rem 0.55rem 0.35rem;
+      border-top: 1px solid var(--color-divider);
+    }
+    .side-toc-part:first-child {
+      margin-top: 0;
+      border-top: none;
+      padding-top: 0.15rem;
+    }
+    .side-toc-part-link {
+      display: block;
+      font-family: var(--font-display);
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.02em;
+      color: var(--color-text);
+      line-height: 1.3;
+    }
+    .side-toc-part-link:hover { color: var(--color-primary); }
+    .side-toc-part-range {
+      display: block;
+      margin-top: 0.15rem;
+      font-size: 0.65rem;
+      font-variant-numeric: tabular-nums;
+      color: var(--color-text-faint);
+      font-weight: 600;
+    }
+    .side-toc-part.is-active .side-toc-part-link { color: var(--color-primary); }
+    .side-toc-part.is-active .side-toc-part-range {
+      color: color-mix(in srgb, var(--color-primary) 70%, var(--color-text-faint));
+    }
+
+    /* Right: Parts only */
+    .parts-rail {
+      display: none;
+    }
+    @media (min-width: 1280px) {
+      .shell {
+        grid-template-columns: minmax(240px, 300px) minmax(0, 1fr);
+        max-width: 1800px;
+        padding-right: 0;
+      }
+      .parts-rail {
+        display: block;
+        position: fixed;
+        top: 148px;
+        right: 0;
+        width: 168px;
+        max-height: calc(100vh - 112px);
+        overflow: auto;
+        padding: 0.75rem 0.65rem;
+        background: var(--color-surface);
+        border: 1px solid var(--color-border);
+        border-radius: var(--radius-xl);
+        box-shadow: var(--shadow-sm);
+        z-index: 25;
+      }
+      .parts-rail-head {
+        font-family: var(--font-display);
+        font-size: 0.72rem;
+        font-weight: 700;
+        letter-spacing: 0.03em;
+        text-transform: uppercase;
+        color: var(--color-text-faint);
+        margin: 0 0 0.55rem;
+        padding: 0 0.35rem 0.45rem;
+        border-bottom: 1px solid var(--color-divider);
+      }
+      .parts-rail-list {
+        display: flex;
+        flex-direction: column;
+        gap: 2px;
+      }
+      .parts-rail-link {
+        display: block;
+        padding: 0.4rem 0.45rem;
+        border-radius: var(--radius-md);
+        color: var(--color-text-muted);
+        font-size: 0.7rem;
+        line-height: 1.3;
+        border: 1px solid transparent;
+      }
+      .parts-rail-link strong {
+        display: block;
+        font-family: var(--font-display);
+        font-size: 0.72rem;
+        font-weight: 700;
+        color: var(--color-text);
+      }
+      .parts-rail-link span {
+        display: block;
+        margin-top: 0.1rem;
+        font-size: 0.62rem;
+        font-variant-numeric: tabular-nums;
+        color: var(--color-text-faint);
+        font-weight: 600;
+      }
+      .parts-rail-link:hover {
+        background: var(--color-primary-highlight);
+      }
+      .parts-rail-link:hover strong { color: var(--color-primary); }
+      .parts-rail-link.is-active {
+        background: var(--color-primary-highlight);
+        border-color: color-mix(in srgb, var(--color-primary) 35%, var(--color-border));
+      }
+      .parts-rail-link.is-active strong { color: var(--color-primary); }
+      /* leave room so content doesn't sit under the rail */
+      .page.with-side-toc {
+        padding-right: 188px;
+      }
+    }
+
+    .page.with-side-toc {
+      max-width: none;
+      padding-left: var(--space-4);
+      padding-right: var(--space-6);
+    }
+    .hero.with-side-toc {
+      grid-template-columns: 1fr;
+    }
+    .hero.with-side-toc .toc-card { display: none; }
+    .toc-mobile-btn {
+      display: none;
+    }
+    @media (max-width: 1100px) {
+      .shell { grid-template-columns: 1fr; }
+      .parts-rail { display: none !important; }
+      .side-toc {
+        position: fixed;
+        left: 0;
+        top: 0;
+        bottom: 0;
+        width: min(86vw, 320px);
+        height: 100vh;
+        margin: 0;
+        border-radius: 0;
+        border-right: 1px solid var(--color-border);
+        transform: translateX(-105%);
+        transition: transform 0.2s ease;
+        z-index: 50;
+      }
+      .side-toc.is-open { transform: translateX(0); }
+      .toc-backdrop {
+        display: none;
+        position: fixed;
+        inset: 0;
+        background: rgba(0,0,0,0.35);
+        z-index: 40;
+      }
+      .toc-backdrop.is-open { display: block; }
+      .toc-mobile-btn { display: inline-flex; }
+      .page.with-side-toc { padding-left: var(--space-4); padding-right: var(--space-4); }
+    }
+
+/* Injected by gen_vnpt.py before style close — parts-rail toggle + mobile polish */
+
+    .parts-rail-head-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 0.4rem;
+      margin: 0 0 0.55rem;
+      padding: 0 0.1rem 0.5rem;
+      border-bottom: 1px solid var(--color-divider);
+    }
+    .parts-rail-head-row .parts-rail-head {
+      margin: 0;
+      padding: 0;
+      border: none;
+      flex: 1;
+      min-width: 0;
+    }
+    .parts-rail-toggle {
+      flex-shrink: 0;
+      width: 34px;
+      height: 34px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      border: 1px solid var(--color-border);
+      border-radius: 999px;
+      background: color-mix(in srgb, var(--color-surface) 80%, var(--color-primary-highlight));
+      color: var(--color-primary);
+      cursor: pointer;
+      box-shadow: var(--shadow-sm);
+      transition: background 0.15s ease, border-color 0.15s ease, transform 0.15s ease;
+    }
+    .parts-rail-toggle svg {
+      width: 16px;
+      height: 16px;
+      display: block;
+    }
+    .parts-rail-toggle:hover {
+      border-color: var(--color-primary);
+      background: var(--color-primary-highlight);
+      transform: translateX(1px);
+    }
+    .parts-rail-toggle:active { transform: scale(0.96); }
+    .parts-rail-show {
+      display: none;
+      position: fixed;
+      top: 104px;
+      right: 0.75rem;
+      z-index: 28;
+      align-items: center;
+      gap: 0.4rem;
+      min-height: 40px;
+      padding: 0.5rem 0.85rem 0.5rem 0.65rem;
+      border: 1px solid var(--color-border);
+      border-radius: 999px;
+      background: var(--color-surface);
+      color: var(--color-text);
+      font-size: var(--text-xs);
+      font-weight: 700;
+      box-shadow: var(--shadow-md);
+      cursor: pointer;
+      transition: background 0.15s ease, border-color 0.15s ease, transform 0.15s ease;
+    }
+    .parts-rail-show svg {
+      width: 15px;
+      height: 15px;
+      color: var(--color-primary);
+      flex-shrink: 0;
+    }
+    .parts-rail-show:hover {
+      border-color: var(--color-primary);
+      color: var(--color-primary);
+      background: var(--color-primary-highlight);
+      transform: translateX(-1px);
+    }
+    .side-toc-close {
+      display: none;
+      position: absolute;
+      top: 0.75rem;
+      right: 0.75rem;
+      width: 40px;
+      height: 40px;
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius-md);
+      background: var(--color-surface-2);
+      color: var(--color-text);
+      font-size: 1.25rem;
+      line-height: 1;
+      cursor: pointer;
+    }
+    .top-actions .btn-link-secondary { display: inline-flex; }
+
+    /* Parts rail is outside .shell — fixed overlay only */
+    @media (min-width: 1280px) {
+      .parts-rail {
+        display: block !important;
+        position: fixed;
+        top: 96px;
+        right: 0.65rem;
+        width: 168px;
+        max-height: calc(100vh - 112px);
+        overflow: auto;
+        padding: 0.75rem 0.65rem;
+        background: var(--color-surface);
+        border: 1px solid var(--color-border);
+        border-radius: var(--radius-xl);
+        box-shadow: var(--shadow-sm);
+        z-index: 25;
+        transition: opacity 0.18s ease, transform 0.18s ease;
+      }
+      .page.with-side-toc {
+        padding-right: 188px !important;
+      }
+      body.parts-rail-collapsed .parts-rail {
+        display: none !important;
+      }
+      body.parts-rail-collapsed .page.with-side-toc {
+        padding-right: var(--space-6) !important;
+      }
+      body.parts-rail-collapsed .parts-rail-show {
+        display: inline-flex !important;
+      }
+    }
+
+    @media (max-width: 1279px) {
+      .parts-rail,
+      .parts-rail-show { display: none !important; }
+    }
+
+    /* Mobile / tablet polish */
+    @media (max-width: 1100px) {
+      html, body {
+        max-width: 100%;
+        overflow-x: clip;
+      }
+      :root, [data-theme="light"], [data-theme="dark"] {
+        --text-xs: 0.9rem;
+        --text-sm: 1rem;
+        --text-base: 1.0625rem;
+        --text-lg: 1.3rem;
+        --text-xl: 1.55rem;
+      }
+      body {
+        font-size: 17px;
+        line-height: 1.65;
+      }
+
+      /* Block layout so the off-canvas TOC cannot inflate page width */
+      .shell {
+        display: block !important;
+        width: 100%;
+        max-width: 100%;
+        min-width: 0;
+        margin: 0;
+        padding: 0;
+      }
+      .side-toc {
+        position: fixed;
+        padding-top: 3.25rem;
+      }
+      .side-toc-close { display: inline-flex; align-items: center; justify-content: center; }
+      .side-toc-link {
+        padding: 0.65rem 0.7rem;
+        font-size: 0.95rem;
+        min-height: 44px;
+        align-items: center;
+      }
+      .side-toc-part-link { font-size: 0.9rem; padding: 0.25rem 0; }
+
+      .page.with-side-toc,
+      .hero.with-side-toc,
+      .hero-card,
+      .questions,
+      .question-card,
+      .section-block {
+        width: 100%;
+        max-width: 100%;
+        min-width: 0;
+        box-sizing: border-box;
+      }
+      .page.with-side-toc {
+        padding-left: max(1rem, env(safe-area-inset-left)) !important;
+        padding-right: max(1rem, env(safe-area-inset-right)) !important;
+        padding-bottom: max(2rem, env(safe-area-inset-bottom));
+      }
+
+      .topbar-inner {
+        flex-wrap: wrap;
+        row-gap: var(--space-3);
+        max-width: 100%;
+      }
+      .brand { min-width: 0; flex: 1 1 auto; }
+      .brand h1 { font-size: clamp(1.25rem, 5.5vw, 1.55rem); }
+      .brand p {
+        display: -webkit-box;
+        -webkit-line-clamp: 3;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+        max-width: none;
+        font-size: var(--text-sm) !important;
+      }
+      .top-actions { width: 100%; }
+      .top-actions .btn { min-height: 44px; font-size: 0.95rem; }
+
+      /* Horizontal chips must not widen the document */
+      .section-nav {
+        display: flex;
+        flex-wrap: nowrap;
+        gap: var(--space-2);
+        overflow-x: auto;
+        overflow-y: hidden;
+        -webkit-overflow-scrolling: touch;
+        overscroll-behavior-x: contain;
+        max-width: 100%;
+        width: 100%;
+        min-width: 0;
+        padding-bottom: 0.35rem;
+        scrollbar-width: thin;
+      }
+      .section-nav a { flex: 0 0 auto; font-size: 0.85rem; }
+      .tag-list {
+        flex-wrap: wrap;
+        max-width: 100%;
+      }
+      .tag { font-size: 0.8rem; }
+
+      .hero-kpis { grid-template-columns: 1fr; }
+      .question-card { scroll-margin-top: 88px; }
+      .question-head h2 { font-size: 1.2rem; line-height: 1.3; }
+      .question-head p { font-size: var(--text-sm); }
+      .grid4 { grid-template-columns: 1fr !important; width: 100%; max-width: 100%; }
+      .grid4 .cell { border-right: none !important; font-size: var(--text-base); }
+      .row-head { display: none; }
+      .cell.question {
+        border-bottom: none;
+        padding-bottom: var(--space-2);
+      }
+      .cell.answer { padding-top: var(--space-2); }
+      .cell p, .crib p, .note p, .star p {
+        overflow-wrap: anywhere;
+        word-break: break-word;
+      }
+      .note p {
+        white-space: pre-wrap;
+        font-size: 0.95rem !important;
+      }
+      .crib, .note, .star {
+        font-size: var(--text-sm) !important;
+      }
+      .cell.question::before,
+      .cell.answer::before {
+        display: block;
+        font-size: 0.8rem;
+        font-weight: 700;
+        letter-spacing: 0.06em;
+        text-transform: uppercase;
+        color: var(--color-text-faint);
+        margin-bottom: 0.35rem;
+      }
+      .grid4 .cell.question:nth-of-type(5)::before { content: "EN"; }
+      .grid4 .cell.answer:nth-of-type(6)::before { content: "EN · Must-know / Answer"; }
+      .grid4 .cell.question:nth-of-type(7)::before { content: "VI"; }
+      .grid4 .cell.answer:nth-of-type(8)::before { content: "VI · Must-know / Đáp án"; }
+    }
+
+    @media (max-width: 720px) {
+      .top-actions .btn-link-secondary { display: none; }
+      .question-head { padding: var(--space-4); }
+      .question-head h2 { font-size: 1.15rem; }
+      .cell { padding: var(--space-4); }
+      .crib, .note, .star { padding: var(--space-3) var(--space-4); }
+      .hero-card { padding: var(--space-4); }
+      .tag-list { gap: 0.4rem; }
+    }
+
+    /* Collapse works even if a media block is dropped */
+    body.parts-rail-collapsed .parts-rail {
+      display: none !important;
+      visibility: hidden !important;
+      pointer-events: none !important;
+    }
+    body.parts-rail-collapsed .parts-rail-show {
+      display: inline-flex !important;
+    }
+    body.parts-rail-collapsed .page.with-side-toc {
+      padding-right: var(--space-6) !important;
+    }
+
+</style>
+</head>
+<body class="has-side-toc">
+  <div class="topbar">
+    <div class="topbar-inner">
+      <div class="brand">
+        <h1>DevOps · Real experience</h1>
+        <p>Interview prep from what I actually ran — mobile CI/CD (Android/iOS), Cloud Run + Cloud Build, Linux VM web servers. EN + VI.</p>
+      </div>
+      <div class="top-actions">
+        <button class="btn toc-mobile-btn" data-toc-open type="button">Contents</button>
+        <button class="btn theme-toggle" data-theme-toggle aria-label="Switch theme">☾</button>
+        <a class="btn btn-link-secondary" href="index.html">Cloud</a>
+        <a class="btn btn-link-secondary" href="cv.html">CV</a>
+        <a class="btn btn-link-secondary" href="globant.html">Globant</a>
+      </div>
+    </div>
+  </div>
+    <div class="toc-backdrop" data-toc-backdrop hidden></div>
+  <div class="shell">
+    <aside class="side-toc" id="side-toc" aria-label="Question contents">
+      <button class="side-toc-close" data-toc-close type="button" aria-label="Close contents">×</button>
+      <div class="side-toc-head">
+        <strong>Contents</strong>
+        <span>Experience first · then fundamentals · then spoken Q&A</span>
+      </div>
+      <nav class="side-toc-list" data-side-toc>
+
+        <div class="side-toc-part" data-part="sec-overview">
+          <a class="side-toc-part-link" href="#sec-overview">Part 0 · Experience map</a>
+          <span class="side-toc-part-range">D01–04</span>
+        </div>
+        <a class="side-toc-link" href="#d1" data-target="d1" data-part="sec-overview"><span class="side-toc-num">01</span><span class="side-toc-title">How I describe my DevOps experience</span></a>
+        <a class="side-toc-link" href="#d2" data-target="d2" data-part="sec-overview"><span class="side-toc-num">02</span><span class="side-toc-title">Akktis vs IELTS — what each proves</span></a>
+        <a class="side-toc-link" href="#d3" data-target="d3" data-part="sec-overview"><span class="side-toc-num">03</span><span class="side-toc-title">My DevOps stack map</span></a>
+        <a class="side-toc-link" href="#d4" data-target="d4" data-part="sec-overview"><span class="side-toc-num">04</span><span class="side-toc-title">How I talk under pressure</span></a>
+        <div class="side-toc-part" data-part="sec-mobile-cicd">
+          <a class="side-toc-part-link" href="#sec-mobile-cicd">Part 1 · Mobile CI/CD</a>
+          <span class="side-toc-part-range">D05–14</span>
+        </div>
+        <a class="side-toc-link" href="#d5" data-target="d5" data-part="sec-mobile-cicd"><span class="side-toc-num">05</span><span class="side-toc-title">Goal: Android &amp; iOS CI/CD</span></a>
+        <a class="side-toc-link" href="#d6" data-target="d6" data-part="sec-mobile-cicd"><span class="side-toc-num">06</span><span class="side-toc-title">Repo layout &amp; trigger model</span></a>
+        <a class="side-toc-link" href="#d7" data-target="d7" data-part="sec-mobile-cicd"><span class="side-toc-num">07</span><span class="side-toc-title">Secrets &amp; signing (honest flow)</span></a>
+        <a class="side-toc-link" href="#d8" data-target="d8" data-part="sec-mobile-cicd"><span class="side-toc-num">08</span><span class="side-toc-title">Build Android AAB/APK</span></a>
+        <a class="side-toc-link" href="#d9" data-target="d9" data-part="sec-mobile-cicd"><span class="side-toc-num">09</span><span class="side-toc-title">Build iOS IPA (concepts)</span></a>
+        <a class="side-toc-link" href="#d10" data-target="d10" data-part="sec-mobile-cicd"><span class="side-toc-num">10</span><span class="side-toc-title">Artifact storage &amp; store upload</span></a>
+        <a class="side-toc-link" href="#d11" data-target="d11" data-part="sec-mobile-cicd"><span class="side-toc-num">11</span><span class="side-toc-title">Notify &amp; fail handling</span></a>
+        <a class="side-toc-link" href="#d12" data-target="d12" data-part="sec-mobile-cicd"><span class="side-toc-num">12</span><span class="side-toc-title">Multi-env mobile builds</span></a>
+        <a class="side-toc-link" href="#d13" data-target="d13" data-part="sec-mobile-cicd"><span class="side-toc-num">13</span><span class="side-toc-title">Troubleshoot failed mobile builds</span></a>
+        <a class="side-toc-link" href="#d14" data-target="d14" data-part="sec-mobile-cicd"><span class="side-toc-num">14</span><span class="side-toc-title">Interview story: IELTS store release</span></a>
+        <div class="side-toc-part" data-part="sec-cloudrun">
+          <a class="side-toc-part-link" href="#sec-cloudrun">Part 2 · Cloud Run / Build</a>
+          <span class="side-toc-part-range">D15–25</span>
+        </div>
+        <a class="side-toc-link" href="#d15" data-target="d15" data-part="sec-cloudrun"><span class="side-toc-num">15</span><span class="side-toc-title">Goal: Cloud Run + Cloud Build CI/CD</span></a>
+        <a class="side-toc-link" href="#d16" data-target="d16" data-part="sec-cloudrun"><span class="side-toc-num">16</span><span class="side-toc-title">Dockerfile → runnable image</span></a>
+        <a class="side-toc-link" href="#d17" data-target="d17" data-part="sec-cloudrun"><span class="side-toc-num">17</span><span class="side-toc-title">Build &amp; push to Artifact Registry</span></a>
+        <a class="side-toc-link" href="#d18" data-target="d18" data-part="sec-cloudrun"><span class="side-toc-num">18</span><span class="side-toc-title">Deploy Cloud Run service</span></a>
+        <a class="side-toc-link" href="#d19" data-target="d19" data-part="sec-cloudrun"><span class="side-toc-num">19</span><span class="side-toc-title">Env vars &amp; secrets on Cloud Run</span></a>
+        <a class="side-toc-link" href="#d20" data-target="d20" data-part="sec-cloudrun"><span class="side-toc-num">20</span><span class="side-toc-title">Cloud SQL connectivity concept</span></a>
+        <a class="side-toc-link" href="#d21" data-target="d21" data-part="sec-cloudrun"><span class="side-toc-num">21</span><span class="side-toc-title">Cloud Build trigger on push</span></a>
+        <a class="side-toc-link" href="#d22" data-target="d22" data-part="sec-cloudrun"><span class="side-toc-num">22</span><span class="side-toc-title">cloudbuild.yaml stages</span></a>
+        <a class="side-toc-link" href="#d23" data-target="d23" data-part="sec-cloudrun"><span class="side-toc-num">23</span><span class="side-toc-title">Revisions, rollback, traffic</span></a>
+        <a class="side-toc-link" href="#d24" data-target="d24" data-part="sec-cloudrun"><span class="side-toc-num">24</span><span class="side-toc-title">Logs &amp; debug Cloud Run</span></a>
+        <a class="side-toc-link" href="#d25" data-target="d25" data-part="sec-cloudrun"><span class="side-toc-num">25</span><span class="side-toc-title">Multi-env Cloud Run pattern</span></a>
+        <div class="side-toc-part" data-part="sec-linux-vm">
+          <a class="side-toc-part-link" href="#sec-linux-vm">Part 3 · Linux VM</a>
+          <span class="side-toc-part-range">D26–35</span>
+        </div>
+        <a class="side-toc-link" href="#d26" data-target="d26" data-part="sec-linux-vm"><span class="side-toc-num">26</span><span class="side-toc-title">Goal: Linux VM web server</span></a>
+        <a class="side-toc-link" href="#d27" data-target="d27" data-part="sec-linux-vm"><span class="side-toc-num">27</span><span class="side-toc-title">Create &amp; access a GCP VM</span></a>
+        <a class="side-toc-link" href="#d28" data-target="d28" data-part="sec-linux-vm"><span class="side-toc-num">28</span><span class="side-toc-title">SSH keys &amp; first login hygiene</span></a>
+        <a class="side-toc-link" href="#d29" data-target="d29" data-part="sec-linux-vm"><span class="side-toc-num">29</span><span class="side-toc-title">apt update &amp; install web server</span></a>
+        <a class="side-toc-link" href="#d30" data-target="d30" data-part="sec-linux-vm"><span class="side-toc-num">30</span><span class="side-toc-title">Firewall: GCP tags + UFW</span></a>
+        <a class="side-toc-link" href="#d31" data-target="d31" data-part="sec-linux-vm"><span class="side-toc-num">31</span><span class="side-toc-title">Deploy PHP/web app folder</span></a>
+        <a class="side-toc-link" href="#d32" data-target="d32" data-part="sec-linux-vm"><span class="side-toc-num">32</span><span class="side-toc-title">Vhost / systemd awareness</span></a>
+        <a class="side-toc-link" href="#d33" data-target="d33" data-part="sec-linux-vm"><span class="side-toc-num">33</span><span class="side-toc-title">TLS with Let's Encrypt</span></a>
+        <a class="side-toc-link" href="#d34" data-target="d34" data-part="sec-linux-vm"><span class="side-toc-num">34</span><span class="side-toc-title">Logs &amp; disk troubleshooting</span></a>
+        <a class="side-toc-link" href="#d35" data-target="d35" data-part="sec-linux-vm"><span class="side-toc-num">35</span><span class="side-toc-title">Harden basics checklist</span></a>
+        <div class="side-toc-part" data-part="sec-devops">
+          <a class="side-toc-part-link" href="#sec-devops">Part 4 · DevOps basics</a>
+          <span class="side-toc-part-range">D36–39</span>
+        </div>
+        <a class="side-toc-link" href="#d36" data-target="d36" data-part="sec-devops"><span class="side-toc-num">36</span><span class="side-toc-title">What is DevOps?</span></a>
+        <a class="side-toc-link" href="#d37" data-target="d37" data-part="sec-devops"><span class="side-toc-num">37</span><span class="side-toc-title">CI vs CD</span></a>
+        <a class="side-toc-link" href="#d38" data-target="d38" data-part="sec-devops"><span class="side-toc-num">38</span><span class="side-toc-title">Pipeline stages mental model</span></a>
+        <a class="side-toc-link" href="#d39" data-target="d39" data-part="sec-devops"><span class="side-toc-num">39</span><span class="side-toc-title">Why multi-environment matters</span></a>
+        <div class="side-toc-part" data-part="sec-linux">
+          <a class="side-toc-part-link" href="#sec-linux">Part 5 · Linux</a>
+          <span class="side-toc-part-range">D40–43</span>
+        </div>
+        <a class="side-toc-link" href="#d40" data-target="d40" data-part="sec-linux"><span class="side-toc-num">40</span><span class="side-toc-title">SSH day-to-day</span></a>
+        <a class="side-toc-link" href="#d41" data-target="d41" data-part="sec-linux"><span class="side-toc-num">41</span><span class="side-toc-title">Processes, services, permissions</span></a>
+        <a class="side-toc-link" href="#d42" data-target="d42" data-part="sec-linux"><span class="side-toc-num">42</span><span class="side-toc-title">Disk and log hygiene</span></a>
+        <a class="side-toc-link" href="#d43" data-target="d43" data-part="sec-linux"><span class="side-toc-num">43</span><span class="side-toc-title">Package basics on Debian/Ubuntu</span></a>
+        <div class="side-toc-part" data-part="sec-git">
+          <a class="side-toc-part-link" href="#sec-git">Part 6 · Git</a>
+          <span class="side-toc-part-range">D44–47</span>
+        </div>
+        <a class="side-toc-link" href="#d44" data-target="d44" data-part="sec-git"><span class="side-toc-num">44</span><span class="side-toc-title">Branching for delivery</span></a>
+        <a class="side-toc-link" href="#d45" data-target="d45" data-part="sec-git"><span class="side-toc-num">45</span><span class="side-toc-title">PR collaboration basics</span></a>
+        <a class="side-toc-link" href="#d46" data-target="d46" data-part="sec-git"><span class="side-toc-num">46</span><span class="side-toc-title">What changed? incident habit</span></a>
+        <a class="side-toc-link" href="#d47" data-target="d47" data-part="sec-git"><span class="side-toc-num">47</span><span class="side-toc-title">Secrets never in Git</span></a>
+        <div class="side-toc-part" data-part="sec-docker">
+          <a class="side-toc-part-link" href="#sec-docker">Part 7 · Docker</a>
+          <span class="side-toc-part-range">D48–51</span>
+        </div>
+        <a class="side-toc-link" href="#d48" data-target="d48" data-part="sec-docker"><span class="side-toc-num">48</span><span class="side-toc-title">Why containers for Cloud Run</span></a>
+        <a class="side-toc-link" href="#d49" data-target="d49" data-part="sec-docker"><span class="side-toc-num">49</span><span class="side-toc-title">Image layers &amp; .dockerignore</span></a>
+        <a class="side-toc-link" href="#d50" data-target="d50" data-part="sec-docker"><span class="side-toc-num">50</span><span class="side-toc-title">Run locally then deploy</span></a>
+        <a class="side-toc-link" href="#d51" data-target="d51" data-part="sec-docker"><span class="side-toc-num">51</span><span class="side-toc-title">Tagging discipline</span></a>
+        <div class="side-toc-part" data-part="sec-gcp">
+          <a class="side-toc-part-link" href="#sec-gcp">Part 8 · GCP</a>
+          <span class="side-toc-part-range">D52–55</span>
+        </div>
+        <a class="side-toc-link" href="#d52" data-target="d52" data-part="sec-gcp"><span class="side-toc-num">52</span><span class="side-toc-title">GCP mental model</span></a>
+        <a class="side-toc-link" href="#d53" data-target="d53" data-part="sec-gcp"><span class="side-toc-num">53</span><span class="side-toc-title">IAM &amp; service accounts</span></a>
+        <a class="side-toc-link" href="#d54" data-target="d54" data-part="sec-gcp"><span class="side-toc-num">54</span><span class="side-toc-title">Cloud Logging &amp; revisions</span></a>
+        <a class="side-toc-link" href="#d55" data-target="d55" data-part="sec-gcp"><span class="side-toc-num">55</span><span class="side-toc-title">Storage vs SQL vs secrets</span></a>
+        <div class="side-toc-part" data-part="sec-web">
+          <a class="side-toc-part-link" href="#sec-web">Part 9 · Web servers</a>
+          <span class="side-toc-part-range">D56–59</span>
+        </div>
+        <a class="side-toc-link" href="#d56" data-target="d56" data-part="sec-web"><span class="side-toc-num">56</span><span class="side-toc-title">Nginx/Apache role</span></a>
+        <a class="side-toc-link" href="#d57" data-target="d57" data-part="sec-web"><span class="side-toc-num">57</span><span class="side-toc-title">Virtual host basics</span></a>
+        <a class="side-toc-link" href="#d58" data-target="d58" data-part="sec-web"><span class="side-toc-num">58</span><span class="side-toc-title">LiteSpeed awareness</span></a>
+        <a class="side-toc-link" href="#d59" data-target="d59" data-part="sec-web"><span class="side-toc-num">59</span><span class="side-toc-title">502 / 504 quick read</span></a>
+        <div class="side-toc-part" data-part="sec-security">
+          <a class="side-toc-part-link" href="#sec-security">Part 10 · Security</a>
+          <span class="side-toc-part-range">D60–63</span>
+        </div>
+        <a class="side-toc-link" href="#d60" data-target="d60" data-part="sec-security"><span class="side-toc-num">60</span><span class="side-toc-title">Secrets handling</span></a>
+        <a class="side-toc-link" href="#d61" data-target="d61" data-part="sec-security"><span class="side-toc-num">61</span><span class="side-toc-title">Least privilege</span></a>
+        <a class="side-toc-link" href="#d62" data-target="d62" data-part="sec-security"><span class="side-toc-num">62</span><span class="side-toc-title">SSH &amp; network surface</span></a>
+        <a class="side-toc-link" href="#d63" data-target="d63" data-part="sec-security"><span class="side-toc-num">63</span><span class="side-toc-title">Hardening + docs</span></a>
+        <div class="side-toc-part" data-part="sec-fit">
+          <a class="side-toc-part-link" href="#sec-fit">Part 11 · Fit</a>
+          <span class="side-toc-part-range">D64–69</span>
+        </div>
+        <a class="side-toc-link" href="#d64" data-target="d64" data-part="sec-fit"><span class="side-toc-num">64</span><span class="side-toc-title">Tell me about yourself (DevOps)</span></a>
+        <a class="side-toc-link" href="#d65" data-target="d65" data-part="sec-fit"><span class="side-toc-num">65</span><span class="side-toc-title">Strengths for a DevOps role</span></a>
+        <a class="side-toc-link" href="#d66" data-target="d66" data-part="sec-fit"><span class="side-toc-num">66</span><span class="side-toc-title">Tool walkthrough</span></a>
+        <a class="side-toc-link" href="#d67" data-target="d67" data-part="sec-fit"><span class="side-toc-num">67</span><span class="side-toc-title">Why a DevOps role?</span></a>
+        <a class="side-toc-link" href="#d68" data-target="d68" data-part="sec-fit"><span class="side-toc-num">68</span><span class="side-toc-title">Akktis day-to-day</span></a>
+        <a class="side-toc-link" href="#d69" data-target="d69" data-part="sec-fit"><span class="side-toc-num">69</span><span class="side-toc-title">Weakness (honest)</span></a>
+        <div class="side-toc-part" data-part="sec-scenario">
+          <a class="side-toc-part-link" href="#sec-scenario">Part 12 · Scenarios</a>
+          <span class="side-toc-part-range">D70–75</span>
+        </div>
+        <a class="side-toc-link" href="#d70" data-target="d70" data-part="sec-scenario"><span class="side-toc-num">70</span><span class="side-toc-title">Broken mobile pipeline</span></a>
+        <a class="side-toc-link" href="#d71" data-target="d71" data-part="sec-scenario"><span class="side-toc-num">71</span><span class="side-toc-title">Bad Cloud Run revision</span></a>
+        <a class="side-toc-link" href="#d72" data-target="d72" data-part="sec-scenario"><span class="side-toc-num">72</span><span class="side-toc-title">VM disk full</span></a>
+        <a class="side-toc-link" href="#d73" data-target="d73" data-part="sec-scenario"><span class="side-toc-num">73</span><span class="side-toc-title">Cloud SQL unreachable from Cloud Run</span></a>
+        <a class="side-toc-link" href="#d74" data-target="d74" data-part="sec-scenario"><span class="side-toc-num">74</span><span class="side-toc-title">Release under time pressure</span></a>
+        <a class="side-toc-link" href="#d75" data-target="d75" data-part="sec-scenario"><span class="side-toc-num">75</span><span class="side-toc-title">Staging OK, prod fails</span></a>
+        <div class="side-toc-part" data-part="sec-close">
+          <a class="side-toc-part-link" href="#sec-close">Part 13 · Closing</a>
+          <span class="side-toc-part-range">D76–78</span>
+        </div>
+        <a class="side-toc-link" href="#d76" data-target="d76" data-part="sec-close"><span class="side-toc-num">76</span><span class="side-toc-title">Questions to ask them</span></a>
+        <a class="side-toc-link" href="#d77" data-target="d77" data-part="sec-close"><span class="side-toc-num">77</span><span class="side-toc-title">60s closing pitch</span></a>
+        <a class="side-toc-link" href="#d78" data-target="d78" data-part="sec-close"><span class="side-toc-num">78</span><span class="side-toc-title">Ramp-up honesty</span></a>
+
+      </nav>
+    </aside>
+  <main class="page with-side-toc">
+    <section class="hero with-side-toc">
+      <div class="hero-card">
+        <div class="section-label">Reusable DevOps prep</div>
+        <p>Company-agnostic. Lead with <strong>what I built and operated</strong>: Android/iOS build pipelines, Cloud Run + Cloud Build triggers, and Linux VMs for web. Fundamentals stay short; interview answers stay first-person and honest.</p>
+        <nav class="section-nav" aria-label="Sections">
+          <a href="#sec-overview">My DevOps experience</a>
+          <a href="#sec-mobile-cicd">Mobile CI/CD (Android / iOS)</a>
+          <a href="#sec-cloudrun">Cloud Run + Cloud Build</a>
+          <a href="#sec-linux-vm">Linux VM web server</a>
+          <a href="#sec-devops">DevOps fundamentals</a>
+          <a href="#sec-linux">Linux essentials</a>
+          <a href="#sec-git">Git + collaboration</a>
+          <a href="#sec-docker">Docker for Cloud Run</a>
+          <a href="#sec-gcp">GCP mental model</a>
+          <a href="#sec-web">Web servers</a>
+          <a href="#sec-security">Security basics</a>
+          <a href="#sec-fit">Fit / intro</a>
+          <a href="#sec-scenario">Scenario questions</a>
+          <a href="#sec-close">Closing</a>
+          
+        </nav>
+        <div class="hero-kpis">
+          <div class="kpi"><strong>78</strong><span>Bilingual cards</span></div>
+          <div class="kpi"><strong>14</strong><span>Sections</span></div>
+          <div class="kpi"><strong>Steps</strong><span>Real pipelines &amp; VMs</span></div>
+        </div>
+        <div class="tag-list">
+          <span class="tag">Android / iOS CI</span><span class="tag">Cloud Build</span><span class="tag">Cloud Run</span>
+          <span class="tag">Cloud SQL</span><span class="tag">Linux VM</span><span class="tag">Apache / LiteSpeed</span>
+          <span class="tag">GCP</span><span class="tag">Akktis</span><span class="tag">IELTS AI Tutor</span>
+        </div>
+      </div>
+      <aside class="toc-card" id="toc">
+        <div class="section-label">Study order</div>
+        <p>Start <a href="#sec-mobile-cicd">Mobile CI/CD</a> → <a href="#sec-cloudrun">Cloud Run / Build</a> → <a href="#sec-linux-vm">Linux VM</a>, then skim fundamentals, then speak Fit/Scenarios out loud.</p>
+      </aside>
+    </section>
+
+            <section class="questions">
+    <section class="section-block" id="sec-overview">
+      <h2>0 · My DevOps experience</h2>
+<article class="question-card" id="d1">
+  <div class="question-head"><h2>01. How I describe my DevOps experience</h2><p>Honest one-breath summary</p></div>
+  <div class="grid4">
+    <div class="cell row-head">Concept EN</div><div class="cell row-head">Steps / Must-know EN</div><div class="cell row-head">Concept VI</div><div class="cell row-head">Steps / Must-know VI</div>
+    <div class="cell question"><p>I'm a full-stack engineer who also owns delivery and ops: Linux servers over SSH, CI/CD for mobile and web across environments, and GCP services — Cloud Run, Cloud SQL, and Storage. At Akktis that mix is day-to-day; with IELTS AI Tutor I shipped a React Native app to both stores with a Cloud Run backend.</p></div>
+    <div class="cell answer"><p>Lead with what I operate (pipeline → deploy → logs → fix), not buzzword lists. Spine = Cloud Build / CI runners + Cloud Run + Linux VM + mobile release — not deep Kubernetes HA or Jenkins-only expertise.</p></div>
+    <div class="cell question"><p>Tôi là full-stack kiêm delivery/ops: Linux qua SSH, CI/CD mobile+web đa môi trường, và GCP — Cloud Run, Cloud SQL, Storage. Ở Akktis đó là việc hằng ngày; với IELTS AI Tutor tôi ship app React Native lên cả hai store kèm backend Cloud Run.</p></div>
+    <div class="cell answer"><p>Mở bằng việc tôi vận hành (pipeline → deploy → log → sửa), không liệt kê buzzword. Xương sống = Cloud Build/CI runner + Cloud Run + Linux VM + mobile release — không nhận sâu Kubernetes HA hay chỉ chuyên Jenkins.</p></div>
+  </div>
+  <div class="crib"><p><strong>Interview trap:</strong> Don't invent cluster/HA claims. Prefer 'I operate Cloud Run and VMs' over 'I run enterprise K8s platforms'.</p></div>
+</article>
+<article class="question-card" id="d2">
+  <div class="question-head"><h2>02. Akktis vs IELTS — what each proves</h2><p>Two complementary stories</p></div>
+  <div class="grid4">
+    <div class="cell row-head">Concept EN</div><div class="cell row-head">Steps / Must-know EN</div><div class="cell row-head">Concept VI</div><div class="cell row-head">Steps / Must-know VI</div>
+    <div class="cell question"><p>Akktis: client web/mobile delivery — Ubuntu/Debian SSH, multi-env CI/CD, LiteSpeed/Apache for PHP/CMS apps, GCP Cloud Run/SQL/Storage, docs and basic hardening with a France-based remote team. IELTS AI Tutor: end-to-end product ownership — React Native/TypeScript iOS+Android, Cloud Run API, published on Google Play and App Store.</p></div>
+    <div class="cell answer"><p>Use Akktis for ops breadth (VM, web server, multi-env). Use IELTS for mobile CI + store release + Cloud Run backend ownership.</p></div>
+    <div class="cell question"><p>Akktis: delivery web/mobile khách — SSH Ubuntu/Debian, CI/CD đa env, LiteSpeed/Apache cho app PHP/CMS, GCP Cloud Run/SQL/Storage, docs và harden cơ bản với team Pháp remote. IELTS AI Tutor: own end-to-end — React Native/TypeScript iOS+Android, API Cloud Run, đã lên Google Play và App Store.</p></div>
+    <div class="cell answer"><p>Dùng Akktis cho bề rộng ops (VM, web server, multi-env). Dùng IELTS cho mobile CI + store release + own backend Cloud Run.</p></div>
+  </div>
+  <div class="crib"><p><strong>Interview trap:</strong> Don't merge projects into one fake mega-platform. Keep stories separate when asked.</p></div>
+</article>
+<article class="question-card" id="d3">
+  <div class="question-head"><h2>03. My DevOps stack map</h2><p>Tools I can defend in interview</p></div>
+  <div class="grid4">
+    <div class="cell row-head">Concept EN</div><div class="cell row-head">Steps / Must-know EN</div><div class="cell row-head">Concept VI</div><div class="cell row-head">Steps / Must-know VI</div>
+    <div class="cell question"><p>Source: Git. CI: Cloud Build and/or generic CI runners that build on push/tag. Artifacts: container images in Artifact Registry; mobile AAB/IPA to storage or store tracks. Runtime: Cloud Run for container APIs; Linux VMs with LiteSpeed/Apache/Nginx for classic web. Data: Cloud SQL + Cloud Storage. Ops: SSH, logs, revisions, env promotion, docs.</p></div>
+    <div class="cell answer"><p>I can walk commit → build → artifact → deploy → verify. I stay honest if a specific vendor plugin name isn't what we used — I describe the stage and why it exists.</p></div>
+    <div class="cell question"><p>Source: Git. CI: Cloud Build và/hoặc CI runner generic build theo push/tag. Artifact: image trong Artifact Registry; AAB/IPA mobile lên storage hoặc store track. Runtime: Cloud Run cho API container; VM Linux với LiteSpeed/Apache/Nginx cho web cổ điển. Data: Cloud SQL + Cloud Storage. Ops: SSH, log, revision, promote env, docs.</p></div>
+    <div class="cell answer"><p>Tôi walk được commit → build → artifact → deploy → verify. Trung thực nếu tên plugin cụ thể không phải tool đã dùng — mô tả stage và lý do tồn tại.</p></div>
+  </div>
+  <div class="crib"><p><strong>Interview trap:</strong> Listing Jenkins/K8s/ELK because a JD mentions them, without mapping to my real path, weakens credibility.</p></div>
+</article>
+<article class="question-card" id="d4">
+  <div class="question-head"><h2>04. How I talk under pressure</h2><p>Evidence-first habits</p></div>
+  <div class="grid4">
+    <div class="cell row-head">Concept EN</div><div class="cell row-head">Steps / Must-know EN</div><div class="cell row-head">Concept VI</div><div class="cell row-head">Steps / Must-know VI</div>
+    <div class="cell question"><p>When something breaks I isolate layer: recent change → CI log → runtime log/revision → env/secret → network/DB. I mitigate first (rollback revision, revert commit, free disk), then fix root cause and update the checklist/docs so the gap doesn't repeat.</p></div>
+    <div class="cell answer"><p>Spoken habit: what changed, what failed, what I verified, what I changed next. Same pattern for mobile build fail, Cloud Run 5xx, or VM disk full.</p></div>
+    <div class="cell question"><p>Khi hỏng tôi cô lập lớp: thay đổi gần đây → log CI → log/revision runtime → env/secret → network/DB. Giảm hại trước (rollback revision, revert commit, giải phóng disk), rồi sửa gốc và cập nhật checklist/docs.</p></div>
+    <div class="cell answer"><p>Thói quen nói: đổi gì, fail gì, verify gì, sửa gì tiếp. Cùng pattern cho mobile build fail, Cloud Run 5xx, hay VM đầy disk.</p></div>
+  </div>
+  <div class="crib"><p><strong>Interview trap:</strong> Guessing 'maybe DNS' without checking deploy/logs first is a trap.</p></div>
+</article>
+    </section>
+    <section class="section-block" id="sec-mobile-cicd">
+      <h2>1 · Mobile CI/CD (Android / iOS)</h2>
+<article class="question-card" id="d5">
+  <div class="question-head"><h2>05. Goal: Android &amp; iOS CI/CD</h2><p>What success looks like</p></div>
+  <div class="grid4">
+    <div class="cell row-head">Concept EN</div><div class="cell row-head">Steps / Must-know EN</div><div class="cell row-head">Concept VI</div><div class="cell row-head">Steps / Must-know VI</div>
+    <div class="cell question"><p>Goal: every meaningful branch/tag produces a reproducible mobile build artifact (Android AAB/APK, iOS IPA concepts), with secrets/signing kept out of Git, and a clear path to Play/App Store distribution tracks — not a fragile laptop-only release.</p></div>
+    <div class="cell answer"><p>1) Define which Git events trigger a build (PR, main, release tag).<br>
+2) Separate build vs distribute stages.<br>
+3) Keep signing material in CI secret store.<br>
+4) Store artifacts and notify on fail/success.<br>
+5) Promote by environment (dev/staging/prod-like).</p></div>
+    <div class="cell question"><p>Mục tiêu: mỗi nhánh/tag quan trọng tạo artifact mobile lặp lại được (AAB/APK Android, khái niệm IPA iOS), secret/signing ngoài Git, đường rõ tới track Google Play/App Store — không release chỉ trên laptop.</p></div>
+    <div class="cell answer"><p>1) Định nghĩa event Git nào trigger build (PR, main, release tag).<br>
+2) Tách stage build vs distribute.<br>
+3) Giữ signing trong secret store của CI.<br>
+4) Lưu artifact và notify khi fail/success.<br>
+5) Promote theo môi trường (dev/staging/prod-like).</p></div>
+  </div>
+  <div class="crib"><p><strong>Interview trap:</strong> Don't claim a specific third-party mobile CI brand if you only used Cloud Build / generic runners — describe stages.</p></div>
+</article>
+<article class="question-card" id="d6">
+  <div class="question-head"><h2>06. Repo layout &amp; trigger model</h2><p>What fires the pipeline</p></div>
+  <div class="grid4">
+    <div class="cell row-head">Concept EN</div><div class="cell row-head">Steps / Must-know EN</div><div class="cell row-head">Concept VI</div><div class="cell row-head">Steps / Must-know VI</div>
+    <div class="cell question"><p>React Native / TypeScript monorepo or app repo: mobile app code, backend may be separate. Triggers usually: push to main → staging build; release tag / manual approval → store-bound build. Cloud Build trigger or CI webhook watches the branch/tag.</p></div>
+    <div class="cell answer"><p>1) Map branches to envs (feature → CI check; develop/main → internal build; tag vX.Y.Z → release candidate).<br>
+2) Configure trigger on push/tag in Cloud Build or equivalent.<br>
+3) Checkout with full history if version/git describe needed.<br>
+4) Fail fast on lint/test before expensive native builds when possible.</p></div>
+    <div class="cell question"><p>Repo React Native/TypeScript (hoặc monorepo): code mobile; backend có thể tách. Trigger thường: push main → build staging; tag release / approval → build lên store. Cloud Build trigger hoặc webhook CI theo dõi branch/tag.</p></div>
+    <div class="cell answer"><p>1) Map nhánh → env (feature → check CI; develop/main → build nội bộ; tag vX.Y.Z → release candidate).<br>
+2) Cấu hình trigger push/tag trên Cloud Build hoặc tương đương.<br>
+3) Checkout đủ history nếu cần version/git describe.<br>
+4) Fail sớm ở lint/test trước native build đắt khi được.</p></div>
+  </div>
+  <div class="crib"><p><strong>Interview trap:</strong> One pipeline for every branch without caching can burn quota — know what you trigger and why.</p></div>
+<div class="note"><p><strong>Commands / examples:</strong></p><p style="font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:0.85em">gcloud builds triggers create github --name=mobile-main --branch-pattern='^main$' --build-config=cloudbuild.mobile.yaml<br>
+# or: push tag v* → release pipeline</p></div>
+
+</article>
+<article class="question-card" id="d7">
+  <div class="question-head"><h2>07. Secrets &amp; signing (honest flow)</h2><p>Keys never live in Git</p></div>
+  <div class="grid4">
+    <div class="cell row-head">Concept EN</div><div class="cell row-head">Steps / Must-know EN</div><div class="cell row-head">Concept VI</div><div class="cell row-head">Steps / Must-know VI</div>
+    <div class="cell question"><p>Typical flow (concepts, not inventing a private plugin name): Android keystore + key passwords in Secret Manager / CI encrypted vars; iOS distribution certificate + provisioning profile injected into the macOS build agent at runtime. Store API keys (Play Console / App Store Connect) stay in secrets for upload steps.</p></div>
+    <div class="cell answer"><p>1) Create keystore / certs offline once; never commit them.<br>
+2) Upload to Secret Manager or CI secret store.<br>
+3) Pipeline mounts/decrypts only during the signing stage.<br>
+4) Restrict IAM/who can read secrets.<br>
+5) Rotate when people leave or leakage suspected.</p></div>
+    <div class="cell question"><p>Flow điển hình (khái niệm): Android keystore + mật khẩu trong Secret Manager / biến mã hóa CI; cert phân phối iOS + provisioning profile inject vào agent macOS lúc chạy. API key store (Play / App Store Connect) cũng nằm trong secret cho bước upload.</p></div>
+    <div class="cell answer"><p>1) Tạo keystore/cert offline một lần; không commit.<br>
+2) Upload vào Secret Manager hoặc secret store CI.<br>
+3) Pipeline chỉ mount/decrypt trong stage ký.<br>
+4) Siết IAM/ai được đọc secret.<br>
+5) Xoay khi người rời team hoặc nghi lộ.</p></div>
+  </div>
+  <div class="crib"><p><strong>Interview trap:</strong> Saying 'signing is automatic' without knowing where the keystore/profile lives fails follow-ups.</p></div>
+</article>
+<article class="question-card" id="d8">
+  <div class="question-head"><h2>08. Build Android AAB/APK</h2><p>Gradle / RN release steps</p></div>
+  <div class="grid4">
+    <div class="cell row-head">Concept EN</div><div class="cell row-head">Steps / Must-know EN</div><div class="cell row-head">Concept VI</div><div class="cell row-head">Steps / Must-know VI</div>
+    <div class="cell question"><p>Android release path for a React Native app: install JS deps, generate native Android project artifacts if needed, run Gradle assembleRelease or bundleRelease to produce APK/AAB, sign with the release keystore, then upload artifact.</p></div>
+    <div class="cell answer"><p>1) npm/yarn/pnpm install (lockfile).<br>
+2) Set ANDROID_HOME / accept SDK licenses on the builder.<br>
+3) Inject keystore path + passwords from secrets into gradle.properties or env.<br>
+4) ./gradlew bundleRelease (AAB for Play) or assembleRelease (APK for sideload/testing).<br>
+5) Copy outputs/bundle/release/*.aab to artifact storage.</p></div>
+    <div class="cell question"><p>Đường release Android cho app React Native: cài JS deps, chuẩn bị native Android, chạy Gradle assembleRelease/bundleRelease ra APK/AAB, ký bằng keystore release, rồi upload artifact.</p></div>
+    <div class="cell answer"><p>1) npm/yarn/pnpm install (lockfile).<br>
+2) Set ANDROID_HOME / accept SDK license trên builder.<br>
+3) Inject đường keystore + mật khẩu từ secret vào gradle.properties hoặc env.<br>
+4) ./gradlew bundleRelease (AAB cho Play) hoặc assembleRelease (APK test).<br>
+5) Copy outputs/bundle/release/*.aab lên artifact storage.</p></div>
+  </div>
+  <div class="crib"><p><strong>Interview trap:</strong> APK vs AAB: Play prefers AAB. Don't claim you upload unsigned APKs to production tracks.</p></div>
+<div class="note"><p><strong>Commands / examples:</strong></p><p style="font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:0.85em">cd android &amp;&amp; ./gradlew bundleRelease<br>
+# outputs: app/build/outputs/bundle/release/app-release.aab<br>
+gcloud builds submit --config=cloudbuild.android.yaml .</p></div>
+
+</article>
+<article class="question-card" id="d9">
+  <div class="question-head"><h2>09. Build iOS IPA (concepts)</h2><p>Certs, profiles, archive</p></div>
+  <div class="grid4">
+    <div class="cell row-head">Concept EN</div><div class="cell row-head">Steps / Must-know EN</div><div class="cell row-head">Concept VI</div><div class="cell row-head">Steps / Must-know VI</div>
+    <div class="cell question"><p>iOS CI needs a macOS runner. Conceptually: install deps, select Xcode, install distribution certificate + provisioning profile into the keychain, archive the app, export IPA for App Store or ad-hoc. React Native uses the ios/ Xcode workspace.</p></div>
+    <div class="cell answer"><p>1) Use a macOS CI image/agent.<br>
+2) Install CocoaPods if the project uses Pods (pod install).<br>
+3) Import signing cert + profile from secrets into temporary keychain.<br>
+4) xcodebuild archive → exportOptions.plist → IPA.<br>
+5) Never leave certs on a shared machine after the job.</p></div>
+    <div class="cell question"><p>CI iOS cần runner macOS. Khái niệm: cài deps, chọn Xcode, cài cert phân phối + provisioning profile vào keychain, archive app, export IPA cho App Store hoặc ad-hoc. React Native dùng workspace trong ios/.</p></div>
+    <div class="cell answer"><p>1) Dùng image/agent macOS.<br>
+2) pod install nếu dự án dùng CocoaPods.<br>
+3) Import cert + profile từ secret vào keychain tạm.<br>
+4) xcodebuild archive → exportOptions.plist → IPA.<br>
+5) Không để cert trên máy dùng chung sau job.</p></div>
+  </div>
+  <div class="crib"><p><strong>Interview trap:</strong> If asked exact Fastlane lane names you didn't use: say you know the stages (match/signing → gym/archive → deliver/upload) without inventing project-specific lanes.</p></div>
+<div class="note"><p><strong>Commands / examples:</strong></p><p style="font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:0.85em"># conceptual<br>
+xcodebuild -workspace ios/App.xcworkspace -scheme App -configuration Release archive -archivePath build/App.xcarchive<br>
+xcodebuild -exportArchive -archivePath build/App.xcarchive -exportPath build/ipa -exportOptionsPlist ExportOptions.plist</p></div>
+
+</article>
+<article class="question-card" id="d10">
+  <div class="question-head"><h2>10. Artifact storage &amp; store upload</h2><p>Where builds go</p></div>
+  <div class="grid4">
+    <div class="cell row-head">Concept EN</div><div class="cell row-head">Steps / Must-know EN</div><div class="cell row-head">Concept VI</div><div class="cell row-head">Steps / Must-know VI</div>
+    <div class="cell question"><p>After a green build: store AAB/IPA in Cloud Storage (or CI artifact store) with versioned object names. Distribution: upload to Google Play internal/closed testing track and App Store Connect TestFlight / App Store — using store credentials from secrets. Store publish for IELTS AI Tutor proves this path exists end-to-end.</p></div>
+    <div class="cell answer"><p>1) Name artifacts with git tag/sha + platform.<br>
+2) Upload to gs://…/releases/…<br>
+3) Optional: promote to Play/App Store tracks (internal first).<br>
+4) Record build number ↔ commit in release notes.<br>
+5) Keep retention policy so disks/buckets don't fill forever.</p></div>
+    <div class="cell question"><p>Sau build xanh: lưu AAB/IPA trên Cloud Storage (hoặc artifact CI) với tên có version. Phân phối: upload track nội bộ Google Play và TestFlight/App Store — dùng credential store từ secret. IELTS AI Tutor đã lên store chứng minh đường này end-to-end.</p></div>
+    <div class="cell answer"><p>1) Đặt tên artifact theo tag/sha + platform.<br>
+2) Upload gs://…/releases/…<br>
+3) Tuỳ chọn: promote lên track Play/App Store (internal trước).<br>
+4) Ghi build number ↔ commit trong release notes.<br>
+5) Retention để bucket không phình mãi.</p></div>
+  </div>
+  <div class="crib"><p><strong>Interview trap:</strong> Don't claim you pressed 'publish to production' every time if you mainly built and handed off to a store review step — say your real ownership.</p></div>
+<div class="note"><p><strong>Commands / examples:</strong></p><p style="font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:0.85em">gsutil cp app-release.aab gs://my-mobile-artifacts/$TAG/<br>
+# Play/App Store upload via official CLI or CI marketplace action — credentials from Secret Manager</p></div>
+
+</article>
+<article class="question-card" id="d11">
+  <div class="question-head"><h2>11. Notify &amp; fail handling</h2><p>Humans get signal, not noise</p></div>
+  <div class="grid4">
+    <div class="cell row-head">Concept EN</div><div class="cell row-head">Steps / Must-know EN</div><div class="cell row-head">Concept VI</div><div class="cell row-head">Steps / Must-know VI</div>
+    <div class="cell question"><p>Pipeline should notify on failure with the failing stage link, and on success with artifact path / store track. Fail fast on signing errors (wrong password, expired profile) so you don't burn 20 minutes of compile before discovering secrets are bad.</p></div>
+    <div class="cell answer"><p>1) Surface first red stage log URL in chat/email.<br>
+2) Distinguish flaky network vs deterministic compile/sign errors.<br>
+3) Block release tag promotion if smoke checks fail.<br>
+4) On secret/expiry failures, rotate then re-run — don't disable signing checks.<br>
+5) Keep a short runbook: common mobile CI failures.</p></div>
+    <div class="cell question"><p>Pipeline nên notify khi fail kèm link stage, và khi success kèm đường artifact/track. Fail sớm ở lỗi signing (sai mật khẩu, profile hết hạn) để không tốn 20 phút compile rồi mới biết secret hỏng.</p></div>
+    <div class="cell answer"><p>1) Đưa URL log stage đỏ đầu tiên vào chat/email.<br>
+2) Phân biệt mạng flaky vs lỗi compile/sign deterministic.<br>
+3) Chặn promote tag release nếu smoke fail.<br>
+4) Lỗi secret/expiry → xoay rồi chạy lại — không tắt check ký.<br>
+5) Giữ runbook ngắn: lỗi mobile CI thường gặp.</p></div>
+  </div>
+  <div class="crib"><p><strong>Interview trap:</strong> Mute-all notifications is as bad as page-on-every-warning.</p></div>
+</article>
+<article class="question-card" id="d12">
+  <div class="question-head"><h2>12. Multi-env mobile builds</h2><p>Dev / staging / prod-like</p></div>
+  <div class="grid4">
+    <div class="cell row-head">Concept EN</div><div class="cell row-head">Steps / Must-know EN</div><div class="cell row-head">Concept VI</div><div class="cell row-head">Steps / Must-know VI</div>
+    <div class="cell question"><p>Same codebase, different env configs: API base URL, feature flags, bundle IDs / applicationId suffixes, and which signing identity is used. Staging builds may use different Firebase/backend endpoints than production. Promotion means a new tagged build with prod config — not editing a live binary by hand.</p></div>
+    <div class="cell answer"><p>1) Externalize env via .env / build flavors / XCConfig — not hardcoded prod URLs in main.<br>
+2) Map CI job matrix or substitutions per env.<br>
+3) Never reuse prod keystore for debug curiosity on shared laptops carelessly.<br>
+4) Verify staging app hits staging Cloud Run before tagging prod.<br>
+5) Document which track receives which env.</p></div>
+    <div class="cell question"><p>Cùng codebase, khác config env: API base URL, feature flag, suffix bundle ID / applicationId, và identity ký nào. Build staging có thể trỏ backend khác production. Promote = build tag mới với config prod — không sửa binary tay.</p></div>
+    <div class="cell answer"><p>1) Tách env bằng .env / flavor / XCConfig — không hardcode URL prod trong main.<br>
+2) Map job matrix hoặc substitutions CI theo env.<br>
+3) Không dùng bừa keystore prod cho debug trên laptop dùng chung.<br>
+4) Verify app staging gọi đúng Cloud Run staging trước khi tag prod.<br>
+5) Ghi rõ track nào nhận env nào.</p></div>
+  </div>
+  <div class="crib"><p><strong>Interview trap:</strong> Staging green ≠ prod safe if env vars and signing differ — always call out the delta.</p></div>
+</article>
+<article class="question-card" id="d13">
+  <div class="question-head"><h2>13. Troubleshoot failed mobile builds</h2><p>Systematic debug</p></div>
+  <div class="grid4">
+    <div class="cell row-head">Concept EN</div><div class="cell row-head">Steps / Must-know EN</div><div class="cell row-head">Concept VI</div><div class="cell row-head">Steps / Must-know VI</div>
+    <div class="cell question"><p>Failed mobile CI: read the first error, not the last noise. Common buckets: dependency/lockfile drift, SDK/Xcode version mismatch, signing/profile expired, OOM on Gradle, wrong working directory, missing secret. Reproduce locally with the same Node/JDK/Xcode when possible.</p></div>
+    <div class="cell answer"><p>1) Open failing step log; copy the first ERROR.<br>
+2) Check what changed since last green (deps, native module, CI image).<br>
+3) Validate secrets still decrypt / profiles not expired.<br>
+4) Reproduce: same Node + JDK; cd android &amp;&amp; ./gradlew … or xcodebuild.<br>
+5) Fix forward (pin version, renew profile) or revert; re-run; note in changelog.</p></div>
+    <div class="cell question"><p>Mobile CI fail: đọc lỗi đầu, không đọc nhiễu cuối. Nhóm thường gặp: lệch lockfile/deps, lệch SDK/Xcode, signing/profile hết hạn, OOM Gradle, sai thư mục, thiếu secret. Reproduce local cùng Node/JDK/Xcode nếu được.</p></div>
+    <div class="cell answer"><p>1) Mở log bước fail; copy ERROR đầu tiên.<br>
+2) Xem đổi gì từ lần xanh trước (deps, native module, CI image).<br>
+3) Kiểm secret còn decrypt / profile còn hạn.<br>
+4) Reproduce: cùng Node + JDK; cd android &amp;&amp; ./gradlew … hoặc xcodebuild.<br>
+5) Sửa tiến (pin version, renew profile) hoặc revert; chạy lại; ghi changelog.</p></div>
+  </div>
+  <div class="crib"><p><strong>Interview trap:</strong> Re-running without reading the log wastes quota and credibility.</p></div>
+<div class="note"><p><strong>Commands / examples:</strong></p><p style="font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:0.85em"># Android OOM hint<br>
+./gradlew bundleRelease --no-daemon<br>
+# Check keystore<br>
+keytool -list -v -keystore release.keystore</p></div>
+
+</article>
+<article class="question-card" id="d14">
+  <div class="question-head"><h2>14. Interview story: IELTS store release</h2><p>Spoken bridge card</p></div>
+  <div class="grid4">
+    <div class="cell row-head">Concept EN</div><div class="cell row-head">Steps / Must-know EN</div><div class="cell row-head">Concept VI</div><div class="cell row-head">Steps / Must-know VI</div>
+    <div class="cell question"><p>IELTS AI Tutor is the concrete proof: React Native/TypeScript app for iOS and Android, backend on Cloud Run, published on Google Play and App Store. In interview I describe CI as automating build + signing + artifact, then store upload/review — I stay precise about which steps I owned versus store review waiting time.</p></div>
+    <div class="cell answer"><p>1) Say product + platforms.<br>
+2) Say CI builds native artifacts from Git.<br>
+3) Say secrets/signing stay out of Git.<br>
+4) Say backend is Cloud Run (separate deploy path).<br>
+5) Say stores are live — ops continues after publish.</p></div>
+    <div class="cell question"><p>IELTS AI Tutor là bằng chứng cụ thể: app React Native/TypeScript iOS+Android, backend Cloud Run, đã lên Google Play và App Store. Khi PV tôi mô tả CI tự động build + ký + artifact, rồi upload/review store — nói rõ bước mình own versus thời gian chờ review.</p></div>
+    <div class="cell answer"><p>1) Nói sản phẩm + platform.<br>
+2) Nói CI build artifact native từ Git.<br>
+3) Nói secret/signing ngoài Git.<br>
+4) Nói backend là Cloud Run (đường deploy riêng).<br>
+5) Nói store đã live — ops tiếp tục sau publish.</p></div>
+  </div>
+  <div class="crib"><p><strong>Interview trap:</strong> Don't invent download counts or revenue. Qualitative: published and operated.</p></div>
+</article>
+    </section>
+    <section class="section-block" id="sec-cloudrun">
+      <h2>2 · Cloud Run + Cloud Build</h2>
+<article class="question-card" id="d15">
+  <div class="question-head"><h2>15. Goal: Cloud Run + Cloud Build CI/CD</h2><p>Serverless containers on GCP</p></div>
+  <div class="grid4">
+    <div class="cell row-head">Concept EN</div><div class="cell row-head">Steps / Must-know EN</div><div class="cell row-head">Concept VI</div><div class="cell row-head">Steps / Must-know VI</div>
+    <div class="cell question"><p>Goal: every push (or tag) builds a container image, stores it in Artifact Registry, deploys a new Cloud Run revision with the right env/secrets, and can roll back. This is the spine for IELTS backend and Akktis cloud services — not a claim of managing GKE node pools.</p></div>
+    <div class="cell answer"><p>1) Dockerfile that runs the API process.<br>
+2) Build → push image.<br>
+3) Deploy Cloud Run service.<br>
+4) Wire env, secrets, Cloud SQL.<br>
+5) Automate with Cloud Build trigger + cloudbuild.yaml.</p></div>
+    <div class="cell question"><p>Mục tiêu: mỗi push (hoặc tag) build image container, lưu Artifact Registry, deploy revision Cloud Run mới với env/secret đúng, và rollback được. Đây là xương sống backend IELTS và service cloud Akktis — không nhận quản lý GKE node pool.</p></div>
+    <div class="cell answer"><p>1) Dockerfile chạy process API.<br>
+2) Build → push image.<br>
+3) Deploy service Cloud Run.<br>
+4) Nối env, secret, Cloud SQL.<br>
+5) Tự động bằng Cloud Build trigger + cloudbuild.yaml.</p></div>
+  </div>
+  <div class="crib"><p><strong>Interview trap:</strong> Cloud Run ≠ SSH server. No persistent local disk assumptions.</p></div>
+</article>
+<article class="question-card" id="d16">
+  <div class="question-head"><h2>16. Dockerfile → runnable image</h2><p>Package the API</p></div>
+  <div class="grid4">
+    <div class="cell row-head">Concept EN</div><div class="cell row-head">Steps / Must-know EN</div><div class="cell row-head">Concept VI</div><div class="cell row-head">Steps / Must-know VI</div>
+    <div class="cell question"><p>Containerize the backend: choose a slim base, install deps, copy app, expose the port Cloud Run expects (container must listen on $PORT). Prefer non-root user when practical. Keep secrets out of the image layers.</p></div>
+    <div class="cell answer"><p>1) FROM language runtime slim image.<br>
+2) Copy lockfiles → install deps (layer cache).<br>
+3) Copy source; set WORKDIR.<br>
+4) EXPOSE and CMD/ENTRYPOINT listening on 8080 or $PORT.<br>
+5) .dockerignore node_modules/.git to keep images small.</p></div>
+    <div class="cell question"><p>Đóng gói backend: base slim, cài deps, copy app, listen đúng $PORT Cloud Run. Ưu tiên non-root khi hợp lý. Không nhét secret vào layer image.</p></div>
+    <div class="cell answer"><p>1) FROM image runtime slim.<br>
+2) Copy lockfile → cài deps (cache layer).<br>
+3) Copy source; set WORKDIR.<br>
+4) EXPOSE và CMD/ENTRYPOINT listen 8080 hoặc $PORT.<br>
+5) .dockerignore node_modules/.git để image nhỏ.</p></div>
+  </div>
+  <div class="crib"><p><strong>Interview trap:</strong> Baking .env with production passwords into the image is a hard fail in interviews.</p></div>
+<div class="note"><p><strong>Commands / examples:</strong></p><p style="font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:0.85em">docker build -t api:local .<br>
+docker run --rm -p 8080:8080 -e PORT=8080 api:local</p></div>
+
+</article>
+<article class="question-card" id="d17">
+  <div class="question-head"><h2>17. Build &amp; push to Artifact Registry</h2><p>Named, versioned images</p></div>
+  <div class="grid4">
+    <div class="cell row-head">Concept EN</div><div class="cell row-head">Steps / Must-know EN</div><div class="cell row-head">Concept VI</div><div class="cell row-head">Steps / Must-know VI</div>
+    <div class="cell question"><p>Tag images with project/region Artifact Registry path and git sha or build id. Cloud Build can run docker build + docker push, or use kaniko/buildpacks. Humans shouldn't docker push from laptops as the only prod path.</p></div>
+    <div class="cell answer"><p>1) Create Artifact Registry Docker repo.<br>
+2) Authenticate docker to the registry.<br>
+3) Build with tag REGION-docker.pkg.dev/PROJECT/REPO/SERVICE:$SHORT_SHA.<br>
+4) Push tag; optionally also push :latest for non-prod.<br>
+5) Deploy by digest/tag immutably when possible.</p></div>
+    <div class="cell question"><p>Tag image theo path Artifact Registry region/project và git sha hoặc build id. Cloud Build chạy docker build + push (hoặc kaniko/buildpacks). Không lấy docker push từ laptop làm đường prod duy nhất.</p></div>
+    <div class="cell answer"><p>1) Tạo Artifact Registry Docker repo.<br>
+2) Auth docker với registry.<br>
+3) Build tag REGION-docker.pkg.dev/PROJECT/REPO/SERVICE:$SHORT_SHA.<br>
+4) Push tag; có thể thêm :latest cho non-prod.<br>
+5) Deploy theo digest/tag bất biến khi được.</p></div>
+  </div>
+  <div class="crib"><p><strong>Interview trap:</strong> :latest in production without digest tracking makes rollbacks fuzzy.</p></div>
+<div class="note"><p><strong>Commands / examples:</strong></p><p style="font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:0.85em">gcloud artifacts repositories create apps --repository-format=docker --location=asia-southeast1<br>
+gcloud auth configure-docker asia-southeast1-docker.pkg.dev<br>
+docker tag api:local asia-southeast1-docker.pkg.dev/$PROJECT/apps/api:$SHORT_SHA<br>
+docker push asia-southeast1-docker.pkg.dev/$PROJECT/apps/api:$SHORT_SHA</p></div>
+
+</article>
+<article class="question-card" id="d18">
+  <div class="question-head"><h2>18. Deploy Cloud Run service</h2><p>First service &amp; later revisions</p></div>
+  <div class="grid4">
+    <div class="cell row-head">Concept EN</div><div class="cell row-head">Steps / Must-know EN</div><div class="cell row-head">Concept VI</div><div class="cell row-head">Steps / Must-know VI</div>
+    <div class="cell question"><p>gcloud run deploy creates/updates a service: image, region, allow/unauth, CPU/memory, concurrency, min/max instances. Each deploy creates a revision. Traffic can point 100% at the new revision or split for canary.</p></div>
+    <div class="cell answer"><p>1) Pick region close to users/SQL.<br>
+2) gcloud run deploy SERVICE --image=… --region=…<br>
+3) Set --memory/--cpu/--max-instances appropriate to load.<br>
+4) Decide ingress (all / internal).<br>
+5) Verify URL returns healthy response.</p></div>
+    <div class="cell question"><p>gcloud run deploy tạo/cập nhật service: image, region, auth, CPU/memory, concurrency, min/max instances. Mỗi deploy tạo revision. Traffic có thể 100% revision mới hoặc chia canary.</p></div>
+    <div class="cell answer"><p>1) Chọn region gần user/SQL.<br>
+2) gcloud run deploy SERVICE --image=… --region=…<br>
+3) Set --memory/--cpu/--max-instances phù hợp tải.<br>
+4) Quyết định ingress (all / internal).<br>
+5) Verify URL trả response khỏe.</p></div>
+  </div>
+  <div class="crib"><p><strong>Interview trap:</strong> min-instances=0 saves money but allows cold starts — say the tradeoff out loud.</p></div>
+<div class="note"><p><strong>Commands / examples:</strong></p><p style="font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:0.85em">gcloud run deploy ielts-api --image=asia-southeast1-docker.pkg.dev/$PROJECT/apps/api:$SHORT_SHA --region=asia-southeast1 --allow-unauthenticated<br>
+# tighten auth in real prod when appropriate</p></div>
+
+</article>
+<article class="question-card" id="d19">
+  <div class="question-head"><h2>19. Env vars &amp; secrets on Cloud Run</h2><p>Config outside the image</p></div>
+  <div class="grid4">
+    <div class="cell row-head">Concept EN</div><div class="cell row-head">Steps / Must-know EN</div><div class="cell row-head">Concept VI</div><div class="cell row-head">Steps / Must-know VI</div>
+    <div class="cell question"><p>Runtime config: plain env for non-secret settings; Secret Manager references for DB passwords/API keys. Mount or inject at revision level so rotating a secret doesn't require rebuilding the image — only a new revision or secret version.</p></div>
+    <div class="cell answer"><p>1) List required env keys per environment.<br>
+2) Put secrets in Secret Manager.<br>
+3) Grant the Cloud Run service account secretAccessor.<br>
+4) Attach secrets/env on deploy or via console/YAML.<br>
+5) Never log secret values.</p></div>
+    <div class="cell question"><p>Config runtime: env thường cho setting không mật; Secret Manager cho mật khẩu DB/API key. Inject ở revision để xoay secret không cần rebuild image — chỉ revision mới hoặc version secret.</p></div>
+    <div class="cell answer"><p>1) Liệt kê env key theo môi trường.<br>
+2) Đưa secret vào Secret Manager.<br>
+3) Grant service account Cloud Run quyền secretAccessor.<br>
+4) Gắn secret/env lúc deploy hoặc YAML.<br>
+5) Không log giá trị secret.</p></div>
+  </div>
+  <div class="crib"><p><strong>Interview trap:</strong> Copy-pasting prod secrets into staging 'just to test' creates lasting risk.</p></div>
+<div class="note"><p><strong>Commands / examples:</strong></p><p style="font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:0.85em">gcloud run services update ielts-api --region=asia-southeast1 \<br>
+  --set-env-vars=NODE_ENV=production \<br>
+  --set-secrets=DB_PASSWORD=db-pass:latest</p></div>
+
+</article>
+<article class="question-card" id="d20">
+  <div class="question-head"><h2>20. Cloud SQL connectivity concept</h2><p>Private path, not public guesswork</p></div>
+  <div class="grid4">
+    <div class="cell row-head">Concept EN</div><div class="cell row-head">Steps / Must-know EN</div><div class="cell row-head">Concept VI</div><div class="cell row-head">Steps / Must-know VI</div>
+    <div class="cell question"><p>Cloud Run reaches Cloud SQL typically via the Cloud SQL Auth Proxy / Unix socket connector built into Cloud Run, or private IP / Serverless VPC Access depending on setup. The app uses a connection string that matches the connector; IAM and DB user still apply.</p></div>
+    <div class="cell answer"><p>1) Create Cloud SQL instance; note connection name PROJECT:REGION:INSTANCE.<br>
+2) Enable Cloud SQL connection on the Cloud Run service.<br>
+3) Use least-privilege DB user.<br>
+4) Store password in Secret Manager.<br>
+5) Test with a /health that checks DB ping without exposing data.</p></div>
+    <div class="cell question"><p>Cloud Run tới Cloud SQL thường qua Cloud SQL Auth Proxy / Unix socket connector tích hợp Cloud Run, hoặc private IP / Serverless VPC Access tùy setup. App dùng connection string khớp connector; IAM và DB user vẫn áp dụng.</p></div>
+    <div class="cell answer"><p>1) Tạo instance Cloud SQL; ghi connection name PROJECT:REGION:INSTANCE.<br>
+2) Bật kết nối Cloud SQL trên service Cloud Run.<br>
+3) Dùng DB user least-privilege.<br>
+4) Mật khẩu trong Secret Manager.<br>
+5) Test /health ping DB mà không lộ dữ liệu.</p></div>
+  </div>
+  <div class="crib"><p><strong>Interview trap:</strong> Opening Cloud SQL to 0.0.0.0/0 'temporarily' is a classic interview trap — say you wouldn't.</p></div>
+<div class="note"><p><strong>Commands / examples:</strong></p><p style="font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:0.85em">gcloud run services update ielts-api --region=asia-southeast1 \<br>
+  --add-cloudsql-instances=$PROJECT:$REGION:$INSTANCE</p></div>
+
+</article>
+<article class="question-card" id="d21">
+  <div class="question-head"><h2>21. Cloud Build trigger on push</h2><p>Git → automatic deploy</p></div>
+  <div class="grid4">
+    <div class="cell row-head">Concept EN</div><div class="cell row-head">Steps / Must-know EN</div><div class="cell row-head">Concept VI</div><div class="cell row-head">Steps / Must-know VI</div>
+    <div class="cell question"><p>Connect the repo; create a trigger on branch (e.g. main) or tag. Trigger runs cloudbuild.yaml with substitutions like SHORT_SHA. Service account for Cloud Build needs permission to push Artifact Registry and deploy Cloud Run.</p></div>
+    <div class="cell answer"><p>1) Connect GitHub/GitLab/Cloud Source to Cloud Build.<br>
+2) Create trigger: branch main → cloudbuild.yaml.<br>
+3) Grant Cloud Build SA: artifact registry writer + run admin (or narrower custom).<br>
+4) Push a commit; watch build in console.<br>
+5) Confirm new Cloud Run revision appeared.</p></div>
+    <div class="cell question"><p>Nối repo; tạo trigger theo branch (vd main) hoặc tag. Trigger chạy cloudbuild.yaml với substitution như SHORT_SHA. Service account Cloud Build cần quyền push Artifact Registry và deploy Cloud Run.</p></div>
+    <div class="cell answer"><p>1) Connect GitHub/GitLab/Cloud Source với Cloud Build.<br>
+2) Tạo trigger: branch main → cloudbuild.yaml.<br>
+3) Grant SA Cloud Build: ghi Artifact Registry + deploy Run (hoặc custom hẹp hơn).<br>
+4) Push commit; xem build trên console.<br>
+5) Xác nhận revision Cloud Run mới xuất hiện.</p></div>
+  </div>
+  <div class="crib"><p><strong>Interview trap:</strong> Using your personal user creds in CI instead of a service account breaks auditability.</p></div>
+<div class="note"><p><strong>Commands / examples:</strong></p><p style="font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:0.85em">gcloud builds triggers create github --name=api-main --branch-pattern='^main$' --build-config=cloudbuild.yaml<br>
+gcloud builds submit --config=cloudbuild.yaml .</p></div>
+
+</article>
+<article class="question-card" id="d22">
+  <div class="question-head"><h2>22. cloudbuild.yaml stages</h2><p>Build → push → deploy</p></div>
+  <div class="grid4">
+    <div class="cell row-head">Concept EN</div><div class="cell row-head">Steps / Must-know EN</div><div class="cell row-head">Concept VI</div><div class="cell row-head">Steps / Must-know VI</div>
+    <div class="cell question"><p>A minimal pipeline: (1) build image tagged with $SHORT_SHA, (2) push to Artifact Registry, (3) gcloud run deploy with that tag, (4) optional test step before deploy. Keep prod deploys on tags or protected branches if the team needs a gate.</p></div>
+    <div class="cell answer"><p>1) steps: docker build -t …:$SHORT_SHA .<br>
+2) docker push …:$SHORT_SHA<br>
+3) gcloud run deploy --image …:$SHORT_SHA<br>
+4) Optional: wait-for / smoke curl<br>
+5) images: or explicit push — be consistent</p></div>
+    <div class="cell question"><p>Pipeline tối thiểu: (1) build image tag $SHORT_SHA, (2) push Artifact Registry, (3) gcloud run deploy với tag đó, (4) có thể thêm test trước deploy. Prod nên gắn tag hoặc nhánh protected nếu team cần cổng.</p></div>
+    <div class="cell answer"><p>1) steps: docker build -t …:$SHORT_SHA .<br>
+2) docker push …:$SHORT_SHA<br>
+3) gcloud run deploy --image …:$SHORT_SHA<br>
+4) Tuỳ chọn: smoke curl<br>
+5) images: hoặc push tường minh — nhất quán</p></div>
+  </div>
+  <div class="crib"><p><strong>Interview trap:</strong> A yaml that only builds but never deploys is CI without CD — say which you have.</p></div>
+<div class="note"><p><strong>Commands / examples:</strong></p><p style="font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:0.85em"># cloudbuild.yaml (sketch)<br>
+# steps:<br>
+# - name: gcr.io/cloud-builders/docker<br>
+#   args: ['build','-t','REGION-docker.pkg.dev/$PROJECT_ID/apps/api:$SHORT_SHA','.']<br>
+# - name: gcr.io/cloud-builders/docker<br>
+#   args: ['push','REGION-docker.pkg.dev/$PROJECT_ID/apps/api:$SHORT_SHA']<br>
+# - name: gcr.io/google.com/cloudsdktool/cloud-sdk<br>
+#   entrypoint: gcloud<br>
+#   args: ['run','deploy','ielts-api','--image','…:$SHORT_SHA','--region','asia-southeast1','--quiet']</p></div>
+
+</article>
+<article class="question-card" id="d23">
+  <div class="question-head"><h2>23. Revisions, rollback, traffic</h2><p>Undo a bad release fast</p></div>
+  <div class="grid4">
+    <div class="cell row-head">Concept EN</div><div class="cell row-head">Steps / Must-know EN</div><div class="cell row-head">Concept VI</div><div class="cell row-head">Steps / Must-know VI</div>
+    <div class="cell question"><p>Each deploy = new revision. If error rate spikes, route traffic back to the previous healthy revision (rollback) while you fix forward. Canary: send 10% traffic to the new revision first.</p></div>
+    <div class="cell answer"><p>1) List revisions; identify last known good.<br>
+2) gcloud run services update-traffic … --to-revisions=GOOD=100<br>
+3) Or redeploy the previous image digest.<br>
+4) Confirm logs/error rate recovered.<br>
+5) Fix code; deploy again; optionally canary then 100%.</p></div>
+    <div class="cell question"><p>Mỗi deploy = revision mới. Nếu error rate tăng, chuyển traffic về revision khỏe trước (rollback) trong khi sửa tiến. Canary: 10% traffic revision mới trước.</p></div>
+    <div class="cell answer"><p>1) Liệt kê revision; chọn bản tốt cuối.<br>
+2) gcloud run services update-traffic … --to-revisions=GOOD=100<br>
+3) Hoặc deploy lại image digest cũ.<br>
+4) Xác nhận log/error rate hồi.<br>
+5) Sửa code; deploy lại; có thể canary rồi 100%.</p></div>
+  </div>
+  <div class="crib"><p><strong>Interview trap:</strong> Deleting the bad revision before investigating destroys forensic evidence — roll traffic first.</p></div>
+<div class="note"><p><strong>Commands / examples:</strong></p><p style="font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:0.85em">gcloud run revisions list --service=ielts-api --region=asia-southeast1<br>
+gcloud run services update-traffic ielts-api --region=asia-southeast1 --to-revisions=ielts-api-00042-abc=100</p></div>
+
+</article>
+<article class="question-card" id="d24">
+  <div class="question-head"><h2>24. Logs &amp; debug Cloud Run</h2><p>Evidence over guesswork</p></div>
+  <div class="grid4">
+    <div class="cell row-head">Concept EN</div><div class="cell row-head">Steps / Must-know EN</div><div class="cell row-head">Concept VI</div><div class="cell row-head">Steps / Must-know VI</div>
+    <div class="cell question"><p>Use Cloud Logging for stdout/stderr from the container; filter by service/revision. Check request latency, cold starts, memory limits (OOM), and upstream Cloud SQL errors. Compare 'works locally' vs missing env on the revision.</p></div>
+    <div class="cell answer"><p>1) Open Logs for the Cloud Run service.<br>
+2) Filter severity&gt;=ERROR around the incident window.<br>
+3) Note revision name on failing requests.<br>
+4) Diff env/secrets vs last good revision.<br>
+5) Reproduce with curl + correlation from logs.</p></div>
+    <div class="cell question"><p>Dùng Cloud Logging cho stdout/stderr container; filter theo service/revision. Xem latency, cold start, memory (OOM), lỗi Cloud SQL upstream. So 'chạy local được' với thiếu env trên revision.</p></div>
+    <div class="cell answer"><p>1) Mở Logs của service Cloud Run.<br>
+2) Filter severity&gt;=ERROR quanh khung sự cố.<br>
+3) Ghi tên revision trên request lỗi.<br>
+4) Diff env/secret với revision tốt.<br>
+5) Reproduce bằng curl + correlation từ log.</p></div>
+  </div>
+  <div class="crib"><p><strong>Interview trap:</strong> Restarting hope-fix without reading logs is not a strategy.</p></div>
+<div class="note"><p><strong>Commands / examples:</strong></p><p style="font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:0.85em">gcloud logs read "resource.type=cloud_run_revision AND resource.labels.service_name=ielts-api" --limit=50</p></div>
+
+</article>
+<article class="question-card" id="d25">
+  <div class="question-head"><h2>25. Multi-env Cloud Run pattern</h2><p>dev / staging / prod services</p></div>
+  <div class="grid4">
+    <div class="cell row-head">Concept EN</div><div class="cell row-head">Steps / Must-know EN</div><div class="cell row-head">Concept VI</div><div class="cell row-head">Steps / Must-know VI</div>
+    <div class="cell question"><p>Prefer separate Cloud Run services or projects per env (ielts-api-staging vs ielts-api), each with its own SQL instance or database, secrets, and trigger. Promotion = deploy the same image tag to prod after staging smoke — or rebuild with prod substitutions if config is build-time.</p></div>
+    <div class="cell answer"><p>1) Name services clearly per env.<br>
+2) Separate secrets and Cloud SQL.<br>
+3) Staging trigger on main; prod trigger on tag/manual.<br>
+4) Smoke staging URL before promoting.<br>
+5) Document who can deploy prod.</p></div>
+    <div class="cell question"><p>Nên tách service Cloud Run hoặc project theo env (ielts-api-staging vs ielts-api), mỗi bên SQL/secret/trigger riêng. Promote = deploy cùng image tag lên prod sau smoke staging — hoặc rebuild với substitution prod nếu config lúc build.</p></div>
+    <div class="cell answer"><p>1) Đặt tên service rõ theo env.<br>
+2) Tách secret và Cloud SQL.<br>
+3) Trigger staging trên main; prod trên tag/manual.<br>
+4) Smoke URL staging trước khi promote.<br>
+5) Ghi ai được deploy prod.</p></div>
+  </div>
+  <div class="crib"><p><strong>Interview trap:</strong> One Cloud Run service shared by all envs with only an ENV var flipped is fragile for blast radius.</p></div>
+</article>
+    </section>
+    <section class="section-block" id="sec-linux-vm">
+      <h2>3 · Linux VM web server</h2>
+<article class="question-card" id="d26">
+  <div class="question-head"><h2>26. Goal: Linux VM web server</h2><p>Classic hosting path</p></div>
+  <div class="grid4">
+    <div class="cell row-head">Concept EN</div><div class="cell row-head">Steps / Must-know EN</div><div class="cell row-head">Concept VI</div><div class="cell row-head">Steps / Must-know VI</div>
+    <div class="cell question"><p>Goal: stand up an Ubuntu/Debian VM on GCP, harden SSH, install a web server (Nginx/Apache; CV also includes LiteSpeed awareness), deploy a PHP/web app document root, open firewall correctly, add TLS, and troubleshoot with logs/disk. This matches Akktis day-to-day SSH ops for client sites.</p></div>
+    <div class="cell answer"><p>1) Create VM + SSH access.<br>
+2) Update packages; install web server.<br>
+3) Deploy app files + vhost.<br>
+4) Firewall + TLS.<br>
+5) Monitor logs/disk; harden basics.</p></div>
+    <div class="cell question"><p>Mục tiêu: dựng VM Ubuntu/Debian trên GCP, harden SSH, cài web server (Nginx/Apache; CV có LiteSpeed), deploy thư mục PHP/web, mở firewall đúng, thêm TLS, troubleshoot bằng log/disk. Khớp ops SSH hằng ngày ở Akktis cho site khách.</p></div>
+    <div class="cell answer"><p>1) Tạo VM + SSH.<br>
+2) Update package; cài web server.<br>
+3) Deploy file app + vhost.<br>
+4) Firewall + TLS.<br>
+5) Theo dõi log/disk; harden cơ bản.</p></div>
+  </div>
+  <div class="crib"><p><strong>Interview trap:</strong> Don't claim you only use Cloud Run if the CV also lists Linux VM + LiteSpeed/Apache — own both paths.</p></div>
+</article>
+<article class="question-card" id="d27">
+  <div class="question-head"><h2>27. Create &amp; access a GCP VM</h2><p>Compute Engine first boot</p></div>
+  <div class="grid4">
+    <div class="cell row-head">Concept EN</div><div class="cell row-head">Steps / Must-know EN</div><div class="cell row-head">Concept VI</div><div class="cell row-head">Steps / Must-know VI</div>
+    <div class="cell question"><p>Create an e2-small (or appropriate) VM with Ubuntu LTS, pick region/zone, attach a public IP if it must serve the internet, and ensure your SSH key is registered (OS Login or project/instance metadata).</p></div>
+    <div class="cell answer"><p>1) gcloud compute instances create … --image-family=ubuntu-2204-lts …<br>
+2) Note external IP.<br>
+3) gcloud compute ssh USER@INSTANCE --zone=…<br>
+4) Confirm uname -a and disk free.<br>
+5) Set hostname / timezone if team standard requires.</p></div>
+    <div class="cell question"><p>Tạo VM e2-small (hoặc phù hợp) Ubuntu LTS, chọn region/zone, gắn IP public nếu phục vụ internet, đảm bảo SSH key đã đăng ký (OS Login hoặc metadata).</p></div>
+    <div class="cell answer"><p>1) gcloud compute instances create … --image-family=ubuntu-2204-lts …<br>
+2) Ghi IP ngoài.<br>
+3) gcloud compute ssh USER@INSTANCE --zone=…<br>
+4) Xác nhận uname -a và dung lượng disk.<br>
+5) Set hostname/timezone nếu team yêu cầu.</p></div>
+  </div>
+  <div class="crib"><p><strong>Interview trap:</strong> Leaving SSH open with password auth on a public IP is an avoidable incident.</p></div>
+<div class="note"><p><strong>Commands / examples:</strong></p><p style="font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:0.85em">gcloud compute instances create web-1 --zone=asia-southeast1-b --machine-type=e2-small --image-family=ubuntu-2204-lts --image-project=ubuntu-os-cloud --tags=http-server,https-server<br>
+gcloud compute ssh ubuntu@web-1 --zone=asia-southeast1-b</p></div>
+
+</article>
+<article class="question-card" id="d28">
+  <div class="question-head"><h2>28. SSH keys &amp; first login hygiene</h2><p>Key-only access</p></div>
+  <div class="grid4">
+    <div class="cell row-head">Concept EN</div><div class="cell row-head">Steps / Must-know EN</div><div class="cell row-head">Concept VI</div><div class="cell row-head">Steps / Must-know VI</div>
+    <div class="cell question"><p>Prefer SSH public-key auth; disable password authentication after confirming key login works. Use a non-root sudo user. Keep private keys off chat/docs; use gcloud compute ssh or ssh-agent.</p></div>
+    <div class="cell answer"><p>1) Add your pubkey (ssh-ed25519…) via console/OS Login.<br>
+2) Login; verify sudo -l.<br>
+3) Edit sshd_config: PasswordAuthentication no; PermitRootLogin no (or prohibit-password).<br>
+4) systemctl reload sshd carefully (keep a session open).<br>
+5) Test a second SSH session before closing the first.</p></div>
+    <div class="cell question"><p>Ưu tiên SSH pubkey; tắt login mật khẩu sau khi xác nhận key chạy. Dùng user sudo không phải root. Không gửi private key qua chat/docs; dùng gcloud compute ssh hoặc ssh-agent.</p></div>
+    <div class="cell answer"><p>1) Thêm pubkey (ssh-ed25519…) qua console/OS Login.<br>
+2) Login; kiểm sudo -l.<br>
+3) Sửa sshd_config: PasswordAuthentication no; PermitRootLogin no.<br>
+4) systemctl reload sshd cẩn thận (giữ session cũ).<br>
+5) Test SSH session thứ hai trước khi đóng session đầu.</p></div>
+  </div>
+  <div class="crib"><p><strong>Interview trap:</strong> Reloading sshd after locking yourself out is a classic oops — always keep a backup session.</p></div>
+<div class="note"><p><strong>Commands / examples:</strong></p><p style="font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:0.85em">ssh-keygen -t ed25519 -C 'you@work'<br>
+sudo sed -n '1,120p' /etc/ssh/sshd_config<br>
+sudo systemctl reload ssh</p></div>
+
+</article>
+<article class="question-card" id="d29">
+  <div class="question-head"><h2>29. apt update &amp; install web server</h2><p>Nginx / Apache / LiteSpeed awareness</p></div>
+  <div class="grid4">
+    <div class="cell row-head">Concept EN</div><div class="cell row-head">Steps / Must-know EN</div><div class="cell row-head">Concept VI</div><div class="cell row-head">Steps / Must-know VI</div>
+    <div class="cell question"><p>Baseline: apt update &amp;&amp; apt upgrade thoughtfully, then install Nginx or Apache. On Akktis work I also operate LiteSpeed for PHP/CMS apps — same ideas: document root, vhost, rewrite, PHP handler. Pick one primary for a greenfield VM; know how to read the other's config when inheriting a server.</p></div>
+    <div class="cell answer"><p>1) sudo apt update &amp;&amp; sudo apt upgrade -y (maintenance window awareness).<br>
+2) Install nginx or apache2 (+ php-fpm if PHP).<br>
+3) systemctl enable --now nginx|apache2.<br>
+4) curl localhost to verify default page.<br>
+5) Note: LiteSpeed often has its own admin and config paths — don't invent panel passwords in interview; describe vhost + PHP + TLS concepts.</p></div>
+    <div class="cell question"><p>Baseline: apt update &amp;&amp; apt upgrade có chủ đích, rồi cài Nginx hoặc Apache. Ở Akktis tôi cũng vận hành LiteSpeed cho app PHP/CMS — cùng ý: document root, vhost, rewrite, PHP handler. Greenfield chọn một; biết đọc config cái kia khi thừa kế server.</p></div>
+    <div class="cell answer"><p>1) sudo apt update &amp;&amp; sudo apt upgrade -y (ý thức maintenance window).<br>
+2) Cài nginx hoặc apache2 (+ php-fpm nếu PHP).<br>
+3) systemctl enable --now nginx|apache2.<br>
+4) curl localhost xác nhận trang mặc định.<br>
+5) LiteSpeed thường có admin/config riêng — không bịa mật khẩu panel; mô tả khái niệm vhost + PHP + TLS.</p></div>
+  </div>
+  <div class="crib"><p><strong>Interview trap:</strong> Saying you 'optimized LiteSpeed' without naming what you changed (cache, PHP workers, vhost) is vague — give one concrete example.</p></div>
+<div class="note"><p><strong>Commands / examples:</strong></p><p style="font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:0.85em">sudo apt update &amp;&amp; sudo apt install -y nginx<br>
+# or<br>
+sudo apt install -y apache2 php-fpm<br>
+sudo systemctl status nginx</p></div>
+
+</article>
+<article class="question-card" id="d30">
+  <div class="question-head"><h2>30. Firewall: GCP tags + UFW</h2><p>Only needed ports</p></div>
+  <div class="grid4">
+    <div class="cell row-head">Concept EN</div><div class="cell row-head">Steps / Must-know EN</div><div class="cell row-head">Concept VI</div><div class="cell row-head">Steps / Must-know VI</div>
+    <div class="cell question"><p>Two layers often: VPC firewall allowing 80/443 to the instance tag, and host UFW allowing OpenSSH + Nginx Full. Don't open MySQL to the world. Prefer IAP/tunnel for admin if the team uses it.</p></div>
+    <div class="cell answer"><p>1) Ensure instance has http-server/https-server tags (or custom rules).<br>
+2) sudo ufw allow OpenSSH; sudo ufw allow 'Nginx Full' (or 80/443).<br>
+3) sudo ufw enable.<br>
+4) Verify from outside: curl http://EXTERNAL_IP.<br>
+5) Confirm 22 only from trusted ranges if policy requires.</p></div>
+    <div class="cell question"><p>Thường hai lớp: VPC firewall cho 80/443 tới tag instance, và UFW trên host cho OpenSSH + Nginx Full. Không mở MySQL ra internet. Ưu tiên IAP/tunnel cho admin nếu team dùng.</p></div>
+    <div class="cell answer"><p>1) Instance có tag http-server/https-server (hoặc rule custom).<br>
+2) sudo ufw allow OpenSSH; sudo ufw allow 'Nginx Full'.<br>
+3) sudo ufw enable.<br>
+4) Verify ngoài: curl http://EXTERNAL_IP.<br>
+5) Port 22 chỉ từ dải tin cậy nếu policy yêu cầu.</p></div>
+  </div>
+  <div class="crib"><p><strong>Interview trap:</strong> ufw enable without allowing SSH first can lock you out.</p></div>
+<div class="note"><p><strong>Commands / examples:</strong></p><p style="font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:0.85em">sudo ufw allow OpenSSH<br>
+sudo ufw allow 'Nginx Full'<br>
+sudo ufw enable<br>
+sudo ufw status</p></div>
+
+</article>
+<article class="question-card" id="d31">
+  <div class="question-head"><h2>31. Deploy PHP/web app folder</h2><p>Document root &amp; permissions</p></div>
+  <div class="grid4">
+    <div class="cell row-head">Concept EN</div><div class="cell row-head">Steps / Must-know EN</div><div class="cell row-head">Concept VI</div><div class="cell row-head">Steps / Must-know VI</div>
+    <div class="cell question"><p>Copy app to /var/www/app (or similar), set ownership to www-data (or the LiteSpeed/Apache user), keep secrets in env files outside the web root when possible, and run composer/migrations as documented for Laravel/WordPress/PrestaShop-style apps.</p></div>
+    <div class="cell answer"><p>1) sudo mkdir -p /var/www/app &amp;&amp; deploy via git pull or rsync.<br>
+2) chown -R www-data:www-data (or correct user).<br>
+3) Place .env outside public/ if framework allows.<br>
+4) Install PHP deps; set storage/cache writable.<br>
+5) Point vhost document root at public/ (Laravel) or correct web root.</p></div>
+    <div class="cell question"><p>Copy app vào /var/www/app (hoặc tương tự), chown www-data (hoặc user LiteSpeed/Apache), giữ secret ở file env ngoài web root khi được, chạy composer/migration theo docs cho app kiểu Laravel/WordPress/PrestaShop.</p></div>
+    <div class="cell answer"><p>1) sudo mkdir -p /var/www/app &amp;&amp; deploy git pull hoặc rsync.<br>
+2) chown -R www-data:www-data (hoặc user đúng).<br>
+3) Đặt .env ngoài public/ nếu framework cho phép.<br>
+4) Cài PHP deps; cho phép ghi storage/cache.<br>
+5) Trỏ document root vhost vào public/ (Laravel) hoặc web root đúng.</p></div>
+  </div>
+  <div class="crib"><p><strong>Interview trap:</strong> chmod 777 -R 'to make uploads work' is a trap — fix ownership/group instead.</p></div>
+<div class="note"><p><strong>Commands / examples:</strong></p><p style="font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:0.85em">sudo rsync -a ./ /var/www/app/<br>
+sudo chown -R www-data:www-data /var/www/app<br>
+cd /var/www/app &amp;&amp; sudo -u www-data composer install --no-dev</p></div>
+
+</article>
+<article class="question-card" id="d32">
+  <div class="question-head"><h2>32. Vhost / systemd awareness</h2><p>Serve the right site</p></div>
+  <div class="grid4">
+    <div class="cell row-head">Concept EN</div><div class="cell row-head">Steps / Must-know EN</div><div class="cell row-head">Concept VI</div><div class="cell row-head">Steps / Must-know VI</div>
+    <div class="cell question"><p>Configure a server block (Nginx) or VirtualHost (Apache) with server_name, root, PHP-FPM socket, and access/error logs. Enable the site and reload. For long-running workers (queues), use systemd units — don't leave nohup forever without docs.</p></div>
+    <div class="cell answer"><p>1) Write /etc/nginx/sites-available/app.conf (or Apache sites-available).<br>
+2) symlink into sites-enabled.<br>
+3) nginx -t &amp;&amp; systemctl reload nginx.<br>
+4) Confirm Host header / DNS A record points to the VM.<br>
+5) Optional: systemd unit for queue workers with Restart=on-failure.</p></div>
+    <div class="cell question"><p>Cấu hình server block (Nginx) hoặc VirtualHost (Apache): server_name, root, socket PHP-FPM, access/error log. Enable site và reload. Worker dài (queue) dùng systemd — không để nohup mãi không docs.</p></div>
+    <div class="cell answer"><p>1) Viết /etc/nginx/sites-available/app.conf (hoặc Apache).<br>
+2) symlink vào sites-enabled.<br>
+3) nginx -t &amp;&amp; systemctl reload nginx.<br>
+4) Xác nhận DNS A / Host trỏ đúng VM.<br>
+5) Tuỳ chọn: unit systemd cho queue với Restart=on-failure.</p></div>
+  </div>
+  <div class="crib"><p><strong>Interview trap:</strong> Editing sites-enabled in place without nginx -t risks taking down all vhosts on reload.</p></div>
+<div class="note"><p><strong>Commands / examples:</strong></p><p style="font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:0.85em">sudo ln -s /etc/nginx/sites-available/app.conf /etc/nginx/sites-enabled/<br>
+sudo nginx -t &amp;&amp; sudo systemctl reload nginx</p></div>
+
+</article>
+<article class="question-card" id="d33">
+  <div class="question-head"><h2>33. TLS with Let's Encrypt</h2><p>HTTPS concept</p></div>
+  <div class="grid4">
+    <div class="cell row-head">Concept EN</div><div class="cell row-head">Steps / Must-know EN</div><div class="cell row-head">Concept VI</div><div class="cell row-head">Steps / Must-know VI</div>
+    <div class="cell question"><p>Use Certbot (or equivalent) to obtain a Let's Encrypt certificate for the domain, auto-configure Nginx/Apache, and rely on renew timers. DNS must already point to the VM. Redirect HTTP→HTTPS.</p></div>
+    <div class="cell answer"><p>1) Point DNS A/AAAA to the VM IP; wait for propagation.<br>
+2) sudo apt install certbot python3-certbot-nginx (or apache plugin).<br>
+3) sudo certbot --nginx -d example.com.<br>
+4) Confirm https:// loads with valid cert.<br>
+5) Check renew: systemctl list-timers | grep certbot / certbot renew --dry-run.</p></div>
+    <div class="cell question"><p>Dùng Certbot (hoặc tương đương) lấy chứng chỉ Let's Encrypt, cấu hình Nginx/Apache, dựa vào timer renew. DNS phải trỏ sẵn về VM. Redirect HTTP→HTTPS.</p></div>
+    <div class="cell answer"><p>1) Trỏ DNS A/AAAA về IP VM; chờ propagate.<br>
+2) sudo apt install certbot python3-certbot-nginx.<br>
+3) sudo certbot --nginx -d example.com.<br>
+4) Xác nhận https:// load đúng cert.<br>
+5) Kiểm renew: timer certbot / certbot renew --dry-run.</p></div>
+  </div>
+  <div class="crib"><p><strong>Interview trap:</strong> Self-signed certs are fine for lab; production public sites expect public CA trust.</p></div>
+<div class="note"><p><strong>Commands / examples:</strong></p><p style="font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:0.85em">sudo certbot --nginx -d example.com<br>
+sudo certbot renew --dry-run</p></div>
+
+</article>
+<article class="question-card" id="d34">
+  <div class="question-head"><h2>34. Logs &amp; disk troubleshooting</h2><p>When the site dies quietly</p></div>
+  <div class="grid4">
+    <div class="cell row-head">Concept EN</div><div class="cell row-head">Steps / Must-know EN</div><div class="cell row-head">Concept VI</div><div class="cell row-head">Steps / Must-know VI</div>
+    <div class="cell question"><p>Symptoms: 5xx, blank page, can't write uploads, SSH still works. Check disk (df -h), inodes (df -i), journalctl/nginx error.log, PHP-FPM log, and recent deploys. Full disk is a classic production fire on CMS sites (logs, backups, uploads).</p></div>
+    <div class="cell answer"><p>1) df -h; df -i.<br>
+2) du -sh /* | sort -h to find fat directories.<br>
+3) Truncate/rotate bloated logs safely; move old backups off-box.<br>
+4) Read /var/log/nginx/error.log or Apache/LiteSpeed error log.<br>
+5) After cleanup, fix root cause (logrotate, retention).</p></div>
+    <div class="cell question"><p>Triệu chứng: 5xx, trang trắng, không ghi upload, SSH vẫn vào được. Kiểm disk (df -h), inode (df -i), journalctl/nginx error.log, log PHP-FPM, deploy gần đây. Disk đầy là lửa cổ điển trên site CMS (log, backup, upload).</p></div>
+    <div class="cell answer"><p>1) df -h; df -i.<br>
+2) du -sh /* | sort -h tìm thư mục phình.<br>
+3) Xoay/cắt log an toàn; chuyển backup cũ khỏi máy.<br>
+4) Đọc error log Nginx/Apache/LiteSpeed.<br>
+5) Sau dọn, sửa gốc (logrotate, retention).</p></div>
+  </div>
+  <div class="crib"><p><strong>Interview trap:</strong> Deleting files under /var/lib/mysql to free space is catastrophic — know what you're deleting.</p></div>
+<div class="note"><p><strong>Commands / examples:</strong></p><p style="font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:0.85em">df -h<br>
+sudo du -xh /var/log | sort -h | tail<br>
+sudo journalctl -u nginx -n 100 --no-pager</p></div>
+
+</article>
+<article class="question-card" id="d35">
+  <div class="question-head"><h2>35. Harden basics checklist</h2><p>Practical, not theater</p></div>
+  <div class="grid4">
+    <div class="cell row-head">Concept EN</div><div class="cell row-head">Steps / Must-know EN</div><div class="cell row-head">Concept VI</div><div class="cell row-head">Steps / Must-know VI</div>
+    <div class="cell question"><p>Baseline hardening I actually practice and document: SSH key-only, UFW limited ports, unattended security updates where appropriate, separate sudo users, least privilege on app files, secrets not in web root, and clear runbooks so the next person isn't guessing.</p></div>
+    <div class="cell answer"><p>1) SSH keys only; no password auth.<br>
+2) UFW/VPC least ports.<br>
+3) Keep packages patched on a schedule.<br>
+4) App file perms + secrets placement.<br>
+5) Write short docs: how to deploy, where logs live, how to renew TLS.</p></div>
+    <div class="cell question"><p>Harden baseline tôi thực hành và document: SSH chỉ key, UFW hạn chế cổng, cập nhật bảo mật khi phù hợp, user sudo tách, least privilege file app, secret ngoài web root, runbook rõ để người sau không đoán.</p></div>
+    <div class="cell answer"><p>1) SSH chỉ key; tắt password auth.<br>
+2) UFW/VPC mở tối thiểu cổng.<br>
+3) Vá package theo lịch.<br>
+4) Quyền file app + vị trí secret.<br>
+5) Docs ngắn: cách deploy, log ở đâu, renew TLS thế nào.</p></div>
+  </div>
+  <div class="crib"><p><strong>Interview trap:</strong> I'm not claiming a full enterprise security audit — I claim practical hardening + documentation.</p></div>
+<div class="note"><p><strong>Commands / examples:</strong></p><p style="font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:0.85em">sudo apt install -y unattended-upgrades<br>
+sudo ufw status verbose<br>
+# document: /root/runbooks/web-deploy.md (team path)</p></div>
+
+</article>
+    </section>
+    <section class="section-block" id="sec-devops">
+      <h2>4 · DevOps fundamentals</h2>
+<article class="question-card" id="d36">
+  <div class="question-head"><h2>36. What is DevOps?</h2><p>Culture + automation + ownership</p></div>
+  <div class="grid4">
+    <div class="cell row-head">Concept EN</div><div class="cell row-head">Steps / Must-know EN</div><div class="cell row-head">Concept VI</div><div class="cell row-head">Steps / Must-know VI</div>
+    <div class="cell question"><p>DevOps shortens the path from commit to reliable production by combining shared ownership, automation, measurement, and fast feedback between people who build and people who run systems.</p></div>
+    <div class="cell answer"><p>Tools enable DevOps; they don't replace clear ownership of build, deploy, monitor, and recover.</p></div>
+    <div class="cell question"><p>DevOps rút ngắn đường từ commit đến production ổn định bằng ownership chung, tự động hóa, đo lường và phản hồi nhanh giữa người xây và người vận hành.</p></div>
+    <div class="cell answer"><p>Tool hỗ trợ DevOps; không thay ownership rõ về build, deploy, monitor và recover.</p></div>
+  </div>
+  <div class="crib"><p><strong>Interview trap:</strong> DevOps ≠ installing one CI product.</p></div>
+</article>
+<article class="question-card" id="d37">
+  <div class="question-head"><h2>37. CI vs CD</h2><p>Precise meanings</p></div>
+  <div class="grid4">
+    <div class="cell row-head">Concept EN</div><div class="cell row-head">Steps / Must-know EN</div><div class="cell row-head">Concept VI</div><div class="cell row-head">Steps / Must-know VI</div>
+    <div class="cell question"><p>CI (Continuous Integration): automatically build and test every change so the main line stays healthy. CD usually means Continuous Delivery (always releasable with a human gate) or Continuous Deployment (auto to production).</p></div>
+    <div class="cell answer"><p>Say which CD meaning you use. CI without automated tests is mostly packaging.</p></div>
+    <div class="cell question"><p>CI: tự động build/test mỗi thay đổi để nhánh chính khỏe. CD thường là Continuous Delivery (luôn sẵn sàng release, có cổng người) hoặc Continuous Deployment (tự lên production).</p></div>
+    <div class="cell answer"><p>Nói rõ bạn đang dùng nghĩa CD nào. CI không có test tự động thì chủ yếu là đóng gói.</p></div>
+  </div>
+  <div class="crib"><p><strong>Interview trap:</strong> Saying 'we do CD' without explaining the prod gate is vague.</p></div>
+</article>
+<article class="question-card" id="d38">
+  <div class="question-head"><h2>38. Pipeline stages mental model</h2><p>Commit to verify</p></div>
+  <div class="grid4">
+    <div class="cell row-head">Concept EN</div><div class="cell row-head">Steps / Must-know EN</div><div class="cell row-head">Concept VI</div><div class="cell row-head">Steps / Must-know VI</div>
+    <div class="cell question"><p>A typical pipeline: checkout → install/build → test → package artifact (image/AAB) → deploy to an environment → notify. Secrets stay outside Git; prod often needs an extra approval or tag.</p></div>
+    <div class="cell answer"><p>Be able to point where your real work sits: Cloud Build → Artifact Registry → Cloud Run, or CI → mobile store track, or rsync/git pull on a VM.</p></div>
+    <div class="cell question"><p>Pipeline điển hình: checkout → cài/build → test → đóng artifact (image/AAB) → deploy env → notify. Secret ngoài Git; prod thường cần approval hoặc tag.</p></div>
+    <div class="cell answer"><p>Chỉ được chỗ công việc thật của bạn: Cloud Build → Artifact Registry → Cloud Run, hoặc CI → track store mobile, hoặc rsync/git pull trên VM.</p></div>
+  </div>
+  <div class="crib"><p><strong>Interview trap:</strong> Memorizing stage names without a real failure story is weak.</p></div>
+</article>
+<article class="question-card" id="d39">
+  <div class="question-head"><h2>39. Why multi-environment matters</h2><p>dev / staging / prod</p></div>
+  <div class="grid4">
+    <div class="cell row-head">Concept EN</div><div class="cell row-head">Steps / Must-know EN</div><div class="cell row-head">Concept VI</div><div class="cell row-head">Steps / Must-know VI</div>
+    <div class="cell question"><p>Separate environments reduce blast radius: try changes in staging with staging data/secrets before production. Promotion should be deliberate — same artifact when possible, different config.</p></div>
+    <div class="cell answer"><p>Staging green with wrong API URL still breaks prod. Always name the config delta.</p></div>
+    <div class="cell question"><p>Tách môi trường giảm bán kính nổ: thử ở staging với data/secret staging trước production. Promote có chủ đích — cùng artifact khi được, khác config.</p></div>
+    <div class="cell answer"><p>Staging xanh nhưng sai API URL vẫn phá prod. Luôn nêu delta config.</p></div>
+  </div>
+  <div class="crib"><p><strong>Interview trap:</strong> One shared 'prod-like' box for everything is not multi-env.</p></div>
+</article>
+    </section>
+    <section class="section-block" id="sec-linux">
+      <h2>5 · Linux essentials</h2>
+<article class="question-card" id="d40">
+  <div class="question-head"><h2>40. SSH day-to-day</h2><p>How you actually manage hosts</p></div>
+  <div class="grid4">
+    <div class="cell row-head">Concept EN</div><div class="cell row-head">Steps / Must-know EN</div><div class="cell row-head">Concept VI</div><div class="cell row-head">Steps / Must-know VI</div>
+    <div class="cell question"><p>SSH into Ubuntu/Debian, check service status, logs, disk/memory, apply the safest fix, verify. Prefer key-based auth and a sudo user over root password login.</p></div>
+    <div class="cell answer"><p>Structured loop: symptom → resources → logs → recent changes → fix → verify.</p></div>
+    <div class="cell question"><p>SSH vào Ubuntu/Debian, xem status service, log, disk/memory, áp fix an toàn nhất, verify. Ưu tiên SSH key và user sudo hơn login root bằng mật khẩu.</p></div>
+    <div class="cell answer"><p>Vòng có cấu trúc: triệu chứng → tài nguyên → log → thay đổi gần đây → sửa → verify.</p></div>
+  </div>
+  <div class="crib"><p><strong>Interview trap:</strong> Random reboot without checking logs hides root cause.</p></div>
+<div class="note"><p><strong>Commands / examples:</strong></p><p style="font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:0.85em">ssh user@host<br>
+systemctl status nginx<br>
+journalctl -u nginx -n 50<br>
+df -h</p></div>
+
+</article>
+<article class="question-card" id="d41">
+  <div class="question-head"><h2>41. Processes, services, permissions</h2><p>Just enough OS</p></div>
+  <div class="grid4">
+    <div class="cell row-head">Concept EN</div><div class="cell row-head">Steps / Must-know EN</div><div class="cell row-head">Concept VI</div><div class="cell row-head">Steps / Must-know VI</div>
+    <div class="cell question"><p>Know how to list processes, restart systemd services, and read rwx permissions. Prefer fixing ownership/group over chmod 777. Long-running jobs belong under systemd, not forgotten nohup.</p></div>
+    <div class="cell answer"><p>id / ls -l / systemctl / journalctl are interview-safe everyday tools.</p></div>
+    <div class="cell question"><p>Biết liệt kê process, restart service systemd, đọc quyền rwx. Ưu tiên sửa ownership/group hơn chmod 777. Job dài nên nằm dưới systemd, không nohup quên.</p></div>
+    <div class="cell answer"><p>id / ls -l / systemctl / journalctl là tool hằng ngày an toàn khi PV.</p></div>
+  </div>
+  <div class="crib"><p><strong>Interview trap:</strong> chmod 777 to unblock uploads is a security smell.</p></div>
+<div class="note"><p><strong>Commands / examples:</strong></p><p style="font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:0.85em">ps aux | head<br>
+sudo systemctl restart php8.2-fpm<br>
+ls -l /var/www</p></div>
+
+</article>
+<article class="question-card" id="d42">
+  <div class="question-head"><h2>42. Disk and log hygiene</h2><p>Classic outage cause</p></div>
+  <div class="grid4">
+    <div class="cell row-head">Concept EN</div><div class="cell row-head">Steps / Must-know EN</div><div class="cell row-head">Concept VI</div><div class="cell row-head">Steps / Must-know VI</div>
+    <div class="cell question"><p>Full disks break writes, CMS uploads, and sometimes SSH usability in subtle ways. Watch df -h, rotate logs, and keep backups off the app volume when possible.</p></div>
+    <div class="cell answer"><p>Never delete unknown database directories to free space.</p></div>
+    <div class="cell question"><p>Disk đầy làm hỏng ghi file, upload CMS, đôi khi SSH cũng lạ. Theo dõi df -h, xoay log, giữ backup khỏi volume app khi được.</p></div>
+    <div class="cell answer"><p>Không xóa thư mục database không rõ để lấy chỗ trống.</p></div>
+  </div>
+  <div class="crib"><p><strong>Interview trap:</strong> df green on size but inodes full (df -i) still breaks creates.</p></div>
+<div class="note"><p><strong>Commands / examples:</strong></p><p style="font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:0.85em">df -h; df -i<br>
+sudo du -xh /var/log | sort -h | tail</p></div>
+
+</article>
+<article class="question-card" id="d43">
+  <div class="question-head"><h2>43. Package basics on Debian/Ubuntu</h2><p>apt awareness</p></div>
+  <div class="grid4">
+    <div class="cell row-head">Concept EN</div><div class="cell row-head">Steps / Must-know EN</div><div class="cell row-head">Concept VI</div><div class="cell row-head">Steps / Must-know VI</div>
+    <div class="cell question"><p>apt update refreshes indexes; apt install adds packages; prefer understanding what a package starts (nginx, php-fpm) before upgrading production blindly.</p></div>
+    <div class="cell answer"><p>Patch on a schedule; know how to roll back a bad package upgrade if the team has a pattern.</p></div>
+    <div class="cell question"><p>apt update làm mới index; apt install thêm package; hiểu package khởi động gì (nginx, php-fpm) trước khi upgrade prod mù.</p></div>
+    <div class="cell answer"><p>Vá theo lịch; biết rollback upgrade package xấu nếu team có pattern.</p></div>
+  </div>
+  <div class="crib"><p><strong>Interview trap:</strong> apt upgrade on prod Friday evening without a window is a risk.</p></div>
+<div class="note"><p><strong>Commands / examples:</strong></p><p style="font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:0.85em">sudo apt update<br>
+sudo apt install -y nginx</p></div>
+
+</article>
+    </section>
+    <section class="section-block" id="sec-git">
+      <h2>6 · Git + collaboration</h2>
+<article class="question-card" id="d44">
+  <div class="question-head"><h2>44. Branching for delivery</h2><p>What CI watches</p></div>
+  <div class="grid4">
+    <div class="cell row-head">Concept EN</div><div class="cell row-head">Steps / Must-know EN</div><div class="cell row-head">Concept VI</div><div class="cell row-head">Steps / Must-know VI</div>
+    <div class="cell question"><p>Feature branches for work; protected main for integration; tags for release candidates. CI triggers usually bind to branch or tag patterns.</p></div>
+    <div class="cell answer"><p>Say how your team promotes: merge to main → staging deploy; tag → prod/mobile release.</p></div>
+    <div class="cell question"><p>Nhánh feature cho việc đang làm; main được bảo vệ để tích hợp; tag cho release candidate. CI thường gắn pattern branch hoặc tag.</p></div>
+    <div class="cell answer"><p>Nói team promote thế nào: merge main → deploy staging; tag → prod/mobile release.</p></div>
+  </div>
+  <div class="crib"><p><strong>Interview trap:</strong> Force-push to shared main is an interview red flag.</p></div>
+</article>
+<article class="question-card" id="d45">
+  <div class="question-head"><h2>45. PR collaboration basics</h2><p>Review before build cost</p></div>
+  <div class="grid4">
+    <div class="cell row-head">Concept EN</div><div class="cell row-head">Steps / Must-know EN</div><div class="cell row-head">Concept VI</div><div class="cell row-head">Steps / Must-know VI</div>
+    <div class="cell question"><p>Pull requests catch bad config and secret leaks before expensive mobile/cloud builds. Small diffs review faster than mega-PRs.</p></div>
+    <div class="cell answer"><p>CI on PR should be cheaper than full store/prod deploy — lint/test first.</p></div>
+    <div class="cell question"><p>Pull request bắt config xấu và lộ secret trước khi burn native/cloud build. Diff nhỏ review nhanh hơn mega-PR.</p></div>
+    <div class="cell answer"><p>CI trên PR nên rẻ hơn full deploy store/prod — lint/test trước.</p></div>
+  </div>
+  <div class="crib"><p><strong>Interview trap:</strong> Merging with red CI 'because it's flaky' without checking is a habit to break.</p></div>
+</article>
+<article class="question-card" id="d46">
+  <div class="question-head"><h2>46. What changed? incident habit</h2><p>Git as forensics</p></div>
+  <div class="grid4">
+    <div class="cell row-head">Concept EN</div><div class="cell row-head">Steps / Must-know EN</div><div class="cell row-head">Concept VI</div><div class="cell row-head">Steps / Must-know VI</div>
+    <div class="cell question"><p>When production breaks after a release, compare the last green commit to HEAD: app code, Dockerfile, cloudbuild.yaml, env templates.</p></div>
+    <div class="cell answer"><p>git log / git diff / revert or rollback image are first-class ops tools.</p></div>
+    <div class="cell question"><p>Khi production hỏng sau release, so commit xanh cuối với HEAD: code app, Dockerfile, cloudbuild.yaml, template env.</p></div>
+    <div class="cell answer"><p>git log / git diff / revert hoặc rollback image là tool ops hạng nhất.</p></div>
+  </div>
+  <div class="crib"><p><strong>Interview trap:</strong> Blaming Git instead of reading the diff wastes time.</p></div>
+<div class="note"><p><strong>Commands / examples:</strong></p><p style="font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:0.85em">git log --oneline -10<br>
+git diff HEAD~1</p></div>
+
+</article>
+<article class="question-card" id="d47">
+  <div class="question-head"><h2>47. Secrets never in Git</h2><p>Hard rule</p></div>
+  <div class="grid4">
+    <div class="cell row-head">Concept EN</div><div class="cell row-head">Steps / Must-know EN</div><div class="cell row-head">Concept VI</div><div class="cell row-head">Steps / Must-know VI</div>
+    <div class="cell question"><p>Keystores, .env with passwords, cloud keys, and private keys must not be committed. Use Secret Manager / CI secrets and .gitignore.</p></div>
+    <div class="cell answer"><p>If a secret is committed, rotate it — removing from history alone is not enough if it was pushed.</p></div>
+    <div class="cell question"><p>Keystore, .env có mật khẩu, cloud key và private key không được commit. Dùng Secret Manager / secret CI và .gitignore.</p></div>
+    <div class="cell answer"><p>Nếu secret đã commit, phải xoay — chỉ xóa khỏi history chưa đủ nếu đã push.</p></div>
+  </div>
+  <div class="crib"><p><strong>Interview trap:</strong> git-crypt stories without rotation still leave leaked credentials usable.</p></div>
+</article>
+    </section>
+    <section class="section-block" id="sec-docker">
+      <h2>7 · Docker for Cloud Run</h2>
+<article class="question-card" id="d48">
+  <div class="question-head"><h2>48. Why containers for Cloud Run</h2><p>Same artifact everywhere</p></div>
+  <div class="grid4">
+    <div class="cell row-head">Concept EN</div><div class="cell row-head">Steps / Must-know EN</div><div class="cell row-head">Concept VI</div><div class="cell row-head">Steps / Must-know VI</div>
+    <div class="cell question"><p>A container packages the app and its runtime so staging and Cloud Run run the same bits. You ship an image tag/digest, not 'it works on my laptop'.</p></div>
+    <div class="cell answer"><p>Dockerfile + listen on $PORT is the Cloud Run baseline.</p></div>
+    <div class="cell question"><p>Container đóng gói app và runtime để staging và Cloud Run chạy cùng bits. Bạn ship image tag/digest, không phải 'chạy được trên laptop'.</p></div>
+    <div class="cell answer"><p>Dockerfile + listen $PORT là baseline Cloud Run.</p></div>
+  </div>
+  <div class="crib"><p><strong>Interview trap:</strong> Treating a container like a full VM (SSH in to patch live) fights the model.</p></div>
+</article>
+<article class="question-card" id="d49">
+  <div class="question-head"><h2>49. Image layers &amp; .dockerignore</h2><p>Build speed and size</p></div>
+  <div class="grid4">
+    <div class="cell row-head">Concept EN</div><div class="cell row-head">Steps / Must-know EN</div><div class="cell row-head">Concept VI</div><div class="cell row-head">Steps / Must-know VI</div>
+    <div class="cell question"><p>Order Dockerfile so dependency layers cache. Exclude .git and local node_modules via .dockerignore. Smaller images pull and start faster.</p></div>
+    <div class="cell answer"><p>Don't COPY secrets into any layer.</p></div>
+    <div class="cell question"><p>Sắp xếp Dockerfile để layer deps được cache. Loại .git và node_modules local bằng .dockerignore. Image nhỏ kéo và start nhanh hơn.</p></div>
+    <div class="cell answer"><p>Không COPY secret vào bất kỳ layer nào.</p></div>
+  </div>
+  <div class="crib"><p><strong>Interview trap:</strong> COPY . early invalidates cache on every code tweak.</p></div>
+<div class="note"><p><strong>Commands / examples:</strong></p><p style="font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:0.85em">docker build -t api:local .<br>
+docker images</p></div>
+
+</article>
+<article class="question-card" id="d50">
+  <div class="question-head"><h2>50. Run locally then deploy</h2><p>Parity check</p></div>
+  <div class="grid4">
+    <div class="cell row-head">Concept EN</div><div class="cell row-head">Steps / Must-know EN</div><div class="cell row-head">Concept VI</div><div class="cell row-head">Steps / Must-know VI</div>
+    <div class="cell question"><p>Run the image locally with the same PORT and critical env vars before trusting a Cloud Run deploy. Diff local success vs Cloud Run failure → usually env, secrets, or Cloud SQL connectivity.</p></div>
+    <div class="cell answer"><p>Local green does not prove IAM/VPC/SQL wiring.</p></div>
+    <div class="cell question"><p>Chạy image local với cùng PORT và env quan trọng trước khi tin deploy Cloud Run. Local OK nhưng Cloud Run fail → thường env, secret, hoặc nối Cloud SQL.</p></div>
+    <div class="cell answer"><p>Local xanh không chứng minh IAM/VPC/SQL đã đúng.</p></div>
+  </div>
+  <div class="crib"><p><strong>Interview trap:</strong> docker run --rm -p 8080:8080 -e PORT=8080 api:local</p></div>
+</article>
+<article class="question-card" id="d51">
+  <div class="question-head"><h2>51. Tagging discipline</h2><p>Rollback needs names</p></div>
+  <div class="grid4">
+    <div class="cell row-head">Concept EN</div><div class="cell row-head">Steps / Must-know EN</div><div class="cell row-head">Concept VI</div><div class="cell row-head">Steps / Must-know VI</div>
+    <div class="cell question"><p>Tag images with git sha or build id in Artifact Registry. Prefer deploying immutable tags/digests over floating :latest in production.</p></div>
+    <div class="cell answer"><p>Rollback = point Cloud Run at the previous known-good tag/digest.</p></div>
+    <div class="cell question"><p>Tag image bằng git sha hoặc build id trên Artifact Registry. Ưu tiên tag/digest bất biến hơn :latest trên production.</p></div>
+    <div class="cell answer"><p>Rollback = trỏ Cloud Run về tag/digest tốt đã biết.</p></div>
+  </div>
+  <div class="crib"><p><strong>Interview trap:</strong> :latest with no record of what sha it was is fuzzy ops.</p></div>
+</article>
+    </section>
+    <section class="section-block" id="sec-gcp">
+      <h2>8 · GCP mental model</h2>
+<article class="question-card" id="d52">
+  <div class="question-head"><h2>52. GCP mental model</h2><p>Pick the right compute</p></div>
+  <div class="grid4">
+    <div class="cell row-head">Concept EN</div><div class="cell row-head">Steps / Must-know EN</div><div class="cell row-head">Concept VI</div><div class="cell row-head">Steps / Must-know VI</div>
+    <div class="cell question"><p>Cloud Run: managed containers, scale with requests. Compute Engine VM: full OS control for classic web stacks (LiteSpeed/Apache/Nginx). Cloud SQL: managed DB. Cloud Storage: files/artifacts. Cloud Build: CI that builds and can deploy.</p></div>
+    <div class="cell answer"><p>I choose Run when the app is containerized and request-driven; VM when I need long-lived custom web server control.</p></div>
+    <div class="cell question"><p>Cloud Run: container managed, scale theo request. Compute Engine VM: kiểm soát OS đầy đủ cho web cổ điển (LiteSpeed/Apache/Nginx). Cloud SQL: DB managed. Cloud Storage: file/artifact. Cloud Build: CI build và có thể deploy.</p></div>
+    <div class="cell answer"><p>Tôi chọn Run khi app đã container và theo request; VM khi cần kiểm soát web server lâu dài, tùy biến.</p></div>
+  </div>
+  <div class="crib"><p><strong>Interview trap:</strong> Don't claim GKE HA depth if your spine is Run + VM.</p></div>
+</article>
+<article class="question-card" id="d53">
+  <div class="question-head"><h2>53. IAM &amp; service accounts</h2><p>Who can do what</p></div>
+  <div class="grid4">
+    <div class="cell row-head">Concept EN</div><div class="cell row-head">Steps / Must-know EN</div><div class="cell row-head">Concept VI</div><div class="cell row-head">Steps / Must-know VI</div>
+    <div class="cell question"><p>Human users and Cloud Build/Cloud Run service accounts need least privilege: push images, deploy a service, read specific secrets — not project Owner for daily CI.</p></div>
+    <div class="cell answer"><p>Incidents often start with 'who has keys' and 'which SA deployed this revision'.</p></div>
+    <div class="cell question"><p>User người và service account Cloud Build/Cloud Run cần least privilege: push image, deploy service, đọc secret cụ thể — không cần Owner project cho CI hằng ngày.</p></div>
+    <div class="cell answer"><p>Sự cố thường bắt đầu từ 'ai giữ key' và 'SA nào deploy revision này'.</p></div>
+  </div>
+  <div class="crib"><p><strong>Interview trap:</strong> Personal user ADC in CI is an audit smell.</p></div>
+</article>
+<article class="question-card" id="d54">
+  <div class="question-head"><h2>54. Cloud Logging &amp; revisions</h2><p>Observe what you ship</p></div>
+  <div class="grid4">
+    <div class="cell row-head">Concept EN</div><div class="cell row-head">Steps / Must-know EN</div><div class="cell row-head">Concept VI</div><div class="cell row-head">Steps / Must-know VI</div>
+    <div class="cell question"><p>Cloud Run revisions + Cloud Logging are the primary debug surfaces. VMs use journalctl and web server error logs. Always bind an error to a revision or deploy time.</p></div>
+    <div class="cell answer"><p>Rollback traffic first; dig root cause second.</p></div>
+    <div class="cell question"><p>Revision Cloud Run + Cloud Logging là mặt debug chính. VM dùng journalctl và error log web server. Luôn gắn lỗi với revision hoặc thời điểm deploy.</p></div>
+    <div class="cell answer"><p>Rollback traffic trước; đào root cause sau.</p></div>
+  </div>
+  <div class="crib"><p><strong>Interview trap:</strong> Restart without identifying the revision loses the plot.</p></div>
+</article>
+<article class="question-card" id="d55">
+  <div class="question-head"><h2>55. Storage vs SQL vs secrets</h2><p>Put data in the right place</p></div>
+  <div class="grid4">
+    <div class="cell row-head">Concept EN</div><div class="cell row-head">Steps / Must-know EN</div><div class="cell row-head">Concept VI</div><div class="cell row-head">Steps / Must-know VI</div>
+    <div class="cell question"><p>Cloud Storage for objects/artifacts; Cloud SQL for relational data; Secret Manager for credentials. Don't store passwords in Storage objects marked public.</p></div>
+    <div class="cell answer"><p>App config: non-secret env OK; credentials → secrets.</p></div>
+    <div class="cell question"><p>Cloud Storage cho object/artifact; Cloud SQL cho dữ liệu quan hệ; Secret Manager cho credential. Không để mật khẩu trong object Storage public.</p></div>
+    <div class="cell answer"><p>Config app: env không mật OK; credential → secret.</p></div>
+  </div>
+  <div class="crib"><p><strong>Interview trap:</strong> Public bucket 'for testing' that still has prod dumps is a breach waiting.</p></div>
+</article>
+    </section>
+    <section class="section-block" id="sec-web">
+      <h2>9 · Web servers</h2>
+<article class="question-card" id="d56">
+  <div class="question-head"><h2>56. Nginx/Apache role</h2><p>Reverse proxy &amp; static</p></div>
+  <div class="grid4">
+    <div class="cell row-head">Concept EN</div><div class="cell row-head">Steps / Must-know EN</div><div class="cell row-head">Concept VI</div><div class="cell row-head">Steps / Must-know VI</div>
+    <div class="cell question"><p>Web servers terminate HTTP(S), serve static files, and reverse-proxy or hand off to PHP-FPM/app processes. Misconfigured vhosts show up as wrong site, 502, or PHP download instead of execute.</p></div>
+    <div class="cell answer"><p>Always nginx -t / configtest before reload.</p></div>
+    <div class="cell question"><p>Web server kết thúc HTTP(S), serve static, reverse-proxy hoặc chuyển PHP-FPM/app. Vhost sai → nhầm site, 502, hoặc tải file PHP thay vì chạy.</p></div>
+    <div class="cell answer"><p>Luôn nginx -t / configtest trước reload.</p></div>
+  </div>
+  <div class="crib"><p><strong>Interview trap:</strong> Blaming only the app when Host/root is wrong wastes time.</p></div>
+</article>
+<article class="question-card" id="d57">
+  <div class="question-head"><h2>57. Virtual host basics</h2><p>server_name + root</p></div>
+  <div class="grid4">
+    <div class="cell row-head">Concept EN</div><div class="cell row-head">Steps / Must-know EN</div><div class="cell row-head">Concept VI</div><div class="cell row-head">Steps / Must-know VI</div>
+    <div class="cell question"><p>Each site needs server_name (or ServerName), document root, and log paths. Laravel-style apps usually point root at public/. TLS sits on the same vhost after Certbot.</p></div>
+    <div class="cell answer"><p>DNS A record must match the VM before public HTTPS works.</p></div>
+    <div class="cell question"><p>Mỗi site cần server_name (hoặc ServerName), document root và đường log. App kiểu Laravel thường trỏ root vào public/. TLS gắn cùng vhost sau Certbot.</p></div>
+    <div class="cell answer"><p>DNS A phải khớp VM trước khi HTTPS public chạy.</p></div>
+  </div>
+  <div class="crib"><p><strong>Interview trap:</strong> Two vhosts with the same server_name fight unpredictably.</p></div>
+</article>
+<article class="question-card" id="d58">
+  <div class="question-head"><h2>58. LiteSpeed awareness</h2><p>Same concepts, different panel</p></div>
+  <div class="grid4">
+    <div class="cell row-head">Concept EN</div><div class="cell row-head">Steps / Must-know EN</div><div class="cell row-head">Concept VI</div><div class="cell row-head">Steps / Must-know VI</div>
+    <div class="cell question"><p>LiteSpeed serves many PHP/CMS stacks similarly: vhosts, PHP handlers, cache, TLS. If you inherit a LiteSpeed box, map the same questions — where is the docroot, where are error logs, how is PHP run — even if the admin UI differs from Nginx.</p></div>
+    <div class="cell answer"><p>Speak concepts first; don't invent panel click-paths you don't remember.</p></div>
+    <div class="cell question"><p>LiteSpeed phục vụ nhiều stack PHP/CMS tương tự: vhost, PHP handler, cache, TLS. Thừa kế máy LiteSpeed thì hỏi cùng câu — docroot đâu, error log đâu, PHP chạy thế nào — dù UI admin khác Nginx.</p></div>
+    <div class="cell answer"><p>Nói khái niệm trước; không bịa đường click panel không nhớ.</p></div>
+  </div>
+  <div class="crib"><p><strong>Interview trap:</strong> Claiming deep LiteSpeed tuning without one concrete change is fluff.</p></div>
+</article>
+<article class="question-card" id="d59">
+  <div class="question-head"><h2>59. 502 / 504 quick read</h2><p>Upstream vs edge</p></div>
+  <div class="grid4">
+    <div class="cell row-head">Concept EN</div><div class="cell row-head">Steps / Must-know EN</div><div class="cell row-head">Concept VI</div><div class="cell row-head">Steps / Must-know VI</div>
+    <div class="cell question"><p>502/504 often mean the proxy can't reach PHP-FPM/app or the upstream timed out. Check upstream socket/port, service status, and app fatals in logs — not only Nginx status.</p></div>
+    <div class="cell answer"><p>Cloud Run equivalent: revision crash or upstream SQL timeout shows in Cloud Logging.</p></div>
+    <div class="cell question"><p>502/504 thường là proxy không tới được PHP-FPM/app hoặc upstream timeout. Kiểm socket/port upstream, status service, và fatal app trong log — không chỉ status Nginx.</p></div>
+    <div class="cell answer"><p>Tương đương Cloud Run: revision crash hoặc SQL timeout hiện trên Cloud Logging.</p></div>
+  </div>
+  <div class="crib"><p><strong>Interview trap:</strong> reload nginx alone rarely fixes a dead PHP-FPM.</p></div>
+</article>
+    </section>
+    <section class="section-block" id="sec-security">
+      <h2>10 · Security basics</h2>
+<article class="question-card" id="d60">
+  <div class="question-head"><h2>60. Secrets handling</h2><p>Out of Git, least readers</p></div>
+  <div class="grid4">
+    <div class="cell row-head">Concept EN</div><div class="cell row-head">Steps / Must-know EN</div><div class="cell row-head">Concept VI</div><div class="cell row-head">Steps / Must-know VI</div>
+    <div class="cell question"><p>Store credentials in Secret Manager or CI secret stores. Inject at runtime into Cloud Run or the VM env. Restrict who and which service accounts can read.</p></div>
+    <div class="cell answer"><p>Rotate after leak suspicion; don't just delete the chat message that had the password.</p></div>
+    <div class="cell question"><p>Giữ credential trong Secret Manager hoặc secret CI. Inject runtime vào Cloud Run hoặc env VM. Hạn chế ai và SA nào được đọc.</p></div>
+    <div class="cell answer"><p>Xoay khi nghi lộ; không chỉ xóa tin nhắn chat có mật khẩu.</p></div>
+  </div>
+  <div class="crib"><p><strong>Interview trap:</strong> Screenshots of .env in tickets are still leaks.</p></div>
+</article>
+<article class="question-card" id="d61">
+  <div class="question-head"><h2>61. Least privilege</h2><p>IAM and OS</p></div>
+  <div class="grid4">
+    <div class="cell row-head">Concept EN</div><div class="cell row-head">Steps / Must-know EN</div><div class="cell row-head">Concept VI</div><div class="cell row-head">Steps / Must-know VI</div>
+    <div class="cell question"><p>Grant the minimum roles for Cloud Build to push/deploy and for the app SA to read its secrets/SQL. On Linux, separate sudo users and tight file ownership for the web root.</p></div>
+    <div class="cell answer"><p>Owner/Editor for every engineer 'for speed' becomes the incident story.</p></div>
+    <div class="cell question"><p>Cấp tối thiểu role để Cloud Build push/deploy và SA app đọc secret/SQL. Trên Linux: tách user sudo và ownership chặt cho web root.</p></div>
+    <div class="cell answer"><p>Owner/Editor cho mọi engineer 'cho nhanh' sẽ thành câu chuyện sự cố.</p></div>
+  </div>
+  <div class="crib"><p><strong>Interview trap:</strong> Shared root password in a spreadsheet fails any serious interview.</p></div>
+</article>
+<article class="question-card" id="d62">
+  <div class="question-head"><h2>62. SSH &amp; network surface</h2><p>Close what you don't need</p></div>
+  <div class="grid4">
+    <div class="cell row-head">Concept EN</div><div class="cell row-head">Steps / Must-know EN</div><div class="cell row-head">Concept VI</div><div class="cell row-head">Steps / Must-know VI</div>
+    <div class="cell question"><p>Key-only SSH, limited VPC firewall / UFW ports (22 carefully, 80/443 for web), no public MySQL. Prefer bastion/IAP patterns when the team has them.</p></div>
+    <div class="cell answer"><p>Every open port is an assumption you must defend.</p></div>
+    <div class="cell question"><p>SSH chỉ key, VPC/UFW hạn chế cổng (22 thận trọng, 80/443 cho web), không MySQL public. Ưu tiên bastion/IAP nếu team có.</p></div>
+    <div class="cell answer"><p>Mỗi cổng mở là giả định bạn phải bảo vệ được.</p></div>
+  </div>
+  <div class="crib"><p><strong>Interview trap:</strong> Temporary 0.0.0.0/0 rules that never expire are not temporary.</p></div>
+</article>
+<article class="question-card" id="d63">
+  <div class="question-head"><h2>63. Hardening + docs</h2><p>Practical maturity</p></div>
+  <div class="grid4">
+    <div class="cell row-head">Concept EN</div><div class="cell row-head">Steps / Must-know EN</div><div class="cell row-head">Concept VI</div><div class="cell row-head">Steps / Must-know VI</div>
+    <div class="cell question"><p>Hardening is useless if only one person knows the server. Pair basic controls (SSH, firewall, secrets, patches) with short runbooks: deploy steps, log locations, TLS renew, rollback.</p></div>
+    <div class="cell answer"><p>I'm honest: practical hardening and documentation — not claiming a full formal audit program unless I've done one.</p></div>
+    <div class="cell question"><p>Harden vô ích nếu chỉ một người biết server. Ghép control cơ bản (SSH, firewall, secret, vá) với runbook ngắn: bước deploy, chỗ log, renew TLS, rollback.</p></div>
+    <div class="cell answer"><p>Tôi nói thẳng: harden thực tế và tài liệu — không nhận chương trình audit chính thức nếu chưa làm.</p></div>
+  </div>
+  <div class="crib"><p><strong>Interview trap:</strong> Security theater checklists nobody follows don't count.</p></div>
+</article>
+    </section>
+    <section class="section-block" id="sec-fit">
+      <h2>11 · Fit / intro</h2>
+<article class="question-card" id="d64">
+  <div class="question-head"><h2>64. Tell me about yourself (DevOps)</h2><p>60–90s spoken intro</p></div>
+  <div class="grid4">
+    <div class="cell row-head">Question EN</div><div class="cell row-head">Answer EN</div><div class="cell row-head">Question VI</div><div class="cell row-head">Answer VI</div>
+    <div class="cell question"><p>Tell me about yourself.</p></div>
+    <div class="cell answer"><p>I'm a full-stack engineer who also owns delivery and ops. At Akktis I work across Linux servers over SSH — Ubuntu and Debian — CI/CD for mobile and web across environments, and Google Cloud: Cloud Run, Cloud SQL, and Storage. I also operate LiteSpeed and Apache for PHP and CMS apps, and I care about docs and basic hardening so systems are safer to hand off. Independently I shipped IELTS AI Tutor — a React Native and TypeScript app on iOS and Android with a Cloud Run backend, live on Google Play and the App Store. I'm looking for a DevOps-focused role where I can deepen that spine: pipelines, cloud deploys, and reliable Linux operations.</p></div>
+    <div class="cell question"><p>Hãy giới thiệu về bản thân.</p></div>
+    <div class="cell answer"><p>Tôi là full-stack kiêm delivery và ops. Ở Akktis tôi làm Linux qua SSH — Ubuntu và Debian — CI/CD cho mobile và web trên nhiều môi trường, và Google Cloud: Cloud Run, Cloud SQL và Storage. Tôi cũng vận hành LiteSpeed và Apache cho app PHP/CMS, và quan tâm docs cùng harden cơ bản để bàn giao an toàn hơn. Bên cạnh đó tôi ship IELTS AI Tutor — app React Native/TypeScript trên iOS và Android với backend Cloud Run, đã lên Google Play và App Store. Tôi muốn role nghiêng DevOps để đào sâu xương sống đó: pipeline, deploy cloud và vận hành Linux ổn định.</p></div>
+  </div>
+</article>
+<article class="question-card" id="d65">
+  <div class="question-head"><h2>65. Strengths for a DevOps role</h2><p>Concrete, not buzzwords</p></div>
+  <div class="grid4">
+    <div class="cell row-head">Question EN</div><div class="cell row-head">Answer EN</div><div class="cell row-head">Question VI</div><div class="cell row-head">Answer VI</div>
+    <div class="cell question"><p>What are your strengths?</p></div>
+    <div class="cell answer"><p>First, I bridge app and ops — I can read application failures and infra failures in the same incident. Second, I have hands-on delivery paths I've actually run: mobile CI toward store builds, Cloud Build into Cloud Run, and classic VM web servers with Nginx/Apache/LiteSpeed. Third, I debug with evidence — pipeline logs, Cloud Run revisions, SSH logs and disk — then mitigate first and document so the gap doesn't repeat. I'm honest about depth: Cloud Run and Linux VMs are my spine; I don't pretend deep Kubernetes HA if that's not what I've operated day to day.</p></div>
+    <div class="cell question"><p>Điểm mạnh của bạn là gì?</p></div>
+    <div class="cell answer"><p>Một, tôi cầu nối app và ops — đọc được lỗi ứng dụng và lỗi hạ tầng trong cùng sự cố. Hai, tôi có đường delivery thật: CI mobile tới bản store, Cloud Build vào Cloud Run, và web server VM với Nginx/Apache/LiteSpeed. Ba, tôi debug bằng bằng chứng — log pipeline, revision Cloud Run, log SSH và disk — giảm hại trước rồi document để không lặp. Tôi trung thực về độ sâu: Cloud Run và Linux VM là xương sống; tôi không nhận sâu Kubernetes HA nếu đó không phải việc hằng ngày.</p></div>
+  </div>
+</article>
+<article class="question-card" id="d66">
+  <div class="question-head"><h2>66. Tool walkthrough</h2><p>Stack I can defend</p></div>
+  <div class="grid4">
+    <div class="cell row-head">Question EN</div><div class="cell row-head">Answer EN</div><div class="cell row-head">Question VI</div><div class="cell row-head">Answer VI</div>
+    <div class="cell question"><p>Walk me through your DevOps tool stack.</p></div>
+    <div class="cell answer"><p>Source control is Git. CI is Cloud Build or a generic CI runner on push and tags — build, test when we have them, package artifacts. For backends I Dockerize, push to Artifact Registry, and deploy Cloud Run with env and secrets, often wired to Cloud SQL and Cloud Storage. For mobile, React Native builds produce Android AAB/APK and iOS IPA concepts with signing material kept in secrets, then artifacts go to storage or store tracks. For classic web I SSH into Ubuntu/Debian, manage LiteSpeed or Apache or Nginx, firewall and TLS, and keep short runbooks. Day to day observability is Cloud Logging on Run and system/web logs on VMs.</p></div>
+    <div class="cell question"><p>Hãy mô tả stack DevOps của bạn.</p></div>
+    <div class="cell answer"><p>Source control là Git. CI là Cloud Build hoặc CI runner generic theo push và tag — build, test khi có, đóng artifact. Backend tôi Dockerize, push Artifact Registry, deploy Cloud Run với env và secret, thường nối Cloud SQL và Cloud Storage. Mobile, build React Native ra AAB/APK Android và khái niệm IPA iOS, signing nằm trong secret, artifact lên storage hoặc track store. Web cổ điển tôi SSH Ubuntu/Debian, quản LiteSpeed hoặc Apache hoặc Nginx, firewall và TLS, giữ runbook ngắn. Quan sát hằng ngày là Cloud Logging trên Run và log hệ thống/web trên VM.</p></div>
+  </div>
+</article>
+<article class="question-card" id="d67">
+  <div class="question-head"><h2>67. Why a DevOps role?</h2><p>Generic company — honest motivation</p></div>
+  <div class="grid4">
+    <div class="cell row-head">Question EN</div><div class="cell row-head">Answer EN</div><div class="cell row-head">Question VI</div><div class="cell row-head">Answer VI</div>
+    <div class="cell question"><p>Why do you want this DevOps role?</p></div>
+    <div class="cell answer"><p>Because I already enjoy the ownership from commit to a healthy environment, and I want that to be the center of my work — not only a side of full-stack. Your role is about reliable delivery: CI/CD, cloud or Linux operations, and helping developers ship safely. That matches what I do at Akktis and on IELTS AI Tutor, and I want to go deeper on pipeline quality, environment promotion, and operational hygiene in a team that takes infra seriously.</p></div>
+    <div class="cell question"><p>Tại sao bạn muốn role DevOps này?</p></div>
+    <div class="cell answer"><p>Vì tôi đã thích ownership từ commit đến môi trường khỏe, và muốn đó là trọng tâm công việc — không chỉ phần phụ của full-stack. Role của các bạn là delivery tin cậy: CI/CD, vận hành cloud hoặc Linux, và giúp developer ship an toàn. Điều đó khớp việc tôi làm ở Akktis và IELTS AI Tutor, và tôi muốn đào sâu chất lượng pipeline, promote môi trường và vệ sinh vận hành trong team coi trọng infra.</p></div>
+  </div>
+</article>
+<article class="question-card" id="d68">
+  <div class="question-head"><h2>68. Akktis day-to-day</h2><p>What ops looks like</p></div>
+  <div class="grid4">
+    <div class="cell row-head">Question EN</div><div class="cell row-head">Answer EN</div><div class="cell row-head">Question VI</div><div class="cell row-head">Answer VI</div>
+    <div class="cell question"><p>What does a typical ops-heavy day look like for you?</p></div>
+    <div class="cell answer"><p>It depends on the project, but usually I'm either unblocking a release or keeping an environment healthy. That means checking CI status for web or mobile, SSH into a Linux box to read logs or restart a service, verifying a Cloud Run revision after deploy, or fixing env and connectivity to Cloud SQL or Storage. I also touch LiteSpeed or Apache when a PHP or CMS site misbehaves, and I update docs when I find tribal knowledge that would hurt the next person.</p></div>
+    <div class="cell question"><p>Một ngày nghiêng ops của bạn trông thế nào?</p></div>
+    <div class="cell answer"><p>Tùy dự án, nhưng thường tôi hoặc mở nút thắt release, hoặc giữ môi trường khỏe. Tức là xem status CI web hoặc mobile, SSH vào Linux đọc log hoặc restart service, kiểm revision Cloud Run sau deploy, hoặc sửa env và kết nối Cloud SQL hay Storage. Tôi cũng đụng LiteSpeed hoặc Apache khi site PHP/CMS lỗi, và cập nhật docs khi gặp kiến thức chỉ nằm trong đầu người — dễ hại người sau.</p></div>
+  </div>
+</article>
+<article class="question-card" id="d69">
+  <div class="question-head"><h2>69. Weakness (honest)</h2><p>Time-box vs polish</p></div>
+  <div class="grid4">
+    <div class="cell row-head">Question EN</div><div class="cell row-head">Answer EN</div><div class="cell row-head">Question VI</div><div class="cell row-head">Answer VI</div>
+    <div class="cell question"><p>What's a weakness relevant to this job?</p></div>
+    <div class="cell answer"><p>I can over-invest in polishing a pipeline or runbook when a smaller safe mitigation would unblock the team sooner. I've learned to time-box: ship the safe fix or rollback first, communicate status, then harden the checklist so we don't pay twice.</p></div>
+    <div class="cell question"><p>Một điểm yếu liên quan job này?</p></div>
+    <div class="cell answer"><p>Tôi đôi khi đầu tư quá nhiều để polish pipeline hoặc runbook trong khi một mitigation nhỏ an toàn đã mở được team. Tôi đã học time-box: ship fix an toàn hoặc rollback trước, báo status, rồi siết checklist để không trả giá hai lần.</p></div>
+  </div>
+</article>
+    </section>
+    <section class="section-block" id="sec-scenario">
+      <h2>12 · Scenario questions</h2>
+<article class="question-card" id="d70">
+  <div class="question-head"><h2>70. Broken mobile pipeline</h2><p>Android/iOS CI red</p></div>
+  <div class="grid4">
+    <div class="cell row-head">Question EN</div><div class="cell row-head">Answer EN</div><div class="cell row-head">Question VI</div><div class="cell row-head">Answer VI</div>
+    <div class="cell question"><p>The mobile CI pipeline that was green yesterday is failing today. What do you do?</p></div>
+    <div class="cell answer"><p>I start from what changed — last commits, dependency lockfile, CI image or Xcode/SDK version, and whether signing secrets or provisioning profiles expired. I open the first failing stage log, not the last noise. If it's signing, I validate keystore or profile access before re-running a long compile. If it's Gradle or native modules, I try to reproduce with the same Node and JDK locally. I unblock with a revert or pin if a release is blocked, tell the team status, then fix forward and note it in the runbook.</p></div>
+    <div class="cell question"><p>Pipeline mobile hôm qua xanh hôm nay đỏ. Bạn làm gì?</p></div>
+    <div class="cell answer"><p>Tôi bắt đầu từ thứ đã đổi — commit, lockfile dependency, image CI hoặc version Xcode/SDK, và secret signing hay provisioning profile có hết hạn không. Tôi mở log stage fail đầu tiên, không đọc nhiễu cuối. Nếu là signing, tôi kiểm keystore hoặc profile trước khi chạy lại compile dài. Nếu là Gradle hoặc native module, tôi cố reproduce cùng Node và JDK local. Tôi mở nút bằng revert hoặc pin nếu release bị chặn, báo team, rồi sửa tiến và ghi runbook.</p></div>
+  </div>
+  <div class="star"><p><strong>STAR bullets:</strong></p><p>S: Mobile CI failed before store upload</p><p>T: Unblock a release build same day</p><p>A: Compared last green, fixed signing/deps, re-ran pipeline</p><p>R: Green artifact; checklist updated for secret expiry</p></div>
+</article>
+<article class="question-card" id="d71">
+  <div class="question-head"><h2>71. Bad Cloud Run revision</h2><p>Rollback under pressure</p></div>
+  <div class="grid4">
+    <div class="cell row-head">Question EN</div><div class="cell row-head">Answer EN</div><div class="cell row-head">Question VI</div><div class="cell row-head">Answer VI</div>
+    <div class="cell question"><p>You deployed to Cloud Run and error rates spiked. How do you respond?</p></div>
+    <div class="cell answer"><p>I treat it as a revision problem first. I check Cloud Logging filtered to the new revision, confirm it's the deploy that correlates with the spike, then shift traffic back to the last healthy revision while I investigate. Common causes for me are missing env or secret on the new revision, Cloud SQL connectivity, or an app bug that only shows with prod config. After users are stable I fix forward, redeploy, and optionally canary before 100%.</p></div>
+    <div class="cell question"><p>Bạn deploy Cloud Run rồi error rate tăng. Xử lý thế nào?</p></div>
+    <div class="cell answer"><p>Tôi coi đây là vấn đề revision trước. Xem Cloud Logging lọc revision mới, xác nhận spike khớp deploy, rồi chuyển traffic về revision khỏe trước trong khi điều tra. Nguyên nhân hay gặp với tôi: thiếu env hoặc secret trên revision mới, kết nối Cloud SQL, hoặc bug app chỉ lộ với config prod. Sau khi user ổn tôi sửa tiến, deploy lại, và có thể canary trước khi 100%.</p></div>
+  </div>
+  <div class="star"><p><strong>STAR bullets:</strong></p><p>S: New Cloud Run revision elevated 5xx</p><p>T: Restore availability quickly</p><p>A: Traffic to previous revision; diff env/logs; fix and redeploy</p><p>R: Service healthy; noted canary for riskier changes</p></div>
+</article>
+<article class="question-card" id="d72">
+  <div class="question-head"><h2>72. VM disk full</h2><p>Classic Linux fire</p></div>
+  <div class="grid4">
+    <div class="cell row-head">Question EN</div><div class="cell row-head">Answer EN</div><div class="cell row-head">Question VI</div><div class="cell row-head">Answer VI</div>
+    <div class="cell question"><p>A production website on a Linux VM is down or can't write files. Disk looks full. What do you do?</p></div>
+    <div class="cell answer"><p>I SSH in, confirm with df -h and df -i, and find what's consuming space — often logs, old backups, or uploads. I free space safely: rotate or truncate known log files, move old backups off the box, never delete database directories I don't understand. I verify the site and PHP or web server logs recover. Then I fix root cause — logrotate, retention, or a larger disk — and document it so the next full-disk isn't a surprise.</p></div>
+    <div class="cell question"><p>Website trên VM Linux lỗi hoặc không ghi được file. Disk đầy. Bạn làm gì?</p></div>
+    <div class="cell answer"><p>Tôi SSH vào, xác nhận df -h và df -i, tìm thứ chiếm chỗ — thường log, backup cũ hoặc upload. Giải phóng an toàn: xoay hoặc cắt log đã biết, chuyển backup cũ khỏi máy, không xóa thư mục database không hiểu. Verify site và log PHP/web server hồi. Rồi sửa gốc — logrotate, retention, hoặc tăng disk — và document để lần đầy disk sau không bất ngờ.</p></div>
+  </div>
+  <div class="star"><p><strong>STAR bullets:</strong></p><p>S: CMS site failing writes on Ubuntu VM</p><p>T: Restore writes without data loss</p><p>A: df/du, cleared logs/backups safely, verified Nginx/Apache</p><p>R: Site writable; retention added</p></div>
+</article>
+<article class="question-card" id="d73">
+  <div class="question-head"><h2>73. Cloud SQL unreachable from Cloud Run</h2><p>Connectivity isolation</p></div>
+  <div class="grid4">
+    <div class="cell row-head">Question EN</div><div class="cell row-head">Answer EN</div><div class="cell row-head">Question VI</div><div class="cell row-head">Answer VI</div>
+    <div class="cell question"><p>Cloud Run can't reach Cloud SQL after a deploy. How do you debug?</p></div>
+    <div class="cell answer"><p>I isolate layers: did the new revision lose the Cloud SQL connection annotation or the secret for the DB password? Is the service account still allowed? Is the app using the right connection name or socket path? I compare the last healthy revision's config to the new one, check Cloud Logging for connection refused or auth errors, and verify the instance is up. I don't open the database to the public internet as a shortcut — I fix the connector, IAM, or secret wiring.</p></div>
+    <div class="cell question"><p>Cloud Run không tới được Cloud SQL sau deploy. Bạn debug thế nào?</p></div>
+    <div class="cell answer"><p>Tôi cô lập lớp: revision mới có mất annotation kết nối Cloud SQL hoặc secret mật khẩu DB không? Service account còn quyền không? App có đúng connection name hoặc đường socket không? Tôi so config revision khỏe với bản mới, xem Cloud Logging lỗi connection refused hoặc auth, và xác nhận instance còn sống. Tôi không mở database ra internet công cộng để xong việc — tôi sửa connector, IAM hoặc secret.</p></div>
+  </div>
+  <div class="star"><p><strong>STAR bullets:</strong></p><p>S: API 500s; logs show DB connection failure</p><p>T: Restore DB connectivity without exposing SQL publicly</p><p>A: Diff Run SQL settings/secrets/IAM; fix wiring; verify /health</p><p>R: Connections restored; checklist for SQL on deploy</p></div>
+</article>
+<article class="question-card" id="d74">
+  <div class="question-head"><h2>74. Release under time pressure</h2><p>Safe speed</p></div>
+  <div class="grid4">
+    <div class="cell row-head">Question EN</div><div class="cell row-head">Answer EN</div><div class="cell row-head">Question VI</div><div class="cell row-head">Answer VI</div>
+    <div class="cell question"><p>Stakeholders want a release today but CI is flaky and staging isn't fully verified. What do you do?</p></div>
+    <div class="cell answer"><p>I separate must-ship from nice-to-have. I won't skip signing checks or push an unsigned mobile build, and I won't deploy a Cloud Run image I can't roll back. I will time-box: identify the smallest safe artifact that already passed a meaningful check, smoke the critical path on staging, deploy with a clear rollback owner, and communicate risk honestly. If the risk is too high, I say so with options — delay, reduced scope, or hotfix-only — instead of silent hope.</p></div>
+    <div class="cell question"><p>Stakeholder muốn release hôm nay nhưng CI flaky và staging chưa verify đủ. Bạn làm gì?</p></div>
+    <div class="cell answer"><p>Tôi tách must-ship khỏi nice-to-have. Tôi không bỏ check signing hay đẩy bản mobile chưa ký, và không deploy image Cloud Run mà không rollback được. Tôi time-box: chọn artifact nhỏ nhất an toàn đã qua check có nghĩa, smoke đường critical trên staging, deploy với người own rollback rõ, và nói rủi ro thẳng. Nếu rủi ro quá cao, tôi nói kèm lựa chọn — hoãn, giảm scope, hoặc chỉ hotfix — thay vì hy vọng thầm.</p></div>
+  </div>
+  <div class="star"><p><strong>STAR bullets:</strong></p><p>S: Business wants same-day release; CI unstable</p><p>T: Protect users while enabling minimum ship</p><p>A: Scoped release, smoke, rollback plan, honest status</p><p>R: Shipped reduced scope or delayed with clear rationale</p></div>
+</article>
+<article class="question-card" id="d75">
+  <div class="question-head"><h2>75. Staging OK, prod fails</h2><p>Multi-env delta</p></div>
+  <div class="grid4">
+    <div class="cell row-head">Question EN</div><div class="cell row-head">Answer EN</div><div class="cell row-head">Question VI</div><div class="cell row-head">Answer VI</div>
+    <div class="cell question"><p>Staging looks fine but production fails right after promote. What's your approach?</p></div>
+    <div class="cell answer"><p>I assume config drift until proven otherwise — env vars, secrets, web server vhost differences, API URLs in the mobile build, or Cloud SQL instance differences. I compare what actually differs between environments, not only the git sha. I've seen this a lot with multi-env CI/CD: missing prod secret, different LiteSpeed/Apache setting, or an app pointing at the wrong backend. Fix the delta, redeploy, and update the promotion checklist.</p></div>
+    <div class="cell question"><p>Staging ổn nhưng production fail ngay sau promote. Bạn tiếp cận thế nào?</p></div>
+    <div class="cell answer"><p>Tôi giả định lệch config cho đến khi chứng minh ngược — env, secret, khác vhost web server, URL API trong bản mobile, hoặc khác instance Cloud SQL. Tôi so thứ thực sự khác giữa env, không chỉ git sha. Tôi hay gặp với CI/CD đa env: thiếu secret prod, setting LiteSpeed/Apache khác, hoặc app trỏ nhầm backend. Sửa delta, deploy lại, cập nhật checklist promote.</p></div>
+  </div>
+  <div class="star"><p><strong>STAR bullets:</strong></p><p>S: Promote to prod failed after green staging</p><p>T: Restore prod; prevent repeat</p><p>A: Diff env/secrets/web config; fix; checklist</p><p>R: Prod healthy; promotion gap documented</p></div>
+</article>
+    </section>
+    <section class="section-block" id="sec-close">
+      <h2>13 · Closing</h2>
+<article class="question-card" id="d76">
+  <div class="question-head"><h2>76. Questions to ask them</h2><p>Show judgment</p></div>
+  <div class="grid4">
+    <div class="cell row-head">Question EN</div><div class="cell row-head">Answer EN</div><div class="cell row-head">Question VI</div><div class="cell row-head">Answer VI</div>
+    <div class="cell question"><p>Do you have any questions for us?</p></div>
+    <div class="cell answer"><p>I'd ask how you promote from staging to production today — tags, approvals, or automatic. I'd ask what observability looks like for the services I'd own on week one — logs, alerts, on-call expectations. And I'd ask where the team feels the most pain right now: flaky CI, cloud cost, Linux snowflake servers, or mobile release friction — so I know where I can help first.</p></div>
+    <div class="cell question"><p>Bạn có câu hỏi gì cho chúng tôi không?</p></div>
+    <div class="cell answer"><p>Tôi sẽ hỏi hiện team promote staging lên production thế nào — tag, approval, hay tự động. Tôi hỏi observability cho service tôi sẽ own tuần đầu trông ra sao — log, alert, kỳ vọng on-call. Và tôi hỏi chỗ team đang đau nhất: CI flaky, chi phí cloud, server Linux snowflake, hay ma sát release mobile — để biết tôi giúp gì trước.</p></div>
+  </div>
+</article>
+<article class="question-card" id="d77">
+  <div class="question-head"><h2>77. 60s closing pitch</h2><p>Honest stack, clear intent</p></div>
+  <div class="grid4">
+    <div class="cell row-head">Question EN</div><div class="cell row-head">Answer EN</div><div class="cell row-head">Question VI</div><div class="cell row-head">Answer VI</div>
+    <div class="cell question"><p>Anything else you'd like us to remember?</p></div>
+    <div class="cell answer"><p>Just briefly: I bring hands-on delivery on GCP Cloud Run, Cloud SQL, and Storage, Linux VM operations with SSH, LiteSpeed and Apache, and CI/CD for web and mobile — including a React Native app published on both stores with a Cloud Run backend. I'm intentionally going deeper into DevOps — pipeline quality, environment promotion, and reliable operations — and I'm honest about where I'm strong versus where I'd ramp. I'm ready to contribute from day one on deploys, troubleshooting, and making releases less fragile.</p></div>
+    <div class="cell question"><p>Bạn muốn chúng tôi nhớ thêm điều gì?</p></div>
+    <div class="cell answer"><p>Ngắn gọn: tôi mang delivery thực tế trên GCP Cloud Run, Cloud SQL và Storage, vận hành Linux VM qua SSH, LiteSpeed và Apache, và CI/CD cho web lẫn mobile — gồm app React Native đã lên cả hai store với backend Cloud Run. Tôi chủ đích đào sâu DevOps — chất lượng pipeline, promote môi trường và vận hành tin cậy — và nói thẳng chỗ mạnh với chỗ sẽ ramp. Tôi sẵn sàng đóng góp từ sớm ở deploy, troubleshoot và làm release ít mong manh hơn.</p></div>
+  </div>
+</article>
+<article class="question-card" id="d78">
+  <div class="question-head"><h2>78. Ramp-up honesty</h2><p>If they probe a JD tool you don't live in</p></div>
+  <div class="grid4">
+    <div class="cell row-head">Question EN</div><div class="cell row-head">Answer EN</div><div class="cell row-head">Question VI</div><div class="cell row-head">Answer VI</div>
+    <div class="cell question"><p>We use Jenkins and Kubernetes heavily. How would you ramp up?</p></div>
+    <div class="cell answer"><p>I'd be honest: my daily spine is Cloud Build, Cloud Run, Linux VMs, and mobile CI — not operating Kubernetes HA clusters or a large Jenkins estate as my primary job. The underlying skills transfer — pipeline stages, artifacts, secrets, rollbacks, logs. I'd ramp by pairing on your existing pipelines, reading your runbooks, and delivering small owned changes first, while mapping your Jenkins or Kubernetes stages to patterns I already know.</p></div>
+    <div class="cell question"><p>Chúng tôi dùng nhiều Jenkins và Kubernetes. Bạn ramp-up thế nào?</p></div>
+    <div class="cell answer"><p>Tôi nói thẳng: xương sống hằng ngày của tôi là Cloud Build, Cloud Run, Linux VM và CI mobile — không phải vận hành cluster Kubernetes HA hay hệ Jenkins lớn như việc chính. Skill nền chuyển được — stage pipeline, artifact, secret, rollback, log. Tôi ramp bằng pair trên pipeline sẵn có, đọc runbook, và nhận thay đổi nhỏ có owner trước, đồng thời map stage Jenkins hoặc Kubernetes sang pattern tôi đã biết.</p></div>
+  </div>
+</article>
+    </section>
+    </section>
+
+    <p class="footer-note"><a href="index.html">Cloud/infra sheet</a> · <a href="cv.html">CV stories</a> · <a href="globant.html">PHP/React sheet</a> · DevOps prep — real experience, reusable for any company.</p>
+  </main>
+  </div>
+
+
+    <aside class="parts-rail" id="parts-rail" aria-label="Parts only">
+      <div class="parts-rail-head-row">
+        <p class="parts-rail-head">Parts</p>
+        <button class="parts-rail-toggle" data-parts-rail-toggle type="button" aria-expanded="true" aria-controls="parts-rail" aria-label="Hide parts panel" title="Hide parts">
+          <svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="16" rx="2"></rect><path d="M15 4v16"></path><path d="M11 9l-3 3 3 3"></path></svg>
+        </button>
+      </div>
+      <nav class="parts-rail-list" data-parts-rail>
+
+        <a class="parts-rail-link" href="#sec-overview" data-part="sec-overview"><strong>Part 0 · Experience map</strong><span>D01–04</span></a>
+        <a class="parts-rail-link" href="#sec-mobile-cicd" data-part="sec-mobile-cicd"><strong>Part 1 · Mobile CI/CD</strong><span>D05–14</span></a>
+        <a class="parts-rail-link" href="#sec-cloudrun" data-part="sec-cloudrun"><strong>Part 2 · Cloud Run / Build</strong><span>D15–25</span></a>
+        <a class="parts-rail-link" href="#sec-linux-vm" data-part="sec-linux-vm"><strong>Part 3 · Linux VM</strong><span>D26–35</span></a>
+        <a class="parts-rail-link" href="#sec-devops" data-part="sec-devops"><strong>Part 4 · DevOps basics</strong><span>D36–39</span></a>
+        <a class="parts-rail-link" href="#sec-linux" data-part="sec-linux"><strong>Part 5 · Linux</strong><span>D40–43</span></a>
+        <a class="parts-rail-link" href="#sec-git" data-part="sec-git"><strong>Part 6 · Git</strong><span>D44–47</span></a>
+        <a class="parts-rail-link" href="#sec-docker" data-part="sec-docker"><strong>Part 7 · Docker</strong><span>D48–51</span></a>
+        <a class="parts-rail-link" href="#sec-gcp" data-part="sec-gcp"><strong>Part 8 · GCP</strong><span>D52–55</span></a>
+        <a class="parts-rail-link" href="#sec-web" data-part="sec-web"><strong>Part 9 · Web servers</strong><span>D56–59</span></a>
+        <a class="parts-rail-link" href="#sec-security" data-part="sec-security"><strong>Part 10 · Security</strong><span>D60–63</span></a>
+        <a class="parts-rail-link" href="#sec-fit" data-part="sec-fit"><strong>Part 11 · Fit</strong><span>D64–69</span></a>
+        <a class="parts-rail-link" href="#sec-scenario" data-part="sec-scenario"><strong>Part 12 · Scenarios</strong><span>D70–75</span></a>
+        <a class="parts-rail-link" href="#sec-close" data-part="sec-close"><strong>Part 13 · Closing</strong><span>D76–78</span></a>
+
+      </nav>
+    </aside>
+    <button class="parts-rail-show" data-parts-rail-show type="button" hidden aria-label="Show parts panel">
+      <svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="16" rx="2"></rect><path d="M15 4v16"></path><path d="M8 9l3 3-3 3"></path></svg>
+      <span>Parts</span>
+    </button>
+
+  <script>
+    (function () {
+      const btn = document.querySelector('[data-theme-toggle]');
+      const root = document.documentElement;
+      let theme = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+      root.setAttribute('data-theme', theme);
+      const sync = () => { btn.textContent = theme === 'dark' ? '☀' : '☾'; };
+      sync();
+      btn.addEventListener('click', () => {
+        theme = theme === 'dark' ? 'light' : 'dark';
+        root.setAttribute('data-theme', theme);
+        sync();
+      });
+
+      // Sticky TOC scroll-spy
+      const tocRoot = document.querySelector('[data-side-toc]');
+      const sideToc = document.getElementById('side-toc');
+      const backdrop = document.querySelector('[data-toc-backdrop]');
+      const openBtn = document.querySelector('[data-toc-open]');
+      if (!tocRoot) return;
+
+      const links = Array.from(tocRoot.querySelectorAll('.side-toc-link'));
+      const partEls = Array.from(tocRoot.querySelectorAll('.side-toc-part'));
+      const partsRailLinks = Array.from(document.querySelectorAll('[data-parts-rail] .parts-rail-link'));
+      const idToLink = new Map(links.map((a) => [a.getAttribute('data-target'), a]));
+      const targets = links
+        .map((a) => document.getElementById(a.getAttribute('data-target')))
+        .filter(Boolean);
+
+      let activeId = null;
+      const setActive = (id) => {
+        if (!id || id === activeId) return;
+        activeId = id;
+        links.forEach((a) => a.classList.toggle('is-active', a.getAttribute('data-target') === id));
+        const active = idToLink.get(id);
+        const partId = active ? active.getAttribute('data-part') : null;
+        partEls.forEach((p) => p.classList.toggle('is-active', p.getAttribute('data-part') === partId));
+        partsRailLinks.forEach((a) => a.classList.toggle('is-active', a.getAttribute('data-part') === partId));
+        if (active && sideToc) {
+          const aTop = active.offsetTop;
+          const aBottom = aTop + active.offsetHeight;
+          const viewTop = sideToc.scrollTop;
+          const viewBottom = viewTop + sideToc.clientHeight;
+          if (aTop < viewTop + 40) sideToc.scrollTop = Math.max(0, aTop - 48);
+          else if (aBottom > viewBottom - 40) sideToc.scrollTop = aBottom - sideToc.clientHeight + 48;
+        }
+      };
+
+      const onScroll = () => {
+        const marker = 120; // below sticky topbar
+        let current = targets[0] ? targets[0].id : null;
+        for (const el of targets) {
+          const top = el.getBoundingClientRect().top;
+          if (top <= marker) current = el.id;
+          else break;
+        }
+        setActive(current);
+      };
+
+
+      window.addEventListener('scroll', onScroll, { passive: true });
+      onScroll();
+
+      const closeMobile = () => {
+        sideToc && sideToc.classList.remove('is-open');
+        if (backdrop) {
+          backdrop.classList.remove('is-open');
+          backdrop.hidden = true;
+        }
+      };
+      const openMobile = () => {
+        sideToc && sideToc.classList.add('is-open');
+        if (backdrop) {
+          backdrop.hidden = false;
+          backdrop.classList.add('is-open');
+        }
+      };
+      openBtn && openBtn.addEventListener('click', openMobile);
+      backdrop && backdrop.addEventListener('click', closeMobile);
+      tocRoot.addEventListener('click', (e) => {
+        const a = e.target.closest('a.side-toc-link, a.side-toc-part-link');
+        if (!a) return;
+        if (window.matchMedia('(max-width: 1100px)').matches) {
+          setTimeout(closeMobile, 50);
+        }
+      });
+    })();
+  </script>
+
+
+<script>
+(function () {
+  const partsRail = document.getElementById('parts-rail');
+  const hideBtn = document.querySelector('[data-parts-rail-toggle]');
+  const showBtn = document.querySelector('[data-parts-rail-show]');
+  const tocCloseBtn = document.querySelector('[data-toc-close]');
+  const sideToc = document.getElementById('side-toc');
+  const backdrop = document.querySelector('[data-toc-backdrop]');
+  const RAIL_KEY = 'devops-parts-rail-collapsed';
+  if (!partsRail || !hideBtn || !showBtn) return;
+
+  const setCollapsed = (collapsed) => {
+    document.body.classList.toggle('parts-rail-collapsed', !!collapsed);
+    hideBtn.setAttribute('aria-expanded', collapsed ? 'false' : 'true');
+    hideBtn.setAttribute('aria-label', collapsed ? 'Show parts panel' : 'Hide parts panel');
+    hideBtn.title = collapsed ? 'Show parts' : 'Hide parts';
+    if (collapsed) showBtn.removeAttribute('hidden');
+    else showBtn.setAttribute('hidden', '');
+    try { localStorage.setItem(RAIL_KEY, collapsed ? '1' : '0'); } catch (_) {}
+  };
+
+  let collapsed = false;
+  try { collapsed = localStorage.getItem(RAIL_KEY) === '1'; } catch (_) {}
+  setCollapsed(collapsed);
+
+  hideBtn.addEventListener('click', (e) => { e.preventDefault(); e.stopPropagation(); setCollapsed(true); });
+  showBtn.addEventListener('click', (e) => { e.preventDefault(); e.stopPropagation(); setCollapsed(false); });
+
+  if (tocCloseBtn && sideToc) {
+    tocCloseBtn.addEventListener('click', () => {
+      sideToc.classList.remove('is-open');
+      if (backdrop) { backdrop.classList.remove('is-open'); backdrop.hidden = true; }
+    });
+  }
+})();
+</script>
+
+</body>
+</html>
