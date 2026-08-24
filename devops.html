@@ -1131,8 +1131,8 @@
     <div class="cell row-head">Concept EN</div><div class="cell row-head">Steps / Must-know EN</div><div class="cell row-head">Concept VI</div><div class="cell row-head">Steps / Must-know VI</div>
     <div class="cell question"><p>I'm a full-stack engineer who also owns delivery and ops: Linux servers over SSH, CI/CD for mobile and web across environments, and GCP services — Cloud Run, Cloud SQL, and Storage. At Akktis that mix is day-to-day; with IELTS AI Tutor I shipped a React Native app to both stores with a Cloud Run backend.</p></div>
     <div class="cell answer"><p>Lead with what I operate (pipeline → deploy → logs → fix), not buzzword lists. Spine = Cloud Build / CI runners + Cloud Run + Linux VM + mobile release — not deep Kubernetes HA or Jenkins-only expertise.</p></div>
-    <div class="cell question"><p>Tôi là full-stack kiêm delivery/ops: Linux qua SSH, CI/CD mobile+web đa môi trường, và GCP — Cloud Run, Cloud SQL, Storage. Ở Akktis đó là việc hằng ngày; với IELTS AI Tutor tôi ship app React Native lên cả hai store kèm backend Cloud Run.</p></div>
-    <div class="cell answer"><p>Mở bằng việc tôi vận hành (pipeline → deploy → log → sửa), không liệt kê buzzword. Xương sống = Cloud Build/CI runner + Cloud Run + Linux VM + mobile release — không nhận sâu Kubernetes HA hay chỉ chuyên Jenkins.</p></div>
+    <div class="cell question"><p>Tôi là full-stack kiêm delivery/ops: Linux qua SSH, CI/CD mobile+web multi-env, và GCP — Cloud Run, Cloud SQL, Storage. Ở Akktis đó là việc hằng ngày; với IELTS AI Tutor tôi ship app React Native lên cả hai store kèm backend Cloud Run.</p></div>
+    <div class="cell answer"><p>Lead bằng việc tôi operate (pipeline → deploy → log → fix), không liệt kê buzzword. Spine = Cloud Build/CI runner + Cloud Run + Linux VM + mobile release — không claim sâu Kubernetes HA hay chỉ chuyên Jenkins.</p></div>
   </div>
   <div class="crib"><p><strong>Interview trap:</strong> Don't invent cluster/HA claims. Prefer 'I operate Cloud Run and VMs' over 'I run enterprise K8s platforms'.</p></div>
 </article>
@@ -1142,8 +1142,8 @@
     <div class="cell row-head">Concept EN</div><div class="cell row-head">Steps / Must-know EN</div><div class="cell row-head">Concept VI</div><div class="cell row-head">Steps / Must-know VI</div>
     <div class="cell question"><p>Akktis: client web/mobile delivery — Ubuntu/Debian SSH, multi-env CI/CD, LiteSpeed/Apache for PHP/CMS apps, GCP Cloud Run/SQL/Storage, docs and basic hardening with a France-based remote team. IELTS AI Tutor: end-to-end product ownership — React Native/TypeScript iOS+Android, Cloud Run API, published on Google Play and App Store.</p></div>
     <div class="cell answer"><p>Use Akktis for ops breadth (VM, web server, multi-env). Use IELTS for mobile CI + store release + Cloud Run backend ownership.</p></div>
-    <div class="cell question"><p>Akktis: delivery web/mobile khách — SSH Ubuntu/Debian, CI/CD đa env, LiteSpeed/Apache cho app PHP/CMS, GCP Cloud Run/SQL/Storage, docs và harden cơ bản với team Pháp remote. IELTS AI Tutor: own end-to-end — React Native/TypeScript iOS+Android, API Cloud Run, đã lên Google Play và App Store.</p></div>
-    <div class="cell answer"><p>Dùng Akktis cho bề rộng ops (VM, web server, multi-env). Dùng IELTS cho mobile CI + store release + own backend Cloud Run.</p></div>
+    <div class="cell question"><p>Akktis: delivery web/mobile cho client — SSH Ubuntu/Debian, CI/CD multi-env, LiteSpeed/Apache cho app PHP/CMS, GCP Cloud Run/SQL/Storage, docs và harden cơ bản với team Pháp remote. IELTS AI Tutor: ownership end-to-end — React Native/TypeScript iOS+Android, API Cloud Run, đã publish lên Google Play và App Store.</p></div>
+    <div class="cell answer"><p>Dùng Akktis cho ops breadth (VM, web server, multi-env). Dùng IELTS cho mobile CI + store release + ownership backend Cloud Run.</p></div>
   </div>
   <div class="crib"><p><strong>Interview trap:</strong> Don't merge projects into one fake mega-platform. Keep stories separate when asked.</p></div>
 </article>
@@ -1153,7 +1153,7 @@
     <div class="cell row-head">Concept EN</div><div class="cell row-head">Steps / Must-know EN</div><div class="cell row-head">Concept VI</div><div class="cell row-head">Steps / Must-know VI</div>
     <div class="cell question"><p>Source: Git. CI: Cloud Build and/or generic CI runners that build on push/tag. Artifacts: container images in Artifact Registry; mobile AAB/IPA to storage or store tracks. Runtime: Cloud Run for container APIs; Linux VMs with LiteSpeed/Apache/Nginx for classic web. Data: Cloud SQL + Cloud Storage. Ops: SSH, logs, revisions, env promotion, docs.</p></div>
     <div class="cell answer"><p>I can walk commit → build → artifact → deploy → verify. I stay honest if a specific vendor plugin name isn't what we used — I describe the stage and why it exists.</p></div>
-    <div class="cell question"><p>Source: Git. CI: Cloud Build và/hoặc CI runner generic build theo push/tag. Artifact: image trong Artifact Registry; AAB/IPA mobile lên storage hoặc store track. Runtime: Cloud Run cho API container; VM Linux với LiteSpeed/Apache/Nginx cho web cổ điển. Data: Cloud SQL + Cloud Storage. Ops: SSH, log, revision, promote env, docs.</p></div>
+    <div class="cell question"><p>Source: Git. CI: Cloud Build và/hoặc CI runner generic build theo push/tag. Artifact: image trong Artifact Registry; AAB/IPA mobile lên storage hoặc store track. Runtime: Cloud Run cho API container; VM Linux với LiteSpeed/Apache/Nginx cho classic web. Data: Cloud SQL + Cloud Storage. Ops: SSH, log, revision, promote env, docs.</p></div>
     <div class="cell answer"><p>Tôi walk được commit → build → artifact → deploy → verify. Trung thực nếu tên plugin cụ thể không phải tool đã dùng — mô tả stage và lý do tồn tại.</p></div>
   </div>
   <div class="crib"><p><strong>Interview trap:</strong> Listing Jenkins/K8s/ELK because a JD mentions them, without mapping to my real path, weakens credibility.</p></div>
@@ -1164,8 +1164,8 @@
     <div class="cell row-head">Concept EN</div><div class="cell row-head">Steps / Must-know EN</div><div class="cell row-head">Concept VI</div><div class="cell row-head">Steps / Must-know VI</div>
     <div class="cell question"><p>When something breaks I isolate layer: recent change → CI log → runtime log/revision → env/secret → network/DB. I mitigate first (rollback revision, revert commit, free disk), then fix root cause and update the checklist/docs so the gap doesn't repeat.</p></div>
     <div class="cell answer"><p>Spoken habit: what changed, what failed, what I verified, what I changed next. Same pattern for mobile build fail, Cloud Run 5xx, or VM disk full.</p></div>
-    <div class="cell question"><p>Khi hỏng tôi cô lập lớp: thay đổi gần đây → log CI → log/revision runtime → env/secret → network/DB. Giảm hại trước (rollback revision, revert commit, giải phóng disk), rồi sửa gốc và cập nhật checklist/docs.</p></div>
-    <div class="cell answer"><p>Thói quen nói: đổi gì, fail gì, verify gì, sửa gì tiếp. Cùng pattern cho mobile build fail, Cloud Run 5xx, hay VM đầy disk.</p></div>
+    <div class="cell question"><p>Khi break tôi isolate layer: change gần đây → CI log → runtime log/revision → env/secret → network/DB. Mitigate trước (rollback revision, revert commit, free disk), rồi fix root cause và update checklist/docs.</p></div>
+    <div class="cell answer"><p>Habit khi nói: đổi gì, fail gì, verify gì, fix gì tiếp. Cùng pattern cho mobile build fail, Cloud Run 5xx, hay VM full disk.</p></div>
   </div>
   <div class="crib"><p><strong>Interview trap:</strong> Guessing 'maybe DNS' without checking deploy/logs first is a trap.</p></div>
 </article>
@@ -1182,12 +1182,12 @@
 3) Keep signing material in CI secret store.<br>
 4) Store artifacts and notify on fail/success.<br>
 5) Promote by environment (dev/staging/prod-like).</p></div>
-    <div class="cell question"><p>Mục tiêu: mỗi nhánh/tag quan trọng tạo artifact mobile lặp lại được (AAB/APK Android, khái niệm IPA iOS), secret/signing ngoài Git, đường rõ tới track Google Play/App Store — không release chỉ trên laptop.</p></div>
-    <div class="cell answer"><p>1) Định nghĩa event Git nào trigger build (PR, main, release tag).<br>
+    <div class="cell question"><p>Mục tiêu: mỗi branch/tag quan trọng tạo artifact mobile reproducible (AAB/APK Android, khái niệm IPA iOS), secret/signing ngoài Git, path rõ tới track Google Play/App Store — không release chỉ trên laptop.</p></div>
+    <div class="cell answer"><p>1) Define event Git nào trigger build (PR, main, release tag).<br>
 2) Tách stage build vs distribute.<br>
 3) Giữ signing trong secret store của CI.<br>
 4) Lưu artifact và notify khi fail/success.<br>
-5) Promote theo môi trường (dev/staging/prod-like).</p></div>
+5) Promote theo env (dev/staging/prod-like).</p></div>
   </div>
   <div class="crib"><p><strong>Interview trap:</strong> Don't claim a specific third-party mobile CI brand if you only used Cloud Build / generic runners — describe stages.</p></div>
 </article>
@@ -1200,11 +1200,11 @@
 2) Configure trigger on push/tag in Cloud Build or equivalent.<br>
 3) Checkout with full history if version/git describe needed.<br>
 4) Fail fast on lint/test before expensive native builds when possible.</p></div>
-    <div class="cell question"><p>Repo React Native/TypeScript (hoặc monorepo): code mobile; backend có thể tách. Trigger thường: push main → build staging; tag release / approval → build lên store. Cloud Build trigger hoặc webhook CI theo dõi branch/tag.</p></div>
-    <div class="cell answer"><p>1) Map nhánh → env (feature → check CI; develop/main → build nội bộ; tag vX.Y.Z → release candidate).<br>
-2) Cấu hình trigger push/tag trên Cloud Build hoặc tương đương.<br>
+    <div class="cell question"><p>Repo React Native/TypeScript (hoặc monorepo): code mobile; backend có thể tách. Trigger thường: push main → build staging; tag release / approval → build lên store. Cloud Build trigger hoặc webhook CI watch branch/tag.</p></div>
+    <div class="cell answer"><p>1) Map branch → env (feature → CI check; develop/main → internal build; tag vX.Y.Z → release candidate).<br>
+2) Config trigger push/tag trên Cloud Build hoặc tương đương.<br>
 3) Checkout đủ history nếu cần version/git describe.<br>
-4) Fail sớm ở lint/test trước native build đắt khi được.</p></div>
+4) Fail-fast ở lint/test trước native build đắt khi được.</p></div>
   </div>
   <div class="crib"><p><strong>Interview trap:</strong> One pipeline for every branch without caching can burn quota — know what you trigger and why.</p></div>
 <div class="note"><p><strong>Commands / examples:</strong></p><p style="font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:0.85em">gcloud builds triggers create github --name=mobile-main --branch-pattern='^main$' --build-config=cloudbuild.mobile.yaml<br>
@@ -1221,12 +1221,12 @@
 3) Pipeline mounts/decrypts only during the signing stage.<br>
 4) Restrict IAM/who can read secrets.<br>
 5) Rotate when people leave or leakage suspected.</p></div>
-    <div class="cell question"><p>Flow điển hình (khái niệm): Android keystore + mật khẩu trong Secret Manager / biến mã hóa CI; cert phân phối iOS + provisioning profile inject vào agent macOS lúc chạy. API key store (Play / App Store Connect) cũng nằm trong secret cho bước upload.</p></div>
+    <div class="cell question"><p>Flow điển hình (khái niệm): Android keystore + password trong Secret Manager / biến encrypt của CI; iOS distribution cert + provisioning profile inject vào agent macOS lúc runtime. Store API key (Play / App Store Connect) cũng nằm trong secret cho bước upload.</p></div>
     <div class="cell answer"><p>1) Tạo keystore/cert offline một lần; không commit.<br>
 2) Upload vào Secret Manager hoặc secret store CI.<br>
-3) Pipeline chỉ mount/decrypt trong stage ký.<br>
-4) Siết IAM/ai được đọc secret.<br>
-5) Xoay khi người rời team hoặc nghi lộ.</p></div>
+3) Pipeline chỉ mount/decrypt trong signing stage.<br>
+4) Restrict IAM/ai được đọc secret.<br>
+5) Rotate khi người rời team hoặc nghi leak.</p></div>
   </div>
   <div class="crib"><p><strong>Interview trap:</strong> Saying 'signing is automatic' without knowing where the keystore/profile lives fails follow-ups.</p></div>
 </article>
@@ -1240,10 +1240,10 @@
 3) Inject keystore path + passwords from secrets into gradle.properties or env.<br>
 4) ./gradlew bundleRelease (AAB for Play) or assembleRelease (APK for sideload/testing).<br>
 5) Copy outputs/bundle/release/*.aab to artifact storage.</p></div>
-    <div class="cell question"><p>Đường release Android cho app React Native: cài JS deps, chuẩn bị native Android, chạy Gradle assembleRelease/bundleRelease ra APK/AAB, ký bằng keystore release, rồi upload artifact.</p></div>
+    <div class="cell question"><p>Release path Android cho app React Native: install JS deps, chuẩn bị native Android, chạy Gradle assembleRelease/bundleRelease ra APK/AAB, sign bằng release keystore, rồi upload artifact.</p></div>
     <div class="cell answer"><p>1) npm/yarn/pnpm install (lockfile).<br>
 2) Set ANDROID_HOME / accept SDK license trên builder.<br>
-3) Inject đường keystore + mật khẩu từ secret vào gradle.properties hoặc env.<br>
+3) Inject keystore path + password từ secret vào gradle.properties hoặc env.<br>
 4) ./gradlew bundleRelease (AAB cho Play) hoặc assembleRelease (APK test).<br>
 5) Copy outputs/bundle/release/*.aab lên artifact storage.</p></div>
   </div>
@@ -1263,12 +1263,12 @@ gcloud builds submit --config=cloudbuild.android.yaml .</p></div>
 3) Import signing cert + profile from secrets into temporary keychain.<br>
 4) xcodebuild archive → exportOptions.plist → IPA.<br>
 5) Never leave certs on a shared machine after the job.</p></div>
-    <div class="cell question"><p>CI iOS cần runner macOS. Khái niệm: cài deps, chọn Xcode, cài cert phân phối + provisioning profile vào keychain, archive app, export IPA cho App Store hoặc ad-hoc. React Native dùng workspace trong ios/.</p></div>
+    <div class="cell question"><p>CI iOS cần runner macOS. Khái niệm: install deps, chọn Xcode, install distribution cert + provisioning profile vào keychain, archive app, export IPA cho App Store hoặc ad-hoc. React Native dùng workspace trong ios/.</p></div>
     <div class="cell answer"><p>1) Dùng image/agent macOS.<br>
-2) pod install nếu dự án dùng CocoaPods.<br>
+2) pod install nếu project dùng CocoaPods.<br>
 3) Import cert + profile từ secret vào keychain tạm.<br>
 4) xcodebuild archive → exportOptions.plist → IPA.<br>
-5) Không để cert trên máy dùng chung sau job.</p></div>
+5) Không để cert trên máy shared sau job.</p></div>
   </div>
   <div class="crib"><p><strong>Interview trap:</strong> If asked exact Fastlane lane names you didn't use: say you know the stages (match/signing → gym/archive → deliver/upload) without inventing project-specific lanes.</p></div>
 <div class="note"><p><strong>Commands / examples:</strong></p><p style="font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:0.85em"># conceptual<br>
@@ -1286,10 +1286,10 @@ xcodebuild -exportArchive -archivePath build/App.xcarchive -exportPath build/ipa
 3) Optional: promote to Play/App Store tracks (internal first).<br>
 4) Record build number ↔ commit in release notes.<br>
 5) Keep retention policy so disks/buckets don't fill forever.</p></div>
-    <div class="cell question"><p>Sau build xanh: lưu AAB/IPA trên Cloud Storage (hoặc artifact CI) với tên có version. Phân phối: upload track nội bộ Google Play và TestFlight/App Store — dùng credential store từ secret. IELTS AI Tutor đã lên store chứng minh đường này end-to-end.</p></div>
+    <div class="cell question"><p>Sau green build: lưu AAB/IPA trên Cloud Storage (hoặc artifact CI) với tên có version. Distribute: upload track internal Google Play và TestFlight/App Store — dùng store credential từ secret. IELTS AI Tutor đã lên store chứng minh path này end-to-end.</p></div>
     <div class="cell answer"><p>1) Đặt tên artifact theo tag/sha + platform.<br>
 2) Upload gs://…/releases/…<br>
-3) Tuỳ chọn: promote lên track Play/App Store (internal trước).<br>
+3) Optional: promote lên track Play/App Store (internal trước).<br>
 4) Ghi build number ↔ commit trong release notes.<br>
 5) Retention để bucket không phình mãi.</p></div>
   </div>
@@ -1308,11 +1308,11 @@ xcodebuild -exportArchive -archivePath build/App.xcarchive -exportPath build/ipa
 3) Block release tag promotion if smoke checks fail.<br>
 4) On secret/expiry failures, rotate then re-run — don't disable signing checks.<br>
 5) Keep a short runbook: common mobile CI failures.</p></div>
-    <div class="cell question"><p>Pipeline nên notify khi fail kèm link stage, và khi success kèm đường artifact/track. Fail sớm ở lỗi signing (sai mật khẩu, profile hết hạn) để không tốn 20 phút compile rồi mới biết secret hỏng.</p></div>
+    <div class="cell question"><p>Pipeline nên notify khi fail kèm link stage, và khi success kèm artifact path/track. Fail-fast ở lỗi signing (sai password, profile hết hạn) để không burn 20 phút compile rồi mới biết secret hỏng.</p></div>
     <div class="cell answer"><p>1) Đưa URL log stage đỏ đầu tiên vào chat/email.<br>
-2) Phân biệt mạng flaky vs lỗi compile/sign deterministic.<br>
-3) Chặn promote tag release nếu smoke fail.<br>
-4) Lỗi secret/expiry → xoay rồi chạy lại — không tắt check ký.<br>
+2) Phân biệt network flaky vs lỗi compile/sign deterministic.<br>
+3) Block promote tag release nếu smoke fail.<br>
+4) Lỗi secret/expiry → rotate rồi re-run — không tắt signing check.<br>
 5) Giữ runbook ngắn: lỗi mobile CI thường gặp.</p></div>
   </div>
   <div class="crib"><p><strong>Interview trap:</strong> Mute-all notifications is as bad as page-on-every-warning.</p></div>
@@ -1327,12 +1327,12 @@ xcodebuild -exportArchive -archivePath build/App.xcarchive -exportPath build/ipa
 3) Never reuse prod keystore for debug curiosity on shared laptops carelessly.<br>
 4) Verify staging app hits staging Cloud Run before tagging prod.<br>
 5) Document which track receives which env.</p></div>
-    <div class="cell question"><p>Cùng codebase, khác config env: API base URL, feature flag, suffix bundle ID / applicationId, và identity ký nào. Build staging có thể trỏ backend khác production. Promote = build tag mới với config prod — không sửa binary tay.</p></div>
+    <div class="cell question"><p>Cùng codebase, khác config env: API base URL, feature flag, suffix bundle ID / applicationId, và signing identity nào. Build staging có thể trỏ backend khác production. Promote = build tag mới với config prod — không sửa binary tay.</p></div>
     <div class="cell answer"><p>1) Tách env bằng .env / flavor / XCConfig — không hardcode URL prod trong main.<br>
 2) Map job matrix hoặc substitutions CI theo env.<br>
-3) Không dùng bừa keystore prod cho debug trên laptop dùng chung.<br>
-4) Verify app staging gọi đúng Cloud Run staging trước khi tag prod.<br>
-5) Ghi rõ track nào nhận env nào.</p></div>
+3) Không dùng bừa prod keystore cho debug trên laptop shared.<br>
+4) Verify app staging hit đúng Cloud Run staging trước khi tag prod.<br>
+5) Document track nào nhận env nào.</p></div>
   </div>
   <div class="crib"><p><strong>Interview trap:</strong> Staging green ≠ prod safe if env vars and signing differ — always call out the delta.</p></div>
 </article>
@@ -1346,12 +1346,12 @@ xcodebuild -exportArchive -archivePath build/App.xcarchive -exportPath build/ipa
 3) Validate secrets still decrypt / profiles not expired.<br>
 4) Reproduce: same Node + JDK; cd android &amp;&amp; ./gradlew … or xcodebuild.<br>
 5) Fix forward (pin version, renew profile) or revert; re-run; note in changelog.</p></div>
-    <div class="cell question"><p>Mobile CI fail: đọc lỗi đầu, không đọc nhiễu cuối. Nhóm thường gặp: lệch lockfile/deps, lệch SDK/Xcode, signing/profile hết hạn, OOM Gradle, sai thư mục, thiếu secret. Reproduce local cùng Node/JDK/Xcode nếu được.</p></div>
+    <div class="cell question"><p>Mobile CI fail: đọc error đầu, không đọc noise cuối. Bucket thường gặp: lệch lockfile/deps, lệch SDK/Xcode, signing/profile hết hạn, OOM Gradle, sai working directory, thiếu secret. Reproduce local cùng Node/JDK/Xcode nếu được.</p></div>
     <div class="cell answer"><p>1) Mở log bước fail; copy ERROR đầu tiên.<br>
-2) Xem đổi gì từ lần xanh trước (deps, native module, CI image).<br>
-3) Kiểm secret còn decrypt / profile còn hạn.<br>
+2) Xem đổi gì từ last green (deps, native module, CI image).<br>
+3) Validate secret còn decrypt / profile còn hạn.<br>
 4) Reproduce: cùng Node + JDK; cd android &amp;&amp; ./gradlew … hoặc xcodebuild.<br>
-5) Sửa tiến (pin version, renew profile) hoặc revert; chạy lại; ghi changelog.</p></div>
+5) Fix forward (pin version, renew profile) hoặc revert; re-run; ghi changelog.</p></div>
   </div>
   <div class="crib"><p><strong>Interview trap:</strong> Re-running without reading the log wastes quota and credibility.</p></div>
 <div class="note"><p><strong>Commands / examples:</strong></p><p style="font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:0.85em"># Android OOM hint<br>
@@ -1370,11 +1370,11 @@ keytool -list -v -keystore release.keystore</p></div>
 3) Say secrets/signing stay out of Git.<br>
 4) Say backend is Cloud Run (separate deploy path).<br>
 5) Say stores are live — ops continues after publish.</p></div>
-    <div class="cell question"><p>IELTS AI Tutor là bằng chứng cụ thể: app React Native/TypeScript iOS+Android, backend Cloud Run, đã lên Google Play và App Store. Khi PV tôi mô tả CI tự động build + ký + artifact, rồi upload/review store — nói rõ bước mình own versus thời gian chờ review.</p></div>
-    <div class="cell answer"><p>1) Nói sản phẩm + platform.<br>
+    <div class="cell question"><p>IELTS AI Tutor là bằng chứng cụ thể: app React Native/TypeScript iOS+Android, backend Cloud Run, đã publish lên Google Play và App Store. Khi interview tôi mô tả CI automate build + signing + artifact, rồi store upload/review — nói rõ bước mình own versus thời gian chờ review.</p></div>
+    <div class="cell answer"><p>1) Nói product + platform.<br>
 2) Nói CI build artifact native từ Git.<br>
 3) Nói secret/signing ngoài Git.<br>
-4) Nói backend là Cloud Run (đường deploy riêng).<br>
+4) Nói backend là Cloud Run (deploy path riêng).<br>
 5) Nói store đã live — ops tiếp tục sau publish.</p></div>
   </div>
   <div class="crib"><p><strong>Interview trap:</strong> Don't invent download counts or revenue. Qualitative: published and operated.</p></div>
@@ -1392,12 +1392,12 @@ keytool -list -v -keystore release.keystore</p></div>
 3) Deploy Cloud Run service.<br>
 4) Wire env, secrets, Cloud SQL.<br>
 5) Automate with Cloud Build trigger + cloudbuild.yaml.</p></div>
-    <div class="cell question"><p>Mục tiêu: mỗi push (hoặc tag) build image container, lưu Artifact Registry, deploy revision Cloud Run mới với env/secret đúng, và rollback được. Đây là xương sống backend IELTS và service cloud Akktis — không nhận quản lý GKE node pool.</p></div>
+    <div class="cell question"><p>Mục tiêu: mỗi push (hoặc tag) build container image, lưu Artifact Registry, deploy revision Cloud Run mới với env/secret đúng, và rollback được. Đây là spine cho backend IELTS và cloud service Akktis — không claim quản lý GKE node pool.</p></div>
     <div class="cell answer"><p>1) Dockerfile chạy process API.<br>
 2) Build → push image.<br>
 3) Deploy service Cloud Run.<br>
-4) Nối env, secret, Cloud SQL.<br>
-5) Tự động bằng Cloud Build trigger + cloudbuild.yaml.</p></div>
+4) Wire env, secret, Cloud SQL.<br>
+5) Automate bằng Cloud Build trigger + cloudbuild.yaml.</p></div>
   </div>
   <div class="crib"><p><strong>Interview trap:</strong> Cloud Run ≠ SSH server. No persistent local disk assumptions.</p></div>
 </article>
@@ -1411,9 +1411,9 @@ keytool -list -v -keystore release.keystore</p></div>
 3) Copy source; set WORKDIR.<br>
 4) EXPOSE and CMD/ENTRYPOINT listening on 8080 or $PORT.<br>
 5) .dockerignore node_modules/.git to keep images small.</p></div>
-    <div class="cell question"><p>Đóng gói backend: base slim, cài deps, copy app, listen đúng $PORT Cloud Run. Ưu tiên non-root khi hợp lý. Không nhét secret vào layer image.</p></div>
+    <div class="cell question"><p>Containerize backend: base slim, install deps, copy app, listen đúng $PORT Cloud Run. Ưu tiên non-root khi hợp lý. Không nhét secret vào image layer.</p></div>
     <div class="cell answer"><p>1) FROM image runtime slim.<br>
-2) Copy lockfile → cài deps (cache layer).<br>
+2) Copy lockfile → install deps (layer cache).<br>
 3) Copy source; set WORKDIR.<br>
 4) EXPOSE và CMD/ENTRYPOINT listen 8080 hoặc $PORT.<br>
 5) .dockerignore node_modules/.git để image nhỏ.</p></div>
@@ -1433,12 +1433,12 @@ docker run --rm -p 8080:8080 -e PORT=8080 api:local</p></div>
 3) Build with tag REGION-docker.pkg.dev/PROJECT/REPO/SERVICE:$SHORT_SHA.<br>
 4) Push tag; optionally also push :latest for non-prod.<br>
 5) Deploy by digest/tag immutably when possible.</p></div>
-    <div class="cell question"><p>Tag image theo path Artifact Registry region/project và git sha hoặc build id. Cloud Build chạy docker build + push (hoặc kaniko/buildpacks). Không lấy docker push từ laptop làm đường prod duy nhất.</p></div>
+    <div class="cell question"><p>Tag image theo path Artifact Registry region/project và git sha hoặc build id. Cloud Build chạy docker build + push (hoặc kaniko/buildpacks). Không lấy docker push từ laptop làm prod path duy nhất.</p></div>
     <div class="cell answer"><p>1) Tạo Artifact Registry Docker repo.<br>
 2) Auth docker với registry.<br>
 3) Build tag REGION-docker.pkg.dev/PROJECT/REPO/SERVICE:$SHORT_SHA.<br>
 4) Push tag; có thể thêm :latest cho non-prod.<br>
-5) Deploy theo digest/tag bất biến khi được.</p></div>
+5) Deploy theo digest/tag immutable khi được.</p></div>
   </div>
   <div class="crib"><p><strong>Interview trap:</strong> :latest in production without digest tracking makes rollbacks fuzzy.</p></div>
 <div class="note"><p><strong>Commands / examples:</strong></p><p style="font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:0.85em">gcloud artifacts repositories create apps --repository-format=docker --location=asia-southeast1<br>
@@ -1457,12 +1457,12 @@ docker push asia-southeast1-docker.pkg.dev/$PROJECT/apps/api:$SHORT_SHA</p></div
 3) Set --memory/--cpu/--max-instances appropriate to load.<br>
 4) Decide ingress (all / internal).<br>
 5) Verify URL returns healthy response.</p></div>
-    <div class="cell question"><p>gcloud run deploy tạo/cập nhật service: image, region, auth, CPU/memory, concurrency, min/max instances. Mỗi deploy tạo revision. Traffic có thể 100% revision mới hoặc chia canary.</p></div>
+    <div class="cell question"><p>gcloud run deploy tạo/update service: image, region, auth, CPU/memory, concurrency, min/max instances. Mỗi deploy tạo revision. Traffic có thể 100% revision mới hoặc split canary.</p></div>
     <div class="cell answer"><p>1) Chọn region gần user/SQL.<br>
 2) gcloud run deploy SERVICE --image=… --region=…<br>
-3) Set --memory/--cpu/--max-instances phù hợp tải.<br>
+3) Set --memory/--cpu/--max-instances phù hợp load.<br>
 4) Quyết định ingress (all / internal).<br>
-5) Verify URL trả response khỏe.</p></div>
+5) Verify URL trả healthy response.</p></div>
   </div>
   <div class="crib"><p><strong>Interview trap:</strong> min-instances=0 saves money but allows cold starts — say the tradeoff out loud.</p></div>
 <div class="note"><p><strong>Commands / examples:</strong></p><p style="font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:0.85em">gcloud run deploy ielts-api --image=asia-southeast1-docker.pkg.dev/$PROJECT/apps/api:$SHORT_SHA --region=asia-southeast1 --allow-unauthenticated<br>
@@ -1479,11 +1479,11 @@ docker push asia-southeast1-docker.pkg.dev/$PROJECT/apps/api:$SHORT_SHA</p></div
 3) Grant the Cloud Run service account secretAccessor.<br>
 4) Attach secrets/env on deploy or via console/YAML.<br>
 5) Never log secret values.</p></div>
-    <div class="cell question"><p>Config runtime: env thường cho setting không mật; Secret Manager cho mật khẩu DB/API key. Inject ở revision để xoay secret không cần rebuild image — chỉ revision mới hoặc version secret.</p></div>
-    <div class="cell answer"><p>1) Liệt kê env key theo môi trường.<br>
+    <div class="cell question"><p>Config runtime: plain env cho non-secret setting; Secret Manager cho DB password/API key. Inject ở revision để rotate secret không cần rebuild image — chỉ revision mới hoặc secret version.</p></div>
+    <div class="cell answer"><p>1) List env key theo env.<br>
 2) Đưa secret vào Secret Manager.<br>
 3) Grant service account Cloud Run quyền secretAccessor.<br>
-4) Gắn secret/env lúc deploy hoặc YAML.<br>
+4) Attach secret/env lúc deploy hoặc YAML.<br>
 5) Không log giá trị secret.</p></div>
   </div>
   <div class="crib"><p><strong>Interview trap:</strong> Copy-pasting prod secrets into staging 'just to test' creates lasting risk.</p></div>
@@ -1502,12 +1502,12 @@ docker push asia-southeast1-docker.pkg.dev/$PROJECT/apps/api:$SHORT_SHA</p></div
 3) Use least-privilege DB user.<br>
 4) Store password in Secret Manager.<br>
 5) Test with a /health that checks DB ping without exposing data.</p></div>
-    <div class="cell question"><p>Cloud Run tới Cloud SQL thường qua Cloud SQL Auth Proxy / Unix socket connector tích hợp Cloud Run, hoặc private IP / Serverless VPC Access tùy setup. App dùng connection string khớp connector; IAM và DB user vẫn áp dụng.</p></div>
+    <div class="cell question"><p>Cloud Run tới Cloud SQL thường qua Cloud SQL Auth Proxy / Unix socket connector tích hợp Cloud Run, hoặc private IP / Serverless VPC Access tùy setup. App dùng connection string khớp connector; IAM và DB user vẫn apply.</p></div>
     <div class="cell answer"><p>1) Tạo instance Cloud SQL; ghi connection name PROJECT:REGION:INSTANCE.<br>
-2) Bật kết nối Cloud SQL trên service Cloud Run.<br>
-3) Dùng DB user least-privilege.<br>
-4) Mật khẩu trong Secret Manager.<br>
-5) Test /health ping DB mà không lộ dữ liệu.</p></div>
+2) Enable Cloud SQL connection trên service Cloud Run.<br>
+3) Dùng DB user least privilege.<br>
+4) Password trong Secret Manager.<br>
+5) Test /health ping DB mà không lộ data.</p></div>
   </div>
   <div class="crib"><p><strong>Interview trap:</strong> Opening Cloud SQL to 0.0.0.0/0 'temporarily' is a classic interview trap — say you wouldn't.</p></div>
 <div class="note"><p><strong>Commands / examples:</strong></p><p style="font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:0.85em">gcloud run services update ielts-api --region=asia-southeast1 \<br>
@@ -1524,12 +1524,12 @@ docker push asia-southeast1-docker.pkg.dev/$PROJECT/apps/api:$SHORT_SHA</p></div
 3) Grant Cloud Build SA: artifact registry writer + run admin (or narrower custom).<br>
 4) Push a commit; watch build in console.<br>
 5) Confirm new Cloud Run revision appeared.</p></div>
-    <div class="cell question"><p>Nối repo; tạo trigger theo branch (vd main) hoặc tag. Trigger chạy cloudbuild.yaml với substitution như SHORT_SHA. Service account Cloud Build cần quyền push Artifact Registry và deploy Cloud Run.</p></div>
+    <div class="cell question"><p>Connect repo; tạo trigger theo branch (vd main) hoặc tag. Trigger chạy cloudbuild.yaml với substitution như SHORT_SHA. Service account Cloud Build cần quyền push Artifact Registry và deploy Cloud Run.</p></div>
     <div class="cell answer"><p>1) Connect GitHub/GitLab/Cloud Source với Cloud Build.<br>
 2) Tạo trigger: branch main → cloudbuild.yaml.<br>
-3) Grant SA Cloud Build: ghi Artifact Registry + deploy Run (hoặc custom hẹp hơn).<br>
+3) Grant SA Cloud Build: Artifact Registry writer + Run deploy (hoặc custom hẹp hơn).<br>
 4) Push commit; xem build trên console.<br>
-5) Xác nhận revision Cloud Run mới xuất hiện.</p></div>
+5) Confirm revision Cloud Run mới xuất hiện.</p></div>
   </div>
   <div class="crib"><p><strong>Interview trap:</strong> Using your personal user creds in CI instead of a service account breaks auditability.</p></div>
 <div class="note"><p><strong>Commands / examples:</strong></p><p style="font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:0.85em">gcloud builds triggers create github --name=api-main --branch-pattern='^main$' --build-config=cloudbuild.yaml<br>
@@ -1546,11 +1546,11 @@ gcloud builds submit --config=cloudbuild.yaml .</p></div>
 3) gcloud run deploy --image …:$SHORT_SHA<br>
 4) Optional: wait-for / smoke curl<br>
 5) images: or explicit push — be consistent</p></div>
-    <div class="cell question"><p>Pipeline tối thiểu: (1) build image tag $SHORT_SHA, (2) push Artifact Registry, (3) gcloud run deploy với tag đó, (4) có thể thêm test trước deploy. Prod nên gắn tag hoặc nhánh protected nếu team cần cổng.</p></div>
+    <div class="cell question"><p>Pipeline tối thiểu: (1) build image tag $SHORT_SHA, (2) push Artifact Registry, (3) gcloud run deploy với tag đó, (4) có thể thêm test trước deploy. Prod nên gắn tag hoặc protected branch nếu team cần gate.</p></div>
     <div class="cell answer"><p>1) steps: docker build -t …:$SHORT_SHA .<br>
 2) docker push …:$SHORT_SHA<br>
 3) gcloud run deploy --image …:$SHORT_SHA<br>
-4) Tuỳ chọn: smoke curl<br>
+4) Optional: smoke curl<br>
 5) images: hoặc push tường minh — nhất quán</p></div>
   </div>
   <div class="crib"><p><strong>Interview trap:</strong> A yaml that only builds but never deploys is CI without CD — say which you have.</p></div>
@@ -1575,12 +1575,12 @@ gcloud builds submit --config=cloudbuild.yaml .</p></div>
 3) Or redeploy the previous image digest.<br>
 4) Confirm logs/error rate recovered.<br>
 5) Fix code; deploy again; optionally canary then 100%.</p></div>
-    <div class="cell question"><p>Mỗi deploy = revision mới. Nếu error rate tăng, chuyển traffic về revision khỏe trước (rollback) trong khi sửa tiến. Canary: 10% traffic revision mới trước.</p></div>
-    <div class="cell answer"><p>1) Liệt kê revision; chọn bản tốt cuối.<br>
+    <div class="cell question"><p>Mỗi deploy = revision mới. Nếu error rate tăng, chuyển traffic về revision healthy trước (rollback) trong khi fix forward. Canary: 10% traffic revision mới trước.</p></div>
+    <div class="cell answer"><p>1) List revision; chọn last known good.<br>
 2) gcloud run services update-traffic … --to-revisions=GOOD=100<br>
 3) Hoặc deploy lại image digest cũ.<br>
-4) Xác nhận log/error rate hồi.<br>
-5) Sửa code; deploy lại; có thể canary rồi 100%.</p></div>
+4) Confirm log/error rate hồi.<br>
+5) Fix code; deploy lại; có thể canary rồi 100%.</p></div>
   </div>
   <div class="crib"><p><strong>Interview trap:</strong> Deleting the bad revision before investigating destroys forensic evidence — roll traffic first.</p></div>
 <div class="note"><p><strong>Commands / examples:</strong></p><p style="font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:0.85em">gcloud run revisions list --service=ielts-api --region=asia-southeast1<br>
@@ -1599,9 +1599,9 @@ gcloud run services update-traffic ielts-api --region=asia-southeast1 --to-revis
 5) Reproduce with curl + correlation from logs.</p></div>
     <div class="cell question"><p>Dùng Cloud Logging cho stdout/stderr container; filter theo service/revision. Xem latency, cold start, memory (OOM), lỗi Cloud SQL upstream. So 'chạy local được' với thiếu env trên revision.</p></div>
     <div class="cell answer"><p>1) Mở Logs của service Cloud Run.<br>
-2) Filter severity&gt;=ERROR quanh khung sự cố.<br>
+2) Filter severity&gt;=ERROR quanh incident window.<br>
 3) Ghi tên revision trên request lỗi.<br>
-4) Diff env/secret với revision tốt.<br>
+4) Diff env/secret với revision good.<br>
 5) Reproduce bằng curl + correlation từ log.</p></div>
   </div>
   <div class="crib"><p><strong>Interview trap:</strong> Restarting hope-fix without reading logs is not a strategy.</p></div>
@@ -1623,7 +1623,7 @@ gcloud run services update-traffic ielts-api --region=asia-southeast1 --to-revis
 2) Tách secret và Cloud SQL.<br>
 3) Trigger staging trên main; prod trên tag/manual.<br>
 4) Smoke URL staging trước khi promote.<br>
-5) Ghi ai được deploy prod.</p></div>
+5) Document ai được deploy prod.</p></div>
   </div>
   <div class="crib"><p><strong>Interview trap:</strong> One Cloud Run service shared by all envs with only an ENV var flipped is fragile for blast radius.</p></div>
 </article>
@@ -1640,12 +1640,12 @@ gcloud run services update-traffic ielts-api --region=asia-southeast1 --to-revis
 3) Deploy app files + vhost.<br>
 4) Firewall + TLS.<br>
 5) Monitor logs/disk; harden basics.</p></div>
-    <div class="cell question"><p>Mục tiêu: dựng VM Ubuntu/Debian trên GCP, harden SSH, cài web server (Nginx/Apache; CV có LiteSpeed), deploy thư mục PHP/web, mở firewall đúng, thêm TLS, troubleshoot bằng log/disk. Khớp ops SSH hằng ngày ở Akktis cho site khách.</p></div>
+    <div class="cell question"><p>Mục tiêu: dựng VM Ubuntu/Debian trên GCP, harden SSH, install web server (Nginx/Apache; CV có LiteSpeed), deploy document root PHP/web, mở firewall đúng, thêm TLS, troubleshoot bằng log/disk. Khớp SSH ops hằng ngày ở Akktis cho site client.</p></div>
     <div class="cell answer"><p>1) Tạo VM + SSH.<br>
-2) Update package; cài web server.<br>
+2) Update package; install web server.<br>
 3) Deploy file app + vhost.<br>
 4) Firewall + TLS.<br>
-5) Theo dõi log/disk; harden cơ bản.</p></div>
+5) Monitor log/disk; harden cơ bản.</p></div>
   </div>
   <div class="crib"><p><strong>Interview trap:</strong> Don't claim you only use Cloud Run if the CV also lists Linux VM + LiteSpeed/Apache — own both paths.</p></div>
 </article>
@@ -1659,11 +1659,11 @@ gcloud run services update-traffic ielts-api --region=asia-southeast1 --to-revis
 3) gcloud compute ssh USER@INSTANCE --zone=…<br>
 4) Confirm uname -a and disk free.<br>
 5) Set hostname / timezone if team standard requires.</p></div>
-    <div class="cell question"><p>Tạo VM e2-small (hoặc phù hợp) Ubuntu LTS, chọn region/zone, gắn IP public nếu phục vụ internet, đảm bảo SSH key đã đăng ký (OS Login hoặc metadata).</p></div>
+    <div class="cell question"><p>Tạo VM e2-small (hoặc phù hợp) Ubuntu LTS, chọn region/zone, gắn public IP nếu serve internet, đảm bảo SSH key đã đăng ký (OS Login hoặc metadata).</p></div>
     <div class="cell answer"><p>1) gcloud compute instances create … --image-family=ubuntu-2204-lts …<br>
-2) Ghi IP ngoài.<br>
+2) Ghi external IP.<br>
 3) gcloud compute ssh USER@INSTANCE --zone=…<br>
-4) Xác nhận uname -a và dung lượng disk.<br>
+4) Confirm uname -a và disk free.<br>
 5) Set hostname/timezone nếu team yêu cầu.</p></div>
   </div>
   <div class="crib"><p><strong>Interview trap:</strong> Leaving SSH open with password auth on a public IP is an avoidable incident.</p></div>
@@ -1681,9 +1681,9 @@ gcloud compute ssh ubuntu@web-1 --zone=asia-southeast1-b</p></div>
 3) Edit sshd_config: PasswordAuthentication no; PermitRootLogin no (or prohibit-password).<br>
 4) systemctl reload sshd carefully (keep a session open).<br>
 5) Test a second SSH session before closing the first.</p></div>
-    <div class="cell question"><p>Ưu tiên SSH pubkey; tắt login mật khẩu sau khi xác nhận key chạy. Dùng user sudo không phải root. Không gửi private key qua chat/docs; dùng gcloud compute ssh hoặc ssh-agent.</p></div>
+    <div class="cell question"><p>Ưu tiên SSH pubkey auth; tắt password authentication sau khi confirm key login chạy. Dùng sudo user không phải root. Không gửi private key qua chat/docs; dùng gcloud compute ssh hoặc ssh-agent.</p></div>
     <div class="cell answer"><p>1) Thêm pubkey (ssh-ed25519…) qua console/OS Login.<br>
-2) Login; kiểm sudo -l.<br>
+2) Login; verify sudo -l.<br>
 3) Sửa sshd_config: PasswordAuthentication no; PermitRootLogin no.<br>
 4) systemctl reload sshd cẩn thận (giữ session cũ).<br>
 5) Test SSH session thứ hai trước khi đóng session đầu.</p></div>
@@ -1704,12 +1704,12 @@ sudo systemctl reload ssh</p></div>
 3) systemctl enable --now nginx|apache2.<br>
 4) curl localhost to verify default page.<br>
 5) Note: LiteSpeed often has its own admin and config paths — don't invent panel passwords in interview; describe vhost + PHP + TLS concepts.</p></div>
-    <div class="cell question"><p>Baseline: apt update &amp;&amp; apt upgrade có chủ đích, rồi cài Nginx hoặc Apache. Ở Akktis tôi cũng vận hành LiteSpeed cho app PHP/CMS — cùng ý: document root, vhost, rewrite, PHP handler. Greenfield chọn một; biết đọc config cái kia khi thừa kế server.</p></div>
+    <div class="cell question"><p>Baseline: apt update &amp;&amp; apt upgrade có chủ đích, rồi install Nginx hoặc Apache. Ở Akktis tôi cũng operate LiteSpeed cho app PHP/CMS — cùng ý: document root, vhost, rewrite, PHP handler. Greenfield chọn một; biết đọc config cái kia khi inherit server.</p></div>
     <div class="cell answer"><p>1) sudo apt update &amp;&amp; sudo apt upgrade -y (ý thức maintenance window).<br>
-2) Cài nginx hoặc apache2 (+ php-fpm nếu PHP).<br>
+2) Install nginx hoặc apache2 (+ php-fpm nếu PHP).<br>
 3) systemctl enable --now nginx|apache2.<br>
-4) curl localhost xác nhận trang mặc định.<br>
-5) LiteSpeed thường có admin/config riêng — không bịa mật khẩu panel; mô tả khái niệm vhost + PHP + TLS.</p></div>
+4) curl localhost confirm trang mặc định.<br>
+5) LiteSpeed thường có admin/config path riêng — không bịa panel password; mô tả khái niệm vhost + PHP + TLS.</p></div>
   </div>
   <div class="crib"><p><strong>Interview trap:</strong> Saying you 'optimized LiteSpeed' without naming what you changed (cache, PHP workers, vhost) is vague — give one concrete example.</p></div>
 <div class="note"><p><strong>Commands / examples:</strong></p><p style="font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:0.85em">sudo apt update &amp;&amp; sudo apt install -y nginx<br>
@@ -1728,12 +1728,12 @@ sudo systemctl status nginx</p></div>
 3) sudo ufw enable.<br>
 4) Verify from outside: curl http://EXTERNAL_IP.<br>
 5) Confirm 22 only from trusted ranges if policy requires.</p></div>
-    <div class="cell question"><p>Thường hai lớp: VPC firewall cho 80/443 tới tag instance, và UFW trên host cho OpenSSH + Nginx Full. Không mở MySQL ra internet. Ưu tiên IAP/tunnel cho admin nếu team dùng.</p></div>
-    <div class="cell answer"><p>1) Instance có tag http-server/https-server (hoặc rule custom).<br>
+    <div class="cell question"><p>Thường hai layer: VPC firewall cho 80/443 tới instance tag, và UFW trên host cho OpenSSH + Nginx Full. Không mở MySQL ra internet. Ưu tiên IAP/tunnel cho admin nếu team dùng.</p></div>
+    <div class="cell answer"><p>1) Instance có tag http-server/https-server (hoặc custom rule).<br>
 2) sudo ufw allow OpenSSH; sudo ufw allow 'Nginx Full'.<br>
 3) sudo ufw enable.<br>
-4) Verify ngoài: curl http://EXTERNAL_IP.<br>
-5) Port 22 chỉ từ dải tin cậy nếu policy yêu cầu.</p></div>
+4) Verify từ ngoài: curl http://EXTERNAL_IP.<br>
+5) Port 22 chỉ từ trusted range nếu policy yêu cầu.</p></div>
   </div>
   <div class="crib"><p><strong>Interview trap:</strong> ufw enable without allowing SSH first can lock you out.</p></div>
 <div class="note"><p><strong>Commands / examples:</strong></p><p style="font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:0.85em">sudo ufw allow OpenSSH<br>
@@ -1756,8 +1756,8 @@ sudo ufw status</p></div>
     <div class="cell answer"><p>1) sudo mkdir -p /var/www/app &amp;&amp; deploy git pull hoặc rsync.<br>
 2) chown -R www-data:www-data (hoặc user đúng).<br>
 3) Đặt .env ngoài public/ nếu framework cho phép.<br>
-4) Cài PHP deps; cho phép ghi storage/cache.<br>
-5) Trỏ document root vhost vào public/ (Laravel) hoặc web root đúng.</p></div>
+4) Install PHP deps; cho phép ghi storage/cache.<br>
+5) Trỏ vhost document root vào public/ (Laravel) hoặc web root đúng.</p></div>
   </div>
   <div class="crib"><p><strong>Interview trap:</strong> chmod 777 -R 'to make uploads work' is a trap — fix ownership/group instead.</p></div>
 <div class="note"><p><strong>Commands / examples:</strong></p><p style="font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:0.85em">sudo rsync -a ./ /var/www/app/<br>
@@ -1775,12 +1775,12 @@ cd /var/www/app &amp;&amp; sudo -u www-data composer install --no-dev</p></div>
 3) nginx -t &amp;&amp; systemctl reload nginx.<br>
 4) Confirm Host header / DNS A record points to the VM.<br>
 5) Optional: systemd unit for queue workers with Restart=on-failure.</p></div>
-    <div class="cell question"><p>Cấu hình server block (Nginx) hoặc VirtualHost (Apache): server_name, root, socket PHP-FPM, access/error log. Enable site và reload. Worker dài (queue) dùng systemd — không để nohup mãi không docs.</p></div>
+    <div class="cell question"><p>Config server block (Nginx) hoặc VirtualHost (Apache): server_name, root, PHP-FPM socket, access/error log. Enable site và reload. Worker dài (queue) dùng systemd — không để nohup mãi không docs.</p></div>
     <div class="cell answer"><p>1) Viết /etc/nginx/sites-available/app.conf (hoặc Apache).<br>
 2) symlink vào sites-enabled.<br>
 3) nginx -t &amp;&amp; systemctl reload nginx.<br>
-4) Xác nhận DNS A / Host trỏ đúng VM.<br>
-5) Tuỳ chọn: unit systemd cho queue với Restart=on-failure.</p></div>
+4) Confirm DNS A / Host trỏ đúng VM.<br>
+5) Optional: unit systemd cho queue với Restart=on-failure.</p></div>
   </div>
   <div class="crib"><p><strong>Interview trap:</strong> Editing sites-enabled in place without nginx -t risks taking down all vhosts on reload.</p></div>
 <div class="note"><p><strong>Commands / examples:</strong></p><p style="font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:0.85em">sudo ln -s /etc/nginx/sites-available/app.conf /etc/nginx/sites-enabled/<br>
@@ -1797,12 +1797,12 @@ sudo nginx -t &amp;&amp; sudo systemctl reload nginx</p></div>
 3) sudo certbot --nginx -d example.com.<br>
 4) Confirm https:// loads with valid cert.<br>
 5) Check renew: systemctl list-timers | grep certbot / certbot renew --dry-run.</p></div>
-    <div class="cell question"><p>Dùng Certbot (hoặc tương đương) lấy chứng chỉ Let's Encrypt, cấu hình Nginx/Apache, dựa vào timer renew. DNS phải trỏ sẵn về VM. Redirect HTTP→HTTPS.</p></div>
+    <div class="cell question"><p>Dùng Certbot (hoặc tương đương) lấy Let's Encrypt certificate, config Nginx/Apache, dựa vào renew timer. DNS phải trỏ sẵn về VM. Redirect HTTP→HTTPS.</p></div>
     <div class="cell answer"><p>1) Trỏ DNS A/AAAA về IP VM; chờ propagate.<br>
 2) sudo apt install certbot python3-certbot-nginx.<br>
 3) sudo certbot --nginx -d example.com.<br>
-4) Xác nhận https:// load đúng cert.<br>
-5) Kiểm renew: timer certbot / certbot renew --dry-run.</p></div>
+4) Confirm https:// load đúng cert.<br>
+5) Check renew: timer certbot / certbot renew --dry-run.</p></div>
   </div>
   <div class="crib"><p><strong>Interview trap:</strong> Self-signed certs are fine for lab; production public sites expect public CA trust.</p></div>
 <div class="note"><p><strong>Commands / examples:</strong></p><p style="font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:0.85em">sudo certbot --nginx -d example.com<br>
@@ -1819,12 +1819,12 @@ sudo certbot renew --dry-run</p></div>
 3) Truncate/rotate bloated logs safely; move old backups off-box.<br>
 4) Read /var/log/nginx/error.log or Apache/LiteSpeed error log.<br>
 5) After cleanup, fix root cause (logrotate, retention).</p></div>
-    <div class="cell question"><p>Triệu chứng: 5xx, trang trắng, không ghi upload, SSH vẫn vào được. Kiểm disk (df -h), inode (df -i), journalctl/nginx error.log, log PHP-FPM, deploy gần đây. Disk đầy là lửa cổ điển trên site CMS (log, backup, upload).</p></div>
+    <div class="cell question"><p>Symptom: 5xx, trang trắng, không ghi upload, SSH vẫn vào được. Check disk (df -h), inode (df -i), journalctl/nginx error.log, PHP-FPM log, deploy gần đây. Full disk là classic fire trên site CMS (log, backup, upload).</p></div>
     <div class="cell answer"><p>1) df -h; df -i.<br>
-2) du -sh /* | sort -h tìm thư mục phình.<br>
-3) Xoay/cắt log an toàn; chuyển backup cũ khỏi máy.<br>
+2) du -sh /* | sort -h tìm directory phình.<br>
+3) Truncate/rotate log an toàn; chuyển backup cũ khỏi máy.<br>
 4) Đọc error log Nginx/Apache/LiteSpeed.<br>
-5) Sau dọn, sửa gốc (logrotate, retention).</p></div>
+5) Sau cleanup, fix root cause (logrotate, retention).</p></div>
   </div>
   <div class="crib"><p><strong>Interview trap:</strong> Deleting files under /var/lib/mysql to free space is catastrophic — know what you're deleting.</p></div>
 <div class="note"><p><strong>Commands / examples:</strong></p><p style="font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:0.85em">df -h<br>
@@ -1842,11 +1842,11 @@ sudo journalctl -u nginx -n 100 --no-pager</p></div>
 3) Keep packages patched on a schedule.<br>
 4) App file perms + secrets placement.<br>
 5) Write short docs: how to deploy, where logs live, how to renew TLS.</p></div>
-    <div class="cell question"><p>Harden baseline tôi thực hành và document: SSH chỉ key, UFW hạn chế cổng, cập nhật bảo mật khi phù hợp, user sudo tách, least privilege file app, secret ngoài web root, runbook rõ để người sau không đoán.</p></div>
+    <div class="cell question"><p>Harden baseline tôi thực hành và document: SSH chỉ key, UFW limit port, security update khi phù hợp, tách sudo user, least privilege cho file app, secret ngoài web root, runbook rõ để người sau không đoán.</p></div>
     <div class="cell answer"><p>1) SSH chỉ key; tắt password auth.<br>
-2) UFW/VPC mở tối thiểu cổng.<br>
-3) Vá package theo lịch.<br>
-4) Quyền file app + vị trí secret.<br>
+2) UFW/VPC mở tối thiểu port.<br>
+3) Patch package theo schedule.<br>
+4) App file perm + vị trí secret.<br>
 5) Docs ngắn: cách deploy, log ở đâu, renew TLS thế nào.</p></div>
   </div>
   <div class="crib"><p><strong>Interview trap:</strong> I'm not claiming a full enterprise security audit — I claim practical hardening + documentation.</p></div>
@@ -1864,7 +1864,7 @@ sudo ufw status verbose<br>
     <div class="cell row-head">Concept EN</div><div class="cell row-head">Steps / Must-know EN</div><div class="cell row-head">Concept VI</div><div class="cell row-head">Steps / Must-know VI</div>
     <div class="cell question"><p>DevOps shortens the path from commit to reliable production by combining shared ownership, automation, measurement, and fast feedback between people who build and people who run systems.</p></div>
     <div class="cell answer"><p>Tools enable DevOps; they don't replace clear ownership of build, deploy, monitor, and recover.</p></div>
-    <div class="cell question"><p>DevOps rút ngắn đường từ commit đến production ổn định bằng ownership chung, tự động hóa, đo lường và phản hồi nhanh giữa người xây và người vận hành.</p></div>
+    <div class="cell question"><p>DevOps rút ngắn path từ commit đến production ổn định bằng ownership chung, automation, đo lường và feedback nhanh giữa người build và người operate.</p></div>
     <div class="cell answer"><p>Tool hỗ trợ DevOps; không thay ownership rõ về build, deploy, monitor và recover.</p></div>
   </div>
   <div class="crib"><p><strong>Interview trap:</strong> DevOps ≠ installing one CI product.</p></div>
@@ -1875,8 +1875,8 @@ sudo ufw status verbose<br>
     <div class="cell row-head">Concept EN</div><div class="cell row-head">Steps / Must-know EN</div><div class="cell row-head">Concept VI</div><div class="cell row-head">Steps / Must-know VI</div>
     <div class="cell question"><p>CI (Continuous Integration): automatically build and test every change so the main line stays healthy. CD usually means Continuous Delivery (always releasable with a human gate) or Continuous Deployment (auto to production).</p></div>
     <div class="cell answer"><p>Say which CD meaning you use. CI without automated tests is mostly packaging.</p></div>
-    <div class="cell question"><p>CI: tự động build/test mỗi thay đổi để nhánh chính khỏe. CD thường là Continuous Delivery (luôn sẵn sàng release, có cổng người) hoặc Continuous Deployment (tự lên production).</p></div>
-    <div class="cell answer"><p>Nói rõ bạn đang dùng nghĩa CD nào. CI không có test tự động thì chủ yếu là đóng gói.</p></div>
+    <div class="cell question"><p>CI: tự động build/test mỗi change để main line healthy. CD thường là Continuous Delivery (luôn sẵn sàng release, có approval gate) hoặc Continuous Deployment (auto lên production).</p></div>
+    <div class="cell answer"><p>Nói rõ bạn đang dùng nghĩa CD nào. CI không có test tự động thì chủ yếu là package.</p></div>
   </div>
   <div class="crib"><p><strong>Interview trap:</strong> Saying 'we do CD' without explaining the prod gate is vague.</p></div>
 </article>
@@ -1886,7 +1886,7 @@ sudo ufw status verbose<br>
     <div class="cell row-head">Concept EN</div><div class="cell row-head">Steps / Must-know EN</div><div class="cell row-head">Concept VI</div><div class="cell row-head">Steps / Must-know VI</div>
     <div class="cell question"><p>A typical pipeline: checkout → install/build → test → package artifact (image/AAB) → deploy to an environment → notify. Secrets stay outside Git; prod often needs an extra approval or tag.</p></div>
     <div class="cell answer"><p>Be able to point where your real work sits: Cloud Build → Artifact Registry → Cloud Run, or CI → mobile store track, or rsync/git pull on a VM.</p></div>
-    <div class="cell question"><p>Pipeline điển hình: checkout → cài/build → test → đóng artifact (image/AAB) → deploy env → notify. Secret ngoài Git; prod thường cần approval hoặc tag.</p></div>
+    <div class="cell question"><p>Pipeline điển hình: checkout → install/build → test → package artifact (image/AAB) → deploy env → notify. Secret ngoài Git; prod thường cần approval hoặc tag.</p></div>
     <div class="cell answer"><p>Chỉ được chỗ công việc thật của bạn: Cloud Build → Artifact Registry → Cloud Run, hoặc CI → track store mobile, hoặc rsync/git pull trên VM.</p></div>
   </div>
   <div class="crib"><p><strong>Interview trap:</strong> Memorizing stage names without a real failure story is weak.</p></div>
@@ -1897,8 +1897,8 @@ sudo ufw status verbose<br>
     <div class="cell row-head">Concept EN</div><div class="cell row-head">Steps / Must-know EN</div><div class="cell row-head">Concept VI</div><div class="cell row-head">Steps / Must-know VI</div>
     <div class="cell question"><p>Separate environments reduce blast radius: try changes in staging with staging data/secrets before production. Promotion should be deliberate — same artifact when possible, different config.</p></div>
     <div class="cell answer"><p>Staging green with wrong API URL still breaks prod. Always name the config delta.</p></div>
-    <div class="cell question"><p>Tách môi trường giảm bán kính nổ: thử ở staging với data/secret staging trước production. Promote có chủ đích — cùng artifact khi được, khác config.</p></div>
-    <div class="cell answer"><p>Staging xanh nhưng sai API URL vẫn phá prod. Luôn nêu delta config.</p></div>
+    <div class="cell question"><p>Tách env giúp giảm blast radius: thử ở staging với data/secret staging trước production. Promote có chủ đích — cùng artifact khi được, khác config.</p></div>
+    <div class="cell answer"><p>Staging green nhưng sai API URL vẫn phá prod. Luôn nêu delta config.</p></div>
   </div>
   <div class="crib"><p><strong>Interview trap:</strong> One shared 'prod-like' box for everything is not multi-env.</p></div>
 </article>
@@ -1911,8 +1911,8 @@ sudo ufw status verbose<br>
     <div class="cell row-head">Concept EN</div><div class="cell row-head">Steps / Must-know EN</div><div class="cell row-head">Concept VI</div><div class="cell row-head">Steps / Must-know VI</div>
     <div class="cell question"><p>SSH into Ubuntu/Debian, check service status, logs, disk/memory, apply the safest fix, verify. Prefer key-based auth and a sudo user over root password login.</p></div>
     <div class="cell answer"><p>Structured loop: symptom → resources → logs → recent changes → fix → verify.</p></div>
-    <div class="cell question"><p>SSH vào Ubuntu/Debian, xem status service, log, disk/memory, áp fix an toàn nhất, verify. Ưu tiên SSH key và user sudo hơn login root bằng mật khẩu.</p></div>
-    <div class="cell answer"><p>Vòng có cấu trúc: triệu chứng → tài nguyên → log → thay đổi gần đây → sửa → verify.</p></div>
+    <div class="cell question"><p>SSH vào Ubuntu/Debian, xem status service, log, disk/memory, apply fix an toàn nhất, verify. Ưu tiên SSH key và sudo user hơn login root bằng password.</p></div>
+    <div class="cell answer"><p>Loop có cấu trúc: symptom → resource → log → change gần đây → fix → verify.</p></div>
   </div>
   <div class="crib"><p><strong>Interview trap:</strong> Random reboot without checking logs hides root cause.</p></div>
 <div class="note"><p><strong>Commands / examples:</strong></p><p style="font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:0.85em">ssh user@host<br>
@@ -1927,8 +1927,8 @@ df -h</p></div>
     <div class="cell row-head">Concept EN</div><div class="cell row-head">Steps / Must-know EN</div><div class="cell row-head">Concept VI</div><div class="cell row-head">Steps / Must-know VI</div>
     <div class="cell question"><p>Know how to list processes, restart systemd services, and read rwx permissions. Prefer fixing ownership/group over chmod 777. Long-running jobs belong under systemd, not forgotten nohup.</p></div>
     <div class="cell answer"><p>id / ls -l / systemctl / journalctl are interview-safe everyday tools.</p></div>
-    <div class="cell question"><p>Biết liệt kê process, restart service systemd, đọc quyền rwx. Ưu tiên sửa ownership/group hơn chmod 777. Job dài nên nằm dưới systemd, không nohup quên.</p></div>
-    <div class="cell answer"><p>id / ls -l / systemctl / journalctl là tool hằng ngày an toàn khi PV.</p></div>
+    <div class="cell question"><p>Biết list process, restart service systemd, đọc quyền rwx. Ưu tiên fix ownership/group hơn chmod 777. Job dài nên nằm dưới systemd, không nohup quên.</p></div>
+    <div class="cell answer"><p>id / ls -l / systemctl / journalctl là tool hằng ngày an toàn khi interview.</p></div>
   </div>
   <div class="crib"><p><strong>Interview trap:</strong> chmod 777 to unblock uploads is a security smell.</p></div>
 <div class="note"><p><strong>Commands / examples:</strong></p><p style="font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:0.85em">ps aux | head<br>
@@ -1942,8 +1942,8 @@ ls -l /var/www</p></div>
     <div class="cell row-head">Concept EN</div><div class="cell row-head">Steps / Must-know EN</div><div class="cell row-head">Concept VI</div><div class="cell row-head">Steps / Must-know VI</div>
     <div class="cell question"><p>Full disks break writes, CMS uploads, and sometimes SSH usability in subtle ways. Watch df -h, rotate logs, and keep backups off the app volume when possible.</p></div>
     <div class="cell answer"><p>Never delete unknown database directories to free space.</p></div>
-    <div class="cell question"><p>Disk đầy làm hỏng ghi file, upload CMS, đôi khi SSH cũng lạ. Theo dõi df -h, xoay log, giữ backup khỏi volume app khi được.</p></div>
-    <div class="cell answer"><p>Không xóa thư mục database không rõ để lấy chỗ trống.</p></div>
+    <div class="cell question"><p>Disk đầy làm hỏng ghi file, upload CMS, đôi khi SSH cũng lạ. Theo dõi df -h, rotate log, giữ backup khỏi volume app khi được.</p></div>
+    <div class="cell answer"><p>Không xóa directory database không rõ để free space.</p></div>
   </div>
   <div class="crib"><p><strong>Interview trap:</strong> df green on size but inodes full (df -i) still breaks creates.</p></div>
 <div class="note"><p><strong>Commands / examples:</strong></p><p style="font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:0.85em">df -h; df -i<br>
@@ -1956,8 +1956,8 @@ sudo du -xh /var/log | sort -h | tail</p></div>
     <div class="cell row-head">Concept EN</div><div class="cell row-head">Steps / Must-know EN</div><div class="cell row-head">Concept VI</div><div class="cell row-head">Steps / Must-know VI</div>
     <div class="cell question"><p>apt update refreshes indexes; apt install adds packages; prefer understanding what a package starts (nginx, php-fpm) before upgrading production blindly.</p></div>
     <div class="cell answer"><p>Patch on a schedule; know how to roll back a bad package upgrade if the team has a pattern.</p></div>
-    <div class="cell question"><p>apt update làm mới index; apt install thêm package; hiểu package khởi động gì (nginx, php-fpm) trước khi upgrade prod mù.</p></div>
-    <div class="cell answer"><p>Vá theo lịch; biết rollback upgrade package xấu nếu team có pattern.</p></div>
+    <div class="cell question"><p>apt update làm mới index; apt install thêm package; hiểu package start gì (nginx, php-fpm) trước khi upgrade prod blindly.</p></div>
+    <div class="cell answer"><p>Patch theo schedule; biết rollback upgrade package xấu nếu team có pattern.</p></div>
   </div>
   <div class="crib"><p><strong>Interview trap:</strong> apt upgrade on prod Friday evening without a window is a risk.</p></div>
 <div class="note"><p><strong>Commands / examples:</strong></p><p style="font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:0.85em">sudo apt update<br>
@@ -1973,7 +1973,7 @@ sudo apt install -y nginx</p></div>
     <div class="cell row-head">Concept EN</div><div class="cell row-head">Steps / Must-know EN</div><div class="cell row-head">Concept VI</div><div class="cell row-head">Steps / Must-know VI</div>
     <div class="cell question"><p>Feature branches for work; protected main for integration; tags for release candidates. CI triggers usually bind to branch or tag patterns.</p></div>
     <div class="cell answer"><p>Say how your team promotes: merge to main → staging deploy; tag → prod/mobile release.</p></div>
-    <div class="cell question"><p>Nhánh feature cho việc đang làm; main được bảo vệ để tích hợp; tag cho release candidate. CI thường gắn pattern branch hoặc tag.</p></div>
+    <div class="cell question"><p>Feature branch cho work đang làm; main được protect để integrate; tag cho release candidate. CI thường gắn pattern branch hoặc tag.</p></div>
     <div class="cell answer"><p>Nói team promote thế nào: merge main → deploy staging; tag → prod/mobile release.</p></div>
   </div>
   <div class="crib"><p><strong>Interview trap:</strong> Force-push to shared main is an interview red flag.</p></div>
@@ -1984,7 +1984,7 @@ sudo apt install -y nginx</p></div>
     <div class="cell row-head">Concept EN</div><div class="cell row-head">Steps / Must-know EN</div><div class="cell row-head">Concept VI</div><div class="cell row-head">Steps / Must-know VI</div>
     <div class="cell question"><p>Pull requests catch bad config and secret leaks before expensive mobile/cloud builds. Small diffs review faster than mega-PRs.</p></div>
     <div class="cell answer"><p>CI on PR should be cheaper than full store/prod deploy — lint/test first.</p></div>
-    <div class="cell question"><p>Pull request bắt config xấu và lộ secret trước khi burn native/cloud build. Diff nhỏ review nhanh hơn mega-PR.</p></div>
+    <div class="cell question"><p>Pull request bắt config xấu và secret leak trước khi burn native/cloud build. Diff nhỏ review nhanh hơn mega-PR.</p></div>
     <div class="cell answer"><p>CI trên PR nên rẻ hơn full deploy store/prod — lint/test trước.</p></div>
   </div>
   <div class="crib"><p><strong>Interview trap:</strong> Merging with red CI 'because it's flaky' without checking is a habit to break.</p></div>
@@ -1995,7 +1995,7 @@ sudo apt install -y nginx</p></div>
     <div class="cell row-head">Concept EN</div><div class="cell row-head">Steps / Must-know EN</div><div class="cell row-head">Concept VI</div><div class="cell row-head">Steps / Must-know VI</div>
     <div class="cell question"><p>When production breaks after a release, compare the last green commit to HEAD: app code, Dockerfile, cloudbuild.yaml, env templates.</p></div>
     <div class="cell answer"><p>git log / git diff / revert or rollback image are first-class ops tools.</p></div>
-    <div class="cell question"><p>Khi production hỏng sau release, so commit xanh cuối với HEAD: code app, Dockerfile, cloudbuild.yaml, template env.</p></div>
+    <div class="cell question"><p>Khi production break sau release, so last green commit với HEAD: code app, Dockerfile, cloudbuild.yaml, template env.</p></div>
     <div class="cell answer"><p>git log / git diff / revert hoặc rollback image là tool ops hạng nhất.</p></div>
   </div>
   <div class="crib"><p><strong>Interview trap:</strong> Blaming Git instead of reading the diff wastes time.</p></div>
@@ -2009,8 +2009,8 @@ git diff HEAD~1</p></div>
     <div class="cell row-head">Concept EN</div><div class="cell row-head">Steps / Must-know EN</div><div class="cell row-head">Concept VI</div><div class="cell row-head">Steps / Must-know VI</div>
     <div class="cell question"><p>Keystores, .env with passwords, cloud keys, and private keys must not be committed. Use Secret Manager / CI secrets and .gitignore.</p></div>
     <div class="cell answer"><p>If a secret is committed, rotate it — removing from history alone is not enough if it was pushed.</p></div>
-    <div class="cell question"><p>Keystore, .env có mật khẩu, cloud key và private key không được commit. Dùng Secret Manager / secret CI và .gitignore.</p></div>
-    <div class="cell answer"><p>Nếu secret đã commit, phải xoay — chỉ xóa khỏi history chưa đủ nếu đã push.</p></div>
+    <div class="cell question"><p>Keystore, .env có password, cloud key và private key không được commit. Dùng Secret Manager / secret CI và .gitignore.</p></div>
+    <div class="cell answer"><p>Nếu secret đã commit, phải rotate — chỉ xóa khỏi history chưa đủ nếu đã push.</p></div>
   </div>
   <div class="crib"><p><strong>Interview trap:</strong> git-crypt stories without rotation still leave leaked credentials usable.</p></div>
 </article>
@@ -2023,7 +2023,7 @@ git diff HEAD~1</p></div>
     <div class="cell row-head">Concept EN</div><div class="cell row-head">Steps / Must-know EN</div><div class="cell row-head">Concept VI</div><div class="cell row-head">Steps / Must-know VI</div>
     <div class="cell question"><p>A container packages the app and its runtime so staging and Cloud Run run the same bits. You ship an image tag/digest, not 'it works on my laptop'.</p></div>
     <div class="cell answer"><p>Dockerfile + listen on $PORT is the Cloud Run baseline.</p></div>
-    <div class="cell question"><p>Container đóng gói app và runtime để staging và Cloud Run chạy cùng bits. Bạn ship image tag/digest, không phải 'chạy được trên laptop'.</p></div>
+    <div class="cell question"><p>Container package app và runtime để staging và Cloud Run chạy cùng bits. Bạn ship image tag/digest, không phải 'chạy được trên laptop'.</p></div>
     <div class="cell answer"><p>Dockerfile + listen $PORT là baseline Cloud Run.</p></div>
   </div>
   <div class="crib"><p><strong>Interview trap:</strong> Treating a container like a full VM (SSH in to patch live) fights the model.</p></div>
@@ -2034,7 +2034,7 @@ git diff HEAD~1</p></div>
     <div class="cell row-head">Concept EN</div><div class="cell row-head">Steps / Must-know EN</div><div class="cell row-head">Concept VI</div><div class="cell row-head">Steps / Must-know VI</div>
     <div class="cell question"><p>Order Dockerfile so dependency layers cache. Exclude .git and local node_modules via .dockerignore. Smaller images pull and start faster.</p></div>
     <div class="cell answer"><p>Don't COPY secrets into any layer.</p></div>
-    <div class="cell question"><p>Sắp xếp Dockerfile để layer deps được cache. Loại .git và node_modules local bằng .dockerignore. Image nhỏ kéo và start nhanh hơn.</p></div>
+    <div class="cell question"><p>Sắp xếp Dockerfile để layer deps được cache. Exclude .git và node_modules local bằng .dockerignore. Image nhỏ pull và start nhanh hơn.</p></div>
     <div class="cell answer"><p>Không COPY secret vào bất kỳ layer nào.</p></div>
   </div>
   <div class="crib"><p><strong>Interview trap:</strong> COPY . early invalidates cache on every code tweak.</p></div>
@@ -2048,8 +2048,8 @@ docker images</p></div>
     <div class="cell row-head">Concept EN</div><div class="cell row-head">Steps / Must-know EN</div><div class="cell row-head">Concept VI</div><div class="cell row-head">Steps / Must-know VI</div>
     <div class="cell question"><p>Run the image locally with the same PORT and critical env vars before trusting a Cloud Run deploy. Diff local success vs Cloud Run failure → usually env, secrets, or Cloud SQL connectivity.</p></div>
     <div class="cell answer"><p>Local green does not prove IAM/VPC/SQL wiring.</p></div>
-    <div class="cell question"><p>Chạy image local với cùng PORT và env quan trọng trước khi tin deploy Cloud Run. Local OK nhưng Cloud Run fail → thường env, secret, hoặc nối Cloud SQL.</p></div>
-    <div class="cell answer"><p>Local xanh không chứng minh IAM/VPC/SQL đã đúng.</p></div>
+    <div class="cell question"><p>Chạy image local với cùng PORT và env quan trọng trước khi tin deploy Cloud Run. Local OK nhưng Cloud Run fail → thường env, secret, hoặc Cloud SQL connectivity.</p></div>
+    <div class="cell answer"><p>Local green không chứng minh IAM/VPC/SQL đã đúng.</p></div>
   </div>
   <div class="crib"><p><strong>Interview trap:</strong> docker run --rm -p 8080:8080 -e PORT=8080 api:local</p></div>
 </article>
@@ -2059,8 +2059,8 @@ docker images</p></div>
     <div class="cell row-head">Concept EN</div><div class="cell row-head">Steps / Must-know EN</div><div class="cell row-head">Concept VI</div><div class="cell row-head">Steps / Must-know VI</div>
     <div class="cell question"><p>Tag images with git sha or build id in Artifact Registry. Prefer deploying immutable tags/digests over floating :latest in production.</p></div>
     <div class="cell answer"><p>Rollback = point Cloud Run at the previous known-good tag/digest.</p></div>
-    <div class="cell question"><p>Tag image bằng git sha hoặc build id trên Artifact Registry. Ưu tiên tag/digest bất biến hơn :latest trên production.</p></div>
-    <div class="cell answer"><p>Rollback = trỏ Cloud Run về tag/digest tốt đã biết.</p></div>
+    <div class="cell question"><p>Tag image bằng git sha hoặc build id trên Artifact Registry. Ưu tiên tag/digest immutable hơn :latest trên production.</p></div>
+    <div class="cell answer"><p>Rollback = trỏ Cloud Run về tag/digest known-good trước đó.</p></div>
   </div>
   <div class="crib"><p><strong>Interview trap:</strong> :latest with no record of what sha it was is fuzzy ops.</p></div>
 </article>
@@ -2073,8 +2073,8 @@ docker images</p></div>
     <div class="cell row-head">Concept EN</div><div class="cell row-head">Steps / Must-know EN</div><div class="cell row-head">Concept VI</div><div class="cell row-head">Steps / Must-know VI</div>
     <div class="cell question"><p>Cloud Run: managed containers, scale with requests. Compute Engine VM: full OS control for classic web stacks (LiteSpeed/Apache/Nginx). Cloud SQL: managed DB. Cloud Storage: files/artifacts. Cloud Build: CI that builds and can deploy.</p></div>
     <div class="cell answer"><p>I choose Run when the app is containerized and request-driven; VM when I need long-lived custom web server control.</p></div>
-    <div class="cell question"><p>Cloud Run: container managed, scale theo request. Compute Engine VM: kiểm soát OS đầy đủ cho web cổ điển (LiteSpeed/Apache/Nginx). Cloud SQL: DB managed. Cloud Storage: file/artifact. Cloud Build: CI build và có thể deploy.</p></div>
-    <div class="cell answer"><p>Tôi chọn Run khi app đã container và theo request; VM khi cần kiểm soát web server lâu dài, tùy biến.</p></div>
+    <div class="cell question"><p>Cloud Run: container managed, scale theo request. Compute Engine VM: full OS control cho classic web stack (LiteSpeed/Apache/Nginx). Cloud SQL: managed DB. Cloud Storage: file/artifact. Cloud Build: CI build và có thể deploy.</p></div>
+    <div class="cell answer"><p>Tôi chọn Run khi app đã container và theo request; VM khi cần control web server lâu dài, tùy biến.</p></div>
   </div>
   <div class="crib"><p><strong>Interview trap:</strong> Don't claim GKE HA depth if your spine is Run + VM.</p></div>
 </article>
@@ -2084,8 +2084,8 @@ docker images</p></div>
     <div class="cell row-head">Concept EN</div><div class="cell row-head">Steps / Must-know EN</div><div class="cell row-head">Concept VI</div><div class="cell row-head">Steps / Must-know VI</div>
     <div class="cell question"><p>Human users and Cloud Build/Cloud Run service accounts need least privilege: push images, deploy a service, read specific secrets — not project Owner for daily CI.</p></div>
     <div class="cell answer"><p>Incidents often start with 'who has keys' and 'which SA deployed this revision'.</p></div>
-    <div class="cell question"><p>User người và service account Cloud Build/Cloud Run cần least privilege: push image, deploy service, đọc secret cụ thể — không cần Owner project cho CI hằng ngày.</p></div>
-    <div class="cell answer"><p>Sự cố thường bắt đầu từ 'ai giữ key' và 'SA nào deploy revision này'.</p></div>
+    <div class="cell question"><p>Human user và service account Cloud Build/Cloud Run cần least privilege: push image, deploy service, đọc secret cụ thể — không cần Owner project cho CI hằng ngày.</p></div>
+    <div class="cell answer"><p>Incident thường bắt đầu từ 'ai giữ key' và 'SA nào deploy revision này'.</p></div>
   </div>
   <div class="crib"><p><strong>Interview trap:</strong> Personal user ADC in CI is an audit smell.</p></div>
 </article>
@@ -2095,8 +2095,8 @@ docker images</p></div>
     <div class="cell row-head">Concept EN</div><div class="cell row-head">Steps / Must-know EN</div><div class="cell row-head">Concept VI</div><div class="cell row-head">Steps / Must-know VI</div>
     <div class="cell question"><p>Cloud Run revisions + Cloud Logging are the primary debug surfaces. VMs use journalctl and web server error logs. Always bind an error to a revision or deploy time.</p></div>
     <div class="cell answer"><p>Rollback traffic first; dig root cause second.</p></div>
-    <div class="cell question"><p>Revision Cloud Run + Cloud Logging là mặt debug chính. VM dùng journalctl và error log web server. Luôn gắn lỗi với revision hoặc thời điểm deploy.</p></div>
-    <div class="cell answer"><p>Rollback traffic trước; đào root cause sau.</p></div>
+    <div class="cell question"><p>Revision Cloud Run + Cloud Logging là mặt debug chính. VM dùng journalctl và error log web server. Luôn gắn error với revision hoặc thời điểm deploy.</p></div>
+    <div class="cell answer"><p>Rollback traffic trước; dig root cause sau.</p></div>
   </div>
   <div class="crib"><p><strong>Interview trap:</strong> Restart without identifying the revision loses the plot.</p></div>
 </article>
@@ -2106,8 +2106,8 @@ docker images</p></div>
     <div class="cell row-head">Concept EN</div><div class="cell row-head">Steps / Must-know EN</div><div class="cell row-head">Concept VI</div><div class="cell row-head">Steps / Must-know VI</div>
     <div class="cell question"><p>Cloud Storage for objects/artifacts; Cloud SQL for relational data; Secret Manager for credentials. Don't store passwords in Storage objects marked public.</p></div>
     <div class="cell answer"><p>App config: non-secret env OK; credentials → secrets.</p></div>
-    <div class="cell question"><p>Cloud Storage cho object/artifact; Cloud SQL cho dữ liệu quan hệ; Secret Manager cho credential. Không để mật khẩu trong object Storage public.</p></div>
-    <div class="cell answer"><p>Config app: env không mật OK; credential → secret.</p></div>
+    <div class="cell question"><p>Cloud Storage cho object/artifact; Cloud SQL cho relational data; Secret Manager cho credential. Không để password trong object Storage public.</p></div>
+    <div class="cell answer"><p>Config app: non-secret env OK; credential → secret.</p></div>
   </div>
   <div class="crib"><p><strong>Interview trap:</strong> Public bucket 'for testing' that still has prod dumps is a breach waiting.</p></div>
 </article>
@@ -2120,7 +2120,7 @@ docker images</p></div>
     <div class="cell row-head">Concept EN</div><div class="cell row-head">Steps / Must-know EN</div><div class="cell row-head">Concept VI</div><div class="cell row-head">Steps / Must-know VI</div>
     <div class="cell question"><p>Web servers terminate HTTP(S), serve static files, and reverse-proxy or hand off to PHP-FPM/app processes. Misconfigured vhosts show up as wrong site, 502, or PHP download instead of execute.</p></div>
     <div class="cell answer"><p>Always nginx -t / configtest before reload.</p></div>
-    <div class="cell question"><p>Web server kết thúc HTTP(S), serve static, reverse-proxy hoặc chuyển PHP-FPM/app. Vhost sai → nhầm site, 502, hoặc tải file PHP thay vì chạy.</p></div>
+    <div class="cell question"><p>Web server terminate HTTP(S), serve static, reverse-proxy hoặc hand off PHP-FPM/app. Vhost sai → nhầm site, 502, hoặc download file PHP thay vì execute.</p></div>
     <div class="cell answer"><p>Luôn nginx -t / configtest trước reload.</p></div>
   </div>
   <div class="crib"><p><strong>Interview trap:</strong> Blaming only the app when Host/root is wrong wastes time.</p></div>
@@ -2131,7 +2131,7 @@ docker images</p></div>
     <div class="cell row-head">Concept EN</div><div class="cell row-head">Steps / Must-know EN</div><div class="cell row-head">Concept VI</div><div class="cell row-head">Steps / Must-know VI</div>
     <div class="cell question"><p>Each site needs server_name (or ServerName), document root, and log paths. Laravel-style apps usually point root at public/. TLS sits on the same vhost after Certbot.</p></div>
     <div class="cell answer"><p>DNS A record must match the VM before public HTTPS works.</p></div>
-    <div class="cell question"><p>Mỗi site cần server_name (hoặc ServerName), document root và đường log. App kiểu Laravel thường trỏ root vào public/. TLS gắn cùng vhost sau Certbot.</p></div>
+    <div class="cell question"><p>Mỗi site cần server_name (hoặc ServerName), document root và log path. App kiểu Laravel thường trỏ root vào public/. TLS gắn cùng vhost sau Certbot.</p></div>
     <div class="cell answer"><p>DNS A phải khớp VM trước khi HTTPS public chạy.</p></div>
   </div>
   <div class="crib"><p><strong>Interview trap:</strong> Two vhosts with the same server_name fight unpredictably.</p></div>
@@ -2142,8 +2142,8 @@ docker images</p></div>
     <div class="cell row-head">Concept EN</div><div class="cell row-head">Steps / Must-know EN</div><div class="cell row-head">Concept VI</div><div class="cell row-head">Steps / Must-know VI</div>
     <div class="cell question"><p>LiteSpeed serves many PHP/CMS stacks similarly: vhosts, PHP handlers, cache, TLS. If you inherit a LiteSpeed box, map the same questions — where is the docroot, where are error logs, how is PHP run — even if the admin UI differs from Nginx.</p></div>
     <div class="cell answer"><p>Speak concepts first; don't invent panel click-paths you don't remember.</p></div>
-    <div class="cell question"><p>LiteSpeed phục vụ nhiều stack PHP/CMS tương tự: vhost, PHP handler, cache, TLS. Thừa kế máy LiteSpeed thì hỏi cùng câu — docroot đâu, error log đâu, PHP chạy thế nào — dù UI admin khác Nginx.</p></div>
-    <div class="cell answer"><p>Nói khái niệm trước; không bịa đường click panel không nhớ.</p></div>
+    <div class="cell question"><p>LiteSpeed serve nhiều stack PHP/CMS tương tự: vhost, PHP handler, cache, TLS. Inherit máy LiteSpeed thì hỏi cùng câu — docroot đâu, error log đâu, PHP chạy thế nào — dù UI admin khác Nginx.</p></div>
+    <div class="cell answer"><p>Nói khái niệm trước; không bịa click-path panel không nhớ.</p></div>
   </div>
   <div class="crib"><p><strong>Interview trap:</strong> Claiming deep LiteSpeed tuning without one concrete change is fluff.</p></div>
 </article>
@@ -2153,7 +2153,7 @@ docker images</p></div>
     <div class="cell row-head">Concept EN</div><div class="cell row-head">Steps / Must-know EN</div><div class="cell row-head">Concept VI</div><div class="cell row-head">Steps / Must-know VI</div>
     <div class="cell question"><p>502/504 often mean the proxy can't reach PHP-FPM/app or the upstream timed out. Check upstream socket/port, service status, and app fatals in logs — not only Nginx status.</p></div>
     <div class="cell answer"><p>Cloud Run equivalent: revision crash or upstream SQL timeout shows in Cloud Logging.</p></div>
-    <div class="cell question"><p>502/504 thường là proxy không tới được PHP-FPM/app hoặc upstream timeout. Kiểm socket/port upstream, status service, và fatal app trong log — không chỉ status Nginx.</p></div>
+    <div class="cell question"><p>502/504 thường là proxy không tới được PHP-FPM/app hoặc upstream timeout. Check upstream socket/port, status service, và fatal app trong log — không chỉ status Nginx.</p></div>
     <div class="cell answer"><p>Tương đương Cloud Run: revision crash hoặc SQL timeout hiện trên Cloud Logging.</p></div>
   </div>
   <div class="crib"><p><strong>Interview trap:</strong> reload nginx alone rarely fixes a dead PHP-FPM.</p></div>
@@ -2167,8 +2167,8 @@ docker images</p></div>
     <div class="cell row-head">Concept EN</div><div class="cell row-head">Steps / Must-know EN</div><div class="cell row-head">Concept VI</div><div class="cell row-head">Steps / Must-know VI</div>
     <div class="cell question"><p>Store credentials in Secret Manager or CI secret stores. Inject at runtime into Cloud Run or the VM env. Restrict who and which service accounts can read.</p></div>
     <div class="cell answer"><p>Rotate after leak suspicion; don't just delete the chat message that had the password.</p></div>
-    <div class="cell question"><p>Giữ credential trong Secret Manager hoặc secret CI. Inject runtime vào Cloud Run hoặc env VM. Hạn chế ai và SA nào được đọc.</p></div>
-    <div class="cell answer"><p>Xoay khi nghi lộ; không chỉ xóa tin nhắn chat có mật khẩu.</p></div>
+    <div class="cell question"><p>Giữ credential trong Secret Manager hoặc secret CI. Inject runtime vào Cloud Run hoặc env VM. Restrict ai và SA nào được đọc.</p></div>
+    <div class="cell answer"><p>Rotate khi nghi leak; không chỉ xóa tin nhắn chat có password.</p></div>
   </div>
   <div class="crib"><p><strong>Interview trap:</strong> Screenshots of .env in tickets are still leaks.</p></div>
 </article>
@@ -2178,8 +2178,8 @@ docker images</p></div>
     <div class="cell row-head">Concept EN</div><div class="cell row-head">Steps / Must-know EN</div><div class="cell row-head">Concept VI</div><div class="cell row-head">Steps / Must-know VI</div>
     <div class="cell question"><p>Grant the minimum roles for Cloud Build to push/deploy and for the app SA to read its secrets/SQL. On Linux, separate sudo users and tight file ownership for the web root.</p></div>
     <div class="cell answer"><p>Owner/Editor for every engineer 'for speed' becomes the incident story.</p></div>
-    <div class="cell question"><p>Cấp tối thiểu role để Cloud Build push/deploy và SA app đọc secret/SQL. Trên Linux: tách user sudo và ownership chặt cho web root.</p></div>
-    <div class="cell answer"><p>Owner/Editor cho mọi engineer 'cho nhanh' sẽ thành câu chuyện sự cố.</p></div>
+    <div class="cell question"><p>Cấp tối thiểu role để Cloud Build push/deploy và SA app đọc secret/SQL. Trên Linux: tách sudo user và ownership chặt cho web root.</p></div>
+    <div class="cell answer"><p>Owner/Editor cho mọi engineer 'cho nhanh' sẽ thành câu chuyện incident.</p></div>
   </div>
   <div class="crib"><p><strong>Interview trap:</strong> Shared root password in a spreadsheet fails any serious interview.</p></div>
 </article>
@@ -2189,8 +2189,8 @@ docker images</p></div>
     <div class="cell row-head">Concept EN</div><div class="cell row-head">Steps / Must-know EN</div><div class="cell row-head">Concept VI</div><div class="cell row-head">Steps / Must-know VI</div>
     <div class="cell question"><p>Key-only SSH, limited VPC firewall / UFW ports (22 carefully, 80/443 for web), no public MySQL. Prefer bastion/IAP patterns when the team has them.</p></div>
     <div class="cell answer"><p>Every open port is an assumption you must defend.</p></div>
-    <div class="cell question"><p>SSH chỉ key, VPC/UFW hạn chế cổng (22 thận trọng, 80/443 cho web), không MySQL public. Ưu tiên bastion/IAP nếu team có.</p></div>
-    <div class="cell answer"><p>Mỗi cổng mở là giả định bạn phải bảo vệ được.</p></div>
+    <div class="cell question"><p>SSH chỉ key, VPC/UFW limit port (22 thận trọng, 80/443 cho web), không MySQL public. Ưu tiên bastion/IAP nếu team có.</p></div>
+    <div class="cell answer"><p>Mỗi port mở là assumption bạn phải defend được.</p></div>
   </div>
   <div class="crib"><p><strong>Interview trap:</strong> Temporary 0.0.0.0/0 rules that never expire are not temporary.</p></div>
 </article>
@@ -2200,8 +2200,8 @@ docker images</p></div>
     <div class="cell row-head">Concept EN</div><div class="cell row-head">Steps / Must-know EN</div><div class="cell row-head">Concept VI</div><div class="cell row-head">Steps / Must-know VI</div>
     <div class="cell question"><p>Hardening is useless if only one person knows the server. Pair basic controls (SSH, firewall, secrets, patches) with short runbooks: deploy steps, log locations, TLS renew, rollback.</p></div>
     <div class="cell answer"><p>I'm honest: practical hardening and documentation — not claiming a full formal audit program unless I've done one.</p></div>
-    <div class="cell question"><p>Harden vô ích nếu chỉ một người biết server. Ghép control cơ bản (SSH, firewall, secret, vá) với runbook ngắn: bước deploy, chỗ log, renew TLS, rollback.</p></div>
-    <div class="cell answer"><p>Tôi nói thẳng: harden thực tế và tài liệu — không nhận chương trình audit chính thức nếu chưa làm.</p></div>
+    <div class="cell question"><p>Harden vô ích nếu chỉ một người biết server. Ghép control cơ bản (SSH, firewall, secret, patch) với runbook ngắn: bước deploy, chỗ log, renew TLS, rollback.</p></div>
+    <div class="cell answer"><p>Tôi nói thẳng: harden thực tế và docs — không claim chương trình audit formal nếu chưa làm.</p></div>
   </div>
   <div class="crib"><p><strong>Interview trap:</strong> Security theater checklists nobody follows don't count.</p></div>
 </article>
@@ -2215,7 +2215,7 @@ docker images</p></div>
     <div class="cell question"><p>Tell me about yourself.</p></div>
     <div class="cell answer"><p>I'm a full-stack engineer who also owns delivery and ops. At Akktis I work across Linux servers over SSH — Ubuntu and Debian — CI/CD for mobile and web across environments, and Google Cloud: Cloud Run, Cloud SQL, and Storage. I also operate LiteSpeed and Apache for PHP and CMS apps, and I care about docs and basic hardening so systems are safer to hand off. Independently I shipped IELTS AI Tutor — a React Native and TypeScript app on iOS and Android with a Cloud Run backend, live on Google Play and the App Store. I'm looking for a DevOps-focused role where I can deepen that spine: pipelines, cloud deploys, and reliable Linux operations.</p></div>
     <div class="cell question"><p>Hãy giới thiệu về bản thân.</p></div>
-    <div class="cell answer"><p>Tôi là full-stack kiêm delivery và ops. Ở Akktis tôi làm Linux qua SSH — Ubuntu và Debian — CI/CD cho mobile và web trên nhiều môi trường, và Google Cloud: Cloud Run, Cloud SQL và Storage. Tôi cũng vận hành LiteSpeed và Apache cho app PHP/CMS, và quan tâm docs cùng harden cơ bản để bàn giao an toàn hơn. Bên cạnh đó tôi ship IELTS AI Tutor — app React Native/TypeScript trên iOS và Android với backend Cloud Run, đã lên Google Play và App Store. Tôi muốn role nghiêng DevOps để đào sâu xương sống đó: pipeline, deploy cloud và vận hành Linux ổn định.</p></div>
+    <div class="cell answer"><p>Tôi là full-stack kiêm delivery và ops. Ở Akktis tôi làm Linux qua SSH — Ubuntu và Debian — CI/CD cho mobile và web multi-env, và Google Cloud: Cloud Run, Cloud SQL và Storage. Tôi cũng operate LiteSpeed và Apache cho app PHP/CMS, và quan tâm docs cùng harden cơ bản để handoff an toàn hơn. Bên cạnh đó tôi ship IELTS AI Tutor — app React Native/TypeScript trên iOS và Android với backend Cloud Run, đã lên Google Play và App Store. Tôi muốn role nghiêng DevOps để đào sâu spine đó: pipeline, deploy cloud và Linux ops ổn định.</p></div>
   </div>
 </article>
 <article class="question-card" id="d65">
@@ -2225,7 +2225,7 @@ docker images</p></div>
     <div class="cell question"><p>What are your strengths?</p></div>
     <div class="cell answer"><p>First, I bridge app and ops — I can read application failures and infra failures in the same incident. Second, I have hands-on delivery paths I've actually run: mobile CI toward store builds, Cloud Build into Cloud Run, and classic VM web servers with Nginx/Apache/LiteSpeed. Third, I debug with evidence — pipeline logs, Cloud Run revisions, SSH logs and disk — then mitigate first and document so the gap doesn't repeat. I'm honest about depth: Cloud Run and Linux VMs are my spine; I don't pretend deep Kubernetes HA if that's not what I've operated day to day.</p></div>
     <div class="cell question"><p>Điểm mạnh của bạn là gì?</p></div>
-    <div class="cell answer"><p>Một, tôi cầu nối app và ops — đọc được lỗi ứng dụng và lỗi hạ tầng trong cùng sự cố. Hai, tôi có đường delivery thật: CI mobile tới bản store, Cloud Build vào Cloud Run, và web server VM với Nginx/Apache/LiteSpeed. Ba, tôi debug bằng bằng chứng — log pipeline, revision Cloud Run, log SSH và disk — giảm hại trước rồi document để không lặp. Tôi trung thực về độ sâu: Cloud Run và Linux VM là xương sống; tôi không nhận sâu Kubernetes HA nếu đó không phải việc hằng ngày.</p></div>
+    <div class="cell answer"><p>Một, tôi bridge app và ops — đọc được lỗi application và lỗi infra trong cùng incident. Hai, tôi có delivery path thật: CI mobile tới store build, Cloud Build vào Cloud Run, và classic VM web server với Nginx/Apache/LiteSpeed. Ba, tôi debug bằng evidence — pipeline log, revision Cloud Run, SSH log và disk — mitigate trước rồi document để không lặp. Tôi trung thực về độ sâu: Cloud Run và Linux VM là spine; tôi không claim sâu Kubernetes HA nếu đó không phải việc hằng ngày.</p></div>
   </div>
 </article>
 <article class="question-card" id="d66">
@@ -2235,7 +2235,7 @@ docker images</p></div>
     <div class="cell question"><p>Walk me through your DevOps tool stack.</p></div>
     <div class="cell answer"><p>Source control is Git. CI is Cloud Build or a generic CI runner on push and tags — build, test when we have them, package artifacts. For backends I Dockerize, push to Artifact Registry, and deploy Cloud Run with env and secrets, often wired to Cloud SQL and Cloud Storage. For mobile, React Native builds produce Android AAB/APK and iOS IPA concepts with signing material kept in secrets, then artifacts go to storage or store tracks. For classic web I SSH into Ubuntu/Debian, manage LiteSpeed or Apache or Nginx, firewall and TLS, and keep short runbooks. Day to day observability is Cloud Logging on Run and system/web logs on VMs.</p></div>
     <div class="cell question"><p>Hãy mô tả stack DevOps của bạn.</p></div>
-    <div class="cell answer"><p>Source control là Git. CI là Cloud Build hoặc CI runner generic theo push và tag — build, test khi có, đóng artifact. Backend tôi Dockerize, push Artifact Registry, deploy Cloud Run với env và secret, thường nối Cloud SQL và Cloud Storage. Mobile, build React Native ra AAB/APK Android và khái niệm IPA iOS, signing nằm trong secret, artifact lên storage hoặc track store. Web cổ điển tôi SSH Ubuntu/Debian, quản LiteSpeed hoặc Apache hoặc Nginx, firewall và TLS, giữ runbook ngắn. Quan sát hằng ngày là Cloud Logging trên Run và log hệ thống/web trên VM.</p></div>
+    <div class="cell answer"><p>Source control là Git. CI là Cloud Build hoặc CI runner generic theo push và tag — build, test khi có, package artifact. Backend tôi Dockerize, push Artifact Registry, deploy Cloud Run với env và secret, thường wire Cloud SQL và Cloud Storage. Mobile, build React Native ra AAB/APK Android và khái niệm IPA iOS, signing nằm trong secret, artifact lên storage hoặc store track. Classic web tôi SSH Ubuntu/Debian, quản LiteSpeed hoặc Apache hoặc Nginx, firewall và TLS, giữ runbook ngắn. Observability hằng ngày là Cloud Logging trên Run và system/web log trên VM.</p></div>
   </div>
 </article>
 <article class="question-card" id="d67">
@@ -2245,7 +2245,7 @@ docker images</p></div>
     <div class="cell question"><p>Why do you want this DevOps role?</p></div>
     <div class="cell answer"><p>Because I already enjoy the ownership from commit to a healthy environment, and I want that to be the center of my work — not only a side of full-stack. Your role is about reliable delivery: CI/CD, cloud or Linux operations, and helping developers ship safely. That matches what I do at Akktis and on IELTS AI Tutor, and I want to go deeper on pipeline quality, environment promotion, and operational hygiene in a team that takes infra seriously.</p></div>
     <div class="cell question"><p>Tại sao bạn muốn role DevOps này?</p></div>
-    <div class="cell answer"><p>Vì tôi đã thích ownership từ commit đến môi trường khỏe, và muốn đó là trọng tâm công việc — không chỉ phần phụ của full-stack. Role của các bạn là delivery tin cậy: CI/CD, vận hành cloud hoặc Linux, và giúp developer ship an toàn. Điều đó khớp việc tôi làm ở Akktis và IELTS AI Tutor, và tôi muốn đào sâu chất lượng pipeline, promote môi trường và vệ sinh vận hành trong team coi trọng infra.</p></div>
+    <div class="cell answer"><p>Vì tôi đã thích ownership từ commit đến env healthy, và muốn đó là trọng tâm công việc — không chỉ phần phụ của full-stack. Role của các bạn là delivery tin cậy: CI/CD, cloud hoặc Linux ops, và giúp developer ship an toàn. Điều đó khớp việc tôi làm ở Akktis và IELTS AI Tutor, và tôi muốn đào sâu chất lượng pipeline, promote env và ops hygiene trong team coi trọng infra.</p></div>
   </div>
 </article>
 <article class="question-card" id="d68">
@@ -2255,7 +2255,7 @@ docker images</p></div>
     <div class="cell question"><p>What does a typical ops-heavy day look like for you?</p></div>
     <div class="cell answer"><p>It depends on the project, but usually I'm either unblocking a release or keeping an environment healthy. That means checking CI status for web or mobile, SSH into a Linux box to read logs or restart a service, verifying a Cloud Run revision after deploy, or fixing env and connectivity to Cloud SQL or Storage. I also touch LiteSpeed or Apache when a PHP or CMS site misbehaves, and I update docs when I find tribal knowledge that would hurt the next person.</p></div>
     <div class="cell question"><p>Một ngày nghiêng ops của bạn trông thế nào?</p></div>
-    <div class="cell answer"><p>Tùy dự án, nhưng thường tôi hoặc mở nút thắt release, hoặc giữ môi trường khỏe. Tức là xem status CI web hoặc mobile, SSH vào Linux đọc log hoặc restart service, kiểm revision Cloud Run sau deploy, hoặc sửa env và kết nối Cloud SQL hay Storage. Tôi cũng đụng LiteSpeed hoặc Apache khi site PHP/CMS lỗi, và cập nhật docs khi gặp kiến thức chỉ nằm trong đầu người — dễ hại người sau.</p></div>
+    <div class="cell answer"><p>Tùy project, nhưng thường tôi hoặc unblock release, hoặc giữ env healthy. Tức là check status CI web hoặc mobile, SSH vào Linux đọc log hoặc restart service, verify revision Cloud Run sau deploy, hoặc fix env và connectivity tới Cloud SQL hay Storage. Tôi cũng đụng LiteSpeed hoặc Apache khi site PHP/CMS lỗi, và update docs khi gặp tribal knowledge — dễ hại người sau.</p></div>
   </div>
 </article>
 <article class="question-card" id="d69">
@@ -2265,7 +2265,7 @@ docker images</p></div>
     <div class="cell question"><p>What's a weakness relevant to this job?</p></div>
     <div class="cell answer"><p>I can over-invest in polishing a pipeline or runbook when a smaller safe mitigation would unblock the team sooner. I've learned to time-box: ship the safe fix or rollback first, communicate status, then harden the checklist so we don't pay twice.</p></div>
     <div class="cell question"><p>Một điểm yếu liên quan job này?</p></div>
-    <div class="cell answer"><p>Tôi đôi khi đầu tư quá nhiều để polish pipeline hoặc runbook trong khi một mitigation nhỏ an toàn đã mở được team. Tôi đã học time-box: ship fix an toàn hoặc rollback trước, báo status, rồi siết checklist để không trả giá hai lần.</p></div>
+    <div class="cell answer"><p>Tôi đôi khi invest quá nhiều để polish pipeline hoặc runbook trong khi một mitigation nhỏ an toàn đã unblock được team. Tôi đã học time-box: ship fix an toàn hoặc rollback trước, báo status, rồi harden checklist để không trả giá hai lần.</p></div>
   </div>
 </article>
     </section>
@@ -2277,8 +2277,8 @@ docker images</p></div>
     <div class="cell row-head">Question EN</div><div class="cell row-head">Answer EN</div><div class="cell row-head">Question VI</div><div class="cell row-head">Answer VI</div>
     <div class="cell question"><p>The mobile CI pipeline that was green yesterday is failing today. What do you do?</p></div>
     <div class="cell answer"><p>I start from what changed — last commits, dependency lockfile, CI image or Xcode/SDK version, and whether signing secrets or provisioning profiles expired. I open the first failing stage log, not the last noise. If it's signing, I validate keystore or profile access before re-running a long compile. If it's Gradle or native modules, I try to reproduce with the same Node and JDK locally. I unblock with a revert or pin if a release is blocked, tell the team status, then fix forward and note it in the runbook.</p></div>
-    <div class="cell question"><p>Pipeline mobile hôm qua xanh hôm nay đỏ. Bạn làm gì?</p></div>
-    <div class="cell answer"><p>Tôi bắt đầu từ thứ đã đổi — commit, lockfile dependency, image CI hoặc version Xcode/SDK, và secret signing hay provisioning profile có hết hạn không. Tôi mở log stage fail đầu tiên, không đọc nhiễu cuối. Nếu là signing, tôi kiểm keystore hoặc profile trước khi chạy lại compile dài. Nếu là Gradle hoặc native module, tôi cố reproduce cùng Node và JDK local. Tôi mở nút bằng revert hoặc pin nếu release bị chặn, báo team, rồi sửa tiến và ghi runbook.</p></div>
+    <div class="cell question"><p>Pipeline mobile hôm qua green hôm nay đỏ. Bạn làm gì?</p></div>
+    <div class="cell answer"><p>Tôi bắt đầu từ thứ đã đổi — commit, lockfile dependency, CI image hoặc version Xcode/SDK, và signing secret hay provisioning profile có hết hạn không. Tôi mở log stage fail đầu tiên, không đọc noise cuối. Nếu là signing, tôi validate keystore hoặc profile trước khi re-run compile dài. Nếu là Gradle hoặc native module, tôi cố reproduce cùng Node và JDK local. Tôi unblock bằng revert hoặc pin nếu release bị block, báo team, rồi fix forward và ghi runbook.</p></div>
   </div>
   <div class="star"><p><strong>STAR bullets:</strong></p><p>S: Mobile CI failed before store upload</p><p>T: Unblock a release build same day</p><p>A: Compared last green, fixed signing/deps, re-ran pipeline</p><p>R: Green artifact; checklist updated for secret expiry</p></div>
 </article>
@@ -2289,7 +2289,7 @@ docker images</p></div>
     <div class="cell question"><p>You deployed to Cloud Run and error rates spiked. How do you respond?</p></div>
     <div class="cell answer"><p>I treat it as a revision problem first. I check Cloud Logging filtered to the new revision, confirm it's the deploy that correlates with the spike, then shift traffic back to the last healthy revision while I investigate. Common causes for me are missing env or secret on the new revision, Cloud SQL connectivity, or an app bug that only shows with prod config. After users are stable I fix forward, redeploy, and optionally canary before 100%.</p></div>
     <div class="cell question"><p>Bạn deploy Cloud Run rồi error rate tăng. Xử lý thế nào?</p></div>
-    <div class="cell answer"><p>Tôi coi đây là vấn đề revision trước. Xem Cloud Logging lọc revision mới, xác nhận spike khớp deploy, rồi chuyển traffic về revision khỏe trước trong khi điều tra. Nguyên nhân hay gặp với tôi: thiếu env hoặc secret trên revision mới, kết nối Cloud SQL, hoặc bug app chỉ lộ với config prod. Sau khi user ổn tôi sửa tiến, deploy lại, và có thể canary trước khi 100%.</p></div>
+    <div class="cell answer"><p>Tôi coi đây là vấn đề revision trước. Check Cloud Logging filter revision mới, confirm spike khớp deploy, rồi chuyển traffic về revision healthy trước trong khi investigate. Nguyên nhân hay gặp với tôi: thiếu env hoặc secret trên revision mới, Cloud SQL connectivity, hoặc bug app chỉ lộ với config prod. Sau khi user ổn tôi fix forward, deploy lại, và có thể canary trước khi 100%.</p></div>
   </div>
   <div class="star"><p><strong>STAR bullets:</strong></p><p>S: New Cloud Run revision elevated 5xx</p><p>T: Restore availability quickly</p><p>A: Traffic to previous revision; diff env/logs; fix and redeploy</p><p>R: Service healthy; noted canary for riskier changes</p></div>
 </article>
@@ -2300,7 +2300,7 @@ docker images</p></div>
     <div class="cell question"><p>A production website on a Linux VM is down or can't write files. Disk looks full. What do you do?</p></div>
     <div class="cell answer"><p>I SSH in, confirm with df -h and df -i, and find what's consuming space — often logs, old backups, or uploads. I free space safely: rotate or truncate known log files, move old backups off the box, never delete database directories I don't understand. I verify the site and PHP or web server logs recover. Then I fix root cause — logrotate, retention, or a larger disk — and document it so the next full-disk isn't a surprise.</p></div>
     <div class="cell question"><p>Website trên VM Linux lỗi hoặc không ghi được file. Disk đầy. Bạn làm gì?</p></div>
-    <div class="cell answer"><p>Tôi SSH vào, xác nhận df -h và df -i, tìm thứ chiếm chỗ — thường log, backup cũ hoặc upload. Giải phóng an toàn: xoay hoặc cắt log đã biết, chuyển backup cũ khỏi máy, không xóa thư mục database không hiểu. Verify site và log PHP/web server hồi. Rồi sửa gốc — logrotate, retention, hoặc tăng disk — và document để lần đầy disk sau không bất ngờ.</p></div>
+    <div class="cell answer"><p>Tôi SSH vào, confirm với df -h và df -i, tìm thứ chiếm chỗ — thường log, backup cũ hoặc upload. Free space an toàn: rotate hoặc truncate log đã biết, chuyển backup cũ khỏi máy, không xóa directory database không hiểu. Verify site và log PHP/web server hồi. Rồi fix root cause — logrotate, retention, hoặc tăng disk — và document để lần full disk sau không bất ngờ.</p></div>
   </div>
   <div class="star"><p><strong>STAR bullets:</strong></p><p>S: CMS site failing writes on Ubuntu VM</p><p>T: Restore writes without data loss</p><p>A: df/du, cleared logs/backups safely, verified Nginx/Apache</p><p>R: Site writable; retention added</p></div>
 </article>
@@ -2311,7 +2311,7 @@ docker images</p></div>
     <div class="cell question"><p>Cloud Run can't reach Cloud SQL after a deploy. How do you debug?</p></div>
     <div class="cell answer"><p>I isolate layers: did the new revision lose the Cloud SQL connection annotation or the secret for the DB password? Is the service account still allowed? Is the app using the right connection name or socket path? I compare the last healthy revision's config to the new one, check Cloud Logging for connection refused or auth errors, and verify the instance is up. I don't open the database to the public internet as a shortcut — I fix the connector, IAM, or secret wiring.</p></div>
     <div class="cell question"><p>Cloud Run không tới được Cloud SQL sau deploy. Bạn debug thế nào?</p></div>
-    <div class="cell answer"><p>Tôi cô lập lớp: revision mới có mất annotation kết nối Cloud SQL hoặc secret mật khẩu DB không? Service account còn quyền không? App có đúng connection name hoặc đường socket không? Tôi so config revision khỏe với bản mới, xem Cloud Logging lỗi connection refused hoặc auth, và xác nhận instance còn sống. Tôi không mở database ra internet công cộng để xong việc — tôi sửa connector, IAM hoặc secret.</p></div>
+    <div class="cell answer"><p>Tôi isolate layer: revision mới có mất annotation kết nối Cloud SQL hoặc secret DB password không? Service account còn quyền không? App có đúng connection name hoặc socket path không? Tôi so config revision healthy với bản mới, xem Cloud Logging lỗi connection refused hoặc auth, và confirm instance còn sống. Tôi không mở database ra public internet để xong việc — tôi fix connector, IAM hoặc secret wiring.</p></div>
   </div>
   <div class="star"><p><strong>STAR bullets:</strong></p><p>S: API 500s; logs show DB connection failure</p><p>T: Restore DB connectivity without exposing SQL publicly</p><p>A: Diff Run SQL settings/secrets/IAM; fix wiring; verify /health</p><p>R: Connections restored; checklist for SQL on deploy</p></div>
 </article>
@@ -2322,7 +2322,7 @@ docker images</p></div>
     <div class="cell question"><p>Stakeholders want a release today but CI is flaky and staging isn't fully verified. What do you do?</p></div>
     <div class="cell answer"><p>I separate must-ship from nice-to-have. I won't skip signing checks or push an unsigned mobile build, and I won't deploy a Cloud Run image I can't roll back. I will time-box: identify the smallest safe artifact that already passed a meaningful check, smoke the critical path on staging, deploy with a clear rollback owner, and communicate risk honestly. If the risk is too high, I say so with options — delay, reduced scope, or hotfix-only — instead of silent hope.</p></div>
     <div class="cell question"><p>Stakeholder muốn release hôm nay nhưng CI flaky và staging chưa verify đủ. Bạn làm gì?</p></div>
-    <div class="cell answer"><p>Tôi tách must-ship khỏi nice-to-have. Tôi không bỏ check signing hay đẩy bản mobile chưa ký, và không deploy image Cloud Run mà không rollback được. Tôi time-box: chọn artifact nhỏ nhất an toàn đã qua check có nghĩa, smoke đường critical trên staging, deploy với người own rollback rõ, và nói rủi ro thẳng. Nếu rủi ro quá cao, tôi nói kèm lựa chọn — hoãn, giảm scope, hoặc chỉ hotfix — thay vì hy vọng thầm.</p></div>
+    <div class="cell answer"><p>Tôi tách must-ship khỏi nice-to-have. Tôi không bỏ signing check hay đẩy bản mobile chưa sign, và không deploy image Cloud Run mà không rollback được. Tôi time-box: chọn artifact nhỏ nhất an toàn đã qua check có nghĩa, smoke critical path trên staging, deploy với người own rollback rõ, và nói risk thẳng. Nếu risk quá cao, tôi nói kèm option — delay, giảm scope, hoặc chỉ hotfix — thay vì hy vọng thầm.</p></div>
   </div>
   <div class="star"><p><strong>STAR bullets:</strong></p><p>S: Business wants same-day release; CI unstable</p><p>T: Protect users while enabling minimum ship</p><p>A: Scoped release, smoke, rollback plan, honest status</p><p>R: Shipped reduced scope or delayed with clear rationale</p></div>
 </article>
@@ -2333,7 +2333,7 @@ docker images</p></div>
     <div class="cell question"><p>Staging looks fine but production fails right after promote. What's your approach?</p></div>
     <div class="cell answer"><p>I assume config drift until proven otherwise — env vars, secrets, web server vhost differences, API URLs in the mobile build, or Cloud SQL instance differences. I compare what actually differs between environments, not only the git sha. I've seen this a lot with multi-env CI/CD: missing prod secret, different LiteSpeed/Apache setting, or an app pointing at the wrong backend. Fix the delta, redeploy, and update the promotion checklist.</p></div>
     <div class="cell question"><p>Staging ổn nhưng production fail ngay sau promote. Bạn tiếp cận thế nào?</p></div>
-    <div class="cell answer"><p>Tôi giả định lệch config cho đến khi chứng minh ngược — env, secret, khác vhost web server, URL API trong bản mobile, hoặc khác instance Cloud SQL. Tôi so thứ thực sự khác giữa env, không chỉ git sha. Tôi hay gặp với CI/CD đa env: thiếu secret prod, setting LiteSpeed/Apache khác, hoặc app trỏ nhầm backend. Sửa delta, deploy lại, cập nhật checklist promote.</p></div>
+    <div class="cell answer"><p>Tôi giả định config drift cho đến khi chứng minh ngược — env, secret, khác vhost web server, API URL trong bản mobile, hoặc khác instance Cloud SQL. Tôi so thứ thực sự khác giữa env, không chỉ git sha. Tôi hay gặp với CI/CD multi-env: thiếu secret prod, setting LiteSpeed/Apache khác, hoặc app trỏ nhầm backend. Fix delta, deploy lại, update checklist promote.</p></div>
   </div>
   <div class="star"><p><strong>STAR bullets:</strong></p><p>S: Promote to prod failed after green staging</p><p>T: Restore prod; prevent repeat</p><p>A: Diff env/secrets/web config; fix; checklist</p><p>R: Prod healthy; promotion gap documented</p></div>
 </article>
@@ -2347,7 +2347,7 @@ docker images</p></div>
     <div class="cell question"><p>Do you have any questions for us?</p></div>
     <div class="cell answer"><p>I'd ask how you promote from staging to production today — tags, approvals, or automatic. I'd ask what observability looks like for the services I'd own on week one — logs, alerts, on-call expectations. And I'd ask where the team feels the most pain right now: flaky CI, cloud cost, Linux snowflake servers, or mobile release friction — so I know where I can help first.</p></div>
     <div class="cell question"><p>Bạn có câu hỏi gì cho chúng tôi không?</p></div>
-    <div class="cell answer"><p>Tôi sẽ hỏi hiện team promote staging lên production thế nào — tag, approval, hay tự động. Tôi hỏi observability cho service tôi sẽ own tuần đầu trông ra sao — log, alert, kỳ vọng on-call. Và tôi hỏi chỗ team đang đau nhất: CI flaky, chi phí cloud, server Linux snowflake, hay ma sát release mobile — để biết tôi giúp gì trước.</p></div>
+    <div class="cell answer"><p>Tôi sẽ hỏi hiện team promote staging lên production thế nào — tag, approval, hay automatic. Tôi hỏi observability cho service tôi sẽ own tuần đầu trông ra sao — log, alert, kỳ vọng on-call. Và tôi hỏi chỗ team đang đau nhất: CI flaky, cloud cost, Linux snowflake server, hay friction release mobile — để biết tôi giúp gì trước.</p></div>
   </div>
 </article>
 <article class="question-card" id="d77">
@@ -2357,7 +2357,7 @@ docker images</p></div>
     <div class="cell question"><p>Anything else you'd like us to remember?</p></div>
     <div class="cell answer"><p>Just briefly: I bring hands-on delivery on GCP Cloud Run, Cloud SQL, and Storage, Linux VM operations with SSH, LiteSpeed and Apache, and CI/CD for web and mobile — including a React Native app published on both stores with a Cloud Run backend. I'm intentionally going deeper into DevOps — pipeline quality, environment promotion, and reliable operations — and I'm honest about where I'm strong versus where I'd ramp. I'm ready to contribute from day one on deploys, troubleshooting, and making releases less fragile.</p></div>
     <div class="cell question"><p>Bạn muốn chúng tôi nhớ thêm điều gì?</p></div>
-    <div class="cell answer"><p>Ngắn gọn: tôi mang delivery thực tế trên GCP Cloud Run, Cloud SQL và Storage, vận hành Linux VM qua SSH, LiteSpeed và Apache, và CI/CD cho web lẫn mobile — gồm app React Native đã lên cả hai store với backend Cloud Run. Tôi chủ đích đào sâu DevOps — chất lượng pipeline, promote môi trường và vận hành tin cậy — và nói thẳng chỗ mạnh với chỗ sẽ ramp. Tôi sẵn sàng đóng góp từ sớm ở deploy, troubleshoot và làm release ít mong manh hơn.</p></div>
+    <div class="cell answer"><p>Ngắn gọn: tôi mang delivery thực tế trên GCP Cloud Run, Cloud SQL và Storage, Linux VM ops qua SSH, LiteSpeed và Apache, và CI/CD cho web lẫn mobile — gồm app React Native đã publish cả hai store với backend Cloud Run. Tôi chủ đích đào sâu DevOps — chất lượng pipeline, promote env và ops tin cậy — và nói thẳng chỗ mạnh với chỗ sẽ ramp. Tôi sẵn sàng contribute từ sớm ở deploy, troubleshoot và làm release less fragile.</p></div>
   </div>
 </article>
 <article class="question-card" id="d78">
@@ -2367,7 +2367,7 @@ docker images</p></div>
     <div class="cell question"><p>We use Jenkins and Kubernetes heavily. How would you ramp up?</p></div>
     <div class="cell answer"><p>I'd be honest: my daily spine is Cloud Build, Cloud Run, Linux VMs, and mobile CI — not operating Kubernetes HA clusters or a large Jenkins estate as my primary job. The underlying skills transfer — pipeline stages, artifacts, secrets, rollbacks, logs. I'd ramp by pairing on your existing pipelines, reading your runbooks, and delivering small owned changes first, while mapping your Jenkins or Kubernetes stages to patterns I already know.</p></div>
     <div class="cell question"><p>Chúng tôi dùng nhiều Jenkins và Kubernetes. Bạn ramp-up thế nào?</p></div>
-    <div class="cell answer"><p>Tôi nói thẳng: xương sống hằng ngày của tôi là Cloud Build, Cloud Run, Linux VM và CI mobile — không phải vận hành cluster Kubernetes HA hay hệ Jenkins lớn như việc chính. Skill nền chuyển được — stage pipeline, artifact, secret, rollback, log. Tôi ramp bằng pair trên pipeline sẵn có, đọc runbook, và nhận thay đổi nhỏ có owner trước, đồng thời map stage Jenkins hoặc Kubernetes sang pattern tôi đã biết.</p></div>
+    <div class="cell answer"><p>Tôi nói thẳng: spine hằng ngày của tôi là Cloud Build, Cloud Run, Linux VM và CI mobile — không phải operate cluster Kubernetes HA hay hệ Jenkins lớn như việc chính. Skill nền transfer được — stage pipeline, artifact, secret, rollback, log. Tôi ramp bằng pair trên pipeline sẵn có, đọc runbook, và nhận change nhỏ có ownership trước, đồng thời map stage Jenkins hoặc Kubernetes sang pattern tôi đã biết.</p></div>
   </div>
 </article>
     </section>
