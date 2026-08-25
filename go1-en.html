@@ -589,6 +589,28 @@ U3                                                  |------|</pre>
         if current > peak:
             peak = current
     return peak</pre>
+
+
+
+
+
+    <pre>
+      from collections import Counter
+def max_concurrent_unique_users(streams):
+    events = []
+    for user, start, end in streams:
+        events.append((start, +1, user))
+        events.append((end, -1, user))
+    events.sort(key=lambda e: (e[0], e[1]))  # cùng time: end trước start
+    open_streams = Counter()  # user → đang bao nhiêu stream
+    peak = 0
+    for time, delta, user in events:
+        open_streams[user] += delta
+        if open_streams[user] == 0:
+            del open_streams[user]
+        peak = max(peak, len(open_streams))
+    return peak
+    </pre>
       <p><strong>Traps:</strong> (1) same user can have two streams — count streams, not users. Dataset 4 max is 4. (2) If one ends at 1000 and another starts at 1000, usually not overlapping: put −1 before +1 when times are equal (<code>events.sort()</code> already does that because −1 &lt; +1).</p>
       <p><strong>Follow-up:</strong> “At what time was the peak?” Save <code>time</code> when you update <code>peak</code>. “Unique users?” Keep a <code>set</code> of active user ids instead of a number.</p>
 
