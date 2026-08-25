@@ -1,0 +1,895 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Go1 Interview Tutorial — Python from zero</title>
+  <style>
+    :root {
+      --bg: #f4efe4;
+      --bg-2: #fffdf8;
+      --ink: #1c2416;
+      --muted: #5c6754;
+      --line: #d9d1c0;
+      --forest: #2f6b45;
+      --forest-2: #1e4d30;
+      --lime: #c6e35a;
+      --code: #161c13;
+      --warn: #8a4b12;
+      --warn-bg: #f7ead6;
+      --ok: #1f6b3a;
+      --ok-bg: #e5f3e4;
+      --shadow: 0 10px 30px rgba(28, 36, 22, 0.08);
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      font-family: "Iowan Old Style", "Palatino Linotype", Palatino, Georgia, serif;
+      color: var(--ink);
+      background:
+        radial-gradient(1200px 500px at 10% -10%, #e7f0c8 0%, transparent 50%),
+        var(--bg);
+      line-height: 1.55;
+    }
+    code, kbd, pre, .mono, button, .nav a, .tag, .check label, .toc {
+      font-family: "IBM Plex Mono", "SF Mono", ui-monospace, Menlo, monospace;
+    }
+    .layout {
+      display: grid;
+      grid-template-columns: 260px 1fr;
+      min-height: 100vh;
+    }
+    .toc {
+      position: sticky;
+      top: 0;
+      height: 100vh;
+      overflow: auto;
+      padding: 28px 18px 40px;
+      background: #1c2416;
+      color: #e8eedc;
+      font-size: 12px;
+    }
+    .toc h1 {
+      font-family: Georgia, serif;
+      font-size: 18px;
+      margin: 0 0 6px;
+      color: var(--lime);
+      line-height: 1.25;
+    }
+    .toc p { color: #b7c0a8; margin: 0 0 18px; font-size: 11px; }
+    .toc a {
+      display: block;
+      color: #d5ddc6;
+      text-decoration: none;
+      padding: 6px 8px;
+      border-radius: 6px;
+    }
+    .toc a:hover, .toc a.active { background: #2a3423; color: var(--lime); }
+    .toc .sub { padding-left: 16px; color: #a9b39a; }
+    .page { padding: 36px 48px 80px; max-width: 920px; }
+    h2 {
+      font-size: 28px;
+      margin: 48px 0 12px;
+      padding-top: 12px;
+    }
+    h3 { font-size: 20px; margin: 28px 0 10px; }
+    h4 { margin: 18px 0 8px; font-size: 16px; }
+    p { margin: 10px 0; }
+    .hero {
+      background: var(--bg-2);
+      border: 1px solid var(--line);
+      border-radius: 18px;
+      padding: 28px;
+      box-shadow: var(--shadow);
+    }
+    .hero h2 { margin-top: 0; }
+    .tags { display: flex; gap: 8px; flex-wrap: wrap; margin: 12px 0 0; }
+    .tag {
+      background: var(--lime);
+      color: var(--forest-2);
+      padding: 3px 9px;
+      border-radius: 999px;
+      font-size: 11px;
+      font-weight: 600;
+    }
+    .callout {
+      border-left: 4px solid var(--forest);
+      background: var(--bg-2);
+      padding: 12px 16px;
+      margin: 16px 0;
+      border-radius: 0 10px 10px 0;
+    }
+    .warn { border-left-color: var(--warn); background: var(--warn-bg); }
+    .ok { border-left-color: var(--ok); background: var(--ok-bg); }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      background: var(--bg-2);
+      font-size: 14px;
+      margin: 12px 0 18px;
+    }
+    th, td {
+      border: 1px solid var(--line);
+      padding: 8px 10px;
+      text-align: left;
+      vertical-align: top;
+    }
+    th { background: #e8efe0; font-family: inherit; }
+    pre {
+      background: var(--code);
+      color: #e8eedc;
+      padding: 16px 18px;
+      border-radius: 12px;
+      overflow: auto;
+      font-size: 13px;
+      line-height: 1.45;
+    }
+    .filename {
+      font-size: 11px;
+      color: var(--muted);
+      margin-bottom: 4px;
+    }
+    kbd {
+      background: #eee;
+      border: 1px solid #ccc;
+      border-bottom-width: 2px;
+      border-radius: 4px;
+      padding: 0 5px;
+      font-size: 12px;
+    }
+    .tabs { display: flex; gap: 6px; flex-wrap: wrap; margin: 16px 0 0; }
+    .tabs button, .reveal {
+      border: 1px solid var(--line);
+      background: var(--bg-2);
+      color: var(--ink);
+      padding: 8px 12px;
+      border-radius: 999px;
+      cursor: pointer;
+      font-size: 12px;
+    }
+    .tabs button.active {
+      background: var(--forest);
+      color: white;
+      border-color: var(--forest);
+    }
+    .panel { display: none; }
+    .panel.active { display: block; }
+    .hidden { display: none; }
+    .check {
+      background: var(--bg-2);
+      border: 1px solid var(--line);
+      border-radius: 12px;
+      padding: 8px 14px;
+      margin: 8px 0;
+    }
+    .check label { font-size: 13px; display: flex; gap: 10px; align-items: flex-start; }
+    ol.steps li { margin: 8px 0; }
+    .grid2 {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+    }
+    @media (max-width: 960px) {
+      .layout { grid-template-columns: 1fr; }
+      .toc { position: relative; height: auto; }
+      .page { padding: 20px 16px 60px; }
+      .grid2 { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+  <div class="layout">
+    <nav class="toc">
+      <h1>Go1 live coding</h1>
+      <p>Python tutorial from start. Open in a browser. Code in your IDE.</p>
+      <p style="margin: 0 0 16px;"><a href="go1-interview-tutorial-vi.html">Tiếng Việt →</a></p>
+      <a href="#start">0. How to use this</a>
+      <a href="#format">1. Interview format</a>
+      <a href="#python">2. Python from zero</a>
+      <a href="#python" class="sub">Run a file</a>
+      <a href="#types" class="sub">Lists, dicts, sets</a>
+      <a href="#loops" class="sub">Loops &amp; functions</a>
+      <a href="#json" class="sub">JSON</a>
+      <a href="#collections" class="sub">defaultdict / Counter</a>
+      <a href="#debug">3. Debugger</a>
+      <a href="#how">4. How to resolve (paper first)</a>
+      <a href="#how-p1" class="sub">Learners</a>
+      <a href="#how-p2" class="sub">Quiz</a>
+      <a href="#how-p3" class="sub">Watched</a>
+      <a href="#how-p4" class="sub">Concurrent</a>
+      <a href="#p1">5. Code for all four</a>
+      <a href="#followups">8. Follow-ups</a>
+      <a href="#talk">9. What to say</a>
+      <a href="#tonight">10. Tonight + day-of</a>
+    </nav>
+
+    <main class="page">
+      <section class="hero" id="start">
+        <div class="tags">
+          <span class="tag">No AI in the interview</span>
+          <span class="tag">Python</span>
+          <span class="tag">~60 minutes</span>
+          <span class="tag">2 interviewers</span>
+        </div>
+        <h2>Go1 Developer interview — start here</h2>
+        <p>
+          Round 1 is live coding with two people. They already sent the four problems.
+          You will solve <strong>one</strong> of them in your own IDE, share your screen,
+          then they will add extra requirements. Bugs are fine if you debug them with a breakpoint.
+        </p>
+        <p>
+          This page teaches the Python you need, then each problem, then the follow-ups.
+          Read it top to bottom once. After that, type the code yourself in a <code>.py</code> file — do not copy-paste on interview day.
+        </p>
+        <div class="callout warn">
+          Tomorrow: turn off Copilot / Cursor Tab. This round is software-engineering fundamentals.
+          There is a later LLM interview.
+        </div>
+      </section>
+
+      <h2 id="format">1. Interview format</h2>
+      <p>Someone who already did this round described it as: live coding, questions about that code, extra requirements on the same problem, a bug they fixed with a breakpoint, finished early.</p>
+      <table>
+        <tr><th>Time</th><th>What they do</th><th>What you do</th></tr>
+        <tr><td>0–5 min</td><td>Pick one of the four problems</td><td>Restate it. Walk the example. Ask 2 questions.</td></tr>
+        <tr><td>5–20 min</td><td>Watch you code</td><td>Write a small function. Run the example JSON.</td></tr>
+        <tr><td>20–35 min</td><td>“Can you also …”</td><td>Extend the same code. Do not rewrite.</td></tr>
+        <tr><td>35–50 min</td><td>Edge cases / a bug</td><td>Breakpoint → inspect the map → fix → re-run.</td></tr>
+        <tr><td>50–60 min</td><td>Questions around your code</td><td>Complexity, tests, what you’d do in production.</td></tr>
+      </table>
+      <div class="callout">
+        <strong>The pattern of every problem:</strong> (1) build an intermediate structure,
+        (2) reduce it to the answer. Say those two steps before you type.
+      </div>
+
+      <h2 id="python">2. Python from zero (only what you need)</h2>
+      <p>You do not need classes, pandas, or algorithms trivia. You need dicts, sets, loops, JSON, and <code>collections</code>.</p>
+
+      <h3>2.1 Run a file</h3>
+      <p>Create <code>challenge.py</code> on your Desktop. In Terminal:</p>
+      <pre>python3 --version
+python3 challenge.py</pre>
+      <p>If that fails, try <code>python challenge.py</code>. You want Python 3.9+.</p>
+      <div class="callout">
+        Indentation is syntax. Use 4 spaces. Mixing tabs and spaces will crash.
+        A colon <code>:</code> starts a block: <code>if</code>, <code>for</code>, <code>def</code>.
+      </div>
+
+      <h3 id="types">2.2 The four types you will use</h3>
+      <pre># list  — ordered, can repeat
+courses = ["Course-0001", "Course-0002", "Course-0001"]
+courses[0]          # "Course-0001"
+len(courses)        # 3
+courses.append("x")
+
+# dict  — key → value  (JSON objects become dicts)
+data = {"Learner-0001": ["Course-0001"]}
+data["Learner-0001"]
+data.keys()
+data.values()
+data.items()        # pairs: (key, value)
+
+# set   — unique items. Perfect for "how many learners?"
+learners = set()
+learners.add("Learner-0001")
+learners.add("Learner-0001")  # still size 1
+len(learners)       # 1
+
+# tuple — like a list you don't change. Sweep-line events:
+event = (500, 1)    # (time, delta)</pre>
+
+      <div class="grid2">
+        <div class="callout">
+          <strong>When to use a set:</strong> counting unique people.
+          Same learner completing a course twice is still 1 learner.
+        </div>
+        <div class="callout warn">
+          <strong>When a dict explodes:</strong>
+          <code>d[key] += 1</code> crashes if <code>key</code> is new.
+          Use <code>defaultdict</code> or <code>d.get(key, 0)</code>.
+        </div>
+      </div>
+
+      <h3 id="loops">2.3 Loops, enumerate, zip</h3>
+      <pre># loop a list
+for course in courses:
+    print(course)
+
+# need the index (Quiz Results)
+for i, answer in enumerate(answers):
+    print(i, answer)          # 0 A, 1 B, ...
+
+# loop a dict
+for learner, course_list in data.items():
+    for course in course_list:
+        print(learner, course)
+
+# consecutive pairs (Watched Courses)
+session = ["A", "B", "C"]
+for a, b in zip(session, session[1:]):
+    print(a, "→", b)          # A→B, B→C</pre>
+
+      <h3>2.4 Functions</h3>
+      <pre>def unique_courses(data):
+    """data is a dict: learner -> list of courses"""
+    return ["Course-0001"]
+
+result = unique_courses(data)
+print(result)</pre>
+      <p><code>return</code> sends the answer back. <code>print</code> only shows it on screen. In the interview, <code>print</code> the return value so they can see it.</p>
+
+      <h3>2.5 if / max / sorted / list comprehension</h3>
+      <pre>if count == 1:
+    result.append(course)
+
+# index of the biggest number
+counts = [3, 5, 3]
+best = max(range(len(counts)), key=lambda i: counts[i])  # 1
+
+# sort courses by how many learners, high to low
+ranked = sorted(pairs, key=lambda x: -len(x[1]))
+
+# build a list in one line
+ids = [c for c, people in mapping.items() if len(people) == 1]</pre>
+      <p><code>lambda i: counts[i]</code> means “a tiny function: given i, return counts[i]”. Used so <code>max</code> knows what “biggest” means.</p>
+
+      <h3 id="json">2.6 JSON — first thing you type tomorrow</h3>
+      <p>Their repo even gives this snippet. Memorize it.</p>
+      <pre>import json
+
+raw = """
+{
+  "Learner-0001": ["Course-0001", "Course-0002"],
+  "Learner-0002": ["Course-0002", "Course-0004"]
+}
+"""
+data = json.loads(raw)
+print(data)
+print(type(data))   # dict</pre>
+      <table>
+        <tr><th>JSON</th><th>Python after json.loads</th></tr>
+        <tr><td><code>{ "a": 1 }</code></td><td><code>dict</code></td></tr>
+        <tr><td><code>[1, 2]</code></td><td><code>list</code></td></tr>
+        <tr><td><code>"hi"</code></td><td><code>str</code></td></tr>
+        <tr><td><code>true / false / null</code></td><td><code>True / False / None</code></td></tr>
+      </table>
+      <div class="callout warn">
+        JSON does not allow comments. The quiz-results data file has <code>// Correct Answers</code>
+        lines — delete those comments before pasting, or you will get <code>JSONDecodeError</code>.
+      </div>
+
+      <h3 id="collections">2.7 defaultdict and Counter (use these)</h3>
+      <pre>from collections import defaultdict, Counter
+
+# dict of sets: course → {learners}
+course_to_learners = defaultdict(set)
+course_to_learners["Course-0001"].add("Learner-0001")
+
+# dict of counters: course → {next_course: how_many}
+transitions = defaultdict(Counter)
+transitions["Course_001"]["Course_002"] += 1
+transitions["Course_001"].most_common(1)
+# [('Course_002', 1)]</pre>
+      <p><code>defaultdict(set)</code> means: if the key is new, start with an empty set. No crash.</p>
+
+      <h3>2.8 Mini drills (say the answer, then reveal)</h3>
+      <div class="check"><label><input type="checkbox"> Drill 1: <code>s = set(); s.add("A"); s.add("A"); len(s)</code> → ?</label></div>
+      <button class="reveal" data-target="d1">Reveal</button>
+      <div id="d1" class="callout ok hidden"><code>1</code> — sets drop duplicates. This is the Learners-and-Courses trap.</div>
+
+      <div class="check"><label><input type="checkbox"> Drill 2: <code>list(zip(["A","B","C"], ["B","C"]))</code> → ?</label></div>
+      <button class="reveal" data-target="d2">Reveal</button>
+      <div id="d2" class="callout ok hidden"><code>[("A","B"), ("B","C")]</code> — consecutive pairs for Watched Courses. Last item has no next.</div>
+
+      <div class="check"><label><input type="checkbox"> Drill 3: <code>d = {}; d["x"] += 1</code> → ?</label></div>
+      <button class="reveal" data-target="d3">Reveal</button>
+      <div id="d3" class="callout ok hidden"><code>KeyError</code>. Use <code>defaultdict(int)</code> or <code>d["x"] = d.get("x", 0) + 1</code>.</div>
+
+      <h2 id="debug">3. Debugger — they like this</h2>
+      <p>A previous candidate had a bug, set a breakpoint, fixed it, and finished early. That is a positive signal. Practice once tonight.</p>
+      <h4>VS Code / Cursor</h4>
+      <ol class="steps">
+        <li>Open <code>challenge.py</code>.</li>
+        <li>Click left of a line number (red dot) or press <kbd>F9</kbd>. Put it <em>inside</em> the loop, not after the function.</li>
+        <li><kbd>F5</kbd> Start Debugging. Choose Python File. (If asked, install the Python extension.)</li>
+        <li>When it stops: hover variables, or look at the VARIABLES panel.</li>
+        <li><kbd>F10</kbd> step over one line. <kbd>F5</kbd> continue.</li>
+        <li>Say out loud: “Course-0001 is 2 because I counted listings, not unique learners.”</li>
+      </ol>
+      <p>Backup if the debugger fights you: <code>print(course_to_learners)</code> then keep going. Don’t spend 10 minutes on debugger setup during the interview.</p>
+      <pre># Plant this bug tonight on purpose, then fix it
+course_to_learners[course] += 1          # WRONG if same learner repeats
+course_to_learners[course].add(learner)  # RIGHT</pre>
+
+      <h2 id="how">4. How to resolve — paper first, then code</h2>
+      <p>
+        Every Go1 challenge has the same <strong>issue</strong>:
+        the data is grouped one way, the question is about another way.
+        You cannot look at the JSON and type the answer.
+        You build a small table in the middle, then read the answer from that table.
+      </p>
+      <table>
+        <tr><th>Challenge</th><th>Data is grouped by…</th><th>Question is about…</th><th>Middle table</th></tr>
+        <tr><td>Learners</td><td>learner → list of courses</td><td>which <em>courses</em> are rare</td><td>course → set of learners</td></tr>
+        <tr><td>Quiz</td><td>each <em>row</em> is a learner</td><td>which <em>column</em> (question) is easiest</td><td>question index → how many correct</td></tr>
+        <tr><td>Watched</td><td>a full session list</td><td>what comes <em>next</em> after a course</td><td>course → count of next courses</td></tr>
+        <tr><td>Concurrent</td><td>each stream alone</td><td>how many overlap in <em>time</em></td><td>events on a timeline: +1 start, −1 end</td></tr>
+      </table>
+      <div class="callout">
+        In the interview, say this out loud before typing:
+        “I’ll build X, then I’ll pick Y from it.”
+        That is the solution. The Python is just filling the table.
+      </div>
+
+      <h3 id="how-p1">Challenge 1 — Learners and Courses</h3>
+      <p><strong>What they give:</strong> each learner, and the courses that person finished.</p>
+      <p><strong>What they want:</strong> courses that only <em>one</em> person has finished.</p>
+      <p><strong>The issue:</strong> you cannot answer from one learner. Learner-0001 finished three courses — that does not tell you if anyone else also finished them. You must <em>flip</em> the map: from “who did what” to “who did this course.”</p>
+
+      <h4>Step 1 — write the input as two lists</h4>
+      <pre>Learner-0001 : Course-0001, Course-0002, Course-0003
+Learner-0002 : Course-0002, Course-0003, Course-0004</pre>
+
+      <h4>Step 2 — empty table: course → people</h4>
+      <p>Walk every pair (learner, course). Add the learner into that course’s set.</p>
+      <table>
+        <tr><th>You see</th><th>Table becomes</th></tr>
+        <tr><td>0001 did Course-0001</td><td>Course-0001 → {0001}</td></tr>
+        <tr><td>0001 did Course-0002</td><td>Course-0002 → {0001}</td></tr>
+        <tr><td>0001 did Course-0003</td><td>Course-0003 → {0001}</td></tr>
+        <tr><td>0002 did Course-0002</td><td>Course-0002 → {0001, 0002}</td></tr>
+        <tr><td>0002 did Course-0003</td><td>Course-0003 → {0001, 0002}</td></tr>
+        <tr><td>0002 did Course-0004</td><td>Course-0004 → {0002}</td></tr>
+      </table>
+
+      <h4>Step 3 — keep size == 1</h4>
+      <table>
+        <tr><th>Course</th><th>Learners</th><th>Count</th><th>Keep?</th></tr>
+        <tr><td>Course-0001</td><td>{0001}</td><td>1</td><td>yes</td></tr>
+        <tr><td>Course-0002</td><td>{0001, 0002}</td><td>2</td><td>no</td></tr>
+        <tr><td>Course-0003</td><td>{0001, 0002}</td><td>2</td><td>no</td></tr>
+        <tr><td>Course-0004</td><td>{0002}</td><td>1</td><td>yes</td></tr>
+      </table>
+      <p><strong>Answer:</strong> <code>["Course-0001", "Course-0004"]</code></p>
+
+      <h4>The trap (dataset 4)</h4>
+      <p>Learner-0001 lists Course-0001 <em>twice</em>. If you count listings (<code>+= 1</code>), Course-0001 becomes 2 and you drop it. Wrong. Count <strong>people</strong> with a <code>set</code>. Adding “0001” twice still leaves <code>{0001}</code>, size 1.</p>
+      <pre># Python that matches the table
+from collections import defaultdict
+
+def unique_courses(data):
+    table = defaultdict(set)          # course → set of learners
+    for learner, courses in data.items():
+        for course in courses:
+            table[course].add(learner)  # Step 2
+    answer = []
+    for course, people in table.items():
+        if len(people) == 1:            # Step 3
+            answer.append(course)
+    return answer</pre>
+      <p>If they say “also show courses with at least 2 learners,” change only Step 3 to <code>len(people) &gt;= 2</code>. The table stays.</p>
+
+      <h3 id="how-p2">Challenge 2 — Quiz Results</h3>
+      <p><strong>What they give:</strong> the answer key, plus each learner’s answers (one row per person).</p>
+      <p><strong>What they want:</strong> which <em>question</em> most people got right (its index).</p>
+      <p><strong>The issue:</strong> a row is one learner’s whole quiz. The question is not “who scored highest.” It is “which column was easiest.” Look <em>down</em> each column.</p>
+
+      <h4>Step 1 — write columns</h4>
+      <pre>index:           0    1    2
+correct:         A    B    C
+learner 1:       A    B    B
+learner 2:       C    B    C
+learner 3:       A    B    C
+learner 4:       B    B    A
+learner 5:       A    B    C</pre>
+
+      <h4>Step 2 — count matches per column</h4>
+      <table>
+        <tr><th>Question</th><th>Compare to</th><th>Hits</th><th>Count</th></tr>
+        <tr><td>index 0</td><td>A</td><td>A, C, A, B, A → A A A</td><td>3</td></tr>
+        <tr><td>index 1</td><td>B</td><td>B B B B B</td><td>5</td></tr>
+        <tr><td>index 2</td><td>C</td><td>B, C, C, A, C → C C C</td><td>3</td></tr>
+      </table>
+
+      <h4>Step 3 — biggest count wins</h4>
+      <p>5 is the max → index <strong>1</strong>. Output: <code>The easiest question is index 1</code></p>
+      <pre>def easiest_question(answers, responses):
+    n = len(answers)
+    counts = [0] * n              # Step 2: one box per question
+    for row in responses:         # each learner
+        for i, ans in enumerate(row):
+            if ans == answers[i]:
+                counts[i] += 1
+    best = 0
+    for i in range(n):            # Step 3
+        if counts[i] > counts[best]:
+            best = i
+    return f"The easiest question is index {best}"</pre>
+      <p><strong>Follow-up:</strong> hardest question = smallest count (index 3 on dataset 3). Tie: ask them, or take the first index.</p>
+      <div class="callout warn">When you paste dataset JSON, delete the <code>// Correct Answers</code> comment lines. JSON cannot have comments.</div>
+
+      <h3 id="how-p3">Challenge 3 — Watched Courses</h3>
+      <p><strong>What they give:</strong> sessions. Each session is an ordered list of courses a person watched.</p>
+      <p><strong>What they want:</strong> for each course, which course is most often <em>immediately next</em>.</p>
+      <p><strong>The issue:</strong> the last course in a session has no next. You only care about <strong>neighbors</strong>: (item 0, item 1), (item 1, item 2), …</p>
+
+      <h4>Step 1 — cut a session into arrows</h4>
+      <pre>["Course_001", "Course_002", "Course_003", "Course_004"]
+
+001 → 002
+002 → 003
+003 → 004
+004 → (nothing)</pre>
+
+      <h4>Step 2 — count arrows</h4>
+      <p>One session is enough for the example: each arrow appears once, so the “most common next” is just the only next.</p>
+      <table>
+        <tr><th>Course</th><th>Next counts</th><th>Winner</th></tr>
+        <tr><td>Course_001</td><td>Course_002: 1</td><td>Course_002</td></tr>
+        <tr><td>Course_002</td><td>Course_003: 1</td><td>Course_003</td></tr>
+        <tr><td>Course_003</td><td>Course_004: 1</td><td>Course_004</td></tr>
+      </table>
+      <p>Dataset 2 has several sessions. You add all arrows into the same table. If Course_001 → Course_002 once and Course_001 → Course_003 once, that is a <strong>tie</strong>. Say your rule: first one you saw, or alphabetical. They care that you noticed.</p>
+      <pre>from collections import defaultdict, Counter
+
+def most_common_next(sessions):
+    table = defaultdict(Counter)   # course → {next: count}
+    for session in sessions:
+        for i in range(len(session) - 1):   # stop before last
+            current = session[i]
+            nxt = session[i + 1]
+            table[current][nxt] += 1
+    answer = {}
+    for course, counts in table.items():
+        winner = counts.most_common(1)[0][0]
+        answer[course] = winner
+    return answer</pre>
+      <p><code>range(len(session) - 1)</code> is the trick: for 4 courses, i = 0,1,2 only. Index 3 has no next.</p>
+
+      <h3 id="how-p4">Challenge 4 — Concurrent Learners</h3>
+      <p><strong>What they give:</strong> streams: <code>[user, start, end]</code>.</p>
+      <p><strong>What they want:</strong> the maximum number of streams that overlap at the same time.</p>
+      <p><strong>The issue:</strong> looking at one stream is not enough. Overlap is about the timeline. Two streams overlap if one starts before the other ends.</p>
+      <pre>["User_001", 0, 1000]
+["User_002", 500, 2000]
+["User_003", 2500, 3000]
+["User_004", 400, 1400]
+
+time:  0      400  500       1000  1400     2000    2500  3000
+U1     |----------------------|
+U4            |---------------------|
+U2                 |--------------------------|
+U3                                                  |------|</pre>
+      <p>At t=500, U1, U2, U4 are all on → <strong>3</strong>. U3 is later, alone. Answer is 3.</p>
+
+      <h4>How to resolve without drawing (sweep)</h4>
+      <p>Turn every stream into two events: start = people +1, end = people −1. Sort by time. Walk left to right. Remember the highest “people currently watching.”</p>
+      <table>
+        <tr><th>Time</th><th>Event</th><th>Current</th><th>Peak so far</th></tr>
+        <tr><td>0</td><td>U1 start +1</td><td>1</td><td>1</td></tr>
+        <tr><td>400</td><td>U4 start +1</td><td>2</td><td>2</td></tr>
+        <tr><td>500</td><td>U2 start +1</td><td>3</td><td>3</td></tr>
+        <tr><td>1000</td><td>U1 end −1</td><td>2</td><td>3</td></tr>
+        <tr><td>1400</td><td>U4 end −1</td><td>1</td><td>3</td></tr>
+        <tr><td>2000</td><td>U2 end −1</td><td>0</td><td>3</td></tr>
+        <tr><td>2500</td><td>U3 start +1</td><td>1</td><td>3</td></tr>
+        <tr><td>3000</td><td>U3 end −1</td><td>0</td><td>3</td></tr>
+      </table>
+      <pre>def max_concurrent(streams):
+    events = []
+    for user, start, end in streams:
+        events.append((start, +1))
+        events.append((end, -1))
+    events.sort()   # time first; -1 before +1 at the same time
+    current = 0
+    peak = 0
+    for time, delta in events:
+        current = current + delta
+        if current > peak:
+            peak = current
+    return peak</pre>
+      <p><strong>Traps:</strong> (1) same user can have two streams — count streams, not users. Dataset 4 max is 4. (2) If one ends at 1000 and another starts at 1000, usually not overlapping: put −1 before +1 when times are equal (<code>events.sort()</code> already does that because −1 &lt; +1).</p>
+      <p><strong>Follow-up:</strong> “At what time was the peak?” Save <code>time</code> when you update <code>peak</code>. “Unique users?” Keep a <code>set</code> of active user ids instead of a number.</p>
+
+      <h2>5–8. The four problems (code you can type)</h2>
+      <p>They will pick one. Prepare all four. Click a tab. Paper method is above — this is the same logic in a file.</p>
+      <div class="tabs" id="problem-tabs">
+        <button class="active" data-panel="p1">1. Learners</button>
+        <button data-panel="p2">2. Quiz</button>
+        <button data-panel="p3">3. Watched</button>
+        <button data-panel="p4">4. Concurrent</button>
+      </div>
+
+      <article id="p1" class="panel active">
+        <h3>Learners and Courses — easiest, safest pick</h3>
+        <p><strong>Return course IDs completed by exactly one learner.</strong></p>
+        <p>Example: Learner-0001 did 1,2,3. Learner-0002 did 2,3,4. Output: <code>["Course-0001", "Course-0004"]</code>.</p>
+        <h4>Ask before coding</h4>
+        <ul>
+          <li>If one learner lists the same course twice, is that still one learner? (Yes. Dataset 4 does this.)</li>
+          <li>Does output order matter?</li>
+        </ul>
+        <h4>Two steps</h4>
+        <p>1) Invert: course → set of learners. 2) Keep courses whose set size is 1.</p>
+        <div class="filename">challenge.py</div>
+        <pre>import json
+from collections import defaultdict
+
+raw = """
+{
+  "Learner-0001": ["Course-0001", "Course-0002", "Course-0003"],
+  "Learner-0002": ["Course-0002", "Course-0003", "Course-0004"]
+}
+"""
+data = json.loads(raw)
+
+def unique_courses(data):
+    course_to_learners = defaultdict(set)
+    for learner, courses in data.items():
+        for course in courses:
+            course_to_learners[course].add(learner)
+    return [c for c, people in course_to_learners.items() if len(people) == 1]
+
+print(unique_courses(data))
+# ['Course-0001', 'Course-0004']</pre>
+        <p><strong>Complexity:</strong> O(n) over every course listing. Space O(unique courses).</p>
+        <h4>Expected answers</h4>
+        <table>
+          <tr><th>Dataset</th><th>Result</th></tr>
+          <tr><td>1</td><td>all four courses (each has one learner)</td></tr>
+          <tr><td>2</td><td>Course-0001, Course-0004</td></tr>
+          <tr><td>3</td><td>all three of Learner-0001</td></tr>
+          <tr><td>4</td><td>Course-0001, Course-0004 — duplicates on one learner must not count as 2</td></tr>
+          <tr><td>5</td><td>Course-0001, Course-0007</td></tr>
+          <tr><td>6</td><td>Course-0001, Course-0004</td></tr>
+        </table>
+        <div class="callout warn">Trap is dataset 4. If you write <code>count[course] += 1</code>, Course-0001 becomes 2 and disappears. Use a <code>set</code>.</div>
+      </article>
+
+      <article id="p2" class="panel">
+        <h3>Quiz Results — easy</h3>
+        <p><strong>Return the index of the easiest question</strong> = the question most learners got right. 0-based (example says index 1).</p>
+        <p>Walk the example out loud: correct <code>["A","B","C"]</code>. Column 0 has 3 correct, column 1 has <strong>5</strong>, column 2 has 3 → index 1.</p>
+        <h4>Ask before coding</h4>
+        <ul>
+          <li>If two questions tie, first index, last, or either?</li>
+          <li>Paste JSON without the <code>// comments</code> from the data file.</li>
+        </ul>
+        <pre>import json
+
+answers = json.loads('["A", "B", "C"]')
+responses = json.loads('''
+[
+  ["A", "B", "B"],
+  ["C", "B", "C"],
+  ["A", "B", "C"],
+  ["B", "B", "A"],
+  ["A", "B", "C"]
+]
+''')
+
+def easiest_question(answers, responses):
+    n = len(answers)
+    correct = [0] * n
+    for row in responses:
+        for i, ans in enumerate(row):
+            if ans == answers[i]:
+                correct[i] += 1
+    best = max(range(n), key=lambda i: correct[i])
+    return f"The easiest question is index {best}"
+
+print(easiest_question(answers, responses))</pre>
+        <table>
+          <tr><th>Dataset</th><th>Index</th><th>Why</th></tr>
+          <tr><td>1</td><td><strong>1</strong></td><td>5/5 got question 1</td></tr>
+          <tr><td>2</td><td><strong>4</strong></td><td>everyone answered D, 5/5</td></tr>
+          <tr><td>3</td><td><strong>3</strong></td><td>10/13 correct (Q1 has 9, Q0 has 7)</td></tr>
+        </table>
+      </article>
+
+      <article id="p3" class="panel">
+        <h3>Watched Courses — medium, ties are the point</h3>
+        <p><strong>For each course, the most common next course</strong> across sessions. Last item in a session has no next.</p>
+        <h4>Ask before coding</h4>
+        <ul>
+          <li>Ties? Datasets 2, 3, 4 all have them. Say: “I’ll take first-seen / most_common order unless you want alphabetical.”</li>
+          <li>Is Course_001 → Course_001 a valid transition? (Dataset 4. Yes, unless they say skip.)</li>
+          <li>Courses that never have a next: omit them (matches the example).</li>
+        </ul>
+        <pre>import json
+from collections import defaultdict, Counter
+
+sessions = json.loads('''
+[
+  ["Course_001", "Course_002", "Course_003", "Course_004"]
+]
+''')
+
+def most_common_next(sessions):
+    transitions = defaultdict(Counter)
+    for session in sessions:
+        for current, nxt in zip(session, session[1:]):
+            transitions[current][nxt] += 1
+    return {
+        course: counts.most_common(1)[0][0]
+        for course, counts in transitions.items()
+    }
+
+print(most_common_next(sessions))
+# {'Course_001': 'Course_002', 'Course_002': 'Course_003', 'Course_003': 'Course_004'}</pre>
+        <p>Dataset 2 by hand (good talking exercise):</p>
+        <ul>
+          <li>Course_001 → 002 once and 003 once → <strong>tie</strong></li>
+          <li>Course_002 → 003 twice → Course_003</li>
+          <li>Course_003 and Course_004 → all nexts appear once → <strong>ties</strong></li>
+        </ul>
+        <p>They care that you <em>noticed</em> the tie, not which rule you picked.</p>
+      </article>
+
+      <article id="p4" class="panel">
+        <h3>Concurrent Learners — hardest, most “CS”</h3>
+        <p><strong>Maximum number of overlapping streams.</strong> Count streams, not unique users. Dataset 4 has the same user on two streams at once.</p>
+        <pre>Example timeline for dataset 2 (max = 3):
+
+0         400  500        1000   1400      2000     2500
+U1 |----------------------|
+U4      |----------------------|
+U2           |---------------------------|
+U3                                               |------|
+         overlap of 3 ───────────</pre>
+        <h4>Ask before coding</h4>
+        <ul>
+          <li>If one ends at 1000 and another starts at 1000, do they overlap? Usually <strong>no</strong> — process end events before start events at the same time.</li>
+          <li>Same user, two overlapping streams → count 2?</li>
+        </ul>
+        <p>You may start with “for each stream, count how many others overlap” (O(n²)). Then say you can sweep.</p>
+        <pre>import json
+
+streams = json.loads('''
+[
+  ["User_001", 0, 1000],
+  ["User_002", 500, 2000],
+  ["User_003", 2500, 3000],
+  ["User_004", 400, 1400]
+]
+''')
+
+def max_concurrent(streams):
+    events = []
+    for _user, start, end in streams:
+        events.append((start, 1))   # start = +1
+        events.append((end, -1))    # end   = -1
+    # sort by time; at the same time, -1 before +1
+    events.sort(key=lambda e: (e[0], e[1]))
+    current = peak = 0
+    for _time, delta in events:
+        current += delta
+        peak = max(peak, current)
+    return f"The maximum number of concurrent streams is {peak}."
+
+print(max_concurrent(streams))
+# The maximum number of concurrent streams is 3.</pre>
+        <table>
+          <tr><th>Dataset</th><th>Max</th></tr>
+          <tr><td>1</td><td>2</td></tr>
+          <tr><td>2</td><td>3</td></tr>
+          <tr><td>3</td><td>5 (around t=1200)</td></tr>
+          <tr><td>4</td><td>4 (same user counted twice)</td></tr>
+        </table>
+        <p>How the sort key works: event is <code>(time, delta)</code>. <code>delta</code> is -1 or +1, so at time 1000 the end (-1) comes before the start (+1). They do not overlap.</p>
+      </article>
+
+      <h2 id="followups">8. Follow-ups — keep the same helper</h2>
+      <p>After the first version works, they change the spec. Extend. Don’t start over.</p>
+
+      <h4>Learners — top K, or at least N</h4>
+      <pre>def courses_with_at_least(data, n):
+    m = invert(data)  # same course → set(learners)
+    return [c for c, s in m.items() if len(s) >= n]
+
+def top_k(data, k=3):
+    m = invert(data)
+    ranked = sorted(m.items(), key=lambda x: -len(x[1]))
+    return [(c, len(s)) for c, s in ranked[:k]]</pre>
+
+      <h4>Quiz — hardest, or all counts</h4>
+      <pre>easiest = max(range(n), key=lambda i: correct[i])
+hardest = min(range(n), key=lambda i: correct[i])
+# if they ask about a tie: "I'll take the first index."</pre>
+
+      <h4>Watched — top 2 next courses</h4>
+      <pre>return {c: counts.most_common(2) for c, counts in transitions.items()}</pre>
+
+      <h4>Concurrent — peak time, or unique users</h4>
+      <pre># while sweeping, if current > peak: peak, peak_time = current, t
+# unique users: keep a set of active user ids, peak = max len(set)</pre>
+
+      <h2 id="talk">9. What to say (short answers)</h2>
+      <table>
+        <tr><th>They ask</th><th>You say</th></tr>
+        <tr><td>Walk me through this</td><td>“I invert learner→courses into course→learners, then keep size == 1.”</td></tr>
+        <tr><td>Why a set?</td><td>“Dataset 4 repeats a course for the same person. A counter would treat that as two learners.”</td></tr>
+        <tr><td>Complexity?</td><td>Learners/Quiz/Watched: O(n). Concurrent: O(n log n) because of sort.</td></tr>
+        <tr><td>What would you test?</td><td>Empty input, one learner, duplicates, ties, touching intervals.</td></tr>
+        <tr><td>Production?</td><td>Hash maps are enough for 1–3. For streams, sweep — don’t compare every pair.</td></tr>
+      </table>
+      <div class="callout">
+        Talk to both people. After the first print works: “First version done. Want me to extend it?”
+        That is how you finish early and still look strong.
+      </div>
+
+      <h2 id="tonight">10. Tonight (45 min, no AI) and day-of</h2>
+      <div class="check"><label><input type="checkbox" data-save="t1"> Create <code>challenge.py</code>. Run <code>python3 challenge.py</code>.</label></div>
+      <div class="check"><label><input type="checkbox" data-save="t2"> Type Learners and Courses from memory. Check all 6 answers.</label></div>
+      <div class="check"><label><input type="checkbox" data-save="t3"> Plant the <code>+= 1</code> bug on dataset 4. Breakpoint. Fix to a set.</label></div>
+      <div class="check"><label><input type="checkbox" data-save="t4"> Type Concurrent sweep. Confirm 2, 3, 5, 4.</label></div>
+      <div class="check"><label><input type="checkbox" data-save="t5"> Type Quiz + Watched once. Say the tie rule out loud.</label></div>
+      <div class="check"><label><input type="checkbox" data-save="t6"> Memorize the <code>json.loads(""" ... """)</code> snippet.</label></div>
+
+      <h3>Day-of</h3>
+      <ul>
+        <li>One empty <code>.py</code> file. Font large enough for screen share.</li>
+        <li>Copilot / Cursor Tab off.</li>
+        <li>You know <kbd>F9</kbd> breakpoint and <kbd>F5</kbd> run.</li>
+        <li>If they let you choose: <strong>Learners and Courses</strong> for a clean win + follow-ups. <strong>Concurrent</strong> if you want the sweep.</li>
+        <li>First 5 minutes: example with your finger. Then code. Then extra requirements.</li>
+      </ul>
+
+      <h3>Starter file (type this at the beginning of the call)</h3>
+      <pre>import json
+from collections import defaultdict, Counter
+
+raw = """
+PASTE_JSON_HERE
+"""
+data = json.loads(raw)
+print(data)
+
+def solve(data):
+    pass
+
+print(solve(data))</pre>
+
+      <p style="color: var(--muted); font-size: 13px; margin-top: 40px;">
+        Local file for your prep only. Do not open this page during the interview.
+        Data and problem statements are from go1com/go1-coding-challenge.
+      </p>
+    </main>
+  </div>
+  <script>
+    const tabs = document.querySelectorAll("#problem-tabs button");
+    const panels = document.querySelectorAll(".panel");
+    tabs.forEach((btn) => {
+      btn.addEventListener("click", () => {
+        tabs.forEach((b) => b.classList.remove("active"));
+        panels.forEach((p) => p.classList.remove("active"));
+        btn.classList.add("active");
+        document.getElementById(btn.dataset.panel).classList.add("active");
+        document.getElementById(btn.dataset.panel).scrollIntoView({ behavior: "smooth", block: "start" });
+      });
+    });
+    document.querySelectorAll(".reveal").forEach((btn) => {
+      btn.addEventListener("click", () => {
+        document.getElementById(btn.dataset.target).classList.toggle("hidden");
+      });
+    });
+    document.querySelectorAll("input[data-save]").forEach((box) => {
+      const key = "go1-prep-" + box.dataset.save;
+      box.checked = localStorage.getItem(key) === "1";
+      box.addEventListener("change", () => localStorage.setItem(key, box.checked ? "1" : "0"));
+    });
+    const links = document.querySelectorAll(".toc a");
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((e) => {
+        if (e.isIntersecting) {
+          const id = e.target.id;
+          if (!id) return;
+          links.forEach((a) => a.classList.toggle("active", a.getAttribute("href") === "#" + id));
+        }
+      });
+    }, { rootMargin: "-20% 0px -70% 0px" });
+    document.querySelectorAll("h2[id], article[id]").forEach((el) => observer.observe(el));
+  </script>
+</body>
+</html>

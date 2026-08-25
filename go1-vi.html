@@ -1,0 +1,899 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Go1 Interview Tutorial — Python từ đầu (Tiếng Việt)</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:ital,wght@0,400;0,600;0,700;1,400&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --bg: #f4efe4;
+      --bg-2: #fffdf8;
+      --ink: #1c2416;
+      --muted: #5c6754;
+      --line: #d9d1c0;
+      --forest: #2f6b45;
+      --forest-2: #1e4d30;
+      --lime: #c6e35a;
+      --code: #161c13;
+      --warn: #8a4b12;
+      --warn-bg: #f7ead6;
+      --ok: #1f6b3a;
+      --ok-bg: #e5f3e4;
+      --shadow: 0 10px 30px rgba(28, 36, 22, 0.08);
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      font-family: "Be Vietnam Pro", "Segoe UI", system-ui, sans-serif;
+      color: var(--ink);
+      background:
+        radial-gradient(1200px 500px at 10% -10%, #e7f0c8 0%, transparent 50%),
+        var(--bg);
+      line-height: 1.6;
+    }
+    code, kbd, pre, button, .tag, .check label, .toc {
+      font-family: "IBM Plex Mono", "SF Mono", ui-monospace, Menlo, monospace;
+    }
+    .layout {
+      display: grid;
+      grid-template-columns: 270px 1fr;
+      min-height: 100vh;
+    }
+    .toc {
+      position: sticky;
+      top: 0;
+      height: 100vh;
+      overflow: auto;
+      padding: 28px 18px 40px;
+      background: #1c2416;
+      color: #e8eedc;
+      font-size: 12px;
+    }
+    .toc h1 {
+      font-family: "Be Vietnam Pro", sans-serif;
+      font-size: 18px;
+      margin: 0 0 6px;
+      color: var(--lime);
+      line-height: 1.25;
+    }
+    .toc p { color: #b7c0a8; margin: 0 0 18px; font-size: 11px; font-family: "Be Vietnam Pro", sans-serif; }
+    .toc a {
+      display: block;
+      color: #d5ddc6;
+      text-decoration: none;
+      padding: 6px 8px;
+      border-radius: 6px;
+    }
+    .toc a:hover, .toc a.active { background: #2a3423; color: var(--lime); }
+    .toc .sub { padding-left: 16px; color: #a9b39a; }
+    .page { padding: 36px 48px 80px; max-width: 920px; }
+    h2 {
+      font-size: 26px;
+      margin: 48px 0 12px;
+      padding-top: 12px;
+    }
+    h3 { font-size: 19px; margin: 28px 0 10px; }
+    h4 { margin: 18px 0 8px; font-size: 16px; }
+    p { margin: 10px 0; }
+    .hero {
+      background: var(--bg-2);
+      border: 1px solid var(--line);
+      border-radius: 18px;
+      padding: 28px;
+      box-shadow: var(--shadow);
+    }
+    .hero h2 { margin-top: 0; }
+    .tags { display: flex; gap: 8px; flex-wrap: wrap; margin: 12px 0 0; }
+    .tag {
+      background: var(--lime);
+      color: var(--forest-2);
+      padding: 3px 9px;
+      border-radius: 999px;
+      font-size: 11px;
+      font-weight: 600;
+    }
+    .callout {
+      border-left: 4px solid var(--forest);
+      background: var(--bg-2);
+      padding: 12px 16px;
+      margin: 16px 0;
+      border-radius: 0 10px 10px 0;
+    }
+    .warn { border-left-color: var(--warn); background: var(--warn-bg); }
+    .ok { border-left-color: var(--ok); background: var(--ok-bg); }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      background: var(--bg-2);
+      font-size: 14px;
+      margin: 12px 0 18px;
+    }
+    th, td {
+      border: 1px solid var(--line);
+      padding: 8px 10px;
+      text-align: left;
+      vertical-align: top;
+    }
+    th { background: #e8efe0; font-family: inherit; }
+    pre {
+      background: var(--code);
+      color: #e8eedc;
+      padding: 16px 18px;
+      border-radius: 12px;
+      overflow: auto;
+      font-size: 13px;
+      line-height: 1.45;
+    }
+    .filename {
+      font-size: 11px;
+      color: var(--muted);
+      margin-bottom: 4px;
+    }
+    kbd {
+      background: #eee;
+      border: 1px solid #ccc;
+      border-bottom-width: 2px;
+      border-radius: 4px;
+      padding: 0 5px;
+      font-size: 12px;
+    }
+    .tabs { display: flex; gap: 6px; flex-wrap: wrap; margin: 16px 0 0; }
+    .tabs button, .reveal {
+      border: 1px solid var(--line);
+      background: var(--bg-2);
+      color: var(--ink);
+      padding: 8px 12px;
+      border-radius: 999px;
+      cursor: pointer;
+      font-size: 12px;
+    }
+    .tabs button.active {
+      background: var(--forest);
+      color: white;
+      border-color: var(--forest);
+    }
+    .panel { display: none; }
+    .panel.active { display: block; }
+    .hidden { display: none; }
+    .check {
+      background: var(--bg-2);
+      border: 1px solid var(--line);
+      border-radius: 12px;
+      padding: 8px 14px;
+      margin: 8px 0;
+    }
+    .check label { font-size: 13px; display: flex; gap: 10px; align-items: flex-start; font-family: "Be Vietnam Pro", sans-serif; }
+    ol.steps li { margin: 8px 0; }
+    .grid2 {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+    }
+    @media (max-width: 960px) {
+      .layout { grid-template-columns: 1fr; }
+      .toc { position: relative; height: auto; }
+      .page { padding: 20px 16px 60px; }
+      .grid2 { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+  <div class="layout">
+    <nav class="toc">
+      <h1>Go1 live coding</h1>
+      <p>Tutorial Python từ đầu. Mở bằng browser. Code trong IDE.</p>
+      <p style="margin: 0 0 16px;"><a href="go1-interview-tutorial.html">English →</a></p>
+      <a href="#start">0. Cách dùng trang này</a>
+      <a href="#format">1. Format buổi interview</a>
+      <a href="#python">2. Python từ đầu</a>
+      <a href="#python" class="sub">Chạy file</a>
+      <a href="#types" class="sub">list, dict, set</a>
+      <a href="#loops" class="sub">loop &amp; function</a>
+      <a href="#json" class="sub">JSON</a>
+      <a href="#collections" class="sub">defaultdict / Counter</a>
+      <a href="#debug">3. Debugger</a>
+      <a href="#how">4. Cách giải (giấy trước)</a>
+      <a href="#how-p1" class="sub">Learners</a>
+      <a href="#how-p2" class="sub">Quiz</a>
+      <a href="#how-p3" class="sub">Watched</a>
+      <a href="#how-p4" class="sub">Concurrent</a>
+      <a href="#p1">5. Code 4 bài</a>
+      <a href="#followups">8. Follow-up</a>
+      <a href="#talk">9. Nói gì khi họ hỏi</a>
+      <a href="#tonight">10. Tối nay + ngày thi</a>
+    </nav>
+
+    <main class="page">
+      <section class="hero" id="start">
+        <div class="tags">
+          <span class="tag">Không dùng AI trong interview</span>
+          <span class="tag">Python</span>
+          <span class="tag">~60 phút</span>
+          <span class="tag">2 interviewer</span>
+        </div>
+        <h2>Go1 Developer interview — bắt đầu ở đây</h2>
+        <p>
+          Vòng 1 là <strong>live coding</strong> với 2 người. Họ đã gửi 4 bài.
+          Bạn sẽ giải <strong>một</strong> bài trên IDE của mình, share screen,
+          rồi họ sẽ thêm requirement. Có bug cũng được — miễn là bạn debug bằng <strong>breakpoint</strong>.
+        </p>
+        <p>
+          Trang này dạy Python cần dùng, rồi từng bài, rồi follow-up.
+          Đọc một lần từ trên xuống. Sau đó <strong>tự gõ</strong> code trong file <code>.py</code> — ngày interview đừng copy-paste.
+        </p>
+        <div class="callout warn">
+          Ngày thi: tắt Copilot / Cursor Tab. Vòng này test software-engineering fundamentals.
+          Sau đó mới có vòng LLM.
+        </div>
+      </section>
+
+      <h2 id="format">1. Format buổi interview</h2>
+      <p>Người đã đi vòng này kể: live coding, hỏi quanh đoạn code vừa viết, thêm requirement trên cùng bài, có bug thì đặt breakpoint rồi fix, xong sớm trước giờ.</p>
+      <table>
+        <tr><th>Thời gian</th><th>Họ làm gì</th><th>Bạn làm gì</th></tr>
+        <tr><td>0–5 phút</td><td>Chọn 1 trong 4 bài</td><td>Nhắc lại đề. Đi example. Hỏi 2 câu clarify.</td></tr>
+        <tr><td>5–20 phút</td><td>Nhìn bạn code</td><td>Viết một function nhỏ. Chạy example JSON.</td></tr>
+        <tr><td>20–35 phút</td><td>“Can you also …”</td><td>Extend code cũ. Đừng viết lại từ đầu.</td></tr>
+        <tr><td>35–50 phút</td><td>Edge case / bug</td><td>Breakpoint → xem map → fix → chạy lại.</td></tr>
+        <tr><td>50–60 phút</td><td>Hỏi quanh code</td><td>Complexity, test, production.</td></tr>
+      </table>
+      <div class="callout">
+        <strong>Pattern của mọi bài:</strong> (1) build một cấu trúc trung gian,
+        (2) rút ra đáp án. Nói 2 bước này <em>trước khi</em> gõ code.
+      </div>
+
+      <h2 id="python">2. Python từ đầu (chỉ phần cần dùng)</h2>
+      <p>Không cần class, pandas, hay thuật toán khoe. Cần <code>dict</code>, <code>set</code>, loop, JSON, và <code>collections</code>.</p>
+
+      <h3>2.1 Chạy một file</h3>
+      <p>Tạo <code>challenge.py</code>. Trong Terminal:</p>
+      <pre>python3 --version
+python3 challenge.py</pre>
+      <p>Nếu lỗi, thử <code>python challenge.py</code>. Cần Python 3.9+.</p>
+      <div class="callout">
+        Indent (thụt dòng) là syntax. Dùng 4 spaces. Mix tab và space sẽ crash.
+        Dấu <code>:</code> mở một block: <code>if</code>, <code>for</code>, <code>def</code>.
+      </div>
+
+      <h3 id="types">2.2 Bốn type sẽ dùng</h3>
+      <pre># list  — có thứ tự, được trùng
+courses = ["Course-0001", "Course-0002", "Course-0001"]
+courses[0]          # "Course-0001"
+len(courses)        # 3
+courses.append("x")
+
+# dict  — key → value  (JSON object thành dict)
+data = {"Learner-0001": ["Course-0001"]}
+data["Learner-0001"]
+data.keys()
+data.values()
+data.items()        # cặp (key, value)
+
+# set   — phần tử unique. Dùng khi đếm "bao nhiêu learner?"
+learners = set()
+learners.add("Learner-0001")
+learners.add("Learner-0001")  # vẫn size 1
+len(learners)       # 1
+
+# tuple — giống list nhưng không sửa. Dùng cho event của sweep-line:
+event = (500, 1)    # (time, delta)</pre>
+
+      <div class="grid2">
+        <div class="callout">
+          <strong>Khi nào dùng set:</strong> đếm người unique.
+          Cùng một learner làm một course hai lần vẫn là 1 learner.
+        </div>
+        <div class="callout warn">
+          <strong>Khi dict crash:</strong>
+          <code>d[key] += 1</code> lỗi nếu <code>key</code> chưa có.
+          Dùng <code>defaultdict</code> hoặc <code>d.get(key, 0)</code>.
+        </div>
+      </div>
+
+      <h3 id="loops">2.3 Loop, enumerate, zip</h3>
+      <pre># loop một list
+for course in courses:
+    print(course)
+
+# cần index (Quiz Results)
+for i, answer in enumerate(answers):
+    print(i, answer)          # 0 A, 1 B, ...
+
+# loop một dict
+for learner, course_list in data.items():
+    for course in course_list:
+        print(learner, course)
+
+# cặp liên tiếp (Watched Courses)
+session = ["A", "B", "C"]
+for a, b in zip(session, session[1:]):
+    print(a, "→", b)          # A→B, B→C</pre>
+
+      <h3>2.4 Function</h3>
+      <pre>def unique_courses(data):
+    """data is a dict: learner -> list of courses"""
+    return ["Course-0001"]
+
+result = unique_courses(data)
+print(result)</pre>
+      <p><code>return</code> đưa đáp án ra ngoài function. <code>print</code> chỉ hiện lên màn hình. Trong interview, <code>print</code> kết quả <code>return</code> để họ thấy.</p>
+
+      <h3>2.5 if / max / sorted / list comprehension</h3>
+      <pre>if count == 1:
+    result.append(course)
+
+# index của số lớn nhất
+counts = [3, 5, 3]
+best = max(range(len(counts)), key=lambda i: counts[i])  # 1
+
+# sort course theo số learner, cao → thấp
+ranked = sorted(pairs, key=lambda x: -len(x[1]))
+
+# tạo list trong một dòng
+ids = [c for c, people in mapping.items() if len(people) == 1]</pre>
+      <p><code>lambda i: counts[i]</code> nghĩa là “function nhỏ: nhận i, trả về counts[i]”. Dùng để <code>max</code> biết “lớn nhất” theo tiêu chí nào.</p>
+
+      <h3 id="json">2.6 JSON — dòng đầu tiên ngày mai nên gõ</h3>
+      <p>Repo của họ đã cho snippet này. Học thuộc.</p>
+      <pre>import json
+
+raw = """
+{
+  "Learner-0001": ["Course-0001", "Course-0002"],
+  "Learner-0002": ["Course-0002", "Course-0004"]
+}
+"""
+data = json.loads(raw)
+print(data)
+print(type(data))   # dict</pre>
+      <table>
+        <tr><th>JSON</th><th>Python sau json.loads</th></tr>
+        <tr><td><code>{ "a": 1 }</code></td><td><code>dict</code></td></tr>
+        <tr><td><code>[1, 2]</code></td><td><code>list</code></td></tr>
+        <tr><td><code>"hi"</code></td><td><code>str</code></td></tr>
+        <tr><td><code>true / false / null</code></td><td><code>True / False / None</code></td></tr>
+      </table>
+      <div class="callout warn">
+        JSON không cho comment. File quiz-results có dòng <code>// Correct Answers</code>
+        — xóa comment trước khi paste, không thì <code>JSONDecodeError</code>.
+      </div>
+
+      <h3 id="collections">2.7 defaultdict và Counter (nên dùng)</h3>
+      <pre>from collections import defaultdict, Counter
+
+# dict of set: course → {learners}
+course_to_learners = defaultdict(set)
+course_to_learners["Course-0001"].add("Learner-0001")
+
+# dict of counter: course → {next_course: how_many}
+transitions = defaultdict(Counter)
+transitions["Course_001"]["Course_002"] += 1
+transitions["Course_001"].most_common(1)
+# [('Course_002', 1)]</pre>
+      <p><code>defaultdict(set)</code> nghĩa là: key mới thì bắt đầu bằng set rỗng. Không crash.</p>
+
+      <h3>2.8 Drill nhỏ (đoán đáp án, rồi bấm Reveal)</h3>
+      <div class="check"><label><input type="checkbox"> Drill 1: <code>s = set(); s.add("A"); s.add("A"); len(s)</code> → ?</label></div>
+      <button class="reveal" data-target="d1">Reveal</button>
+      <div id="d1" class="callout ok hidden"><code>1</code> — set bỏ trùng. Đây là trap của Learners and Courses.</div>
+
+      <div class="check"><label><input type="checkbox"> Drill 2: <code>list(zip(["A","B","C"], ["B","C"]))</code> → ?</label></div>
+      <button class="reveal" data-target="d2">Reveal</button>
+      <div id="d2" class="callout ok hidden"><code>[("A","B"), ("B","C")]</code> — cặp liên tiếp cho Watched Courses. Phần tử cuối không có next.</div>
+
+      <div class="check"><label><input type="checkbox"> Drill 3: <code>d = {}; d["x"] += 1</code> → ?</label></div>
+      <button class="reveal" data-target="d3">Reveal</button>
+      <div id="d3" class="callout ok hidden"><code>KeyError</code>. Dùng <code>defaultdict(int)</code> hoặc <code>d["x"] = d.get("x", 0) + 1</code>.</div>
+
+      <h2 id="debug">3. Debugger — họ thích phần này</h2>
+      <p>Candidate trước có bug, đặt breakpoint, fix, xong sớm. Đó là tín hiệu tốt. Practice một lần tối nay.</p>
+      <h4>VS Code / Cursor</h4>
+      <ol class="steps">
+        <li>Mở <code>challenge.py</code>.</li>
+        <li>Click bên trái số dòng (chấm đỏ) hoặc <kbd>F9</kbd>. Đặt <em>trong</em> loop, không đặt sau function.</li>
+        <li><kbd>F5</kbd> Start Debugging. Chọn Python File. (Nếu hỏi, cài Python extension.)</li>
+        <li>Khi dừng: hover biến, hoặc nhìn panel VARIABLES.</li>
+        <li><kbd>F10</kbd> step over một dòng. <kbd>F5</kbd> continue.</li>
+        <li>Nói to: “Course-0001 ra 2 vì mình đếm listing, không đếm unique learner.”</li>
+      </ol>
+      <p>Nếu debugger khó: <code>print(course_to_learners)</code> rồi làm tiếp. Đừng tốn 10 phút setup debugger trong interview.</p>
+      <pre># Tối nay cố ý trồng bug này, rồi fix
+course_to_learners[course] += 1          # SAI nếu cùng learner lặp
+course_to_learners[course].add(learner)  # ĐÚNG</pre>
+
+      <h2 id="how">4. Cách giải — giấy trước, code sau</h2>
+      <p>
+        Mọi bài Go1 cùng một <strong>issue</strong>:
+        data group theo một chiều, câu hỏi hỏi chiều khác.
+        Không nhìn JSON rồi gõ đáp án được.
+        Phải build một <strong>bảng ở giữa</strong>, rồi đọc đáp án từ bảng đó.
+      </p>
+      <table>
+        <tr><th>Bài</th><th>Data group theo…</th><th>Câu hỏi về…</th><th>Bảng giữa</th></tr>
+        <tr><td>Learners</td><td>learner → list of courses</td><td>course nào hiếm</td><td>course → set of learners</td></tr>
+        <tr><td>Quiz</td><td>mỗi <em>row</em> là một learner</td><td><em>column</em> (câu hỏi) nào dễ nhất</td><td>question index → số người đúng</td></tr>
+        <tr><td>Watched</td><td>cả session</td><td>course <em>next</em> nào hay đi cùng</td><td>course → count of next courses</td></tr>
+        <tr><td>Concurrent</td><td>từng stream riêng</td><td>bao nhiêu stream overlap về <em>time</em></td><td>event trên timeline: +1 start, −1 end</td></tr>
+      </table>
+      <div class="callout">
+        Trong interview, nói trước khi gõ:
+        “I’ll build X, then I’ll pick Y from it.”
+        Đó mới là solution. Python chỉ là đổ số vào bảng.
+      </div>
+
+      <h3 id="how-p1">Challenge 1 — Learners and Courses</h3>
+      <p><strong>Họ cho:</strong> mỗi learner, và list course người đó đã xong.</p>
+      <p><strong>Họ muốn:</strong> course mà <em>chỉ một</em> người làm xong.</p>
+      <p><strong>Issue:</strong> nhìn một learner không đủ. Learner-0001 làm 3 course — chưa biết người khác có làm không. Phải <em>lật (invert)</em> map: từ “ai làm gì” sang “course này ai làm.”</p>
+
+      <h4>Step 1 — viết input thành 2 list</h4>
+      <pre>Learner-0001 : Course-0001, Course-0002, Course-0003
+Learner-0002 : Course-0002, Course-0003, Course-0004</pre>
+
+      <h4>Step 2 — bảng trống: course → people</h4>
+      <p>Đi từng cặp (learner, course). <code>add</code> learner vào set của course đó.</p>
+      <table>
+        <tr><th>Bạn thấy</th><th>Bảng thành</th></tr>
+        <tr><td>0001 làm Course-0001</td><td>Course-0001 → {0001}</td></tr>
+        <tr><td>0001 làm Course-0002</td><td>Course-0002 → {0001}</td></tr>
+        <tr><td>0001 làm Course-0003</td><td>Course-0003 → {0001}</td></tr>
+        <tr><td>0002 làm Course-0002</td><td>Course-0002 → {0001, 0002}</td></tr>
+        <tr><td>0002 làm Course-0003</td><td>Course-0003 → {0001, 0002}</td></tr>
+        <tr><td>0002 làm Course-0004</td><td>Course-0004 → {0002}</td></tr>
+      </table>
+
+      <h4>Step 3 — giữ size == 1</h4>
+      <table>
+        <tr><th>Course</th><th>Learners</th><th>Count</th><th>Keep?</th></tr>
+        <tr><td>Course-0001</td><td>{0001}</td><td>1</td><td>yes</td></tr>
+        <tr><td>Course-0002</td><td>{0001, 0002}</td><td>2</td><td>no</td></tr>
+        <tr><td>Course-0003</td><td>{0001, 0002}</td><td>2</td><td>no</td></tr>
+        <tr><td>Course-0004</td><td>{0002}</td><td>1</td><td>yes</td></tr>
+      </table>
+      <p><strong>Đáp án:</strong> <code>["Course-0001", "Course-0004"]</code></p>
+
+      <h4>Trap (dataset 4)</h4>
+      <p>Learner-0001 liệt kê Course-0001 <em>hai lần</em>. Nếu đếm listing (<code>+= 1</code>), Course-0001 thành 2 rồi bị loại. Sai. Đếm <strong>người</strong> bằng <code>set</code>. Add “0001” hai lần vẫn là <code>{0001}</code>, size 1.</p>
+      <pre># Python khớp với bảng
+from collections import defaultdict
+
+def unique_courses(data):
+    table = defaultdict(set)          # course → set of learners
+    for learner, courses in data.items():
+        for course in courses:
+            table[course].add(learner)  # Step 2
+    answer = []
+    for course, people in table.items():
+        if len(people) == 1:            # Step 3
+            answer.append(course)
+    return answer</pre>
+      <p>Nếu họ nói “course có ít nhất 2 learner,” chỉ đổi Step 3 thành <code>len(people) &gt;= 2</code>. Bảng giữ nguyên.</p>
+
+      <h3 id="how-p2">Challenge 2 — Quiz Results</h3>
+      <p><strong>Họ cho:</strong> đáp án đúng (answer key) + mỗi learner một row.</p>
+      <p><strong>Họ muốn:</strong> <em>question</em> nào nhiều người đúng nhất (index của câu đó).</p>
+      <p><strong>Issue:</strong> một row là cả bài của một người. Câu hỏi không phải “ai điểm cao.” Mà là “column nào dễ nhất.” Nhìn <em>dọc</em> từng cột.</p>
+
+      <h4>Step 1 — viết theo cột</h4>
+      <pre>index:           0    1    2
+correct:         A    B    C
+learner 1:       A    B    B
+learner 2:       C    B    C
+learner 3:       A    B    C
+learner 4:       B    B    A
+learner 5:       A    B    C</pre>
+
+      <h4>Step 2 — đếm match từng cột</h4>
+      <table>
+        <tr><th>Question</th><th>So với</th><th>Hits</th><th>Count</th></tr>
+        <tr><td>index 0</td><td>A</td><td>A, C, A, B, A → A A A</td><td>3</td></tr>
+        <tr><td>index 1</td><td>B</td><td>B B B B B</td><td>5</td></tr>
+        <tr><td>index 2</td><td>C</td><td>B, C, C, A, C → C C C</td><td>3</td></tr>
+      </table>
+
+      <h4>Step 3 — count lớn nhất thắng</h4>
+      <p>5 là max → index <strong>1</strong>. Output: <code>The easiest question is index 1</code></p>
+      <pre>def easiest_question(answers, responses):
+    n = len(answers)
+    counts = [0] * n              # Step 2: một ô cho mỗi question
+    for row in responses:         # từng learner
+        for i, ans in enumerate(row):
+            if ans == answers[i]:
+                counts[i] += 1
+    best = 0
+    for i in range(n):            # Step 3
+        if counts[i] > counts[best]:
+            best = i
+    return f"The easiest question is index {best}"</pre>
+      <p><strong>Follow-up:</strong> hardest question = count nhỏ nhất (index 3 ở dataset 3). Tie: hỏi họ, hoặc lấy index đầu tiên.</p>
+      <div class="callout warn">Khi paste JSON, xóa dòng comment <code>// Correct Answers</code>. JSON không có comment.</div>
+
+      <h3 id="how-p3">Challenge 3 — Watched Courses</h3>
+      <p><strong>Họ cho:</strong> session. Mỗi session là list course theo thứ tự người đó xem.</p>
+      <p><strong>Họ muốn:</strong> với mỗi course, course nào hay đi <em>ngay sau</em> nhất.</p>
+      <p><strong>Issue:</strong> course cuối session không có next. Chỉ quan tâm <strong>cặp kề nhau</strong>: (item 0, item 1), (item 1, item 2), …</p>
+
+      <h4>Step 1 — cắt session thành mũi tên</h4>
+      <pre>["Course_001", "Course_002", "Course_003", "Course_004"]
+
+001 → 002
+002 → 003
+003 → 004
+004 → (nothing)</pre>
+
+      <h4>Step 2 — đếm mũi tên</h4>
+      <p>Một session là đủ cho example: mỗi mũi tên xuất hiện 1 lần, nên “most common next” chính là next duy nhất.</p>
+      <table>
+        <tr><th>Course</th><th>Next counts</th><th>Winner</th></tr>
+        <tr><td>Course_001</td><td>Course_002: 1</td><td>Course_002</td></tr>
+        <tr><td>Course_002</td><td>Course_003: 1</td><td>Course_003</td></tr>
+        <tr><td>Course_003</td><td>Course_004: 1</td><td>Course_004</td></tr>
+      </table>
+      <p>Dataset 2 có nhiều session. Cộng tất cả mũi tên vào cùng một bảng. Nếu Course_001 → Course_002 một lần và Course_001 → Course_003 một lần, đó là <strong>tie</strong>. Nói rule của bạn: first-seen, hoặc alphabetical. Họ cần bạn <em>nhận ra</em> tie.</p>
+      <pre>from collections import defaultdict, Counter
+
+def most_common_next(sessions):
+    table = defaultdict(Counter)   # course → {next: count}
+    for session in sessions:
+        for i in range(len(session) - 1):   # dừng trước phần tử cuối
+            current = session[i]
+            nxt = session[i + 1]
+            table[current][nxt] += 1
+    answer = {}
+    for course, counts in table.items():
+        winner = counts.most_common(1)[0][0]
+        answer[course] = winner
+    return answer</pre>
+      <p><code>range(len(session) - 1)</code> là mẹo: 4 course thì i = 0,1,2 thôi. Index 3 không có next.</p>
+
+      <h3 id="how-p4">Challenge 4 — Concurrent Learners</h3>
+      <p><strong>Họ cho:</strong> stream: <code>[user, start, end]</code>.</p>
+      <p><strong>Họ muốn:</strong> số stream overlap cùng lúc lớn nhất.</p>
+      <p><strong>Issue:</strong> nhìn một stream không đủ. Overlap là chuyện <strong>timeline</strong>. Hai stream overlap nếu cái này start trước khi cái kia end.</p>
+      <pre>["User_001", 0, 1000]
+["User_002", 500, 2000]
+["User_003", 2500, 3000]
+["User_004", 400, 1400]
+
+time:  0      400  500       1000  1400     2000    2500  3000
+U1     |----------------------|
+U4            |---------------------|
+U2                 |--------------------------|
+U3                                                  |------|</pre>
+      <p>Tại t=500, U1, U2, U4 cùng bật → <strong>3</strong>. U3 sau, một mình. Đáp án là 3.</p>
+
+      <h4>Cách giải không cần vẽ (sweep)</h4>
+      <p>Mỗi stream thành 2 event: start = +1, end = −1. Sort theo time. Đi trái → phải. Nhớ số “đang xem” cao nhất.</p>
+      <table>
+        <tr><th>Time</th><th>Event</th><th>Current</th><th>Peak</th></tr>
+        <tr><td>0</td><td>U1 start +1</td><td>1</td><td>1</td></tr>
+        <tr><td>400</td><td>U4 start +1</td><td>2</td><td>2</td></tr>
+        <tr><td>500</td><td>U2 start +1</td><td>3</td><td>3</td></tr>
+        <tr><td>1000</td><td>U1 end −1</td><td>2</td><td>3</td></tr>
+        <tr><td>1400</td><td>U4 end −1</td><td>1</td><td>3</td></tr>
+        <tr><td>2000</td><td>U2 end −1</td><td>0</td><td>3</td></tr>
+        <tr><td>2500</td><td>U3 start +1</td><td>1</td><td>3</td></tr>
+        <tr><td>3000</td><td>U3 end −1</td><td>0</td><td>3</td></tr>
+      </table>
+      <pre>def max_concurrent(streams):
+    events = []
+    for user, start, end in streams:
+        events.append((start, +1))
+        events.append((end, -1))
+    events.sort()   # time trước; cùng time thì -1 trước +1
+    current = 0
+    peak = 0
+    for time, delta in events:
+        current = current + delta
+        if current > peak:
+            peak = current
+    return peak</pre>
+      <p><strong>Trap:</strong> (1) cùng user có thể có 2 stream — đếm stream, không đếm user. Dataset 4 max = 4. (2) Cái này end lúc 1000, cái kia start lúc 1000: thường <strong>không</strong> overlap — để −1 trước +1 khi time bằng nhau (<code>events.sort()</code> làm sẵn vì −1 &lt; +1).</p>
+      <p><strong>Follow-up:</strong> “Peak lúc nào?” Lưu <code>time</code> khi update <code>peak</code>. “Unique users?” Giữ <code>set</code> các user id đang active, peak = max <code>len(set)</code>.</p>
+
+      <h2>5–8. Bốn bài (code để gõ)</h2>
+      <p>Họ sẽ chọn một. Chuẩn bị cả bốn. Bấm tab. Cách giải trên giấy ở trên — đây là cùng logic trong file.</p>
+      <div class="tabs" id="problem-tabs">
+        <button class="active" data-panel="p1">1. Learners</button>
+        <button data-panel="p2">2. Quiz</button>
+        <button data-panel="p3">3. Watched</button>
+        <button data-panel="p4">4. Concurrent</button>
+      </div>
+
+      <article id="p1" class="panel active">
+        <h3>Learners and Courses — dễ nhất, chọn an toàn</h3>
+        <p><strong>Return course ID chỉ có đúng 1 learner hoàn thành.</strong></p>
+        <p>Example: Learner-0001 làm 1,2,3. Learner-0002 làm 2,3,4. Output: <code>["Course-0001", "Course-0004"]</code>.</p>
+        <h4>Hỏi trước khi code</h4>
+        <ul>
+          <li>Một learner liệt kê cùng course hai lần — vẫn là 1 learner? (Yes. Dataset 4 làm vậy.)</li>
+          <li>Thứ tự output có quan trọng không?</li>
+        </ul>
+        <h4>Hai bước</h4>
+        <p>1) Invert: course → set of learners. 2) Giữ course có size == 1.</p>
+        <div class="filename">challenge.py</div>
+        <pre>import json
+from collections import defaultdict
+
+raw = """
+{
+  "Learner-0001": ["Course-0001", "Course-0002", "Course-0003"],
+  "Learner-0002": ["Course-0002", "Course-0003", "Course-0004"]
+}
+"""
+data = json.loads(raw)
+
+def unique_courses(data):
+    course_to_learners = defaultdict(set)
+    for learner, courses in data.items():
+        for course in courses:
+            course_to_learners[course].add(learner)
+    return [c for c, people in course_to_learners.items() if len(people) == 1]
+
+print(unique_courses(data))
+# ['Course-0001', 'Course-0004']</pre>
+        <p><strong>Complexity:</strong> O(n) trên mọi listing. Space O(số course unique).</p>
+        <h4>Đáp án kỳ vọng</h4>
+        <table>
+          <tr><th>Dataset</th><th>Kết quả</th></tr>
+          <tr><td>1</td><td>cả bốn course (mỗi course một learner)</td></tr>
+          <tr><td>2</td><td>Course-0001, Course-0004</td></tr>
+          <tr><td>3</td><td>cả ba course của Learner-0001</td></tr>
+          <tr><td>4</td><td>Course-0001, Course-0004 — duplicate trên một learner không được tính là 2</td></tr>
+          <tr><td>5</td><td>Course-0001, Course-0007</td></tr>
+          <tr><td>6</td><td>Course-0001, Course-0004</td></tr>
+        </table>
+        <div class="callout warn">Trap là dataset 4. Nếu viết <code>count[course] += 1</code>, Course-0001 thành 2 rồi biến mất. Dùng <code>set</code>.</div>
+      </article>
+
+      <article id="p2" class="panel">
+        <h3>Quiz Results — dễ</h3>
+        <p><strong>Return index của easiest question</strong> = câu nhiều learner đúng nhất. Index 0-based (example nói index 1).</p>
+        <p>Đi example to: correct <code>["A","B","C"]</code>. Cột 0 có 3 đúng, cột 1 có <strong>5</strong>, cột 2 có 3 → index 1.</p>
+        <h4>Hỏi trước khi code</h4>
+        <ul>
+          <li>Hai câu tie thì lấy index đầu, cuối, hay cái nào cũng được?</li>
+          <li>Paste JSON <em>không</em> có <code>// comments</code> từ file data.</li>
+        </ul>
+        <pre>import json
+
+answers = json.loads('["A", "B", "C"]')
+responses = json.loads('''
+[
+  ["A", "B", "B"],
+  ["C", "B", "C"],
+  ["A", "B", "C"],
+  ["B", "B", "A"],
+  ["A", "B", "C"]
+]
+''')
+
+def easiest_question(answers, responses):
+    n = len(answers)
+    correct = [0] * n
+    for row in responses:
+        for i, ans in enumerate(row):
+            if ans == answers[i]:
+                correct[i] += 1
+    best = max(range(n), key=lambda i: correct[i])
+    return f"The easiest question is index {best}"
+
+print(easiest_question(answers, responses))</pre>
+        <table>
+          <tr><th>Dataset</th><th>Index</th><th>Lý do</th></tr>
+          <tr><td>1</td><td><strong>1</strong></td><td>5/5 đúng câu 1</td></tr>
+          <tr><td>2</td><td><strong>4</strong></td><td>ai cũng D, 5/5</td></tr>
+          <tr><td>3</td><td><strong>3</strong></td><td>10/13 đúng (Q1 có 9, Q0 có 7)</td></tr>
+        </table>
+      </article>
+
+      <article id="p3" class="panel">
+        <h3>Watched Courses — trung bình, điểm là tie</h3>
+        <p><strong>Với mỗi course, next course phổ biến nhất</strong> trên mọi session. Item cuối session không có next.</p>
+        <h4>Hỏi trước khi code</h4>
+        <ul>
+          <li>Tie? Dataset 2, 3, 4 đều có. Nói: “I’ll take first-seen / most_common unless you want alphabetical.”</li>
+          <li>Course_001 → Course_001 có tính không? (Dataset 4. Yes, trừ khi họ bảo skip.)</li>
+          <li>Course không bao giờ có next: bỏ (khớp example).</li>
+        </ul>
+        <pre>import json
+from collections import defaultdict, Counter
+
+sessions = json.loads('''
+[
+  ["Course_001", "Course_002", "Course_003", "Course_004"]
+]
+''')
+
+def most_common_next(sessions):
+    transitions = defaultdict(Counter)
+    for session in sessions:
+        for current, nxt in zip(session, session[1:]):
+            transitions[current][nxt] += 1
+    return {
+        course: counts.most_common(1)[0][0]
+        for course, counts in transitions.items()
+    }
+
+print(most_common_next(sessions))
+# {'Course_001': 'Course_002', 'Course_002': 'Course_003', 'Course_003': 'Course_004'}</pre>
+        <p>Dataset 2 làm tay (nên nói to):</p>
+        <ul>
+          <li>Course_001 → 002 một lần và 003 một lần → <strong>tie</strong></li>
+          <li>Course_002 → 003 hai lần → Course_003</li>
+          <li>Course_003 và Course_004 → mỗi next một lần → <strong>tie</strong></li>
+        </ul>
+        <p>Họ cần bạn <em>thấy</em> tie, không cần rule “đúng tuyệt đối.”</p>
+      </article>
+
+      <article id="p4" class="panel">
+        <h3>Concurrent Learners — khó nhất, “CS” nhất</h3>
+        <p><strong>Số stream overlap tối đa.</strong> Đếm stream, không đếm unique user. Dataset 4 cùng user hai stream một lúc.</p>
+        <pre>Timeline dataset 2 (max = 3):
+
+0         400  500        1000   1400      2000     2500
+U1 |----------------------|
+U4      |----------------------|
+U2           |---------------------------|
+U3                                               |------|
+         overlap of 3 ───────────</pre>
+        <h4>Hỏi trước khi code</h4>
+        <ul>
+          <li>Cái này end 1000, cái kia start 1000 — có overlap không? Thường <strong>không</strong> — xử lý end event trước start event khi cùng time.</li>
+          <li>Cùng user, hai stream overlap → đếm 2?</li>
+        </ul>
+        <p>Có thể bắt đầu brute: “với mỗi stream, đếm bao nhiêu stream khác overlap” (O(n²)). Rồi nói mình có thể sweep.</p>
+        <pre>import json
+
+streams = json.loads('''
+[
+  ["User_001", 0, 1000],
+  ["User_002", 500, 2000],
+  ["User_003", 2500, 3000],
+  ["User_004", 400, 1400]
+]
+''')
+
+def max_concurrent(streams):
+    events = []
+    for _user, start, end in streams:
+        events.append((start, 1))   # start = +1
+        events.append((end, -1))    # end   = -1
+    # sort theo time; cùng time thì -1 trước +1
+    events.sort(key=lambda e: (e[0], e[1]))
+    current = peak = 0
+    for _time, delta in events:
+        current += delta
+        peak = max(peak, current)
+    return f"The maximum number of concurrent streams is {peak}."
+
+print(max_concurrent(streams))
+# The maximum number of concurrent streams is 3.</pre>
+        <table>
+          <tr><th>Dataset</th><th>Max</th></tr>
+          <tr><td>1</td><td>2</td></tr>
+          <tr><td>2</td><td>3</td></tr>
+          <tr><td>3</td><td>5 (khoảng t=1200)</td></tr>
+          <tr><td>4</td><td>4 (cùng user đếm hai lần)</td></tr>
+        </table>
+        <p>Sort key: event là <code>(time, delta)</code>. <code>delta</code> là -1 hoặc +1, nên lúc 1000 thì end (-1) đứng trước start (+1). Không overlap.</p>
+      </article>
+
+      <h2 id="followups">8. Follow-up — giữ helper cũ</h2>
+      <p>Bản đầu chạy được, họ đổi spec. Extend. Đừng viết lại từ đầu.</p>
+
+      <h4>Learners — top K, hoặc at least N</h4>
+      <pre>def courses_with_at_least(data, n):
+    m = invert(data)  # cùng course → set(learners)
+    return [c for c, s in m.items() if len(s) >= n]
+
+def top_k(data, k=3):
+    m = invert(data)
+    ranked = sorted(m.items(), key=lambda x: -len(x[1]))
+    return [(c, len(s)) for c, s in ranked[:k]]</pre>
+
+      <h4>Quiz — hardest, hoặc in hết count</h4>
+      <pre>easiest = max(range(n), key=lambda i: correct[i])
+hardest = min(range(n), key=lambda i: correct[i])
+# nếu họ hỏi tie: "I'll take the first index."</pre>
+
+      <h4>Watched — top 2 next course</h4>
+      <pre>return {c: counts.most_common(2) for c, counts in transitions.items()}</pre>
+
+      <h4>Concurrent — peak time, hoặc unique users</h4>
+      <pre># khi sweep, if current > peak: peak, peak_time = current, t
+# unique users: giữ set user id đang active, peak = max len(set)</pre>
+
+      <h2 id="talk">9. Nói gì (câu ngắn)</h2>
+      <p>Interview bằng English. Học thuộc các câu này.</p>
+      <table>
+        <tr><th>Họ hỏi</th><th>Bạn nói</th></tr>
+        <tr><td>Walk me through this</td><td>“I invert learner→courses into course→learners, then keep size == 1.”</td></tr>
+        <tr><td>Why a set?</td><td>“Dataset 4 repeats a course for the same person. A counter would treat that as two learners.”</td></tr>
+        <tr><td>Complexity?</td><td>Learners/Quiz/Watched: O(n). Concurrent: O(n log n) because of sort.</td></tr>
+        <tr><td>What would you test?</td><td>Empty input, one learner, duplicates, ties, touching intervals.</td></tr>
+        <tr><td>Production?</td><td>Hash maps are enough for 1–3. For streams, sweep — don’t compare every pair.</td></tr>
+      </table>
+      <div class="callout">
+        Nói với cả hai người. Sau lần print đầu đúng: “First version done. Want me to extend it?”
+        Đó là cách xong sớm mà vẫn mạnh.
+      </div>
+
+      <h2 id="tonight">10. Tối nay (45 phút, không AI) và ngày thi</h2>
+      <div class="check"><label><input type="checkbox" data-save="vi-t1"> Tạo <code>challenge.py</code>. Chạy <code>python3 challenge.py</code>.</label></div>
+      <div class="check"><label><input type="checkbox" data-save="vi-t2"> Gõ Learners and Courses từ memory. Check cả 6 đáp án.</label></div>
+      <div class="check"><label><input type="checkbox" data-save="vi-t3"> Trồng bug <code>+= 1</code> trên dataset 4. Breakpoint. Fix thành set.</label></div>
+      <div class="check"><label><input type="checkbox" data-save="vi-t4"> Gõ Concurrent sweep. Confirm 2, 3, 5, 4.</label></div>
+      <div class="check"><label><input type="checkbox" data-save="vi-t5"> Gõ Quiz + Watched một lần. Nói to tie rule.</label></div>
+      <div class="check"><label><input type="checkbox" data-save="vi-t6"> Học thuộc snippet <code>json.loads(""" ... """)</code>.</label></div>
+
+      <h3>Ngày thi</h3>
+      <ul>
+        <li>Một file <code>.py</code> trống. Font đủ to khi share screen.</li>
+        <li>Tắt Copilot / Cursor Tab.</li>
+        <li>Nhớ <kbd>F9</kbd> breakpoint và <kbd>F5</kbd> run.</li>
+        <li>Nếu họ cho chọn: <strong>Learners and Courses</strong> cho win sạch + follow-up. <strong>Concurrent</strong> nếu muốn show sweep.</li>
+        <li>5 phút đầu: đi example bằng tay. Rồi code. Rồi requirement thêm.</li>
+      </ul>
+
+      <h3>File khởi đầu (gõ lúc bắt đầu call)</h3>
+      <pre>import json
+from collections import defaultdict, Counter
+
+raw = """
+PASTE_JSON_HERE
+"""
+data = json.loads(raw)
+print(data)
+
+def solve(data):
+    pass
+
+print(solve(data))</pre>
+
+      <p style="color: var(--muted); font-size: 13px; margin-top: 40px;">
+        File local để ôn. Đừng mở trang này trong interview.
+        Data và đề từ go1com/go1-coding-challenge.
+      </p>
+    </main>
+  </div>
+  <script>
+    const tabs = document.querySelectorAll("#problem-tabs button");
+    const panels = document.querySelectorAll(".panel");
+    tabs.forEach((btn) => {
+      btn.addEventListener("click", () => {
+        tabs.forEach((b) => b.classList.remove("active"));
+        panels.forEach((p) => p.classList.remove("active"));
+        btn.classList.add("active");
+        document.getElementById(btn.dataset.panel).classList.add("active");
+        document.getElementById(btn.dataset.panel).scrollIntoView({ behavior: "smooth", block: "start" });
+      });
+    });
+    document.querySelectorAll(".reveal").forEach((btn) => {
+      btn.addEventListener("click", () => {
+        document.getElementById(btn.dataset.target).classList.toggle("hidden");
+      });
+    });
+    document.querySelectorAll("input[data-save]").forEach((box) => {
+      const key = "go1-prep-" + box.dataset.save;
+      box.checked = localStorage.getItem(key) === "1";
+      box.addEventListener("change", () => localStorage.setItem(key, box.checked ? "1" : "0"));
+    });
+    const links = document.querySelectorAll(".toc a");
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((e) => {
+        if (e.isIntersecting) {
+          const id = e.target.id;
+          if (!id) return;
+          links.forEach((a) => a.classList.toggle("active", a.getAttribute("href") === "#" + id));
+        }
+      });
+    }, { rootMargin: "-20% 0px -70% 0px" });
+    document.querySelectorAll("h2[id], article[id]").forEach((el) => observer.observe(el));
+  </script>
+</body>
+</html>
