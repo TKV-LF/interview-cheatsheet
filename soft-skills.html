@@ -1,0 +1,1658 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Soft skills — Agile, debug, AI, pressure</title>
+  <link href="https://api.fontshare.com/v2/css?f[]=satoshi@400,500,700&f[]=general-sans@400,500,600,700&display=swap" rel="stylesheet">
+  <style>
+    :root, [data-theme="light"] {
+      --text-xs: clamp(0.75rem, 0.7rem + 0.25vw, 0.875rem);
+      --text-sm: clamp(0.875rem, 0.8rem + 0.35vw, 1rem);
+      --text-base: clamp(1rem, 0.95rem + 0.25vw, 1.125rem);
+      --text-lg: clamp(1.125rem, 1rem + 0.75vw, 1.5rem);
+      --text-xl: clamp(1.5rem, 1.2rem + 1.25vw, 2.25rem);
+      --space-1: 0.25rem; --space-2: 0.5rem; --space-3: 0.75rem; --space-4: 1rem;
+      --space-5: 1.25rem; --space-6: 1.5rem; --space-8: 2rem; --space-10: 2.5rem;
+      --space-12: 3rem; --space-16: 4rem;
+      --color-bg: #f7f6f2;
+      --color-surface: #f9f8f5;
+      --color-surface-2: #fbfbf9;
+      --color-surface-offset: #edeae5;
+      --color-border: #d4d1ca;
+      --color-divider: #dcd9d5;
+      --color-text: #28251d;
+      --color-text-muted: #6f6c65;
+      --color-text-faint: #98958f;
+      --color-primary: #01696f;
+      --color-primary-hover: #0c4e54;
+      --color-primary-highlight: #d8e6e3;
+      --color-success: #437a22;
+      --color-warning: #964219;
+      --radius-sm: 0.375rem;
+      --radius-md: 0.5rem;
+      --radius-lg: 0.75rem;
+      --radius-xl: 1rem;
+      --shadow-sm: 0 1px 2px rgba(30, 27, 22, 0.06);
+      --shadow-md: 0 10px 30px rgba(30, 27, 22, 0.08);
+      --font-display: 'General Sans', 'Inter', sans-serif;
+      --font-body: 'Satoshi', 'Inter', sans-serif;
+    }
+
+    [data-theme="dark"] {
+      --color-bg: #171614;
+      --color-surface: #1c1b19;
+      --color-surface-2: #201f1d;
+      --color-surface-offset: #2a2826;
+      --color-border: #393836;
+      --color-divider: #2f2e2c;
+      --color-text: #e1dfdb;
+      --color-text-muted: #adaaa4;
+      --color-text-faint: #7c7974;
+      --color-primary: #4f98a3;
+      --color-primary-hover: #6aafba;
+      --color-primary-highlight: rgba(79,152,163,0.16);
+      --color-success: #79b95a;
+      --color-warning: #d08b60;
+      --shadow-sm: 0 1px 2px rgba(0,0,0,0.18);
+      --shadow-md: 0 10px 30px rgba(0,0,0,0.3);
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      font-family: var(--font-body);
+      font-size: var(--text-base);
+      color: var(--color-text);
+      background: var(--color-bg);
+      line-height: 1.65;
+    }
+
+    a { color: inherit; text-decoration: none; }
+    .page {
+      max-width: 1600px;
+      margin: 0 auto;
+      padding: var(--space-6);
+    }
+
+    .topbar {
+      position: sticky;
+      top: 0;
+      z-index: 30;
+      backdrop-filter: blur(10px);
+      background: color-mix(in srgb, var(--color-bg) 88%, transparent);
+      border-bottom: 1px solid var(--color-divider);
+    }
+
+    .topbar-inner {
+      max-width: 1600px;
+      margin: 0 auto;
+      padding: var(--space-4) var(--space-6);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: var(--space-4);
+    }
+
+    .brand h1 {
+      margin: 0;
+      font-family: var(--font-display);
+      font-size: var(--text-xl);
+      line-height: 1.05;
+      letter-spacing: -0.03em;
+    }
+
+    .brand p {
+      margin: var(--space-2) 0 0;
+      color: var(--color-text-muted);
+      font-size: var(--text-sm);
+      max-width: 72ch;
+    }
+
+    .top-actions {
+      display: flex;
+      align-items: center;
+      gap: var(--space-3);
+      flex-wrap: wrap;
+    }
+
+    .btn {
+      border: 1px solid var(--color-border);
+      background: var(--color-surface);
+      color: var(--color-text);
+      border-radius: var(--radius-full, 999px);
+      padding: 0.72rem 1rem;
+      font-size: var(--text-sm);
+      font-weight: 600;
+      box-shadow: var(--shadow-sm);
+      cursor: pointer;
+    }
+
+    .btn:hover { background: var(--color-surface-2); }
+    .theme-toggle { min-width: 44px; min-height: 44px; display: inline-flex; align-items: center; justify-content: center; }
+
+    .hero {
+      display: grid;
+      grid-template-columns: 1.2fr 0.8fr;
+      gap: var(--space-6);
+      margin: var(--space-6) 0 var(--space-8);
+    }
+
+    .hero-card, .toc-card, .question-card {
+      background: var(--color-surface);
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius-xl);
+      box-shadow: var(--shadow-sm);
+    }
+
+    .hero-card { padding: var(--space-6); }
+    .hero-kpis {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: var(--space-3);
+      margin-top: var(--space-5);
+    }
+
+    .kpi {
+      background: var(--color-surface-2);
+      border: 1px solid var(--color-divider);
+      border-radius: var(--radius-lg);
+      padding: var(--space-4);
+    }
+
+    .kpi strong {
+      display: block;
+      font-size: var(--text-lg);
+      font-family: var(--font-display);
+      margin-bottom: var(--space-2);
+    }
+
+    .kpi span {
+      font-size: var(--text-sm);
+      color: var(--color-text-muted);
+    }
+
+    .toc-card {
+      padding: var(--space-6);
+      background: linear-gradient(180deg, var(--color-surface) 0%, var(--color-surface-2) 100%);
+    }
+
+    .section-label {
+      display: inline-flex;
+      align-items: center;
+      gap: var(--space-2);
+      padding: 0.35rem 0.7rem;
+      border-radius: 999px;
+      background: var(--color-primary-highlight);
+      color: var(--color-primary);
+      font-size: var(--text-xs);
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      margin-bottom: var(--space-4);
+    }
+
+    .toc-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: var(--space-3);
+      margin-top: var(--space-4);
+    }
+
+    .toc-link {
+      display: block;
+      padding: var(--space-4);
+      border-radius: var(--radius-lg);
+      background: var(--color-bg);
+      border: 1px solid var(--color-divider);
+      min-height: 100%;
+    }
+
+    .toc-link:hover {
+      border-color: var(--color-primary);
+      background: var(--color-primary-highlight);
+    }
+
+    .toc-link small {
+      display: block;
+      color: var(--color-text-faint);
+      margin-bottom: var(--space-2);
+      font-size: var(--text-xs);
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+    }
+
+    .toc-link strong {
+      display: block;
+      font-size: var(--text-sm);
+      line-height: 1.45;
+    }
+
+    .questions {
+      display: grid;
+      gap: var(--space-5);
+      padding-bottom: var(--space-16);
+    }
+
+    .question-card {
+      overflow: hidden;
+      scroll-margin-top: 100px;
+    }
+
+    .question-head {
+      padding: var(--space-5) var(--space-5) var(--space-4);
+      border-bottom: 1px solid var(--color-divider);
+      background: var(--color-surface-2);
+    }
+
+    .question-head h2 {
+      margin: 0;
+      font-family: var(--font-display);
+      font-size: var(--text-lg);
+      line-height: 1.15;
+      letter-spacing: -0.02em;
+    }
+
+    .question-head p {
+      margin: var(--space-2) 0 0;
+      color: var(--color-text-muted);
+      font-size: var(--text-sm);
+    }
+
+    .grid4 {
+      display: grid;
+      grid-template-columns: 0.8fr 1.2fr 0.8fr 1.2fr;
+    }
+
+    .cell {
+      padding: var(--space-5);
+      border-right: 1px solid var(--color-divider);
+      border-bottom: 1px solid var(--color-divider);
+      min-width: 0;
+    }
+
+    .grid4 .cell:nth-child(4n) { border-right: none; }
+    .row-head {
+      background: var(--color-surface-2);
+      font-size: var(--text-xs);
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      font-weight: 700;
+      color: var(--color-text-muted);
+      padding-top: var(--space-4);
+      padding-bottom: var(--space-4);
+    }
+
+    .cell.question {
+      background: color-mix(in srgb, var(--color-surface-2) 70%, var(--color-bg));
+      font-weight: 600;
+    }
+
+    .cell.answer {
+      background: var(--color-surface);
+    }
+
+    .cell p { margin: 0; }
+    .cell p + p { margin-top: var(--space-3); }
+
+    .note {
+      padding: var(--space-4) var(--space-5);
+      background: color-mix(in srgb, var(--color-primary-highlight) 55%, var(--color-surface));
+      border-top: 1px solid var(--color-divider);
+      color: var(--color-text-muted);
+      font-size: var(--text-sm);
+    }
+
+    .tag-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: var(--space-2);
+      margin-top: var(--space-4);
+    }
+
+    .tag {
+      padding: 0.35rem 0.7rem;
+      border: 1px solid var(--color-divider);
+      border-radius: 999px;
+      background: var(--color-bg);
+      color: var(--color-text-muted);
+      font-size: var(--text-xs);
+      font-weight: 600;
+    }
+
+    .footer-note {
+      margin-top: var(--space-8);
+      color: var(--color-text-muted);
+      font-size: var(--text-sm);
+      text-align: center;
+    }
+
+    @media (max-width: 1180px) {
+      .hero { grid-template-columns: 1fr; }
+      .grid4 { grid-template-columns: 1fr 1fr; }
+      .grid4 .cell:nth-child(2n) { border-right: none; }
+      .grid4 .cell:nth-child(4n) { border-right: none; }
+      .row-head { display: none; }
+      .cell.question { border-bottom: 1px solid var(--color-divider); }
+    }
+
+    
+    .section-nav {
+      display: flex;
+      flex-wrap: wrap;
+      gap: var(--space-2);
+      margin-top: var(--space-4);
+    }
+    .section-nav a {
+      padding: 0.4rem 0.75rem;
+      border: 1px solid var(--color-divider);
+      border-radius: 999px;
+      background: var(--color-bg);
+      font-size: var(--text-xs);
+      font-weight: 700;
+      color: var(--color-text-muted);
+    }
+    .section-nav a:hover {
+      border-color: var(--color-primary);
+      color: var(--color-primary);
+      background: var(--color-primary-highlight);
+    }
+    .section-block {
+      scroll-margin-top: 110px;
+      margin-top: var(--space-8);
+    }
+    .section-block > h2 {
+      font-family: var(--font-display);
+      font-size: var(--text-lg);
+      letter-spacing: -0.02em;
+      margin: 0 0 var(--space-4);
+    }
+    .crib {
+      padding: var(--space-4) var(--space-5);
+      background: color-mix(in srgb, var(--color-warning) 8%, var(--color-surface));
+      border-top: 1px solid var(--color-divider);
+      font-size: var(--text-sm);
+      color: var(--color-text-muted);
+    }
+    .crib p { margin: 0; }
+    .crib p + p { margin-top: var(--space-2); }
+    .crib strong { color: var(--color-text); }
+
+@media (max-width: 720px) {
+      .page, .topbar-inner { padding-left: var(--space-4); padding-right: var(--space-4); }
+      .topbar-inner { align-items: flex-start; flex-direction: column; }
+      .hero-kpis { grid-template-columns: 1fr; }
+      .toc-grid { grid-template-columns: 1fr; }
+      .grid4 { grid-template-columns: 1fr; }
+      .cell { border-right: none !important; }
+      .question-head h2 { font-size: 1.2rem; }
+    }
+  
+    .star{padding:var(--space-4) var(--space-5);background:color-mix(in srgb,var(--color-primary-highlight) 70%,var(--color-surface));border-top:1px solid var(--color-divider);font-size:var(--text-sm);color:var(--color-text-muted)}
+    .star p{margin:0}.star p+p{margin-top:var(--space-2)}.star strong{color:var(--color-text)}
+    .say{margin-top:var(--space-3);padding-top:var(--space-3);border-top:1px dashed var(--color-divider);color:var(--color-primary);font-weight:600}
+
+    /* Left full Contents + right Parts-only rail */
+    body.has-side-toc { overflow-x: hidden; }
+    .shell {
+      display: grid;
+      grid-template-columns: minmax(240px, 300px) minmax(0, 1fr);
+      gap: 0;
+      align-items: start;
+      max-width: 1800px;
+      margin: 0 auto;
+      position: relative;
+    }
+    .side-toc {
+      position: sticky;
+      top: 88px;
+      height: calc(100vh - 100px);
+      overflow: auto;
+      padding: var(--space-4);
+      margin: var(--space-4) 0 var(--space-4) var(--space-4);
+      background: var(--color-surface);
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius-xl);
+      box-shadow: var(--shadow-sm);
+      z-index: 20;
+    }
+    .side-toc-head {
+      position: sticky;
+      top: 0;
+      background: var(--color-surface);
+      padding-bottom: var(--space-3);
+      margin-bottom: var(--space-3);
+      border-bottom: 1px solid var(--color-divider);
+      z-index: 1;
+    }
+    .side-toc-head strong {
+      display: block;
+      font-family: var(--font-display);
+      font-size: var(--text-sm);
+      letter-spacing: -0.02em;
+    }
+    .side-toc-head span {
+      display: block;
+      margin-top: 0.25rem;
+      color: var(--color-text-faint);
+      font-size: var(--text-xs);
+    }
+    .side-toc-list {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+    }
+    .side-toc-link {
+      display: grid;
+      grid-template-columns: 2.2rem 1fr;
+      gap: 0.45rem;
+      align-items: start;
+      padding: 0.45rem 0.55rem;
+      border-radius: var(--radius-md);
+      color: var(--color-text-muted);
+      font-size: var(--text-xs);
+      line-height: 1.35;
+      border: 1px solid transparent;
+    }
+    .side-toc-link:hover {
+      background: var(--color-primary-highlight);
+      color: var(--color-primary);
+    }
+    .side-toc-link.is-active {
+      background: var(--color-primary-highlight);
+      border-color: color-mix(in srgb, var(--color-primary) 35%, var(--color-border));
+      color: var(--color-primary);
+      font-weight: 600;
+    }
+    .side-toc-num {
+      font-variant-numeric: tabular-nums;
+      color: var(--color-text-faint);
+      font-weight: 700;
+    }
+    .side-toc-link.is-active .side-toc-num { color: var(--color-primary); }
+    .side-toc-title { min-width: 0; }
+
+    .side-toc-part {
+      display: block;
+      margin: 0.85rem 0 0.35rem;
+      padding: 0.5rem 0.55rem 0.35rem;
+      border-top: 1px solid var(--color-divider);
+    }
+    .side-toc-part:first-child {
+      margin-top: 0;
+      border-top: none;
+      padding-top: 0.15rem;
+    }
+    .side-toc-part-link {
+      display: block;
+      font-family: var(--font-display);
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.02em;
+      color: var(--color-text);
+      line-height: 1.3;
+    }
+    .side-toc-part-link:hover { color: var(--color-primary); }
+    .side-toc-part-range {
+      display: block;
+      margin-top: 0.15rem;
+      font-size: 0.65rem;
+      font-variant-numeric: tabular-nums;
+      color: var(--color-text-faint);
+      font-weight: 600;
+    }
+    .side-toc-part.is-active .side-toc-part-link { color: var(--color-primary); }
+    .side-toc-part.is-active .side-toc-part-range {
+      color: color-mix(in srgb, var(--color-primary) 70%, var(--color-text-faint));
+    }
+
+    /* Right: Parts only */
+    .parts-rail {
+      display: none;
+    }
+    @media (min-width: 1280px) {
+      .shell {
+        grid-template-columns: minmax(240px, 300px) minmax(0, 1fr);
+        max-width: 1800px;
+        padding-right: 0;
+      }
+      .parts-rail {
+        display: block;
+        position: fixed;
+        top: 148px;
+        right: 0;
+        width: 168px;
+        max-height: calc(100vh - 112px);
+        overflow: auto;
+        padding: 0.75rem 0.65rem;
+        background: var(--color-surface);
+        border: 1px solid var(--color-border);
+        border-radius: var(--radius-xl);
+        box-shadow: var(--shadow-sm);
+        z-index: 25;
+      }
+      .parts-rail-head {
+        font-family: var(--font-display);
+        font-size: 0.72rem;
+        font-weight: 700;
+        letter-spacing: 0.03em;
+        text-transform: uppercase;
+        color: var(--color-text-faint);
+        margin: 0 0 0.55rem;
+        padding: 0 0.35rem 0.45rem;
+        border-bottom: 1px solid var(--color-divider);
+      }
+      .parts-rail-list {
+        display: flex;
+        flex-direction: column;
+        gap: 2px;
+      }
+      .parts-rail-link {
+        display: block;
+        padding: 0.4rem 0.45rem;
+        border-radius: var(--radius-md);
+        color: var(--color-text-muted);
+        font-size: 0.7rem;
+        line-height: 1.3;
+        border: 1px solid transparent;
+      }
+      .parts-rail-link strong {
+        display: block;
+        font-family: var(--font-display);
+        font-size: 0.72rem;
+        font-weight: 700;
+        color: var(--color-text);
+      }
+      .parts-rail-link span {
+        display: block;
+        margin-top: 0.1rem;
+        font-size: 0.62rem;
+        font-variant-numeric: tabular-nums;
+        color: var(--color-text-faint);
+        font-weight: 600;
+      }
+      .parts-rail-link:hover {
+        background: var(--color-primary-highlight);
+      }
+      .parts-rail-link:hover strong { color: var(--color-primary); }
+      .parts-rail-link.is-active {
+        background: var(--color-primary-highlight);
+        border-color: color-mix(in srgb, var(--color-primary) 35%, var(--color-border));
+      }
+      .parts-rail-link.is-active strong { color: var(--color-primary); }
+      /* leave room so content doesn't sit under the rail */
+      .page.with-side-toc {
+        padding-right: 188px;
+      }
+    }
+
+    .page.with-side-toc {
+      max-width: none;
+      padding-left: var(--space-4);
+      padding-right: var(--space-6);
+    }
+    .hero.with-side-toc {
+      grid-template-columns: 1fr;
+    }
+    .hero.with-side-toc .toc-card { display: none; }
+    .toc-mobile-btn {
+      display: none;
+    }
+    @media (max-width: 1100px) {
+      .shell { grid-template-columns: 1fr; }
+      .parts-rail { display: none !important; }
+      .side-toc {
+        position: fixed;
+        left: 0;
+        top: 0;
+        bottom: 0;
+        width: min(86vw, 320px);
+        height: 100vh;
+        margin: 0;
+        border-radius: 0;
+        border-right: 1px solid var(--color-border);
+        transform: translateX(-105%);
+        transition: transform 0.2s ease;
+        z-index: 50;
+      }
+      .side-toc.is-open { transform: translateX(0); }
+      .toc-backdrop {
+        display: none;
+        position: fixed;
+        inset: 0;
+        background: rgba(0,0,0,0.35);
+        z-index: 40;
+      }
+      .toc-backdrop.is-open { display: block; }
+      .toc-mobile-btn { display: inline-flex; }
+      .page.with-side-toc { padding-left: var(--space-4); padding-right: var(--space-4); }
+    }
+
+
+    .version-tabs {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      margin: var(--space-4) 0 var(--space-2);
+    }
+    .version-tabs button {
+      border: 1px solid var(--color-border);
+      background: var(--color-surface);
+      color: var(--color-text);
+      border-radius: 999px;
+      padding: 0.55rem 0.95rem;
+      font-size: var(--text-sm);
+      font-weight: 700;
+      cursor: pointer;
+    }
+    .version-tabs button.is-on {
+      background: var(--color-primary);
+      border-color: var(--color-primary);
+      color: #fff;
+    }
+    .pack-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: var(--space-4);
+      margin: var(--space-4) 0 var(--space-8);
+    }
+    .pack-card {
+      display: block;
+      background: var(--color-surface);
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius-xl);
+      box-shadow: var(--shadow-sm);
+      padding: var(--space-5);
+    }
+    .pack-card:hover { border-color: var(--color-primary); }
+    .pack-card h3 {
+      margin: 0 0 var(--space-2);
+      font-family: var(--font-display);
+      font-size: var(--text-lg);
+    }
+    .pack-card p { margin: 0; color: var(--color-text-muted); font-size: var(--text-sm); }
+    .pack-card .kicker {
+      display: block;
+      color: var(--color-primary);
+      font-size: var(--text-xs);
+      font-weight: 700;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      margin-bottom: 0.4rem;
+    }
+    .dayof-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.6rem;
+      margin: var(--space-4) 0;
+    }
+    .dayof-links a.btn { text-decoration: none; }
+    [data-version][hidden], [data-version-panel][hidden] { display: none !important; }
+
+</style>
+</head>
+<body class="has-side-toc">
+  <div class="topbar">
+    <div class="topbar-inner">
+      <div class="brand">
+        <h1>Soft skills</h1>
+        <p>Agile/Scrum, find and fix bugs, problem solving, collaboration, disagreement, AI, hard fixes, under pressure.</p>
+      </div>
+      <div class="top-actions">
+        <button class="btn toc-mobile-btn" data-toc-open type="button">Contents</button>
+        <button class="btn theme-toggle" data-theme-toggle aria-label="Switch theme">☾</button>
+        <a class="btn" href="index.html">Hub</a>
+        <a class="btn" href="fit.html">Fit</a>
+        <a class="btn" href="soft-skills.html">Soft skills</a>
+        <a class="btn" href="engineering.html">Engineering</a>
+        <a class="btn" href="devops.html">DevOps</a>
+        <a class="btn" href="cv.html">CV</a>
+      </div>
+    </div>
+  </div>
+  <div class="toc-backdrop" data-toc-backdrop hidden></div>
+  <div class="shell">
+    <aside class="side-toc" id="side-toc" aria-label="Question contents">
+      <div class="side-toc-head">
+        <strong>Contents</strong>
+        <span>Jump to a question</span>
+      </div>
+      <nav class="side-toc-list" data-side-toc>
+        <div class="side-toc-part" data-part="sec-collab">
+          <a class="side-toc-part-link" href="#sec-collab">Collaborate / different ideas</a>
+          <span class="side-toc-part-range">2 Q</span>
+        </div>
+        <a class="side-toc-link" href="#s-collab" data-target="s-collab" data-part="sec-collab"><span class="side-toc-num">01</span><span class="side-toc-title">How you collaborate with coworkers</span></a>
+        <a class="side-toc-link" href="#s-two-solutions" data-target="s-two-solutions" data-part="sec-collab"><span class="side-toc-num">02</span><span class="side-toc-title">Two different solutions or ideas</span></a>
+        <div class="side-toc-part" data-part="sec-debug">
+          <a class="side-toc-part-link" href="#sec-debug">Find &amp; fix bugs (FE vs BE)</a>
+          <span class="side-toc-part-range">8 Q</span>
+        </div>
+        <a class="side-toc-link" href="#g24" data-target="g24" data-part="sec-debug"><span class="side-toc-num">03</span><span class="side-toc-title">FE or BE? How do you decide?</span></a>
+        <a class="side-toc-link" href="#g25" data-target="g25" data-part="sec-debug"><span class="side-toc-num">04</span><span class="side-toc-title">Using Network tab effectively</span></a>
+        <a class="side-toc-link" href="#g26" data-target="g26" data-part="sec-debug"><span class="side-toc-num">05</span><span class="side-toc-title">Reproduce with curl / Postman</span></a>
+        <a class="side-toc-link" href="#g27" data-target="g27" data-part="sec-debug"><span class="side-toc-num">06</span><span class="side-toc-title">4xx vs 5xx vs CORS</span></a>
+        <a class="side-toc-link" href="#g28" data-target="g28" data-part="sec-debug"><span class="side-toc-num">07</span><span class="side-toc-title">React wrong, API fine</span></a>
+        <a class="side-toc-link" href="#g29" data-target="g29" data-part="sec-debug"><span class="side-toc-num">08</span><span class="side-toc-title">API wrong or slow</span></a>
+        <a class="side-toc-link" href="#g30" data-target="g30" data-part="sec-debug"><span class="side-toc-num">09</span><span class="side-toc-title">Hotfix vs long-term fix</span></a>
+        <a class="side-toc-link" href="#g31" data-target="g31" data-part="sec-debug"><span class="side-toc-num">10</span><span class="side-toc-title">End-to-end debug walkthrough</span></a>
+        <div class="side-toc-part" data-part="sec-solve">
+          <a class="side-toc-part-link" href="#sec-solve">Problem solving</a>
+          <span class="side-toc-part-range">3 Q</span>
+        </div>
+        <a class="side-toc-link" href="#g55" data-target="g55" data-part="sec-solve"><span class="side-toc-num">11</span><span class="side-toc-title">Problem-solving framework</span></a>
+        <a class="side-toc-link" href="#g56" data-target="g56" data-part="sec-solve"><span class="side-toc-num">12</span><span class="side-toc-title">Ambiguous requirements</span></a>
+        <a class="side-toc-link" href="#g57" data-target="g57" data-part="sec-solve"><span class="side-toc-num">13</span><span class="side-toc-title">Tradeoff decisions</span></a>
+        <div class="side-toc-part" data-part="sec-quality">
+          <a class="side-toc-part-link" href="#sec-quality">Agile / Scrum / quality</a>
+          <span class="side-toc-part-range">12 Q</span>
+        </div>
+        <a class="side-toc-link" href="#g32" data-target="g32" data-part="sec-quality"><span class="side-toc-num">14</span><span class="side-toc-title">Code review habits</span></a>
+        <a class="side-toc-link" href="#g33" data-target="g33" data-part="sec-quality"><span class="side-toc-num">15</span><span class="side-toc-title">Agile / Scrum</span></a>
+        <a class="side-toc-link" href="#g145" data-target="g145" data-part="sec-quality"><span class="side-toc-num">16</span><span class="side-toc-title">How does your current team use Agile/Scrum?</span></a>
+        <a class="side-toc-link" href="#g146" data-target="g146" data-part="sec-quality"><span class="side-toc-num">17</span><span class="side-toc-title">Scrum ceremonies you join</span></a>
+        <a class="side-toc-link" href="#g147" data-target="g147" data-part="sec-quality"><span class="side-toc-num">18</span><span class="side-toc-title">Breaking down stories / estimation</span></a>
+        <a class="side-toc-link" href="#g148" data-target="g148" data-part="sec-quality"><span class="side-toc-num">19</span><span class="side-toc-title">Blockers and mid-sprint change</span></a>
+        <a class="side-toc-link" href="#g149" data-target="g149" data-part="sec-quality"><span class="side-toc-num">20</span><span class="side-toc-title">Definition of Done</span></a>
+        <a class="side-toc-link" href="#g160" data-target="g160" data-part="sec-quality"><span class="side-toc-num">21</span><span class="side-toc-title">Are you familiar with Agile / Scrum?</span></a>
+        <a class="side-toc-link" href="#g159" data-target="g159" data-part="sec-quality"><span class="side-toc-num">22</span><span class="side-toc-title">How do you measure task complexity?</span></a>
+        <a class="side-toc-link" href="#g34" data-target="g34" data-part="sec-quality"><span class="side-toc-num">23</span><span class="side-toc-title">Clean maintainable code</span></a>
+        <a class="side-toc-link" href="#g157" data-target="g157" data-part="sec-quality"><span class="side-toc-num">24</span><span class="side-toc-title">Strong disagreement with colleague or client</span></a>
+        <a class="side-toc-link" href="#g158" data-target="g158" data-part="sec-quality"><span class="side-toc-num">25</span><span class="side-toc-title">How do you keep up with new technology?</span></a>
+        <div class="side-toc-part" data-part="sec-ai">
+          <a class="side-toc-part-link" href="#sec-ai">AI-assisted coding</a>
+          <span class="side-toc-part-range">7 Q</span>
+        </div>
+        <a class="side-toc-link" href="#g150" data-target="g150" data-part="sec-ai"><span class="side-toc-num">26</span><span class="side-toc-title">Do you use AI for coding?</span></a>
+        <a class="side-toc-link" href="#g151" data-target="g151" data-part="sec-ai"><span class="side-toc-num">27</span><span class="side-toc-title">How you use Cursor day to day</span></a>
+        <a class="side-toc-link" href="#g152" data-target="g152" data-part="sec-ai"><span class="side-toc-num">28</span><span class="side-toc-title">Cursor vs Claude — when which</span></a>
+        <a class="side-toc-link" href="#g153" data-target="g153" data-part="sec-ai"><span class="side-toc-num">29</span><span class="side-toc-title">Superpowers plugin — how you use it</span></a>
+        <a class="side-toc-link" href="#g154" data-target="g154" data-part="sec-ai"><span class="side-toc-num">30</span><span class="side-toc-title">How you review AI-generated code</span></a>
+        <a class="side-toc-link" href="#g155" data-target="g155" data-part="sec-ai"><span class="side-toc-num">31</span><span class="side-toc-title">Limits of AI in your work</span></a>
+        <a class="side-toc-link" href="#g156" data-target="g156" data-part="sec-ai"><span class="side-toc-num">32</span><span class="side-toc-title">AI for learning a new stack</span></a>
+        <div class="side-toc-part" data-part="sec-hard">
+          <a class="side-toc-part-link" href="#sec-hard">Hard fixes / under pressure</a>
+          <span class="side-toc-part-range">4 Q</span>
+        </div>
+        <a class="side-toc-link" href="#g161" data-target="g161" data-part="sec-hard"><span class="side-toc-num">33</span><span class="side-toc-title">Under pressure — production / requirement change</span></a>
+        <a class="side-toc-link" href="#g35" data-target="g35" data-part="sec-hard"><span class="side-toc-num">34</span><span class="side-toc-title">Wrong data after sync</span></a>
+        <a class="side-toc-link" href="#g36" data-target="g36" data-part="sec-hard"><span class="side-toc-num">35</span><span class="side-toc-title">UI bug that was actually API</span></a>
+        <a class="side-toc-link" href="#g37" data-target="g37" data-part="sec-hard"><span class="side-toc-num">36</span><span class="side-toc-title">Performance complaint on list/report</span></a>
+        <div class="side-toc-part" data-part="sec-spoken">
+          <a class="side-toc-part-link" href="#sec-spoken">Spoken English</a>
+          <span class="side-toc-part-range">14 Q</span>
+        </div>
+        <a class="side-toc-link" href="#g65" data-target="g65" data-part="sec-spoken"><span class="side-toc-num">37</span><span class="side-toc-title">Opening the interview</span></a>
+        <a class="side-toc-link" href="#g66" data-target="g66" data-part="sec-spoken"><span class="side-toc-num">38</span><span class="side-toc-title">Buy a few seconds to think</span></a>
+        <a class="side-toc-link" href="#g67" data-target="g67" data-part="sec-spoken"><span class="side-toc-num">39</span><span class="side-toc-title">Didn't hear clearly</span></a>
+        <a class="side-toc-link" href="#g68" data-target="g68" data-part="sec-spoken"><span class="side-toc-num">40</span><span class="side-toc-title">Clarify before answering</span></a>
+        <a class="side-toc-link" href="#g69" data-target="g69" data-part="sec-spoken"><span class="side-toc-num">41</span><span class="side-toc-title">Start your answer smoothly</span></a>
+        <a class="side-toc-link" href="#g70" data-target="g70" data-part="sec-spoken"><span class="side-toc-num">42</span><span class="side-toc-title">Give yourself structure out loud</span></a>
+        <a class="side-toc-link" href="#g71" data-target="g71" data-part="sec-spoken"><span class="side-toc-num">43</span><span class="side-toc-title">Agree / show you're on the same page</span></a>
+        <a class="side-toc-link" href="#g72" data-target="g72" data-part="sec-spoken"><span class="side-toc-num">44</span><span class="side-toc-title">Soft disagreement / different view</span></a>
+        <a class="side-toc-link" href="#g73" data-target="g73" data-part="sec-spoken"><span class="side-toc-num">45</span><span class="side-toc-title">When you don't know</span></a>
+        <a class="side-toc-link" href="#g74" data-target="g74" data-part="sec-spoken"><span class="side-toc-num">46</span><span class="side-toc-title">Bridge to an example</span></a>
+        <a class="side-toc-link" href="#g75" data-target="g75" data-part="sec-spoken"><span class="side-toc-num">47</span><span class="side-toc-title">Check if they want more detail</span></a>
+        <a class="side-toc-link" href="#g76" data-target="g76" data-part="sec-spoken"><span class="side-toc-num">48</span><span class="side-toc-title">Show interest in the company/team</span></a>
+        <a class="side-toc-link" href="#g77" data-target="g77" data-part="sec-spoken"><span class="side-toc-num">49</span><span class="side-toc-title">Closing politely</span></a>
+        <a class="side-toc-link" href="#g78" data-target="g78" data-part="sec-spoken"><span class="side-toc-num">50</span><span class="side-toc-title">If English feels stuck</span></a>
+      </nav>
+    </aside>
+    <main class="page with-side-toc">
+      <section class="hero with-side-toc">
+        <div class="hero-card">
+          <div class="section-label">Shared topic</div>
+          <p>Work behavior and interview conversation — reuse for every company. Technical FE/BE debug lives here as a method; stack theory is on Engineering and DevOps.</p>
+          
+          <nav class="section-nav" aria-label="Sections">
+            <a href="#sec-collab">Collab</a>
+          <a href="#sec-debug">Find/fix bugs</a>
+          <a href="#sec-solve">Problem solving</a>
+          <a href="#sec-quality">Agile / Scrum</a>
+          <a href="#sec-ai">AI</a>
+          <a href="#sec-hard">Under pressure</a>
+          <a href="#sec-spoken">Spoken English</a>
+          </nav>
+        </div>
+      </section>
+      <section class="questions">
+<section class="section-block" id="sec-collab">
+      <h2>Collaboration / different ideas</h2>
+<article class="question-card" id="s-collab">
+        <div class="question-head"><h2>01. How you collaborate with coworkers</h2><p>Daily teamwork, not only ceremonies.</p></div>
+        <div class="grid4">
+          <div class="cell row-head">Question EN</div><div class="cell row-head">Answer EN</div>
+          <div class="cell row-head">Question VI</div><div class="cell row-head">Answer VI</div>
+          <div class="cell question"><p>How do you work with teammates day to day?</p></div>
+          <div class="cell answer"><p>I try to make work visible: tickets with clear acceptance, small PRs, and status before people have to chase me. I ask early when the contract or design is unclear instead of building the wrong thing. I review others' code for risk, not style nits only. If FE and BE are split, I agree the API shape first so we don't throw work over the wall.</p></div>
+          <div class="cell question"><p>Bạn cộng tác với đồng nghiệp hằng ngày thế nào?</p></div>
+          <div class="cell answer"><p>Tôi cố làm việc nhìn thấy được: ticket có acceptance rõ, PR nhỏ, và status trước khi người khác phải hỏi. Tôi hỏi sớm khi contract hoặc design chưa rõ thay vì xây sai. Review code người khác theo rủi ro, không chỉ style. Nếu tách FE và BE, tôi chốt shape API trước để không ném việc qua tường.</p></div>
+        </div>
+        <div class="crib"><p><strong>Know:</strong> Visible work · small PRs · agree contract first</p></div>
+      </article>
+<article class="question-card" id="s-two-solutions">
+        <div class="question-head"><h2>02. Two different solutions or ideas</h2><p>Disagree on approach, not on people.</p></div>
+        <div class="grid4">
+          <div class="cell row-head">Question EN</div><div class="cell row-head">Answer EN</div>
+          <div class="cell row-head">Question VI</div><div class="cell row-head">Answer VI</div>
+          <div class="cell question"><p>What do you do when you and a coworker have different technical solutions?</p></div>
+          <div class="cell answer"><p>I put both options on the table with tradeoffs — time, risk, how hard it is to change later — and I ask what we optimize for this sprint. I don't need to 'win' the design. If we still disagree, I suggest a small spike or the reversible choice, and I commit to the team's decision. After we pick, I implement that path cleanly instead of half-building my idea in secret.</p></div>
+          <div class="cell question"><p>Khi bạn và đồng nghiệp khác giải pháp kỹ thuật, bạn làm gì?</p></div>
+          <div class="cell answer"><p>Tôi đặt cả hai option lên bàn kèm tradeoff — thời gian, rủi ro, sau này sửa khó thế nào — và hỏi sprint này tối ưu gì. Tôi không cần 'thắng' design. Nếu vẫn khác ý, tôi đề xuất spike nhỏ hoặc lựa chọn đảo được, rồi commit theo quyết định của team. Sau khi chọn, tôi implement path đó sạch, không nửa vời cài ý mình.</p></div>
+        </div>
+        <div class="crib"><p><strong>Know:</strong> Tradeoffs · spike if stuck · commit after the decision</p></div>
+      </article>
+    </section>
+<section class="section-block" id="sec-debug">
+      <h2>L. Debug: Frontend vs Backend</h2>
+<article class="question-card" id="g24">
+        <div class="question-head"><h2>101. FE or BE? How do you decide?</h2><p>Core method — memorize this.</p></div>
+        <div class="grid4">
+          <div class="cell row-head">Question EN</div><div class="cell row-head">Answer EN</div><div class="cell row-head">Question VI</div><div class="cell row-head">Answer VI</div>
+          <div class="cell question"><p>How do you detect whether a bug is frontend or backend?</p></div>
+          <div class="cell answer"><p>I reproduce first, then open DevTools Network. If the API response is already wrong — bad data, 4xx/5xx — it's backend or contract. If the API is correct but the UI shows wrong, it's frontend. If the request never leaves or is malformed, also frontend. I confirm with the same payload via curl or Postman to remove the UI from the equation.</p></div>
+          <div class="cell question"><p>Làm sao biết bug thuộc frontend hay backend?</p></div>
+          <div class="cell answer"><p>Tôi reproduce trước, rồi mở DevTools Network. Nếu response API đã sai — data xấu, 4xx/5xx — là backend hoặc contract. Nếu API đúng mà UI sai — frontend. Nếu request không gửi hoặc malformed — cũng frontend. Tôi confirm cùng payload bằng curl/Postman để loại UI khỏi phương trình.</p></div>
+        </div>
+        <div class="crib">
+          <p><strong>Know:</strong> Network tab is the judge between FE and BE.</p>
+          <p><strong>Trap:</strong> Blaming FE or BE from a screenshot alone.</p>
+          <p><strong>Follow-up:</strong> Show me how you'd prove an API is correct.</p>
+        </div>
+      </article>
+<article class="question-card" id="g25">
+        <div class="question-head"><h2>102. Using Network tab effectively</h2><p>Practical steps.</p></div>
+        <div class="grid4">
+          <div class="cell row-head">Question EN</div><div class="cell row-head">Answer EN</div><div class="cell row-head">Question VI</div><div class="cell row-head">Answer VI</div>
+          <div class="cell question"><p>What exactly do you look at in the Network tab?</p></div>
+          <div class="cell answer"><p>Method and URL, status code, request headers/body, response JSON, and timing. I check if React called the endpoint I expect, with the params the backend needs. A 200 with wrong business data is still a backend bug. A 401 means auth. A CORS error is usually config between browser and API.</p></div>
+          <div class="cell question"><p>Bạn xem gì trong Network tab?</p></div>
+          <div class="cell answer"><p>Method và URL, status, header/body request, JSON response, và timing. Tôi kiểm tra React có gọi đúng endpoint và param backend cần không. 200 mà data nghiệp vụ sai vẫn là bug backend. 401 là auth. Lỗi CORS thường là cấu hình giữa browser và API.</p></div>
+        </div>
+        <div class="crib">
+          <p><strong>Know:</strong> Status + payload + timing + request shape.</p>
+          <p><strong>Trap:</strong> Only watching Console and ignoring Network.</p>
+          <p><strong>Follow-up:</strong> 200 OK but empty array — what next?</p>
+        </div>
+      </article>
+<article class="question-card" id="g26">
+        <div class="question-head"><h2>103. Reproduce with curl / Postman</h2><p>Isolate the UI.</p></div>
+        <div class="grid4">
+          <div class="cell row-head">Question EN</div><div class="cell row-head">Answer EN</div><div class="cell row-head">Question VI</div><div class="cell row-head">Answer VI</div>
+          <div class="cell question"><p>Why reproduce a bug with curl or Postman?</p></div>
+          <div class="cell answer"><p>Because it answers: is the backend wrong without React? If curl gets the same bad data, I debug PHP/MySQL. If curl is correct but UI is wrong, I debug React state/render/mapping. It saves time and avoids arguments between FE and BE.</p></div>
+          <div class="cell question"><p>Vì sao reproduce bug bằng curl hoặc Postman?</p></div>
+          <div class="cell answer"><p>Vì nó trả lời: backend có sai khi không có React không? Nếu curl ra data xấu giống vậy, tôi debug PHP/MySQL. Nếu curl đúng mà UI sai, tôi debug state/render/mapping React. Tiết kiệm thời gian và tránh cãi nhau FE–BE.</p></div>
+        </div>
+        <div class="crib">
+          <p><strong>Know:</strong> Same request, no browser variables.</p>
+          <p><strong>Trap:</strong> Different headers in curl than the app (false conclusion).</p>
+          <p><strong>Follow-up:</strong> How do you copy a request from Chrome as curl?</p>
+        </div>
+      </article>
+<article class="question-card" id="g27">
+        <div class="question-head"><h2>104. 4xx vs 5xx vs CORS</h2><p>Quick triage.</p></div>
+        <div class="grid4">
+          <div class="cell row-head">Question EN</div><div class="cell row-head">Answer EN</div><div class="cell row-head">Question VI</div><div class="cell row-head">Answer VI</div>
+          <div class="cell question"><p>How do status codes help you triage?</p></div>
+          <div class="cell answer"><p>4xx usually means client/contract/auth — bad request, unauthorized, forbidden, not found. 5xx means server failure — exception, DB down, unhandled error. CORS failures often look like Network errors in the browser even when the server responded. I check the preflight and API CORS config before rewriting React code.</p></div>
+          <div class="cell question"><p>Status code giúp triage thế nào?</p></div>
+          <div class="cell answer"><p>4xx thường là client/contract/auth — bad request, unauthorized, forbidden, not found. 5xx là lỗi server — exception, DB down, unhandled. CORS thường giống lỗi Network trên browser dù server có thể đã trả lời. Tôi kiểm tra preflight và cấu hình CORS trước khi viết lại React.</p></div>
+        </div>
+        <div class="crib">
+          <p><strong>Know:</strong> 4xx client/contract; 5xx server; CORS is browser policy.</p>
+          <p><strong>Trap:</strong> Treating every red Network row as backend is down.</p>
+          <p><strong>Follow-up:</strong> How do you debug a CORS error end to end?</p>
+        </div>
+      </article>
+<article class="question-card" id="g28">
+        <div class="question-head"><h2>105. React wrong, API fine</h2><p>FE debugging path.</p></div>
+        <div class="grid4">
+          <div class="cell row-head">Question EN</div><div class="cell row-head">Answer EN</div><div class="cell row-head">Question VI</div><div class="cell row-head">Answer VI</div>
+          <div class="cell question"><p>The API is correct, but the UI is wrong. How do you debug?</p></div>
+          <div class="cell answer"><p>I check mapping — wrong field names, timezone formatting, default values. Then React state: stale state, wrong dependency in useEffect, race condition from two fetches. Then render conditions — loading flag stuck, filtering out rows by mistake. React DevTools helps see props/state at the broken component.</p></div>
+          <div class="cell question"><p>API đúng nhưng UI sai. Bạn debug thế nào?</p></div>
+          <div class="cell answer"><p>Tôi kiểm tra mapping — sai tên field, format timezone, default value. Rồi state React: state cũ, dependency useEffect sai, race từ hai lần fetch. Rồi điều kiện render — loading kẹt, filter mất row. React DevTools giúp xem props/state ở component đang hỏng.</p></div>
+        </div>
+        <div class="crib">
+          <p><strong>Know:</strong> Mapping → state → effects → render conditions.</p>
+          <p><strong>Trap:</strong> Rewriting the API when JSON was already right.</p>
+          <p><strong>Follow-up:</strong> How do you debug a race condition in useEffect?</p>
+        </div>
+      </article>
+<article class="question-card" id="g29">
+        <div class="question-head"><h2>106. API wrong or slow</h2><p>PHP/MySQL debugging.</p></div>
+        <div class="grid4">
+          <div class="cell row-head">Question EN</div><div class="cell row-head">Answer EN</div><div class="cell row-head">Question VI</div><div class="cell row-head">Answer VI</div>
+          <div class="cell question"><p>The UI is fine, but the API data is wrong or slow. How do you debug?</p></div>
+          <div class="cell answer"><p>I reproduce the endpoint, read PHP logs, and inspect the SQL. Wrong data means business logic, joins, filters, or bad input validation. Slow means indexes, N+1, or heavy work in the request. I fix the query or logic, add a test when it's critical, and only then re-check from React.</p></div>
+          <div class="cell question"><p>UI ổn nhưng API sai hoặc chậm. Bạn debug thế nào?</p></div>
+          <div class="cell answer"><p>Tôi reproduce endpoint, đọc log PHP, và xem SQL. Data sai nghĩa là business logic, join, filter, hoặc validation input. Chậm nghĩa là index, N+1, hoặc việc nặng trong request. Tôi sửa query/logic, thêm test nếu critical, rồi mới check lại từ React.</p></div>
+        </div>
+        <div class="crib">
+          <p><strong>Know:</strong> Logs + SQL + reproduce payload.</p>
+          <p><strong>Trap:</strong> Optimizing PHP loops before checking the query.</p>
+          <p><strong>Follow-up:</strong> How do you log a slow query safely?</p>
+        </div>
+      </article>
+<article class="question-card" id="g30">
+        <div class="question-head"><h2>107. Hotfix vs long-term fix</h2><p>JD: long-term solutions.</p></div>
+        <div class="grid4">
+          <div class="cell row-head">Question EN</div><div class="cell row-head">Answer EN</div><div class="cell row-head">Question VI</div><div class="cell row-head">Answer VI</div>
+          <div class="cell question"><p>How do you balance a hotfix and a long-term fix?</p></div>
+          <div class="cell answer"><p>If users are blocked, I ship the smallest safe mitigation first — feature flag, guard clause, rollback. Then I schedule the real fix: root cause, test, cleanup. I document both so we don't live on hotfixes forever. Globant's JD mentions long-term solutions — that matches how I like to work.</p></div>
+          <div class="cell question"><p>Bạn cân bằng hotfix và fix dài hạn thế nào?</p></div>
+          <div class="cell answer"><p>Nếu user đang bị chặn, tôi ship mitigation nhỏ nhất an toàn trước — feature flag, guard, rollback. Rồi xếp lịch fix thật: root cause, test, dọn. Tôi ghi cả hai để không sống bằng hotfix mãi. JD Globant nói long-term solutions — khớp cách tôi muốn làm.</p></div>
+        </div>
+        <div class="crib">
+          <p><strong>Know:</strong> Mitigate impact → root cause → prevent repeat.</p>
+          <p><strong>Trap:</strong> Only hotfix and never follow up.</p>
+          <p><strong>Follow-up:</strong> Give an example of a hotfix that became technical debt.</p>
+        </div>
+      </article>
+<article class="question-card" id="g31">
+        <div class="question-head"><h2>108. End-to-end debug walkthrough</h2><p>Tell as a story.</p></div>
+        <div class="grid4">
+          <div class="cell row-head">Question EN</div><div class="cell row-head">Answer EN</div><div class="cell row-head">Question VI</div><div class="cell row-head">Answer VI</div>
+          <div class="cell question"><p>Walk me through debugging a production bug from UI to database.</p></div>
+          <div class="cell answer"><p>User reports export shows wrong total. I reproduce on the screen, capture the API in Network — check payload. If API total is wrong, I hit the same endpoint via Postman, read PHP logs, inspect the SQL aggregate. Fix the query or business rule, verify API, then verify UI. If API was right, I fix the React mapping/format. Finally I add a check or test so it doesn't return quietly.</p></div>
+          <div class="cell question"><p>Hãy đi qua cách debug bug production từ UI tới database.</p></div>
+          <div class="cell answer"><p>User báo export sai tổng. Tôi reproduce trên màn, bắt API trong Network — xem payload. Nếu API sai tổng, gọi cùng endpoint bằng Postman, đọc log PHP, xem SQL aggregate. Sửa query hoặc rule, verify API, rồi verify UI. Nếu API đúng, sửa mapping/format React. Cuối cùng thêm check hoặc test để không quay lại thầm lặng.</p></div>
+        </div>
+        <div class="star">
+          <p><strong>S:</strong> Wrong totals on an enterprise reporting screen.</p>
+          <p><strong>T:</strong> Find which layer is lying.</p>
+          <p><strong>A:</strong> UI reproduce → Network → Postman → PHP/SQL → fix → verify both layers.</p>
+          <p><strong>R:</strong> Correct export + clearer ownership of the bug layer.</p>
+          <p class="say"><strong>Say this:</strong> I follow the data, not opinions about which team is guilty.</p>
+        </div>
+      </article>
+    </section>
+<section class="section-block" id="sec-solve">
+      <h2>Problem solving</h2>
+<article class="question-card" id="g55">
+        <div class="question-head"><h2>141. Problem-solving framework</h2><p>How you think under pressure.</p></div>
+        <div class="grid4">
+          <div class="cell row-head">Question EN</div><div class="cell row-head">Answer EN</div><div class="cell row-head">Question VI</div><div class="cell row-head">Answer VI</div>
+          <div class="cell question"><p>How do you approach solving a hard technical problem?</p></div>
+          <div class="cell answer"><p>I clarify the symptom and the impact first. Then I reproduce it. Then I narrow the layer — FE, API, DB, or integration — with evidence from Network, logs, or SQL. I try the smallest safe fix, verify, and only then clean up or prevent repeats. I write down what I learned if it might come back.</p></div>
+          <div class="cell question"><p>Bạn tiếp cận giải quyết vấn đề kỹ thuật khó thế nào?</p></div>
+          <div class="cell answer"><p>Tôi làm rõ triệu chứng và impact trước. Rồi reproduce. Rồi thu hẹp tầng — FE, API, DB, hay tích hợp — bằng bằng chứng từ Network, log, hoặc SQL. Thử fix nhỏ nhất an toàn, verify, rồi mới dọn hoặc phòng tái diễn. Tôi ghi lại nếu có thể quay lại.</p></div>
+        </div>
+        <div class="crib">
+          <p><strong>Know:</strong> Symptom → reproduce → isolate layer → small fix → verify → prevent.</p>
+          <p><strong>Trap:</strong> Changing five things at once.</p>
+          <p><strong>Follow-up:</strong> How do you avoid rabbit holes?</p>
+        </div>
+      </article>
+<article class="question-card" id="g56">
+        <div class="question-head"><h2>142. Ambiguous requirements</h2><p>Soft + hard skill.</p></div>
+        <div class="grid4">
+          <div class="cell row-head">Question EN</div><div class="cell row-head">Answer EN</div><div class="cell row-head">Question VI</div><div class="cell row-head">Answer VI</div>
+          <div class="cell question"><p>What do you do when requirements are unclear?</p></div>
+          <div class="cell answer"><p>I do not fake certainty. I ask what success looks like, what is in or out of scope, and what the edge cases are — empty data, permissions, large files. I propose a small first slice so we can demo early and adjust. In enterprise work, wrong assumptions are more expensive than one clarifying question.</p></div>
+          <div class="cell question"><p>Khi requirement không rõ bạn làm gì?</p></div>
+          <div class="cell answer"><p>Tôi không giả vờ chắc chắn. Tôi hỏi success trông thế nào, in/out scope, và edge case — data trống, quyền, file lớn. Tôi đề xuất slice nhỏ đầu để demo sớm và chỉnh. Trong enterprise, giả định sai đắt hơn một câu hỏi làm rõ.</p></div>
+        </div>
+        <div class="crib">
+          <p><strong>Know:</strong> Clarify success/scope/edges; ship a thin slice.</p>
+          <p><strong>Trap:</strong> Building for a week in silence.</p>
+          <p><strong>Follow-up:</strong> What questions do you ask a BA or PM?</p>
+        </div>
+      </article>
+<article class="question-card" id="g57">
+        <div class="question-head"><h2>143. Tradeoff decisions</h2><p>Show judgment.</p></div>
+        <div class="grid4">
+          <div class="cell row-head">Question EN</div><div class="cell row-head">Answer EN</div><div class="cell row-head">Question VI</div><div class="cell row-head">Answer VI</div>
+          <div class="cell question"><p>Tell me about a technical tradeoff you made.</p></div>
+          <div class="cell answer"><p>A common one: fix something fast for users versus making the perfect long-term design. If users are blocked, I ship a safe mitigation first, then schedule the cleaner fix. Another tradeoff: keep a sync flow synchronous for simplicity until it becomes slow, then move the heavy part to a job. I try to make the tradeoff explicit to the team.</p></div>
+          <div class="cell question"><p>Kể về một tradeoff kỹ thuật bạn từng chọn.</p></div>
+          <div class="cell answer"><p>Một kiểu hay gặp: sửa nhanh cho user versus thiết kế dài hạn hoàn hảo. Nếu user đang bị chặn, tôi ship mitigation an toàn trước, rồi xếp lịch fix sạch hơn. Tradeoff khác: giữ sync đồng bộ cho đơn giản đến khi chậm, rồi đưa phần nặng sang job. Tôi cố nói rõ tradeoff với team.</p></div>
+        </div>
+        <div class="star">
+          <p><strong>S:</strong> Pressure between speed and design quality.</p>
+          <p><strong>T:</strong> Unblock users without trapping the team in debt forever.</p>
+          <p><strong>A:</strong> Mitigate first; document follow-up; move heavy work async when needed.</p>
+          <p><strong>R:</strong> Users unblocked; debt tracked, not forgotten.</p>
+          <p class="say"><strong>Say this:</strong> I make tradeoffs visible — not silent shortcuts.</p>
+        </div>
+      </article>
+    </section>
+<section class="section-block" id="sec-quality">
+      <h2>M. Quality / Agile / Scrum + soft skills</h2>
+<article class="question-card" id="g32">
+        <div class="question-head"><h2>109. Code review habits</h2><p>JD: participate in reviews.</p></div>
+        <div class="grid4">
+          <div class="cell row-head">Question EN</div><div class="cell row-head">Answer EN</div><div class="cell row-head">Question VI</div><div class="cell row-head">Answer VI</div>
+          <div class="cell question"><p>How do you approach code reviews?</p></div>
+          <div class="cell answer"><p>I review for correctness, readability, and risk — edge cases, auth, performance, and unclear naming. I ask questions instead of only pushing style nits. I also like reviews as learning: why this design, what happens on failure.</p></div>
+          <div class="cell question"><p>Bạn review code thế nào?</p></div>
+          <div class="cell answer"><p>Tôi review độ đúng, dễ đọc và rủi ro — edge case, auth, performance, tên khó hiểu. Tôi hỏi thay vì chỉ bắt lỗi style. Review cũng để học: vì sao design này, fail thì sao.</p></div>
+        </div>
+        <div class="crib">
+          <p><strong>Know:</strong> Risk-focused review over pure formatting.</p>
+          <p><strong>Trap:</strong> Huge drive-by rewrites in review.</p>
+          <p><strong>Follow-up:</strong> What do you do if you disagree in a review?</p>
+        </div>
+      </article>
+<article class="question-card" id="g33">
+        <div class="question-head"><h2>110. Agile / Scrum</h2><p>Keep practical.</p></div>
+        <div class="grid4">
+          <div class="cell row-head">Question EN</div><div class="cell row-head">Answer EN</div><div class="cell row-head">Question VI</div><div class="cell row-head">Answer VI</div>
+          <div class="cell question"><p>How do you work in Agile/Scrum teams?</p></div>
+          <div class="cell answer"><p>I work in Scrum-style teams: sprint goals, backlog, standups, and demos. I like clear user stories, small shippable slices, and honest status. In standups I talk blockers early — not just “still working.” I estimate with uncertainty in mind, and I prefer demos of working software over perfect docs — though I still write the docs that save the next person.</p></div>
+          <div class="cell question"><p>Bạn làm việc trong Agile/Scrum thế nào?</p></div>
+          <div class="cell answer"><p>Tôi làm trong team kiểu Scrum: sprint goal, backlog, standup và demo. Thích user story rõ, slice nhỏ ship được, status thật. Standup nói blocker sớm — không chỉ “đang làm.” Estimate có tính bất định, thích demo phần chạy được hơn docs hoàn hảo — dù vẫn viết docs cứu người sau.</p></div>
+        </div>
+        <div class="crib">
+          <p><strong>Know:</strong> Ship value in slices; surface blockers early.</p>
+          <p><strong>Trap:</strong> Silent struggle until the deadline.</p>
+          <p><strong>Follow-up:</strong> What if requirements change mid-sprint?</p>
+        </div>
+      </article>
+<article class="question-card" id="g145">
+        <div class="question-head"><h2>111. How does your current team use Agile/Scrum?</h2><p>Practical team process.</p></div>
+        <div class="grid4">
+          <div class="cell row-head">Question EN</div><div class="cell row-head">Answer EN</div><div class="cell row-head">Question VI</div><div class="cell row-head">Answer VI</div>
+          <div class="cell question"><p>How does your current team use Agile or Scrum day to day?</p></div>
+          <div class="cell answer"><p>We work in sprints with a backlog of tickets. We plan what fits the sprint, have short daily standups for progress and blockers, and review/demo what we shipped. Tickets usually have acceptance criteria so “done” is clear. It's not ceremony for ceremony — the useful parts are shared priority, early blockers, and a demo of working software. When process gets heavy, I still focus on delivering a thin vertical slice FE+BE rather than perfect paperwork.</p></div>
+          <div class="cell question"><p>Team hiện tại dùng Agile/Scrum thế nào?</p></div>
+          <div class="cell answer"><p>Chúng tôi làm theo sprint với backlog ticket. Plan việc vừa sprint, standup ngắn về tiến độ và blocker, rồi review/demo phần đã ship. Ticket thường có acceptance criteria để “done” rõ. Không phải nghi thức vì nghi thức — phần hữu ích là ưu tiên chung, blocker sớm, và demo phần chạy được. Khi process nặng, tôi vẫn tập trung ship slice mỏng FE+BE hơn paperwork hoàn hảo.</p></div>
+        </div>
+        <div class="crib">
+          <p><strong>Know:</strong> Sprint · backlog · standup · demo · acceptance criteria · vertical slice.</p>
+          <p><strong>Trap:</strong> Claiming perfect SAFe/ceremony expert if you only do light Scrum.</p>
+        </div>
+      </article>
+<article class="question-card" id="g146">
+        <div class="question-head"><h2>112. Scrum ceremonies you join</h2><p>Sprint rituals.</p></div>
+        <div class="grid4">
+          <div class="cell row-head">Question EN</div><div class="cell row-head">Answer EN</div><div class="cell row-head">Question VI</div><div class="cell row-head">Answer VI</div>
+          <div class="cell question"><p>Which Scrum ceremonies do you participate in, and why do they help?</p></div>
+          <div class="cell answer"><p>Planning — agree scope and break work. Daily standup — sync and surface blockers in minutes. Review/demo — show working software to stakeholders. Retro — what to improve next sprint. I treat them as communication tools. If a ceremony doesn't help the team ship safer, I'd suggest simplifying it — but I follow the team's cadence first.</p></div>
+          <div class="cell question"><p>Bạn tham gia ceremony Scrum nào, vì sao hữu ích?</p></div>
+          <div class="cell answer"><p>Planning — chốt scope và tách việc. Standup hàng ngày — sync và nêu blocker trong vài phút. Review/demo — show phần chạy cho stakeholder. Retro — cải thiện sprint sau. Tôi coi chúng là công cụ giao tiếp. Nếu ceremony không giúp ship an toàn hơn, tôi đề xuất đơn giản hóa — nhưng trước hết theo cadence của team.</p></div>
+        </div>
+        <div class="crib">
+          <p><strong>Know:</strong> Plan · standup · review · retro.</p>
+        </div>
+      </article>
+<article class="question-card" id="g147">
+        <div class="question-head"><h2>113. Breaking down stories / estimation</h2><p>How you plan work.</p></div>
+        <div class="grid4">
+          <div class="cell row-head">Question EN</div><div class="cell row-head">Answer EN</div><div class="cell row-head">Question VI</div><div class="cell row-head">Answer VI</div>
+          <div class="cell question"><p>How do you break down a big feature into sprint work?</p></div>
+          <div class="cell answer"><p>I split by user-visible value or risk: API contract first, then UI happy path, then edge cases, then polish. For a workflow feature that might mean: status model + transition API, then pipeline UI, then permissions, then reports. I avoid “all backend this sprint, all frontend next” when possible — a thin vertical slice is easier to demo and test. Estimation is a range with assumptions, not a promise to the minute.</p></div>
+          <div class="cell question"><p>Bạn tách feature lớn thành việc trong sprint thế nào?</p></div>
+          <div class="cell answer"><p>Tôi tách theo giá trị user thấy hoặc rủi ro: contract API trước, rồi UI happy path, rồi edge case, rồi polish. Feature workflow có thể: model status + API transition, rồi UI pipeline, rồi permission, rồi report. Tránh “sprint này toàn BE, sprint sau toàn FE” nếu được — slice dọc mỏng dễ demo và test hơn. Estimate là khoảng có giả định, không hứa từng phút.</p></div>
+        </div>
+        <div class="crib">
+          <p><strong>Know:</strong> Vertical slices · risk-first · estimate = range + assumptions.</p>
+        </div>
+      </article>
+<article class="question-card" id="g148">
+        <div class="question-head"><h2>114. Blockers and mid-sprint change</h2><p>Realistic Agile.</p></div>
+        <div class="grid4">
+          <div class="cell row-head">Question EN</div><div class="cell row-head">Answer EN</div><div class="cell row-head">Question VI</div><div class="cell row-head">Answer VI</div>
+          <div class="cell question"><p>What do you do when you're blocked, or requirements change mid-sprint?</p></div>
+          <div class="cell answer"><p>If blocked — say it in standup or ping ASAP: waiting on API, design, or access. Don't sit silent. If requirements change mid-sprint, I clarify impact with PM/lead: what drops or moves to next sprint so quality doesn't collapse. I'd rather renegotiate scope than ship a half-broken feature and call it done.</p></div>
+          <div class="cell question"><p>Khi bị block, hoặc requirement đổi giữa sprint, bạn làm gì?</p></div>
+          <div class="cell answer"><p>Nếu block — nói trong standup hoặc ping sớm: chờ API, design, hoặc access. Không im. Nếu requirement đổi giữa sprint, tôi làm rõ impact với PM/lead: cái gì bỏ hoặc đẩy sprint sau để chất lượng không sụp. Thà renegotiate scope còn hơn ship feature nửa vời rồi gọi là done.</p></div>
+        </div>
+        <div class="crib">
+          <p><strong>Know:</strong> Surface blockers early · renegotiate scope vs silent overcommit.</p>
+        </div>
+      </article>
+<article class="question-card" id="g149">
+        <div class="question-head"><h2>115. Definition of Done</h2><p>What “finished” means.</p></div>
+        <div class="grid4">
+          <div class="cell row-head">Question EN</div><div class="cell row-head">Answer EN</div><div class="cell row-head">Question VI</div><div class="cell row-head">Answer VI</div>
+          <div class="cell question"><p>What is your Definition of Done for a ticket?</p></div>
+          <div class="cell answer"><p>Code merged with review, acceptance criteria met, basic happy-path and key edge cases checked, no known critical bugs, and enough note for the next person — especially for APIs and data migrations. For fullstack tickets I also check FE and BE together in the real flow, not only unit tests in isolation.</p></div>
+          <div class="cell question"><p>Definition of Done của bạn cho một ticket là gì?</p></div>
+          <div class="cell answer"><p>Code merge có review, đạt acceptance criteria, check happy path và edge case chính, không còn bug critical biết trước, và ghi chú đủ cho người sau — đặc biệt API và migration data. Ticket fullstack tôi check FE và BE cùng lúc trên flow thật, không chỉ unit test tách rời.</p></div>
+        </div>
+        <div class="crib">
+          <p><strong>Know:</strong> AC · review · FE+BE flow · notes for next person.</p>
+        </div>
+      </article>
+<article class="question-card" id="g160">
+        <div class="question-head"><h2>116. Are you familiar with Agile / Scrum?</h2><p>They said the team works in Scrum.</p></div>
+        <div class="grid4">
+          <div class="cell row-head">Question EN</div><div class="cell row-head">Answer EN</div><div class="cell row-head">Question VI</div><div class="cell row-head">Answer VI</div>
+          <div class="cell question"><p>Are you familiar with Agile methodologies and Scrum? Our team works in Scrum.</p></div>
+          <div class="cell answer"><p>Yes. I've worked in Scrum-style teams with sprints, backlog, daily standups, planning, and demos/reviews. I'm comfortable with that cadence — committing to a sprint goal, surfacing blockers early, and demoing working software. I don't need a perfect textbook Scrum; I follow the team's process and focus on delivering thin, shippable slices. Joining a Scrum team is familiar ground for me.</p></div>
+          <div class="cell question"><p>Bạn quen Agile/Scrum không? Team chúng tôi làm Scrum.</p></div>
+          <div class="cell answer"><p>Có. Tôi đã làm trong team kiểu Scrum với sprint, backlog, standup hàng ngày, planning và demo/review. Tôi quen cadence đó — commit sprint goal, nêu blocker sớm, demo phần chạy được. Không cần Scrum sách giáo khoa hoàn hảo; tôi theo process của team và tập trung ship slice mỏng. Join team Scrum với tôi là quen thuộc.</p></div>
+        </div>
+        <div class="crib">
+          <p><strong>Say this:</strong> Yes — sprints, standup, planning, demo. Happy to follow your Scrum.</p>
+        </div>
+      </article>
+<article class="question-card" id="g159">
+        <div class="question-head"><h2>117. How do you measure task complexity?</h2><p>Story points / estimation.</p></div>
+        <div class="grid4">
+          <div class="cell row-head">Question EN</div><div class="cell row-head">Answer EN</div><div class="cell row-head">Question VI</div><div class="cell row-head">Answer VI</div>
+          <div class="cell question"><p>During planning, how did you measure the complexity of a task? Story points?</p></div>
+          <div class="cell answer"><p>Yes — usually relative sizing, often story points or a similar scale the team agrees on, not exact hours. I estimate by comparing to past tickets: uncertainty, how many layers (PHP API + React UI + DB), unknown third-party APIs, test effort, and risk of production impact. A simple UI text change is small; a sync mapping with edge cases and reporting is larger. If the team uses Fibonacci story points, I'm fine with that. If something is unclear, I ask for a spike or split the story before committing a big number.</p></div>
+          <div class="cell question"><p>Khi planning, bạn đo độ phức tạp task thế nào? Story points?</p></div>
+          <div class="cell answer"><p>Có — thường size tương đối, hay story points hoặc thang team thống nhất, không phải giờ chính xác. Tôi ước bằng so với ticket cũ: độ bất định, bao nhiêu lớp (PHP API + React UI + DB), API bên thứ ba lạ, effort test, và rủi ro production. Đổi text UI thì nhỏ; sync mapping nhiều edge case và report thì lớn. Team dùng Fibonacci story points thì tôi ổn. Nếu chưa rõ, tôi xin spike hoặc tách story trước khi commit số lớn.</p></div>
+        </div>
+        <div class="crib">
+          <p><strong>Know:</strong> Relative / story points · compare to past work · uncertainty + layers + risk · spike if unclear.</p>
+          <p><strong>Trap:</strong> Promising exact hours; padding without explaining assumptions.</p>
+        </div>
+      </article>
+<article class="question-card" id="g34">
+        <div class="question-head"><h2>118. Clean maintainable code</h2><p>JD language.</p></div>
+        <div class="grid4">
+          <div class="cell row-head">Question EN</div><div class="cell row-head">Answer EN</div><div class="cell row-head">Question VI</div><div class="cell row-head">Answer VI</div>
+          <div class="cell question"><p>What does clean, maintainable code mean to you?</p></div>
+          <div class="cell answer"><p>Names that match reality, small functions, clear module boundaries, and tests on the risky parts. If a new teammate can change one feature without breaking five others, that's maintainable. Clever code that only I understand is not a win.</p></div>
+          <div class="cell question"><p>Clean, maintainable code với bạn nghĩa là gì?</p></div>
+          <div class="cell answer"><p>Tên đúng thực tế, hàm nhỏ, ranh giới module rõ, và test chỗ rủi ro. Nếu teammate mới sửa một feature mà không gãy năm chỗ khác, đó là maintainable. Code thông minh chỉ mình tôi hiểu không phải chiến thắng.</p></div>
+        </div>
+        <div class="crib">
+          <p><strong>Know:</strong> Clarity for the next reader.</p>
+          <p><strong>Trap:</strong> Abstraction for its own sake.</p>
+          <p><strong>Follow-up:</strong> When is duplication better than the wrong abstraction?</p>
+        </div>
+      </article>
+<article class="question-card" id="g157">
+        <div class="question-head"><h2>119. Strong disagreement with colleague or client</h2><p>Behavioral — stay calm and factual.</p></div>
+        <div class="grid4">
+          <div class="cell row-head">Question EN</div><div class="cell row-head">Answer EN</div><div class="cell row-head">Question VI</div><div class="cell row-head">Answer VI</div>
+          <div class="cell question"><p>Have you ever had a strong disagreement with a colleague or client — technical or about methodology?</p></div>
+          <div class="cell answer"><p>Yes — usually technical, not personal. One pattern I've seen: someone wants a quick UI hotfix while I believe the root cause is backend data or an API contract. I don't argue to “win.” I bring evidence — Network tab, a small reproduce, impact on users — and propose options: short-term mitigation plus a proper fix. With a client or PM, if they push scope mid-sprint, I explain tradeoffs calmly: what we can ship safely this sprint versus what should move. Goal is shared outcome: correct product and trust, not ego.</p></div>
+          <div class="cell question"><p>Bạn từng bất đồng mạnh với đồng nghiệp hoặc client chưa — kỹ thuật hoặc methodology?</p></div>
+          <div class="cell answer"><p>Có — thường là kỹ thuật, không phải cá nhân. Một pattern: người khác muốn hotfix UI nhanh, còn tôi nghĩ gốc là data backend hoặc contract API. Tôi không cãi để “thắng.” Tôi mang bằng chứng — Network tab, reproduce nhỏ, impact user — và đề xuất: giảm đau ngắn hạn cộng fix đúng. Với client/PM nếu họ đẩy scope giữa sprint, tôi giải thích tradeoff bình tĩnh: sprint này ship an toàn được gì, cái gì nên đẩy. Mục tiêu là kết quả chung: product đúng và trust, không phải cái tôi.</p></div>
+        </div>
+        <div class="crib">
+          <p><strong>Structure:</strong> Situation → evidence → options → agree on outcome.</p>
+          <p><strong>Example hook:</strong> FE hotfix vs BE root cause; scope vs quality mid-sprint.</p>
+          <p><strong>Trap:</strong> Blaming people; “I always win arguments.”</p>
+        </div>
+      </article>
+<article class="question-card" id="g158">
+        <div class="question-head"><h2>120. How do you keep up with new technology?</h2><p>Learning habits.</p></div>
+        <div class="grid4">
+          <div class="cell row-head">Question EN</div><div class="cell row-head">Answer EN</div><div class="cell row-head">Question VI</div><div class="cell row-head">Answer VI</div>
+          <div class="cell question"><p>How do you keep yourself updated with the newest technology?</p></div>
+          <div class="cell answer"><p>I learn with a purpose — usually from the job or a role I'm targeting. I read official docs and release notes for tools we actually use, follow a few trusted sources, and try small spikes in a side project or a sandbox. I also use Cursor/Claude to explore unfamiliar APIs faster, then I verify by building something real. When a JD names a library I have not shipped, I research it to understand why teams pick it — not to pretend production expertise. I don't chase every hype library; I deepen what helps me ship.</p></div>
+          <div class="cell question"><p>Bạn cập nhật công nghệ mới thế nào?</p></div>
+          <div class="cell answer"><p>Tôi học có mục đích — thường từ công việc hoặc role đang aim. Đọc docs chính thức và release notes của tool đang dùng, theo vài nguồn tin cậy, và thử spike nhỏ ở side project hoặc sandbox. Cũng dùng Cursor/Claude để explore API lạ nhanh hơn, rồi verify bằng cách build thứ thật. Khi JD nêu lib tôi chưa ship, tôi research để hiểu vì sao team chọn — không giả production. Không đuổi mọi lib hot; đào sâu thứ giúp ship.</p></div>
+        </div>
+        <div class="crib">
+          <p><strong>Know:</strong> Purpose-driven · docs · small spikes · AI to explore · verify by building · not every hype.</p>
+        </div>
+      </article>
+    </section>
+<section class="section-block" id="sec-ai">
+      <h2>N. AI-assisted coding (Cursor / Claude / Superpowers)</h2>
+      <p style="color:var(--color-text-muted);font-size:var(--text-sm);margin:0 0 var(--space-4)">Mainly Cursor, sometimes Claude, Superpowers workflows. You still own review.</p>
+<article class="question-card" id="g150">
+        <div class="question-head"><h2>121. Do you use AI for coding?</h2><p>Yes — with ownership.</p></div>
+        <div class="grid4">
+          <div class="cell row-head">Question EN</div><div class="cell row-head">Answer EN</div><div class="cell row-head">Question VI</div><div class="cell row-head">Answer VI</div>
+          <div class="cell question"><p>Do you use AI tools when coding?</p></div>
+          <div class="cell answer"><p>Yes. I use AI as a coding partner every day — mainly Cursor in the IDE, and sometimes Claude for longer reasoning. It helps me move faster on boilerplate, explore unfamiliar APIs, draft tests, and debug with a second pair of eyes. I never paste blindly into production: I read the diff, run the flow, and keep ownership of the design and edge cases. AI speeds me up; it doesn't replace engineering judgment.</p></div>
+          <div class="cell question"><p>Bạn có dùng AI khi code không?</p></div>
+          <div class="cell answer"><p>Có. Tôi dùng AI như partner code hằng ngày — chủ yếu Cursor trong IDE, đôi khi Claude cho reasoning dài. Nó giúp nhanh hơn với boilerplate, tìm hiểu API lạ, draft test, và debug thêm một góc nhìn. Tôi không paste mù vào production: đọc diff, chạy flow, và vẫn own design cùng edge case. AI tăng tốc; không thay judgment kỹ thuật.</p></div>
+        </div>
+        <div class="crib">
+          <p><strong>Say this:</strong> Accelerator + reviewer still me.</p>
+          <p><strong>Trap:</strong> “AI writes everything” or “I never use AI.”</p>
+        </div>
+      </article>
+<article class="question-card" id="g151">
+        <div class="question-head"><h2>122. How you use Cursor day to day</h2><p>Your main tool.</p></div>
+        <div class="grid4">
+          <div class="cell row-head">Question EN</div><div class="cell row-head">Answer EN</div><div class="cell row-head">Question VI</div><div class="cell row-head">Answer VI</div>
+          <div class="cell question"><p>How do you use Cursor in your daily work?</p></div>
+          <div class="cell answer"><p>Cursor is my main environment. Typical loop: I describe the goal in chat or inline edit, point it at the relevant files, let it propose a change, then I review the diff carefully. I use it to navigate a codebase, implement a feature slice, write or update tests, and explain unfamiliar code. For bugs I paste the error/stack and ask for hypotheses, then I verify with Network tab, logs, or a small reproduce — I don't stop at the first AI guess. Multi-file refactors I do in small steps with git so I can revert.</p></div>
+          <div class="cell question"><p>Bạn dùng Cursor hằng ngày thế nào?</p></div>
+          <div class="cell answer"><p>Cursor là môi trường chính. Loop thường: mô tả goal trong chat hoặc inline edit, chỉ đúng file liên quan, để nó đề xuất thay đổi, rồi tôi review diff kỹ. Dùng để navigate codebase, implement một slice feature, viết/cập nhật test, và giải thích code lạ. Với bug tôi đưa error/stack, xin giả thuyết, rồi tự verify bằng Network, log, hoặc reproduce nhỏ — không dừng ở đoán đầu của AI. Refactor nhiều file thì làm từng bước nhỏ có git để revert được.</p></div>
+        </div>
+        <div class="crib">
+          <p><strong>Loop:</strong> Goal → scoped context → AI draft → review diff → run/verify → commit small.</p>
+        </div>
+      </article>
+<article class="question-card" id="g152">
+        <div class="question-head"><h2>123. Cursor vs Claude — when which</h2><p>Honest split.</p></div>
+        <div class="grid4">
+          <div class="cell row-head">Question EN</div><div class="cell row-head">Answer EN</div><div class="cell row-head">Question VI</div><div class="cell row-head">Answer VI</div>
+          <div class="cell question"><p>When do you use Cursor vs Claude?</p></div>
+          <div class="cell answer"><p>Almost everything in the repo I do in Cursor — it sees the files, applies edits, and stays in my workflow. I use Claude more for longer design talk, comparing approaches, or drafting a plan before I touch code. If I'm already deep in the project, Cursor wins because context and apply-to-codebase matter. I'm not tool-religious — I pick what gets a correct change into git faster with me still reviewing.</p></div>
+          <div class="cell question"><p>Khi nào dùng Cursor, khi nào Claude?</p></div>
+          <div class="cell answer"><p>Gần như mọi việc trong repo tôi làm trên Cursor — nó thấy file, apply edit, nằm trong workflow. Claude tôi dùng nhiều hơn cho design dài, so sánh hướng, hoặc draft plan trước khi đụng code. Nếu đang sâu trong project, Cursor thắng vì context và apply vào codebase quan trọng. Tôi không cuồng tool — chọn thứ đưa thay đổi đúng vào git nhanh hơn mà vẫn do tôi review.</p></div>
+        </div>
+        <div class="crib">
+          <p><strong>Know:</strong> Cursor = in-repo edits; Claude = longer reasoning/planning. Mostly Cursor.</p>
+        </div>
+      </article>
+<article class="question-card" id="g153">
+        <div class="question-head"><h2>124. Superpowers plugin — how you use it</h2><p>Your workflow enhancer.</p></div>
+        <div class="grid4">
+          <div class="cell row-head">Question EN</div><div class="cell row-head">Answer EN</div><div class="cell row-head">Question VI</div><div class="cell row-head">Answer VI</div>
+          <div class="cell question"><p>You mentioned Superpowers — what is it and how do you use it?</p></div>
+          <div class="cell answer"><p>Superpowers is a Cursor plugin/skill pack that gives the agent structured workflows — for example brainstorming before building, writing a short design/spec, then an implementation plan, then executing in steps, and using systematic debugging instead of random fixes. I use it when the task is bigger than a one-line change: clarify the goal, lock an approach, then implement. That keeps AI from jumping straight into messy code. For interview prep and cheatsheets I've used that same “spec → plan → build” discipline. Day to day I still drive: I approve the plan, check the diff, and own the result.</p></div>
+          <div class="cell question"><p>Bạn nói Superpowers — nó là gì và bạn dùng thế nào?</p></div>
+          <div class="cell answer"><p>Superpowers là plugin/skill pack trên Cursor giúp agent có workflow có cấu trúc — ví dụ brainstorm trước khi build, viết design/spec ngắn, rồi plan implement, rồi làm từng bước, và debug có hệ thống thay vì sửa đoán mò. Tôi dùng khi việc lớn hơn một dòng: làm rõ goal, chốt hướng, rồi mới code. Như vậy AI ít nhảy thẳng vào code loạn. Cho interview prep và cheatsheet tôi cũng dùng kỷ luật “spec → plan → build”. Hằng ngày tôi vẫn cầm lái: duyệt plan, check diff, own kết quả.</p></div>
+        </div>
+        <div class="crib">
+          <p><strong>Know:</strong> Structured agent workflows: brainstorm → spec → plan → execute → systematic debug.</p>
+          <p><strong>Say this:</strong> Process reduces AI chaos; I still approve.</p>
+        </div>
+      </article>
+<article class="question-card" id="g154">
+        <div class="question-head"><h2>125. How you review AI-generated code</h2><p>They care about this.</p></div>
+        <div class="grid4">
+          <div class="cell row-head">Question EN</div><div class="cell row-head">Answer EN</div><div class="cell row-head">Question VI</div><div class="cell row-head">Answer VI</div>
+          <div class="cell question"><p>How do you review code that AI wrote?</p></div>
+          <div class="cell answer"><p>Same bar as a junior PR — maybe stricter. I check: does it match the real requirement, are edge cases handled, is security okay (SQL, auth, XSS), did it invent APIs that don't exist, and is the style consistent with the repo. I run the path myself. For PHP/React I watch for wrong assumptions about our framework and silent error swallowing. If I can't explain the change, I don't merge it.</p></div>
+          <div class="cell question"><p>Bạn review code AI viết thế nào?</p></div>
+          <div class="cell answer"><p>Cùng tiêu chuẩn PR junior — thậm chí chặt hơn. Tôi check: có khớp requirement thật không, edge case, bảo mật (SQL, auth, XSS), có bịa API không tồn tại không, style có khớp repo không. Tôi tự chạy flow. Với PHP/React để ý assumption sai về framework và nuốt lỗi im lặng. Nếu không giải thích được thay đổi, tôi không merge.</p></div>
+        </div>
+        <div class="crib">
+          <p><strong>Know:</strong> Requirements · security · inventing APIs · run it · explainability.</p>
+        </div>
+      </article>
+<article class="question-card" id="g155">
+        <div class="question-head"><h2>126. Limits of AI in your work</h2><p>Shows maturity.</p></div>
+        <div class="grid4">
+          <div class="cell row-head">Question EN</div><div class="cell row-head">Answer EN</div><div class="cell row-head">Question VI</div><div class="cell row-head">Answer VI</div>
+          <div class="cell question"><p>When do you NOT trust AI for coding?</p></div>
+          <div class="cell answer"><p>I don't trust it alone on production data migrations, security-sensitive auth, unclear business rules, or “looks green but wrong” sync/mapping bugs. AI is weak when context is missing — private Base frameworks, odd legacy PHP, or domain rules only in someone's head. Then I slow down: read code, talk to the team, reproduce with real data. Also I never put secrets into prompts.</p></div>
+          <div class="cell question"><p>Khi nào bạn KHÔNG tin AI để code?</p></div>
+          <div class="cell answer"><p>Tôi không tin một mình AI cho migration data production, auth nhạy cảm, business rule mơ hồ, hoặc bug sync/mapping “trông ổn nhưng sai.” AI yếu khi thiếu context — framework private Base, PHP legacy lạ, hoặc rule chỉ nằm trong đầu ai đó. Lúc đó tôi chậm lại: đọc code, hỏi team, reproduce với data thật. Và không đưa secret vào prompt.</p></div>
+        </div>
+        <div class="crib">
+          <p><strong>Know:</strong> No secrets in prompts · weak on missing domain context · verify migrations/security.</p>
+        </div>
+      </article>
+<article class="question-card" id="g156">
+        <div class="question-head"><h2>127. AI for learning a new stack</h2><p>Ties to Globant / Zustand honesty.</p></div>
+        <div class="grid4">
+          <div class="cell row-head">Question EN</div><div class="cell row-head">Answer EN</div><div class="cell row-head">Question VI</div><div class="cell row-head">Answer VI</div>
+          <div class="cell question"><p>How would you use AI to learn Globant's stack faster?</p></div>
+          <div class="cell answer"><p>I'd point Cursor at the real repo: “show me how we create a Zustand store,” “where do dashboard filters live,” “how does this React Flow page save to PHP.” I use AI to map the codebase and draft a small first PR in team style — then I verify by reading existing patterns, not inventing a new architecture. For interview prep I already used that approach: research Zustand and dashboard libs honestly as “studied for this role,” not fake production experience. On the job the source of truth is your codebase + your review.</p></div>
+          <div class="cell question"><p>Bạn dùng AI học stack Globant nhanh thế nào?</p></div>
+          <div class="cell answer"><p>Tôi chỉ Cursor vào repo thật: “chỉ tôi cách tạo Zustand store,” “filter dashboard nằm đâu,” “trang React Flow lưu xuống PHP thế nào.” Dùng AI để map codebase và draft PR nhỏ theo style team — rồi verify bằng cách đọc pattern có sẵn, không invent kiến trúc mới. Cho interview tôi đã dùng cách đó: research Zustand và lib dashboard một cách thật thà là “học cho role này,” không bịa production. Khi đi làm, nguồn sự thật là codebase của bạn + review của tôi.</p></div>
+        </div>
+        <div class="crib">
+          <p><strong>Say this:</strong> AI maps the repo; team patterns + my review ship the PR.</p>
+        </div>
+      </article>
+    </section>
+<section class="section-block" id="sec-hard">
+      <h2>O. Hard fixes / under pressure (STAR)</h2>
+<article class="question-card" id="g161">
+        <div class="question-head"><h2>128. Under pressure — production / requirement change</h2><p>STAR behavioral.</p></div>
+        <div class="grid4">
+          <div class="cell row-head">Question EN</div><div class="cell row-head">Answer EN</div><div class="cell row-head">Question VI</div><div class="cell row-head">Answer VI</div>
+          <div class="cell question"><p>Describe a situation where you were under pressure — production bug, requirement change, or similar — and how you handled it.</p></div>
+          <div class="cell answer"><p>One case: wrong or missing data after a sync looked fine in the UI until users complained — high pressure because hiring/ops data must be trusted. I stayed calm: reproduce with a small known dataset, check Network/API vs DB, find the mapping/order bug, ship a focused fix, then add validation so silent mismatches are harder. Another pressure pattern is requirement change mid-sprint — I clarify impact, renegotiate what still fits the sprint, and protect quality instead of promising everything. Under pressure I prioritize evidence and the smallest safe fix first.</p></div>
+          <div class="cell question"><p>Kể tình huống bạn bị áp lực — bug production, đổi requirement, hoặc tương tự — và cách xử lý.</p></div>
+          <div class="cell answer"><p>Một case: data sai/thiếu sau sync, UI trông ổn đến khi user phản ánh — áp lực cao vì data tuyển dụng/ops phải đáng tin. Tôi giữ bình tĩnh: reproduce dataset nhỏ, check Network/API vs DB, tìm bug mapping/thứ tự, ship fix tập trung, rồi thêm validation. Pattern khác là đổi requirement giữa sprint — làm rõ impact, renegotiate phần còn vừa sprint, bảo vệ chất lượng thay vì hứa hết. Dưới áp lực tôi ưu tiên bằng chứng và fix nhỏ nhất nhưng an toàn trước.</p></div>
+        </div>
+        <div class="star">
+          <p><strong>S:</strong> Sync/data issue under user pressure (or mid-sprint scope change).</p>
+          <p><strong>T:</strong> Restore trust fast without making it worse.</p>
+          <p><strong>A:</strong> Reproduce → evidence → focused fix → prevent repeat / renegotiate scope.</p>
+          <p><strong>R:</strong> Correct data + clearer process next time.</p>
+          <p class="say"><strong>Say this:</strong> Calm + evidence + smallest safe fix.</p>
+        </div>
+      </article>
+<article class="question-card" id="g35">
+        <div class="question-head"><h2>129. Wrong data after sync</h2><p>STAR — BaseVN style.</p></div>
+        <div class="grid4">
+          <div class="cell row-head">Question EN</div><div class="cell row-head">Answer EN</div><div class="cell row-head">Question VI</div><div class="cell row-head">Answer VI</div>
+          <div class="cell question"><p>Tell me about a difficult bug you fixed.</p></div>
+          <div class="cell answer"><p>A sync between systems looked successful but fields were mismatched. I reproduced with a tiny known dataset, compared source and destination, fixed mapping/order, and added validation so silent mismatches are harder. That's more dangerous than a loud 500.</p></div>
+          <div class="cell question"><p>Kể về bug khó bạn đã sửa.</p></div>
+          <div class="cell answer"><p>Một sync trông thành công nhưng field bị lệch. Tôi reproduce với dataset nhỏ đã biết, so nguồn–đích, sửa mapping/thứ tự, và thêm validation để lệch thầm khó xảy ra hơn. Nguy hiểm hơn cả lỗi 500 ồn ào.</p></div>
+        </div>
+        <div class="star">
+          <p><strong>S:</strong> Multi-system sync in SaaS.</p>
+          <p><strong>T:</strong> Restore trust in data.</p>
+          <p><strong>A:</strong> Small reproduce → diff fields → fix mapping → validate.</p>
+          <p><strong>R:</strong> Correct sync + fewer silent failures.</p>
+          <p class="say"><strong>Say this:</strong> Silent data bugs are the scariest ones.</p>
+        </div>
+      </article>
+<article class="question-card" id="g36">
+        <div class="question-head"><h2>130. UI bug that was actually API</h2><p>FE/BE detective STAR.</p></div>
+        <div class="grid4">
+          <div class="cell row-head">Question EN</div><div class="cell row-head">Answer EN</div><div class="cell row-head">Question VI</div><div class="cell row-head">Answer VI</div>
+          <div class="cell question"><p>Tell me about a time the bug looked like frontend but wasn't.</p></div>
+          <div class="cell answer"><p>The screen showed empty or wrong values, so it felt like React. Network showed 200 with incomplete payload. Postman confirmed backend. I fixed the PHP query/resource shaping, and the UI was fine without a frontend rewrite.</p></div>
+          <div class="cell question"><p>Kể lần bug trông như frontend nhưng không phải.</p></div>
+          <div class="cell answer"><p>Màn hình hiện trống hoặc sai, trông như React. Network thấy 200 nhưng payload thiếu. Postman confirm backend. Tôi sửa query/shape resource PHP, UI ổn mà không cần viết lại frontend.</p></div>
+        </div>
+        <div class="star">
+          <p><strong>S:</strong> UI looked broken.</p>
+          <p><strong>T:</strong> Find the real layer.</p>
+          <p><strong>A:</strong> Network → Postman → PHP fix → verify UI.</p>
+          <p><strong>R:</strong> Saved time; fixed root cause.</p>
+          <p class="say"><strong>Say this:</strong> Let the Network tab settle the argument.</p>
+        </div>
+      </article>
+<article class="question-card" id="g37">
+        <div class="question-head"><h2>131. Performance complaint on list/report</h2><p>Fullstack perf.</p></div>
+        <div class="grid4">
+          <div class="cell row-head">Question EN</div><div class="cell row-head">Answer EN</div><div class="cell row-head">Question VI</div><div class="cell row-head">Answer VI</div>
+          <div class="cell question"><p>How did you fix a performance issue users felt in the UI?</p></div>
+          <div class="cell answer"><p>Users said the page was slow. I checked Network timing first — was React slow to render or API slow to respond? When the API was slow, I fixed MySQL/indexes or reduced over-fetching. When the API was fine, I fixed list rendering or unnecessary re-renders. Measure, then cut the real bottleneck.</p></div>
+          <div class="cell question"><p>Bạn sửa performance user cảm thấy trên UI thế nào?</p></div>
+          <div class="cell answer"><p>User bảo trang chậm. Tôi xem timing Network trước — React render chậm hay API chậm? API chậm thì sửa MySQL/index hoặc giảm over-fetch. API ổn thì sửa render list hoặc re-render thừa. Đo trước, rồi cắt đúng nút thắt.</p></div>
+        </div>
+        <div class="star">
+          <p><strong>S:</strong> Slow report/list in enterprise UI.</p>
+          <p><strong>T:</strong> Find FE vs BE bottleneck.</p>
+          <p><strong>A:</strong> Network timing → SQL or React fix → verify.</p>
+          <p><strong>R:</strong> Page felt usable again.</p>
+          <p class="say"><strong>Say this:</strong> I optimize the measured bottleneck, not my favorite layer.</p>
+        </div>
+      </article>
+    </section>
+<section class="section-block" id="sec-spoken">
+      <h2>Q. Spoken English — interview conversation (non-tech)</h2>
+<article class="question-card" id="g65">
+        <div class="question-head"><h2>146. Opening the interview</h2><p>Warm, simple, confident.</p></div>
+        <div class="grid4">
+          <div class="cell row-head">Situation EN</div><div class="cell row-head">Say this EN</div><div class="cell row-head">Situation VI</div><div class="cell row-head">Nghĩa VI</div>
+          <div class="cell question"><p>How do you start the conversation?</p></div>
+          <div class="cell answer"><p>Nice to meet you. Thank you for your time today. I'm happy to be here. / Thanks for having me.</p></div>
+          <div class="cell question"><p>Bắt đầu cuộc trò chuyện thế nào?</p></div>
+          <div class="cell answer"><p>Rất vui được gặp anh/chị. Cảm ơn anh/chị đã dành thời gian hôm nay. Mình rất vui được ở đây. / Cảm ơn đã mời mình.</p></div>
+        </div>
+        <div class="crib">
+          <p><strong>Use when:</strong> 10 giây đầu — cười nhẹ, nói ngắn.</p>
+        </div>
+      </article>
+<article class="question-card" id="g66">
+        <div class="question-head"><h2>147. Buy a few seconds to think</h2><p>Better than awkward silence or rushing.</p></div>
+        <div class="grid4">
+          <div class="cell row-head">Situation EN</div><div class="cell row-head">Say this EN</div><div class="cell row-head">Situation VI</div><div class="cell row-head">Nghĩa VI</div>
+          <div class="cell question"><p>You need a moment before answering.</p></div>
+          <div class="cell answer"><p>That's a good question — let me think for a second. / Let me put that in order. / Sure — give me a moment to organize my thoughts.</p></div>
+          <div class="cell question"><p>Bạn cần vài giây trước khi trả lời.</p></div>
+          <div class="cell answer"><p>Câu hỏi hay đấy — để mình nghĩ một chút. / Để mình sắp xếp ý lại. / Được — cho mình một giây để sắp xếp suy nghĩ.</p></div>
+        </div>
+        <div class="crib">
+          <p><strong>Use when:</strong> Câu khó, system design, hoặc câu chuyện behavioral.</p>
+        </div>
+      </article>
+<article class="question-card" id="g67">
+        <div class="question-head"><h2>148. Didn't hear clearly</h2><p>Polite — never guess what they said.</p></div>
+        <div class="grid4">
+          <div class="cell row-head">Situation EN</div><div class="cell row-head">Say this EN</div><div class="cell row-head">Situation VI</div><div class="cell row-head">Nghĩa VI</div>
+          <div class="cell question"><p>You missed part of the question.</p></div>
+          <div class="cell answer"><p>Sorry, could you repeat that please? / Just to make sure I heard you — did you mean …? / Could you say that one more time?</p></div>
+          <div class="cell question"><p>Bạn nghe không rõ câu hỏi.</p></div>
+          <div class="cell answer"><p>Xin lỗi, anh/chị nhắc lại giúp mình được không? / Để chắc mình nghe đúng — ý anh/chị là … phải không? / Anh/chị nói lại lần nữa giúp mình nhé?</p></div>
+        </div>
+        <div class="crib">
+          <p><strong>Use when:</strong> Ồn, accent, hoặc câu hỏi dài nhiều phần.</p>
+        </div>
+      </article>
+<article class="question-card" id="g68">
+        <div class="question-head"><h2>149. Clarify before answering</h2><p>Shows you listen carefully.</p></div>
+        <div class="grid4">
+          <div class="cell row-head">Situation EN</div><div class="cell row-head">Say this EN</div><div class="cell row-head">Situation VI</div><div class="cell row-head">Nghĩa VI</div>
+          <div class="cell question"><p>The question is a bit broad or unclear.</p></div>
+          <div class="cell answer"><p>Just to clarify — are you asking about … or …? / Do you want a short overview, or a detailed example? / When you say X, do you mean in my current role or in general?</p></div>
+          <div class="cell question"><p>Câu hỏi hơi rộng hoặc chưa rõ.</p></div>
+          <div class="cell answer"><p>Để mình làm rõ — anh/chị đang hỏi về … hay …? / Anh/chị muốn mình nói overview ngắn, hay một ví dụ chi tiết? / Khi anh/chị nói X, là trong role hiện tại của mình hay nói chung?</p></div>
+        </div>
+        <div class="crib">
+          <p><strong>Use when:</strong> Câu design, 'tell me about a time…', câu hỏi mơ hồ.</p>
+        </div>
+      </article>
+<article class="question-card" id="g69">
+        <div class="question-head"><h2>150. Start your answer smoothly</h2><p>Natural openers — not robotic.</p></div>
+        <div class="grid4">
+          <div class="cell row-head">Situation EN</div><div class="cell row-head">Say this EN</div><div class="cell row-head">Situation VI</div><div class="cell row-head">Nghĩa VI</div>
+          <div class="cell question"><p>How do you begin an answer?</p></div>
+          <div class="cell answer"><p>Sure. / Absolutely. / In my experience… / What I've usually done is… / A good example is… / From my side…</p></div>
+          <div class="cell question"><p>Bắt đầu câu trả lời thế nào cho tự nhiên?</p></div>
+          <div class="cell answer"><p>Được ạ. / Chắc chắn rồi. / Theo kinh nghiệm của mình… / Việc mình thường làm là… / Một ví dụ hay là… / Về phía mình…</p></div>
+        </div>
+        <div class="crib">
+          <p><strong>Use when:</strong> Hầu hết mọi câu trả lời — chọn một cụm, đừng nói hết một lúc.</p>
+        </div>
+      </article>
+<article class="question-card" id="g70">
+        <div class="question-head"><h2>151. Give yourself structure out loud</h2><p>Helps interviewer follow you.</p></div>
+        <div class="grid4">
+          <div class="cell row-head">Situation EN</div><div class="cell row-head">Say this EN</div><div class="cell row-head">Situation VI</div><div class="cell row-head">Nghĩa VI</div>
+          <div class="cell question"><p>You want to sound organized.</p></div>
+          <div class="cell answer"><p>I'll keep this short. / There are two parts to this. / First… then… / The short answer is… and I can go deeper if you want.</p></div>
+          <div class="cell question"><p>Bạn muốn nói có cấu trúc, dễ follow.</p></div>
+          <div class="cell answer"><p>Mình sẽ nói ngắn gọn. / Câu này có hai phần. / Trước hết… sau đó… / Câu trả lời ngắn là… và mình có thể nói sâu hơn nếu anh/chị muốn.</p></div>
+        </div>
+        <div class="crib">
+          <p><strong>Use when:</strong> Câu chuyện dài, tradeoff, debug FE vs BE.</p>
+        </div>
+      </article>
+<article class="question-card" id="g71">
+        <div class="question-head"><h2>152. Agree / show you're on the same page</h2><p>Conversational, not tech.</p></div>
+        <div class="grid4">
+          <div class="cell row-head">Situation EN</div><div class="cell row-head">Say this EN</div><div class="cell row-head">Situation VI</div><div class="cell row-head">Nghĩa VI</div>
+          <div class="cell question"><p>Interviewer makes a point and you agree.</p></div>
+          <div class="cell answer"><p>Yes, that makes sense. / I agree. / That's a fair point. / Exactly — that's how I see it too. / Right, and in my case…</p></div>
+          <div class="cell question"><p>Interviewer nói một ý và bạn đồng ý.</p></div>
+          <div class="cell answer"><p>Vâng, điều đó hợp lý. / Mình đồng ý. / Ý đó công bằng / hợp lý. / Đúng rồi — mình cũng nghĩ vậy. / Đúng, và trong trường hợp của mình…</p></div>
+        </div>
+        <div class="crib">
+          <p><strong>Use when:</strong> Sau khi họ giải thích quy trình team hoặc kỳ vọng.</p>
+        </div>
+      </article>
+<article class="question-card" id="g72">
+        <div class="question-head"><h2>153. Soft disagreement / different view</h2><p>Respectful, not argumentative.</p></div>
+        <div class="grid4">
+          <div class="cell row-head">Situation EN</div><div class="cell row-head">Say this EN</div><div class="cell row-head">Situation VI</div><div class="cell row-head">Nghĩa VI</div>
+          <div class="cell question"><p>You see it a bit differently.</p></div>
+          <div class="cell answer"><p>I see it a bit differently. / In my experience it depends… / That's one way — another option I've seen is… / I might be wrong, but I usually…</p></div>
+          <div class="cell question"><p>Bạn nhìn hơi khác một chút.</p></div>
+          <div class="cell answer"><p>Mình nhìn hơi khác một chút. / Theo kinh nghiệm của mình thì tùy… / Đó là một cách — còn một lựa chọn khác mình từng thấy là… / Có thể mình sai, nhưng mình thường…</p></div>
+        </div>
+        <div class="crib">
+          <p><strong>Use when:</strong> Tranh luận preference kỹ thuật — giữ thái độ khiêm tốn.</p>
+        </div>
+      </article>
+<article class="question-card" id="g73">
+        <div class="question-head"><h2>154. When you don't know</h2><p>Honest + still useful.</p></div>
+        <div class="grid4">
+          <div class="cell row-head">Situation EN</div><div class="cell row-head">Say this EN</div><div class="cell row-head">Situation VI</div><div class="cell row-head">Nghĩa VI</div>
+          <div class="cell question"><p>You truly don't know the answer.</p></div>
+          <div class="cell answer"><p>I haven't used that in a real project yet. / I'm not sure about the exact detail, but my approach would be… / I don't know off the top of my head — I'd check the docs / ask the team. / That's a gap for me, and I'd learn it this way…</p></div>
+          <div class="cell question"><p>Bạn thật sự không biết câu trả lời.</p></div>
+          <div class="cell answer"><p>Mình chưa dùng cái đó trong dự án thật. / Mình chưa chắc chi tiết exact, nhưng hướng tiếp cận của mình sẽ là… / Mình không nhớ ngay lúc này — mình sẽ xem docs / hỏi team. / Đó là phần mình còn thiếu, và mình sẽ học theo cách này…</p></div>
+        </div>
+        <div class="crib">
+          <p><strong>Use when:</strong> Zustand, tool mới, lý thuyết sâu — đừng bịa.</p>
+        </div>
+      </article>
+<article class="question-card" id="g74">
+        <div class="question-head"><h2>155. Bridge to an example</h2><p>Sound natural, not scripted.</p></div>
+        <div class="grid4">
+          <div class="cell row-head">Situation EN</div><div class="cell row-head">Say this EN</div><div class="cell row-head">Situation VI</div><div class="cell row-head">Nghĩa VI</div>
+          <div class="cell question"><p>You want to give a concrete story.</p></div>
+          <div class="cell answer"><p>For example… / Let me give a real example from my work. / One case that comes to mind is… / In a previous project…</p></div>
+          <div class="cell question"><p>Bạn muốn kể một ví dụ cụ thể.</p></div>
+          <div class="cell answer"><p>Ví dụ như… / Để mình lấy một ví dụ thật từ công việc. / Một case mình nghĩ tới là… / Trong một dự án trước…</p></div>
+        </div>
+        <div class="crib">
+          <p><strong>Use when:</strong> Câu behavioral và debugging.</p>
+        </div>
+      </article>
+<article class="question-card" id="g75">
+        <div class="question-head"><h2>156. Check if they want more detail</h2><p>Avoid over-talking.</p></div>
+        <div class="grid4">
+          <div class="cell row-head">Situation EN</div><div class="cell row-head">Say this EN</div><div class="cell row-head">Situation VI</div><div class="cell row-head">Nghĩa VI</div>
+          <div class="cell question"><p>You finished a short answer and aren't sure if they want more.</p></div>
+          <div class="cell answer"><p>I can go into more detail if you'd like. / Does that answer your question? / Would you like me to walk through an example? / Happy to expand on any part.</p></div>
+          <div class="cell question"><p>Bạn trả lời ngắn xong, chưa rõ họ muốn nghe thêm không.</p></div>
+          <div class="cell answer"><p>Mình có thể nói chi tiết hơn nếu anh/chị muốn. / Như vậy đã trả lời câu hỏi chưa ạ? / Anh/chị có muốn mình đi qua một ví dụ không? / Mình sẵn sàng mở rộng bất kỳ phần nào.</p></div>
+        </div>
+        <div class="crib">
+          <p><strong>Use when:</strong> Sau câu trả lời ngắn — đặc biệt design hoặc debugging.</p>
+        </div>
+      </article>
+<article class="question-card" id="g76">
+        <div class="question-head"><h2>157. Show interest in the company/team</h2><p>Human, not salesy.</p></div>
+        <div class="grid4">
+          <div class="cell row-head">Situation EN</div><div class="cell row-head">Say this EN</div><div class="cell row-head">Situation VI</div><div class="cell row-head">Nghĩa VI</div>
+          <div class="cell question"><p>They ask if you have questions / you want to show interest.</p></div>
+          <div class="cell answer"><p>I'd love to understand… / I'm curious about… / How does the team usually… / What does success look like in the first few months?</p></div>
+          <div class="cell question"><p>Bạn muốn thể hiện sự quan tâm.</p></div>
+          <div class="cell answer"><p>Mình rất muốn hiểu… / Mình tò mò về… / Team thường làm … như thế nào? / Ba tháng đầu thế nào là thành công?</p></div>
+        </div>
+        <div class="crib">
+          <p><strong>Use when:</strong> Cuối interview — ghép với câu hỏi đã chuẩn bị.</p>
+        </div>
+      </article>
+<article class="question-card" id="g77">
+        <div class="question-head"><h2>158. Closing politely</h2><p>Leave a good last impression.</p></div>
+        <div class="grid4">
+          <div class="cell row-head">Situation EN</div><div class="cell row-head">Say this EN</div><div class="cell row-head">Situation VI</div><div class="cell row-head">Nghĩa VI</div>
+          <div class="cell question"><p>How do you end the interview?</p></div>
+          <div class="cell answer"><p>Thank you again for your time — I enjoyed the conversation. / I appreciate the questions. / Looking forward to hearing from you. / Have a great day.</p></div>
+          <div class="cell question"><p>Kết thúc interview thế nào?</p></div>
+          <div class="cell answer"><p>Cảm ơn anh/chị lần nữa vì đã dành thời gian — mình rất thích cuộc trao đổi này. / Mình cảm ơn những câu hỏi vừa rồi. / Mong sớm nhận được phản hồi từ anh/chị. / Chúc anh/chị một ngày tốt lành.</p></div>
+        </div>
+        <div class="crib">
+          <p><strong>Use when:</strong> 20 giây cuối — bình tĩnh, ấm áp.</p>
+        </div>
+      </article>
+<article class="question-card" id="g78">
+        <div class="question-head"><h2>159. If English feels stuck</h2><p>Rescue phrases — keep talking.</p></div>
+        <div class="grid4">
+          <div class="cell row-head">Situation EN</div><div class="cell row-head">Say this EN</div><div class="cell row-head">Situation VI</div><div class="cell row-head">Nghĩa VI</div>
+          <div class="cell question"><p>You lose the word mid-sentence.</p></div>
+          <div class="cell answer"><p>Sorry — let me rephrase. / What I mean is… / In other words… / The idea is… / Give me one second — I want to say this clearly.</p></div>
+          <div class="cell question"><p>Bạn đang nói English bị kẹt giữa chừng.</p></div>
+          <div class="cell answer"><p>Xin lỗi — để mình nói lại cách khác. / Ý mình là… / Nói cách khác… / Ý chính là… / Cho mình một giây — mình muốn nói rõ ý này.</p></div>
+        </div>
+        <div class="crib">
+          <p><strong>Use when:</strong> Bất cứ lúc nào bị kẹt — tốt hơn là đứng im.</p>
+        </div>
+      </article>
+    </section>
+      </section>
+      <p class="footer-note"><a href="index.html">Hub</a> · Soft skills · spoken EN/VI</p>
+    </main>
+  </div>
+    <aside class="parts-rail" id="parts-rail" aria-label="Parts only">
+      <div class="parts-rail-head-row">
+        <p class="parts-rail-head">Parts</p>
+        <button class="parts-rail-toggle" data-parts-rail-toggle type="button" aria-expanded="true" aria-controls="parts-rail" aria-label="Hide parts panel" title="Hide parts">
+          <svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="16" rx="2"></rect><path d="M15 4v16"></path><path d="M11 9l-3 3 3 3"></path></svg>
+        </button>
+      </div>
+      <nav class="parts-rail-list" data-parts-rail>
+        <a class="parts-rail-link" href="#sec-collab" data-part="sec-collab"><strong>Collaborate / different ideas</strong><span>2 Q</span></a>
+        <a class="parts-rail-link" href="#sec-debug" data-part="sec-debug"><strong>Find &amp; fix bugs (FE vs BE)</strong><span>8 Q</span></a>
+        <a class="parts-rail-link" href="#sec-solve" data-part="sec-solve"><strong>Problem solving</strong><span>3 Q</span></a>
+        <a class="parts-rail-link" href="#sec-quality" data-part="sec-quality"><strong>Agile / Scrum / quality</strong><span>12 Q</span></a>
+        <a class="parts-rail-link" href="#sec-ai" data-part="sec-ai"><strong>AI-assisted coding</strong><span>7 Q</span></a>
+        <a class="parts-rail-link" href="#sec-hard" data-part="sec-hard"><strong>Hard fixes / under pressure</strong><span>4 Q</span></a>
+        <a class="parts-rail-link" href="#sec-spoken" data-part="sec-spoken"><strong>Spoken English</strong><span>14 Q</span></a>
+      </nav>
+    </aside>
+    <button class="parts-rail-show" data-parts-rail-show type="button" hidden aria-label="Show parts panel">
+      <svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="16" rx="2"></rect><path d="M15 4v16"></path><path d="M8 9l3 3-3 3"></path></svg>
+      <span>Parts</span>
+    </button>
+  <script>
+    (function () {
+      const btn = document.querySelector('[data-theme-toggle]');
+      const root = document.documentElement;
+      let theme = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+      root.setAttribute('data-theme', theme);
+      const sync = () => { btn.textContent = theme === 'dark' ? '☀' : '☾'; };
+      sync();
+      btn.addEventListener('click', () => {
+        theme = theme === 'dark' ? 'light' : 'dark';
+        root.setAttribute('data-theme', theme);
+        sync();
+      });
+
+      // Sticky TOC scroll-spy
+      const tocRoot = document.querySelector('[data-side-toc]');
+      const sideToc = document.getElementById('side-toc');
+      const backdrop = document.querySelector('[data-toc-backdrop]');
+      const openBtn = document.querySelector('[data-toc-open]');
+      if (!tocRoot) return;
+
+      const links = Array.from(tocRoot.querySelectorAll('.side-toc-link'));
+      const partEls = Array.from(tocRoot.querySelectorAll('.side-toc-part'));
+      const partsRailLinks = Array.from(document.querySelectorAll('[data-parts-rail] .parts-rail-link'));
+      const idToLink = new Map(links.map((a) => [a.getAttribute('data-target'), a]));
+      const targets = links
+        .map((a) => document.getElementById(a.getAttribute('data-target')))
+        .filter(Boolean);
+
+      let activeId = null;
+      const setActive = (id) => {
+        if (!id || id === activeId) return;
+        activeId = id;
+        links.forEach((a) => a.classList.toggle('is-active', a.getAttribute('data-target') === id));
+        const active = idToLink.get(id);
+        const partId = active ? active.getAttribute('data-part') : null;
+        partEls.forEach((p) => p.classList.toggle('is-active', p.getAttribute('data-part') === partId));
+        partsRailLinks.forEach((a) => a.classList.toggle('is-active', a.getAttribute('data-part') === partId));
+        if (active && sideToc) {
+          const aTop = active.offsetTop;
+          const aBottom = aTop + active.offsetHeight;
+          const viewTop = sideToc.scrollTop;
+          const viewBottom = viewTop + sideToc.clientHeight;
+          if (aTop < viewTop + 40) sideToc.scrollTop = Math.max(0, aTop - 48);
+          else if (aBottom > viewBottom - 40) sideToc.scrollTop = aBottom - sideToc.clientHeight + 48;
+        }
+      };
+
+      const onScroll = () => {
+        const marker = 120; // below sticky topbar
+        let current = targets[0] ? targets[0].id : null;
+        for (const el of targets) {
+          const top = el.getBoundingClientRect().top;
+          if (top <= marker) current = el.id;
+          else break;
+        }
+        setActive(current);
+      };
+
+
+      window.addEventListener('scroll', onScroll, { passive: true });
+      onScroll();
+
+      const closeMobile = () => {
+        sideToc && sideToc.classList.remove('is-open');
+        if (backdrop) {
+          backdrop.classList.remove('is-open');
+          backdrop.hidden = true;
+        }
+      };
+      const openMobile = () => {
+        sideToc && sideToc.classList.add('is-open');
+        if (backdrop) {
+          backdrop.hidden = false;
+          backdrop.classList.add('is-open');
+        }
+      };
+      openBtn && openBtn.addEventListener('click', openMobile);
+      backdrop && backdrop.addEventListener('click', closeMobile);
+      tocRoot.addEventListener('click', (e) => {
+        const a = e.target.closest('a.side-toc-link, a.side-toc-part-link');
+        if (!a) return;
+        if (window.matchMedia('(max-width: 1100px)').matches) {
+          setTimeout(closeMobile, 50);
+        }
+      });
+    })();
+  </script>
+</body>
+</html>

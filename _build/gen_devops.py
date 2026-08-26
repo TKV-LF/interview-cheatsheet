@@ -26,9 +26,7 @@ SECTIONS = [
     ("sec-gcp", "8 · GCP mental model", "Part 8 · GCP"),
     ("sec-web", "9 · Web servers", "Part 9 · Web servers"),
     ("sec-security", "10 · Security basics", "Part 10 · Security"),
-    ("sec-fit", "11 · Fit / intro", "Part 11 · Fit"),
-    ("sec-scenario", "12 · Scenario questions", "Part 12 · Scenarios"),
-    ("sec-close", "13 · Closing", "Part 13 · Closing"),
+    ("sec-scenario", "11 · Scenario questions", "Part 11 · Scenarios"),
 ]
 
 
@@ -103,7 +101,8 @@ def render_interview(num: int, card: dict) -> str:
 
 def main() -> None:
     # Experience first, then fundamentals, then interview
-    cards = list(CEXP) + list(CFUND) + list(CINT)
+    known = {sid for sid, _, _ in SECTIONS}
+    cards = [c for c in list(CEXP) + list(CFUND) + list(CINT) if c["sec"] in known]
     by_sec: dict[str, list[tuple[int, dict]]] = {sid: [] for sid, _, _ in SECTIONS}
     for i, card in enumerate(cards, start=1):
         by_sec[card["sec"]].append((i, card))
@@ -235,9 +234,10 @@ def main() -> None:
       <div class="top-actions">
         <button class="btn toc-mobile-btn" data-toc-open type="button">Contents</button>
         <button class="btn theme-toggle" data-theme-toggle aria-label="Switch theme">☾</button>
-        <a class="btn btn-link-secondary" href="index.html">Cloud</a>
+        <a class="btn btn-link-secondary" href="index.html">Hub</a>
+        <a class="btn btn-link-secondary" href="fit.html#devops">Fit</a>
+        <a class="btn btn-link-secondary" href="soft-skills.html">Soft skills</a>
         <a class="btn btn-link-secondary" href="cv.html">CV</a>
-        <a class="btn btn-link-secondary" href="globant.html">Globant</a>
       </div>
     </div>
   </div>
@@ -278,7 +278,7 @@ def main() -> None:
       </div>
       <aside class="toc-card" id="toc">
         <div class="section-label">Study order</div>
-        <p>Start <a href="#sec-mobile-cicd">Mobile CI/CD</a> → <a href="#sec-cloudrun">Cloud Run / Build</a> → <a href="#sec-linux-vm">Linux VM</a>, then skim fundamentals, then speak Fit/Scenarios out loud.</p>
+        <p>Start <a href="#sec-mobile-cicd">Mobile CI/CD</a> → <a href="#sec-cloudrun">Cloud Run / Build</a> → <a href="#sec-linux-vm">Linux VM</a>, then skim fundamentals, then speak <a href="fit.html#devops">Fit</a> and Scenarios out loud.</p>
       </aside>
     </section>
 """
@@ -286,7 +286,7 @@ def main() -> None:
     html.append("\n".join(body_bits))
     html.append(
         """
-    <p class="footer-note"><a href="index.html">Cloud/infra sheet</a> · <a href="cv.html">CV stories</a> · <a href="globant.html">PHP/React sheet</a> · DevOps prep — real experience, reusable for any company.</p>
+    <p class="footer-note"><a href="index.html">Hub</a> · <a href="fit.html#devops">Fit (DevOps)</a> · <a href="soft-skills.html">Soft skills</a> · <a href="cv.html">CV</a> · hands-on DevOps.</p>
   </main>
   </div>
 """

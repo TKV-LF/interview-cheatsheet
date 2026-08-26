@@ -1,0 +1,1103 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Fit / Intro — PHP · DevOps · Node–TS</title>
+  <link href="https://api.fontshare.com/v2/css?f[]=satoshi@400,500,700&f[]=general-sans@400,500,600,700&display=swap" rel="stylesheet">
+  <style>
+    :root, [data-theme="light"] {
+      --text-xs: clamp(0.75rem, 0.7rem + 0.25vw, 0.875rem);
+      --text-sm: clamp(0.875rem, 0.8rem + 0.35vw, 1rem);
+      --text-base: clamp(1rem, 0.95rem + 0.25vw, 1.125rem);
+      --text-lg: clamp(1.125rem, 1rem + 0.75vw, 1.5rem);
+      --text-xl: clamp(1.5rem, 1.2rem + 1.25vw, 2.25rem);
+      --space-1: 0.25rem; --space-2: 0.5rem; --space-3: 0.75rem; --space-4: 1rem;
+      --space-5: 1.25rem; --space-6: 1.5rem; --space-8: 2rem; --space-10: 2.5rem;
+      --space-12: 3rem; --space-16: 4rem;
+      --color-bg: #f7f6f2;
+      --color-surface: #f9f8f5;
+      --color-surface-2: #fbfbf9;
+      --color-surface-offset: #edeae5;
+      --color-border: #d4d1ca;
+      --color-divider: #dcd9d5;
+      --color-text: #28251d;
+      --color-text-muted: #6f6c65;
+      --color-text-faint: #98958f;
+      --color-primary: #01696f;
+      --color-primary-hover: #0c4e54;
+      --color-primary-highlight: #d8e6e3;
+      --color-success: #437a22;
+      --color-warning: #964219;
+      --radius-sm: 0.375rem;
+      --radius-md: 0.5rem;
+      --radius-lg: 0.75rem;
+      --radius-xl: 1rem;
+      --shadow-sm: 0 1px 2px rgba(30, 27, 22, 0.06);
+      --shadow-md: 0 10px 30px rgba(30, 27, 22, 0.08);
+      --font-display: 'General Sans', 'Inter', sans-serif;
+      --font-body: 'Satoshi', 'Inter', sans-serif;
+    }
+
+    [data-theme="dark"] {
+      --color-bg: #171614;
+      --color-surface: #1c1b19;
+      --color-surface-2: #201f1d;
+      --color-surface-offset: #2a2826;
+      --color-border: #393836;
+      --color-divider: #2f2e2c;
+      --color-text: #e1dfdb;
+      --color-text-muted: #adaaa4;
+      --color-text-faint: #7c7974;
+      --color-primary: #4f98a3;
+      --color-primary-hover: #6aafba;
+      --color-primary-highlight: rgba(79,152,163,0.16);
+      --color-success: #79b95a;
+      --color-warning: #d08b60;
+      --shadow-sm: 0 1px 2px rgba(0,0,0,0.18);
+      --shadow-md: 0 10px 30px rgba(0,0,0,0.3);
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      font-family: var(--font-body);
+      font-size: var(--text-base);
+      color: var(--color-text);
+      background: var(--color-bg);
+      line-height: 1.65;
+    }
+
+    a { color: inherit; text-decoration: none; }
+    .page {
+      max-width: 1600px;
+      margin: 0 auto;
+      padding: var(--space-6);
+    }
+
+    .topbar {
+      position: sticky;
+      top: 0;
+      z-index: 30;
+      backdrop-filter: blur(10px);
+      background: color-mix(in srgb, var(--color-bg) 88%, transparent);
+      border-bottom: 1px solid var(--color-divider);
+    }
+
+    .topbar-inner {
+      max-width: 1600px;
+      margin: 0 auto;
+      padding: var(--space-4) var(--space-6);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: var(--space-4);
+    }
+
+    .brand h1 {
+      margin: 0;
+      font-family: var(--font-display);
+      font-size: var(--text-xl);
+      line-height: 1.05;
+      letter-spacing: -0.03em;
+    }
+
+    .brand p {
+      margin: var(--space-2) 0 0;
+      color: var(--color-text-muted);
+      font-size: var(--text-sm);
+      max-width: 72ch;
+    }
+
+    .top-actions {
+      display: flex;
+      align-items: center;
+      gap: var(--space-3);
+      flex-wrap: wrap;
+    }
+
+    .btn {
+      border: 1px solid var(--color-border);
+      background: var(--color-surface);
+      color: var(--color-text);
+      border-radius: var(--radius-full, 999px);
+      padding: 0.72rem 1rem;
+      font-size: var(--text-sm);
+      font-weight: 600;
+      box-shadow: var(--shadow-sm);
+      cursor: pointer;
+    }
+
+    .btn:hover { background: var(--color-surface-2); }
+    .theme-toggle { min-width: 44px; min-height: 44px; display: inline-flex; align-items: center; justify-content: center; }
+
+    .hero {
+      display: grid;
+      grid-template-columns: 1.2fr 0.8fr;
+      gap: var(--space-6);
+      margin: var(--space-6) 0 var(--space-8);
+    }
+
+    .hero-card, .toc-card, .question-card {
+      background: var(--color-surface);
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius-xl);
+      box-shadow: var(--shadow-sm);
+    }
+
+    .hero-card { padding: var(--space-6); }
+    .hero-kpis {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: var(--space-3);
+      margin-top: var(--space-5);
+    }
+
+    .kpi {
+      background: var(--color-surface-2);
+      border: 1px solid var(--color-divider);
+      border-radius: var(--radius-lg);
+      padding: var(--space-4);
+    }
+
+    .kpi strong {
+      display: block;
+      font-size: var(--text-lg);
+      font-family: var(--font-display);
+      margin-bottom: var(--space-2);
+    }
+
+    .kpi span {
+      font-size: var(--text-sm);
+      color: var(--color-text-muted);
+    }
+
+    .toc-card {
+      padding: var(--space-6);
+      background: linear-gradient(180deg, var(--color-surface) 0%, var(--color-surface-2) 100%);
+    }
+
+    .section-label {
+      display: inline-flex;
+      align-items: center;
+      gap: var(--space-2);
+      padding: 0.35rem 0.7rem;
+      border-radius: 999px;
+      background: var(--color-primary-highlight);
+      color: var(--color-primary);
+      font-size: var(--text-xs);
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      margin-bottom: var(--space-4);
+    }
+
+    .toc-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: var(--space-3);
+      margin-top: var(--space-4);
+    }
+
+    .toc-link {
+      display: block;
+      padding: var(--space-4);
+      border-radius: var(--radius-lg);
+      background: var(--color-bg);
+      border: 1px solid var(--color-divider);
+      min-height: 100%;
+    }
+
+    .toc-link:hover {
+      border-color: var(--color-primary);
+      background: var(--color-primary-highlight);
+    }
+
+    .toc-link small {
+      display: block;
+      color: var(--color-text-faint);
+      margin-bottom: var(--space-2);
+      font-size: var(--text-xs);
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+    }
+
+    .toc-link strong {
+      display: block;
+      font-size: var(--text-sm);
+      line-height: 1.45;
+    }
+
+    .questions {
+      display: grid;
+      gap: var(--space-5);
+      padding-bottom: var(--space-16);
+    }
+
+    .question-card {
+      overflow: hidden;
+      scroll-margin-top: 100px;
+    }
+
+    .question-head {
+      padding: var(--space-5) var(--space-5) var(--space-4);
+      border-bottom: 1px solid var(--color-divider);
+      background: var(--color-surface-2);
+    }
+
+    .question-head h2 {
+      margin: 0;
+      font-family: var(--font-display);
+      font-size: var(--text-lg);
+      line-height: 1.15;
+      letter-spacing: -0.02em;
+    }
+
+    .question-head p {
+      margin: var(--space-2) 0 0;
+      color: var(--color-text-muted);
+      font-size: var(--text-sm);
+    }
+
+    .grid4 {
+      display: grid;
+      grid-template-columns: 0.8fr 1.2fr 0.8fr 1.2fr;
+    }
+
+    .cell {
+      padding: var(--space-5);
+      border-right: 1px solid var(--color-divider);
+      border-bottom: 1px solid var(--color-divider);
+      min-width: 0;
+    }
+
+    .grid4 .cell:nth-child(4n) { border-right: none; }
+    .row-head {
+      background: var(--color-surface-2);
+      font-size: var(--text-xs);
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      font-weight: 700;
+      color: var(--color-text-muted);
+      padding-top: var(--space-4);
+      padding-bottom: var(--space-4);
+    }
+
+    .cell.question {
+      background: color-mix(in srgb, var(--color-surface-2) 70%, var(--color-bg));
+      font-weight: 600;
+    }
+
+    .cell.answer {
+      background: var(--color-surface);
+    }
+
+    .cell p { margin: 0; }
+    .cell p + p { margin-top: var(--space-3); }
+
+    .note {
+      padding: var(--space-4) var(--space-5);
+      background: color-mix(in srgb, var(--color-primary-highlight) 55%, var(--color-surface));
+      border-top: 1px solid var(--color-divider);
+      color: var(--color-text-muted);
+      font-size: var(--text-sm);
+    }
+
+    .tag-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: var(--space-2);
+      margin-top: var(--space-4);
+    }
+
+    .tag {
+      padding: 0.35rem 0.7rem;
+      border: 1px solid var(--color-divider);
+      border-radius: 999px;
+      background: var(--color-bg);
+      color: var(--color-text-muted);
+      font-size: var(--text-xs);
+      font-weight: 600;
+    }
+
+    .footer-note {
+      margin-top: var(--space-8);
+      color: var(--color-text-muted);
+      font-size: var(--text-sm);
+      text-align: center;
+    }
+
+    @media (max-width: 1180px) {
+      .hero { grid-template-columns: 1fr; }
+      .grid4 { grid-template-columns: 1fr 1fr; }
+      .grid4 .cell:nth-child(2n) { border-right: none; }
+      .grid4 .cell:nth-child(4n) { border-right: none; }
+      .row-head { display: none; }
+      .cell.question { border-bottom: 1px solid var(--color-divider); }
+    }
+
+    
+    .section-nav {
+      display: flex;
+      flex-wrap: wrap;
+      gap: var(--space-2);
+      margin-top: var(--space-4);
+    }
+    .section-nav a {
+      padding: 0.4rem 0.75rem;
+      border: 1px solid var(--color-divider);
+      border-radius: 999px;
+      background: var(--color-bg);
+      font-size: var(--text-xs);
+      font-weight: 700;
+      color: var(--color-text-muted);
+    }
+    .section-nav a:hover {
+      border-color: var(--color-primary);
+      color: var(--color-primary);
+      background: var(--color-primary-highlight);
+    }
+    .section-block {
+      scroll-margin-top: 110px;
+      margin-top: var(--space-8);
+    }
+    .section-block > h2 {
+      font-family: var(--font-display);
+      font-size: var(--text-lg);
+      letter-spacing: -0.02em;
+      margin: 0 0 var(--space-4);
+    }
+    .crib {
+      padding: var(--space-4) var(--space-5);
+      background: color-mix(in srgb, var(--color-warning) 8%, var(--color-surface));
+      border-top: 1px solid var(--color-divider);
+      font-size: var(--text-sm);
+      color: var(--color-text-muted);
+    }
+    .crib p { margin: 0; }
+    .crib p + p { margin-top: var(--space-2); }
+    .crib strong { color: var(--color-text); }
+
+@media (max-width: 720px) {
+      .page, .topbar-inner { padding-left: var(--space-4); padding-right: var(--space-4); }
+      .topbar-inner { align-items: flex-start; flex-direction: column; }
+      .hero-kpis { grid-template-columns: 1fr; }
+      .toc-grid { grid-template-columns: 1fr; }
+      .grid4 { grid-template-columns: 1fr; }
+      .cell { border-right: none !important; }
+      .question-head h2 { font-size: 1.2rem; }
+    }
+  
+    .star{padding:var(--space-4) var(--space-5);background:color-mix(in srgb,var(--color-primary-highlight) 70%,var(--color-surface));border-top:1px solid var(--color-divider);font-size:var(--text-sm);color:var(--color-text-muted)}
+    .star p{margin:0}.star p+p{margin-top:var(--space-2)}.star strong{color:var(--color-text)}
+    .say{margin-top:var(--space-3);padding-top:var(--space-3);border-top:1px dashed var(--color-divider);color:var(--color-primary);font-weight:600}
+
+    /* Left full Contents + right Parts-only rail */
+    body.has-side-toc { overflow-x: hidden; }
+    .shell {
+      display: grid;
+      grid-template-columns: minmax(240px, 300px) minmax(0, 1fr);
+      gap: 0;
+      align-items: start;
+      max-width: 1800px;
+      margin: 0 auto;
+      position: relative;
+    }
+    .side-toc {
+      position: sticky;
+      top: 88px;
+      height: calc(100vh - 100px);
+      overflow: auto;
+      padding: var(--space-4);
+      margin: var(--space-4) 0 var(--space-4) var(--space-4);
+      background: var(--color-surface);
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius-xl);
+      box-shadow: var(--shadow-sm);
+      z-index: 20;
+    }
+    .side-toc-head {
+      position: sticky;
+      top: 0;
+      background: var(--color-surface);
+      padding-bottom: var(--space-3);
+      margin-bottom: var(--space-3);
+      border-bottom: 1px solid var(--color-divider);
+      z-index: 1;
+    }
+    .side-toc-head strong {
+      display: block;
+      font-family: var(--font-display);
+      font-size: var(--text-sm);
+      letter-spacing: -0.02em;
+    }
+    .side-toc-head span {
+      display: block;
+      margin-top: 0.25rem;
+      color: var(--color-text-faint);
+      font-size: var(--text-xs);
+    }
+    .side-toc-list {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+    }
+    .side-toc-link {
+      display: grid;
+      grid-template-columns: 2.2rem 1fr;
+      gap: 0.45rem;
+      align-items: start;
+      padding: 0.45rem 0.55rem;
+      border-radius: var(--radius-md);
+      color: var(--color-text-muted);
+      font-size: var(--text-xs);
+      line-height: 1.35;
+      border: 1px solid transparent;
+    }
+    .side-toc-link:hover {
+      background: var(--color-primary-highlight);
+      color: var(--color-primary);
+    }
+    .side-toc-link.is-active {
+      background: var(--color-primary-highlight);
+      border-color: color-mix(in srgb, var(--color-primary) 35%, var(--color-border));
+      color: var(--color-primary);
+      font-weight: 600;
+    }
+    .side-toc-num {
+      font-variant-numeric: tabular-nums;
+      color: var(--color-text-faint);
+      font-weight: 700;
+    }
+    .side-toc-link.is-active .side-toc-num { color: var(--color-primary); }
+    .side-toc-title { min-width: 0; }
+
+    .side-toc-part {
+      display: block;
+      margin: 0.85rem 0 0.35rem;
+      padding: 0.5rem 0.55rem 0.35rem;
+      border-top: 1px solid var(--color-divider);
+    }
+    .side-toc-part:first-child {
+      margin-top: 0;
+      border-top: none;
+      padding-top: 0.15rem;
+    }
+    .side-toc-part-link {
+      display: block;
+      font-family: var(--font-display);
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.02em;
+      color: var(--color-text);
+      line-height: 1.3;
+    }
+    .side-toc-part-link:hover { color: var(--color-primary); }
+    .side-toc-part-range {
+      display: block;
+      margin-top: 0.15rem;
+      font-size: 0.65rem;
+      font-variant-numeric: tabular-nums;
+      color: var(--color-text-faint);
+      font-weight: 600;
+    }
+    .side-toc-part.is-active .side-toc-part-link { color: var(--color-primary); }
+    .side-toc-part.is-active .side-toc-part-range {
+      color: color-mix(in srgb, var(--color-primary) 70%, var(--color-text-faint));
+    }
+
+    /* Right: Parts only */
+    .parts-rail {
+      display: none;
+    }
+    @media (min-width: 1280px) {
+      .shell {
+        grid-template-columns: minmax(240px, 300px) minmax(0, 1fr);
+        max-width: 1800px;
+        padding-right: 0;
+      }
+      .parts-rail {
+        display: block;
+        position: fixed;
+        top: 148px;
+        right: 0;
+        width: 168px;
+        max-height: calc(100vh - 112px);
+        overflow: auto;
+        padding: 0.75rem 0.65rem;
+        background: var(--color-surface);
+        border: 1px solid var(--color-border);
+        border-radius: var(--radius-xl);
+        box-shadow: var(--shadow-sm);
+        z-index: 25;
+      }
+      .parts-rail-head {
+        font-family: var(--font-display);
+        font-size: 0.72rem;
+        font-weight: 700;
+        letter-spacing: 0.03em;
+        text-transform: uppercase;
+        color: var(--color-text-faint);
+        margin: 0 0 0.55rem;
+        padding: 0 0.35rem 0.45rem;
+        border-bottom: 1px solid var(--color-divider);
+      }
+      .parts-rail-list {
+        display: flex;
+        flex-direction: column;
+        gap: 2px;
+      }
+      .parts-rail-link {
+        display: block;
+        padding: 0.4rem 0.45rem;
+        border-radius: var(--radius-md);
+        color: var(--color-text-muted);
+        font-size: 0.7rem;
+        line-height: 1.3;
+        border: 1px solid transparent;
+      }
+      .parts-rail-link strong {
+        display: block;
+        font-family: var(--font-display);
+        font-size: 0.72rem;
+        font-weight: 700;
+        color: var(--color-text);
+      }
+      .parts-rail-link span {
+        display: block;
+        margin-top: 0.1rem;
+        font-size: 0.62rem;
+        font-variant-numeric: tabular-nums;
+        color: var(--color-text-faint);
+        font-weight: 600;
+      }
+      .parts-rail-link:hover {
+        background: var(--color-primary-highlight);
+      }
+      .parts-rail-link:hover strong { color: var(--color-primary); }
+      .parts-rail-link.is-active {
+        background: var(--color-primary-highlight);
+        border-color: color-mix(in srgb, var(--color-primary) 35%, var(--color-border));
+      }
+      .parts-rail-link.is-active strong { color: var(--color-primary); }
+      /* leave room so content doesn't sit under the rail */
+      .page.with-side-toc {
+        padding-right: 188px;
+      }
+    }
+
+    .page.with-side-toc {
+      max-width: none;
+      padding-left: var(--space-4);
+      padding-right: var(--space-6);
+    }
+    .hero.with-side-toc {
+      grid-template-columns: 1fr;
+    }
+    .hero.with-side-toc .toc-card { display: none; }
+    .toc-mobile-btn {
+      display: none;
+    }
+    @media (max-width: 1100px) {
+      .shell { grid-template-columns: 1fr; }
+      .parts-rail { display: none !important; }
+      .side-toc {
+        position: fixed;
+        left: 0;
+        top: 0;
+        bottom: 0;
+        width: min(86vw, 320px);
+        height: 100vh;
+        margin: 0;
+        border-radius: 0;
+        border-right: 1px solid var(--color-border);
+        transform: translateX(-105%);
+        transition: transform 0.2s ease;
+        z-index: 50;
+      }
+      .side-toc.is-open { transform: translateX(0); }
+      .toc-backdrop {
+        display: none;
+        position: fixed;
+        inset: 0;
+        background: rgba(0,0,0,0.35);
+        z-index: 40;
+      }
+      .toc-backdrop.is-open { display: block; }
+      .toc-mobile-btn { display: inline-flex; }
+      .page.with-side-toc { padding-left: var(--space-4); padding-right: var(--space-4); }
+    }
+
+
+    .version-tabs {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      margin: var(--space-4) 0 var(--space-2);
+    }
+    .version-tabs button {
+      border: 1px solid var(--color-border);
+      background: var(--color-surface);
+      color: var(--color-text);
+      border-radius: 999px;
+      padding: 0.55rem 0.95rem;
+      font-size: var(--text-sm);
+      font-weight: 700;
+      cursor: pointer;
+    }
+    .version-tabs button.is-on {
+      background: var(--color-primary);
+      border-color: var(--color-primary);
+      color: #fff;
+    }
+    .pack-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: var(--space-4);
+      margin: var(--space-4) 0 var(--space-8);
+    }
+    .pack-card {
+      display: block;
+      background: var(--color-surface);
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius-xl);
+      box-shadow: var(--shadow-sm);
+      padding: var(--space-5);
+    }
+    .pack-card:hover { border-color: var(--color-primary); }
+    .pack-card h3 {
+      margin: 0 0 var(--space-2);
+      font-family: var(--font-display);
+      font-size: var(--text-lg);
+    }
+    .pack-card p { margin: 0; color: var(--color-text-muted); font-size: var(--text-sm); }
+    .pack-card .kicker {
+      display: block;
+      color: var(--color-primary);
+      font-size: var(--text-xs);
+      font-weight: 700;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      margin-bottom: 0.4rem;
+    }
+    .dayof-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.6rem;
+      margin: var(--space-4) 0;
+    }
+    .dayof-links a.btn { text-decoration: none; }
+    [data-version][hidden], [data-version-panel][hidden] { display: none !important; }
+
+</style>
+</head>
+<body class="has-side-toc">
+  <div class="topbar">
+    <div class="topbar-inner">
+      <div class="brand">
+        <h1>Fit / intro</h1>
+        <p>Tell me about yourself, why this role, strengths — three versions in one file.</p>
+      </div>
+      <div class="top-actions">
+        <button class="btn toc-mobile-btn" data-toc-open type="button">Contents</button>
+        <button class="btn theme-toggle" data-theme-toggle aria-label="Switch theme">☾</button>
+        <a class="btn" href="index.html">Hub</a>
+        <a class="btn" href="fit.html">Fit</a>
+        <a class="btn" href="soft-skills.html">Soft skills</a>
+        <a class="btn" href="engineering.html">Engineering</a>
+        <a class="btn" href="devops.html">DevOps</a>
+        <a class="btn" href="cv.html">CV</a>
+      </div>
+    </div>
+  </div>
+  <div class="toc-backdrop" data-toc-backdrop hidden></div>
+  <div class="shell">
+    <aside class="side-toc" id="side-toc" aria-label="Question contents">
+      <div class="side-toc-head">
+        <strong>Contents</strong>
+        <span>Jump to a question</span>
+      </div>
+      <nav class="side-toc-list" data-side-toc>
+        <div class="side-toc-part" data-part="sec-fit" data-version="php">
+          <a class="side-toc-part-link" href="#sec-fit">PHP / fullstack</a>
+          <span class="side-toc-part-range">5 Q</span>
+        </div>
+        <a class="side-toc-link" href="#g1" data-target="g1" data-part="sec-fit" data-version="php"><span class="side-toc-num">01</span><span class="side-toc-title">Tell me about yourself</span></a>
+        <a class="side-toc-link" href="#g3" data-target="g3" data-part="sec-fit" data-version="php"><span class="side-toc-num">02</span><span class="side-toc-title">Why should we hire you?</span></a>
+        <a class="side-toc-link" href="#g4" data-target="g4" data-part="sec-fit" data-version="php"><span class="side-toc-num">03</span><span class="side-toc-title">Strengths / weakness</span></a>
+        <a class="side-toc-link" href="#g5" data-target="g5" data-part="sec-fit" data-version="php"><span class="side-toc-num">04</span><span class="side-toc-title">English comfort</span></a>
+        <a class="side-toc-link" href="#f-php-why" data-target="f-php-why" data-part="sec-fit" data-version="php"><span class="side-toc-num">05</span><span class="side-toc-title">Why this PHP + React role?</span></a>
+        <div class="side-toc-part" data-part="sec-fit-devops" data-version="devops">
+          <a class="side-toc-part-link" href="#sec-fit-devops">DevOps</a>
+          <span class="side-toc-part-range">6 Q</span>
+        </div>
+        <a class="side-toc-link" href="#f-do-1" data-target="f-do-1" data-part="sec-fit-devops" data-version="devops"><span class="side-toc-num">06</span><span class="side-toc-title">Tell me about yourself (DevOps)</span></a>
+        <a class="side-toc-link" href="#f-do-2" data-target="f-do-2" data-part="sec-fit-devops" data-version="devops"><span class="side-toc-num">07</span><span class="side-toc-title">Strengths for a DevOps role</span></a>
+        <a class="side-toc-link" href="#f-do-3" data-target="f-do-3" data-part="sec-fit-devops" data-version="devops"><span class="side-toc-num">08</span><span class="side-toc-title">Tool walkthrough</span></a>
+        <a class="side-toc-link" href="#f-do-4" data-target="f-do-4" data-part="sec-fit-devops" data-version="devops"><span class="side-toc-num">09</span><span class="side-toc-title">Why a DevOps role?</span></a>
+        <a class="side-toc-link" href="#f-do-5" data-target="f-do-5" data-part="sec-fit-devops" data-version="devops"><span class="side-toc-num">10</span><span class="side-toc-title">Akktis day-to-day</span></a>
+        <a class="side-toc-link" href="#f-do-6" data-target="f-do-6" data-part="sec-fit-devops" data-version="devops"><span class="side-toc-num">11</span><span class="side-toc-title">Weakness (honest)</span></a>
+        <div class="side-toc-part" data-part="sec-fit-node" data-version="node">
+          <a class="side-toc-part-link" href="#sec-fit-node">Node / TypeScript</a>
+          <span class="side-toc-part-range">5 Q</span>
+        </div>
+        <a class="side-toc-link" href="#f-node-1" data-target="f-node-1" data-part="sec-fit-node" data-version="node"><span class="side-toc-num">12</span><span class="side-toc-title">Tell me about yourself (Node / TypeScript)</span></a>
+        <a class="side-toc-link" href="#f-node-2" data-target="f-node-2" data-part="sec-fit-node" data-version="node"><span class="side-toc-num">13</span><span class="side-toc-title">Why this Node / TypeScript role?</span></a>
+        <a class="side-toc-link" href="#f-node-3" data-target="f-node-3" data-part="sec-fit-node" data-version="node"><span class="side-toc-num">14</span><span class="side-toc-title">Why should we hire you?</span></a>
+        <a class="side-toc-link" href="#f-node-4" data-target="f-node-4" data-part="sec-fit-node" data-version="node"><span class="side-toc-num">15</span><span class="side-toc-title">Strengths / weakness (Node–TS angle)</span></a>
+        <a class="side-toc-link" href="#f-node-5" data-target="f-node-5" data-part="sec-fit-node" data-version="node"><span class="side-toc-num">16</span><span class="side-toc-title">English comfort</span></a>
+      </nav>
+    </aside>
+    <main class="page with-side-toc">
+      <section class="hero with-side-toc">
+        <div class="hero-card">
+          <div class="section-label">Shared topic</div>
+          <p>Pick the version that matches the job. Keep answers spoken and honest. Open the company day-of page for JD-specific why-this-company lines.</p>
+          
+          <div class="version-tabs" role="tablist" aria-label="Fit versions">
+            <button type="button" data-version-tab="php">PHP / fullstack</button>
+            <button type="button" data-version-tab="devops">DevOps</button>
+            <button type="button" data-version-tab="node">Node.js / TypeScript</button>
+          </div>
+          <p style="color:var(--color-text-muted);font-size:var(--text-sm)">Company-specific “why us” stays on the day-of pack. Use the matching version, then speak it out loud.</p>
+
+          <nav class="section-nav" aria-label="Sections">
+            <a href="#sec-fit" data-version="php">PHP</a>
+          <a href="#sec-fit-devops" data-version="devops">DevOps</a>
+          <a href="#sec-fit-node" data-version="node">Node–TS</a>
+          </nav>
+        </div>
+      </section>
+      <section class="questions">
+<div data-version-panel="php">
+<section class="section-block" id="sec-fit">
+      <h2>A. Fit / Intro — PHP + React</h2>
+<article class="question-card" id="g1">
+        <div class="question-head"><h2>01. Tell me about yourself</h2><p>PHP + React fullstack — 60–90s spoken intro.</p></div>
+        <div class="grid4">
+          <div class="cell row-head">Question EN</div><div class="cell row-head">Answer EN</div><div class="cell row-head">Question VI</div><div class="cell row-head">Answer VI</div>
+          <div class="cell question"><p>Tell me about yourself.</p></div>
+          <div class="cell answer"><p>I'm a fullstack engineer with about five years building web and SaaS products. My strongest backend is PHP and MySQL — especially enterprise apps at BaseVN like HRM, tax, and hiring systems with APIs and heavy data. On the frontend I've worked with JavaScript, TypeScript, and React, including a React Native product. Recently I also ship PHP apps and integrations at Akktis. I'm looking for a role that's deeply fullstack — PHP APIs plus React UI.</p></div>
+          <div class="cell question"><p>Hãy giới thiệu về bản thân.</p></div>
+          <div class="cell answer"><p>Tôi là fullstack khoảng năm năm, xây web và SaaS. Backend mạnh nhất là PHP và MySQL — đặc biệt app enterprise ở BaseVN như HRM, thuế, tuyển dụng với API và dữ liệu lớn. Frontend tôi làm JavaScript, TypeScript và React, gồm cả sản phẩm React Native. Gần đây ở Akktis tôi cũng ship app PHP và tích hợp. Tôi muốn role fullstack đúng nghĩa — PHP API cộng React UI.</p></div>
+        </div>
+      </article>
+<article class="question-card" id="g3">
+        <div class="question-head"><h2>03. Why should we hire you?</h2><p>Bridge PHP SaaS + React delivery.</p></div>
+        <div class="grid4">
+          <div class="cell row-head">Question EN</div><div class="cell row-head">Answer EN</div><div class="cell row-head">Question VI</div><div class="cell row-head">Answer VI</div>
+          <div class="cell question"><p>Why should we hire you?</p></div>
+          <div class="cell answer"><p>I can own features end to end — backend data and APIs in PHP, then a React/TypeScript client that consumes them. I've shipped in real enterprise SaaS with integrations, performance constraints, and production support. I communicate clearly in English, document workflows, and I debug across FE and BE instead of guessing.</p></div>
+          <div class="cell question"><p>Tại sao nên tuyển bạn?</p></div>
+          <div class="cell answer"><p>Tôi own được feature end-to-end — data/API PHP phía backend, rồi client React/TypeScript gọi API đó. Tôi đã ship SaaS enterprise thật với tích hợp, ràng buộc hiệu năng và support production. Tôi giao tiếp English rõ, viết workflow, và debug xuyên FE–BE thay vì đoán mò.</p></div>
+        </div>
+      </article>
+<article class="question-card" id="g4">
+        <div class="question-head"><h2>04. Strengths / weakness</h2><p>Keep job-relevant.</p></div>
+        <div class="grid4">
+          <div class="cell row-head">Question EN</div><div class="cell row-head">Answer EN</div><div class="cell row-head">Question VI</div><div class="cell row-head">Answer VI</div>
+          <div class="cell question"><p>What are your strengths and one weakness?</p></div>
+          <div class="cell answer"><p>My main strength is deep, practical problem-solving. When something breaks, I dig into the real root cause — reproduce the bug, read logs and the data path, understand the logic — then fix it properly instead of guessing. I think in systems: frontend vs backend, contract vs UI, data vs code. Another strength is I adapt to new tools and technologies quickly — new library, new framework piece, new workflow — I learn enough to ship, then deepen as I go. Weakness: I can spend extra time polishing a fix for maintainability. I've learned to ask what's the smallest safe fix for the business impact first, then improve.</p></div>
+          <div class="cell question"><p>Điểm mạnh và một điểm yếu?</p></div>
+          <div class="cell answer"><p>Điểm mạnh chính của tôi là giải quyết vấn đề thực tế, đi sâu. Khi có bug tôi không đoán — reproduce, đọc log và luồng data, hiểu logic gốc, rồi mới fix đúng. Tôi nghĩ theo hệ thống: FE hay BE, contract hay UI, data hay code. Điểm mạnh nữa là thích nghi công nghệ và tool mới rất nhanh — thư viện mới, phần framework mới, workflow mới — học đủ để ship, rồi đào sâu dần. Yếu: đôi khi dành thêm thời gian polish fix cho dễ maintain. Tôi đã học hỏi impact business trước, fix nhỏ nhất nhưng an toàn, rồi cải thiện sau.</p></div>
+        </div>
+      </article>
+<article class="question-card" id="g5">
+        <div class="question-head"><h2>05. English comfort</h2><p>They require good English.</p></div>
+        <div class="grid4">
+          <div class="cell row-head">Question EN</div><div class="cell row-head">Answer EN</div><div class="cell row-head">Question VI</div><div class="cell row-head">Answer VI</div>
+          <div class="cell question"><p>How comfortable are you working in English?</p></div>
+          <div class="cell answer"><p>I'm comfortable reading docs, writing technical updates, and joining meetings in English. I may not be perfect, but I can explain design decisions, bugs, and tradeoffs clearly — which matters more than sounding fancy.</p></div>
+          <div class="cell question"><p>Bạn làm việc bằng tiếng Anh thế nào?</p></div>
+          <div class="cell answer"><p>Tôi ổn với đọc docs, viết cập nhật kỹ thuật và họp bằng English. Không hoàn hảo, nhưng giải thích được quyết định thiết kế, bug và tradeoff rõ — điều đó quan trọng hơn nói hoa mỹ.</p></div>
+        </div>
+      </article>
+    <article class="question-card" id="f-php-why">
+        <div class="question-head"><h2>02. Why this PHP + React role?</h2><p>Generic — company-specific 'why us' lives on the day-of pack.</p></div>
+        <div class="grid4">
+          <div class="cell row-head">Question EN</div><div class="cell row-head">Answer EN</div>
+          <div class="cell row-head">Question VI</div><div class="cell row-head">Answer VI</div>
+          <div class="cell question"><p>Why do you want this Fullstack PHP + React role?</p></div>
+          <div class="cell answer"><p>Because the work matches how I want to work: design and maintain apps with PHP and React, build APIs, polish UI, optimize both sides, and fix production issues properly. I want to deepen enterprise React + TypeScript while keeping strong PHP backend ownership. For why this company specifically, I tailor that on the day from the JD.</p></div>
+          <div class="cell question"><p>Tại sao bạn muốn role Fullstack PHP + React này?</p></div>
+          <div class="cell answer"><p>Vì việc khớp cách tôi muốn làm: thiết kế/maintain app với PHP và React, dựng API, làm UI tốt, tối ưu cả hai phía, và xử lý production đúng cách. Tôi muốn đào sâu React + TypeScript enterprise trong khi vẫn giữ ownership PHP backend. Lý do chọn đúng công ty này tôi chỉnh theo JD vào ngày interview.</p></div>
+        </div>
+        <div class="crib"><p><strong>Know:</strong> Stack fit here · company why on the day-of page</p></div>
+      </article>
+    </section>
+    </div>
+<div data-version-panel="devops">
+<section class="section-block" id="sec-fit-devops">
+      <h2>Fit / Intro — DevOps</h2>
+<article class="question-card" id="f-do-1">
+        <div class="question-head"><h2>01. Tell me about yourself (DevOps)</h2><p>60–90s spoken intro</p></div>
+        <div class="grid4">
+          <div class="cell row-head">Question EN</div><div class="cell row-head">Answer EN</div>
+          <div class="cell row-head">Question VI</div><div class="cell row-head">Answer VI</div>
+          <div class="cell question"><p>Tell me about yourself.</p></div>
+          <div class="cell answer"><p>I'm a full-stack engineer who also owns delivery and ops. At Akktis I work across Linux servers over SSH — Ubuntu and Debian — CI/CD for mobile and web across environments, and Google Cloud: Cloud Run, Cloud SQL, and Storage. I also operate LiteSpeed and Apache for PHP and CMS apps, and I care about docs and basic hardening so systems are safer to hand off. Independently I shipped IELTS AI Tutor — a React Native and TypeScript app on iOS and Android with a Cloud Run backend, live on Google Play and the App Store. I'm looking for a DevOps-focused role where I can deepen that spine: pipelines, cloud deploys, and reliable Linux operations.</p></div>
+          <div class="cell question"><p>Hãy giới thiệu về bản thân.</p></div>
+          <div class="cell answer"><p>Tôi là full-stack kiêm delivery và ops. Ở Akktis tôi làm Linux qua SSH — Ubuntu và Debian — CI/CD cho mobile và web multi-env, và Google Cloud: Cloud Run, Cloud SQL và Storage. Tôi cũng operate LiteSpeed và Apache cho app PHP/CMS, và quan tâm docs cùng harden cơ bản để handoff an toàn hơn. Bên cạnh đó tôi ship IELTS AI Tutor — app React Native/TypeScript trên iOS và Android với backend Cloud Run, đã lên Google Play và App Store. Tôi muốn role nghiêng DevOps để đào sâu spine đó: pipeline, deploy cloud và Linux ops ổn định.</p></div>
+        </div>
+      </article>
+<article class="question-card" id="f-do-2">
+        <div class="question-head"><h2>02. Strengths for a DevOps role</h2><p>Concrete, not buzzwords</p></div>
+        <div class="grid4">
+          <div class="cell row-head">Question EN</div><div class="cell row-head">Answer EN</div>
+          <div class="cell row-head">Question VI</div><div class="cell row-head">Answer VI</div>
+          <div class="cell question"><p>What are your strengths?</p></div>
+          <div class="cell answer"><p>First, I bridge app and ops — I can read application failures and infra failures in the same incident. Second, I have hands-on delivery paths I've actually run: mobile CI toward store builds, Cloud Build into Cloud Run, and classic VM web servers with Nginx/Apache/LiteSpeed. Third, I debug with evidence — pipeline logs, Cloud Run revisions, SSH logs and disk — then mitigate first and document so the gap doesn't repeat. I'm honest about depth: Cloud Run and Linux VMs are my spine; I don't pretend deep Kubernetes HA if that's not what I've operated day to day.</p></div>
+          <div class="cell question"><p>Điểm mạnh của bạn là gì?</p></div>
+          <div class="cell answer"><p>Một, tôi bridge app và ops — đọc được lỗi application và lỗi infra trong cùng incident. Hai, tôi có delivery path thật: CI mobile tới store build, Cloud Build vào Cloud Run, và classic VM web server với Nginx/Apache/LiteSpeed. Ba, tôi debug bằng evidence — pipeline log, revision Cloud Run, SSH log và disk — mitigate trước rồi document để không lặp. Tôi trung thực về độ sâu: Cloud Run và Linux VM là spine; tôi không claim sâu Kubernetes HA nếu đó không phải việc hằng ngày.</p></div>
+        </div>
+      </article>
+<article class="question-card" id="f-do-3">
+        <div class="question-head"><h2>03. Tool walkthrough</h2><p>Stack I can defend</p></div>
+        <div class="grid4">
+          <div class="cell row-head">Question EN</div><div class="cell row-head">Answer EN</div>
+          <div class="cell row-head">Question VI</div><div class="cell row-head">Answer VI</div>
+          <div class="cell question"><p>Walk me through your DevOps tool stack.</p></div>
+          <div class="cell answer"><p>Source control is Git. CI is Cloud Build or a generic CI runner on push and tags — build, test when we have them, package artifacts. For backends I Dockerize, push to Artifact Registry, and deploy Cloud Run with env and secrets, often wired to Cloud SQL and Cloud Storage. For mobile, React Native builds produce Android AAB/APK and iOS IPA concepts with signing material kept in secrets, then artifacts go to storage or store tracks. For classic web I SSH into Ubuntu/Debian, manage LiteSpeed or Apache or Nginx, firewall and TLS, and keep short runbooks. Day to day observability is Cloud Logging on Run and system/web logs on VMs.</p></div>
+          <div class="cell question"><p>Hãy mô tả stack DevOps của bạn.</p></div>
+          <div class="cell answer"><p>Source control là Git. CI là Cloud Build hoặc CI runner generic theo push và tag — build, test khi có, package artifact. Backend tôi Dockerize, push Artifact Registry, deploy Cloud Run với env và secret, thường wire Cloud SQL và Cloud Storage. Mobile, build React Native ra AAB/APK Android và khái niệm IPA iOS, signing nằm trong secret, artifact lên storage hoặc store track. Classic web tôi SSH Ubuntu/Debian, quản LiteSpeed hoặc Apache hoặc Nginx, firewall và TLS, giữ runbook ngắn. Observability hằng ngày là Cloud Logging trên Run và system/web log trên VM.</p></div>
+        </div>
+      </article>
+<article class="question-card" id="f-do-4">
+        <div class="question-head"><h2>04. Why a DevOps role?</h2><p>Generic company — honest motivation</p></div>
+        <div class="grid4">
+          <div class="cell row-head">Question EN</div><div class="cell row-head">Answer EN</div>
+          <div class="cell row-head">Question VI</div><div class="cell row-head">Answer VI</div>
+          <div class="cell question"><p>Why do you want this DevOps role?</p></div>
+          <div class="cell answer"><p>Because I already enjoy the ownership from commit to a healthy environment, and I want that to be the center of my work — not only a side of full-stack. Your role is about reliable delivery: CI/CD, cloud or Linux operations, and helping developers ship safely. That matches what I do at Akktis and on IELTS AI Tutor, and I want to go deeper on pipeline quality, environment promotion, and operational hygiene in a team that takes infra seriously.</p></div>
+          <div class="cell question"><p>Tại sao bạn muốn role DevOps này?</p></div>
+          <div class="cell answer"><p>Vì tôi đã thích ownership từ commit đến env healthy, và muốn đó là trọng tâm công việc — không chỉ phần phụ của full-stack. Role của các bạn là delivery tin cậy: CI/CD, cloud hoặc Linux ops, và giúp developer ship an toàn. Điều đó khớp việc tôi làm ở Akktis và IELTS AI Tutor, và tôi muốn đào sâu chất lượng pipeline, promote env và ops hygiene trong team coi trọng infra.</p></div>
+        </div>
+      </article>
+<article class="question-card" id="f-do-5">
+        <div class="question-head"><h2>05. Akktis day-to-day</h2><p>What ops looks like</p></div>
+        <div class="grid4">
+          <div class="cell row-head">Question EN</div><div class="cell row-head">Answer EN</div>
+          <div class="cell row-head">Question VI</div><div class="cell row-head">Answer VI</div>
+          <div class="cell question"><p>What does a typical ops-heavy day look like for you?</p></div>
+          <div class="cell answer"><p>It depends on the project, but usually I'm either unblocking a release or keeping an environment healthy. That means checking CI status for web or mobile, SSH into a Linux box to read logs or restart a service, verifying a Cloud Run revision after deploy, or fixing env and connectivity to Cloud SQL or Storage. I also touch LiteSpeed or Apache when a PHP or CMS site misbehaves, and I update docs when I find tribal knowledge that would hurt the next person.</p></div>
+          <div class="cell question"><p>Một ngày nghiêng ops của bạn trông thế nào?</p></div>
+          <div class="cell answer"><p>Tùy project, nhưng thường tôi hoặc unblock release, hoặc giữ env healthy. Tức là check status CI web hoặc mobile, SSH vào Linux đọc log hoặc restart service, verify revision Cloud Run sau deploy, hoặc fix env và connectivity tới Cloud SQL hay Storage. Tôi cũng đụng LiteSpeed hoặc Apache khi site PHP/CMS lỗi, và update docs khi gặp tribal knowledge — dễ hại người sau.</p></div>
+        </div>
+      </article>
+<article class="question-card" id="f-do-6">
+        <div class="question-head"><h2>06. Weakness (honest)</h2><p>Time-box vs polish</p></div>
+        <div class="grid4">
+          <div class="cell row-head">Question EN</div><div class="cell row-head">Answer EN</div>
+          <div class="cell row-head">Question VI</div><div class="cell row-head">Answer VI</div>
+          <div class="cell question"><p>What's a weakness relevant to this job?</p></div>
+          <div class="cell answer"><p>I can over-invest in polishing a pipeline or runbook when a smaller safe mitigation would unblock the team sooner. I've learned to time-box: ship the safe fix or rollback first, communicate status, then harden the checklist so we don't pay twice.</p></div>
+          <div class="cell question"><p>Một điểm yếu liên quan job này?</p></div>
+          <div class="cell answer"><p>Tôi đôi khi invest quá nhiều để polish pipeline hoặc runbook trong khi một mitigation nhỏ an toàn đã unblock được team. Tôi đã học time-box: ship fix an toàn hoặc rollback trước, báo status, rồi harden checklist để không trả giá hai lần.</p></div>
+        </div>
+      </article>
+    </section>
+    </div>
+<div data-version-panel="node">
+<section class="section-block" id="sec-fit-node">
+      <h2>Fit / Intro — Node.js + TypeScript</h2>
+<article class="question-card" id="f-node-1">
+        <div class="question-head"><h2>01. Tell me about yourself (Node / TypeScript)</h2><p>Honest: TS/React Native strong; Node APIs not the deepest backend.</p></div>
+        <div class="grid4">
+          <div class="cell row-head">Question EN</div><div class="cell row-head">Answer EN</div>
+          <div class="cell row-head">Question VI</div><div class="cell row-head">Answer VI</div>
+          <div class="cell question"><p>Tell me about yourself.</p></div>
+          <div class="cell answer"><p>I'm a fullstack engineer with about five years across web, mobile, and SaaS. Day to day I write TypeScript in React and React Native — including IELTS AI Tutor, a shipped iOS/Android app with a Cloud Run backend. I also work PHP/MySQL on enterprise and Akktis work, so I understand APIs, data, and production support. For a Node.js + TypeScript role I'd lead with TypeScript on the client and the JS toolchain around React Native. I'm honest: my deepest API backend is PHP, not Nest or Express production ownership. The transfer is real — types, contracts, debugging across client and API — and I ramp Node server patterns from that.</p></div>
+          <div class="cell question"><p>Hãy giới thiệu về bản thân.</p></div>
+          <div class="cell answer"><p>Tôi là fullstack khoảng năm năm, làm web, mobile và SaaS. Hằng ngày tôi viết TypeScript trên React và React Native — gồm IELTS AI Tutor, app iOS/Android đã ship với backend Cloud Run. Tôi cũng làm PHP/MySQL trên enterprise và Akktis, nên hiểu API, data và support production. Với role Node.js + TypeScript tôi dẫn bằng TypeScript phía client và toolchain JS quanh React Native. Tôi nói thẳng: backend API sâu nhất của tôi là PHP, không phải own Nest hay Express production. Phần chuyển được là thật — type, contract, debug xuyên client và API — và tôi ramp pattern Node server từ đó.</p></div>
+        </div>
+        <div class="crib"><p><strong>Know:</strong> TS/RN shipped · PHP APIs deeper · don't claim Nest/Express expert</p></div>
+      </article>
+<article class="question-card" id="f-node-2">
+        <div class="question-head"><h2>02. Why this Node / TypeScript role?</h2><p>Generic — swap company name on the day-of pack.</p></div>
+        <div class="grid4">
+          <div class="cell row-head">Question EN</div><div class="cell row-head">Answer EN</div>
+          <div class="cell row-head">Question VI</div><div class="cell row-head">Answer VI</div>
+          <div class="cell question"><p>Why do you want this Node.js / TypeScript role?</p></div>
+          <div class="cell answer"><p>Because I already live in TypeScript on real products, and I want a role where TS is the language of the stack — UI and APIs — not only the React Native client. I like owning a feature from contract to UI. Node on the server is the natural next deepening from that, and I'm motivated to learn your team's framework rather than pretend I already ran it at BaseVN scale.</p></div>
+          <div class="cell question"><p>Tại sao bạn muốn role Node.js / TypeScript này?</p></div>
+          <div class="cell answer"><p>Vì tôi đã sống với TypeScript trên sản phẩm thật, và muốn role mà TS là ngôn ngữ của stack — UI và API — không chỉ client React Native. Tôi thích own feature từ contract tới UI. Node phía server là hướng đào sâu tự nhiên, và tôi muốn học framework của team thay vì giả đã chạy nó ở scale BaseVN.</p></div>
+        </div>
+        <div class="crib"><p><strong>Know:</strong> Want TS as the stack language · honest ramp on Node servers</p></div>
+      </article>
+<article class="question-card" id="f-node-3">
+        <div class="question-head"><h2>03. Why should we hire you?</h2><p>Bridge RN/TS delivery + API habits.</p></div>
+        <div class="grid4">
+          <div class="cell row-head">Question EN</div><div class="cell row-head">Answer EN</div>
+          <div class="cell row-head">Question VI</div><div class="cell row-head">Answer VI</div>
+          <div class="cell question"><p>Why should we hire you?</p></div>
+          <div class="cell answer"><p>I ship TypeScript UIs that talk to real backends, including a published mobile product. I debug with evidence — Network, logs, contracts — instead of guessing which layer is wrong. I already work in Git, CI, and Cloud Run, so I'm used to taking a change to an environment. I'll be honest about Node server depth and fast on the parts I haven't owned yet.</p></div>
+          <div class="cell question"><p>Tại sao nên tuyển bạn?</p></div>
+          <div class="cell answer"><p>Tôi ship UI TypeScript nói chuyện với backend thật, gồm sản phẩm mobile đã publish. Tôi debug bằng evidence — Network, log, contract — không đoán tầng nào sai. Tôi đã làm Git, CI và Cloud Run, nên quen đưa change tới một environment. Tôi nói thẳng độ sâu Node server và học nhanh phần chưa own.</p></div>
+        </div>
+        <div class="crib"><p><strong>Know:</strong> Shipped TS · evidence debug · honest ramp</p></div>
+      </article>
+<article class="question-card" id="f-node-4">
+        <div class="question-head"><h2>04. Strengths / weakness (Node–TS angle)</h2><p>Keep job-relevant.</p></div>
+        <div class="grid4">
+          <div class="cell row-head">Question EN</div><div class="cell row-head">Answer EN</div>
+          <div class="cell row-head">Question VI</div><div class="cell row-head">Answer VI</div>
+          <div class="cell question"><p>What are your strengths and one weakness for this role?</p></div>
+          <div class="cell answer"><p>Strength: I move quickly in TypeScript and React, and I think in systems — client state vs API vs data. Weakness for a Node-first team: I have not owned a large Express/Nest codebase in production. I close that by reading your existing services, pairing on a small endpoint first, and mapping patterns I already know from PHP APIs.</p></div>
+          <div class="cell question"><p>Điểm mạnh và một điểm yếu cho role này?</p></div>
+          <div class="cell answer"><p>Mạnh: tôi làm TypeScript và React nhanh, và nghĩ theo hệ thống — state client vs API vs data. Yếu với team Node-first: tôi chưa own codebase Express/Nest lớn trên production. Tôi bù bằng đọc service sẵn có, pair một endpoint nhỏ trước, và map pattern tôi đã biết từ PHP API.</p></div>
+        </div>
+        <div class="crib"><p><strong>Know:</strong> Don't oversell Node frameworks</p></div>
+      </article>
+<article class="question-card" id="f-node-5">
+        <div class="question-head"><h2>05. English comfort</h2><p>Same as other versions.</p></div>
+        <div class="grid4">
+          <div class="cell row-head">Question EN</div><div class="cell row-head">Answer EN</div>
+          <div class="cell row-head">Question VI</div><div class="cell row-head">Answer VI</div>
+          <div class="cell question"><p>How comfortable are you working in English?</p></div>
+          <div class="cell answer"><p>I'm comfortable reading docs, writing technical updates, and joining meetings in English. I may not be perfect, but I can explain design decisions, bugs, and tradeoffs clearly — which matters more than sounding fancy.</p></div>
+          <div class="cell question"><p>Bạn làm việc bằng tiếng Anh thế nào?</p></div>
+          <div class="cell answer"><p>Tôi ổn với đọc docs, viết cập nhật kỹ thuật và họp bằng English. Không hoàn hảo, nhưng giải thích được quyết định thiết kế, bug và tradeoff rõ — điều đó quan trọng hơn nói hoa mỹ.</p></div>
+        </div>
+      </article>
+    </section>
+    </div>
+      </section>
+      <p class="footer-note"><a href="index.html">Hub</a> · Fit versions: PHP · DevOps · Node–TS</p>
+    </main>
+  </div>
+    <aside class="parts-rail" id="parts-rail" aria-label="Parts only">
+      <div class="parts-rail-head-row">
+        <p class="parts-rail-head">Parts</p>
+        <button class="parts-rail-toggle" data-parts-rail-toggle type="button" aria-expanded="true" aria-controls="parts-rail" aria-label="Hide parts panel" title="Hide parts">
+          <svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="16" rx="2"></rect><path d="M15 4v16"></path><path d="M11 9l-3 3 3 3"></path></svg>
+        </button>
+      </div>
+      <nav class="parts-rail-list" data-parts-rail>
+        <a class="parts-rail-link" href="#sec-fit" data-part="sec-fit" data-version="php"><strong>PHP / fullstack</strong><span>5 Q</span></a>
+        <a class="parts-rail-link" href="#sec-fit-devops" data-part="sec-fit-devops" data-version="devops"><strong>DevOps</strong><span>6 Q</span></a>
+        <a class="parts-rail-link" href="#sec-fit-node" data-part="sec-fit-node" data-version="node"><strong>Node / TypeScript</strong><span>5 Q</span></a>
+      </nav>
+    </aside>
+    <button class="parts-rail-show" data-parts-rail-show type="button" hidden aria-label="Show parts panel">
+      <svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="16" rx="2"></rect><path d="M15 4v16"></path><path d="M8 9l3 3-3 3"></path></svg>
+      <span>Parts</span>
+    </button>
+  <script>
+    (function () {
+      const btn = document.querySelector('[data-theme-toggle]');
+      const root = document.documentElement;
+      let theme = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+      root.setAttribute('data-theme', theme);
+      const sync = () => { btn.textContent = theme === 'dark' ? '☀' : '☾'; };
+      sync();
+      btn.addEventListener('click', () => {
+        theme = theme === 'dark' ? 'light' : 'dark';
+        root.setAttribute('data-theme', theme);
+        sync();
+      });
+
+      // Sticky TOC scroll-spy
+      const tocRoot = document.querySelector('[data-side-toc]');
+      const sideToc = document.getElementById('side-toc');
+      const backdrop = document.querySelector('[data-toc-backdrop]');
+      const openBtn = document.querySelector('[data-toc-open]');
+      if (!tocRoot) return;
+
+      const links = Array.from(tocRoot.querySelectorAll('.side-toc-link'));
+      const partEls = Array.from(tocRoot.querySelectorAll('.side-toc-part'));
+      const partsRailLinks = Array.from(document.querySelectorAll('[data-parts-rail] .parts-rail-link'));
+      const idToLink = new Map(links.map((a) => [a.getAttribute('data-target'), a]));
+      const targets = links
+        .map((a) => document.getElementById(a.getAttribute('data-target')))
+        .filter(Boolean);
+
+      let activeId = null;
+      const setActive = (id) => {
+        if (!id || id === activeId) return;
+        activeId = id;
+        links.forEach((a) => a.classList.toggle('is-active', a.getAttribute('data-target') === id));
+        const active = idToLink.get(id);
+        const partId = active ? active.getAttribute('data-part') : null;
+        partEls.forEach((p) => p.classList.toggle('is-active', p.getAttribute('data-part') === partId));
+        partsRailLinks.forEach((a) => a.classList.toggle('is-active', a.getAttribute('data-part') === partId));
+        if (active && sideToc) {
+          const aTop = active.offsetTop;
+          const aBottom = aTop + active.offsetHeight;
+          const viewTop = sideToc.scrollTop;
+          const viewBottom = viewTop + sideToc.clientHeight;
+          if (aTop < viewTop + 40) sideToc.scrollTop = Math.max(0, aTop - 48);
+          else if (aBottom > viewBottom - 40) sideToc.scrollTop = aBottom - sideToc.clientHeight + 48;
+        }
+      };
+
+      const onScroll = () => {
+        const marker = 120; // below sticky topbar
+        let current = targets[0] ? targets[0].id : null;
+        for (const el of targets) {
+          const top = el.getBoundingClientRect().top;
+          if (top <= marker) current = el.id;
+          else break;
+        }
+        setActive(current);
+      };
+
+
+      window.addEventListener('scroll', onScroll, { passive: true });
+      onScroll();
+
+      const closeMobile = () => {
+        sideToc && sideToc.classList.remove('is-open');
+        if (backdrop) {
+          backdrop.classList.remove('is-open');
+          backdrop.hidden = true;
+        }
+      };
+      const openMobile = () => {
+        sideToc && sideToc.classList.add('is-open');
+        if (backdrop) {
+          backdrop.hidden = false;
+          backdrop.classList.add('is-open');
+        }
+      };
+      openBtn && openBtn.addEventListener('click', openMobile);
+      backdrop && backdrop.addEventListener('click', closeMobile);
+      tocRoot.addEventListener('click', (e) => {
+        const a = e.target.closest('a.side-toc-link, a.side-toc-part-link');
+        if (!a) return;
+        if (window.matchMedia('(max-width: 1100px)').matches) {
+          setTimeout(closeMobile, 50);
+        }
+      });
+    })();
+  
+      (function versionTabs() {
+        const tabs = Array.from(document.querySelectorAll('[data-version-tab]'));
+        if (!tabs.length) return;
+        const apply = (v) => {
+          tabs.forEach((b) => b.classList.toggle('is-on', b.getAttribute('data-version-tab') === v));
+          document.querySelectorAll('[data-version-panel]').forEach((p) => {
+            p.hidden = p.getAttribute('data-version-panel') !== v;
+          });
+          document.querySelectorAll('[data-version]').forEach((el) => {
+            const dv = el.getAttribute('data-version');
+            el.hidden = !(dv === 'all' || dv === v);
+          });
+        };
+        const fromHash = () => {
+          const h = (location.hash || '').replace('#', '');
+          if (['php', 'devops', 'node'].includes(h)) return h;
+          return 'php';
+        };
+        tabs.forEach((b) => b.addEventListener('click', () => {
+          const v = b.getAttribute('data-version-tab');
+          apply(v);
+          history.replaceState(null, '', '#' + v);
+        }));
+        apply(fromHash());
+        window.addEventListener('hashchange', () => apply(fromHash()));
+      })();
+
+    </script>
+</body>
+</html>
