@@ -499,9 +499,9 @@
         <div class="grid4">
           <div class="cell row-head">Question EN</div><div class="cell row-head">Answer EN</div><div class="cell row-head">Question VI</div><div class="cell row-head">Answer VI</div>
           <div class="cell question"><p>Walk me through your CV.</p></div>
-          <div class="cell answer"><p>Sure. I’m a full-stack engineer with about five years across SaaS, web, mobile, and cloud. Most recently at Akktis I’ve been doing DevOps and full-stack — Linux servers, CI/CD, Google Cloud, and PHP apps. On the side I ship client products like IELTS AI Tutor on Cloud Run. Before that at BaseVN I worked on large HRM/Payroll/e-gov SaaS — sync pipelines, heavy MySQL work, and third-party APIs.</p></div>
+          <div class="cell answer"><p>Sure. I’m a full-stack engineer with about five years across SaaS, web, mobile, and cloud. Most recently at Akktis I’ve been doing DevOps and full-stack — Linux servers, CI/CD, Google Cloud, and PHP apps. On the side I ship IELTS AI Tutor: React Native on both stores plus an Express API on Cloud Run. Before that at BaseVN I worked on large HRM/Payroll/e-gov SaaS — sync pipelines, heavy MySQL work, and third-party APIs.</p></div>
           <div class="cell question"><p>Hãy đi qua CV của bạn.</p></div>
-          <div class="cell answer"><p>Vâng. Tôi là full-stack khoảng năm năm, làm SaaS, web, mobile và cloud. Gần đây nhất ở Akktis tôi làm DevOps và full-stack — Linux, CI/CD, Google Cloud và app PHP. Bên cạnh đó tôi ship sản phẩm khách như IELTS AI Tutor trên Cloud Run. Trước đó ở BaseVN tôi làm SaaS HRM/Payroll/e-gov — pipeline đồng bộ, MySQL lớn, và API bên thứ ba.</p></div>
+          <div class="cell answer"><p>Vâng. Tôi là full-stack khoảng năm năm, làm SaaS, web, mobile và cloud. Gần đây nhất ở Akktis tôi làm DevOps và full-stack — Linux, CI/CD, Google Cloud và app PHP. Bên cạnh đó tôi ship IELTS AI Tutor: React Native trên hai store và API Express trên Cloud Run. Trước đó ở BaseVN tôi làm SaaS HRM/Payroll/e-gov — pipeline đồng bộ, MySQL lớn, và API bên thứ ba.</p></div>
         </div>
         <div class="star">
           <p><strong>S:</strong> CV spans BaseVN SaaS → Akktis infra/full-stack → independent cloud/mobile products.</p>
@@ -675,16 +675,16 @@
         <div class="grid4">
           <div class="cell row-head">Question EN</div><div class="cell row-head">Answer EN</div><div class="cell row-head">Question VI</div><div class="cell row-head">Answer VI</div>
           <div class="cell question"><p>Tell me about the IELTS AI Tutor project.</p></div>
-          <div class="cell answer"><p>It’s a mobile IELTS learning app for iOS and Android, plus a teacher assignment portal. I built the mobile side, AI-supported practice features, and kept backend services running on Google Cloud Run. It’s live on Google Play and the App Store.</p></div>
+          <div class="cell answer"><p>It’s a mobile IELTS learning app for iOS and Android, plus a teacher assignment portal. I built the Expo React Native/TypeScript client — skills practice, study plan, IAP, ads, Google/Apple login — and the Express backend on Cloud Run: auth, practice content, AI tutor, TTS/STT, progress storage, purchase webhooks. It’s live on Google Play and the App Store.</p></div>
           <div class="cell question"><p>Kể về dự án IELTS AI Tutor.</p></div>
-          <div class="cell answer"><p>Đây là app học IELTS trên iOS/Android, kèm portal giao bài cho giáo viên. Tôi làm phía mobile, tính năng AI hỗ trợ luyện tập, và giữ backend trên Google Cloud Run. App đã lên Google Play và App Store.</p></div>
+          <div class="cell answer"><p>Đây là app học IELTS trên iOS/Android, kèm portal giao bài cho giáo viên. Tôi làm client Expo React Native/TypeScript — luyện skill, study plan, IAP, ads, login Google/Apple — và backend Express trên Cloud Run: auth, nội dung luyện, AI tutor, TTS/STT, lưu tiến độ, webhook mua hàng. App đã lên Google Play và App Store.</p></div>
         </div>
         <div class="star">
           <p><strong>S:</strong> Client needed IELTS practice app with teacher workflows.</p>
           <p><strong>T:</strong> Ship mobile + connected backend/portal with AI features.</p>
-          <p><strong>A:</strong> Built RN/TS app, portal workflows, AI features, Cloud Run backend.</p>
+          <p><strong>A:</strong> Built RN/TS app and Express APIs; portal workflows; Cloud Run ops.</p>
           <p><strong>R:</strong> Published on both stores with ongoing cloud operations.</p>
-          <p class="say"><strong>Say this:</strong> End-to-end ownership: mobile, portal link, cloud backend.</p>
+          <p class="say"><strong>Say this:</strong> End-to-end: React Native client + Express API + Cloud Run.</p>
         </div>
       </article>
       <article class="question-card" id="c12">
@@ -692,9 +692,9 @@
         <div class="grid4">
           <div class="cell row-head">Question EN</div><div class="cell row-head">Answer EN</div><div class="cell row-head">Question VI</div><div class="cell row-head">Answer VI</div>
           <div class="cell question"><p>Why Cloud Run for the IELTS backend, and what did you maintain?</p></div>
-          <div class="cell answer"><p>Cloud Run fit a containerized backend without managing nodes. I deployed and maintained those services — releases, logs, and day-to-day cloud operations so the mobile app and portal stayed connected.</p></div>
+          <div class="cell answer"><p>Cloud Run fit a containerized Express API without managing nodes. I deploy and maintain that Node service — releases, logs, revisions — so the React Native app and teacher portal stay connected. Same Cloud Run muscle I use at Akktis, applied to this product.</p></div>
           <div class="cell question"><p>Vì sao Cloud Run cho backend IELTS và bạn maintain gì?</p></div>
-          <div class="cell answer"><p>Cloud Run hợp backend container mà không phải quản lý node. Tôi deploy và maintain các service đó — release, log, và vận hành cloud hằng ngày để app và portal vẫn kết nối được.</p></div>
+          <div class="cell answer"><p>Cloud Run hợp API Express đóng container mà không phải quản lý node. Tôi deploy và maintain service Node đó — release, log, revision — để app React Native và portal giáo viên còn kết nối. Cùng cơ Cloud Run ở Akktis, áp vào sản phẩm này.</p></div>
         </div>
         <div class="star">
           <p><strong>S:</strong> Needed managed hosting for app/portal backend APIs.</p>
@@ -709,9 +709,9 @@
         <div class="grid4">
           <div class="cell row-head">Question EN</div><div class="cell row-head">Answer EN</div><div class="cell row-head">Question VI</div><div class="cell row-head">Answer VI</div>
           <div class="cell question"><p>What AI features did you implement?</p></div>
-          <div class="cell answer"><p>I integrated chat completion, text-to-speech, and speech-to-text into the learning workflows — so students can practice and get AI-supported feedback inside the real app, not as a separate demo.</p></div>
+          <div class="cell answer"><p>The phone never holds the OpenAI key. Chat completion goes through Express /api/agent with skill-specific prompts. TTS is /api/tts, STT is /api/transcribe. Writing scores use four IELTS band prompts. I wrap OpenAI with Langfuse so a weird answer is a trace. I integrate models into learning workflows — I don't train them.</p></div>
           <div class="cell question"><p>Bạn triển khai AI features nào?</p></div>
-          <div class="cell answer"><p>Tôi tích hợp chat completion, text-to-speech và speech-to-text vào workflow học — học viên luyện và nhận hỗ trợ AI ngay trong app thật, không phải demo tách rời.</p></div>
+          <div class="cell answer"><p>Điện thoại không giữ key OpenAI. Chat đi Express /api/agent với prompt theo skill. TTS là /api/tts, STT là /api/transcribe. Chấm writing dùng bốn prompt band IELTS. Tôi bọc OpenAI bằng Langfuse nên câu lạ là trace. Tôi gắn model vào workflow học — không train model.</p></div>
         </div>
         <div class="star">
           <p><strong>S:</strong> IELTS practice needs interactive AI support for skills.</p>
@@ -743,9 +743,9 @@
         <div class="grid4">
           <div class="cell row-head">Question EN</div><div class="cell row-head">Answer EN</div><div class="cell row-head">Question VI</div><div class="cell row-head">Answer VI</div>
           <div class="cell question"><p>How do the mobile app and teacher portal work together?</p></div>
-          <div class="cell answer"><p>Teachers use the portal for assignments and workflows; students practice on mobile. I supported the communication between app and portal and the cloud operations behind that link, so both sides stay in sync for learning tasks.</p></div>
+          <div class="cell answer"><p>Teachers use the portal for classes, assignments, and submissions; students practice on mobile. Both hit the same Express API. Assignment data lives in Firestore. I keep the contract on the server so we don't duplicate assignment rules in two clients.</p></div>
           <div class="cell question"><p>App mobile và portal giáo viên nối với nhau thế nào?</p></div>
-          <div class="cell answer"><p>Giáo viên dùng portal để giao bài và workflow; học viên luyện trên mobile. Tôi hỗ trợ giao tiếp app–portal và phần cloud phía sau, để hai bên đồng bộ cho việc học.</p></div>
+          <div class="cell answer"><p>Giáo viên dùng portal cho class, assignment, submission; học viên luyện trên mobile. Cả hai gọi cùng API Express. Data assignment nằm trên Firestore. Tôi giữ contract trên server để không nhân đôi rule assignment ở hai client.</p></div>
         </div>
         <div class="star">
           <p><strong>S:</strong> Teachers and students needed connected workflows.</p>
