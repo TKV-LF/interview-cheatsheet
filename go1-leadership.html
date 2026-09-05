@@ -1,0 +1,643 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Go1 — leadership interview</title>
+  <link href="https://api.fontshare.com/v2/css?f[]=satoshi@400,500,700&f[]=general-sans@400,500,600,700&display=swap" rel="stylesheet">
+  <style>
+    :root, [data-theme="light"] {
+      --text-xs: clamp(0.75rem, 0.7rem + 0.25vw, 0.875rem);
+      --text-sm: clamp(0.875rem, 0.8rem + 0.35vw, 1rem);
+      --text-base: clamp(1rem, 0.95rem + 0.25vw, 1.125rem);
+      --text-lg: clamp(1.125rem, 1rem + 0.75vw, 1.5rem);
+      --text-xl: clamp(1.5rem, 1.2rem + 1.25vw, 2.25rem);
+      --space-1: 0.25rem; --space-2: 0.5rem; --space-3: 0.75rem; --space-4: 1rem;
+      --space-5: 1.25rem; --space-6: 1.5rem; --space-8: 2rem;
+      --color-bg: #f7f6f2; --color-surface: #f9f8f5; --color-surface-2: #fbfbf9;
+      --color-border: #d4d1ca; --color-divider: #dcd9d5; --color-text: #28251d;
+      --color-text-muted: #6f6c65; --color-text-faint: #98958f;
+      --color-primary: #01696f; --color-primary-hover: #0c4e54;
+      --color-primary-highlight: #d8e6e3; --color-warning: #964219;
+      --radius-lg: 0.75rem; --radius-xl: 1rem;
+      --shadow-sm: 0 1px 2px rgba(30, 27, 22, 0.06);
+      --font-display: 'General Sans', 'Inter', sans-serif;
+      --font-body: 'Satoshi', 'Inter', sans-serif;
+    }
+    [data-theme="dark"] {
+      --color-bg: #171614; --color-surface: #1c1b19; --color-surface-2: #201f1d;
+      --color-border: #393836; --color-divider: #2f2e2c; --color-text: #e1dfdb;
+      --color-text-muted: #adaaa4; --color-text-faint: #7c7974;
+      --color-primary: #4f98a3; --color-primary-hover: #6aafba;
+      --color-primary-highlight: rgba(79,152,163,0.16); --color-warning: #d08b60;
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body { margin: 0; font-family: var(--font-body); font-size: var(--text-base); color: var(--color-text); background: var(--color-bg); line-height: 1.65; }
+    a { color: inherit; text-decoration: none; }
+    .page { max-width: 980px; margin: 0 auto; padding: var(--space-6); }
+    .topbar { position: sticky; top: 0; z-index: 30; backdrop-filter: blur(10px); background: color-mix(in srgb, var(--color-bg) 88%, transparent); border-bottom: 1px solid var(--color-divider); }
+    .topbar-inner { max-width: 980px; margin: 0 auto; padding: var(--space-4) var(--space-6); display: flex; align-items: center; justify-content: space-between; gap: var(--space-4); }
+    .brand h1 { margin: 0; font-family: var(--font-display); font-size: var(--text-xl); letter-spacing: -0.03em; }
+    .brand p { margin: var(--space-2) 0 0; color: var(--color-text-muted); font-size: var(--text-sm); }
+    .top-actions { display: flex; gap: var(--space-3); flex-wrap: wrap; }
+    .btn { border: 1px solid var(--color-border); background: var(--color-surface); color: var(--color-text); border-radius: 999px; padding: 0.72rem 1rem; font-size: var(--text-sm); font-weight: 600; cursor: pointer; }
+    .btn:hover { background: var(--color-surface-2); }
+    .hero-card, .card { background: var(--color-surface); border: 1px solid var(--color-border); border-radius: var(--radius-xl); box-shadow: var(--shadow-sm); padding: var(--space-6); margin: var(--space-5) 0; }
+    .label { display: inline-flex; padding: 0.35rem 0.7rem; border-radius: 999px; background: var(--color-primary-highlight); color: var(--color-primary); font-size: var(--text-xs); font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; margin-bottom: var(--space-3); }
+    .warn { background: color-mix(in srgb, var(--color-warning) 10%, var(--color-surface)); }
+    h2 { font-family: var(--font-display); letter-spacing: -0.02em; margin: 0 0 var(--space-3); }
+    h3 { margin: var(--space-5) 0 var(--space-2); font-size: 1.05rem; }
+    p { margin: 0 0 var(--space-3); }
+    ul, ol { margin: 0 0 var(--space-4); padding-left: 1.2rem; }
+    li { margin: 0.35rem 0; }
+    table { width: 100%; border-collapse: collapse; font-size: var(--text-sm); margin: var(--space-4) 0; }
+    th, td { border: 1px solid var(--color-divider); padding: 0.65rem 0.75rem; text-align: left; vertical-align: top; }
+    th { background: var(--color-surface-2); font-size: var(--text-xs); letter-spacing: 0.05em; text-transform: uppercase; }
+    .script { background: var(--color-surface-2); border-left: 4px solid var(--color-primary); padding: var(--space-4) var(--space-5); border-radius: 0 var(--radius-lg) var(--radius-lg) 0; font-size: var(--text-sm); }
+    .script p:last-child { margin-bottom: 0; }
+    .follow { color: var(--color-text-muted); font-size: var(--text-sm); }
+    .gap { color: var(--color-warning); font-weight: 600; }
+    .kpis { display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--space-3); margin-top: var(--space-4); }
+    .kpi { background: var(--color-surface-2); border: 1px solid var(--color-divider); border-radius: var(--radius-lg); padding: var(--space-4); }
+    .kpi strong { display: block; font-family: var(--font-display); font-size: var(--text-lg); margin-bottom: var(--space-2); }
+    .kpi span { font-size: var(--text-sm); color: var(--color-text-muted); }
+    .nav { display: flex; flex-wrap: wrap; gap: var(--space-2); margin: var(--space-4) 0; }
+    .nav a { padding: 0.4rem 0.75rem; border: 1px solid var(--color-divider); border-radius: 999px; background: var(--color-bg); font-size: var(--text-xs); font-weight: 700; color: var(--color-text-muted); }
+    .nav a:hover { border-color: var(--color-primary); color: var(--color-primary); background: var(--color-primary-highlight); }
+    .q { scroll-margin-top: 90px; }
+    @media (max-width: 720px) {
+      .kpis { grid-template-columns: 1fr; }
+      .page, .topbar-inner { padding-left: var(--space-4); padding-right: var(--space-4); }
+    }
+  </style>
+</head>
+<body>
+  <div class="topbar">
+    <div class="topbar-inner">
+      <div class="brand">
+        <h1>Go1 leadership interview</h1>
+        <p>Sep 7, 2026 · 10:00–11:00 Asia/Saigon · Jasneet Kaur · 60 minutes</p>
+      </div>
+      <div class="top-actions">
+        <button class="btn theme-toggle" data-theme-toggle aria-label="Switch theme">☾</button>
+        <a class="btn" href="index.html">Hub</a>
+        <a class="btn" href="go1-en.html">LLM coding</a>
+      </div>
+    </div>
+  </div>
+
+  <main class="page">
+    <div class="nav">
+      <a href="#brief">Brief</a>
+      <a href="#stories">6 stories</a>
+      <a href="#must">Must-prepare</a>
+      <a href="#likely">Likely extras</a>
+      <a href="#technical">Technical</a>
+      <a href="#cv">CV deep-dive</a>
+      <a href="#ask">Ask her</a>
+      <a href="#gaps">Fill these</a>
+    </div>
+
+    <section class="hero-card" id="brief">
+      <div class="label">What this round is</div>
+      <h2>Not a manager interview. An IC leadership + judgement interview.</h2>
+      <p>Junaid and Joe already liked the LLM challenge. Jasneet is Director of Engineering. She is checking whether you can own work in a remote, ambiguous, AI-first product team — and whether she would trust you next to her engineers.</p>
+      <div class="kpis">
+        <div class="kpi"><strong>60 min</strong><span>3–4 deep stories, not 20 short answers</span></div>
+        <div class="kpi"><strong>STAR</strong><span>Context → action → result → lesson. 90–120 seconds</span></div>
+        <div class="kpi"><strong>Then probe</strong><span>She will ask why, what you would do differently, and technical detail</span></div>
+      </div>
+    </section>
+
+    <section class="card">
+      <div class="label">Who she is</div>
+      <h2>Jasneet Kaur — Director of Engineering</h2>
+      <p>At Go1 since 2021. Senior EM, then Director from 2023. Delivery-focused, customer-centric, agile background. She talks publicly about autonomous teams, a safe place to experiment, and bringing joy to customers. People describe her as a servant leader who still holds a high bar for delivery quality.</p>
+      <p>Her teams helped ship <strong>Morgan</strong>, Go1’s AI agent that puts learning inside Slack and Microsoft Teams. She cares about autonomy <em>with</em> accountability, not lone-wolf coding.</p>
+      <p><strong>What she is listening for:</strong> Did you make the problem smaller? Did you make the team faster or clearer? Did you commit after disagreement? Did you think about the user, not only the API? Can you work async across Vietnam / Australia / US?</p>
+    </section>
+
+    <section class="card">
+      <div class="label">Go1 in one page</div>
+      <h2>Say this in your own words, not as a brochure</h2>
+      <ul>
+        <li><strong>Product:</strong> L&amp;D platform. One subscription, 250+ content providers, used by 10,000+ organizations. Helps companies deliver the right learning to the right person at the right time.</li>
+        <li><strong>Now:</strong> Rebuilding the product with AI at the core. Morgan delivers learning in Slack/Teams instead of asking people to log into another LMS.</li>
+        <li><strong>Stack they hire for:</strong> Node.js, PHP, React, TypeScript. SaaS, APIs, cloud (AWS/Azure listed). They expect engineers to use LLM tooling day to day.</li>
+        <li><strong>Curiosity Code:</strong> Go(1)-getters · explore fearlessly · velocity and pragmatism · win together.</li>
+        <li><strong>Behaviors they named:</strong> amplify action, make tomorrow better, play as one team, get it done, lean into the uncomfortable, set the pace, solve problems, make and own the call, be commercial, do it with heart.</li>
+        <li><strong>Culture warning they wrote themselves:</strong> fast, lots of change, async-first, not a strict 9–5. They want people who find opportunity in ambiguity.</li>
+      </ul>
+      <p>Do not recite the list. Use one behavior as a label at the end of a story: “That is how I usually try to move — fast, but with a way to check if it actually helped.”</p>
+    </section>
+
+    <section class="card warn" id="gaps">
+      <div class="label">Do this before Sunday</div>
+      <h2>Two stories are still missing. The email asked for them.</h2>
+      <ol>
+        <li><span class="gap">Disagree and still commit.</span> A plan you did not initially agree with, you said your concern, the team decided, you executed it well. Need: who decided, what you feared, what you did after, what happened.</li>
+        <li><span class="gap">A real conflict.</span> Not a philosophy. One case: deployment approach, risky client request, scope vs deadline, API contract, or sync logic. Need: the other person’s view, how it ended, the working relationship after.</li>
+        <li><span class="gap">Numbers.</span> IELTS: users / teachers / languages / latency? BaseVN: 500k is good — what improved after you changed queries or schema? CI/CD: deploy time or failed releases before vs after?</li>
+        <li><span class="gap">LLM challenge recap.</span> 4–5 sentences: what you built, what Junaid/Joe liked, what you would improve. She may not re-test you, but she may ask what you learned.</li>
+      </ol>
+      <p>Send me those four things when you have them. I will rewrite the answers in your voice.</p>
+    </section>
+
+    <section class="card" id="stories">
+      <div class="label">Do not memorize 25 essays</div>
+      <h2>Six stories cover almost every question</h2>
+      <table>
+        <thead>
+          <tr><th>Story</th><th>Use it for</th><th>Go1 signal</th></tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>A. IELTS AI Tutor</strong><br>Started weak on mobile + CI/CD. Used LLMs to learn and ship. RN, Cloud Run, chat / TTS / STT, Langfuse. Live on both stores.</td>
+            <td>Learn new skill · ownership · how you use AI at work · project walkthrough</td>
+            <td>Explore fearlessly. Go1 expects LLM-driven development. Honesty &gt; fake senior mobile.</td>
+          </tr>
+          <tr>
+            <td><strong>B. BaseVN data / payroll sync</strong><br>500k+ records, source of truth, reporting risk</td>
+            <td>Stuck · incomplete information · hard problem · speed vs correctness</td>
+            <td>Solve problems. Make the system visible before changing it.</td>
+          </tr>
+          <tr>
+            <td><strong>C. CI/CD + docs</strong><br>GitHub Actions / GitLab / Jenkins / Docker / Cloud Run</td>
+            <td>Team efficiency · influence without title · process · production safety</td>
+            <td>Make tomorrow better. Reduce bus factor. Play as one team.</td>
+          </tr>
+          <tr>
+            <td><strong>D. Unclear client / teacher–student workflow</strong></td>
+            <td>Ambiguity · assumptions · early feedback · mistake / rework</td>
+            <td>Velocity and pragmatism. Ask, don’t guess in silence.</td>
+          </tr>
+          <tr>
+            <td><strong>E. Akktis / time zones</strong></td>
+            <td>Remote · async writing · visibility · weakness (updates too late)</td>
+            <td>Global team. Autonomy with communication.</td>
+          </tr>
+          <tr>
+            <td><strong>F. Disagree / conflict</strong><br><span class="gap">You still need a real case</span></td>
+            <td>Commit to a plan · conflict · said no · commercial tradeoff</td>
+            <td>Make and own the call. Kind on people, tough on topics.</td>
+          </tr>
+        </tbody>
+      </table>
+      <p>If IELTS is used twice, change the angle. <strong>Learn a skill</strong> = I was not strong at mobile or CI/CD yet; I used LLMs to learn and still owned the result. <strong>Ownership</strong> = I crossed app, backend, deploy, stores, and support. <strong>AI product</strong> = chat/TTS/STT + Langfuse, HTTP 200 ≠ a good lesson.</p>
+    </section>
+
+    <section class="card">
+      <div class="label">How to talk</div>
+      <h2>Structure, then stop. Let her pull detail.</h2>
+      <ol>
+        <li>“A good example is…” / “The one that comes to mind is…”</li>
+        <li>Situation in one sentence. Problem in one sentence.</li>
+        <li>Two or three actions you personally took. Say “I”, then mention the team.</li>
+        <li>Result. Number if you have one. If not, say the concrete change: fewer manual deploys, teachers could assign, sync no longer duplicated records.</li>
+        <li>One lesson. Then stop.</li>
+      </ol>
+      <p>Simple English is stronger. Do not say “I leveraged cross-functional collaboration.”</p>
+    </section>
+
+    <h2 id="must">Must-prepare — they named these in the email</h2>
+
+    <article class="card q" id="q1">
+      <div class="label">Open</div>
+      <h2>1. Tell me about yourself</h2>
+      <p class="follow">90 seconds. End on why you are here. Do not tour the whole CV.</p>
+      <div class="script">
+        <p>I’m Thuy, a backend and full-stack developer with about five years of experience. Most of my work is TypeScript, Node.js, PHP, APIs, databases, and getting things into production — CI/CD and cloud, not only the feature itself.</p>
+        <p>Recently I’ve been on client work and with Akktis, a France-based company. The work changes a lot, so I’m used to picking up a new system, asking the right questions, and owning the path from build to deploy to support.</p>
+        <p>The project I care most about is an IELTS AI Tutor app — now live on the Play Store and the App Store. When we started, my backend and web were stronger than my mobile and CI/CD. I used LLM tools to learn React Native, store builds, and the pipeline, then I still had to understand and ship it. I also built the AI features in the product — chat, text-to-speech, speech-to-text — and used Langfuse so we could see what the model actually returned.</p>
+        <p>Before that, at BaseVN I worked on large HR, payroll, and recruitment SaaS. That taught me how messy real data is when several systems have to stay in sync.</p>
+        <p>I’m looking for a product team where I can keep building useful learning software, work closely with other strong engineers, and go deeper on AI features that have to be reliable for real users. That’s why Go1 interested me.</p>
+      </div>
+    </article>
+
+    <article class="card q" id="q2">
+      <div class="label">Open</div>
+      <h2>2. Why Go1?</h2>
+      <p class="follow">Make it specific. Morgan + AI-core rebuild + your IELTS work. Do not say “I like learning companies.”</p>
+      <div class="script">
+        <p>Three things.</p>
+        <p>First, the product problem. Go1 is trying to get the right learning to someone at the moment they need it — including inside Slack and Teams with Morgan — instead of hoping they open another learning site. I’ve been building a learning product too, the IELTS tutor, so I already care about that gap: the model can answer, but is it useful, fast enough, and safe for the learner?</p>
+        <p>Second, the way you work. The role is product-focused, the stack is Node, PHP, React, TypeScript, and you expect engineers to use LLM tooling day to day. That is already how I shipped IELTS — I used AI to learn mobile and CI/CD faster, then I verified and owned what went to the stores. I don’t want a job where I only close tickets. I want to understand the user flow and take responsibility after release.</p>
+        <p>Third, the culture you describe — curiosity, moving with some pragmatism, and winning as a team. In client work I often had to learn a new system, make assumptions visible, and still deliver. I think I would contribute from week one and still have a lot to learn from a more mature global product team.</p>
+      </div>
+    </article>
+
+    <article class="card q" id="q3">
+      <div class="label">Email theme 1</div>
+      <h2>3. A time you had to learn something new, or gather more information, to make progress</h2>
+      <p class="follow">Story A. Be honest: mobile and CI/CD were new. LLMs helped you learn. You still owned the ship. This is exactly how Go1 says engineers should work.</p>
+      <div class="script">
+        <p>A good example is the IELTS AI Tutor. We needed a real product: a React Native app on iOS and Android, a teacher workflow, a backend on Cloud Run, and a way to build and release it. To be honest, at the start my mobile knowledge was not deep, and I was also new to building CI/CD for this kind of app — store builds, environments, Cloud Run deploys.</p>
+        <p>I already had backend and web experience, so I was not starting from zero. But I could not wait until I felt like a mobile expert. I used LLM tools as part of how I worked. I asked them to explain React Native and Expo patterns, help me draft pipeline config, and unpack errors I had not seen before. Then I did the part a model cannot do: I ran it, I read the official docs when the answer looked wrong, I tested on a real device, and I only kept what I understood.</p>
+        <p>I learned in small slices. First a screen that ran. Then navigation and auth. Then the API connection. Then the pipeline so a human was not clicking a manual release. For the AI features in the product — chat, TTS, STT — I did the same: small tests, then Langfuse, because a successful API call can still be a bad lesson.</p>
+        <p>The result is a live app on Google Play and the App Store, with a backend we can deploy and debug. What I learned: a new skill does not mean I hide the gap. It means I use every tool I have — including LLMs — then I take responsibility for what ships.</p>
+      </div>
+      <p class="follow"><strong>If she says “so you just copied ChatGPT?”</strong> “No. The model is fast at a first draft and at explaining an error. I still have to run the build, read the diff, and own a broken store upload or a bad pipeline. If I cannot explain the change, I do not merge it.”</p>
+      <p class="follow"><strong>If she asks what was hardest to learn:</strong> “The mobile release path — signing, profiles, store requirements — and making CI/CD repeatable. The framework syntax was learnable. The last mile to a store build was where I had to slow down and check.”</p>
+    </article>
+
+    <article class="card q" id="q4">
+      <div class="label">Email theme 2</div>
+      <h2>4. How you improved a team’s performance, morale, efficiency, or direction</h2>
+      <p class="follow">Story C. Follow-ups: Did anyone resist? How did you get adoption without a title?</p>
+      <div class="script">
+        <p>In some projects, deploy steps lived in one person’s head. Releases were slower, and if that person was away, support got harder.</p>
+        <p>I was not the manager. I started from the pain: missed steps, environment confusion, long troubleshooting. I wrote down the current flow, then made the pipeline repeatable — GitHub Actions or GitLab CI or Jenkins, depending on the project — with Docker and Cloud Run where we used them. I documented build order, env config, and what to check after deploy.</p>
+        <p>The result was not only faster releases. Other people could ship and debug without waiting for one person. I like this kind of work because it is not a flashy feature, but the team gets faster every week after.</p>
+      </div>
+      <p class="gap">Add one number if you can: deploy time, failed releases, or “only I could deploy” → “anyone on the team.”</p>
+    </article>
+
+    <article class="card q" id="q5">
+      <div class="label">Email theme 3</div>
+      <h2>5. A challenging goal, or a moment you felt stuck, and the practical way forward</h2>
+      <p class="follow">Story B. Follow-ups: What was the risk if you were wrong? Who did you involve?</p>
+      <div class="script">
+        <p>At BaseVN I worked on HR, payroll, tax, and social insurance systems. Some workflows sat on more than 500,000 records, and data moved between systems.</p>
+        <p>I felt stuck because it was not one slow query. We had to know which system was the source of truth, what missing or duplicate records would do to payroll or reports, and which change was safe.</p>
+        <p>I made the problem visible first. I mapped the data flow, marked the important entities, checked the current schema and queries, and started with the highest-risk path — the one that could break money or compliance reporting — not the easiest refactor.</p>
+        <p>From there I improved structure and queries step by step instead of rewriting everything. The lesson: when a system feels too big, I need a picture of the dependencies before I change production data paths.</p>
+      </div>
+    </article>
+
+    <article class="card q" id="q6">
+      <div class="label">Email theme 4 — they will ask one of these</div>
+      <h2>6a. Short-term results vs longer-term outcomes</h2>
+      <p class="follow">Story A or D. Do not say you never cut scope. Say what you refused to cut.</p>
+      <div class="script">
+        <p>I separate what we cannot compromise from what can be a first version.</p>
+        <p>I will not cut data correctness, security, basic error handling, or a safe deploy. I will ship a narrower feature if that lets us learn from real users.</p>
+        <p>With the AI tutor, a broad “do everything” assistant would have been slower and harder to judge. We started with a narrower flow, but we still put in logging, error handling, and Langfuse. Then we could improve prompts and UX from real traces instead of guessing.</p>
+        <p>I am fine with short-term trade-offs if they are written down and not hidden debt.</p>
+      </div>
+      <h2>6b. Commit to a plan you did not initially agree with</h2>
+      <p class="gap">You do not have a real story yet. Use this skeleton, then send me the facts.</p>
+      <div class="script">
+        <p>Situation: [who wanted what, deadline or constraint].</p>
+        <p>I disagreed because [reliability / time / user impact]. I said that in practical terms, and I offered [a smaller test, or a safer option].</p>
+        <p>They still chose [plan X] because [speed / cost / customer]. The risk was understood.</p>
+        <p>I committed. I [implemented / tested / documented the risk / added a safety check]. I did not keep arguing after the decision.</p>
+        <p>Outcome: [what happened]. Lesson: I push once, clearly, then I help the team win. I only escalate again if security, data, or users are in real danger.</p>
+      </div>
+    </article>
+
+    <h2 id="likely">Likely extras — Director of Engineering almost always asks some of these</h2>
+
+    <article class="card q">
+      <h2>7. Why should we hire you?</h2>
+      <div class="script">
+        <p>I already work in your stack — TypeScript, Node, PHP, APIs — and I have shipped both UI and services, including SaaS. I am used to the full path: build, test, deploy, and debug in production.</p>
+        <p>I can operate in ambiguity. Client work is rarely fully specified. I ask focused questions, write assumptions down, and validate with a small version instead of waiting for a perfect spec.</p>
+        <p>And I already use LLMs the way this role describes. On IELTS I was not a mobile or CI/CD expert on day one. I used AI to learn and ship, then I still owned store builds and production issues. I also built AI into the learning product, plus the challenge with Junaid and Joe. I am not a research engineer. I can learn fast, ship, and keep the result reliable.</p>
+      </div>
+    </article>
+
+    <article class="card q">
+      <h2>8. Requirements were unclear</h2>
+      <div class="script">
+        <p>This happens a lot in client work. They know the business goal — a teacher and student workflow — but roles, permissions, and error cases are not written down.</p>
+        <p>I do not start by coding the whole thing. I break it into the main user flow, the data, the integrations, and the parts that will hurt later. Then I ask a short list of questions and I say my assumptions out loud. If needed I draw a simple flow or build a thin first version.</p>
+        <p>People often know the problem. They need help turning it into a workflow we can implement.</p>
+      </div>
+    </article>
+
+    <article class="card q">
+      <h2>9. Influence without being the manager</h2>
+      <p>Same story as Q4. Different last line: “I proposed a small, easy-to-adopt change and explained the benefit in their language — fewer mistakes, less waiting on one person.”</p>
+    </article>
+
+    <article class="card q">
+      <h2>10. Ownership</h2>
+      <div class="script">
+        <p>IELTS was not one ticket, and I was not already a mobile or CI/CD specialist when we started. I still owned the path: React Native app, teacher portal connection, Express on Cloud Run, store releases, and the AI features. I used LLMs to learn faster, but I stayed with the issues after release — a failed build or a weird tutor answer was still my problem.</p>
+        <p>Langfuse was part of ownership for me. If we cannot see what users received, we cannot support the product. I try to ask: does it work, what happens when it fails, and how will we debug it next month?</p>
+      </div>
+    </article>
+
+    <article class="card q">
+      <h2>11. Decision with incomplete information</h2>
+      <div class="script">
+        <p>I split decisions. If it is easy to change later, I make a reasonable assumption, write it down, test, and move. If it is hard to reverse — production data, security, a big architecture choice — I slow down.</p>
+        <p>I say what I know, what I am assuming, the risk, and what I will validate next. That lets us move without pretending we are certain.</p>
+      </div>
+    </article>
+
+    <article class="card q">
+      <h2>12. Disagreement / conflict</h2>
+      <p>Philosophy is ready. <span class="gap">The story is not.</span> She will not accept “I stay professional.” She wants one case.</p>
+      <div class="script">
+        <p>I try not to make it personal. I want their worry and their goal first. Then I give specific reasons: user impact, delivery risk, maintenance, reliability. If we are both guessing, I prefer a small test or a written decision rule.</p>
+        <p>The goal is the best call for the product, and a relationship we can still work in tomorrow. Kind on people, tough on the topic.</p>
+        <p class="gap">Then tell the real case in STAR. Possible angles: deploy approach, risky client request, scope vs date, API contract, sync logic.</p>
+      </div>
+    </article>
+
+    <article class="card q">
+      <h2>13. Different countries / time zones</h2>
+      <div class="script">
+        <p>With Akktis and clients I work across time zones. I cannot rely on a quick meeting to fix everything.</p>
+        <p>I write updates that work async: what I did, what is blocked, what I need, what is next. I write down technical decisions so someone who was offline still has the context. I do not assume shared context, especially with clients.</p>
+        <p>That made me more independent, and also more careful: if people cannot see the work, the work is not finished.</p>
+      </div>
+    </article>
+
+    <article class="card q">
+      <h2>14. Feedback · 15. Weakness · 16. Mistake</h2>
+      <p>Use the same honest thread. Do not invent a fake weakness like “I care too much.”</p>
+      <div class="script">
+        <p><strong>Weakness / feedback:</strong> I am comfortable investigating alone. Sometimes I wait too long before I share progress or risk. I have been practicing earlier updates: what I know, what I am still checking, what I need. I can still work independently without leaving the team in the dark. That matters even more on a remote Go1 team.</p>
+        <p><strong>Mistake:</strong> Earlier I sometimes built the technically correct thing before the business workflow was clear — roles, edge cases, who is allowed to do what. Now I validate earlier: assumptions, a simple diagram, a thin first version. Fast is not only typing speed. It is solving the right problem.</p>
+      </div>
+    </article>
+
+    <article class="card q">
+      <h2>17. What does leadership mean to you? · 18. What does curiosity mean?</h2>
+      <div class="script">
+        <p><strong>Leadership:</strong> For an IC, it means helping the group move. Clarity, visible risks, ownership when something is fuzzy, and caring about the full outcome — reliable, understandable, useful — not only “my PR passed.” I show it through the work, the writing, and the process I leave behind.</p>
+        <p><strong>Curiosity:</strong> I do not stop at the first answer. I want why it broke, what the user was trying to do, and what we are trading off. At Go1 that also means asking questions outside a narrow ticket, then putting what I learned back in front of the team.</p>
+      </div>
+    </article>
+
+    <article class="card q">
+      <h2>19. Why this role, why now? · 20. How do you work with product and design?</h2>
+      <div class="script">
+        <p><strong>Why now:</strong> I want to stay closer to one product and go deeper on AI-enabled learning, instead of only jumping between client stacks. Go1 is doing that at a much larger scale than my current projects.</p>
+        <p><strong>Product / design:</strong> I try to learn the user job first. I ask what success looks like, what we will measure, and which edge case will create support load. I make technical limits early — latency, cost, permissions — so we do not design a flow the system cannot keep. If something is unclear, I prefer a small build we can click through together.</p>
+      </div>
+    </article>
+
+    <article class="card q">
+      <h2>21. First 90 days</h2>
+      <div class="script">
+        <p>Month one: learn the product, the codebase, how the team ships, and how Vietnam works with product in other time zones. I would rather ask “dumb” questions early than silently build the wrong thing. Ship something small that is safe, with tests and a clean PR, so people can trust my work.</p>
+        <p>Month two and three: own a real slice — a feature or a reliability improvement — and leave the path clearer than I found it. Docs, a check in CI, or a better way to see if an AI response was actually useful. I would also build a habit of using the same LLM workflow the team already uses, instead of inventing my own.</p>
+      </div>
+    </article>
+
+    <article class="card q">
+      <h2>22. Changing priorities · 23. Went outside the job description</h2>
+      <div class="script">
+        <p><strong>Priorities:</strong> I re-check impact and reversibility. What is user-facing or unsafe to pause? What can wait? I say what I will stop, not only what I will start, so nothing silently dies.</p>
+        <p><strong>Outside the job:</strong> CI/CD and documentation when it was “not my ticket,” and Langfuse when the need was “we cannot see the AI.” I do that when it unblocks the team or the user, then I tell people so it does not become invisible work.</p>
+      </div>
+    </article>
+
+    <h2 id="technical">Technical alignment — they said they may go deeper</h2>
+
+    <article class="card q">
+      <h2>24. Walk me through the IELTS AI Tutor</h2>
+      <div class="script">
+        <p>It is a React Native TypeScript app for iOS and Android, live on both stores, plus a teacher assignment portal. I worked on the mobile app, the Express API on Cloud Run, and the link between student and teacher sides.</p>
+        <p>I should be honest: when we started I was stronger on backend and web than on mobile and CI/CD. I used LLM tools to learn Expo/React Native, store builds, and the pipeline, then I verified everything myself. AI is also in the product — chat, TTS, STT — with Langfuse for traces. Firebase is part of the setup.</p>
+        <p>The interesting part was not calling an API. It was learning enough to ship a real app, then thinking about waiting time, errors, and how we investigate a bad answer later.</p>
+      </div>
+    </article>
+
+    <article class="card q">
+      <h2>25. How would you design an AI learning feature? · 26. Hallucinations · 27. Evaluation</h2>
+      <p class="follow">Keep this practical. Go1’s problem is similar: recommend or explain learning without inventing unsafe or irrelevant content. Morgan has to stay grounded in their library and assignments.</p>
+      <div class="script">
+        <p><strong>Design:</strong> Start with the learner job — understand, practice, get feedback, or find a course. Ship a narrow first use case. Then auth, permissions, validation, rate limits, logging, fallbacks. If we have approved content, retrieve it and keep the model inside that box. Measure latency, errors, cost, and whether the learner actually continues.</p>
+        <p><strong>Hallucinations:</strong> Not only a better prompt. Give trusted content, constrain the output, allow “I don’t know,” and fall back to a catalog item or a human path. Watch real traces. That is why I used Langfuse.</p>
+        <p><strong>Evaluate:</strong> Technical health plus product quality. A fast 200 can still be a useless or wrong lesson. I want golden questions, reviewer checks, and after-release behavior: repeat questions, drop-off, thumbs-down patterns.</p>
+      </div>
+    </article>
+
+    <article class="card q">
+      <h2>28. Production issues · 29. CI/CD · 30. How you use AI / LLMs at work</h2>
+      <div class="script">
+        <p><strong>Prod:</strong> Impact first. Stabilize — rollback, workaround, or disable — then root cause: recent change, logs, config, deps, resources. After that, a small prevention: monitor, CI check, or docs. I do not randomly patch under pressure.</p>
+        <p><strong>CI/CD:</strong> GitHub Actions, GitLab CI, Jenkins, Docker, Linux, Cloud Run and Cloud Storage. A pipeline should build, check, deploy, and tell us if the service is healthy. Rollback and secrets are part of the design.</p>
+        <p><strong>LLMs day to day:</strong> I already work this way. On IELTS I used LLMs to learn React Native and CI/CD — first draft of a screen, an error I had not seen, a pipeline snippet — then I ran the build, read the diff, and only kept what I understood. In the product I treat the model as an unreliable component: keys stay on the server, we log with Langfuse, and we have a fallback. That is the same habit Go1 is asking for: use AI to move faster, do not skip judgement.</p>
+      </div>
+    </article>
+
+    <article class="card q">
+      <h2>31. LLM challenge recap</h2>
+      <p class="gap">Fill after you write 4–5 honest sentences. She may ask: what would you do in week two? What did you get wrong?</p>
+      <div class="script">
+        <p>In the challenge I [built X]. I focused on [correctness / structure / tests / a learning-domain model]. Junaid and Joe’s feedback was positive on [whatever they said]. If I continued, I would [observability / edge cases / clearer API / cheaper path].</p>
+      </div>
+    </article>
+
+    <article class="card q">
+      <h2>32–36. Other probes she can use</h2>
+      <ul>
+        <li>Tell me about a time you said no to a stakeholder.</li>
+        <li>How do you review someone else’s code? How do you receive a tough review?</li>
+        <li>How do you onboard to a large unfamiliar codebase?</li>
+        <li>What kind of team do you work best with?</li>
+        <li>How do you stay commercial as an engineer — cost, time-to-value, not only elegance?</li>
+        <li>What would you do if an AI feature was popular but we could not prove it was accurate?</li>
+        <li>How do you handle on-call or a production bug at 11pm your time when the rest of the team is asleep?</li>
+      </ul>
+      <p>If you do not have a polished script, use Story B, C, D, or E and stay concrete.</p>
+    </article>
+
+    <h2 id="cv">CV deep-dive — she can point at any bullet</h2>
+    <p>The email said they may go deeper on technical skills. If your CV is on screen, these are the lines she will poke. Stay inside what you actually did. Do not invent timings like “3 seconds to 300ms” unless you remember them.</p>
+
+    <section class="card">
+      <div class="label">CV map</div>
+      <h2>If she reads this line, tell this story</h2>
+      <table>
+        <thead>
+          <tr><th>On the CV</th><th>Question she asks</th><th>Story</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>Base PIT · 500,000+ records · schema · queries · Excel/XML · launch</td><td>How did you optimize it? What was slow?</td><td>B — tax data + reporting</td></tr>
+          <tr><td>Base VSS · sync HRM / Payroll · Excel / XML</td><td>Hardest data bug? Silent mismatch?</td><td>B — source of truth</td></tr>
+          <tr><td>E-Hiring · VietnamWorks / TopCV</td><td>Unreliable third-party API?</td><td>Retries, logs, monitoring</td></tr>
+          <tr><td>Akktis · Linux, CI/CD, Cloud Run / SQL</td><td>Prod issue you caught / fixed?</td><td>C + env drift / disk / DB connect</td></tr>
+          <tr><td>Legacy → MySQL on Apache</td><td>Hardest cutover? Fear of data loss?</td><td>Backup, validate, document</td></tr>
+          <tr><td>IELTS · RN, Express, Cloud Run, Langfuse</td><td>AI bug that passed the demo?</td><td>A — traces vs HTTP 200</td></tr>
+        </tbody>
+      </table>
+    </section>
+
+    <article class="card q">
+      <div class="label">She will almost ask this</div>
+      <h2>You wrote “optimized queries for 500,000+ records.” Walk me through it.</h2>
+      <p class="follow">This is the money story from Base PIT (personal income tax). Correctness matters more than speed — wrong tax/payroll is worse than a slow screen. Follow-ups: EXPLAIN, indexes, why not load all rows in PHP, how you proved it.</p>
+      <div class="script">
+        <p>Base PIT is a personal income tax product. It sat on more than 500,000 records and had to talk to HRM and Payroll. The painful parts were reporting and export — Excel and XML for tax-style compliance — plus screens that loaded or filtered a lot of employee and period data.</p>
+        <p>The first rule: I do not run a 500k-row report inside a user request. That will time out or blow memory. I treat heavy export and sync as a job path: chunk the work, write the file, then let the user download it.</p>
+        <p>Then I find the real slow query. I look at the slow query log or the query behind the slow screen, run EXPLAIN, and check whether it is a full scan, a bad join, or a missing index on the columns we actually filter — company, employee, period, that kind of key. I also look for SELECT * and N+1: one query per row in a loop will die at this size.</p>
+        <p>What I change is usually boring and safe: add or fix indexes that match the WHERE and JOIN, rewrite the query so it only fetches the columns and rows the report needs, and process in batches instead of loading everything into PHP memory. Sometimes the schema itself was the problem — types, keys, or a table that mixed too many concerns — so I adjust that carefully and re-test the export.</p>
+        <p>I always re-check correctness, not only speed. For tax data I compare a small known sample: same employees, same period, Excel/XML still matches HRM/Payroll. Fast and wrong is a worse launch than slow and right.</p>
+        <p>What I learned: at this size, schema and queries are infrastructure. “It works on my laptop” is not a plan.</p>
+      </div>
+      <p class="follow"><strong>If she asks “what index?”</strong> Say: indexes on the columns we filter and join — typically company / employee / tax period — so EXPLAIN stops doing a full table scan. I do not add an index on every column; unused indexes slow writes.</p>
+      <p class="follow"><strong>If she asks “how did you measure?”</strong> Be honest: query time before/after, whether the export finished, whether the screen was usable, whether the job completed without memory errors. If you do not remember exact seconds, say so and describe the before/after behavior.</p>
+    </article>
+
+    <article class="card q">
+      <h2>How do you find a slow query? What does EXPLAIN tell you?</h2>
+      <div class="script">
+        <p>I start from the user symptom: which screen, which export, which company and period. Then I get the SQL — from logs, from the ORM, or by reproducing the action. I run EXPLAIN.</p>
+        <p>I look for type ALL or a huge rows count, no useful key, or a join that explodes. That usually means a missing index or a filter that cannot use an index — function on the column, bad types, or SELECT * plus a sort of the whole table.</p>
+        <p>I change one thing, measure again, and keep a copy of the old query. I do not “tune production” by guessing.</p>
+      </div>
+    </article>
+
+    <article class="card q">
+      <h2>Would you return 500k rows to the API or the phone?</h2>
+      <div class="script">
+        <p>No. A list on a phone or a web table needs pagination and only the fields the screen needs. A full tax file is a background export, not a JSON dump. Same idea I use on IELTS: I do not hydrate a huge payload per topic if I can store progress locally and fetch what the screen needs.</p>
+      </div>
+    </article>
+
+    <article class="card q">
+      <div class="label">Catch before it hurts</div>
+      <h2>What is the most important issue you caught, and how did you fix it?</h2>
+      <p class="follow">She wants: how you noticed, why it mattered, what you did before users or finance suffered. Pick <strong>silent sync</strong> as the main answer. PIT slowness is the backup if she wants performance.</p>
+      <div class="script">
+        <p>The most important class of issue I have caught is a <strong>silent data mismatch</strong>, not a crash.</p>
+        <p>On Base VSS we synced Vietnam Social Security data with HRM and Payroll, and we exported Excel/XML for compliance. A crash is obvious. A sync that “succeeds” with the wrong mapping is worse — counts look fine until finance or the tax path notices.</p>
+        <p>How I catch it: I do not trust the job’s success log. I take a small known sample — a few employees I can check by hand — and I compare source fields vs destination fields vs the export. I check job order too: if Payroll reads before HRM has finished, you get yesterday’s truth.</p>
+        <p>How I fix it: correct the mapping or the transform rule, or fix the job order, then add a clearer validation step — row counts, required fields, or a checksum-style check on the sample — so the next failure is loud. Then I re-run on the sample before I touch the full set.</p>
+        <p>That is the issue I care about most: wrong money or compliance data that looks green. I would rather catch it on ten rows than explain it on 500,000.</p>
+      </div>
+      <p class="follow"><strong>Backup — caught before launch:</strong> On PIT, slow or memory-heavy exports showed up while we were still making the system launch-ready. Catching that before go-live meant we could change indexes and batch the export instead of discovering it on the first real tax period.</p>
+      <p class="follow"><strong>Backup — caught before users:</strong> Staging vs prod config, or Cloud Run up but Cloud SQL unreachable. I diff env, secrets, and IAM before I rewrite application code.</p>
+    </article>
+
+    <article class="card q">
+      <h2>What was the hardest thing you worked on?</h2>
+      <p class="follow">Pick one and stay there. Do not list five “hardest” stories.</p>
+      <div class="script">
+        <p>The hardest was Base PIT around launch. It was not one slow query. We had large data, reporting that had to be correct, Excel/XML that had to match HRM and Payroll, and a deadline. If I optimized the wrong path I could make exports fast and tax numbers wrong.</p>
+        <p>What made it hard was the connections. I had to see the flow first: which system is the source of truth, which query is on the launch path, what a duplicate or missing record does to a report. Then I started with the highest-risk path — money and compliance — not the easiest refactor.</p>
+        <p>The practical way forward was: map, measure, change one layer, verify with a known sample, then the next layer. I still use that when a system feels too big.</p>
+      </div>
+      <p class="follow"><strong>Second hardest, if she asks for another:</strong> Akktis legacy migration off a custom DB setup. The fear was data loss, not the click. Backup and rollback thinking, validate reads/writes after cutover, document the new Apache/MySQL path so support does not live in one person’s head.</p>
+    </article>
+
+    <article class="card q">
+      <div class="label">How you work</div>
+      <h2>How do you estimate the time of a task?</h2>
+      <p class="follow">Directors ask this to see if you hide uncertainty. Do not say “I just feel it.”</p>
+      <div class="script">
+        <p>I do not estimate a blurry ticket as one number. I break it first.</p>
+        <p>One: what is already clear — screens, API, a query I have seen before. Two: what is unknown — data volume, a third-party API, missing env access, unclear rules. Three: test and release — especially if tax, sync, or production data is involved.</p>
+        <p>I estimate the known part from similar work. A normal CRUD feature is one thing. A PIT-style report on a large table is another, because I need time to profile, index, and verify a sample. A VietnamWorks-style integration needs time for auth, retries, and a failed-response path, not only the happy JSON.</p>
+        <p>I say my assumptions out loud: “This is three days if the mapping is documented and I can use a staging dump. If the dump is messy or the vendor API is different from the docs, I need a half-day spike and I will re-estimate.”</p>
+        <p>I also add a buffer for the risky slice only, not a secret 2x on everything. If I learn the task is bigger, I say so early — that matches the weakness I already told you. A late surprise is worse than a revised estimate on day one.</p>
+      </div>
+    </article>
+
+    <article class="card q">
+      <h2>What if your estimate is wrong? How do you break a large task?</h2>
+      <div class="script">
+        <p>If I am slipping, I do not silently work late and hope. I say what is done, what is blocked, and the new date with a reason — “the export needs chunking, I did not see that in the spec.”</p>
+        <p>For a large task I cut a thin vertical slice we can demo: one company, one period, one export, or one student flow. Then I list the rest as follow-ups. That is how I keep velocity without hiding debt.</p>
+        <p>Example: for PIT I would not estimate “optimize the whole database.” I would estimate “make the period export finish and match a sample,” then a next slice for the next report.</p>
+      </div>
+    </article>
+
+    <article class="card q">
+      <h2>How do you decide what to fix first when several things are slow or broken?</h2>
+      <div class="script">
+        <p>Impact and reversibility. Users blocked or data wrong goes first. Then launch-path reports. Then nice-to-have speed.</p>
+        <p>On PIT, a wrong XML for the tax authority beats a slightly slow list page. On IELTS, a failed STT that blocks speaking practice beats a slower animation. On a server, disk full or Cloud SQL unreachable beats a style bug.</p>
+      </div>
+    </article>
+
+    <article class="card q">
+      <h2>Walk me through a data sync bug. · Third-party API. · Migration risk.</h2>
+      <div class="script">
+        <p><strong>VSS sync:</strong> Silent mismatch. Reproduce on a tiny known set, diff source vs destination, check transform and job order, fix mapping, add validation, only then run the full job.</p>
+        <p><strong>E-Hiring / VietnamWorks / TopCV:</strong> Failures are rate limits, expired auth, or a changed response. I make failure loud: retries where safe, request IDs in logs, monitoring on the sync job. I do not pretend the vendor is always up.</p>
+        <p><strong>Legacy → MySQL/Apache:</strong> Hardest part is confidence. Backup and rollback first. After cutover I validate the app can read and write. I document the new path so the next person is not guessing.</p>
+      </div>
+    </article>
+
+    <article class="card q">
+      <h2>A production issue you fixed · Something you caught in staging</h2>
+      <div class="script">
+        <p><strong>Staging green, prod red:</strong> I diff commits, env vars, secrets, and service versions before I change code. Usually a missing variable, different web-server config, or a dependency only installed in one environment. Fix the config, redeploy, add it to the checklist.</p>
+        <p><strong>Cloud Run up, DB down:</strong> Logs, then connection string, then network/socket, then service account permissions. Often identity or host setup, not “Node died.”</p>
+        <p><strong>Linux disk full:</strong> df/du, free space safely, rotate logs, restart the service, then make disk visible in monitoring. I do not delete blindly under /var.</p>
+        <p><strong>Pipeline red mid-release:</strong> Stop retry spam. Read which stage failed. Smallest fix. Promote only when green. Then make that failure louder earlier.</p>
+      </div>
+    </article>
+
+    <article class="card q">
+      <h2>How do you test a report, export, or schema change?</h2>
+      <div class="script">
+        <p>I keep a fixture: a small company or a few employees whose numbers I already know. I run the old path and the new path and compare. For Excel/XML I check totals and a few line items, not only “file downloaded.”</p>
+        <p>For a schema or index change I check the write path too — inserts and the sync job — because a new index can slow writes. Then I run the heavy export once on a realistic volume if I have a staging dump, not first in production.</p>
+      </div>
+    </article>
+
+    <article class="card q">
+      <h2>Why did you leave BaseVN? What is the biggest technical strength on this CV?</h2>
+      <div class="script">
+        <p><strong>Why move:</strong> BaseVN gave me real SaaS depth — large data, sync, payroll-adjacent correctness. I wanted more ownership of servers, deploy, and cloud day to day. Akktis gave me that mix, and IELTS let me own a full product including AI.</p>
+        <p><strong>Strength:</strong> I can follow a problem across layers. A slow tax screen might be a query, a missing index, or a job that should not be in the request. A weird AI answer might be the model or the workflow. I debug with evidence — EXPLAIN, logs, Langfuse — then I leave the path clearer.</p>
+      </div>
+    </article>
+
+    <article class="card q">
+      <h2>Other CV pokes — have a 30-second line</h2>
+      <ul>
+        <li><strong>Walk me through your CV.</strong> Use Q1. Newest first: Akktis + IELTS, then BaseVN scale.</li>
+        <li><strong>What did you do on E-Hiring?</strong> VietnamWorks/TopCV sync, reporting/Excel, email monitoring. Plan for retries.</li>
+        <li><strong>What is LiteSpeed / Apache work?</strong> Vhosts, basic performance, isolate “HTTP wrong” from “app wrong.”</li>
+        <li><strong>IELTS IAP / webhooks?</strong> Phone never holds the OpenAI key. Purchases and AI go through Express on Cloud Run.</li>
+        <li><strong>Why Langfuse?</strong> HTTP 200 is not a good lesson. Traces show what the user received.</li>
+        <li><strong>Looneyes / Jimdo?</strong> Keep short. Real client ownership, not your deepest systems work.</li>
+        <li><strong>How do you onboard to a big codebase?</strong> Run it, find the request path, find the data model, ask who owns prod. Same as arriving at Go1.</li>
+      </ul>
+    </article>
+
+    <section class="card" id="ask">
+      <div class="label">Your questions — pick 3</div>
+      <h2>Ask Jasneet like a future teammate, not a recruiter</h2>
+      <ol>
+        <li>What does strong look like for this role in the first 90 days on the team I would join?</li>
+        <li>You are rebuilding with AI at the core. What is the hardest engineering problem on that path right now?</li>
+        <li>How do Vietnam engineers usually work with product and design in Australia or the US — what does a good async week look like?</li>
+        <li>What decisions do ICs own on your teams, and what should they escalate?</li>
+        <li>How do you tell that an AI learning feature is actually useful and safe, not only shipped?</li>
+        <li>After Junaid and Joe’s feedback, is there anything you still want to pressure-test with me today?</li>
+        <li>What made you stay at Go1 from engineering manager to Director? What is different about the engineering org now?</li>
+      </ol>
+      <p>Skip generic “what is the culture” — you already read the Culture Book. Skip salary unless she opens it.</p>
+    </section>
+
+    <section class="card">
+      <div class="label">Day-of</div>
+      <h2>60-minute shape</h2>
+      <ul>
+        <li>0–8 min: hello, about you, why Go1.</li>
+        <li>8–40 min: two or three email-theme stories. She will interrupt. That is good.</li>
+        <li>40–50 min: CV deep-dive — 500k PIT, sync bug, estimate, or LLM. She may pick a bullet.</li>
+        <li>50–60 min: your questions.</li>
+      </ul>
+      <p>Comfortable clothes. Quiet room. Teams link ready 10 minutes early. Have one page of story titles only — not this whole document on screen while you talk.</p>
+      <p>If you blank: “Let me take a second to pick a specific case.” Then pick A–F. Do not invent.</p>
+    </section>
+  </main>
+  <script>
+    (function () {
+      const btn = document.querySelector('[data-theme-toggle]');
+      const root = document.documentElement;
+      let theme = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+      root.setAttribute('data-theme', theme);
+      const sync = () => { btn.textContent = theme === 'dark' ? '☀' : '☾'; };
+      sync();
+      btn.addEventListener('click', () => {
+        theme = theme === 'dark' ? 'light' : 'dark';
+        root.setAttribute('data-theme', theme);
+        sync();
+      });
+    })();
+  </script>
+</body>
+</html>
