@@ -70,9 +70,140 @@
       .kpis { grid-template-columns: 1fr; }
       .page, .topbar-inner { padding-left: var(--space-4); padding-right: var(--space-4); }
     }
+
+    :root, [data-theme="light"] { --radius-md: 0.5rem; }
+    [data-theme="dark"] { --radius-md: 0.5rem; }
+    body.has-side-toc { overflow-x: hidden; }
+    .shell {
+      display: grid;
+      grid-template-columns: minmax(240px, 300px) minmax(0, 1fr);
+      gap: 0;
+      align-items: start;
+      max-width: 1400px;
+      margin: 0 auto;
+      position: relative;
+    }
+    .side-toc {
+      position: sticky;
+      top: 88px;
+      height: calc(100vh - 100px);
+      overflow: auto;
+      padding: var(--space-4);
+      margin: var(--space-4) 0 var(--space-4) var(--space-4);
+      background: var(--color-surface);
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius-xl);
+      box-shadow: var(--shadow-sm);
+      z-index: 20;
+    }
+    .side-toc-head {
+      position: sticky;
+      top: 0;
+      background: var(--color-surface);
+      padding-bottom: var(--space-3);
+      margin-bottom: var(--space-3);
+      border-bottom: 1px solid var(--color-divider);
+      z-index: 1;
+    }
+    .side-toc-head strong {
+      display: block;
+      font-family: var(--font-display);
+      font-size: var(--text-sm);
+      letter-spacing: -0.02em;
+    }
+    .side-toc-head span {
+      display: block;
+      margin-top: 0.25rem;
+      color: var(--color-text-faint);
+      font-size: var(--text-xs);
+    }
+    .side-toc-list { display: flex; flex-direction: column; gap: 2px; }
+    .side-toc-link {
+      display: grid;
+      grid-template-columns: 2.2rem 1fr;
+      gap: 0.45rem;
+      align-items: start;
+      padding: 0.45rem 0.55rem;
+      border-radius: var(--radius-md);
+      color: var(--color-text-muted);
+      font-size: var(--text-xs);
+      line-height: 1.35;
+      border: 1px solid transparent;
+    }
+    .side-toc-link:hover { background: var(--color-primary-highlight); color: var(--color-primary); }
+    .side-toc-link.is-active {
+      background: var(--color-primary-highlight);
+      border-color: color-mix(in srgb, var(--color-primary) 35%, var(--color-border));
+      color: var(--color-primary);
+      font-weight: 600;
+    }
+    .side-toc-num { font-variant-numeric: tabular-nums; color: var(--color-text-faint); font-weight: 700; }
+    .side-toc-link.is-active .side-toc-num { color: var(--color-primary); }
+    .side-toc-title { min-width: 0; }
+    .side-toc-part {
+      display: block;
+      margin: 0.85rem 0 0.35rem;
+      padding: 0.5rem 0.55rem 0.35rem;
+      border-top: 1px solid var(--color-divider);
+    }
+    .side-toc-part:first-child { margin-top: 0; border-top: none; padding-top: 0.15rem; }
+    .side-toc-part-link {
+      display: block;
+      font-family: var(--font-display);
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.02em;
+      color: var(--color-text);
+      line-height: 1.3;
+    }
+    .side-toc-part-link:hover { color: var(--color-primary); }
+    .side-toc-part-range {
+      display: block;
+      margin-top: 0.15rem;
+      font-size: 0.65rem;
+      font-variant-numeric: tabular-nums;
+      color: var(--color-text-faint);
+      font-weight: 600;
+    }
+    .side-toc-part.is-active .side-toc-part-link { color: var(--color-primary); }
+    .page.with-side-toc {
+      max-width: none;
+      padding-left: var(--space-4);
+      padding-right: var(--space-6);
+    }
+    .topbar-inner { max-width: 1400px; }
+    .toc-mobile-btn { display: none; }
+    .toc-backdrop { display: none; }
+    h2[id], .card[id], .q[id], section[id] { scroll-margin-top: 90px; }
+    @media (max-width: 1100px) {
+      .shell { grid-template-columns: 1fr; }
+      .side-toc {
+        position: fixed;
+        left: 0; top: 0; bottom: 0;
+        width: min(86vw, 320px);
+        height: 100vh;
+        margin: 0;
+        border-radius: 0;
+        border-right: 1px solid var(--color-border);
+        transform: translateX(-105%);
+        transition: transform 0.2s ease;
+        z-index: 50;
+      }
+      .side-toc.is-open { transform: translateX(0); }
+      .toc-backdrop {
+        display: none;
+        position: fixed;
+        inset: 0;
+        background: rgba(0,0,0,0.35);
+        z-index: 40;
+      }
+      .toc-backdrop.is-open { display: block; }
+      .toc-mobile-btn { display: inline-flex; }
+      .page.with-side-toc { padding-left: var(--space-4); padding-right: var(--space-4); }
+    }
   </style>
 </head>
-<body>
+<body class="has-side-toc">
   <div class="topbar">
     <div class="topbar-inner">
       <div class="brand">
@@ -80,24 +211,98 @@
         <p>Sep 7, 2026 · 10:00–11:00 Asia/Saigon · Jasneet Kaur · 60 minutes</p>
       </div>
       <div class="top-actions">
+        <button class="btn toc-mobile-btn" data-toc-open type="button">Contents</button>
         <button class="btn theme-toggle" data-theme-toggle aria-label="Switch theme">☾</button>
         <a class="btn" href="index.html">Hub</a>
         <a class="btn" href="go1-en.html">LLM coding</a>
       </div>
     </div>
   </div>
+  <div class="toc-backdrop" data-toc-backdrop hidden></div>
+  <div class="shell">
+    <aside class="side-toc" id="side-toc" aria-label="Question contents">
+      <div class="side-toc-head">
+        <strong>Contents</strong>
+        <span>Jump to a question</span>
+      </div>
+      <nav class="side-toc-list" data-side-toc>
+        <div class="side-toc-part" data-part="brief">
+          <a class="side-toc-part-link" href="#brief">Brief</a>
+          <span class="side-toc-part-range">Context</span>
+        </div>
+        <a class="side-toc-link" href="#brief" data-target="brief" data-part="brief"><span class="side-toc-num">—</span><span class="side-toc-title">What this round is</span></a>
+        <a class="side-toc-link" href="#interviewer" data-target="interviewer" data-part="brief"><span class="side-toc-num">—</span><span class="side-toc-title">Jasneet Kaur</span></a>
+        <a class="side-toc-link" href="#company" data-target="company" data-part="brief"><span class="side-toc-num">—</span><span class="side-toc-title">Go1 in one page</span></a>
+        <a class="side-toc-link" href="#gaps" data-target="gaps" data-part="brief"><span class="side-toc-num">!</span><span class="side-toc-title">Fill these before Sunday</span></a>
+        <a class="side-toc-link" href="#stories" data-target="stories" data-part="brief"><span class="side-toc-num">—</span><span class="side-toc-title">Six stories map</span></a>
+        <a class="side-toc-link" href="#how-to-talk" data-target="how-to-talk" data-part="brief"><span class="side-toc-num">—</span><span class="side-toc-title">How to talk</span></a>
 
-  <main class="page">
-    <div class="nav">
-      <a href="#brief">Brief</a>
-      <a href="#stories">6 stories</a>
-      <a href="#must">Must-prepare</a>
-      <a href="#likely">Likely extras</a>
-      <a href="#technical">Technical</a>
-      <a href="#cv">CV deep-dive</a>
-      <a href="#ask">Ask her</a>
-      <a href="#gaps">Fill these</a>
-    </div>
+        <div class="side-toc-part" data-part="must">
+          <a class="side-toc-part-link" href="#must">Must-prepare</a>
+          <span class="side-toc-part-range">1–6 · email themes</span>
+        </div>
+        <a class="side-toc-link" href="#q1" data-target="q1" data-part="must"><span class="side-toc-num">01</span><span class="side-toc-title">Tell me about yourself</span></a>
+        <a class="side-toc-link" href="#q2" data-target="q2" data-part="must"><span class="side-toc-num">02</span><span class="side-toc-title">Why Go1?</span></a>
+        <a class="side-toc-link" href="#q3" data-target="q3" data-part="must"><span class="side-toc-num">03</span><span class="side-toc-title">Learn something new (IELTS)</span></a>
+        <a class="side-toc-link" href="#q4" data-target="q4" data-part="must"><span class="side-toc-num">04</span><span class="side-toc-title">Improve team efficiency</span></a>
+        <a class="side-toc-link" href="#q5" data-target="q5" data-part="must"><span class="side-toc-num">05</span><span class="side-toc-title">Stuck / challenging goal</span></a>
+        <a class="side-toc-link" href="#q6" data-target="q6" data-part="must"><span class="side-toc-num">06</span><span class="side-toc-title">Short-term vs long-term / commit</span></a>
+
+        <div class="side-toc-part" data-part="likely">
+          <a class="side-toc-part-link" href="#likely">Likely extras</a>
+          <span class="side-toc-part-range">7–23</span>
+        </div>
+        <a class="side-toc-link" href="#q7" data-target="q7" data-part="likely"><span class="side-toc-num">07</span><span class="side-toc-title">Why hire you?</span></a>
+        <a class="side-toc-link" href="#q8" data-target="q8" data-part="likely"><span class="side-toc-num">08</span><span class="side-toc-title">Unclear requirements</span></a>
+        <a class="side-toc-link" href="#q9" data-target="q9" data-part="likely"><span class="side-toc-num">09</span><span class="side-toc-title">Influence without title</span></a>
+        <a class="side-toc-link" href="#q10" data-target="q10" data-part="likely"><span class="side-toc-num">10</span><span class="side-toc-title">Ownership</span></a>
+        <a class="side-toc-link" href="#q11" data-target="q11" data-part="likely"><span class="side-toc-num">11</span><span class="side-toc-title">Incomplete information</span></a>
+        <a class="side-toc-link" href="#q12" data-target="q12" data-part="likely"><span class="side-toc-num">12</span><span class="side-toc-title">Disagreement / conflict</span></a>
+        <a class="side-toc-link" href="#q13" data-target="q13" data-part="likely"><span class="side-toc-num">13</span><span class="side-toc-title">Time zones</span></a>
+        <a class="side-toc-link" href="#q14" data-target="q14" data-part="likely"><span class="side-toc-num">14</span><span class="side-toc-title">Feedback / weakness / mistake</span></a>
+        <a class="side-toc-link" href="#q17" data-target="q17" data-part="likely"><span class="side-toc-num">17</span><span class="side-toc-title">Leadership / curiosity</span></a>
+        <a class="side-toc-link" href="#q19" data-target="q19" data-part="likely"><span class="side-toc-num">19</span><span class="side-toc-title">Why now / product &amp; design</span></a>
+        <a class="side-toc-link" href="#q21" data-target="q21" data-part="likely"><span class="side-toc-num">21</span><span class="side-toc-title">First 90 days</span></a>
+        <a class="side-toc-link" href="#q22" data-target="q22" data-part="likely"><span class="side-toc-num">22</span><span class="side-toc-title">Priorities / outside job</span></a>
+
+        <div class="side-toc-part" data-part="technical">
+          <a class="side-toc-part-link" href="#technical">Technical</a>
+          <span class="side-toc-part-range">24–36</span>
+        </div>
+        <a class="side-toc-link" href="#q24" data-target="q24" data-part="technical"><span class="side-toc-num">24</span><span class="side-toc-title">IELTS walkthrough</span></a>
+        <a class="side-toc-link" href="#q25" data-target="q25" data-part="technical"><span class="side-toc-num">25</span><span class="side-toc-title">AI design / hallucinations / eval</span></a>
+        <a class="side-toc-link" href="#q28" data-target="q28" data-part="technical"><span class="side-toc-num">28</span><span class="side-toc-title">Prod / CI/CD / LLMs at work</span></a>
+        <a class="side-toc-link" href="#q31" data-target="q31" data-part="technical"><span class="side-toc-num">31</span><span class="side-toc-title">LLM challenge recap</span></a>
+        <a class="side-toc-link" href="#q32" data-target="q32" data-part="technical"><span class="side-toc-num">32</span><span class="side-toc-title">Other probes</span></a>
+
+        <div class="side-toc-part" data-part="cv">
+          <a class="side-toc-part-link" href="#cv">CV deep-dive</a>
+          <span class="side-toc-part-range">500k · bugs · estimate</span>
+        </div>
+        <a class="side-toc-link" href="#cv-map" data-target="cv-map" data-part="cv"><span class="side-toc-num">—</span><span class="side-toc-title">CV map</span></a>
+        <a class="side-toc-link" href="#cv-500k" data-target="cv-500k" data-part="cv"><span class="side-toc-num">★</span><span class="side-toc-title">Optimize 500k+ records</span></a>
+        <a class="side-toc-link" href="#cv-explain" data-target="cv-explain" data-part="cv"><span class="side-toc-num">—</span><span class="side-toc-title">Slow query / EXPLAIN</span></a>
+        <a class="side-toc-link" href="#cv-paginate" data-target="cv-paginate" data-part="cv"><span class="side-toc-num">—</span><span class="side-toc-title">Return 500k rows?</span></a>
+        <a class="side-toc-link" href="#cv-caught" data-target="cv-caught" data-part="cv"><span class="side-toc-num">★</span><span class="side-toc-title">Most important issue caught</span></a>
+        <a class="side-toc-link" href="#cv-hardest" data-target="cv-hardest" data-part="cv"><span class="side-toc-num">★</span><span class="side-toc-title">Hardest thing</span></a>
+        <a class="side-toc-link" href="#cv-estimate" data-target="cv-estimate" data-part="cv"><span class="side-toc-num">★</span><span class="side-toc-title">How you estimate</span></a>
+        <a class="side-toc-link" href="#cv-estimate-wrong" data-target="cv-estimate-wrong" data-part="cv"><span class="side-toc-num">—</span><span class="side-toc-title">Estimate wrong / break task</span></a>
+        <a class="side-toc-link" href="#cv-priority" data-target="cv-priority" data-part="cv"><span class="side-toc-num">—</span><span class="side-toc-title">What to fix first</span></a>
+        <a class="side-toc-link" href="#cv-sync" data-target="cv-sync" data-part="cv"><span class="side-toc-num">—</span><span class="side-toc-title">Sync / API / migration</span></a>
+        <a class="side-toc-link" href="#cv-prod" data-target="cv-prod" data-part="cv"><span class="side-toc-num">—</span><span class="side-toc-title">Prod / staging issues</span></a>
+        <a class="side-toc-link" href="#cv-test" data-target="cv-test" data-part="cv"><span class="side-toc-num">—</span><span class="side-toc-title">Test report / schema</span></a>
+        <a class="side-toc-link" href="#cv-leave" data-target="cv-leave" data-part="cv"><span class="side-toc-num">—</span><span class="side-toc-title">Leave BaseVN / strength</span></a>
+        <a class="side-toc-link" href="#cv-pokes" data-target="cv-pokes" data-part="cv"><span class="side-toc-num">—</span><span class="side-toc-title">Other CV pokes</span></a>
+
+        <div class="side-toc-part" data-part="ask">
+          <a class="side-toc-part-link" href="#ask">Close</a>
+          <span class="side-toc-part-range">Ask · day-of</span>
+        </div>
+        <a class="side-toc-link" href="#ask" data-target="ask" data-part="ask"><span class="side-toc-num">?</span><span class="side-toc-title">Questions to ask Jasneet</span></a>
+        <a class="side-toc-link" href="#dayof" data-target="dayof" data-part="ask"><span class="side-toc-num">—</span><span class="side-toc-title">60-minute shape</span></a>
+      </nav>
+    </aside>
+    <main class="page with-side-toc">
 
     <section class="hero-card" id="brief">
       <div class="label">What this round is</div>
@@ -110,7 +315,7 @@
       </div>
     </section>
 
-    <section class="card">
+    <section class="card" id="interviewer">
       <div class="label">Who she is</div>
       <h2>Jasneet Kaur — Director of Engineering</h2>
       <p>At Go1 since 2021. Senior EM, then Director from 2023. Delivery-focused, customer-centric, agile background. She talks publicly about autonomous teams, a safe place to experiment, and bringing joy to customers. People describe her as a servant leader who still holds a high bar for delivery quality.</p>
@@ -118,7 +323,7 @@
       <p><strong>What she is listening for:</strong> Did you make the problem smaller? Did you make the team faster or clearer? Did you commit after disagreement? Did you think about the user, not only the API? Can you work async across Vietnam / Australia / US?</p>
     </section>
 
-    <section class="card">
+    <section class="card" id="company">
       <div class="label">Go1 in one page</div>
       <h2>Say this in your own words, not as a brochure</h2>
       <ul>
@@ -187,7 +392,7 @@
       <p>If IELTS is used twice, change the angle. <strong>Learn a skill</strong> = I was not strong at mobile or CI/CD yet; I used LLMs to learn and still owned the result. <strong>Ownership</strong> = I crossed app, backend, deploy, stores, and support. <strong>AI product</strong> = chat/TTS/STT + Langfuse, HTTP 200 ≠ a good lesson.</p>
     </section>
 
-    <section class="card">
+    <section class="card" id="how-to-talk">
       <div class="label">How to talk</div>
       <h2>Structure, then stop. Let her pull detail.</h2>
       <ol>
@@ -288,7 +493,7 @@
 
     <h2 id="likely">Likely extras — Director of Engineering almost always asks some of these</h2>
 
-    <article class="card q">
+    <article class="card q" id="q7">
       <h2>7. Why should we hire you?</h2>
       <div class="script">
         <p>I already work in your stack — TypeScript, Node, PHP, APIs — and I have shipped both UI and services, including SaaS. I am used to the full path: build, test, deploy, and debug in production.</p>
@@ -297,7 +502,7 @@
       </div>
     </article>
 
-    <article class="card q">
+    <article class="card q" id="q8">
       <h2>8. Requirements were unclear</h2>
       <div class="script">
         <p>This happens a lot in client work. They know the business goal — a teacher and student workflow — but roles, permissions, and error cases are not written down.</p>
@@ -306,12 +511,12 @@
       </div>
     </article>
 
-    <article class="card q">
+    <article class="card q" id="q9">
       <h2>9. Influence without being the manager</h2>
       <p>Same story as Q4. Different last line: “I proposed a small, easy-to-adopt change and explained the benefit in their language — fewer mistakes, less waiting on one person.”</p>
     </article>
 
-    <article class="card q">
+    <article class="card q" id="q10">
       <h2>10. Ownership</h2>
       <div class="script">
         <p>IELTS was not one ticket, and I was not already a mobile or CI/CD specialist when we started. I still owned the path: React Native app, teacher portal connection, Express on Cloud Run, store releases, and the AI features. I used LLMs to learn faster, but I stayed with the issues after release — a failed build or a weird tutor answer was still my problem.</p>
@@ -319,7 +524,7 @@
       </div>
     </article>
 
-    <article class="card q">
+    <article class="card q" id="q11">
       <h2>11. Decision with incomplete information</h2>
       <div class="script">
         <p>I split decisions. If it is easy to change later, I make a reasonable assumption, write it down, test, and move. If it is hard to reverse — production data, security, a big architecture choice — I slow down.</p>
@@ -327,7 +532,7 @@
       </div>
     </article>
 
-    <article class="card q">
+    <article class="card q" id="q12">
       <h2>12. Disagreement / conflict</h2>
       <p>Philosophy is ready. <span class="gap">The story is not.</span> She will not accept “I stay professional.” She wants one case.</p>
       <div class="script">
@@ -337,7 +542,7 @@
       </div>
     </article>
 
-    <article class="card q">
+    <article class="card q" id="q13">
       <h2>13. Different countries / time zones</h2>
       <div class="script">
         <p>With Akktis and clients I work across time zones. I cannot rely on a quick meeting to fix everything.</p>
@@ -346,7 +551,7 @@
       </div>
     </article>
 
-    <article class="card q">
+    <article class="card q" id="q14">
       <h2>14. Feedback · 15. Weakness · 16. Mistake</h2>
       <p>Use the same honest thread. Do not invent a fake weakness like “I care too much.”</p>
       <div class="script">
@@ -355,7 +560,7 @@
       </div>
     </article>
 
-    <article class="card q">
+    <article class="card q" id="q17">
       <h2>17. What does leadership mean to you? · 18. What does curiosity mean?</h2>
       <div class="script">
         <p><strong>Leadership:</strong> For an IC, it means helping the group move. Clarity, visible risks, ownership when something is fuzzy, and caring about the full outcome — reliable, understandable, useful — not only “my PR passed.” I show it through the work, the writing, and the process I leave behind.</p>
@@ -363,7 +568,7 @@
       </div>
     </article>
 
-    <article class="card q">
+    <article class="card q" id="q19">
       <h2>19. Why this role, why now? · 20. How do you work with product and design?</h2>
       <div class="script">
         <p><strong>Why now:</strong> I want to stay closer to one product and go deeper on AI-enabled learning, instead of only jumping between client stacks. Go1 is doing that at a much larger scale than my current projects.</p>
@@ -371,7 +576,7 @@
       </div>
     </article>
 
-    <article class="card q">
+    <article class="card q" id="q21">
       <h2>21. First 90 days</h2>
       <div class="script">
         <p>Month one: learn the product, the codebase, how the team ships, and how Vietnam works with product in other time zones. I would rather ask “dumb” questions early than silently build the wrong thing. Ship something small that is safe, with tests and a clean PR, so people can trust my work.</p>
@@ -379,7 +584,7 @@
       </div>
     </article>
 
-    <article class="card q">
+    <article class="card q" id="q22">
       <h2>22. Changing priorities · 23. Went outside the job description</h2>
       <div class="script">
         <p><strong>Priorities:</strong> I re-check impact and reversibility. What is user-facing or unsafe to pause? What can wait? I say what I will stop, not only what I will start, so nothing silently dies.</p>
@@ -389,7 +594,7 @@
 
     <h2 id="technical">Technical alignment — they said they may go deeper</h2>
 
-    <article class="card q">
+    <article class="card q" id="q24">
       <h2>24. Walk me through the IELTS AI Tutor</h2>
       <div class="script">
         <p>It is a React Native TypeScript app for iOS and Android, live on both stores, plus a teacher assignment portal. I worked on the mobile app, the Express API on Cloud Run, and the link between student and teacher sides.</p>
@@ -398,7 +603,7 @@
       </div>
     </article>
 
-    <article class="card q">
+    <article class="card q" id="q25">
       <h2>25. How would you design an AI learning feature? · 26. Hallucinations · 27. Evaluation</h2>
       <p class="follow">Keep this practical. Go1’s problem is similar: recommend or explain learning without inventing unsafe or irrelevant content. Morgan has to stay grounded in their library and assignments.</p>
       <div class="script">
@@ -408,7 +613,7 @@
       </div>
     </article>
 
-    <article class="card q">
+    <article class="card q" id="q28">
       <h2>28. Production issues · 29. CI/CD · 30. How you use AI / LLMs at work</h2>
       <div class="script">
         <p><strong>Prod:</strong> Impact first. Stabilize — rollback, workaround, or disable — then root cause: recent change, logs, config, deps, resources. After that, a small prevention: monitor, CI check, or docs. I do not randomly patch under pressure.</p>
@@ -417,7 +622,7 @@
       </div>
     </article>
 
-    <article class="card q">
+    <article class="card q" id="q31">
       <h2>31. LLM challenge recap</h2>
       <p class="gap">Fill after you write 4–5 honest sentences. She may ask: what would you do in week two? What did you get wrong?</p>
       <div class="script">
@@ -425,7 +630,7 @@
       </div>
     </article>
 
-    <article class="card q">
+    <article class="card q" id="q32">
       <h2>32–36. Other probes she can use</h2>
       <ul>
         <li>Tell me about a time you said no to a stakeholder.</li>
@@ -442,7 +647,7 @@
     <h2 id="cv">CV deep-dive — she can point at any bullet</h2>
     <p>The email said they may go deeper on technical skills. If your CV is on screen, these are the lines she will poke. Stay inside what you actually did. Do not invent timings like “3 seconds to 300ms” unless you remember them.</p>
 
-    <section class="card">
+    <section class="card" id="cv-map">
       <div class="label">CV map</div>
       <h2>If she reads this line, tell this story</h2>
       <table>
@@ -460,7 +665,7 @@
       </table>
     </section>
 
-    <article class="card q">
+    <article class="card q" id="cv-500k">
       <div class="label">She will almost ask this</div>
       <h2>You wrote “optimized queries for 500,000+ records.” Walk me through it.</h2>
       <p class="follow">This is the money story from Base PIT (personal income tax). Correctness matters more than speed — wrong tax/payroll is worse than a slow screen. Follow-ups: EXPLAIN, indexes, why not load all rows in PHP, how you proved it.</p>
@@ -476,7 +681,7 @@
       <p class="follow"><strong>If she asks “how did you measure?”</strong> Be honest: query time before/after, whether the export finished, whether the screen was usable, whether the job completed without memory errors. If you do not remember exact seconds, say so and describe the before/after behavior.</p>
     </article>
 
-    <article class="card q">
+    <article class="card q" id="cv-explain">
       <h2>How do you find a slow query? What does EXPLAIN tell you?</h2>
       <div class="script">
         <p>I start from the user symptom: which screen, which export, which company and period. Then I get the SQL — from logs, from the ORM, or by reproducing the action. I run EXPLAIN.</p>
@@ -485,14 +690,14 @@
       </div>
     </article>
 
-    <article class="card q">
+    <article class="card q" id="cv-paginate">
       <h2>Would you return 500k rows to the API or the phone?</h2>
       <div class="script">
         <p>No. A list on a phone or a web table needs pagination and only the fields the screen needs. A full tax file is a background export, not a JSON dump. Same idea I use on IELTS: I do not hydrate a huge payload per topic if I can store progress locally and fetch what the screen needs.</p>
       </div>
     </article>
 
-    <article class="card q">
+    <article class="card q" id="cv-caught">
       <div class="label">Catch before it hurts</div>
       <h2>What is the most important issue you caught, and how did you fix it?</h2>
       <p class="follow">She wants: how you noticed, why it mattered, what you did before users or finance suffered. Pick <strong>silent sync</strong> as the main answer. PIT slowness is the backup if she wants performance.</p>
@@ -507,7 +712,7 @@
       <p class="follow"><strong>Backup — caught before users:</strong> Staging vs prod config, or Cloud Run up but Cloud SQL unreachable. I diff env, secrets, and IAM before I rewrite application code.</p>
     </article>
 
-    <article class="card q">
+    <article class="card q" id="cv-hardest">
       <h2>What was the hardest thing you worked on?</h2>
       <p class="follow">Pick one and stay there. Do not list five “hardest” stories.</p>
       <div class="script">
@@ -518,7 +723,7 @@
       <p class="follow"><strong>Second hardest, if she asks for another:</strong> Akktis legacy migration off a custom DB setup. The fear was data loss, not the click. Backup and rollback thinking, validate reads/writes after cutover, document the new Apache/MySQL path so support does not live in one person’s head.</p>
     </article>
 
-    <article class="card q">
+    <article class="card q" id="cv-estimate">
       <div class="label">How you work</div>
       <h2>How do you estimate the time of a task?</h2>
       <p class="follow">Directors ask this to see if you hide uncertainty. Do not say “I just feel it.”</p>
@@ -531,7 +736,7 @@
       </div>
     </article>
 
-    <article class="card q">
+    <article class="card q" id="cv-estimate-wrong">
       <h2>What if your estimate is wrong? How do you break a large task?</h2>
       <div class="script">
         <p>If I am slipping, I do not silently work late and hope. I say what is done, what is blocked, and the new date with a reason — “the export needs chunking, I did not see that in the spec.”</p>
@@ -540,7 +745,7 @@
       </div>
     </article>
 
-    <article class="card q">
+    <article class="card q" id="cv-priority">
       <h2>How do you decide what to fix first when several things are slow or broken?</h2>
       <div class="script">
         <p>Impact and reversibility. Users blocked or data wrong goes first. Then launch-path reports. Then nice-to-have speed.</p>
@@ -548,7 +753,7 @@
       </div>
     </article>
 
-    <article class="card q">
+    <article class="card q" id="cv-sync">
       <h2>Walk me through a data sync bug. · Third-party API. · Migration risk.</h2>
       <div class="script">
         <p><strong>VSS sync:</strong> Silent mismatch. Reproduce on a tiny known set, diff source vs destination, check transform and job order, fix mapping, add validation, only then run the full job.</p>
@@ -557,7 +762,7 @@
       </div>
     </article>
 
-    <article class="card q">
+    <article class="card q" id="cv-prod">
       <h2>A production issue you fixed · Something you caught in staging</h2>
       <div class="script">
         <p><strong>Staging green, prod red:</strong> I diff commits, env vars, secrets, and service versions before I change code. Usually a missing variable, different web-server config, or a dependency only installed in one environment. Fix the config, redeploy, add it to the checklist.</p>
@@ -567,7 +772,7 @@
       </div>
     </article>
 
-    <article class="card q">
+    <article class="card q" id="cv-test">
       <h2>How do you test a report, export, or schema change?</h2>
       <div class="script">
         <p>I keep a fixture: a small company or a few employees whose numbers I already know. I run the old path and the new path and compare. For Excel/XML I check totals and a few line items, not only “file downloaded.”</p>
@@ -575,7 +780,7 @@
       </div>
     </article>
 
-    <article class="card q">
+    <article class="card q" id="cv-leave">
       <h2>Why did you leave BaseVN? What is the biggest technical strength on this CV?</h2>
       <div class="script">
         <p><strong>Why move:</strong> BaseVN gave me real SaaS depth — large data, sync, payroll-adjacent correctness. I wanted more ownership of servers, deploy, and cloud day to day. Akktis gave me that mix, and IELTS let me own a full product including AI.</p>
@@ -583,7 +788,7 @@
       </div>
     </article>
 
-    <article class="card q">
+    <article class="card q" id="cv-pokes">
       <h2>Other CV pokes — have a 30-second line</h2>
       <ul>
         <li><strong>Walk me through your CV.</strong> Use Q1. Newest first: Akktis + IELTS, then BaseVN scale.</li>
@@ -611,7 +816,7 @@
       <p>Skip generic “what is the culture” — you already read the Culture Book. Skip salary unless she opens it.</p>
     </section>
 
-    <section class="card">
+    <section class="card" id="dayof">
       <div class="label">Day-of</div>
       <h2>60-minute shape</h2>
       <ul>
@@ -624,6 +829,7 @@
       <p>If you blank: “Let me take a second to pick a specific case.” Then pick A–F. Do not invent.</p>
     </section>
   </main>
+  </div>
   <script>
     (function () {
       const btn = document.querySelector('[data-theme-toggle]');
@@ -636,6 +842,70 @@
         theme = theme === 'dark' ? 'light' : 'dark';
         root.setAttribute('data-theme', theme);
         sync();
+      });
+
+      const tocRoot = document.querySelector('[data-side-toc]');
+      const sideToc = document.getElementById('side-toc');
+      const backdrop = document.querySelector('[data-toc-backdrop]');
+      const openBtn = document.querySelector('[data-toc-open]');
+      if (!tocRoot) return;
+
+      const links = Array.from(tocRoot.querySelectorAll('.side-toc-link'));
+      const partEls = Array.from(tocRoot.querySelectorAll('.side-toc-part'));
+      const idToLink = new Map(links.map((a) => [a.getAttribute('data-target'), a]));
+      const targets = links
+        .map((a) => document.getElementById(a.getAttribute('data-target')))
+        .filter(Boolean);
+
+      let activeId = null;
+      const setActive = (id) => {
+        if (!id || id === activeId) return;
+        activeId = id;
+        links.forEach((a) => a.classList.toggle('is-active', a.getAttribute('data-target') === id));
+        const active = idToLink.get(id);
+        const partId = active ? active.getAttribute('data-part') : null;
+        partEls.forEach((p) => p.classList.toggle('is-active', p.getAttribute('data-part') === partId));
+        if (active && sideToc) {
+          const aTop = active.offsetTop;
+          const aBottom = aTop + active.offsetHeight;
+          const viewTop = sideToc.scrollTop;
+          const viewBottom = viewTop + sideToc.clientHeight;
+          if (aTop < viewTop + 40) sideToc.scrollTop = Math.max(0, aTop - 48);
+          else if (aBottom > viewBottom - 40) sideToc.scrollTop = aBottom - sideToc.clientHeight + 48;
+        }
+      };
+
+      const onScroll = () => {
+        const marker = 120;
+        let current = targets[0] ? targets[0].id : null;
+        for (const el of targets) {
+          if (el.getBoundingClientRect().top <= marker) current = el.id;
+          else break;
+        }
+        setActive(current);
+      };
+      window.addEventListener('scroll', onScroll, { passive: true });
+      onScroll();
+
+      const closeMobile = () => {
+        sideToc && sideToc.classList.remove('is-open');
+        if (backdrop) {
+          backdrop.classList.remove('is-open');
+          backdrop.hidden = true;
+        }
+      };
+      const openMobile = () => {
+        sideToc && sideToc.classList.add('is-open');
+        if (backdrop) {
+          backdrop.hidden = false;
+          backdrop.classList.add('is-open');
+        }
+      };
+      openBtn && openBtn.addEventListener('click', openMobile);
+      backdrop && backdrop.addEventListener('click', closeMobile);
+      tocRoot.addEventListener('click', (e) => {
+        if (!e.target.closest('a.side-toc-link, a.side-toc-part-link')) return;
+        if (window.matchMedia('(max-width: 1100px)').matches) setTimeout(closeMobile, 50);
       });
     })();
   </script>
