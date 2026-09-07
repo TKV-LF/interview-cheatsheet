@@ -337,16 +337,15 @@
       <p>Do not recite the list. Use one behavior as a label at the end of a story: “That is how I usually try to move — fast, but with a way to check if it actually helped.”</p>
     </section>
 
-    <section class="card warn" id="gaps">
-      <div class="label">Do this before Sunday</div>
-      <h2>Two stories are still missing. The email asked for them.</h2>
+    <section class="card" id="gaps">
+      <div class="label">Filled — practice these four</div>
+      <h2>The email asked for these. Scripts are in Q6b, Q12, Q4/Q24/CV, and Q31.</h2>
       <ol>
-        <li><span class="gap">Disagree and still commit.</span> A plan you did not initially agree with, you said your concern, the team decided, you executed it well. Need: who decided, what you feared, what you did after, what happened.</li>
-        <li><span class="gap">A real conflict.</span> Not a philosophy. One case: deployment approach, risky client request, scope vs deadline, API contract, or sync logic. Need: the other person’s view, how it ended, the working relationship after.</li>
-        <li><span class="gap">Numbers.</span> IELTS: users / teachers / languages / latency? BaseVN: 500k is good — what improved after you changed queries or schema? CI/CD: deploy time or failed releases before vs after?</li>
-        <li><span class="gap">LLM challenge recap.</span> 4–5 sentences: what you built, what Junaid/Joe liked, what you would improve. She may not re-test you, but she may ask what you learned.</li>
+        <li><strong>Disagree and still commit.</strong> Base PIT launch — you wanted a job-path rewrite first; PO/lead decided ship the current export for go-live. You said the risk, then executed their plan well.</li>
+        <li><strong>A real conflict.</strong> Akktis — client PM wanted a Friday production push without a full staging pass. Different views, middle path, relationship stayed good.</li>
+        <li><strong>Numbers you can say.</strong> IELTS ~5,000 users, +900–1,000 / month. BaseVN and CI/CD: before/after behavior, not fake milliseconds.</li>
+        <li><strong>LLM challenge recap.</strong> How you worked + what you would do in week two. If she quotes Junaid, agree and go deeper — do not invent their words.</li>
       </ol>
-      <p>Send me those four things when you have them. I will rewrite the answers in your voice.</p>
     </section>
 
     <section class="card" id="stories">
@@ -383,7 +382,7 @@
             <td>Global team. Autonomy with communication.</td>
           </tr>
           <tr>
-            <td><strong>F. Disagree / conflict</strong><br><span class="gap">You still need a real case</span></td>
+            <td><strong>F. Disagree / conflict</strong><br>Commit = Base PIT launch path. Conflict = Akktis Friday deploy.</td>
             <td>Commit to a plan · conflict · said no · commercial tradeoff</td>
             <td>Make and own the call. Kind on people, tough on topics.</td>
           </tr>
@@ -414,7 +413,7 @@
       <div class="script">
         <p>I’m Thuy, a backend and full-stack developer with about five years of experience. Most of my work is TypeScript, Node.js, PHP, APIs, databases, and getting things into production — CI/CD and cloud, not only the feature itself.</p>
         <p>Recently I’ve been on client work and with Akktis, a France-based company. The work changes a lot, so I’m used to picking up a new system, asking the right questions, and owning the path from build to deploy to support.</p>
-        <p>The project I care most about is an IELTS AI Tutor app — now live on the Play Store and the App Store. When we started, my backend and web were stronger than my mobile and CI/CD. I used LLM tools to learn React Native, store builds, and the pipeline, then I still had to understand and ship it. I also built the AI features in the product — chat, text-to-speech, speech-to-text — and used Langfuse so we could see what the model actually returned.</p>
+        <p>The project I care most about is an IELTS AI Tutor app — now live on the Play Store and the App Store, around 5,000 users and growing about 900 to 1,000 a month. When we started, my backend and web were stronger than my mobile and CI/CD. I used LLM tools to learn React Native, store builds, and the pipeline, then I still had to understand and ship it. I also built the AI features in the product — chat, text-to-speech, speech-to-text — and used Langfuse so we could see what the model actually returned.</p>
         <p>Before that, at BaseVN I worked on large HR, payroll, and recruitment SaaS. That taught me how messy real data is when several systems have to stay in sync.</p>
         <p>I’m looking for a product team where I can keep building useful learning software, work closely with other strong engineers, and go deeper on AI features that have to be reliable for real users. That’s why Go1 interested me.</p>
       </div>
@@ -453,9 +452,9 @@
       <div class="script">
         <p>In some projects, deploy steps lived in one person’s head. Releases were slower, and if that person was away, support got harder.</p>
         <p>I was not the manager. I started from the pain: missed steps, environment confusion, long troubleshooting. I wrote down the current flow, then made the pipeline repeatable — GitHub Actions or GitLab CI or Jenkins, depending on the project — with Docker and Cloud Run where we used them. I documented build order, env config, and what to check after deploy.</p>
-        <p>The result was not only faster releases. Other people could ship and debug without waiting for one person. I like this kind of work because it is not a flashy feature, but the team gets faster every week after.</p>
+        <p>The result was not only faster releases. Other people could ship and debug without waiting for one person. I do not have a stopwatch number I trust. What changed is ownership: before, deploy steps lived in one head and a missed env var showed up in production; after, the pipeline was the source of truth and anyone on the team could ship.</p>
       </div>
-      <p class="gap">Add one number if you can: deploy time, failed releases, or “only I could deploy” → “anyone on the team.”</p>
+      <p class="follow"><strong>Number you can say:</strong> “I do not remember exact minutes. The win was ‘only one person could deploy’ → ‘anyone on the team,’ and fewer ‘forgot an env’ surprises.”</p>
     </article>
 
     <article class="card q" id="q5">
@@ -481,14 +480,14 @@
         <p>I am fine with short-term trade-offs if they are written down and not hidden debt.</p>
       </div>
       <h2>6b. Commit to a plan you did not initially agree with</h2>
-      <p class="gap">You do not have a real story yet. Use this skeleton, then send me the facts.</p>
+      <p class="follow">Story F — Base PIT. Who decided = PO / tech lead. You feared a bad tax file on a large company. You still shipped their plan, then made it safer.</p>
       <div class="script">
-        <p>Situation: [who wanted what, deadline or constraint].</p>
-        <p>I disagreed because [reliability / time / user impact]. I said that in practical terms, and I offered [a smaller test, or a safer option].</p>
-        <p>They still chose [plan X] because [speed / cost / customer]. The risk was understood.</p>
-        <p>I committed. I [implemented / tested / documented the risk / added a safety check]. I did not keep arguing after the decision.</p>
-        <p>Outcome: [what happened]. Lesson: I push once, clearly, then I help the team win. I only escalate again if security, data, or users are in real danger.</p>
+        <p>Around Base PIT launch, I wanted to move the heavy Excel/XML export off the request path first — background job, then download — because we already had more than 500,000 records. I was afraid the first real tax period on a big company would time out, blow memory, or worse, produce a file that looked fine and was wrong.</p>
+        <p>I said that in practical terms. I offered: keep the current path for small tenants if we must, but do not treat “click and wait for the full file” as the launch design. The product owner and the tech lead still chose to ship the existing export for go-live. The date was the constraint. A full rewrite was the nicer engineering story, not the commercial one.</p>
+        <p>I committed. I did not keep arguing. I made their plan as safe as I could: find the slow queries, add or fix indexes on company / employee / period, stop SELECT * and N+1, process in batches so PHP did not load the whole table, and keep a small known sample so Excel/XML still matched HRM and Payroll. I also wrote down the leftover risk: the job path was still the right next step.</p>
+        <p>Launch happened. The first clients could export. We did not blow up on day one. Later, when volume got more real, we still moved the heavy work off the request — which is what I had wanted earlier. The lesson: I push once, clearly, then I help the team win. I only escalate again if security, money, or users are in real danger.</p>
       </div>
+      <p class="follow"><strong>If she asks “so you were right?”</strong> “Partly. The launch date was also right. My job after the decision was not to be right — it was to make their plan work and keep the risk visible.”</p>
     </article>
 
     <h2 id="likely">Likely extras — Director of Engineering almost always asks some of these</h2>
@@ -534,12 +533,15 @@
 
     <article class="card q" id="q12">
       <h2>12. Disagreement / conflict</h2>
-      <p>Philosophy is ready. <span class="gap">The story is not.</span> She will not accept “I stay professional.” She wants one case.</p>
+      <p class="follow">Different story from 6b. 6b = you lost and committed. This = two people, real tension, how it ended, relationship after. Use Akktis Friday deploy.</p>
       <div class="script">
-        <p>I try not to make it personal. I want their worry and their goal first. Then I give specific reasons: user impact, delivery risk, maintenance, reliability. If we are both guessing, I prefer a small test or a written decision rule.</p>
-        <p>The goal is the best call for the product, and a relationship we can still work in tomorrow. Kind on people, tough on the topic.</p>
-        <p class="gap">Then tell the real case in STAR. Possible angles: deploy approach, risky client request, scope vs date, API contract, sync logic.</p>
+        <p>A good example is a Friday production push at Akktis. The client PM wanted a change live that evening. From their side that made sense: the customer was waiting, the diff looked small, and another weekend would slip the promise. Another engineer was ready to ship it.</p>
+        <p>I was not comfortable. We work across time zones. If staging was skipped and something broke after Europe logged off, I would be the one on the box, and rollback would be messy. My fear was not “process for process.” It was a Sunday incident with no one who knew the change still online.</p>
+        <p>I did not make it personal. I said their goal out loud — the customer should get the fix — then I said the risk: env drift, a missed variable, no clean rollback. I asked for a middle path: a short staging pass, a written rollback, then deploy. If staging was impossible, at least a health check and a way to turn the change off.</p>
+        <p>We did that. The change went out the same day, after a quick staging check. It held. After that, that PM still pushed for dates — that is their job — but they started asking for the rollback note. We could still work. Kind on the person, tough on the deploy.</p>
       </div>
+      <p class="follow"><strong>If she asks “did you block the release?”</strong> “No. I would only hard-block for data loss or security. This was ‘slow down one hour so we can undo it.’”</p>
+      <p class="follow"><strong>Backup if she wants product, not ops:</strong> IELTS — a stakeholder wanted a broad “do everything” AI assistant for a date. I wanted a narrower flow plus Langfuse so we could judge quality. We shipped the narrow path. Relationship stayed fine because I showed a clickable version, not a lecture.</p>
     </article>
 
     <article class="card q" id="q13">
@@ -597,7 +599,7 @@
     <article class="card q" id="q24">
       <h2>24. Walk me through the IELTS AI Tutor</h2>
       <div class="script">
-        <p>It is a React Native TypeScript app for iOS and Android, live on both stores, plus a teacher assignment portal. I worked on the mobile app, the Express API on Cloud Run, and the link between student and teacher sides.</p>
+        <p>It is a React Native TypeScript app for iOS and Android, live on both stores, plus a teacher assignment portal. Around 5,000 users now, growing about 900 to 1,000 a month. I worked on the mobile app, the Express API on Cloud Run, and the link between student and teacher sides.</p>
         <p>I should be honest: when we started I was stronger on backend and web than on mobile and CI/CD. I used LLM tools to learn Expo/React Native, store builds, and the pipeline, then I verified everything myself. AI is also in the product — chat, TTS, STT — with Langfuse for traces. Firebase is part of the setup.</p>
         <p>The interesting part was not calling an API. It was learning enough to ship a real app, then thinking about waiting time, errors, and how we investigate a bad answer later.</p>
       </div>
@@ -624,10 +626,15 @@
 
     <article class="card q" id="q31">
       <h2>31. LLM challenge recap</h2>
-      <p class="gap">Fill after you write 4–5 honest sentences. She may ask: what would you do in week two? What did you get wrong?</p>
+      <p class="follow">4–5 sentences. Do not invent a quote from Junaid or Joe. The email already said the feedback was positive. Talk about how you worked and what you would do next.</p>
       <div class="script">
-        <p>In the challenge I [built X]. I focused on [correctness / structure / tests / a learning-domain model]. Junaid and Joe’s feedback was positive on [whatever they said]. If I continued, I would [observability / edge cases / clearer API / cheaper path].</p>
+        <p>In the challenge I used LLM tools the way I work day to day — a first draft, then I still had to understand the design, the edge cases, and whether the answer was actually right for a learning product. I did not treat a passing run as “done.”</p>
+        <p>I focused on a clear structure: what the user job was, what the code should return, and how I would know it was wrong. Junaid and Joe’s feedback was positive. I took that as: I can move with AI and still own the result, not that the work was finished.</p>
+        <p>If I had a second week, I would add observability and a few golden cases — the same habit I use with Langfuse on IELTS. A green test can still be a bad lesson. I would also look at the cheap path: cache, smaller prompts, a fallback when the model is slow or empty.</p>
+        <p>What I learned: the model is fast; judgement is the job. That is how I would show up here too.</p>
       </div>
+      <p class="follow"><strong>If she asks “what did you get wrong?”</strong> “I would have put evaluation earlier — a few fixed questions I can re-run — instead of only improving the happy path.”</p>
+      <p class="follow"><strong>If she names a detail from Junaid/Joe:</strong> Agree, then add one sentence on what you would improve. Do not argue with their memory.</p>
     </article>
 
     <article class="card q" id="q32">
@@ -678,7 +685,7 @@
         <p>What I learned: at this size, schema and queries are infrastructure. “It works on my laptop” is not a plan.</p>
       </div>
       <p class="follow"><strong>If she asks “what index?”</strong> Say: indexes on the columns we filter and join — typically company / employee / tax period — so EXPLAIN stops doing a full table scan. I do not add an index on every column; unused indexes slow writes.</p>
-      <p class="follow"><strong>If she asks “how did you measure?”</strong> Be honest: query time before/after, whether the export finished, whether the screen was usable, whether the job completed without memory errors. If you do not remember exact seconds, say so and describe the before/after behavior.</p>
+      <p class="follow"><strong>If she asks “how did you measure?” / “what improved?”</strong> Do not invent 3s → 300ms. Say: before, a heavy export on a large company could time out or run out of memory, and a list screen felt stuck because the query scanned too much. After indexes, narrower queries, and batching, the export finished and the screen was usable. I proved correctness on a small known sample — same employees, same period, Excel/XML still matched. Speed without a matching file is a failure.</p>
     </article>
 
     <article class="card q" id="cv-explain">
