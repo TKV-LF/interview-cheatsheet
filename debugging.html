@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Debugging — Interview cheatsheet</title>
+<link href="https://api.fontshare.com/v2/css?f[]=satoshi@400,500,700&f[]=general-sans@500,600,700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/site.css" />
+</head>
+<body data-page="debug">
+<a class="skip" href="#content">Skip to questions</a>
+<header class="topbar">
+<div class="topbar-inner">
+<div class="brand-row">
+<a class="brand" href="index.html">Interview cheatsheet</a>
+<button class="icon-btn" type="button" data-theme-toggle aria-label="Switch theme">☾</button>
+</div>
+<div class="search-wrap">
+<span class="mag" aria-hidden="true">⌕</span>
+<input data-search type="search" placeholder="Search questions — press /" aria-label="Search questions" />
+<div class="hits" data-hits></div>
+<p class="search-meta" data-search-meta></p>
+</div>
+</div>
+<nav class="nav-scroll" aria-label="Categories"><a href="index.html" class="">Hub</a>
+<a href="fit.html" class="">Fit and intro</a>
+<a href="behavioral.html" class="">Behavioral</a>
+<a href="english.html" class="">Spoken English</a>
+<a href="php.html" class="">PHP</a>
+<a href="react.html" class="">React and TypeScript</a>
+<a href="node.html" class="">Node.js</a>
+<a href="devops.html" class="">DevOps and cloud</a>
+<a href="debugging.html" class="is-on">Debugging</a>
+<a href="system-design.html" class="">System design</a>
+<a href="cv.html" class="">CV and projects</a></nav>
+</header>
+<div class="shell"><aside class="side"><h2>On this page</h2><a class="sec-link" data-sec href="#sec-find-the-layer">Find the layer</a><a class="q-link" href="#soft-g24">01 FE or BE? How do you decide?</a><a class="q-link" href="#soft-g25">02 Using Network tab effectively</a><a class="q-link" href="#soft-g26">03 Reproduce with curl / Postman</a><a class="q-link" href="#soft-g27">04 4xx vs 5xx vs CORS</a><a class="q-link" href="#soft-g28">05 React wrong, API fine</a><a class="q-link" href="#soft-g29">06 API wrong or slow</a><a class="q-link" href="#soft-g30">07 Hotfix vs long-term fix</a><a class="q-link" href="#soft-g31">08 End-to-end debug walkthrough</a></aside><main id="content"><header class="page-intro"><h1>Debugging</h1><p>Decide the layer, then prove it before you change code. Open one question at a time. Switch language inside the answer.</p></header><div class="toolbar"><button type="button" data-expand="open">Expand</button><button type="button" data-expand="close">Collapse</button></div><section class="block" id="sec-find-the-layer"><h2>Find the layer</h2><details class="q" id="soft-g24" data-blob="FE or BE? How do you decide? Core method — memorize this. How do you detect whether a bug is frontend or backend? I reproduce first, then open DevTools Network. If the API response is already wrong — bad data, 4xx/5xx — it&#x27;s backend or contract. If the API is correct but the UI shows wrong, it&#x27;s frontend. If the request never leaves or is malformed, also frontend. I confirm with the same payload via curl or Postman to remove the UI from the equation. Làm sao biết bug thuộc frontend hay backend? Tôi reproduce trước, rồi mở DevTools Network. Nếu response API đã sai — data xấu, 4xx/5xx — là backend hoặc contract. Nếu API đúng mà UI sai — frontend. Nếu request không gửi hoặc malformed — cũng frontend. Tôi confirm cùng payload bằng curl/Postman để loại UI khỏi phương trình. Know: Network tab is the judge between FE and BE. Trap: Blaming FE or BE from a screenshot alone. Follow-up: Show me how you&#x27;d prove an API is correct.">
+<summary><span class="num">01</span><span><span class="q-title">FE or BE? How do you decide?</span><span class="q-hint">Core method — memorize this.</span></span></summary>
+<div class="q-body">
+<div class="lang"><button type="button" data-set-lang="en">English</button><button type="button" data-set-lang="vi">Tiếng Việt</button></div>
+<div data-pane="en"><div class="ask"><p>How do you detect whether a bug is frontend or backend?</p></div><div class="ans"><p>I reproduce first, then open DevTools Network. If the API response is already wrong — bad data, 4xx/5xx — it's backend or contract. If the API is correct but the UI shows wrong, it's frontend. If the request never leaves or is malformed, also frontend. I confirm with the same payload via curl or Postman to remove the UI from the equation.</p></div></div>
+<div data-pane="vi" hidden><div class="ask"><p>Làm sao biết bug thuộc frontend hay backend?</p></div><div class="ans"><p>Tôi reproduce trước, rồi mở DevTools Network. Nếu response API đã sai — data xấu, 4xx/5xx — là backend hoặc contract. Nếu API đúng mà UI sai — frontend. Nếu request không gửi hoặc malformed — cũng frontend. Tôi confirm cùng payload bằng curl/Postman để loại UI khỏi phương trình.</p></div></div>
+<div class="notes">
+          <p><strong>Know:</strong> Network tab is the judge between FE and BE.</p>
+          <p><strong>Trap:</strong> Blaming FE or BE from a screenshot alone.</p>
+          <p><strong>Follow-up:</strong> Show me how you'd prove an API is correct.</p>
+        </div>
+</div>
+</details><details class="q" id="soft-g25" data-blob="Using Network tab effectively Practical steps. What exactly do you look at in the Network tab? Method and URL, status code, request headers/body, response JSON, and timing. I check if React called the endpoint I expect, with the params the backend needs. A 200 with wrong business data is still a backend bug. A 401 means auth. A CORS error is usually config between browser and API. Bạn xem gì trong Network tab? Method và URL, status, header/body request, JSON response, và timing. Tôi kiểm tra React có gọi đúng endpoint và param backend cần không. 200 mà data nghiệp vụ sai vẫn là bug backend. 401 là auth. Lỗi CORS thường là cấu hình giữa browser và API. Know: Status + payload + timing + request shape. Trap: Only watching Console and ignoring Network. Follow-up: 200 OK but empty array — what next?">
+<summary><span class="num">02</span><span><span class="q-title">Using Network tab effectively</span><span class="q-hint">Practical steps.</span></span></summary>
+<div class="q-body">
+<div class="lang"><button type="button" data-set-lang="en">English</button><button type="button" data-set-lang="vi">Tiếng Việt</button></div>
+<div data-pane="en"><div class="ask"><p>What exactly do you look at in the Network tab?</p></div><div class="ans"><p>Method and URL, status code, request headers/body, response JSON, and timing. I check if React called the endpoint I expect, with the params the backend needs. A 200 with wrong business data is still a backend bug. A 401 means auth. A CORS error is usually config between browser and API.</p></div></div>
+<div data-pane="vi" hidden><div class="ask"><p>Bạn xem gì trong Network tab?</p></div><div class="ans"><p>Method và URL, status, header/body request, JSON response, và timing. Tôi kiểm tra React có gọi đúng endpoint và param backend cần không. 200 mà data nghiệp vụ sai vẫn là bug backend. 401 là auth. Lỗi CORS thường là cấu hình giữa browser và API.</p></div></div>
+<div class="notes">
+          <p><strong>Know:</strong> Status + payload + timing + request shape.</p>
+          <p><strong>Trap:</strong> Only watching Console and ignoring Network.</p>
+          <p><strong>Follow-up:</strong> 200 OK but empty array — what next?</p>
+        </div>
+</div>
+</details><details class="q" id="soft-g26" data-blob="Reproduce with curl / Postman Isolate the UI. Why reproduce a bug with curl or Postman? Because it answers: is the backend wrong without React? If curl gets the same bad data, I debug PHP/MySQL. If curl is correct but UI is wrong, I debug React state/render/mapping. It saves time and avoids arguments between FE and BE. Vì sao reproduce bug bằng curl hoặc Postman? Vì nó trả lời: backend có sai khi không có React không? Nếu curl ra data xấu giống vậy, tôi debug PHP/MySQL. Nếu curl đúng mà UI sai, tôi debug state/render/mapping React. Tiết kiệm thời gian và tránh cãi nhau FE–BE. Know: Same request, no browser variables. Trap: Different headers in curl than the app (false conclusion). Follow-up: How do you copy a request from Chrome as curl?">
+<summary><span class="num">03</span><span><span class="q-title">Reproduce with curl / Postman</span><span class="q-hint">Isolate the UI.</span></span></summary>
+<div class="q-body">
+<div class="lang"><button type="button" data-set-lang="en">English</button><button type="button" data-set-lang="vi">Tiếng Việt</button></div>
+<div data-pane="en"><div class="ask"><p>Why reproduce a bug with curl or Postman?</p></div><div class="ans"><p>Because it answers: is the backend wrong without React? If curl gets the same bad data, I debug PHP/MySQL. If curl is correct but UI is wrong, I debug React state/render/mapping. It saves time and avoids arguments between FE and BE.</p></div></div>
+<div data-pane="vi" hidden><div class="ask"><p>Vì sao reproduce bug bằng curl hoặc Postman?</p></div><div class="ans"><p>Vì nó trả lời: backend có sai khi không có React không? Nếu curl ra data xấu giống vậy, tôi debug PHP/MySQL. Nếu curl đúng mà UI sai, tôi debug state/render/mapping React. Tiết kiệm thời gian và tránh cãi nhau FE–BE.</p></div></div>
+<div class="notes">
+          <p><strong>Know:</strong> Same request, no browser variables.</p>
+          <p><strong>Trap:</strong> Different headers in curl than the app (false conclusion).</p>
+          <p><strong>Follow-up:</strong> How do you copy a request from Chrome as curl?</p>
+        </div>
+</div>
+</details><details class="q" id="soft-g27" data-blob="4xx vs 5xx vs CORS Quick triage. How do status codes help you triage? 4xx usually means client/contract/auth — bad request, unauthorized, forbidden, not found. 5xx means server failure — exception, DB down, unhandled error. CORS failures often look like Network errors in the browser even when the server responded. I check the preflight and API CORS config before rewriting React code. Status code giúp triage thế nào? 4xx thường là client/contract/auth — bad request, unauthorized, forbidden, not found. 5xx là lỗi server — exception, DB down, unhandled. CORS thường giống lỗi Network trên browser dù server có thể đã trả lời. Tôi kiểm tra preflight và cấu hình CORS trước khi viết lại React. Know: 4xx client/contract; 5xx server; CORS is browser policy. Trap: Treating every red Network row as backend is down. Follow-up: How do you debug a CORS error end to end?">
+<summary><span class="num">04</span><span><span class="q-title">4xx vs 5xx vs CORS</span><span class="q-hint">Quick triage.</span></span></summary>
+<div class="q-body">
+<div class="lang"><button type="button" data-set-lang="en">English</button><button type="button" data-set-lang="vi">Tiếng Việt</button></div>
+<div data-pane="en"><div class="ask"><p>How do status codes help you triage?</p></div><div class="ans"><p>4xx usually means client/contract/auth — bad request, unauthorized, forbidden, not found. 5xx means server failure — exception, DB down, unhandled error. CORS failures often look like Network errors in the browser even when the server responded. I check the preflight and API CORS config before rewriting React code.</p></div></div>
+<div data-pane="vi" hidden><div class="ask"><p>Status code giúp triage thế nào?</p></div><div class="ans"><p>4xx thường là client/contract/auth — bad request, unauthorized, forbidden, not found. 5xx là lỗi server — exception, DB down, unhandled. CORS thường giống lỗi Network trên browser dù server có thể đã trả lời. Tôi kiểm tra preflight và cấu hình CORS trước khi viết lại React.</p></div></div>
+<div class="notes">
+          <p><strong>Know:</strong> 4xx client/contract; 5xx server; CORS is browser policy.</p>
+          <p><strong>Trap:</strong> Treating every red Network row as backend is down.</p>
+          <p><strong>Follow-up:</strong> How do you debug a CORS error end to end?</p>
+        </div>
+</div>
+</details><details class="q" id="soft-g28" data-blob="React wrong, API fine FE debugging path. The API is correct, but the UI is wrong. How do you debug? I check mapping — wrong field names, timezone formatting, default values. Then React state: stale state, wrong dependency in useEffect, race condition from two fetches. Then render conditions — loading flag stuck, filtering out rows by mistake. React DevTools helps see props/state at the broken component. API đúng nhưng UI sai. Bạn debug thế nào? Tôi kiểm tra mapping — sai tên field, format timezone, default value. Rồi state React: state cũ, dependency useEffect sai, race từ hai lần fetch. Rồi điều kiện render — loading kẹt, filter mất row. React DevTools giúp xem props/state ở component đang hỏng. Know: Mapping → state → effects → render conditions. Trap: Rewriting the API when JSON was already right. Follow-up: How do you debug a race condition in useEffect?">
+<summary><span class="num">05</span><span><span class="q-title">React wrong, API fine</span><span class="q-hint">FE debugging path.</span></span></summary>
+<div class="q-body">
+<div class="lang"><button type="button" data-set-lang="en">English</button><button type="button" data-set-lang="vi">Tiếng Việt</button></div>
+<div data-pane="en"><div class="ask"><p>The API is correct, but the UI is wrong. How do you debug?</p></div><div class="ans"><p>I check mapping — wrong field names, timezone formatting, default values. Then React state: stale state, wrong dependency in useEffect, race condition from two fetches. Then render conditions — loading flag stuck, filtering out rows by mistake. React DevTools helps see props/state at the broken component.</p></div></div>
+<div data-pane="vi" hidden><div class="ask"><p>API đúng nhưng UI sai. Bạn debug thế nào?</p></div><div class="ans"><p>Tôi kiểm tra mapping — sai tên field, format timezone, default value. Rồi state React: state cũ, dependency useEffect sai, race từ hai lần fetch. Rồi điều kiện render — loading kẹt, filter mất row. React DevTools giúp xem props/state ở component đang hỏng.</p></div></div>
+<div class="notes">
+          <p><strong>Know:</strong> Mapping → state → effects → render conditions.</p>
+          <p><strong>Trap:</strong> Rewriting the API when JSON was already right.</p>
+          <p><strong>Follow-up:</strong> How do you debug a race condition in useEffect?</p>
+        </div>
+</div>
+</details><details class="q" id="soft-g29" data-blob="API wrong or slow PHP/MySQL debugging. The UI is fine, but the API data is wrong or slow. How do you debug? I reproduce the endpoint, read PHP logs, and inspect the SQL. Wrong data means business logic, joins, filters, or bad input validation. Slow means indexes, N+1, or heavy work in the request. I fix the query or logic, add a test when it&#x27;s critical, and only then re-check from React. UI ổn nhưng API sai hoặc chậm. Bạn debug thế nào? Tôi reproduce endpoint, đọc log PHP, và xem SQL. Data sai nghĩa là business logic, join, filter, hoặc validation input. Chậm nghĩa là index, N+1, hoặc việc nặng trong request. Tôi sửa query/logic, thêm test nếu critical, rồi mới check lại từ React. Know: Logs + SQL + reproduce payload. Trap: Optimizing PHP loops before checking the query. Follow-up: How do you log a slow query safely?">
+<summary><span class="num">06</span><span><span class="q-title">API wrong or slow</span><span class="q-hint">PHP/MySQL debugging.</span></span></summary>
+<div class="q-body">
+<div class="lang"><button type="button" data-set-lang="en">English</button><button type="button" data-set-lang="vi">Tiếng Việt</button></div>
+<div data-pane="en"><div class="ask"><p>The UI is fine, but the API data is wrong or slow. How do you debug?</p></div><div class="ans"><p>I reproduce the endpoint, read PHP logs, and inspect the SQL. Wrong data means business logic, joins, filters, or bad input validation. Slow means indexes, N+1, or heavy work in the request. I fix the query or logic, add a test when it's critical, and only then re-check from React.</p></div></div>
+<div data-pane="vi" hidden><div class="ask"><p>UI ổn nhưng API sai hoặc chậm. Bạn debug thế nào?</p></div><div class="ans"><p>Tôi reproduce endpoint, đọc log PHP, và xem SQL. Data sai nghĩa là business logic, join, filter, hoặc validation input. Chậm nghĩa là index, N+1, hoặc việc nặng trong request. Tôi sửa query/logic, thêm test nếu critical, rồi mới check lại từ React.</p></div></div>
+<div class="notes">
+          <p><strong>Know:</strong> Logs + SQL + reproduce payload.</p>
+          <p><strong>Trap:</strong> Optimizing PHP loops before checking the query.</p>
+          <p><strong>Follow-up:</strong> How do you log a slow query safely?</p>
+        </div>
+</div>
+</details><details class="q" id="soft-g30" data-blob="Hotfix vs long-term fix JD: long-term solutions. How do you balance a hotfix and a long-term fix? If users are blocked, I ship the smallest safe mitigation first — feature flag, guard clause, rollback. Then I schedule the real fix: root cause, test, cleanup. I document both so we don&#x27;t live on hotfixes forever. That matches how I like to work. Bạn cân bằng hotfix và fix dài hạn thế nào? Nếu user đang bị chặn, tôi ship mitigation nhỏ nhất an toàn trước — feature flag, guard, rollback. Rồi xếp lịch fix thật: root cause, test, dọn. Tôi ghi cả hai để không sống bằng hotfix mãi. Khớp cách tôi muốn làm. Know: Mitigate impact → root cause → prevent repeat. Trap: Only hotfix and never follow up. Follow-up: Give an example of a hotfix that became technical debt.">
+<summary><span class="num">07</span><span><span class="q-title">Hotfix vs long-term fix</span><span class="q-hint">JD: long-term solutions.</span></span></summary>
+<div class="q-body">
+<div class="lang"><button type="button" data-set-lang="en">English</button><button type="button" data-set-lang="vi">Tiếng Việt</button></div>
+<div data-pane="en"><div class="ask"><p>How do you balance a hotfix and a long-term fix?</p></div><div class="ans"><p>If users are blocked, I ship the smallest safe mitigation first — feature flag, guard clause, rollback. Then I schedule the real fix: root cause, test, cleanup. I document both so we don't live on hotfixes forever. That matches how I like to work.</p></div></div>
+<div data-pane="vi" hidden><div class="ask"><p>Bạn cân bằng hotfix và fix dài hạn thế nào?</p></div><div class="ans"><p>Nếu user đang bị chặn, tôi ship mitigation nhỏ nhất an toàn trước — feature flag, guard, rollback. Rồi xếp lịch fix thật: root cause, test, dọn. Tôi ghi cả hai để không sống bằng hotfix mãi. Khớp cách tôi muốn làm.</p></div></div>
+<div class="notes">
+          <p><strong>Know:</strong> Mitigate impact → root cause → prevent repeat.</p>
+          <p><strong>Trap:</strong> Only hotfix and never follow up.</p>
+          <p><strong>Follow-up:</strong> Give an example of a hotfix that became technical debt.</p>
+        </div>
+</div>
+</details><details class="q" id="soft-g31" data-blob="End-to-end debug walkthrough Tell as a story. Walk me through debugging a production bug from UI to database. User reports export shows wrong total. I reproduce on the screen, capture the API in Network — check payload. If API total is wrong, I hit the same endpoint via Postman, read PHP logs, inspect the SQL aggregate. Fix the query or business rule, verify API, then verify UI. If API was right, I fix the React mapping/format. Finally I add a check or test so it doesn&#x27;t return quietly. Hãy đi qua cách debug bug production từ UI tới database. User báo export sai tổng. Tôi reproduce trên màn, bắt API trong Network — xem payload. Nếu API sai tổng, gọi cùng endpoint bằng Postman, đọc log PHP, xem SQL aggregate. Sửa query hoặc rule, verify API, rồi verify UI. Nếu API đúng, sửa mapping/format React. Cuối cùng thêm check hoặc test để không quay lại thầm lặng. S: Wrong totals on an enterprise reporting screen. T: Find which layer is lying. A: UI reproduce → Network → Postman → PHP/SQL → fix → verify both layers. R: Correct export + clearer ownership of the bug layer. Say this: I follow the data, not opinions about which team is guilty.">
+<summary><span class="num">08</span><span><span class="q-title">End-to-end debug walkthrough</span><span class="q-hint">Tell as a story.</span></span></summary>
+<div class="q-body">
+<div class="lang"><button type="button" data-set-lang="en">English</button><button type="button" data-set-lang="vi">Tiếng Việt</button></div>
+<div data-pane="en"><div class="ask"><p>Walk me through debugging a production bug from UI to database.</p></div><div class="ans"><p>User reports export shows wrong total. I reproduce on the screen, capture the API in Network — check payload. If API total is wrong, I hit the same endpoint via Postman, read PHP logs, inspect the SQL aggregate. Fix the query or business rule, verify API, then verify UI. If API was right, I fix the React mapping/format. Finally I add a check or test so it doesn't return quietly.</p></div></div>
+<div data-pane="vi" hidden><div class="ask"><p>Hãy đi qua cách debug bug production từ UI tới database.</p></div><div class="ans"><p>User báo export sai tổng. Tôi reproduce trên màn, bắt API trong Network — xem payload. Nếu API sai tổng, gọi cùng endpoint bằng Postman, đọc log PHP, xem SQL aggregate. Sửa query hoặc rule, verify API, rồi verify UI. Nếu API đúng, sửa mapping/format React. Cuối cùng thêm check hoặc test để không quay lại thầm lặng.</p></div></div>
+<div class="notes">
+          <p><strong>S:</strong> Wrong totals on an enterprise reporting screen.</p>
+          <p><strong>T:</strong> Find which layer is lying.</p>
+          <p><strong>A:</strong> UI reproduce → Network → Postman → PHP/SQL → fix → verify both layers.</p>
+          <p><strong>R:</strong> Correct export + clearer ownership of the bug layer.</p>
+          <p class="say"><strong>Say this:</strong> I follow the data, not opinions about which team is guilty.</p>
+        </div>
+</div>
+</details></section></main></div>
+<script src="assets/search-index.js"></script>
+<script src="assets/site.js"></script>
+</body>
+</html>

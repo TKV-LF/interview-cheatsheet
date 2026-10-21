@@ -1,1103 +1,200 @@
 <!DOCTYPE html>
 <html lang="en" data-theme="light">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Fit / Intro — PHP · DevOps · Node–TS</title>
-  <link href="https://api.fontshare.com/v2/css?f[]=satoshi@400,500,700&f[]=general-sans@400,500,600,700&display=swap" rel="stylesheet">
-  <style>
-    :root, [data-theme="light"] {
-      --text-xs: clamp(0.75rem, 0.7rem + 0.25vw, 0.875rem);
-      --text-sm: clamp(0.875rem, 0.8rem + 0.35vw, 1rem);
-      --text-base: clamp(1rem, 0.95rem + 0.25vw, 1.125rem);
-      --text-lg: clamp(1.125rem, 1rem + 0.75vw, 1.5rem);
-      --text-xl: clamp(1.5rem, 1.2rem + 1.25vw, 2.25rem);
-      --space-1: 0.25rem; --space-2: 0.5rem; --space-3: 0.75rem; --space-4: 1rem;
-      --space-5: 1.25rem; --space-6: 1.5rem; --space-8: 2rem; --space-10: 2.5rem;
-      --space-12: 3rem; --space-16: 4rem;
-      --color-bg: #f7f6f2;
-      --color-surface: #f9f8f5;
-      --color-surface-2: #fbfbf9;
-      --color-surface-offset: #edeae5;
-      --color-border: #d4d1ca;
-      --color-divider: #dcd9d5;
-      --color-text: #28251d;
-      --color-text-muted: #6f6c65;
-      --color-text-faint: #98958f;
-      --color-primary: #01696f;
-      --color-primary-hover: #0c4e54;
-      --color-primary-highlight: #d8e6e3;
-      --color-success: #437a22;
-      --color-warning: #964219;
-      --radius-sm: 0.375rem;
-      --radius-md: 0.5rem;
-      --radius-lg: 0.75rem;
-      --radius-xl: 1rem;
-      --shadow-sm: 0 1px 2px rgba(30, 27, 22, 0.06);
-      --shadow-md: 0 10px 30px rgba(30, 27, 22, 0.08);
-      --font-display: 'General Sans', 'Inter', sans-serif;
-      --font-body: 'Satoshi', 'Inter', sans-serif;
-    }
-
-    [data-theme="dark"] {
-      --color-bg: #171614;
-      --color-surface: #1c1b19;
-      --color-surface-2: #201f1d;
-      --color-surface-offset: #2a2826;
-      --color-border: #393836;
-      --color-divider: #2f2e2c;
-      --color-text: #e1dfdb;
-      --color-text-muted: #adaaa4;
-      --color-text-faint: #7c7974;
-      --color-primary: #4f98a3;
-      --color-primary-hover: #6aafba;
-      --color-primary-highlight: rgba(79,152,163,0.16);
-      --color-success: #79b95a;
-      --color-warning: #d08b60;
-      --shadow-sm: 0 1px 2px rgba(0,0,0,0.18);
-      --shadow-md: 0 10px 30px rgba(0,0,0,0.3);
-    }
-
-    * { box-sizing: border-box; }
-    html { scroll-behavior: smooth; }
-    body {
-      margin: 0;
-      font-family: var(--font-body);
-      font-size: var(--text-base);
-      color: var(--color-text);
-      background: var(--color-bg);
-      line-height: 1.65;
-    }
-
-    a { color: inherit; text-decoration: none; }
-    .page {
-      max-width: 1600px;
-      margin: 0 auto;
-      padding: var(--space-6);
-    }
-
-    .topbar {
-      position: sticky;
-      top: 0;
-      z-index: 30;
-      backdrop-filter: blur(10px);
-      background: color-mix(in srgb, var(--color-bg) 88%, transparent);
-      border-bottom: 1px solid var(--color-divider);
-    }
-
-    .topbar-inner {
-      max-width: 1600px;
-      margin: 0 auto;
-      padding: var(--space-4) var(--space-6);
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: var(--space-4);
-    }
-
-    .brand h1 {
-      margin: 0;
-      font-family: var(--font-display);
-      font-size: var(--text-xl);
-      line-height: 1.05;
-      letter-spacing: -0.03em;
-    }
-
-    .brand p {
-      margin: var(--space-2) 0 0;
-      color: var(--color-text-muted);
-      font-size: var(--text-sm);
-      max-width: 72ch;
-    }
-
-    .top-actions {
-      display: flex;
-      align-items: center;
-      gap: var(--space-3);
-      flex-wrap: wrap;
-    }
-
-    .btn {
-      border: 1px solid var(--color-border);
-      background: var(--color-surface);
-      color: var(--color-text);
-      border-radius: var(--radius-full, 999px);
-      padding: 0.72rem 1rem;
-      font-size: var(--text-sm);
-      font-weight: 600;
-      box-shadow: var(--shadow-sm);
-      cursor: pointer;
-    }
-
-    .btn:hover { background: var(--color-surface-2); }
-    .theme-toggle { min-width: 44px; min-height: 44px; display: inline-flex; align-items: center; justify-content: center; }
-
-    .hero {
-      display: grid;
-      grid-template-columns: 1.2fr 0.8fr;
-      gap: var(--space-6);
-      margin: var(--space-6) 0 var(--space-8);
-    }
-
-    .hero-card, .toc-card, .question-card {
-      background: var(--color-surface);
-      border: 1px solid var(--color-border);
-      border-radius: var(--radius-xl);
-      box-shadow: var(--shadow-sm);
-    }
-
-    .hero-card { padding: var(--space-6); }
-    .hero-kpis {
-      display: grid;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: var(--space-3);
-      margin-top: var(--space-5);
-    }
-
-    .kpi {
-      background: var(--color-surface-2);
-      border: 1px solid var(--color-divider);
-      border-radius: var(--radius-lg);
-      padding: var(--space-4);
-    }
-
-    .kpi strong {
-      display: block;
-      font-size: var(--text-lg);
-      font-family: var(--font-display);
-      margin-bottom: var(--space-2);
-    }
-
-    .kpi span {
-      font-size: var(--text-sm);
-      color: var(--color-text-muted);
-    }
-
-    .toc-card {
-      padding: var(--space-6);
-      background: linear-gradient(180deg, var(--color-surface) 0%, var(--color-surface-2) 100%);
-    }
-
-    .section-label {
-      display: inline-flex;
-      align-items: center;
-      gap: var(--space-2);
-      padding: 0.35rem 0.7rem;
-      border-radius: 999px;
-      background: var(--color-primary-highlight);
-      color: var(--color-primary);
-      font-size: var(--text-xs);
-      font-weight: 700;
-      letter-spacing: 0.06em;
-      text-transform: uppercase;
-      margin-bottom: var(--space-4);
-    }
-
-    .toc-grid {
-      display: grid;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: var(--space-3);
-      margin-top: var(--space-4);
-    }
-
-    .toc-link {
-      display: block;
-      padding: var(--space-4);
-      border-radius: var(--radius-lg);
-      background: var(--color-bg);
-      border: 1px solid var(--color-divider);
-      min-height: 100%;
-    }
-
-    .toc-link:hover {
-      border-color: var(--color-primary);
-      background: var(--color-primary-highlight);
-    }
-
-    .toc-link small {
-      display: block;
-      color: var(--color-text-faint);
-      margin-bottom: var(--space-2);
-      font-size: var(--text-xs);
-      text-transform: uppercase;
-      letter-spacing: 0.06em;
-    }
-
-    .toc-link strong {
-      display: block;
-      font-size: var(--text-sm);
-      line-height: 1.45;
-    }
-
-    .questions {
-      display: grid;
-      gap: var(--space-5);
-      padding-bottom: var(--space-16);
-    }
-
-    .question-card {
-      overflow: hidden;
-      scroll-margin-top: 100px;
-    }
-
-    .question-head {
-      padding: var(--space-5) var(--space-5) var(--space-4);
-      border-bottom: 1px solid var(--color-divider);
-      background: var(--color-surface-2);
-    }
-
-    .question-head h2 {
-      margin: 0;
-      font-family: var(--font-display);
-      font-size: var(--text-lg);
-      line-height: 1.15;
-      letter-spacing: -0.02em;
-    }
-
-    .question-head p {
-      margin: var(--space-2) 0 0;
-      color: var(--color-text-muted);
-      font-size: var(--text-sm);
-    }
-
-    .grid4 {
-      display: grid;
-      grid-template-columns: 0.8fr 1.2fr 0.8fr 1.2fr;
-    }
-
-    .cell {
-      padding: var(--space-5);
-      border-right: 1px solid var(--color-divider);
-      border-bottom: 1px solid var(--color-divider);
-      min-width: 0;
-    }
-
-    .grid4 .cell:nth-child(4n) { border-right: none; }
-    .row-head {
-      background: var(--color-surface-2);
-      font-size: var(--text-xs);
-      text-transform: uppercase;
-      letter-spacing: 0.08em;
-      font-weight: 700;
-      color: var(--color-text-muted);
-      padding-top: var(--space-4);
-      padding-bottom: var(--space-4);
-    }
-
-    .cell.question {
-      background: color-mix(in srgb, var(--color-surface-2) 70%, var(--color-bg));
-      font-weight: 600;
-    }
-
-    .cell.answer {
-      background: var(--color-surface);
-    }
-
-    .cell p { margin: 0; }
-    .cell p + p { margin-top: var(--space-3); }
-
-    .note {
-      padding: var(--space-4) var(--space-5);
-      background: color-mix(in srgb, var(--color-primary-highlight) 55%, var(--color-surface));
-      border-top: 1px solid var(--color-divider);
-      color: var(--color-text-muted);
-      font-size: var(--text-sm);
-    }
-
-    .tag-list {
-      display: flex;
-      flex-wrap: wrap;
-      gap: var(--space-2);
-      margin-top: var(--space-4);
-    }
-
-    .tag {
-      padding: 0.35rem 0.7rem;
-      border: 1px solid var(--color-divider);
-      border-radius: 999px;
-      background: var(--color-bg);
-      color: var(--color-text-muted);
-      font-size: var(--text-xs);
-      font-weight: 600;
-    }
-
-    .footer-note {
-      margin-top: var(--space-8);
-      color: var(--color-text-muted);
-      font-size: var(--text-sm);
-      text-align: center;
-    }
-
-    @media (max-width: 1180px) {
-      .hero { grid-template-columns: 1fr; }
-      .grid4 { grid-template-columns: 1fr 1fr; }
-      .grid4 .cell:nth-child(2n) { border-right: none; }
-      .grid4 .cell:nth-child(4n) { border-right: none; }
-      .row-head { display: none; }
-      .cell.question { border-bottom: 1px solid var(--color-divider); }
-    }
-
-    
-    .section-nav {
-      display: flex;
-      flex-wrap: wrap;
-      gap: var(--space-2);
-      margin-top: var(--space-4);
-    }
-    .section-nav a {
-      padding: 0.4rem 0.75rem;
-      border: 1px solid var(--color-divider);
-      border-radius: 999px;
-      background: var(--color-bg);
-      font-size: var(--text-xs);
-      font-weight: 700;
-      color: var(--color-text-muted);
-    }
-    .section-nav a:hover {
-      border-color: var(--color-primary);
-      color: var(--color-primary);
-      background: var(--color-primary-highlight);
-    }
-    .section-block {
-      scroll-margin-top: 110px;
-      margin-top: var(--space-8);
-    }
-    .section-block > h2 {
-      font-family: var(--font-display);
-      font-size: var(--text-lg);
-      letter-spacing: -0.02em;
-      margin: 0 0 var(--space-4);
-    }
-    .crib {
-      padding: var(--space-4) var(--space-5);
-      background: color-mix(in srgb, var(--color-warning) 8%, var(--color-surface));
-      border-top: 1px solid var(--color-divider);
-      font-size: var(--text-sm);
-      color: var(--color-text-muted);
-    }
-    .crib p { margin: 0; }
-    .crib p + p { margin-top: var(--space-2); }
-    .crib strong { color: var(--color-text); }
-
-@media (max-width: 720px) {
-      .page, .topbar-inner { padding-left: var(--space-4); padding-right: var(--space-4); }
-      .topbar-inner { align-items: flex-start; flex-direction: column; }
-      .hero-kpis { grid-template-columns: 1fr; }
-      .toc-grid { grid-template-columns: 1fr; }
-      .grid4 { grid-template-columns: 1fr; }
-      .cell { border-right: none !important; }
-      .question-head h2 { font-size: 1.2rem; }
-    }
-  
-    .star{padding:var(--space-4) var(--space-5);background:color-mix(in srgb,var(--color-primary-highlight) 70%,var(--color-surface));border-top:1px solid var(--color-divider);font-size:var(--text-sm);color:var(--color-text-muted)}
-    .star p{margin:0}.star p+p{margin-top:var(--space-2)}.star strong{color:var(--color-text)}
-    .say{margin-top:var(--space-3);padding-top:var(--space-3);border-top:1px dashed var(--color-divider);color:var(--color-primary);font-weight:600}
-
-    /* Left full Contents + right Parts-only rail */
-    body.has-side-toc { overflow-x: hidden; }
-    .shell {
-      display: grid;
-      grid-template-columns: minmax(240px, 300px) minmax(0, 1fr);
-      gap: 0;
-      align-items: start;
-      max-width: 1800px;
-      margin: 0 auto;
-      position: relative;
-    }
-    .side-toc {
-      position: sticky;
-      top: 88px;
-      height: calc(100vh - 100px);
-      overflow: auto;
-      padding: var(--space-4);
-      margin: var(--space-4) 0 var(--space-4) var(--space-4);
-      background: var(--color-surface);
-      border: 1px solid var(--color-border);
-      border-radius: var(--radius-xl);
-      box-shadow: var(--shadow-sm);
-      z-index: 20;
-    }
-    .side-toc-head {
-      position: sticky;
-      top: 0;
-      background: var(--color-surface);
-      padding-bottom: var(--space-3);
-      margin-bottom: var(--space-3);
-      border-bottom: 1px solid var(--color-divider);
-      z-index: 1;
-    }
-    .side-toc-head strong {
-      display: block;
-      font-family: var(--font-display);
-      font-size: var(--text-sm);
-      letter-spacing: -0.02em;
-    }
-    .side-toc-head span {
-      display: block;
-      margin-top: 0.25rem;
-      color: var(--color-text-faint);
-      font-size: var(--text-xs);
-    }
-    .side-toc-list {
-      display: flex;
-      flex-direction: column;
-      gap: 2px;
-    }
-    .side-toc-link {
-      display: grid;
-      grid-template-columns: 2.2rem 1fr;
-      gap: 0.45rem;
-      align-items: start;
-      padding: 0.45rem 0.55rem;
-      border-radius: var(--radius-md);
-      color: var(--color-text-muted);
-      font-size: var(--text-xs);
-      line-height: 1.35;
-      border: 1px solid transparent;
-    }
-    .side-toc-link:hover {
-      background: var(--color-primary-highlight);
-      color: var(--color-primary);
-    }
-    .side-toc-link.is-active {
-      background: var(--color-primary-highlight);
-      border-color: color-mix(in srgb, var(--color-primary) 35%, var(--color-border));
-      color: var(--color-primary);
-      font-weight: 600;
-    }
-    .side-toc-num {
-      font-variant-numeric: tabular-nums;
-      color: var(--color-text-faint);
-      font-weight: 700;
-    }
-    .side-toc-link.is-active .side-toc-num { color: var(--color-primary); }
-    .side-toc-title { min-width: 0; }
-
-    .side-toc-part {
-      display: block;
-      margin: 0.85rem 0 0.35rem;
-      padding: 0.5rem 0.55rem 0.35rem;
-      border-top: 1px solid var(--color-divider);
-    }
-    .side-toc-part:first-child {
-      margin-top: 0;
-      border-top: none;
-      padding-top: 0.15rem;
-    }
-    .side-toc-part-link {
-      display: block;
-      font-family: var(--font-display);
-      font-size: 0.72rem;
-      font-weight: 700;
-      letter-spacing: 0.02em;
-      color: var(--color-text);
-      line-height: 1.3;
-    }
-    .side-toc-part-link:hover { color: var(--color-primary); }
-    .side-toc-part-range {
-      display: block;
-      margin-top: 0.15rem;
-      font-size: 0.65rem;
-      font-variant-numeric: tabular-nums;
-      color: var(--color-text-faint);
-      font-weight: 600;
-    }
-    .side-toc-part.is-active .side-toc-part-link { color: var(--color-primary); }
-    .side-toc-part.is-active .side-toc-part-range {
-      color: color-mix(in srgb, var(--color-primary) 70%, var(--color-text-faint));
-    }
-
-    /* Right: Parts only */
-    .parts-rail {
-      display: none;
-    }
-    @media (min-width: 1280px) {
-      .shell {
-        grid-template-columns: minmax(240px, 300px) minmax(0, 1fr);
-        max-width: 1800px;
-        padding-right: 0;
-      }
-      .parts-rail {
-        display: block;
-        position: fixed;
-        top: 148px;
-        right: 0;
-        width: 168px;
-        max-height: calc(100vh - 112px);
-        overflow: auto;
-        padding: 0.75rem 0.65rem;
-        background: var(--color-surface);
-        border: 1px solid var(--color-border);
-        border-radius: var(--radius-xl);
-        box-shadow: var(--shadow-sm);
-        z-index: 25;
-      }
-      .parts-rail-head {
-        font-family: var(--font-display);
-        font-size: 0.72rem;
-        font-weight: 700;
-        letter-spacing: 0.03em;
-        text-transform: uppercase;
-        color: var(--color-text-faint);
-        margin: 0 0 0.55rem;
-        padding: 0 0.35rem 0.45rem;
-        border-bottom: 1px solid var(--color-divider);
-      }
-      .parts-rail-list {
-        display: flex;
-        flex-direction: column;
-        gap: 2px;
-      }
-      .parts-rail-link {
-        display: block;
-        padding: 0.4rem 0.45rem;
-        border-radius: var(--radius-md);
-        color: var(--color-text-muted);
-        font-size: 0.7rem;
-        line-height: 1.3;
-        border: 1px solid transparent;
-      }
-      .parts-rail-link strong {
-        display: block;
-        font-family: var(--font-display);
-        font-size: 0.72rem;
-        font-weight: 700;
-        color: var(--color-text);
-      }
-      .parts-rail-link span {
-        display: block;
-        margin-top: 0.1rem;
-        font-size: 0.62rem;
-        font-variant-numeric: tabular-nums;
-        color: var(--color-text-faint);
-        font-weight: 600;
-      }
-      .parts-rail-link:hover {
-        background: var(--color-primary-highlight);
-      }
-      .parts-rail-link:hover strong { color: var(--color-primary); }
-      .parts-rail-link.is-active {
-        background: var(--color-primary-highlight);
-        border-color: color-mix(in srgb, var(--color-primary) 35%, var(--color-border));
-      }
-      .parts-rail-link.is-active strong { color: var(--color-primary); }
-      /* leave room so content doesn't sit under the rail */
-      .page.with-side-toc {
-        padding-right: 188px;
-      }
-    }
-
-    .page.with-side-toc {
-      max-width: none;
-      padding-left: var(--space-4);
-      padding-right: var(--space-6);
-    }
-    .hero.with-side-toc {
-      grid-template-columns: 1fr;
-    }
-    .hero.with-side-toc .toc-card { display: none; }
-    .toc-mobile-btn {
-      display: none;
-    }
-    @media (max-width: 1100px) {
-      .shell { grid-template-columns: 1fr; }
-      .parts-rail { display: none !important; }
-      .side-toc {
-        position: fixed;
-        left: 0;
-        top: 0;
-        bottom: 0;
-        width: min(86vw, 320px);
-        height: 100vh;
-        margin: 0;
-        border-radius: 0;
-        border-right: 1px solid var(--color-border);
-        transform: translateX(-105%);
-        transition: transform 0.2s ease;
-        z-index: 50;
-      }
-      .side-toc.is-open { transform: translateX(0); }
-      .toc-backdrop {
-        display: none;
-        position: fixed;
-        inset: 0;
-        background: rgba(0,0,0,0.35);
-        z-index: 40;
-      }
-      .toc-backdrop.is-open { display: block; }
-      .toc-mobile-btn { display: inline-flex; }
-      .page.with-side-toc { padding-left: var(--space-4); padding-right: var(--space-4); }
-    }
-
-
-    .version-tabs {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.5rem;
-      margin: var(--space-4) 0 var(--space-2);
-    }
-    .version-tabs button {
-      border: 1px solid var(--color-border);
-      background: var(--color-surface);
-      color: var(--color-text);
-      border-radius: 999px;
-      padding: 0.55rem 0.95rem;
-      font-size: var(--text-sm);
-      font-weight: 700;
-      cursor: pointer;
-    }
-    .version-tabs button.is-on {
-      background: var(--color-primary);
-      border-color: var(--color-primary);
-      color: #fff;
-    }
-    .pack-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-      gap: var(--space-4);
-      margin: var(--space-4) 0 var(--space-8);
-    }
-    .pack-card {
-      display: block;
-      background: var(--color-surface);
-      border: 1px solid var(--color-border);
-      border-radius: var(--radius-xl);
-      box-shadow: var(--shadow-sm);
-      padding: var(--space-5);
-    }
-    .pack-card:hover { border-color: var(--color-primary); }
-    .pack-card h3 {
-      margin: 0 0 var(--space-2);
-      font-family: var(--font-display);
-      font-size: var(--text-lg);
-    }
-    .pack-card p { margin: 0; color: var(--color-text-muted); font-size: var(--text-sm); }
-    .pack-card .kicker {
-      display: block;
-      color: var(--color-primary);
-      font-size: var(--text-xs);
-      font-weight: 700;
-      letter-spacing: 0.04em;
-      text-transform: uppercase;
-      margin-bottom: 0.4rem;
-    }
-    .dayof-links {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.6rem;
-      margin: var(--space-4) 0;
-    }
-    .dayof-links a.btn { text-decoration: none; }
-    [data-version][hidden], [data-version-panel][hidden] { display: none !important; }
-
-</style>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Fit and intro — Interview cheatsheet</title>
+<link href="https://api.fontshare.com/v2/css?f[]=satoshi@400,500,700&f[]=general-sans@500,600,700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/site.css" />
 </head>
-<body class="has-side-toc">
-  <div class="topbar">
-    <div class="topbar-inner">
-      <div class="brand">
-        <h1>Fit / intro</h1>
-        <p>Tell me about yourself, why this role, strengths — three versions in one file.</p>
-      </div>
-      <div class="top-actions">
-        <button class="btn toc-mobile-btn" data-toc-open type="button">Contents</button>
-        <button class="btn theme-toggle" data-theme-toggle aria-label="Switch theme">☾</button>
-        <a class="btn" href="index.html">Hub</a>
-        <a class="btn" href="fit.html">Fit</a>
-        <a class="btn" href="soft-skills.html">Soft skills</a>
-        <a class="btn" href="engineering.html">Engineering</a>
-        <a class="btn" href="devops.html">DevOps</a>
-        <a class="btn" href="cv.html">CV</a>
-      </div>
-    </div>
-  </div>
-  <div class="toc-backdrop" data-toc-backdrop hidden></div>
-  <div class="shell">
-    <aside class="side-toc" id="side-toc" aria-label="Question contents">
-      <div class="side-toc-head">
-        <strong>Contents</strong>
-        <span>Jump to a question</span>
-      </div>
-      <nav class="side-toc-list" data-side-toc>
-        <div class="side-toc-part" data-part="sec-fit" data-version="php">
-          <a class="side-toc-part-link" href="#sec-fit">PHP / fullstack</a>
-          <span class="side-toc-part-range">5 Q</span>
-        </div>
-        <a class="side-toc-link" href="#g1" data-target="g1" data-part="sec-fit" data-version="php"><span class="side-toc-num">01</span><span class="side-toc-title">Tell me about yourself</span></a>
-        <a class="side-toc-link" href="#g3" data-target="g3" data-part="sec-fit" data-version="php"><span class="side-toc-num">02</span><span class="side-toc-title">Why should we hire you?</span></a>
-        <a class="side-toc-link" href="#g4" data-target="g4" data-part="sec-fit" data-version="php"><span class="side-toc-num">03</span><span class="side-toc-title">Strengths / weakness</span></a>
-        <a class="side-toc-link" href="#g5" data-target="g5" data-part="sec-fit" data-version="php"><span class="side-toc-num">04</span><span class="side-toc-title">English comfort</span></a>
-        <a class="side-toc-link" href="#f-php-why" data-target="f-php-why" data-part="sec-fit" data-version="php"><span class="side-toc-num">05</span><span class="side-toc-title">Why this PHP + React role?</span></a>
-        <div class="side-toc-part" data-part="sec-fit-devops" data-version="devops">
-          <a class="side-toc-part-link" href="#sec-fit-devops">DevOps</a>
-          <span class="side-toc-part-range">6 Q</span>
-        </div>
-        <a class="side-toc-link" href="#f-do-1" data-target="f-do-1" data-part="sec-fit-devops" data-version="devops"><span class="side-toc-num">06</span><span class="side-toc-title">Tell me about yourself (DevOps)</span></a>
-        <a class="side-toc-link" href="#f-do-2" data-target="f-do-2" data-part="sec-fit-devops" data-version="devops"><span class="side-toc-num">07</span><span class="side-toc-title">Strengths for a DevOps role</span></a>
-        <a class="side-toc-link" href="#f-do-3" data-target="f-do-3" data-part="sec-fit-devops" data-version="devops"><span class="side-toc-num">08</span><span class="side-toc-title">Tool walkthrough</span></a>
-        <a class="side-toc-link" href="#f-do-4" data-target="f-do-4" data-part="sec-fit-devops" data-version="devops"><span class="side-toc-num">09</span><span class="side-toc-title">Why a DevOps role?</span></a>
-        <a class="side-toc-link" href="#f-do-5" data-target="f-do-5" data-part="sec-fit-devops" data-version="devops"><span class="side-toc-num">10</span><span class="side-toc-title">Akktis day-to-day</span></a>
-        <a class="side-toc-link" href="#f-do-6" data-target="f-do-6" data-part="sec-fit-devops" data-version="devops"><span class="side-toc-num">11</span><span class="side-toc-title">Weakness (honest)</span></a>
-        <div class="side-toc-part" data-part="sec-fit-node" data-version="node">
-          <a class="side-toc-part-link" href="#sec-fit-node">Node / TypeScript</a>
-          <span class="side-toc-part-range">5 Q</span>
-        </div>
-        <a class="side-toc-link" href="#f-node-1" data-target="f-node-1" data-part="sec-fit-node" data-version="node"><span class="side-toc-num">12</span><span class="side-toc-title">Tell me about yourself (Node / TypeScript)</span></a>
-        <a class="side-toc-link" href="#f-node-2" data-target="f-node-2" data-part="sec-fit-node" data-version="node"><span class="side-toc-num">13</span><span class="side-toc-title">Why this Node / TypeScript role?</span></a>
-        <a class="side-toc-link" href="#f-node-3" data-target="f-node-3" data-part="sec-fit-node" data-version="node"><span class="side-toc-num">14</span><span class="side-toc-title">Why should we hire you?</span></a>
-        <a class="side-toc-link" href="#f-node-4" data-target="f-node-4" data-part="sec-fit-node" data-version="node"><span class="side-toc-num">15</span><span class="side-toc-title">Strengths / weakness (Node–TS angle)</span></a>
-        <a class="side-toc-link" href="#f-node-5" data-target="f-node-5" data-part="sec-fit-node" data-version="node"><span class="side-toc-num">16</span><span class="side-toc-title">English comfort</span></a>
-      </nav>
-    </aside>
-    <main class="page with-side-toc">
-      <section class="hero with-side-toc">
-        <div class="hero-card">
-          <div class="section-label">Shared topic</div>
-          <p>Pick the version that matches the job. Keep answers spoken and honest. Open the company day-of page for JD-specific why-this-company lines.</p>
-          
-          <div class="version-tabs" role="tablist" aria-label="Fit versions">
-            <button type="button" data-version-tab="php">PHP / fullstack</button>
-            <button type="button" data-version-tab="devops">DevOps</button>
-            <button type="button" data-version-tab="node">Node.js / TypeScript</button>
-          </div>
-          <p style="color:var(--color-text-muted);font-size:var(--text-sm)">Company-specific “why us” stays on the day-of pack. Use the matching version, then speak it out loud.</p>
+<body data-page="fit">
+<a class="skip" href="#content">Skip to questions</a>
+<header class="topbar">
+<div class="topbar-inner">
+<div class="brand-row">
+<a class="brand" href="index.html">Interview cheatsheet</a>
+<button class="icon-btn" type="button" data-theme-toggle aria-label="Switch theme">☾</button>
+</div>
+<div class="search-wrap">
+<span class="mag" aria-hidden="true">⌕</span>
+<input data-search type="search" placeholder="Search questions — press /" aria-label="Search questions" />
+<div class="hits" data-hits></div>
+<p class="search-meta" data-search-meta></p>
+</div>
+</div>
+<nav class="nav-scroll" aria-label="Categories"><a href="index.html" class="">Hub</a>
+<a href="fit.html" class="is-on">Fit and intro</a>
+<a href="behavioral.html" class="">Behavioral</a>
+<a href="english.html" class="">Spoken English</a>
+<a href="php.html" class="">PHP</a>
+<a href="react.html" class="">React and TypeScript</a>
+<a href="node.html" class="">Node.js</a>
+<a href="devops.html" class="">DevOps and cloud</a>
+<a href="debugging.html" class="">Debugging</a>
+<a href="system-design.html" class="">System design</a>
+<a href="cv.html" class="">CV and projects</a></nav>
+</header>
+<div class="shell"><aside class="side"><h2>On this page</h2><a class="sec-link" data-sec href="#sec-general">General</a><a class="q-link" href="#go1-q1">01 Tell me about yourself</a><a class="q-link" href="#go1-q7">02 Why should we hire you?</a><a class="sec-link" data-sec href="#sec-php-and-react">PHP and React</a><a class="q-link" href="#fit-g1">03 Tell me about yourself</a><a class="q-link" href="#fit-g3">04 Why should we hire you?</a><a class="q-link" href="#fit-g4">05 Strengths / weakness</a><a class="q-link" href="#fit-g5">06 English comfort</a><a class="q-link" href="#fit-f-php-why">07 Why this PHP + React role?</a><a class="sec-link" data-sec href="#sec-devops">DevOps</a><a class="q-link" href="#fit-f-do-1">08 Tell me about yourself (DevOps)</a><a class="q-link" href="#fit-f-do-2">09 Strengths for a DevOps role</a><a class="q-link" href="#fit-f-do-3">10 Tool walkthrough</a><a class="q-link" href="#fit-f-do-4">11 Why a DevOps role?</a><a class="q-link" href="#fit-f-do-5">12 Akktis day-to-day</a><a class="q-link" href="#fit-f-do-6">13 Weakness (honest)</a><a class="sec-link" data-sec href="#sec-node-and-typescript">Node and TypeScript</a><a class="q-link" href="#fit-f-node-1">14 Tell me about yourself (Node / TypeScript)</a><a class="q-link" href="#fit-f-node-2">15 Why this Node / TypeScript role?</a><a class="q-link" href="#fit-f-node-3">16 Why should we hire you?</a><a class="q-link" href="#fit-f-node-4">17 Strengths / weakness (Node–TS angle)</a><a class="sec-link" data-sec href="#sec-career-moves">Career moves</a><a class="q-link" href="#go1-cv-leave">18 Why did you leave BaseVN? What is the biggest technical strength on this CV?</a></aside><main id="content"><header class="page-intro"><h1>Fit and intro</h1><p>Who you are, why this kind of role, and why you are looking. Open one question at a time. Switch language inside the answer.</p></header><div class="toolbar"><button type="button" data-expand="open">Expand</button><button type="button" data-expand="close">Collapse</button></div><section class="block" id="sec-general"><h2>General</h2><details class="q" id="go1-q1" data-blob="Tell me about yourself 90 seconds. End on why you are here. Do not tour the whole CV. Tell me about yourself. I’m Thuy, a backend and full-stack developer with about five years of experience. Most of my work is TypeScript, Node.js, PHP, APIs, databases, and getting things into production — CI/CD and cloud, not only the feature itself. Recently I’ve been on client work and with Akktis, a France-based company. The work changes a lot, so I’m used to picking up a new system, asking the right questions, and owning the path from build to deploy to support. The project I care most about is an IELTS AI Tutor app — now live on the Play Store and the App Store, around 5,000 users and growing about 900 to 1,000 a month. When we started, my backend and web were stronger than my mobile and CI/CD. I used LLM tools to learn React Native, store builds, and the pipeline, then I still had to understand and ship it. I also built the AI features in the product — chat, text-to-speech, speech-to-text — and used Langfuse so we could see what the model actually returned. Before that, at BaseVN I worked on large HR, payroll, and recruitment SaaS. That taught me how messy real data is when several systems have to stay in sync. I’m looking for a product team where I can keep building useful learning software, work closely with other strong engineers, and go deeper on AI features that have to be reliable for real users. That is the kind of product team I want next. Hãy giới thiệu về bản thân. Tôi là Thùy, backend và full-stack khoảng năm năm. Phần lớn việc là TypeScript, Node.js, PHP, API, database, và đưa sản phẩm lên production — CI/CD và cloud, không chỉ mỗi feature. Gần đây tôi làm việc khách hàng và với Akktis, công ty ở Pháp. Việc đổi nhiều, nên tôi quen nhận một hệ thống mới, hỏi đúng câu, và chịu đường từ build tới deploy tới support. Dự án tôi tâm nhất là IELTS AI Tutor — đã lên Play Store và App Store, khoảng 5.000 người dùng, tăng khoảng 900 đến 1.000 mỗi tháng. Lúc đầu backend và web của tôi mạnh hơn mobile và CI/CD. Tôi dùng LLM để học React Native, bản store, và pipeline, rồi vẫn phải hiểu và tự ship. Tôi cũng làm phần AI trong sản phẩm — chat, text-to-speech, speech-to-text — và dùng Langfuse để thấy model thực sự trả gì. Trước đó ở BaseVN tôi làm SaaS HR, payroll và tuyển dụng lớn. Tôi học được data thật rối thế nào khi nhiều hệ thống phải khớp nhau. Tôi muốn một product team nơi tôi tiếp tục làm phần mềm học tập hữu ích, làm với kỹ sư khác, và đi sâu các tính năng AI phải đáng tin với người dùng thật. 90 seconds. End on why you are here. Do not tour the whole CV.">
+<summary><span class="num">01</span><span><span class="q-title">Tell me about yourself</span><span class="q-hint">90 seconds. End on why you are here. Do not tour the whole CV.</span></span></summary>
+<div class="q-body">
+<div class="lang"><button type="button" data-set-lang="en">English</button><button type="button" data-set-lang="vi">Tiếng Việt</button></div>
+<div data-pane="en"><div class="ask"><p>Tell me about yourself.</p></div><div class="ans"><div class="script">
+        <p>I’m Thuy, a backend and full-stack developer with about five years of experience. Most of my work is TypeScript, Node.js, PHP, APIs, databases, and getting things into production — CI/CD and cloud, not only the feature itself.</p>
+        <p>Recently I’ve been on client work and with Akktis, a France-based company. The work changes a lot, so I’m used to picking up a new system, asking the right questions, and owning the path from build to deploy to support.</p>
+        <p>The project I care most about is an IELTS AI Tutor app — now live on the Play Store and the App Store, around 5,000 users and growing about 900 to 1,000 a month. When we started, my backend and web were stronger than my mobile and CI/CD. I used LLM tools to learn React Native, store builds, and the pipeline, then I still had to understand and ship it. I also built the AI features in the product — chat, text-to-speech, speech-to-text — and used Langfuse so we could see what the model actually returned.</p>
+        <p>Before that, at BaseVN I worked on large HR, payroll, and recruitment SaaS. That taught me how messy real data is when several systems have to stay in sync.</p>
+        <p>I’m looking for a product team where I can keep building useful learning software, work closely with other strong engineers, and go deeper on AI features that have to be reliable for real users. That is the kind of product team I want next.</p>
+      </div></div></div>
+<div data-pane="vi" hidden><div class="ask"><p>Hãy giới thiệu về bản thân.</p></div><div class="ans"><p>Tôi là Thùy, backend và full-stack khoảng năm năm. Phần lớn việc là TypeScript, Node.js, PHP, API, database, và đưa sản phẩm lên production — CI/CD và cloud, không chỉ mỗi feature.</p><p>Gần đây tôi làm việc khách hàng và với Akktis, công ty ở Pháp. Việc đổi nhiều, nên tôi quen nhận một hệ thống mới, hỏi đúng câu, và chịu đường từ build tới deploy tới support.</p><p>Dự án tôi tâm nhất là IELTS AI Tutor — đã lên Play Store và App Store, khoảng 5.000 người dùng, tăng khoảng 900 đến 1.000 mỗi tháng. Lúc đầu backend và web của tôi mạnh hơn mobile và CI/CD. Tôi dùng LLM để học React Native, bản store, và pipeline, rồi vẫn phải hiểu và tự ship. Tôi cũng làm phần AI trong sản phẩm — chat, text-to-speech, speech-to-text — và dùng Langfuse để thấy model thực sự trả gì.</p><p>Trước đó ở BaseVN tôi làm SaaS HR, payroll và tuyển dụng lớn. Tôi học được data thật rối thế nào khi nhiều hệ thống phải khớp nhau.</p><p>Tôi muốn một product team nơi tôi tiếp tục làm phần mềm học tập hữu ích, làm với kỹ sư khác, và đi sâu các tính năng AI phải đáng tin với người dùng thật.</p></div></div>
+<div class="notes"><p>90 seconds. End on why you are here. Do not tour the whole CV.</p></div>
+</div>
+</details><details class="q" id="go1-q7" data-blob="Why should we hire you? Why should we hire you? I already work in your stack — TypeScript, Node, PHP, APIs — and I have shipped both UI and services, including SaaS. I am used to the full path: build, test, deploy, and debug in production. I can operate in ambiguity. Client work is rarely fully specified. I ask focused questions, write assumptions down, and validate with a small version instead of waiting for a perfect spec. And I already use LLMs the way this role describes. On IELTS I was not a mobile or CI/CD expert on day one. I used AI to learn and ship, then I still owned store builds and production issues. I also built AI into the learning product, plus the challenge with the interviewers. I am not a research engineer. I can learn fast, ship, and keep the result reliable. Vì sao nên tuyển bạn? Tôi đã làm trong stack này — TypeScript, Node, PHP, API — và đã ship cả UI lẫn service, gồm SaaS. Tôi quen cả đường: build, test, deploy, và debug trên production. Tôi làm được khi yêu cầu chưa rõ. Việc khách hàng hiếm khi spec đủ. Tôi hỏi ít câu, viết giả định, và kiểm bằng bản nhỏ thay vì chờ spec hoàn hảo. Tôi cũng đã dùng LLM theo cách vai này cần. Với IELTS tôi không phải chuyên gia mobile hay CI/CD từ ngày đầu. Tôi dùng AI để học và ship, rồi vẫn chịu bản store và lỗi production. Tôi không phải kỹ sư nghiên cứu. Tôi học nhanh, ship, và giữ kết quả đáng tin.">
+<summary><span class="num">02</span><span><span class="q-title">Why should we hire you?</span><span class="q-hint"></span></span></summary>
+<div class="q-body">
+<div class="lang"><button type="button" data-set-lang="en">English</button><button type="button" data-set-lang="vi">Tiếng Việt</button></div>
+<div data-pane="en"><div class="ask"><p>Why should we hire you?</p></div><div class="ans"><div class="script">
+        <p>I already work in your stack — TypeScript, Node, PHP, APIs — and I have shipped both UI and services, including SaaS. I am used to the full path: build, test, deploy, and debug in production.</p>
+        <p>I can operate in ambiguity. Client work is rarely fully specified. I ask focused questions, write assumptions down, and validate with a small version instead of waiting for a perfect spec.</p>
+        <p>And I already use LLMs the way this role describes. On IELTS I was not a mobile or CI/CD expert on day one. I used AI to learn and ship, then I still owned store builds and production issues. I also built AI into the learning product, plus the challenge with the interviewers. I am not a research engineer. I can learn fast, ship, and keep the result reliable.</p>
+      </div></div></div>
+<div data-pane="vi" hidden><div class="ask"><p>Vì sao nên tuyển bạn?</p></div><div class="ans"><p>Tôi đã làm trong stack này — TypeScript, Node, PHP, API — và đã ship cả UI lẫn service, gồm SaaS. Tôi quen cả đường: build, test, deploy, và debug trên production.</p><p>Tôi làm được khi yêu cầu chưa rõ. Việc khách hàng hiếm khi spec đủ. Tôi hỏi ít câu, viết giả định, và kiểm bằng bản nhỏ thay vì chờ spec hoàn hảo.</p><p>Tôi cũng đã dùng LLM theo cách vai này cần. Với IELTS tôi không phải chuyên gia mobile hay CI/CD từ ngày đầu. Tôi dùng AI để học và ship, rồi vẫn chịu bản store và lỗi production. Tôi không phải kỹ sư nghiên cứu. Tôi học nhanh, ship, và giữ kết quả đáng tin.</p></div></div>
 
-          <nav class="section-nav" aria-label="Sections">
-            <a href="#sec-fit" data-version="php">PHP</a>
-          <a href="#sec-fit-devops" data-version="devops">DevOps</a>
-          <a href="#sec-fit-node" data-version="node">Node–TS</a>
-          </nav>
-        </div>
-      </section>
-      <section class="questions">
-<div data-version-panel="php">
-<section class="section-block" id="sec-fit">
-      <h2>A. Fit / Intro — PHP + React</h2>
-<article class="question-card" id="g1">
-        <div class="question-head"><h2>01. Tell me about yourself</h2><p>PHP + React fullstack — 60–90s spoken intro.</p></div>
-        <div class="grid4">
-          <div class="cell row-head">Question EN</div><div class="cell row-head">Answer EN</div><div class="cell row-head">Question VI</div><div class="cell row-head">Answer VI</div>
-          <div class="cell question"><p>Tell me about yourself.</p></div>
-          <div class="cell answer"><p>I'm a fullstack engineer with about five years building web and SaaS products. My strongest backend is PHP and MySQL — especially enterprise apps at BaseVN like HRM, tax, and hiring systems with APIs and heavy data. On the frontend I've worked with JavaScript, TypeScript, and React, including a React Native product. Recently I also ship PHP apps and integrations at Akktis. I'm looking for a role that's deeply fullstack — PHP APIs plus React UI.</p></div>
-          <div class="cell question"><p>Hãy giới thiệu về bản thân.</p></div>
-          <div class="cell answer"><p>Tôi là fullstack khoảng năm năm, xây web và SaaS. Backend mạnh nhất là PHP và MySQL — đặc biệt app enterprise ở BaseVN như HRM, thuế, tuyển dụng với API và dữ liệu lớn. Frontend tôi làm JavaScript, TypeScript và React, gồm cả sản phẩm React Native. Gần đây ở Akktis tôi cũng ship app PHP và tích hợp. Tôi muốn role fullstack đúng nghĩa — PHP API cộng React UI.</p></div>
-        </div>
-      </article>
-<article class="question-card" id="g3">
-        <div class="question-head"><h2>03. Why should we hire you?</h2><p>Bridge PHP SaaS + React delivery.</p></div>
-        <div class="grid4">
-          <div class="cell row-head">Question EN</div><div class="cell row-head">Answer EN</div><div class="cell row-head">Question VI</div><div class="cell row-head">Answer VI</div>
-          <div class="cell question"><p>Why should we hire you?</p></div>
-          <div class="cell answer"><p>I can own features end to end — backend data and APIs in PHP, then a React/TypeScript client that consumes them. I've shipped in real enterprise SaaS with integrations, performance constraints, and production support. I communicate clearly in English, document workflows, and I debug across FE and BE instead of guessing.</p></div>
-          <div class="cell question"><p>Tại sao nên tuyển bạn?</p></div>
-          <div class="cell answer"><p>Tôi own được feature end-to-end — data/API PHP phía backend, rồi client React/TypeScript gọi API đó. Tôi đã ship SaaS enterprise thật với tích hợp, ràng buộc hiệu năng và support production. Tôi giao tiếp English rõ, viết workflow, và debug xuyên FE–BE thay vì đoán mò.</p></div>
-        </div>
-      </article>
-<article class="question-card" id="g4">
-        <div class="question-head"><h2>04. Strengths / weakness</h2><p>Keep job-relevant.</p></div>
-        <div class="grid4">
-          <div class="cell row-head">Question EN</div><div class="cell row-head">Answer EN</div><div class="cell row-head">Question VI</div><div class="cell row-head">Answer VI</div>
-          <div class="cell question"><p>What are your strengths and one weakness?</p></div>
-          <div class="cell answer"><p>My main strength is deep, practical problem-solving. When something breaks, I dig into the real root cause — reproduce the bug, read logs and the data path, understand the logic — then fix it properly instead of guessing. I think in systems: frontend vs backend, contract vs UI, data vs code. Another strength is I adapt to new tools and technologies quickly — new library, new framework piece, new workflow — I learn enough to ship, then deepen as I go. Weakness: I can spend extra time polishing a fix for maintainability. I've learned to ask what's the smallest safe fix for the business impact first, then improve.</p></div>
-          <div class="cell question"><p>Điểm mạnh và một điểm yếu?</p></div>
-          <div class="cell answer"><p>Điểm mạnh chính của tôi là giải quyết vấn đề thực tế, đi sâu. Khi có bug tôi không đoán — reproduce, đọc log và luồng data, hiểu logic gốc, rồi mới fix đúng. Tôi nghĩ theo hệ thống: FE hay BE, contract hay UI, data hay code. Điểm mạnh nữa là thích nghi công nghệ và tool mới rất nhanh — thư viện mới, phần framework mới, workflow mới — học đủ để ship, rồi đào sâu dần. Yếu: đôi khi dành thêm thời gian polish fix cho dễ maintain. Tôi đã học hỏi impact business trước, fix nhỏ nhất nhưng an toàn, rồi cải thiện sau.</p></div>
-        </div>
-      </article>
-<article class="question-card" id="g5">
-        <div class="question-head"><h2>05. English comfort</h2><p>They require good English.</p></div>
-        <div class="grid4">
-          <div class="cell row-head">Question EN</div><div class="cell row-head">Answer EN</div><div class="cell row-head">Question VI</div><div class="cell row-head">Answer VI</div>
-          <div class="cell question"><p>How comfortable are you working in English?</p></div>
-          <div class="cell answer"><p>I'm comfortable reading docs, writing technical updates, and joining meetings in English. I may not be perfect, but I can explain design decisions, bugs, and tradeoffs clearly — which matters more than sounding fancy.</p></div>
-          <div class="cell question"><p>Bạn làm việc bằng tiếng Anh thế nào?</p></div>
-          <div class="cell answer"><p>Tôi ổn với đọc docs, viết cập nhật kỹ thuật và họp bằng English. Không hoàn hảo, nhưng giải thích được quyết định thiết kế, bug và tradeoff rõ — điều đó quan trọng hơn nói hoa mỹ.</p></div>
-        </div>
-      </article>
-    <article class="question-card" id="f-php-why">
-        <div class="question-head"><h2>02. Why this PHP + React role?</h2><p>Generic — company-specific 'why us' lives on the day-of pack.</p></div>
-        <div class="grid4">
-          <div class="cell row-head">Question EN</div><div class="cell row-head">Answer EN</div>
-          <div class="cell row-head">Question VI</div><div class="cell row-head">Answer VI</div>
-          <div class="cell question"><p>Why do you want this Fullstack PHP + React role?</p></div>
-          <div class="cell answer"><p>Because the work matches how I want to work: design and maintain apps with PHP and React, build APIs, polish UI, optimize both sides, and fix production issues properly. I want to deepen enterprise React + TypeScript while keeping strong PHP backend ownership. For why this company specifically, I tailor that on the day from the JD.</p></div>
-          <div class="cell question"><p>Tại sao bạn muốn role Fullstack PHP + React này?</p></div>
-          <div class="cell answer"><p>Vì việc khớp cách tôi muốn làm: thiết kế/maintain app với PHP và React, dựng API, làm UI tốt, tối ưu cả hai phía, và xử lý production đúng cách. Tôi muốn đào sâu React + TypeScript enterprise trong khi vẫn giữ ownership PHP backend. Lý do chọn đúng công ty này tôi chỉnh theo JD vào ngày interview.</p></div>
-        </div>
-        <div class="crib"><p><strong>Know:</strong> Stack fit here · company why on the day-of page</p></div>
-      </article>
-    </section>
-    </div>
-<div data-version-panel="devops">
-<section class="section-block" id="sec-fit-devops">
-      <h2>Fit / Intro — DevOps</h2>
-<article class="question-card" id="f-do-1">
-        <div class="question-head"><h2>01. Tell me about yourself (DevOps)</h2><p>60–90s spoken intro</p></div>
-        <div class="grid4">
-          <div class="cell row-head">Question EN</div><div class="cell row-head">Answer EN</div>
-          <div class="cell row-head">Question VI</div><div class="cell row-head">Answer VI</div>
-          <div class="cell question"><p>Tell me about yourself.</p></div>
-          <div class="cell answer"><p>I'm a full-stack engineer who also owns delivery and ops. At Akktis I work across Linux servers over SSH — Ubuntu and Debian — CI/CD for mobile and web across environments, and Google Cloud: Cloud Run, Cloud SQL, and Storage. I also operate LiteSpeed and Apache for PHP and CMS apps, and I care about docs and basic hardening so systems are safer to hand off. Independently I shipped IELTS AI Tutor — a React Native and TypeScript app on iOS and Android with a Cloud Run backend, live on Google Play and the App Store. I'm looking for a DevOps-focused role where I can deepen that spine: pipelines, cloud deploys, and reliable Linux operations.</p></div>
-          <div class="cell question"><p>Hãy giới thiệu về bản thân.</p></div>
-          <div class="cell answer"><p>Tôi là full-stack kiêm delivery và ops. Ở Akktis tôi làm Linux qua SSH — Ubuntu và Debian — CI/CD cho mobile và web multi-env, và Google Cloud: Cloud Run, Cloud SQL và Storage. Tôi cũng operate LiteSpeed và Apache cho app PHP/CMS, và quan tâm docs cùng harden cơ bản để handoff an toàn hơn. Bên cạnh đó tôi ship IELTS AI Tutor — app React Native/TypeScript trên iOS và Android với backend Cloud Run, đã lên Google Play và App Store. Tôi muốn role nghiêng DevOps để đào sâu spine đó: pipeline, deploy cloud và Linux ops ổn định.</p></div>
-        </div>
-      </article>
-<article class="question-card" id="f-do-2">
-        <div class="question-head"><h2>02. Strengths for a DevOps role</h2><p>Concrete, not buzzwords</p></div>
-        <div class="grid4">
-          <div class="cell row-head">Question EN</div><div class="cell row-head">Answer EN</div>
-          <div class="cell row-head">Question VI</div><div class="cell row-head">Answer VI</div>
-          <div class="cell question"><p>What are your strengths?</p></div>
-          <div class="cell answer"><p>First, I bridge app and ops — I can read application failures and infra failures in the same incident. Second, I have hands-on delivery paths I've actually run: mobile CI toward store builds, Cloud Build into Cloud Run, and classic VM web servers with Nginx/Apache/LiteSpeed. Third, I debug with evidence — pipeline logs, Cloud Run revisions, SSH logs and disk — then mitigate first and document so the gap doesn't repeat. I'm honest about depth: Cloud Run and Linux VMs are my spine; I don't pretend deep Kubernetes HA if that's not what I've operated day to day.</p></div>
-          <div class="cell question"><p>Điểm mạnh của bạn là gì?</p></div>
-          <div class="cell answer"><p>Một, tôi bridge app và ops — đọc được lỗi application và lỗi infra trong cùng incident. Hai, tôi có delivery path thật: CI mobile tới store build, Cloud Build vào Cloud Run, và classic VM web server với Nginx/Apache/LiteSpeed. Ba, tôi debug bằng evidence — pipeline log, revision Cloud Run, SSH log và disk — mitigate trước rồi document để không lặp. Tôi trung thực về độ sâu: Cloud Run và Linux VM là spine; tôi không claim sâu Kubernetes HA nếu đó không phải việc hằng ngày.</p></div>
-        </div>
-      </article>
-<article class="question-card" id="f-do-3">
-        <div class="question-head"><h2>03. Tool walkthrough</h2><p>Stack I can defend</p></div>
-        <div class="grid4">
-          <div class="cell row-head">Question EN</div><div class="cell row-head">Answer EN</div>
-          <div class="cell row-head">Question VI</div><div class="cell row-head">Answer VI</div>
-          <div class="cell question"><p>Walk me through your DevOps tool stack.</p></div>
-          <div class="cell answer"><p>Source control is Git. CI is Cloud Build or a generic CI runner on push and tags — build, test when we have them, package artifacts. For backends I Dockerize, push to Artifact Registry, and deploy Cloud Run with env and secrets, often wired to Cloud SQL and Cloud Storage. For mobile, React Native builds produce Android AAB/APK and iOS IPA concepts with signing material kept in secrets, then artifacts go to storage or store tracks. For classic web I SSH into Ubuntu/Debian, manage LiteSpeed or Apache or Nginx, firewall and TLS, and keep short runbooks. Day to day observability is Cloud Logging on Run and system/web logs on VMs.</p></div>
-          <div class="cell question"><p>Hãy mô tả stack DevOps của bạn.</p></div>
-          <div class="cell answer"><p>Source control là Git. CI là Cloud Build hoặc CI runner generic theo push và tag — build, test khi có, package artifact. Backend tôi Dockerize, push Artifact Registry, deploy Cloud Run với env và secret, thường wire Cloud SQL và Cloud Storage. Mobile, build React Native ra AAB/APK Android và khái niệm IPA iOS, signing nằm trong secret, artifact lên storage hoặc store track. Classic web tôi SSH Ubuntu/Debian, quản LiteSpeed hoặc Apache hoặc Nginx, firewall và TLS, giữ runbook ngắn. Observability hằng ngày là Cloud Logging trên Run và system/web log trên VM.</p></div>
-        </div>
-      </article>
-<article class="question-card" id="f-do-4">
-        <div class="question-head"><h2>04. Why a DevOps role?</h2><p>Generic company — honest motivation</p></div>
-        <div class="grid4">
-          <div class="cell row-head">Question EN</div><div class="cell row-head">Answer EN</div>
-          <div class="cell row-head">Question VI</div><div class="cell row-head">Answer VI</div>
-          <div class="cell question"><p>Why do you want this DevOps role?</p></div>
-          <div class="cell answer"><p>Because I already enjoy the ownership from commit to a healthy environment, and I want that to be the center of my work — not only a side of full-stack. Your role is about reliable delivery: CI/CD, cloud or Linux operations, and helping developers ship safely. That matches what I do at Akktis and on IELTS AI Tutor, and I want to go deeper on pipeline quality, environment promotion, and operational hygiene in a team that takes infra seriously.</p></div>
-          <div class="cell question"><p>Tại sao bạn muốn role DevOps này?</p></div>
-          <div class="cell answer"><p>Vì tôi đã thích ownership từ commit đến env healthy, và muốn đó là trọng tâm công việc — không chỉ phần phụ của full-stack. Role của các bạn là delivery tin cậy: CI/CD, cloud hoặc Linux ops, và giúp developer ship an toàn. Điều đó khớp việc tôi làm ở Akktis và IELTS AI Tutor, và tôi muốn đào sâu chất lượng pipeline, promote env và ops hygiene trong team coi trọng infra.</p></div>
-        </div>
-      </article>
-<article class="question-card" id="f-do-5">
-        <div class="question-head"><h2>05. Akktis day-to-day</h2><p>What ops looks like</p></div>
-        <div class="grid4">
-          <div class="cell row-head">Question EN</div><div class="cell row-head">Answer EN</div>
-          <div class="cell row-head">Question VI</div><div class="cell row-head">Answer VI</div>
-          <div class="cell question"><p>What does a typical ops-heavy day look like for you?</p></div>
-          <div class="cell answer"><p>It depends on the project, but usually I'm either unblocking a release or keeping an environment healthy. That means checking CI status for web or mobile, SSH into a Linux box to read logs or restart a service, verifying a Cloud Run revision after deploy, or fixing env and connectivity to Cloud SQL or Storage. I also touch LiteSpeed or Apache when a PHP or CMS site misbehaves, and I update docs when I find tribal knowledge that would hurt the next person.</p></div>
-          <div class="cell question"><p>Một ngày nghiêng ops của bạn trông thế nào?</p></div>
-          <div class="cell answer"><p>Tùy project, nhưng thường tôi hoặc unblock release, hoặc giữ env healthy. Tức là check status CI web hoặc mobile, SSH vào Linux đọc log hoặc restart service, verify revision Cloud Run sau deploy, hoặc fix env và connectivity tới Cloud SQL hay Storage. Tôi cũng đụng LiteSpeed hoặc Apache khi site PHP/CMS lỗi, và update docs khi gặp tribal knowledge — dễ hại người sau.</p></div>
-        </div>
-      </article>
-<article class="question-card" id="f-do-6">
-        <div class="question-head"><h2>06. Weakness (honest)</h2><p>Time-box vs polish</p></div>
-        <div class="grid4">
-          <div class="cell row-head">Question EN</div><div class="cell row-head">Answer EN</div>
-          <div class="cell row-head">Question VI</div><div class="cell row-head">Answer VI</div>
-          <div class="cell question"><p>What's a weakness relevant to this job?</p></div>
-          <div class="cell answer"><p>I can over-invest in polishing a pipeline or runbook when a smaller safe mitigation would unblock the team sooner. I've learned to time-box: ship the safe fix or rollback first, communicate status, then harden the checklist so we don't pay twice.</p></div>
-          <div class="cell question"><p>Một điểm yếu liên quan job này?</p></div>
-          <div class="cell answer"><p>Tôi đôi khi invest quá nhiều để polish pipeline hoặc runbook trong khi một mitigation nhỏ an toàn đã unblock được team. Tôi đã học time-box: ship fix an toàn hoặc rollback trước, báo status, rồi harden checklist để không trả giá hai lần.</p></div>
-        </div>
-      </article>
-    </section>
-    </div>
-<div data-version-panel="node">
-<section class="section-block" id="sec-fit-node">
-      <h2>Fit / Intro — Node.js + TypeScript</h2>
-<article class="question-card" id="f-node-1">
-        <div class="question-head"><h2>01. Tell me about yourself (Node / TypeScript)</h2><p>Honest: RN + Express on IELTS; PHP/MySQL still deepest SQL; no Nest estate.</p></div>
-        <div class="grid4">
-          <div class="cell row-head">Question EN</div><div class="cell row-head">Answer EN</div>
-          <div class="cell row-head">Question VI</div><div class="cell row-head">Answer VI</div>
-          <div class="cell question"><p>Tell me about yourself.</p></div>
-          <div class="cell answer"><p>I'm a fullstack engineer with about five years across web, mobile, and SaaS. The Node product I can defend is IELTS AI Tutor: I built the Expo React Native/TypeScript app on iOS and Android, and the Express API on Cloud Run — auth, practice, AI tutor, TTS/STT, IAP, progress storage. It's live on both stores. I also work PHP/MySQL at BaseVN and Akktis, so my deepest SQL and enterprise APIs are still PHP. I have not owned a Nest estate. For this role I lead with shipped TypeScript on mobile plus production Express, and I ramp Nest from that.</p></div>
-          <div class="cell question"><p>Hãy giới thiệu về bản thân.</p></div>
-          <div class="cell answer"><p>Tôi là fullstack khoảng năm năm, làm web, mobile và SaaS. Sản phẩm Node tôi defend được là IELTS AI Tutor: tôi làm app Expo React Native/TypeScript trên iOS và Android, và API Express trên Cloud Run — auth, luyện tập, AI tutor, TTS/STT, IAP, lưu tiến độ. Đã lên hai store. Tôi cũng làm PHP/MySQL ở BaseVN và Akktis, nên SQL và API enterprise sâu nhất vẫn là PHP. Tôi chưa own hệ Nest. Với role này tôi dẫn bằng TypeScript mobile đã ship cộng Express production, và ramp Nest từ đó.</p></div>
-        </div>
-        <div class="crib"><p><strong>Know:</strong> IELTS = RN + Express · PHP/MySQL deeper on SQL · no Nest estate</p></div>
-      </article>
-<article class="question-card" id="f-node-2">
-        <div class="question-head"><h2>02. Why this Node / TypeScript role?</h2><p>Generic — swap company name on the day-of pack.</p></div>
-        <div class="grid4">
-          <div class="cell row-head">Question EN</div><div class="cell row-head">Answer EN</div>
-          <div class="cell row-head">Question VI</div><div class="cell row-head">Answer VI</div>
-          <div class="cell question"><p>Why do you want this Node.js / TypeScript role?</p></div>
-          <div class="cell answer"><p>Because I already ship TypeScript on a real mobile product and Express on the API behind it. I want a role where that stack is the team's daily language — UI and APIs — not only a side project. I like owning a feature from contract to screen. Nest or a larger typed Node codebase is the deepening I want, without pretending I ran Nest at BaseVN scale.</p></div>
-          <div class="cell question"><p>Tại sao bạn muốn role Node.js / TypeScript này?</p></div>
-          <div class="cell answer"><p>Vì tôi đã ship TypeScript trên sản phẩm mobile thật và Express trên API phía sau. Tôi muốn role mà stack đó là ngôn ngữ hằng ngày của team — UI và API — không chỉ side project. Tôi thích own feature từ contract tới màn hình. Nest hoặc codebase Node typed lớn hơn là hướng đào sâu, không giả đã chạy Nest ở scale BaseVN.</p></div>
-        </div>
-        <div class="crib"><p><strong>Know:</strong> Want TS + Node as the team language · Express already shipped on IELTS</p></div>
-      </article>
-<article class="question-card" id="f-node-3">
-        <div class="question-head"><h2>03. Why should we hire you?</h2><p>Bridge RN/TS delivery + API habits.</p></div>
-        <div class="grid4">
-          <div class="cell row-head">Question EN</div><div class="cell row-head">Answer EN</div>
-          <div class="cell row-head">Question VI</div><div class="cell row-head">Answer VI</div>
-          <div class="cell question"><p>Why should we hire you?</p></div>
-          <div class="cell answer"><p>I ship both sides of a product: a published React Native app and the Express API it talks to, plus PHP/MySQL at SaaS scale. I debug with evidence — Network, logs, Langfuse traces — instead of guessing which layer is wrong. I already take changes to Cloud Run and the stores. I'll be honest about Nest and Mongo depth and fast on the parts I haven't owned yet.</p></div>
-          <div class="cell question"><p>Tại sao nên tuyển bạn?</p></div>
-          <div class="cell answer"><p>Tôi ship cả hai phía: app React Native đã publish và API Express nó gọi, cộng PHP/MySQL ở scale SaaS. Tôi debug bằng evidence — Network, log, Langfuse — không đoán tầng nào sai. Tôi đã đưa change lên Cloud Run và store. Tôi nói thẳng độ sâu Nest và Mongo và học nhanh phần chưa own.</p></div>
-        </div>
-        <div class="crib"><p><strong>Know:</strong> RN + Express shipped · evidence debug · Nest/Mongo honest ramp</p></div>
-      </article>
-<article class="question-card" id="f-node-4">
-        <div class="question-head"><h2>04. Strengths / weakness (Node–TS angle)</h2><p>Keep job-relevant.</p></div>
-        <div class="grid4">
-          <div class="cell row-head">Question EN</div><div class="cell row-head">Answer EN</div>
-          <div class="cell row-head">Question VI</div><div class="cell row-head">Answer VI</div>
-          <div class="cell question"><p>What are your strengths and one weakness for this role?</p></div>
-          <div class="cell answer"><p>Strength: I move quickly in TypeScript and React Native, and I think in systems — client state vs Express API vs data. Weakness for a Nest-first team: I have not owned a large Nest or Mongo cluster. I close that by reading your services, pairing on a small endpoint first, and mapping patterns I already use on IELTS Express and PHP APIs.</p></div>
-          <div class="cell question"><p>Điểm mạnh và một điểm yếu cho role này?</p></div>
-          <div class="cell answer"><p>Mạnh: tôi làm TypeScript và React Native nhanh, và nghĩ theo hệ thống — state client vs API Express vs data. Yếu với team Nest-first: tôi chưa own Nest lớn hoặc cluster Mongo. Tôi bù bằng đọc service sẵn có, pair một endpoint nhỏ trước, và map pattern đã dùng trên Express IELTS và PHP API.</p></div>
-        </div>
-        <div class="crib"><p><strong>Know:</strong> Don't oversell Nest/Mongo · Express on IELTS is real</p></div>
-      </article>
-<article class="question-card" id="f-node-5">
-        <div class="question-head"><h2>05. English comfort</h2><p>Same as other versions.</p></div>
-        <div class="grid4">
-          <div class="cell row-head">Question EN</div><div class="cell row-head">Answer EN</div>
-          <div class="cell row-head">Question VI</div><div class="cell row-head">Answer VI</div>
-          <div class="cell question"><p>How comfortable are you working in English?</p></div>
-          <div class="cell answer"><p>I'm comfortable reading docs, writing technical updates, and joining meetings in English. I may not be perfect, but I can explain design decisions, bugs, and tradeoffs clearly — which matters more than sounding fancy.</p></div>
-          <div class="cell question"><p>Bạn làm việc bằng tiếng Anh thế nào?</p></div>
-          <div class="cell answer"><p>Tôi ổn với đọc docs, viết cập nhật kỹ thuật và họp bằng English. Không hoàn hảo, nhưng giải thích được quyết định thiết kế, bug và tradeoff rõ — điều đó quan trọng hơn nói hoa mỹ.</p></div>
-        </div>
-      </article>
-    </section>
-    </div>
-      </section>
-      <p class="footer-note"><a href="index.html">Hub</a> · Fit versions: PHP · DevOps · Node–TS</p>
-    </main>
-  </div>
-    <aside class="parts-rail" id="parts-rail" aria-label="Parts only">
-      <div class="parts-rail-head-row">
-        <p class="parts-rail-head">Parts</p>
-        <button class="parts-rail-toggle" data-parts-rail-toggle type="button" aria-expanded="true" aria-controls="parts-rail" aria-label="Hide parts panel" title="Hide parts">
-          <svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="16" rx="2"></rect><path d="M15 4v16"></path><path d="M11 9l-3 3 3 3"></path></svg>
-        </button>
-      </div>
-      <nav class="parts-rail-list" data-parts-rail>
-        <a class="parts-rail-link" href="#sec-fit" data-part="sec-fit" data-version="php"><strong>PHP / fullstack</strong><span>5 Q</span></a>
-        <a class="parts-rail-link" href="#sec-fit-devops" data-part="sec-fit-devops" data-version="devops"><strong>DevOps</strong><span>6 Q</span></a>
-        <a class="parts-rail-link" href="#sec-fit-node" data-part="sec-fit-node" data-version="node"><strong>Node / TypeScript</strong><span>5 Q</span></a>
-      </nav>
-    </aside>
-    <button class="parts-rail-show" data-parts-rail-show type="button" hidden aria-label="Show parts panel">
-      <svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="16" rx="2"></rect><path d="M15 4v16"></path><path d="M8 9l3 3-3 3"></path></svg>
-      <span>Parts</span>
-    </button>
-  <script>
-    (function () {
-      const btn = document.querySelector('[data-theme-toggle]');
-      const root = document.documentElement;
-      let theme = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
-      root.setAttribute('data-theme', theme);
-      const sync = () => { btn.textContent = theme === 'dark' ? '☀' : '☾'; };
-      sync();
-      btn.addEventListener('click', () => {
-        theme = theme === 'dark' ? 'light' : 'dark';
-        root.setAttribute('data-theme', theme);
-        sync();
-      });
+</div>
+</details></section><section class="block" id="sec-php-and-react"><h2>PHP and React</h2><details class="q" id="fit-g1" data-blob="Tell me about yourself PHP + React fullstack — 60–90s spoken intro. Tell me about yourself. I&#x27;m a fullstack engineer with about five years building web and SaaS products. My strongest backend is PHP and MySQL — especially enterprise apps at BaseVN like HRM, tax, and hiring systems with APIs and heavy data. On the frontend I&#x27;ve worked with JavaScript, TypeScript, and React, including a React Native product. Recently I also ship PHP apps and integrations at Akktis. I&#x27;m looking for a role that&#x27;s deeply fullstack — PHP APIs plus React UI. Hãy giới thiệu về bản thân. Tôi là fullstack khoảng năm năm, xây web và SaaS. Backend mạnh nhất là PHP và MySQL — đặc biệt app enterprise ở BaseVN như HRM, thuế, tuyển dụng với API và dữ liệu lớn. Frontend tôi làm JavaScript, TypeScript và React, gồm cả sản phẩm React Native. Gần đây ở Akktis tôi cũng ship app PHP và tích hợp. Tôi muốn role fullstack đúng nghĩa — PHP API cộng React UI.">
+<summary><span class="num">03</span><span><span class="q-title">Tell me about yourself</span><span class="q-hint">PHP + React fullstack — 60–90s spoken intro.</span></span></summary>
+<div class="q-body">
+<div class="lang"><button type="button" data-set-lang="en">English</button><button type="button" data-set-lang="vi">Tiếng Việt</button></div>
+<div data-pane="en"><div class="ask"><p>Tell me about yourself.</p></div><div class="ans"><p>I'm a fullstack engineer with about five years building web and SaaS products. My strongest backend is PHP and MySQL — especially enterprise apps at BaseVN like HRM, tax, and hiring systems with APIs and heavy data. On the frontend I've worked with JavaScript, TypeScript, and React, including a React Native product. Recently I also ship PHP apps and integrations at Akktis. I'm looking for a role that's deeply fullstack — PHP APIs plus React UI.</p></div></div>
+<div data-pane="vi" hidden><div class="ask"><p>Hãy giới thiệu về bản thân.</p></div><div class="ans"><p>Tôi là fullstack khoảng năm năm, xây web và SaaS. Backend mạnh nhất là PHP và MySQL — đặc biệt app enterprise ở BaseVN như HRM, thuế, tuyển dụng với API và dữ liệu lớn. Frontend tôi làm JavaScript, TypeScript và React, gồm cả sản phẩm React Native. Gần đây ở Akktis tôi cũng ship app PHP và tích hợp. Tôi muốn role fullstack đúng nghĩa — PHP API cộng React UI.</p></div></div>
 
-      // Sticky TOC scroll-spy
-      const tocRoot = document.querySelector('[data-side-toc]');
-      const sideToc = document.getElementById('side-toc');
-      const backdrop = document.querySelector('[data-toc-backdrop]');
-      const openBtn = document.querySelector('[data-toc-open]');
-      if (!tocRoot) return;
+</div>
+</details><details class="q" id="fit-g3" data-blob="Why should we hire you? Bridge PHP SaaS + React delivery. Why should we hire you? I can own features end to end — backend data and APIs in PHP, then a React/TypeScript client that consumes them. I&#x27;ve shipped in real enterprise SaaS with integrations, performance constraints, and production support. I communicate clearly in English, document workflows, and I debug across FE and BE instead of guessing. Tại sao nên tuyển bạn? Tôi own được feature end-to-end — data/API PHP phía backend, rồi client React/TypeScript gọi API đó. Tôi đã ship SaaS enterprise thật với tích hợp, ràng buộc hiệu năng và support production. Tôi giao tiếp English rõ, viết workflow, và debug xuyên FE–BE thay vì đoán mò.">
+<summary><span class="num">04</span><span><span class="q-title">Why should we hire you?</span><span class="q-hint">Bridge PHP SaaS + React delivery.</span></span></summary>
+<div class="q-body">
+<div class="lang"><button type="button" data-set-lang="en">English</button><button type="button" data-set-lang="vi">Tiếng Việt</button></div>
+<div data-pane="en"><div class="ask"><p>Why should we hire you?</p></div><div class="ans"><p>I can own features end to end — backend data and APIs in PHP, then a React/TypeScript client that consumes them. I've shipped in real enterprise SaaS with integrations, performance constraints, and production support. I communicate clearly in English, document workflows, and I debug across FE and BE instead of guessing.</p></div></div>
+<div data-pane="vi" hidden><div class="ask"><p>Tại sao nên tuyển bạn?</p></div><div class="ans"><p>Tôi own được feature end-to-end — data/API PHP phía backend, rồi client React/TypeScript gọi API đó. Tôi đã ship SaaS enterprise thật với tích hợp, ràng buộc hiệu năng và support production. Tôi giao tiếp English rõ, viết workflow, và debug xuyên FE–BE thay vì đoán mò.</p></div></div>
 
-      const links = Array.from(tocRoot.querySelectorAll('.side-toc-link'));
-      const partEls = Array.from(tocRoot.querySelectorAll('.side-toc-part'));
-      const partsRailLinks = Array.from(document.querySelectorAll('[data-parts-rail] .parts-rail-link'));
-      const idToLink = new Map(links.map((a) => [a.getAttribute('data-target'), a]));
-      const targets = links
-        .map((a) => document.getElementById(a.getAttribute('data-target')))
-        .filter(Boolean);
+</div>
+</details><details class="q" id="fit-g4" data-blob="Strengths / weakness Keep job-relevant. What are your strengths and one weakness? My main strength is deep, practical problem-solving. When something breaks, I dig into the real root cause — reproduce the bug, read logs and the data path, understand the logic — then fix it properly instead of guessing. I think in systems: frontend vs backend, contract vs UI, data vs code. Another strength is I adapt to new tools and technologies quickly — new library, new framework piece, new workflow — I learn enough to ship, then deepen as I go. Weakness: I can spend extra time polishing a fix for maintainability. I&#x27;ve learned to ask what&#x27;s the smallest safe fix for the business impact first, then improve. Điểm mạnh và một điểm yếu? Điểm mạnh chính của tôi là giải quyết vấn đề thực tế, đi sâu. Khi có bug tôi không đoán — reproduce, đọc log và luồng data, hiểu logic gốc, rồi mới fix đúng. Tôi nghĩ theo hệ thống: FE hay BE, contract hay UI, data hay code. Điểm mạnh nữa là thích nghi công nghệ và tool mới rất nhanh — thư viện mới, phần framework mới, workflow mới — học đủ để ship, rồi đào sâu dần. Yếu: đôi khi dành thêm thời gian polish fix cho dễ maintain. Tôi đã học hỏi impact business trước, fix nhỏ nhất nhưng an toàn, rồi cải thiện sau.">
+<summary><span class="num">05</span><span><span class="q-title">Strengths / weakness</span><span class="q-hint">Keep job-relevant.</span></span></summary>
+<div class="q-body">
+<div class="lang"><button type="button" data-set-lang="en">English</button><button type="button" data-set-lang="vi">Tiếng Việt</button></div>
+<div data-pane="en"><div class="ask"><p>What are your strengths and one weakness?</p></div><div class="ans"><p>My main strength is deep, practical problem-solving. When something breaks, I dig into the real root cause — reproduce the bug, read logs and the data path, understand the logic — then fix it properly instead of guessing. I think in systems: frontend vs backend, contract vs UI, data vs code. Another strength is I adapt to new tools and technologies quickly — new library, new framework piece, new workflow — I learn enough to ship, then deepen as I go. Weakness: I can spend extra time polishing a fix for maintainability. I've learned to ask what's the smallest safe fix for the business impact first, then improve.</p></div></div>
+<div data-pane="vi" hidden><div class="ask"><p>Điểm mạnh và một điểm yếu?</p></div><div class="ans"><p>Điểm mạnh chính của tôi là giải quyết vấn đề thực tế, đi sâu. Khi có bug tôi không đoán — reproduce, đọc log và luồng data, hiểu logic gốc, rồi mới fix đúng. Tôi nghĩ theo hệ thống: FE hay BE, contract hay UI, data hay code. Điểm mạnh nữa là thích nghi công nghệ và tool mới rất nhanh — thư viện mới, phần framework mới, workflow mới — học đủ để ship, rồi đào sâu dần. Yếu: đôi khi dành thêm thời gian polish fix cho dễ maintain. Tôi đã học hỏi impact business trước, fix nhỏ nhất nhưng an toàn, rồi cải thiện sau.</p></div></div>
 
-      let activeId = null;
-      const setActive = (id) => {
-        if (!id || id === activeId) return;
-        activeId = id;
-        links.forEach((a) => a.classList.toggle('is-active', a.getAttribute('data-target') === id));
-        const active = idToLink.get(id);
-        const partId = active ? active.getAttribute('data-part') : null;
-        partEls.forEach((p) => p.classList.toggle('is-active', p.getAttribute('data-part') === partId));
-        partsRailLinks.forEach((a) => a.classList.toggle('is-active', a.getAttribute('data-part') === partId));
-        if (active && sideToc) {
-          const aTop = active.offsetTop;
-          const aBottom = aTop + active.offsetHeight;
-          const viewTop = sideToc.scrollTop;
-          const viewBottom = viewTop + sideToc.clientHeight;
-          if (aTop < viewTop + 40) sideToc.scrollTop = Math.max(0, aTop - 48);
-          else if (aBottom > viewBottom - 40) sideToc.scrollTop = aBottom - sideToc.clientHeight + 48;
-        }
-      };
+</div>
+</details><details class="q" id="fit-g5" data-blob="English comfort They require good English. How comfortable are you working in English? I&#x27;m comfortable reading docs, writing technical updates, and joining meetings in English. I may not be perfect, but I can explain design decisions, bugs, and tradeoffs clearly — which matters more than sounding fancy. Bạn làm việc bằng tiếng Anh thế nào? Tôi ổn với đọc docs, viết cập nhật kỹ thuật và họp bằng English. Không hoàn hảo, nhưng giải thích được quyết định thiết kế, bug và tradeoff rõ — điều đó quan trọng hơn nói hoa mỹ.">
+<summary><span class="num">06</span><span><span class="q-title">English comfort</span><span class="q-hint">They require good English.</span></span></summary>
+<div class="q-body">
+<div class="lang"><button type="button" data-set-lang="en">English</button><button type="button" data-set-lang="vi">Tiếng Việt</button></div>
+<div data-pane="en"><div class="ask"><p>How comfortable are you working in English?</p></div><div class="ans"><p>I'm comfortable reading docs, writing technical updates, and joining meetings in English. I may not be perfect, but I can explain design decisions, bugs, and tradeoffs clearly — which matters more than sounding fancy.</p></div></div>
+<div data-pane="vi" hidden><div class="ask"><p>Bạn làm việc bằng tiếng Anh thế nào?</p></div><div class="ans"><p>Tôi ổn với đọc docs, viết cập nhật kỹ thuật và họp bằng English. Không hoàn hảo, nhưng giải thích được quyết định thiết kế, bug và tradeoff rõ — điều đó quan trọng hơn nói hoa mỹ.</p></div></div>
 
-      const onScroll = () => {
-        const marker = 120; // below sticky topbar
-        let current = targets[0] ? targets[0].id : null;
-        for (const el of targets) {
-          const top = el.getBoundingClientRect().top;
-          if (top <= marker) current = el.id;
-          else break;
-        }
-        setActive(current);
-      };
+</div>
+</details><details class="q" id="fit-f-php-why" data-blob="Why this PHP + React role? Generic — company-specific &#x27;why us&#x27; lives on the day-of pack. Why do you want this Fullstack PHP + React role? Because the work matches how I want to work: design and maintain apps with PHP and React, build APIs, polish UI, optimize both sides, and fix production issues properly. I want to deepen enterprise React + TypeScript while keeping strong PHP backend ownership. For why this company specifically, I tailor that on the day from the JD. Tại sao bạn muốn role Fullstack PHP + React này? Vì việc khớp cách tôi muốn làm: thiết kế/maintain app với PHP và React, dựng API, làm UI tốt, tối ưu cả hai phía, và xử lý production đúng cách. Tôi muốn đào sâu React + TypeScript enterprise trong khi vẫn giữ ownership PHP backend. Lý do chọn đúng công ty này tôi chỉnh theo JD vào ngày interview. Know: Stack fit here · company why on the day-of page">
+<summary><span class="num">07</span><span><span class="q-title">Why this PHP + React role?</span><span class="q-hint">Generic — company-specific &#x27;why us&#x27; lives on the day-of pack.</span></span></summary>
+<div class="q-body">
+<div class="lang"><button type="button" data-set-lang="en">English</button><button type="button" data-set-lang="vi">Tiếng Việt</button></div>
+<div data-pane="en"><div class="ask"><p>Why do you want this Fullstack PHP + React role?</p></div><div class="ans"><p>Because the work matches how I want to work: design and maintain apps with PHP and React, build APIs, polish UI, optimize both sides, and fix production issues properly. I want to deepen enterprise React + TypeScript while keeping strong PHP backend ownership. For why this company specifically, I tailor that on the day from the JD.</p></div></div>
+<div data-pane="vi" hidden><div class="ask"><p>Tại sao bạn muốn role Fullstack PHP + React này?</p></div><div class="ans"><p>Vì việc khớp cách tôi muốn làm: thiết kế/maintain app với PHP và React, dựng API, làm UI tốt, tối ưu cả hai phía, và xử lý production đúng cách. Tôi muốn đào sâu React + TypeScript enterprise trong khi vẫn giữ ownership PHP backend. Lý do chọn đúng công ty này tôi chỉnh theo JD vào ngày interview.</p></div></div>
+<div class="notes"><p><strong>Know:</strong> Stack fit here · company why on the day-of page</p></div>
+</div>
+</details></section><section class="block" id="sec-devops"><h2>DevOps</h2><details class="q" id="fit-f-do-1" data-blob="Tell me about yourself (DevOps) 60–90s spoken intro Tell me about yourself. I&#x27;m a full-stack engineer who also owns delivery and ops. At Akktis I work across Linux servers over SSH — Ubuntu and Debian — CI/CD for mobile and web across environments, and Google Cloud: Cloud Run, Cloud SQL, and Storage. I also operate LiteSpeed and Apache for PHP and CMS apps, and I care about docs and basic hardening so systems are safer to hand off. Independently I shipped IELTS AI Tutor — a React Native and TypeScript app on iOS and Android with a Cloud Run backend, live on Google Play and the App Store. I&#x27;m looking for a DevOps-focused role where I can deepen that spine: pipelines, cloud deploys, and reliable Linux operations. Hãy giới thiệu về bản thân. Tôi là full-stack kiêm delivery và ops. Ở Akktis tôi làm Linux qua SSH — Ubuntu và Debian — CI/CD cho mobile và web multi-env, và Google Cloud: Cloud Run, Cloud SQL và Storage. Tôi cũng operate LiteSpeed và Apache cho app PHP/CMS, và quan tâm docs cùng harden cơ bản để handoff an toàn hơn. Bên cạnh đó tôi ship IELTS AI Tutor — app React Native/TypeScript trên iOS và Android với backend Cloud Run, đã lên Google Play và App Store. Tôi muốn role nghiêng DevOps để đào sâu spine đó: pipeline, deploy cloud và Linux ops ổn định.">
+<summary><span class="num">08</span><span><span class="q-title">Tell me about yourself (DevOps)</span><span class="q-hint">60–90s spoken intro</span></span></summary>
+<div class="q-body">
+<div class="lang"><button type="button" data-set-lang="en">English</button><button type="button" data-set-lang="vi">Tiếng Việt</button></div>
+<div data-pane="en"><div class="ask"><p>Tell me about yourself.</p></div><div class="ans"><p>I'm a full-stack engineer who also owns delivery and ops. At Akktis I work across Linux servers over SSH — Ubuntu and Debian — CI/CD for mobile and web across environments, and Google Cloud: Cloud Run, Cloud SQL, and Storage. I also operate LiteSpeed and Apache for PHP and CMS apps, and I care about docs and basic hardening so systems are safer to hand off. Independently I shipped IELTS AI Tutor — a React Native and TypeScript app on iOS and Android with a Cloud Run backend, live on Google Play and the App Store. I'm looking for a DevOps-focused role where I can deepen that spine: pipelines, cloud deploys, and reliable Linux operations.</p></div></div>
+<div data-pane="vi" hidden><div class="ask"><p>Hãy giới thiệu về bản thân.</p></div><div class="ans"><p>Tôi là full-stack kiêm delivery và ops. Ở Akktis tôi làm Linux qua SSH — Ubuntu và Debian — CI/CD cho mobile và web multi-env, và Google Cloud: Cloud Run, Cloud SQL và Storage. Tôi cũng operate LiteSpeed và Apache cho app PHP/CMS, và quan tâm docs cùng harden cơ bản để handoff an toàn hơn. Bên cạnh đó tôi ship IELTS AI Tutor — app React Native/TypeScript trên iOS và Android với backend Cloud Run, đã lên Google Play và App Store. Tôi muốn role nghiêng DevOps để đào sâu spine đó: pipeline, deploy cloud và Linux ops ổn định.</p></div></div>
 
+</div>
+</details><details class="q" id="fit-f-do-2" data-blob="Strengths for a DevOps role Concrete, not buzzwords What are your strengths? First, I bridge app and ops — I can read application failures and infra failures in the same incident. Second, I have hands-on delivery paths I&#x27;ve actually run: mobile CI toward store builds, Cloud Build into Cloud Run, and classic VM web servers with Nginx/Apache/LiteSpeed. Third, I debug with evidence — pipeline logs, Cloud Run revisions, SSH logs and disk — then mitigate first and document so the gap doesn&#x27;t repeat. I&#x27;m honest about depth: Cloud Run and Linux VMs are my spine; I don&#x27;t pretend deep Kubernetes HA if that&#x27;s not what I&#x27;ve operated day to day. Điểm mạnh của bạn là gì? Một, tôi bridge app và ops — đọc được lỗi application và lỗi infra trong cùng incident. Hai, tôi có delivery path thật: CI mobile tới store build, Cloud Build vào Cloud Run, và classic VM web server với Nginx/Apache/LiteSpeed. Ba, tôi debug bằng evidence — pipeline log, revision Cloud Run, SSH log và disk — mitigate trước rồi document để không lặp. Tôi trung thực về độ sâu: Cloud Run và Linux VM là spine; tôi không claim sâu Kubernetes HA nếu đó không phải việc hằng ngày.">
+<summary><span class="num">09</span><span><span class="q-title">Strengths for a DevOps role</span><span class="q-hint">Concrete, not buzzwords</span></span></summary>
+<div class="q-body">
+<div class="lang"><button type="button" data-set-lang="en">English</button><button type="button" data-set-lang="vi">Tiếng Việt</button></div>
+<div data-pane="en"><div class="ask"><p>What are your strengths?</p></div><div class="ans"><p>First, I bridge app and ops — I can read application failures and infra failures in the same incident. Second, I have hands-on delivery paths I've actually run: mobile CI toward store builds, Cloud Build into Cloud Run, and classic VM web servers with Nginx/Apache/LiteSpeed. Third, I debug with evidence — pipeline logs, Cloud Run revisions, SSH logs and disk — then mitigate first and document so the gap doesn't repeat. I'm honest about depth: Cloud Run and Linux VMs are my spine; I don't pretend deep Kubernetes HA if that's not what I've operated day to day.</p></div></div>
+<div data-pane="vi" hidden><div class="ask"><p>Điểm mạnh của bạn là gì?</p></div><div class="ans"><p>Một, tôi bridge app và ops — đọc được lỗi application và lỗi infra trong cùng incident. Hai, tôi có delivery path thật: CI mobile tới store build, Cloud Build vào Cloud Run, và classic VM web server với Nginx/Apache/LiteSpeed. Ba, tôi debug bằng evidence — pipeline log, revision Cloud Run, SSH log và disk — mitigate trước rồi document để không lặp. Tôi trung thực về độ sâu: Cloud Run và Linux VM là spine; tôi không claim sâu Kubernetes HA nếu đó không phải việc hằng ngày.</p></div></div>
 
-      window.addEventListener('scroll', onScroll, { passive: true });
-      onScroll();
+</div>
+</details><details class="q" id="fit-f-do-3" data-blob="Tool walkthrough Stack I can defend Walk me through your DevOps tool stack. Source control is Git. CI is Cloud Build or a generic CI runner on push and tags — build, test when we have them, package artifacts. For backends I Dockerize, push to Artifact Registry, and deploy Cloud Run with env and secrets, often wired to Cloud SQL and Cloud Storage. For mobile, React Native builds produce Android AAB/APK and iOS IPA concepts with signing material kept in secrets, then artifacts go to storage or store tracks. For classic web I SSH into Ubuntu/Debian, manage LiteSpeed or Apache or Nginx, firewall and TLS, and keep short runbooks. Day to day observability is Cloud Logging on Run and system/web logs on VMs. Hãy mô tả stack DevOps của bạn. Source control là Git. CI là Cloud Build hoặc CI runner generic theo push và tag — build, test khi có, package artifact. Backend tôi Dockerize, push Artifact Registry, deploy Cloud Run với env và secret, thường wire Cloud SQL và Cloud Storage. Mobile, build React Native ra AAB/APK Android và khái niệm IPA iOS, signing nằm trong secret, artifact lên storage hoặc store track. Classic web tôi SSH Ubuntu/Debian, quản LiteSpeed hoặc Apache hoặc Nginx, firewall và TLS, giữ runbook ngắn. Observability hằng ngày là Cloud Logging trên Run và system/web log trên VM.">
+<summary><span class="num">10</span><span><span class="q-title">Tool walkthrough</span><span class="q-hint">Stack I can defend</span></span></summary>
+<div class="q-body">
+<div class="lang"><button type="button" data-set-lang="en">English</button><button type="button" data-set-lang="vi">Tiếng Việt</button></div>
+<div data-pane="en"><div class="ask"><p>Walk me through your DevOps tool stack.</p></div><div class="ans"><p>Source control is Git. CI is Cloud Build or a generic CI runner on push and tags — build, test when we have them, package artifacts. For backends I Dockerize, push to Artifact Registry, and deploy Cloud Run with env and secrets, often wired to Cloud SQL and Cloud Storage. For mobile, React Native builds produce Android AAB/APK and iOS IPA concepts with signing material kept in secrets, then artifacts go to storage or store tracks. For classic web I SSH into Ubuntu/Debian, manage LiteSpeed or Apache or Nginx, firewall and TLS, and keep short runbooks. Day to day observability is Cloud Logging on Run and system/web logs on VMs.</p></div></div>
+<div data-pane="vi" hidden><div class="ask"><p>Hãy mô tả stack DevOps của bạn.</p></div><div class="ans"><p>Source control là Git. CI là Cloud Build hoặc CI runner generic theo push và tag — build, test khi có, package artifact. Backend tôi Dockerize, push Artifact Registry, deploy Cloud Run với env và secret, thường wire Cloud SQL và Cloud Storage. Mobile, build React Native ra AAB/APK Android và khái niệm IPA iOS, signing nằm trong secret, artifact lên storage hoặc store track. Classic web tôi SSH Ubuntu/Debian, quản LiteSpeed hoặc Apache hoặc Nginx, firewall và TLS, giữ runbook ngắn. Observability hằng ngày là Cloud Logging trên Run và system/web log trên VM.</p></div></div>
 
-      const closeMobile = () => {
-        sideToc && sideToc.classList.remove('is-open');
-        if (backdrop) {
-          backdrop.classList.remove('is-open');
-          backdrop.hidden = true;
-        }
-      };
-      const openMobile = () => {
-        sideToc && sideToc.classList.add('is-open');
-        if (backdrop) {
-          backdrop.hidden = false;
-          backdrop.classList.add('is-open');
-        }
-      };
-      openBtn && openBtn.addEventListener('click', openMobile);
-      backdrop && backdrop.addEventListener('click', closeMobile);
-      tocRoot.addEventListener('click', (e) => {
-        const a = e.target.closest('a.side-toc-link, a.side-toc-part-link');
-        if (!a) return;
-        if (window.matchMedia('(max-width: 1100px)').matches) {
-          setTimeout(closeMobile, 50);
-        }
-      });
-    })();
-  
-      (function versionTabs() {
-        const tabs = Array.from(document.querySelectorAll('[data-version-tab]'));
-        if (!tabs.length) return;
-        const apply = (v) => {
-          tabs.forEach((b) => b.classList.toggle('is-on', b.getAttribute('data-version-tab') === v));
-          document.querySelectorAll('[data-version-panel]').forEach((p) => {
-            p.hidden = p.getAttribute('data-version-panel') !== v;
-          });
-          document.querySelectorAll('[data-version]').forEach((el) => {
-            const dv = el.getAttribute('data-version');
-            el.hidden = !(dv === 'all' || dv === v);
-          });
-        };
-        const fromHash = () => {
-          const h = (location.hash || '').replace('#', '');
-          if (['php', 'devops', 'node'].includes(h)) return h;
-          return 'php';
-        };
-        tabs.forEach((b) => b.addEventListener('click', () => {
-          const v = b.getAttribute('data-version-tab');
-          apply(v);
-          history.replaceState(null, '', '#' + v);
-        }));
-        apply(fromHash());
-        window.addEventListener('hashchange', () => apply(fromHash()));
-      })();
+</div>
+</details><details class="q" id="fit-f-do-4" data-blob="Why a DevOps role? Generic company — honest motivation Why do you want this DevOps role? Because I already enjoy the ownership from commit to a healthy environment, and I want that to be the center of my work — not only a side of full-stack. Your role is about reliable delivery: CI/CD, cloud or Linux operations, and helping developers ship safely. That matches what I do at Akktis and on IELTS AI Tutor, and I want to go deeper on pipeline quality, environment promotion, and operational hygiene in a team that takes infra seriously. Tại sao bạn muốn role DevOps này? Vì tôi đã thích ownership từ commit đến env healthy, và muốn đó là trọng tâm công việc — không chỉ phần phụ của full-stack. Role của các bạn là delivery tin cậy: CI/CD, cloud hoặc Linux ops, và giúp developer ship an toàn. Điều đó khớp việc tôi làm ở Akktis và IELTS AI Tutor, và tôi muốn đào sâu chất lượng pipeline, promote env và ops hygiene trong team coi trọng infra.">
+<summary><span class="num">11</span><span><span class="q-title">Why a DevOps role?</span><span class="q-hint">Generic company — honest motivation</span></span></summary>
+<div class="q-body">
+<div class="lang"><button type="button" data-set-lang="en">English</button><button type="button" data-set-lang="vi">Tiếng Việt</button></div>
+<div data-pane="en"><div class="ask"><p>Why do you want this DevOps role?</p></div><div class="ans"><p>Because I already enjoy the ownership from commit to a healthy environment, and I want that to be the center of my work — not only a side of full-stack. Your role is about reliable delivery: CI/CD, cloud or Linux operations, and helping developers ship safely. That matches what I do at Akktis and on IELTS AI Tutor, and I want to go deeper on pipeline quality, environment promotion, and operational hygiene in a team that takes infra seriously.</p></div></div>
+<div data-pane="vi" hidden><div class="ask"><p>Tại sao bạn muốn role DevOps này?</p></div><div class="ans"><p>Vì tôi đã thích ownership từ commit đến env healthy, và muốn đó là trọng tâm công việc — không chỉ phần phụ của full-stack. Role của các bạn là delivery tin cậy: CI/CD, cloud hoặc Linux ops, và giúp developer ship an toàn. Điều đó khớp việc tôi làm ở Akktis và IELTS AI Tutor, và tôi muốn đào sâu chất lượng pipeline, promote env và ops hygiene trong team coi trọng infra.</p></div></div>
 
-    </script>
+</div>
+</details><details class="q" id="fit-f-do-5" data-blob="Akktis day-to-day What ops looks like What does a typical ops-heavy day look like for you? It depends on the project, but usually I&#x27;m either unblocking a release or keeping an environment healthy. That means checking CI status for web or mobile, SSH into a Linux box to read logs or restart a service, verifying a Cloud Run revision after deploy, or fixing env and connectivity to Cloud SQL or Storage. I also touch LiteSpeed or Apache when a PHP or CMS site misbehaves, and I update docs when I find tribal knowledge that would hurt the next person. Một ngày nghiêng ops của bạn trông thế nào? Tùy project, nhưng thường tôi hoặc unblock release, hoặc giữ env healthy. Tức là check status CI web hoặc mobile, SSH vào Linux đọc log hoặc restart service, verify revision Cloud Run sau deploy, hoặc fix env và connectivity tới Cloud SQL hay Storage. Tôi cũng đụng LiteSpeed hoặc Apache khi site PHP/CMS lỗi, và update docs khi gặp tribal knowledge — dễ hại người sau.">
+<summary><span class="num">12</span><span><span class="q-title">Akktis day-to-day</span><span class="q-hint">What ops looks like</span></span></summary>
+<div class="q-body">
+<div class="lang"><button type="button" data-set-lang="en">English</button><button type="button" data-set-lang="vi">Tiếng Việt</button></div>
+<div data-pane="en"><div class="ask"><p>What does a typical ops-heavy day look like for you?</p></div><div class="ans"><p>It depends on the project, but usually I'm either unblocking a release or keeping an environment healthy. That means checking CI status for web or mobile, SSH into a Linux box to read logs or restart a service, verifying a Cloud Run revision after deploy, or fixing env and connectivity to Cloud SQL or Storage. I also touch LiteSpeed or Apache when a PHP or CMS site misbehaves, and I update docs when I find tribal knowledge that would hurt the next person.</p></div></div>
+<div data-pane="vi" hidden><div class="ask"><p>Một ngày nghiêng ops của bạn trông thế nào?</p></div><div class="ans"><p>Tùy project, nhưng thường tôi hoặc unblock release, hoặc giữ env healthy. Tức là check status CI web hoặc mobile, SSH vào Linux đọc log hoặc restart service, verify revision Cloud Run sau deploy, hoặc fix env và connectivity tới Cloud SQL hay Storage. Tôi cũng đụng LiteSpeed hoặc Apache khi site PHP/CMS lỗi, và update docs khi gặp tribal knowledge — dễ hại người sau.</p></div></div>
+
+</div>
+</details><details class="q" id="fit-f-do-6" data-blob="Weakness (honest) Time-box vs polish What&#x27;s a weakness relevant to this job? I can over-invest in polishing a pipeline or runbook when a smaller safe mitigation would unblock the team sooner. I&#x27;ve learned to time-box: ship the safe fix or rollback first, communicate status, then harden the checklist so we don&#x27;t pay twice. Một điểm yếu liên quan job này? Tôi đôi khi invest quá nhiều để polish pipeline hoặc runbook trong khi một mitigation nhỏ an toàn đã unblock được team. Tôi đã học time-box: ship fix an toàn hoặc rollback trước, báo status, rồi harden checklist để không trả giá hai lần.">
+<summary><span class="num">13</span><span><span class="q-title">Weakness (honest)</span><span class="q-hint">Time-box vs polish</span></span></summary>
+<div class="q-body">
+<div class="lang"><button type="button" data-set-lang="en">English</button><button type="button" data-set-lang="vi">Tiếng Việt</button></div>
+<div data-pane="en"><div class="ask"><p>What's a weakness relevant to this job?</p></div><div class="ans"><p>I can over-invest in polishing a pipeline or runbook when a smaller safe mitigation would unblock the team sooner. I've learned to time-box: ship the safe fix or rollback first, communicate status, then harden the checklist so we don't pay twice.</p></div></div>
+<div data-pane="vi" hidden><div class="ask"><p>Một điểm yếu liên quan job này?</p></div><div class="ans"><p>Tôi đôi khi invest quá nhiều để polish pipeline hoặc runbook trong khi một mitigation nhỏ an toàn đã unblock được team. Tôi đã học time-box: ship fix an toàn hoặc rollback trước, báo status, rồi harden checklist để không trả giá hai lần.</p></div></div>
+
+</div>
+</details></section><section class="block" id="sec-node-and-typescript"><h2>Node and TypeScript</h2><details class="q" id="fit-f-node-1" data-blob="Tell me about yourself (Node / TypeScript) Honest: RN + Express on IELTS; PHP/MySQL still deepest SQL; no Nest estate. Tell me about yourself. I&#x27;m a fullstack engineer with about five years across web, mobile, and SaaS. The Node product I can defend is IELTS AI Tutor: I built the Expo React Native/TypeScript app on iOS and Android, and the Express API on Cloud Run — auth, practice, AI tutor, TTS/STT, IAP, progress storage. It&#x27;s live on both stores. I also work PHP/MySQL at BaseVN and Akktis, so my deepest SQL and enterprise APIs are still PHP. I have not owned a Nest estate. For this role I lead with shipped TypeScript on mobile plus production Express, and I ramp Nest from that. Hãy giới thiệu về bản thân. Tôi là fullstack khoảng năm năm, làm web, mobile và SaaS. Sản phẩm Node tôi defend được là IELTS AI Tutor: tôi làm app Expo React Native/TypeScript trên iOS và Android, và API Express trên Cloud Run — auth, luyện tập, AI tutor, TTS/STT, IAP, lưu tiến độ. Đã lên hai store. Tôi cũng làm PHP/MySQL ở BaseVN và Akktis, nên SQL và API enterprise sâu nhất vẫn là PHP. Tôi chưa own hệ Nest. Với role này tôi dẫn bằng TypeScript mobile đã ship cộng Express production, và ramp Nest từ đó. Know: IELTS = RN + Express · PHP/MySQL deeper on SQL · no Nest estate">
+<summary><span class="num">14</span><span><span class="q-title">Tell me about yourself (Node / TypeScript)</span><span class="q-hint">Honest: RN + Express on IELTS; PHP/MySQL still deepest SQL; no Nest estate.</span></span></summary>
+<div class="q-body">
+<div class="lang"><button type="button" data-set-lang="en">English</button><button type="button" data-set-lang="vi">Tiếng Việt</button></div>
+<div data-pane="en"><div class="ask"><p>Tell me about yourself.</p></div><div class="ans"><p>I'm a fullstack engineer with about five years across web, mobile, and SaaS. The Node product I can defend is IELTS AI Tutor: I built the Expo React Native/TypeScript app on iOS and Android, and the Express API on Cloud Run — auth, practice, AI tutor, TTS/STT, IAP, progress storage. It's live on both stores. I also work PHP/MySQL at BaseVN and Akktis, so my deepest SQL and enterprise APIs are still PHP. I have not owned a Nest estate. For this role I lead with shipped TypeScript on mobile plus production Express, and I ramp Nest from that.</p></div></div>
+<div data-pane="vi" hidden><div class="ask"><p>Hãy giới thiệu về bản thân.</p></div><div class="ans"><p>Tôi là fullstack khoảng năm năm, làm web, mobile và SaaS. Sản phẩm Node tôi defend được là IELTS AI Tutor: tôi làm app Expo React Native/TypeScript trên iOS và Android, và API Express trên Cloud Run — auth, luyện tập, AI tutor, TTS/STT, IAP, lưu tiến độ. Đã lên hai store. Tôi cũng làm PHP/MySQL ở BaseVN và Akktis, nên SQL và API enterprise sâu nhất vẫn là PHP. Tôi chưa own hệ Nest. Với role này tôi dẫn bằng TypeScript mobile đã ship cộng Express production, và ramp Nest từ đó.</p></div></div>
+<div class="notes"><p><strong>Know:</strong> IELTS = RN + Express · PHP/MySQL deeper on SQL · no Nest estate</p></div>
+</div>
+</details><details class="q" id="fit-f-node-2" data-blob="Why this Node / TypeScript role? Generic — swap company name on the day-of pack. Why do you want this Node.js / TypeScript role? Because I already ship TypeScript on a real mobile product and Express on the API behind it. I want a role where that stack is the team&#x27;s daily language — UI and APIs — not only a side project. I like owning a feature from contract to screen. Nest or a larger typed Node codebase is the deepening I want, without pretending I ran Nest at BaseVN scale. Tại sao bạn muốn role Node.js / TypeScript này? Vì tôi đã ship TypeScript trên sản phẩm mobile thật và Express trên API phía sau. Tôi muốn role mà stack đó là ngôn ngữ hằng ngày của team — UI và API — không chỉ side project. Tôi thích own feature từ contract tới màn hình. Nest hoặc codebase Node typed lớn hơn là hướng đào sâu, không giả đã chạy Nest ở scale BaseVN. Know: Want TS + Node as the team language · Express already shipped on IELTS">
+<summary><span class="num">15</span><span><span class="q-title">Why this Node / TypeScript role?</span><span class="q-hint">Generic — swap company name on the day-of pack.</span></span></summary>
+<div class="q-body">
+<div class="lang"><button type="button" data-set-lang="en">English</button><button type="button" data-set-lang="vi">Tiếng Việt</button></div>
+<div data-pane="en"><div class="ask"><p>Why do you want this Node.js / TypeScript role?</p></div><div class="ans"><p>Because I already ship TypeScript on a real mobile product and Express on the API behind it. I want a role where that stack is the team's daily language — UI and APIs — not only a side project. I like owning a feature from contract to screen. Nest or a larger typed Node codebase is the deepening I want, without pretending I ran Nest at BaseVN scale.</p></div></div>
+<div data-pane="vi" hidden><div class="ask"><p>Tại sao bạn muốn role Node.js / TypeScript này?</p></div><div class="ans"><p>Vì tôi đã ship TypeScript trên sản phẩm mobile thật và Express trên API phía sau. Tôi muốn role mà stack đó là ngôn ngữ hằng ngày của team — UI và API — không chỉ side project. Tôi thích own feature từ contract tới màn hình. Nest hoặc codebase Node typed lớn hơn là hướng đào sâu, không giả đã chạy Nest ở scale BaseVN.</p></div></div>
+<div class="notes"><p><strong>Know:</strong> Want TS + Node as the team language · Express already shipped on IELTS</p></div>
+</div>
+</details><details class="q" id="fit-f-node-3" data-blob="Why should we hire you? Bridge RN/TS delivery + API habits. Why should we hire you? I ship both sides of a product: a published React Native app and the Express API it talks to, plus PHP/MySQL at SaaS scale. I debug with evidence — Network, logs, Langfuse traces — instead of guessing which layer is wrong. I already take changes to Cloud Run and the stores. I&#x27;ll be honest about Nest and Mongo depth and fast on the parts I haven&#x27;t owned yet. Tại sao nên tuyển bạn? Tôi ship cả hai phía: app React Native đã publish và API Express nó gọi, cộng PHP/MySQL ở scale SaaS. Tôi debug bằng evidence — Network, log, Langfuse — không đoán tầng nào sai. Tôi đã đưa change lên Cloud Run và store. Tôi nói thẳng độ sâu Nest và Mongo và học nhanh phần chưa own. Know: RN + Express shipped · evidence debug · Nest/Mongo honest ramp">
+<summary><span class="num">16</span><span><span class="q-title">Why should we hire you?</span><span class="q-hint">Bridge RN/TS delivery + API habits.</span></span></summary>
+<div class="q-body">
+<div class="lang"><button type="button" data-set-lang="en">English</button><button type="button" data-set-lang="vi">Tiếng Việt</button></div>
+<div data-pane="en"><div class="ask"><p>Why should we hire you?</p></div><div class="ans"><p>I ship both sides of a product: a published React Native app and the Express API it talks to, plus PHP/MySQL at SaaS scale. I debug with evidence — Network, logs, Langfuse traces — instead of guessing which layer is wrong. I already take changes to Cloud Run and the stores. I'll be honest about Nest and Mongo depth and fast on the parts I haven't owned yet.</p></div></div>
+<div data-pane="vi" hidden><div class="ask"><p>Tại sao nên tuyển bạn?</p></div><div class="ans"><p>Tôi ship cả hai phía: app React Native đã publish và API Express nó gọi, cộng PHP/MySQL ở scale SaaS. Tôi debug bằng evidence — Network, log, Langfuse — không đoán tầng nào sai. Tôi đã đưa change lên Cloud Run và store. Tôi nói thẳng độ sâu Nest và Mongo và học nhanh phần chưa own.</p></div></div>
+<div class="notes"><p><strong>Know:</strong> RN + Express shipped · evidence debug · Nest/Mongo honest ramp</p></div>
+</div>
+</details><details class="q" id="fit-f-node-4" data-blob="Strengths / weakness (Node–TS angle) Keep job-relevant. What are your strengths and one weakness for this role? Strength: I move quickly in TypeScript and React Native, and I think in systems — client state vs Express API vs data. Weakness for a Nest-first team: I have not owned a large Nest or Mongo cluster. I close that by reading your services, pairing on a small endpoint first, and mapping patterns I already use on IELTS Express and PHP APIs. Điểm mạnh và một điểm yếu cho role này? Mạnh: tôi làm TypeScript và React Native nhanh, và nghĩ theo hệ thống — state client vs API Express vs data. Yếu với team Nest-first: tôi chưa own Nest lớn hoặc cluster Mongo. Tôi bù bằng đọc service sẵn có, pair một endpoint nhỏ trước, và map pattern đã dùng trên Express IELTS và PHP API. Know: Don&#x27;t oversell Nest/Mongo · Express on IELTS is real">
+<summary><span class="num">17</span><span><span class="q-title">Strengths / weakness (Node–TS angle)</span><span class="q-hint">Keep job-relevant.</span></span></summary>
+<div class="q-body">
+<div class="lang"><button type="button" data-set-lang="en">English</button><button type="button" data-set-lang="vi">Tiếng Việt</button></div>
+<div data-pane="en"><div class="ask"><p>What are your strengths and one weakness for this role?</p></div><div class="ans"><p>Strength: I move quickly in TypeScript and React Native, and I think in systems — client state vs Express API vs data. Weakness for a Nest-first team: I have not owned a large Nest or Mongo cluster. I close that by reading your services, pairing on a small endpoint first, and mapping patterns I already use on IELTS Express and PHP APIs.</p></div></div>
+<div data-pane="vi" hidden><div class="ask"><p>Điểm mạnh và một điểm yếu cho role này?</p></div><div class="ans"><p>Mạnh: tôi làm TypeScript và React Native nhanh, và nghĩ theo hệ thống — state client vs API Express vs data. Yếu với team Nest-first: tôi chưa own Nest lớn hoặc cluster Mongo. Tôi bù bằng đọc service sẵn có, pair một endpoint nhỏ trước, và map pattern đã dùng trên Express IELTS và PHP API.</p></div></div>
+<div class="notes"><p><strong>Know:</strong> Don't oversell Nest/Mongo · Express on IELTS is real</p></div>
+</div>
+</details></section><section class="block" id="sec-career-moves"><h2>Career moves</h2><details class="q" id="go1-cv-leave" data-blob="Why did you leave BaseVN? What is the biggest technical strength on this CV? Do not sound bitter about BaseVN. Praise what you learned, then explain growth room + wanting a new environment. End on why you want product work again — then say what you want next. Why did you leave BaseVN? What is the biggest technical strength on this CV? Why leave BaseVN: At BaseVN I was lucky — I did not only write tickets. I worked close to the product, almost like a product owner for the HRM side. I built features and I also understood why they mattered for customers. That was a strong foundation. During the time I was there, the company’s direction focused more on other product lines. On the HRM suite I was in, there was less room to grow. At the same time I wanted to try a different environment — a global outsourcing setup, with international clients and different ways of working. That is why I moved to Akktis. After about two years at Akktis I learned a lot: Linux, CI/CD, cloud, client delivery across time zones. But I also realized what I miss. I want to build a product again — stay close to users, work with product and design, and own outcomes over time, not only project after project. That is why IELTS AI Tutor mattered to me, and why a product company feels like the right next step. Biggest technical strength on this CV: I can follow a problem across layers and still care about the product outcome. A slow tax screen might be a query, a missing index, or a job that should not be in the request. A weird AI answer might be the model or the workflow. I debug with evidence — EXPLAIN, logs, Langfuse — then I leave the path clearer for the next person. Vì sao bạn rời BaseVN? Điểm mạnh kỹ thuật lớn nhất trên CV là gì? Vì sao rời BaseVN: tôi may — không chỉ viết ticket. Tôi đứng gần sản phẩm, gần như product owner phía HRM. Tôi xây feature và hiểu vì sao chúng quan trọng với khách. Đó là nền tốt. Trong thời gian tôi ở đó, hướng công ty tập trung hơn vào dòng sản phẩm khác. Bộ HRM tôi làm còn ít chỗ để lớn. Đồng thời tôi muốn thử môi trường khác — outsourcing toàn cầu, khách quốc tế, cách làm khác. Vì vậy tôi sang Akktis. Khoảng hai năm ở Akktis tôi học nhiều: Linux, CI/CD, cloud, giao hàng cho khách qua múi giờ. Nhưng tôi cũng nhận ra điều tôi nhớ. Tôi muốn xây sản phẩm lại — gần user, làm với product và design, chịu kết quả theo thời gian, không chỉ dự án nối dự án. Điểm mạnh kỹ thuật lớn nhất: tôi đi một vấn đề xuyên các lớp và vẫn quan tâm kết quả sản phẩm. Màn thuế chậm có thể là query, thiếu index, hoặc job không nên nằm trong request. Câu AI lạ có thể là model hoặc workflow. Tôi debug bằng bằng chứng — EXPLAIN, log, Langfuse — rồi để đường đi rõ hơn cho người sau. Do not sound bitter about BaseVN. Praise what you learned, then explain growth room + wanting a new environment. End on why you want product work again — then say what you want next. If they ask “so why not stay in outsourcing?” “Outsourcing taught me speed, communication, and ops. I am grateful for that. I am looking for a place where the product is the long-term mission — learning at scale, with a team that ships together.” If they ask “were you unhappy at BaseVN?” “No. I am still proud of the SaaS depth — 500k records, sync, tax correctness. The move was about growth direction and trying a global environment, not about leaving a bad place.”">
+<summary><span class="num">18</span><span><span class="q-title">Why did you leave BaseVN? What is the biggest technical strength on this CV?</span><span class="q-hint">Do not sound bitter about BaseVN. Praise what you learned, then explain growth room + wanting a new environment. End on why you want product work again — then say what you want next.</span></span></summary>
+<div class="q-body">
+<div class="lang"><button type="button" data-set-lang="en">English</button><button type="button" data-set-lang="vi">Tiếng Việt</button></div>
+<div data-pane="en"><div class="ask"><p>Why did you leave BaseVN? What is the biggest technical strength on this CV?</p></div><div class="ans"><div class="script">
+        <p><strong>Why leave BaseVN:</strong> At BaseVN I was lucky — I did not only write tickets. I worked close to the product, almost like a product owner for the HRM side. I built features and I also understood why they mattered for customers. That was a strong foundation.</p>
+        <p>During the time I was there, the company’s direction focused more on other product lines. On the HRM suite I was in, there was less room to grow. At the same time I wanted to try a different environment — a global outsourcing setup, with international clients and different ways of working. That is why I moved to Akktis.</p>
+        <p>After about two years at Akktis I learned a lot: Linux, CI/CD, cloud, client delivery across time zones. But I also realized what I miss. I want to build a product again — stay close to users, work with product and design, and own outcomes over time, not only project after project. That is why IELTS AI Tutor mattered to me, and why a product company feels like the right next step.</p>
+        <p><strong>Biggest technical strength on this CV:</strong> I can follow a problem across layers and still care about the product outcome. A slow tax screen might be a query, a missing index, or a job that should not be in the request. A weird AI answer might be the model or the workflow. I debug with evidence — EXPLAIN, logs, Langfuse — then I leave the path clearer for the next person.</p>
+      </div></div></div>
+<div data-pane="vi" hidden><div class="ask"><p>Vì sao bạn rời BaseVN? Điểm mạnh kỹ thuật lớn nhất trên CV là gì?</p></div><div class="ans"><p>Vì sao rời BaseVN: tôi may — không chỉ viết ticket. Tôi đứng gần sản phẩm, gần như product owner phía HRM. Tôi xây feature và hiểu vì sao chúng quan trọng với khách. Đó là nền tốt.</p><p>Trong thời gian tôi ở đó, hướng công ty tập trung hơn vào dòng sản phẩm khác. Bộ HRM tôi làm còn ít chỗ để lớn. Đồng thời tôi muốn thử môi trường khác — outsourcing toàn cầu, khách quốc tế, cách làm khác. Vì vậy tôi sang Akktis.</p><p>Khoảng hai năm ở Akktis tôi học nhiều: Linux, CI/CD, cloud, giao hàng cho khách qua múi giờ. Nhưng tôi cũng nhận ra điều tôi nhớ. Tôi muốn xây sản phẩm lại — gần user, làm với product và design, chịu kết quả theo thời gian, không chỉ dự án nối dự án.</p><p>Điểm mạnh kỹ thuật lớn nhất: tôi đi một vấn đề xuyên các lớp và vẫn quan tâm kết quả sản phẩm. Màn thuế chậm có thể là query, thiếu index, hoặc job không nên nằm trong request. Câu AI lạ có thể là model hoặc workflow. Tôi debug bằng bằng chứng — EXPLAIN, log, Langfuse — rồi để đường đi rõ hơn cho người sau.</p></div></div>
+<div class="notes"><p>Do not sound bitter about BaseVN. Praise what you learned, then explain growth room + wanting a new environment. End on why you want product work again — then say what you want next.</p><p><strong>If they ask “so why not stay in outsourcing?”</strong> “Outsourcing taught me speed, communication, and ops. I am grateful for that. I am looking for a place where the product is the long-term mission — learning at scale, with a team that ships together.”</p><p><strong>If they ask “were you unhappy at BaseVN?”</strong> “No. I am still proud of the SaaS depth — 500k records, sync, tax correctness. The move was about growth direction and trying a global environment, not about leaving a bad place.”</p></div>
+</div>
+</details></section></main></div>
+<script src="assets/search-index.js"></script>
+<script src="assets/site.js"></script>
 </body>
 </html>

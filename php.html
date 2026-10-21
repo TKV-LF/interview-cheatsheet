@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>PHP — Interview cheatsheet</title>
+<link href="https://api.fontshare.com/v2/css?f[]=satoshi@400,500,700&f[]=general-sans@500,600,700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/site.css" />
+</head>
+<body data-page="php">
+<a class="skip" href="#content">Skip to questions</a>
+<header class="topbar">
+<div class="topbar-inner">
+<div class="brand-row">
+<a class="brand" href="index.html">Interview cheatsheet</a>
+<button class="icon-btn" type="button" data-theme-toggle aria-label="Switch theme">☾</button>
+</div>
+<div class="search-wrap">
+<span class="mag" aria-hidden="true">⌕</span>
+<input data-search type="search" placeholder="Search questions — press /" aria-label="Search questions" />
+<div class="hits" data-hits></div>
+<p class="search-meta" data-search-meta></p>
+</div>
+</div>
+<nav class="nav-scroll" aria-label="Categories"><a href="index.html" class="">Hub</a>
+<a href="fit.html" class="">Fit and intro</a>
+<a href="behavioral.html" class="">Behavioral</a>
+<a href="english.html" class="">Spoken English</a>
+<a href="php.html" class="is-on">PHP</a>
+<a href="react.html" class="">React and TypeScript</a>
+<a href="node.html" class="">Node.js</a>
+<a href="devops.html" class="">DevOps and cloud</a>
+<a href="debugging.html" class="">Debugging</a>
+<a href="system-design.html" class="">System design</a>
+<a href="cv.html" class="">CV and projects</a></nav>
+</header>
+<div class="shell"><aside class="side"><h2>On this page</h2><a class="sec-link" data-sec href="#sec-php-and-laravel">PHP and Laravel</a><a class="q-link" href="#engineering-g6">01 PHP experience overview</a><a class="q-link" href="#engineering-g7">02 Building APIs in PHP</a><a class="q-link" href="#engineering-g8">03 MySQL and performance</a><a class="q-link" href="#engineering-g9">04 Auth and security basics</a><a class="q-link" href="#engineering-g10">05 Testing PHP code</a><a class="sec-link" data-sec href="#sec-pure-php">Pure PHP</a><a class="q-link" href="#engineering-g86">06 What is PHP thuần / pure PHP?</a><a class="q-link" href="#engineering-g87">07 PDO and SQL safely</a><a class="q-link" href="#engineering-g88">08 Sessions and cookies</a><a class="q-link" href="#engineering-g89">09 Composer, autoload, namespaces</a><a class="q-link" href="#engineering-g90">10 OOP in PHP: class, interface, trait</a><a class="q-link" href="#engineering-g91">11 Request lifecycle in pure PHP</a><a class="q-link" href="#engineering-g92">12 Superglobals: GET POST SERVER</a><a class="q-link" href="#engineering-g93">13 Errors and exceptions in PHP</a><a class="q-link" href="#engineering-g94">14 Security basics in pure PHP</a><a class="q-link" href="#engineering-g95">15 Laravel vs pure PHP</a><a class="q-link" href="#engineering-g96">16 Arrays and common PHP functions</a><a class="sec-link" data-sec href="#sec-php-api-and-react-client">PHP API and React client</a><a class="q-link" href="#engineering-g22">17 PHP API + React client</a><a class="q-link" href="#engineering-g23">18 Error handling across stack</a><a class="sec-link" data-sec href="#sec-common-questions">Common questions</a><a class="q-link" href="#new-php-1">19 == versus ===</a><a class="q-link" href="#new-php-2">20 N+1 queries</a><a class="q-link" href="#new-php-3">21 Database transactions</a><a class="q-link" href="#new-php-4">22 Idempotent APIs</a><a class="q-link" href="#new-php-5">23 REST and GraphQL</a><a class="q-link" href="#new-php-6">24 Where you cache</a></aside><main id="content"><header class="page-intro"><h1>PHP</h1><p>Laravel, pure PHP, MySQL, and the API in front of a React client. Open one question at a time. Switch language inside the answer.</p></header><div class="toolbar"><button type="button" data-expand="open">Expand</button><button type="button" data-expand="close">Collapse</button></div><section class="block" id="sec-php-and-laravel"><h2>PHP and Laravel</h2><details class="q" id="engineering-g6" data-blob="PHP experience overview Lead with BaseVN + Laravel. What&#x27;s your PHP experience? Most of my backend career is PHP. At BaseVN I built features and integrations on a large PHP/JS SaaS platform — sync jobs, Excel/XML pipelines, APIs. At Akktis I work with Laravel and PHP CMS stacks like WordPress and PrestaShop. Day to day that means APIs, MySQL, business logic, and production fixes. Kinh nghiệm PHP của bạn? Phần lớn backend của tôi là PHP. Ở BaseVN tôi làm feature và tích hợp trên nền tảng SaaS PHP/JS lớn — job sync, pipeline Excel/XML, API. Ở Akktis tôi làm Laravel và CMS PHP như WordPress, PrestaShop. Hằng ngày là API, MySQL, business logic và sửa production. Know: PHP for APIs, business rules, MySQL, integrations. Trap: Only listing frameworks without product impact. Follow-up: Laravel vs plain PHP — when do you pick each?">
+<summary><span class="num">01</span><span><span class="q-title">PHP experience overview</span><span class="q-hint">Lead with BaseVN + Laravel.</span></span></summary>
+<div class="q-body">
+<div class="lang"><button type="button" data-set-lang="en">English</button><button type="button" data-set-lang="vi">Tiếng Việt</button></div>
+<div data-pane="en"><div class="ask"><p>What's your PHP experience?</p></div><div class="ans"><p>Most of my backend career is PHP. At BaseVN I built features and integrations on a large PHP/JS SaaS platform — sync jobs, Excel/XML pipelines, APIs. At Akktis I work with Laravel and PHP CMS stacks like WordPress and PrestaShop. Day to day that means APIs, MySQL, business logic, and production fixes.</p></div></div>
+<div data-pane="vi" hidden><div class="ask"><p>Kinh nghiệm PHP của bạn?</p></div><div class="ans"><p>Phần lớn backend của tôi là PHP. Ở BaseVN tôi làm feature và tích hợp trên nền tảng SaaS PHP/JS lớn — job sync, pipeline Excel/XML, API. Ở Akktis tôi làm Laravel và CMS PHP như WordPress, PrestaShop. Hằng ngày là API, MySQL, business logic và sửa production.</p></div></div>
+<div class="notes">
+          <p><strong>Know:</strong> PHP for APIs, business rules, MySQL, integrations.</p>
+          <p><strong>Trap:</strong> Only listing frameworks without product impact.</p>
+          <p><strong>Follow-up:</strong> Laravel vs plain PHP — when do you pick each?</p>
+        </div>
+</div>
+</details><details class="q" id="engineering-g7" data-blob="Building APIs in PHP REST mindset. How do you design a backend API in PHP? I start from the use case: what the React client needs. Then I define clear endpoints, request/response shapes, validation, auth, and error codes. I keep controllers thin, put business rules in services, and make sure MySQL queries are intentional. Good APIs are boring and predictable. Bạn thiết kế API PHP thế nào? Tôi bắt đầu từ use case: React client cần gì. Rồi định nghĩa endpoint rõ, shape request/response, validation, auth và mã lỗi. Controller mỏng, business rule ở service, query MySQL có chủ đích. API tốt thì nhàm chán và dễ đoán. Know: Contract-first thinking between FE and BE. Trap: Fat controllers with SQL everywhere. Follow-up: How do you version an API?">
+<summary><span class="num">02</span><span><span class="q-title">Building APIs in PHP</span><span class="q-hint">REST mindset.</span></span></summary>
+<div class="q-body">
+<div class="lang"><button type="button" data-set-lang="en">English</button><button type="button" data-set-lang="vi">Tiếng Việt</button></div>
+<div data-pane="en"><div class="ask"><p>How do you design a backend API in PHP?</p></div><div class="ans"><p>I start from the use case: what the React client needs. Then I define clear endpoints, request/response shapes, validation, auth, and error codes. I keep controllers thin, put business rules in services, and make sure MySQL queries are intentional. Good APIs are boring and predictable.</p></div></div>
+<div data-pane="vi" hidden><div class="ask"><p>Bạn thiết kế API PHP thế nào?</p></div><div class="ans"><p>Tôi bắt đầu từ use case: React client cần gì. Rồi định nghĩa endpoint rõ, shape request/response, validation, auth và mã lỗi. Controller mỏng, business rule ở service, query MySQL có chủ đích. API tốt thì nhàm chán và dễ đoán.</p></div></div>
+<div class="notes">
+          <p><strong>Know:</strong> Contract-first thinking between FE and BE.</p>
+          <p><strong>Trap:</strong> Fat controllers with SQL everywhere.</p>
+          <p><strong>Follow-up:</strong> How do you version an API?</p>
+        </div>
+</div>
+</details><details class="q" id="engineering-g8" data-blob="MySQL and performance PIT 500k story hook. How do you handle MySQL performance in PHP apps? I look at the query plan and indexes first, not micro-optimizing PHP loops. On Base PIT we dealt with 500,000+ records, so schema design and query shape mattered for reports and sync. I also avoid N+1 patterns and heavy work inside request cycles when a job/queue is better. Bạn xử lý hiệu năng MySQL trong app PHP thế nào? Tôi xem query plan và index trước, không tối ưu vòng lặp PHP trước. Ở Base PIT có 500,000+ bản ghi, nên schema và dạng query quan trọng cho report/sync. Tôi cũng tránh N+1 và việc nặng trong request cycle khi job/queue hợp hơn. Know: Index + query shape + avoid N+1. Trap: Caching everything before measuring. Follow-up: How do you find a slow query in production?">
+<summary><span class="num">03</span><span><span class="q-title">MySQL and performance</span><span class="q-hint">PIT 500k story hook.</span></span></summary>
+<div class="q-body">
+<div class="lang"><button type="button" data-set-lang="en">English</button><button type="button" data-set-lang="vi">Tiếng Việt</button></div>
+<div data-pane="en"><div class="ask"><p>How do you handle MySQL performance in PHP apps?</p></div><div class="ans"><p>I look at the query plan and indexes first, not micro-optimizing PHP loops. On Base PIT we dealt with 500,000+ records, so schema design and query shape mattered for reports and sync. I also avoid N+1 patterns and heavy work inside request cycles when a job/queue is better.</p></div></div>
+<div data-pane="vi" hidden><div class="ask"><p>Bạn xử lý hiệu năng MySQL trong app PHP thế nào?</p></div><div class="ans"><p>Tôi xem query plan và index trước, không tối ưu vòng lặp PHP trước. Ở Base PIT có 500,000+ bản ghi, nên schema và dạng query quan trọng cho report/sync. Tôi cũng tránh N+1 và việc nặng trong request cycle khi job/queue hợp hơn.</p></div></div>
+<div class="notes">
+          <p><strong>Know:</strong> Index + query shape + avoid N+1.</p>
+          <p><strong>Trap:</strong> Caching everything before measuring.</p>
+          <p><strong>Follow-up:</strong> How do you find a slow query in production?</p>
+        </div>
+</div>
+</details><details class="q" id="engineering-g9" data-blob="Auth and security basics Enterprise awareness. How do you think about auth and security in PHP apps? Validate input, least privilege for DB users, don&#x27;t trust the client, protect secrets, and use proper session/token checks on APIs. For sensitive flows like tax or HR data, authorization matters as much as authentication — can this user see this record? Bạn nghĩ về auth và bảo mật trong app PHP thế nào? Validate input, least privilege cho DB user, không tin client, bảo vệ secret, và check session/token đúng trên API. Với luồng nhạy cảm như thuế/HR, authorization quan trọng không kém authentication — user này có được xem bản ghi này không? Know: Authn vs authz; never trust FE-only checks. Trap: Hiding a button is not security. Follow-up: SQL injection — how do you prevent it?">
+<summary><span class="num">04</span><span><span class="q-title">Auth and security basics</span><span class="q-hint">Enterprise awareness.</span></span></summary>
+<div class="q-body">
+<div class="lang"><button type="button" data-set-lang="en">English</button><button type="button" data-set-lang="vi">Tiếng Việt</button></div>
+<div data-pane="en"><div class="ask"><p>How do you think about auth and security in PHP apps?</p></div><div class="ans"><p>Validate input, least privilege for DB users, don't trust the client, protect secrets, and use proper session/token checks on APIs. For sensitive flows like tax or HR data, authorization matters as much as authentication — can this user see this record?</p></div></div>
+<div data-pane="vi" hidden><div class="ask"><p>Bạn nghĩ về auth và bảo mật trong app PHP thế nào?</p></div><div class="ans"><p>Validate input, least privilege cho DB user, không tin client, bảo vệ secret, và check session/token đúng trên API. Với luồng nhạy cảm như thuế/HR, authorization quan trọng không kém authentication — user này có được xem bản ghi này không?</p></div></div>
+<div class="notes">
+          <p><strong>Know:</strong> Authn vs authz; never trust FE-only checks.</p>
+          <p><strong>Trap:</strong> Hiding a button is not security.</p>
+          <p><strong>Follow-up:</strong> SQL injection — how do you prevent it?</p>
+        </div>
+</div>
+</details><details class="q" id="engineering-g10" data-blob="Testing PHP code Honest practical level. How do you test PHP backend code? I focus on the risky paths: API contracts, validation, and critical business rules. Unit tests for pure logic, and integration-style checks for DB/API when needed. I&#x27;m not dogmatic about 100% coverage — I care that the money/compliance/data paths are safe. Bạn test PHP backend thế nào? Tôi tập trung đường rủi ro: contract API, validation và business rule quan trọng. Unit cho logic thuần, integration khi cần DB/API. Không cố 100% coverage — quan tâm các luồng tiền/compliance/data phải an toàn. Know: Test risk, not vanity coverage. Trap: No tests and it works on my machine. Follow-up: What would you test for a sync API?">
+<summary><span class="num">05</span><span><span class="q-title">Testing PHP code</span><span class="q-hint">Honest practical level.</span></span></summary>
+<div class="q-body">
+<div class="lang"><button type="button" data-set-lang="en">English</button><button type="button" data-set-lang="vi">Tiếng Việt</button></div>
+<div data-pane="en"><div class="ask"><p>How do you test PHP backend code?</p></div><div class="ans"><p>I focus on the risky paths: API contracts, validation, and critical business rules. Unit tests for pure logic, and integration-style checks for DB/API when needed. I'm not dogmatic about 100% coverage — I care that the money/compliance/data paths are safe.</p></div></div>
+<div data-pane="vi" hidden><div class="ask"><p>Bạn test PHP backend thế nào?</p></div><div class="ans"><p>Tôi tập trung đường rủi ro: contract API, validation và business rule quan trọng. Unit cho logic thuần, integration khi cần DB/API. Không cố 100% coverage — quan tâm các luồng tiền/compliance/data phải an toàn.</p></div></div>
+<div class="notes">
+          <p><strong>Know:</strong> Test risk, not vanity coverage.</p>
+          <p><strong>Trap:</strong> No tests and it works on my machine.</p>
+          <p><strong>Follow-up:</strong> What would you test for a sync API?</p>
+        </div>
+</div>
+</details></section><section class="block" id="sec-pure-php"><h2>Pure PHP</h2><details class="q" id="engineering-g86" data-blob="What is PHP thuần / pure PHP? Interviewer asked to review this carefully. What do you mean by pure PHP, without a framework? Pure PHP means writing the app with PHP language features and standard extensions — no Laravel/Symfony doing routing, ORM, and auth for you. You still use Composer sometimes, but you own routing, request/response, DB access with PDO, sessions, and structure yourself. Frameworks speed you up; pure PHP shows you understand what happens under the hood. At BaseVN I worked on a custom PHP platform — so I&#x27;m used to PHP beyond only Laravel helpers. PHP thuần nghĩa là gì, không dùng framework? PHP thuần là viết app bằng ngôn ngữ PHP và extension chuẩn — không có Laravel/Symfony lo routing, ORM, auth giúp bạn. Đôi khi vẫn dùng Composer, nhưng bạn tự own routing, request/response, DB bằng PDO, session và cấu trúc. Framework giúp nhanh; PHP thuần chứng tỏ bạn hiểu thứ xảy ra bên dưới. Ở BaseVN tôi làm trên nền tảng PHP custom — nên tôi quen PHP, không chỉ helper của Laravel. Know: Own routing/DB/session yourself; frameworks hide that. Trap: Saying pure PHP means no Composer and no OOP. Follow-up: What does a framework give you that pure PHP does not?">
+<summary><span class="num">06</span><span><span class="q-title">What is PHP thuần / pure PHP?</span><span class="q-hint">Interviewer asked to review this carefully.</span></span></summary>
+<div class="q-body">
+<div class="lang"><button type="button" data-set-lang="en">English</button><button type="button" data-set-lang="vi">Tiếng Việt</button></div>
+<div data-pane="en"><div class="ask"><p>What do you mean by pure PHP, without a framework?</p></div><div class="ans"><p>Pure PHP means writing the app with PHP language features and standard extensions — no Laravel/Symfony doing routing, ORM, and auth for you. You still use Composer sometimes, but you own routing, request/response, DB access with PDO, sessions, and structure yourself. Frameworks speed you up; pure PHP shows you understand what happens under the hood. At BaseVN I worked on a custom PHP platform — so I'm used to PHP beyond only Laravel helpers.</p></div></div>
+<div data-pane="vi" hidden><div class="ask"><p>PHP thuần nghĩa là gì, không dùng framework?</p></div><div class="ans"><p>PHP thuần là viết app bằng ngôn ngữ PHP và extension chuẩn — không có Laravel/Symfony lo routing, ORM, auth giúp bạn. Đôi khi vẫn dùng Composer, nhưng bạn tự own routing, request/response, DB bằng PDO, session và cấu trúc. Framework giúp nhanh; PHP thuần chứng tỏ bạn hiểu thứ xảy ra bên dưới. Ở BaseVN tôi làm trên nền tảng PHP custom — nên tôi quen PHP, không chỉ helper của Laravel.</p></div></div>
+<div class="notes">
+          <p><strong>Know:</strong> Own routing/DB/session yourself; frameworks hide that.</p>
+          <p><strong>Trap:</strong> Saying pure PHP means no Composer and no OOP.</p>
+          <p><strong>Follow-up:</strong> What does a framework give you that pure PHP does not?</p>
+        </div>
+</div>
+</details><details class="q" id="engineering-g87" data-blob="PDO and SQL safely Core pure PHP skill. How do you talk to MySQL in pure PHP? I use PDO with prepared statements — never concatenate user input into SQL. That prevents SQL injection. You prepare, bind values, execute, fetch. Same idea whether you&#x27;re in Laravel&#x27;s query builder or pure PHP — the safe pattern is parameterized queries. Trong PHP thuần bạn nói chuyện với MySQL thế nào? Tôi dùng PDO với prepared statement — không nối chuỗi input user vào SQL. Như vậy tránh SQL injection. Prepare, bind value, execute, fetch. Cùng ý tưởng dù Laravel query builder hay PHP thuần — pattern an toàn là parameterized query. Know: PDO + prepared statements = baseline. Trap: mysqli_query with string concat from $_GET. Follow-up: Show a safe SELECT with a user id parameter.">
+<summary><span class="num">07</span><span><span class="q-title">PDO and SQL safely</span><span class="q-hint">Core pure PHP skill.</span></span></summary>
+<div class="q-body">
+<div class="lang"><button type="button" data-set-lang="en">English</button><button type="button" data-set-lang="vi">Tiếng Việt</button></div>
+<div data-pane="en"><div class="ask"><p>How do you talk to MySQL in pure PHP?</p></div><div class="ans"><p>I use PDO with prepared statements — never concatenate user input into SQL. That prevents SQL injection. You prepare, bind values, execute, fetch. Same idea whether you're in Laravel's query builder or pure PHP — the safe pattern is parameterized queries.</p></div></div>
+<div data-pane="vi" hidden><div class="ask"><p>Trong PHP thuần bạn nói chuyện với MySQL thế nào?</p></div><div class="ans"><p>Tôi dùng PDO với prepared statement — không nối chuỗi input user vào SQL. Như vậy tránh SQL injection. Prepare, bind value, execute, fetch. Cùng ý tưởng dù Laravel query builder hay PHP thuần — pattern an toàn là parameterized query.</p></div></div>
+<div class="notes">
+          <p><strong>Know:</strong> PDO + prepared statements = baseline.</p>
+          <p><strong>Trap:</strong> mysqli_query with string concat from $_GET.</p>
+          <p><strong>Follow-up:</strong> Show a safe SELECT with a user id parameter.</p>
+        </div>
+</div>
+</details><details class="q" id="engineering-g88" data-blob="Sessions and cookies Auth without a framework. How do sessions work in PHP? session_start() starts a session; PHP stores session data on the server and gives the browser a session cookie. You keep login state in $_SESSION, not only in localStorage. Cookies can also hold preferences, but sensitive auth should stay server-side. Frameworks wrap this; in pure PHP you call it yourself and protect against session fixation/hijacking basics. Session trong PHP hoạt động thế nào? session_start() bắt đầu session; PHP lưu data session trên server và gửi cookie session cho browser. Trạng thái login để trong $_SESSION, không chỉ localStorage. Cookie có thể giữ preference, nhưng auth nhạy cảm nên ở server. Framework bọc sẵn; PHP thuần bạn tự gọi và chú ý session fixation/hijacking cơ bản. Know: Server-side session + session cookie. Trap: Storing passwords in cookies. Follow-up: What&#x27;s the difference between session and cookie?">
+<summary><span class="num">08</span><span><span class="q-title">Sessions and cookies</span><span class="q-hint">Auth without a framework.</span></span></summary>
+<div class="q-body">
+<div class="lang"><button type="button" data-set-lang="en">English</button><button type="button" data-set-lang="vi">Tiếng Việt</button></div>
+<div data-pane="en"><div class="ask"><p>How do sessions work in PHP?</p></div><div class="ans"><p>session_start() starts a session; PHP stores session data on the server and gives the browser a session cookie. You keep login state in $_SESSION, not only in localStorage. Cookies can also hold preferences, but sensitive auth should stay server-side. Frameworks wrap this; in pure PHP you call it yourself and protect against session fixation/hijacking basics.</p></div></div>
+<div data-pane="vi" hidden><div class="ask"><p>Session trong PHP hoạt động thế nào?</p></div><div class="ans"><p>session_start() bắt đầu session; PHP lưu data session trên server và gửi cookie session cho browser. Trạng thái login để trong $_SESSION, không chỉ localStorage. Cookie có thể giữ preference, nhưng auth nhạy cảm nên ở server. Framework bọc sẵn; PHP thuần bạn tự gọi và chú ý session fixation/hijacking cơ bản.</p></div></div>
+<div class="notes">
+          <p><strong>Know:</strong> Server-side session + session cookie.</p>
+          <p><strong>Trap:</strong> Storing passwords in cookies.</p>
+          <p><strong>Follow-up:</strong> What's the difference between session and cookie?</p>
+        </div>
+</div>
+</details><details class="q" id="engineering-g89" data-blob="Composer, autoload, namespaces Modern pure PHP still uses these. Do you use Composer in pure PHP projects? Yes — pure PHP doesn&#x27;t mean old-style everything in one file. Composer manages dependencies and PSR-4 autoloading so classes load by namespace. You still write plain PHP classes; Composer just removes require_once hell. That&#x27;s standard even without Laravel. Trong dự án PHP thuần có dùng Composer không? Có — PHP thuần không có nghĩa kiểu cũ nhét hết một file. Composer quản lý dependency và PSR-4 autoload để class load theo namespace. Bạn vẫn viết class PHP thường; Composer bỏ cảnh require_once loạn. Đó là chuẩn kể cả không dùng Laravel. Know: Composer + PSR-4 autoload is modern PHP. Trap: Pure PHP = no namespaces / no Composer. Follow-up: What is PSR-4?">
+<summary><span class="num">09</span><span><span class="q-title">Composer, autoload, namespaces</span><span class="q-hint">Modern pure PHP still uses these.</span></span></summary>
+<div class="q-body">
+<div class="lang"><button type="button" data-set-lang="en">English</button><button type="button" data-set-lang="vi">Tiếng Việt</button></div>
+<div data-pane="en"><div class="ask"><p>Do you use Composer in pure PHP projects?</p></div><div class="ans"><p>Yes — pure PHP doesn't mean old-style everything in one file. Composer manages dependencies and PSR-4 autoloading so classes load by namespace. You still write plain PHP classes; Composer just removes require_once hell. That's standard even without Laravel.</p></div></div>
+<div data-pane="vi" hidden><div class="ask"><p>Trong dự án PHP thuần có dùng Composer không?</p></div><div class="ans"><p>Có — PHP thuần không có nghĩa kiểu cũ nhét hết một file. Composer quản lý dependency và PSR-4 autoload để class load theo namespace. Bạn vẫn viết class PHP thường; Composer bỏ cảnh require_once loạn. Đó là chuẩn kể cả không dùng Laravel.</p></div></div>
+<div class="notes">
+          <p><strong>Know:</strong> Composer + PSR-4 autoload is modern PHP.</p>
+          <p><strong>Trap:</strong> Pure PHP = no namespaces / no Composer.</p>
+          <p><strong>Follow-up:</strong> What is PSR-4?</p>
+        </div>
+</div>
+</details><details class="q" id="engineering-g90" data-blob="OOP in PHP: class, interface, trait They may quiz basics. Explain class, interface, and trait in PHP. A class is a blueprint with properties and methods. An interface defines a contract — methods a class must implement, without the code. A trait is reusable method chunks you paste into classes — useful when you want shared behavior without deep inheritance. In real apps I use classes and interfaces a lot; traits when several classes need the same helper behavior. Giải thích class, interface và trait trong PHP. Class là bản thiết kế với property và method. Interface là hợp đồng — method class phải implement, không chứa code. Trait là khối method tái sử dụng gắn vào class — hữu ích khi muốn share behavior mà không kế thừa sâu. Trong app thật tôi dùng class và interface nhiều; trait khi nhiều class cần helper giống nhau. Know: Class = implementation; interface = contract; trait = reusable methods. Trap: Confusing interface with abstract class details you can&#x27;t explain. Follow-up: When would you use an interface?">
+<summary><span class="num">10</span><span><span class="q-title">OOP in PHP: class, interface, trait</span><span class="q-hint">They may quiz basics.</span></span></summary>
+<div class="q-body">
+<div class="lang"><button type="button" data-set-lang="en">English</button><button type="button" data-set-lang="vi">Tiếng Việt</button></div>
+<div data-pane="en"><div class="ask"><p>Explain class, interface, and trait in PHP.</p></div><div class="ans"><p>A class is a blueprint with properties and methods. An interface defines a contract — methods a class must implement, without the code. A trait is reusable method chunks you paste into classes — useful when you want shared behavior without deep inheritance. In real apps I use classes and interfaces a lot; traits when several classes need the same helper behavior.</p></div></div>
+<div data-pane="vi" hidden><div class="ask"><p>Giải thích class, interface và trait trong PHP.</p></div><div class="ans"><p>Class là bản thiết kế với property và method. Interface là hợp đồng — method class phải implement, không chứa code. Trait là khối method tái sử dụng gắn vào class — hữu ích khi muốn share behavior mà không kế thừa sâu. Trong app thật tôi dùng class và interface nhiều; trait khi nhiều class cần helper giống nhau.</p></div></div>
+<div class="notes">
+          <p><strong>Know:</strong> Class = implementation; interface = contract; trait = reusable methods.</p>
+          <p><strong>Trap:</strong> Confusing interface with abstract class details you can't explain.</p>
+          <p><strong>Follow-up:</strong> When would you use an interface?</p>
+        </div>
+</div>
+</details><details class="q" id="engineering-g91" data-blob="Request lifecycle in pure PHP How a page runs without Laravel. What happens when a request hits a pure PHP app? The web server points to an entry file, often index.php. That script reads the URL/method, routes to a controller or include, talks to the database, then echoes HTML or JSON. There&#x27;s no magic router unless you write one or use a small router package. Understanding this helps when debugging Laravel too — the framework still ends at request in, response out. Khi một request vào app PHP thuần thì chuyện gì xảy ra? Web server trỏ vào file entry, thường index.php. Script đọc URL/method, route tới controller hoặc include, nói chuyện database, rồi echo HTML hoặc JSON. Không có router thần kỳ trừ khi bạn tự viết hoặc dùng package router nhỏ. Hiểu điều này cũng giúp debug Laravel — framework vẫn là request vào, response ra. Know: Entry script → route → logic/DB → response. Trap: Thinking Laravel has no request lifecycle. Follow-up: How would you return JSON from pure PHP?">
+<summary><span class="num">11</span><span><span class="q-title">Request lifecycle in pure PHP</span><span class="q-hint">How a page runs without Laravel.</span></span></summary>
+<div class="q-body">
+<div class="lang"><button type="button" data-set-lang="en">English</button><button type="button" data-set-lang="vi">Tiếng Việt</button></div>
+<div data-pane="en"><div class="ask"><p>What happens when a request hits a pure PHP app?</p></div><div class="ans"><p>The web server points to an entry file, often index.php. That script reads the URL/method, routes to a controller or include, talks to the database, then echoes HTML or JSON. There's no magic router unless you write one or use a small router package. Understanding this helps when debugging Laravel too — the framework still ends at request in, response out.</p></div></div>
+<div data-pane="vi" hidden><div class="ask"><p>Khi một request vào app PHP thuần thì chuyện gì xảy ra?</p></div><div class="ans"><p>Web server trỏ vào file entry, thường index.php. Script đọc URL/method, route tới controller hoặc include, nói chuyện database, rồi echo HTML hoặc JSON. Không có router thần kỳ trừ khi bạn tự viết hoặc dùng package router nhỏ. Hiểu điều này cũng giúp debug Laravel — framework vẫn là request vào, response ra.</p></div></div>
+<div class="notes">
+          <p><strong>Know:</strong> Entry script → route → logic/DB → response.</p>
+          <p><strong>Trap:</strong> Thinking Laravel has no request lifecycle.</p>
+          <p><strong>Follow-up:</strong> How would you return JSON from pure PHP?</p>
+        </div>
+</div>
+</details><details class="q" id="engineering-g92" data-blob="Superglobals: GET POST SERVER Daily pure PHP. What are PHP superglobals you use often? $_GET and $_POST for input, $_SERVER for method/URL/headers, $_SESSION for server session data, $_COOKIE for cookies, and sometimes $_FILES for uploads. I never trust them raw — validate and sanitize before use. In APIs I also read JSON from php://input. Các superglobal PHP bạn hay dùng? $_GET và $_POST cho input, $_SERVER cho method/URL/header, $_SESSION cho data session server, $_COOKIE cho cookie, đôi khi $_FILES cho upload. Không tin raw — phải validate/sanitize trước khi dùng. Với API tôi cũng đọc JSON từ php://input. Know: Input via superglobals; always validate. Trap: Echoing $_GET straight into HTML/SQL. Follow-up: How do you read a JSON body in PHP?">
+<summary><span class="num">12</span><span><span class="q-title">Superglobals: GET POST SERVER</span><span class="q-hint">Daily pure PHP.</span></span></summary>
+<div class="q-body">
+<div class="lang"><button type="button" data-set-lang="en">English</button><button type="button" data-set-lang="vi">Tiếng Việt</button></div>
+<div data-pane="en"><div class="ask"><p>What are PHP superglobals you use often?</p></div><div class="ans"><p>$_GET and $_POST for input, $_SERVER for method/URL/headers, $_SESSION for server session data, $_COOKIE for cookies, and sometimes $_FILES for uploads. I never trust them raw — validate and sanitize before use. In APIs I also read JSON from php://input.</p></div></div>
+<div data-pane="vi" hidden><div class="ask"><p>Các superglobal PHP bạn hay dùng?</p></div><div class="ans"><p>$_GET và $_POST cho input, $_SERVER cho method/URL/header, $_SESSION cho data session server, $_COOKIE cho cookie, đôi khi $_FILES cho upload. Không tin raw — phải validate/sanitize trước khi dùng. Với API tôi cũng đọc JSON từ php://input.</p></div></div>
+<div class="notes">
+          <p><strong>Know:</strong> Input via superglobals; always validate.</p>
+          <p><strong>Trap:</strong> Echoing $_GET straight into HTML/SQL.</p>
+          <p><strong>Follow-up:</strong> How do you read a JSON body in PHP?</p>
+        </div>
+</div>
+</details><details class="q" id="engineering-g93" data-blob="Errors and exceptions in PHP Debugging pure PHP. How do you handle errors in PHP? For expected failures I use exceptions and try/catch. For logging I avoid showing sensitive details to users — log server-side, return a safe message. In pure PHP you configure error_reporting and display_errors carefully: off in production, detailed in local. Same discipline as in Laravel, just more manual. Bạn xử lý lỗi trong PHP thế nào? Với lỗi预期 đoán được tôi dùng exception và try/catch. Log thì không show chi tiết nhạy cảm cho user — log phía server, trả message an toàn. PHP thuần cần chỉnh error_reporting và display_errors cẩn thận: tắt trên production, chi tiết ở local. Cùng kỷ luật như Laravel, chỉ thủ công hơn. Know: Exceptions + safe user messages + no display_errors in prod. Trap: var_dump in production. Follow-up: What&#x27;s the difference between an error and an exception?">
+<summary><span class="num">13</span><span><span class="q-title">Errors and exceptions in PHP</span><span class="q-hint">Debugging pure PHP.</span></span></summary>
+<div class="q-body">
+<div class="lang"><button type="button" data-set-lang="en">English</button><button type="button" data-set-lang="vi">Tiếng Việt</button></div>
+<div data-pane="en"><div class="ask"><p>How do you handle errors in PHP?</p></div><div class="ans"><p>For expected failures I use exceptions and try/catch. For logging I avoid showing sensitive details to users — log server-side, return a safe message. In pure PHP you configure error_reporting and display_errors carefully: off in production, detailed in local. Same discipline as in Laravel, just more manual.</p></div></div>
+<div data-pane="vi" hidden><div class="ask"><p>Bạn xử lý lỗi trong PHP thế nào?</p></div><div class="ans"><p>Với lỗi预期 đoán được tôi dùng exception và try/catch. Log thì không show chi tiết nhạy cảm cho user — log phía server, trả message an toàn. PHP thuần cần chỉnh error_reporting và display_errors cẩn thận: tắt trên production, chi tiết ở local. Cùng kỷ luật như Laravel, chỉ thủ công hơn.</p></div></div>
+<div class="notes">
+          <p><strong>Know:</strong> Exceptions + safe user messages + no display_errors in prod.</p>
+          <p><strong>Trap:</strong> var_dump in production.</p>
+          <p><strong>Follow-up:</strong> What's the difference between an error and an exception?</p>
+        </div>
+</div>
+</details><details class="q" id="engineering-g94" data-blob="Security basics in pure PHP They care about this. What security basics do you apply in pure PHP? Prepared statements for SQL, htmlspecialchars or escaping for HTML output against XSS, CSRF tokens on state-changing forms, password_hash/password_verify for passwords, and never commit secrets. Frameworks give helpers; in pure PHP you must remember to apply them yourself. Bảo mật cơ bản trong PHP thuần bạn áp dụng gì? Prepared statement cho SQL, htmlspecialchars hoặc escape HTML chống XSS, CSRF token cho form đổi dữ liệu, password_hash/password_verify cho mật khẩu, và không commit secret. Framework có helper; PHP thuần bạn phải tự nhớ áp dụng. Know: SQLi, XSS, CSRF, password hashing. Trap: md5 for passwords. Follow-up: How do you prevent XSS when printing user input?">
+<summary><span class="num">14</span><span><span class="q-title">Security basics in pure PHP</span><span class="q-hint">They care about this.</span></span></summary>
+<div class="q-body">
+<div class="lang"><button type="button" data-set-lang="en">English</button><button type="button" data-set-lang="vi">Tiếng Việt</button></div>
+<div data-pane="en"><div class="ask"><p>What security basics do you apply in pure PHP?</p></div><div class="ans"><p>Prepared statements for SQL, htmlspecialchars or escaping for HTML output against XSS, CSRF tokens on state-changing forms, password_hash/password_verify for passwords, and never commit secrets. Frameworks give helpers; in pure PHP you must remember to apply them yourself.</p></div></div>
+<div data-pane="vi" hidden><div class="ask"><p>Bảo mật cơ bản trong PHP thuần bạn áp dụng gì?</p></div><div class="ans"><p>Prepared statement cho SQL, htmlspecialchars hoặc escape HTML chống XSS, CSRF token cho form đổi dữ liệu, password_hash/password_verify cho mật khẩu, và không commit secret. Framework có helper; PHP thuần bạn phải tự nhớ áp dụng.</p></div></div>
+<div class="notes">
+          <p><strong>Know:</strong> SQLi, XSS, CSRF, password hashing.</p>
+          <p><strong>Trap:</strong> md5 for passwords.</p>
+          <p><strong>Follow-up:</strong> How do you prevent XSS when printing user input?</p>
+        </div>
+</div>
+</details><details class="q" id="engineering-g95" data-blob="Laravel vs pure PHP Honest comparison. When do you use Laravel vs pure PHP? Pure PHP or a thin custom stack is fine for small APIs or when you already have an in-house framework — like at BaseVN. Laravel is faster for full apps: routing, auth, Eloquent, validation, queues. For enterprise products I&#x27;d expect a framework or structured codebase, but I still want strong pure PHP fundamentals so I&#x27;m not lost when the framework doesn&#x27;t hide the problem. Khi nào dùng Laravel, khi nào PHP thuần? PHP thuần hoặc stack custom mỏng ổn cho API nhỏ hoặc khi đã có framework nội bộ — như ở BaseVN. Laravel nhanh hơn cho app đầy đủ: routing, auth, Eloquent, validation, queue. Với sản phẩm enterprise tôi expect framework hoặc codebase có cấu trúc, nhưng vẫn cần nền PHP thuần vững để không lạc khi framework không che được vấn đề. Know: Framework for speed; pure PHP for fundamentals and custom platforms. Trap: Saying you never need frameworks / never need pure PHP. Follow-up: What Laravel feature would you miss most in pure PHP?">
+<summary><span class="num">15</span><span><span class="q-title">Laravel vs pure PHP</span><span class="q-hint">Honest comparison.</span></span></summary>
+<div class="q-body">
+<div class="lang"><button type="button" data-set-lang="en">English</button><button type="button" data-set-lang="vi">Tiếng Việt</button></div>
+<div data-pane="en"><div class="ask"><p>When do you use Laravel vs pure PHP?</p></div><div class="ans"><p>Pure PHP or a thin custom stack is fine for small APIs or when you already have an in-house framework — like at BaseVN. Laravel is faster for full apps: routing, auth, Eloquent, validation, queues. For enterprise products I'd expect a framework or structured codebase, but I still want strong pure PHP fundamentals so I'm not lost when the framework doesn't hide the problem.</p></div></div>
+<div data-pane="vi" hidden><div class="ask"><p>Khi nào dùng Laravel, khi nào PHP thuần?</p></div><div class="ans"><p>PHP thuần hoặc stack custom mỏng ổn cho API nhỏ hoặc khi đã có framework nội bộ — như ở BaseVN. Laravel nhanh hơn cho app đầy đủ: routing, auth, Eloquent, validation, queue. Với sản phẩm enterprise tôi expect framework hoặc codebase có cấu trúc, nhưng vẫn cần nền PHP thuần vững để không lạc khi framework không che được vấn đề.</p></div></div>
+<div class="notes">
+          <p><strong>Know:</strong> Framework for speed; pure PHP for fundamentals and custom platforms.</p>
+          <p><strong>Trap:</strong> Saying you never need frameworks / never need pure PHP.</p>
+          <p><strong>Follow-up:</strong> What Laravel feature would you miss most in pure PHP?</p>
+        </div>
+</div>
+</details><details class="q" id="engineering-g96" data-blob="Arrays and common PHP functions Quick quiz fodder. Which PHP array tools do you use often? I use arrays constantly — list and associative maps. Common tools: array_map, array_filter, array_merge, isset/empty, count, in_array, and nowadays also typed object DTOs when structure matters. For JSON APIs: json_encode / json_decode. Simple, but interviewers often ask because it&#x27;s everyday PHP. Bạn hay dùng công cụ array PHP nào? Tôi dùng array liên tục — list và map kết hợp. Tool hay dùng: array_map, array_filter, array_merge, isset/empty, count, in_array, và ngày nay cả DTO object khi cần cấu trúc. Cho JSON API: json_encode / json_decode. Đơn giản, nhưng interviewer hay hỏi vì là PHP hằng ngày. Know: array_* + json_* = daily PHP. Trap: Only knowing foreach and nothing else. Follow-up: Difference between array_map and array_filter?">
+<summary><span class="num">16</span><span><span class="q-title">Arrays and common PHP functions</span><span class="q-hint">Quick quiz fodder.</span></span></summary>
+<div class="q-body">
+<div class="lang"><button type="button" data-set-lang="en">English</button><button type="button" data-set-lang="vi">Tiếng Việt</button></div>
+<div data-pane="en"><div class="ask"><p>Which PHP array tools do you use often?</p></div><div class="ans"><p>I use arrays constantly — list and associative maps. Common tools: array_map, array_filter, array_merge, isset/empty, count, in_array, and nowadays also typed object DTOs when structure matters. For JSON APIs: json_encode / json_decode. Simple, but interviewers often ask because it's everyday PHP.</p></div></div>
+<div data-pane="vi" hidden><div class="ask"><p>Bạn hay dùng công cụ array PHP nào?</p></div><div class="ans"><p>Tôi dùng array liên tục — list và map kết hợp. Tool hay dùng: array_map, array_filter, array_merge, isset/empty, count, in_array, và ngày nay cả DTO object khi cần cấu trúc. Cho JSON API: json_encode / json_decode. Đơn giản, nhưng interviewer hay hỏi vì là PHP hằng ngày.</p></div></div>
+<div class="notes">
+          <p><strong>Know:</strong> array_* + json_* = daily PHP.</p>
+          <p><strong>Trap:</strong> Only knowing foreach and nothing else.</p>
+          <p><strong>Follow-up:</strong> Difference between array_map and array_filter?</p>
+        </div>
+</div>
+</details></section><section class="block" id="sec-php-api-and-react-client"><h2>PHP API and React client</h2><details class="q" id="engineering-g22" data-blob="PHP API + React client Core fullstack loop. How do you connect a PHP backend with a React frontend? PHP exposes a clear JSON API. React fetches it, types the response, renders UI, and sends mutations back with validation both sides. I care about consistent error shapes, auth headers/cookies, and loading/empty/error states in the UI so users aren&#x27;t stuck on a spinner forever. Bạn nối PHP backend với React frontend thế nào? PHP expose API JSON rõ. React fetch, type response, render UI, gửi mutation kèm validation hai phía. Tôi quan tâm error shape nhất quán, auth header/cookie, và trạng thái loading/empty/error trên UI để user không kẹt spinner mãi. Know: Contract + auth + UX states. Trap: FE assumes success forever. Follow-up: How do you handle pagination across FE/BE?">
+<summary><span class="num">17</span><span><span class="q-title">PHP API + React client</span><span class="q-hint">Core fullstack loop.</span></span></summary>
+<div class="q-body">
+<div class="lang"><button type="button" data-set-lang="en">English</button><button type="button" data-set-lang="vi">Tiếng Việt</button></div>
+<div data-pane="en"><div class="ask"><p>How do you connect a PHP backend with a React frontend?</p></div><div class="ans"><p>PHP exposes a clear JSON API. React fetches it, types the response, renders UI, and sends mutations back with validation both sides. I care about consistent error shapes, auth headers/cookies, and loading/empty/error states in the UI so users aren't stuck on a spinner forever.</p></div></div>
+<div data-pane="vi" hidden><div class="ask"><p>Bạn nối PHP backend với React frontend thế nào?</p></div><div class="ans"><p>PHP expose API JSON rõ. React fetch, type response, render UI, gửi mutation kèm validation hai phía. Tôi quan tâm error shape nhất quán, auth header/cookie, và trạng thái loading/empty/error trên UI để user không kẹt spinner mãi.</p></div></div>
+<div class="notes">
+          <p><strong>Know:</strong> Contract + auth + UX states.</p>
+          <p><strong>Trap:</strong> FE assumes success forever.</p>
+          <p><strong>Follow-up:</strong> How do you handle pagination across FE/BE?</p>
+        </div>
+</div>
+</details><details class="q" id="engineering-g23" data-blob="Error handling across stack User-visible quality. How do you handle errors across frontend and backend? Backend returns meaningful status codes and a stable error payload. Frontend maps that to user messages and logs details for developers. I don&#x27;t show raw stack traces to users, and I don&#x27;t swallow errors silently. For retries, only idempotent-safe calls. Bạn xử lý lỗi xuyên frontend và backend thế nào? Backend trả status có nghĩa và payload lỗi ổn định. Frontend map thành message cho user và log chi tiết cho dev. Không show stack trace cho user, không nuốt lỗi im lặng. Retry chỉ khi call an toàn idempotent. Know: Stable error contract + honest UX. Trap: Alert with secret details. Follow-up: What is an idempotent API request?">
+<summary><span class="num">18</span><span><span class="q-title">Error handling across stack</span><span class="q-hint">User-visible quality.</span></span></summary>
+<div class="q-body">
+<div class="lang"><button type="button" data-set-lang="en">English</button><button type="button" data-set-lang="vi">Tiếng Việt</button></div>
+<div data-pane="en"><div class="ask"><p>How do you handle errors across frontend and backend?</p></div><div class="ans"><p>Backend returns meaningful status codes and a stable error payload. Frontend maps that to user messages and logs details for developers. I don't show raw stack traces to users, and I don't swallow errors silently. For retries, only idempotent-safe calls.</p></div></div>
+<div data-pane="vi" hidden><div class="ask"><p>Bạn xử lý lỗi xuyên frontend và backend thế nào?</p></div><div class="ans"><p>Backend trả status có nghĩa và payload lỗi ổn định. Frontend map thành message cho user và log chi tiết cho dev. Không show stack trace cho user, không nuốt lỗi im lặng. Retry chỉ khi call an toàn idempotent.</p></div></div>
+<div class="notes">
+          <p><strong>Know:</strong> Stable error contract + honest UX.</p>
+          <p><strong>Trap:</strong> Alert with secret details.</p>
+          <p><strong>Follow-up:</strong> What is an idempotent API request?</p>
+        </div>
+</div>
+</details></section><section class="block" id="sec-common-questions"><h2>Common questions</h2><details class="q" id="new-php-1" data-blob="== versus === Common PHP quiz. Say the rule, then one surprise. What is the difference between == and === in PHP? I use === by default. == compares after type coercion, so &quot;0&quot; == false and 0 == &quot;foo&quot; can both surprise you. === checks value and type. I only reach for == when I explicitly want coercion, which is rare in application code. Khác nhau giữa == và === trong PHP? Tôi mặc định dùng ===. == so sánh sau khi ép kiểu, nên &quot;0&quot; == false và 0 == &quot;foo&quot; đều có thể bất ngờ. === kiểm tra cả giá trị lẫn kiểu. Tôi chỉ dùng == khi cố ý muốn ép kiểu — trong code ứng dụng thì hiếm.">
+<summary><span class="num">19</span><span><span class="q-title">== versus ===</span><span class="q-hint">Common PHP quiz. Say the rule, then one surprise.</span></span></summary>
+<div class="q-body">
+<div class="lang"><button type="button" data-set-lang="en">English</button><button type="button" data-set-lang="vi">Tiếng Việt</button></div>
+<div data-pane="en"><div class="ask"><p>What is the difference between == and === in PHP?</p></div><div class="ans"><p>I use === by default. == compares after type coercion, so "0" == false and 0 == "foo" can both surprise you. === checks value and type. I only reach for == when I explicitly want coercion, which is rare in application code.</p></div></div>
+<div data-pane="vi" hidden><div class="ask"><p>Khác nhau giữa == và === trong PHP?</p></div><div class="ans"><p>Tôi mặc định dùng ===. == so sánh sau khi ép kiểu, nên "0" == false và 0 == "foo" đều có thể bất ngờ. === kiểm tra cả giá trị lẫn kiểu. Tôi chỉ dùng == khi cố ý muốn ép kiểu — trong code ứng dụng thì hiếm.</p></div></div>
+
+</div>
+</details><details class="q" id="new-php-2" data-blob="N+1 queries Common performance question. Use BaseVN, not a textbook. What is the N+1 query problem, and how do you fix it? N+1 is one query for the list, then one more query per row inside a loop. On a large employee or tax table that dies. I look for a query in a loop, then I join or batch-load the related rows. On IELTS I hit the same idea from the other side: hydrate the progress the screen needs instead of fetching every topic one by one. The fix is fewer round trips, and then I re-check the result on a known sample so I did not just make a wrong query faster. N+1 query là gì và bạn sửa thế nào? N+1 là một query cho danh sách, rồi thêm một query mỗi dòng trong vòng lặp. Bảng nhân viên hoặc thuế lớn sẽ chết. Tôi tìm query nằm trong loop, rồi join hoặc load theo lô. Bên IELTS tôi gặp cùng ý từ phía kia: hydrate đúng phần progress màn hình cần, không fetch từng topic. Sửa là giảm round trip, rồi kiểm lại trên sample đã biết để không làm một query sai chạy nhanh hơn.">
+<summary><span class="num">20</span><span><span class="q-title">N+1 queries</span><span class="q-hint">Common performance question. Use BaseVN, not a textbook.</span></span></summary>
+<div class="q-body">
+<div class="lang"><button type="button" data-set-lang="en">English</button><button type="button" data-set-lang="vi">Tiếng Việt</button></div>
+<div data-pane="en"><div class="ask"><p>What is the N+1 query problem, and how do you fix it?</p></div><div class="ans"><p>N+1 is one query for the list, then one more query per row inside a loop. On a large employee or tax table that dies. I look for a query in a loop, then I join or batch-load the related rows. On IELTS I hit the same idea from the other side: hydrate the progress the screen needs instead of fetching every topic one by one. The fix is fewer round trips, and then I re-check the result on a known sample so I did not just make a wrong query faster.</p></div></div>
+<div data-pane="vi" hidden><div class="ask"><p>N+1 query là gì và bạn sửa thế nào?</p></div><div class="ans"><p>N+1 là một query cho danh sách, rồi thêm một query mỗi dòng trong vòng lặp. Bảng nhân viên hoặc thuế lớn sẽ chết. Tôi tìm query nằm trong loop, rồi join hoặc load theo lô. Bên IELTS tôi gặp cùng ý từ phía kia: hydrate đúng phần progress màn hình cần, không fetch từng topic. Sửa là giảm round trip, rồi kiểm lại trên sample đã biết để không làm một query sai chạy nhanh hơn.</p></div></div>
+
+</div>
+</details><details class="q" id="new-php-3" data-blob="Database transactions Common when they ask about money or sync. When do you use a database transaction? When several writes must succeed or fail together. A sync that updates HR data and a payroll row is a good example: a half-written result is worse than a failed job. I open a transaction, do the writes, commit if every step is valid, and roll back if one fails. I keep the transaction short. I do not hold it open across an HTTP call to a third party. Khi nào bạn dùng database transaction? Khi nhiều lệnh ghi phải cùng thành công hoặc cùng thất bại. Sync vừa sửa dữ liệu HR vừa sửa dòng payroll là ví dụ: ghi nửa chừng tệ hơn một job fail. Tôi mở transaction, ghi, commit khi mọi bước hợp lệ, rollback nếu một bước lỗi. Transaction phải ngắn. Tôi không giữ nó mở trong lúc gọi HTTP sang bên thứ ba.">
+<summary><span class="num">21</span><span><span class="q-title">Database transactions</span><span class="q-hint">Common when they ask about money or sync.</span></span></summary>
+<div class="q-body">
+<div class="lang"><button type="button" data-set-lang="en">English</button><button type="button" data-set-lang="vi">Tiếng Việt</button></div>
+<div data-pane="en"><div class="ask"><p>When do you use a database transaction?</p></div><div class="ans"><p>When several writes must succeed or fail together. A sync that updates HR data and a payroll row is a good example: a half-written result is worse than a failed job. I open a transaction, do the writes, commit if every step is valid, and roll back if one fails. I keep the transaction short. I do not hold it open across an HTTP call to a third party.</p></div></div>
+<div data-pane="vi" hidden><div class="ask"><p>Khi nào bạn dùng database transaction?</p></div><div class="ans"><p>Khi nhiều lệnh ghi phải cùng thành công hoặc cùng thất bại. Sync vừa sửa dữ liệu HR vừa sửa dòng payroll là ví dụ: ghi nửa chừng tệ hơn một job fail. Tôi mở transaction, ghi, commit khi mọi bước hợp lệ, rollback nếu một bước lỗi. Transaction phải ngắn. Tôi không giữ nó mở trong lúc gọi HTTP sang bên thứ ba.</p></div></div>
+
+</div>
+</details><details class="q" id="new-php-4" data-blob="Idempotent APIs Common follow-up after retries, webhooks, or payments. What is an idempotent API request? Calling it twice has the same effect as calling it once. GET should be idempotent. A payment, a webhook, or a sync often is not, unless I design it that way. I store an external id or an idempotency key and I check it before insert. On IELTS, Apple and Google purchase notifications hit Express. A repeated notification must not grant the purchase twice. The server is the source of truth, and the unique store transaction id is the guard. Request API idempotent là gì? Gọi hai lần cho cùng kết quả như gọi một lần. GET nên idempotent. Thanh toán, webhook, hoặc sync thường không — trừ khi tôi thiết kế vậy. Tôi lưu external id hoặc idempotency key và kiểm tra trước khi insert. Trên IELTS, thông báo mua của Apple và Google vào Express. Notification lặp không được cấp quyền mua hai lần. Server là nguồn sự thật, và transaction id của store là chốt chặn.">
+<summary><span class="num">22</span><span><span class="q-title">Idempotent APIs</span><span class="q-hint">Common follow-up after retries, webhooks, or payments.</span></span></summary>
+<div class="q-body">
+<div class="lang"><button type="button" data-set-lang="en">English</button><button type="button" data-set-lang="vi">Tiếng Việt</button></div>
+<div data-pane="en"><div class="ask"><p>What is an idempotent API request?</p></div><div class="ans"><p>Calling it twice has the same effect as calling it once. GET should be idempotent. A payment, a webhook, or a sync often is not, unless I design it that way. I store an external id or an idempotency key and I check it before insert. On IELTS, Apple and Google purchase notifications hit Express. A repeated notification must not grant the purchase twice. The server is the source of truth, and the unique store transaction id is the guard.</p></div></div>
+<div data-pane="vi" hidden><div class="ask"><p>Request API idempotent là gì?</p></div><div class="ans"><p>Gọi hai lần cho cùng kết quả như gọi một lần. GET nên idempotent. Thanh toán, webhook, hoặc sync thường không — trừ khi tôi thiết kế vậy. Tôi lưu external id hoặc idempotency key và kiểm tra trước khi insert. Trên IELTS, thông báo mua của Apple và Google vào Express. Notification lặp không được cấp quyền mua hai lần. Server là nguồn sự thật, và transaction id của store là chốt chặn.</p></div></div>
+
+</div>
+</details><details class="q" id="new-php-5" data-blob="REST and GraphQL Common awareness question. Stay honest about what you shipped. REST or GraphQL — which do you choose? I have shipped REST. The client and server share a JSON contract, status codes mean something, and errors have a stable shape. GraphQL is one endpoint where the client asks for the fields it needs. That helps when many clients need very different shapes. I would use it if the team already runs it. I would not introduce it for a small PHP API. My default is a clear REST contract. REST hay GraphQL — bạn chọn cái nào? Tôi đã ship REST. Client và server dùng contract JSON, status code có nghĩa, lỗi có shape ổn định. GraphQL là một endpoint, client xin đúng field nó cần. Hợp khi nhiều client cần shape rất khác nhau. Tôi dùng nếu team đã chạy sẵn. Tôi không đưa vào một API PHP nhỏ. Mặc định của tôi là REST contract rõ.">
+<summary><span class="num">23</span><span><span class="q-title">REST and GraphQL</span><span class="q-hint">Common awareness question. Stay honest about what you shipped.</span></span></summary>
+<div class="q-body">
+<div class="lang"><button type="button" data-set-lang="en">English</button><button type="button" data-set-lang="vi">Tiếng Việt</button></div>
+<div data-pane="en"><div class="ask"><p>REST or GraphQL — which do you choose?</p></div><div class="ans"><p>I have shipped REST. The client and server share a JSON contract, status codes mean something, and errors have a stable shape. GraphQL is one endpoint where the client asks for the fields it needs. That helps when many clients need very different shapes. I would use it if the team already runs it. I would not introduce it for a small PHP API. My default is a clear REST contract.</p></div></div>
+<div data-pane="vi" hidden><div class="ask"><p>REST hay GraphQL — bạn chọn cái nào?</p></div><div class="ans"><p>Tôi đã ship REST. Client và server dùng contract JSON, status code có nghĩa, lỗi có shape ổn định. GraphQL là một endpoint, client xin đúng field nó cần. Hợp khi nhiều client cần shape rất khác nhau. Tôi dùng nếu team đã chạy sẵn. Tôi không đưa vào một API PHP nhỏ. Mặc định của tôi là REST contract rõ.</p></div></div>
+
+</div>
+</details><details class="q" id="new-php-6" data-blob="Where you cache Common, and easy to oversell. Say what you would not cache. What do you cache, and what do you refuse to cache? I cache work that is expensive and safe to be slightly stale: a dashboard aggregate, a config, a rendered report that we can invalidate. I do not cache a tax or payroll figure for a specific period unless invalidation is obvious, because fast and wrong is a bad launch. Redis is the usual tool. I know the pattern — key, TTL, invalidate on write — and I would follow the team&#x27;s setup instead of inventing one in the interview. Bạn cache gì, và từ chối cache gì? Tôi cache việc đắt và chấp nhận hơi cũ: số tổng dashboard, config, report có thể invalidate. Tôi không cache số thuế hoặc payroll của một kỳ nếu chưa rõ cách xóa cache, vì nhanh mà sai là launch tệ. Redis là tool thường gặp. Tôi biết pattern — key, TTL, xóa khi ghi — và tôi theo setup của team thay vì bịa một cái trong interview.">
+<summary><span class="num">24</span><span><span class="q-title">Where you cache</span><span class="q-hint">Common, and easy to oversell. Say what you would not cache.</span></span></summary>
+<div class="q-body">
+<div class="lang"><button type="button" data-set-lang="en">English</button><button type="button" data-set-lang="vi">Tiếng Việt</button></div>
+<div data-pane="en"><div class="ask"><p>What do you cache, and what do you refuse to cache?</p></div><div class="ans"><p>I cache work that is expensive and safe to be slightly stale: a dashboard aggregate, a config, a rendered report that we can invalidate. I do not cache a tax or payroll figure for a specific period unless invalidation is obvious, because fast and wrong is a bad launch. Redis is the usual tool. I know the pattern — key, TTL, invalidate on write — and I would follow the team's setup instead of inventing one in the interview.</p></div></div>
+<div data-pane="vi" hidden><div class="ask"><p>Bạn cache gì, và từ chối cache gì?</p></div><div class="ans"><p>Tôi cache việc đắt và chấp nhận hơi cũ: số tổng dashboard, config, report có thể invalidate. Tôi không cache số thuế hoặc payroll của một kỳ nếu chưa rõ cách xóa cache, vì nhanh mà sai là launch tệ. Redis là tool thường gặp. Tôi biết pattern — key, TTL, xóa khi ghi — và tôi theo setup của team thay vì bịa một cái trong interview.</p></div></div>
+
+</div>
+</details></section></main></div>
+<script src="assets/search-index.js"></script>
+<script src="assets/site.js"></script>
+</body>
+</html>
