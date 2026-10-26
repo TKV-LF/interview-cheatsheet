@@ -29,7 +29,7 @@ PAGES = [
     ("cv.html", "cv", "CV and projects", "Akktis, IELTS, and BaseVN — walk the real work, including the hard fixes."),
 ]
 
-NAV = [(href, label) for href, _pid, label, _blurb in PAGES]
+NAV = [(href, label) for href, _pid, label, _blurb in PAGES] + [("qnap.html", "QNAP")]
 
 SKIP_GO1 = {"q2", "q31"}
 SKIP_SECTIONS = {("kaopiz", "sec-behavioral"), ("kaopiz", "sec-close")}
@@ -485,9 +485,14 @@ def render_hub(counts: dict[str, int]) -> str:
             f'<a class="card" href="{href}"><span class="kicker">{counts.get(pid, 0)} questions</span>'
             f"<h2>{esc(label)}</h2><p>{esc(blurb)}</p></a>"
         )
+    cards.insert(
+        0,
+        '<a class="card" href="qnap.html"><span class="kicker">Friday 30 Oct · 14:00</span>'
+        "<h2>QNAP Vietnam</h2><p>Partner Portal and Sales Portal. Chinese first, then PHP, Laravel, React, and MySQL.</p></a>",
+    )
     body = f"""<main class="hub" id="content">
 <h1>Interview cheatsheet</h1>
-<p class="lede">Search by the question, or open a category. Company packs are gone. The useful questions from them are filed here, with the common questions that belong next to them.</p>
+<p class="lede">Search by the question, or open a category. Company packs are gone. The QNAP interview on Friday has its own page. The other questions are filed by subject.</p>
 <div class="cards">{''.join(cards)}</div>
 <p class="foot">English and Tiếng Việt on every answer. Press / to search.</p>
 </main>"""

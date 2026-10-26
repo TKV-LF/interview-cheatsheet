@@ -202,6 +202,7 @@ button, input { font: inherit; color: inherit; }
   text-transform: uppercase;
   color: var(--color-text-faint);
 }
+.side a[hidden] { display: none; }
 .side a {
   display: block;
   text-decoration: none;
@@ -353,6 +354,20 @@ details.q[open] .num { color: var(--color-primary); }
   font-size: var(--text-sm);
   margin-top: 2rem;
 }
+.brief {
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  padding: 1rem 1.1rem;
+  margin: 1rem 0 0.4rem;
+}
+.brief h2 { font-family: var(--font-display); font-size: 1.05rem; margin: 0 0 0.4rem; }
+.brief p, .brief li { margin: 0.3rem 0; color: var(--color-text-muted); font-size: var(--text-sm); }
+.brief ul { margin: 0.3rem 0 0.2rem 1.1rem; padding: 0; }
+.brief a { font-weight: 650; }
+.zh { font-size: 1.2rem; font-weight: 700; line-height: 1.75; margin: 0.8rem 0 0.1rem; }
+.py { color: var(--color-primary); margin: 0; font-size: 0.95rem; }
+.mean { color: var(--color-text-muted); margin: 0.1rem 0 0.5rem; font-size: var(--text-sm); }
 
 @media (max-width: 860px) {
   .shell { grid-template-columns: 1fr; padding: 1rem; }
