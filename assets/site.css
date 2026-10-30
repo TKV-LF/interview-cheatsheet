@@ -378,7 +378,6 @@ details.q[open] .num { color: var(--color-primary); }
 .brief a { font-weight: 650; }
 .zh { font-size: 1.2rem; font-weight: 700; line-height: 1.75; margin: 0.8rem 0 0.1rem; }
 .py { color: var(--color-primary); margin: 0; font-size: 0.95rem; }
-.hv { color: var(--color-text); margin: 0; font-size: 0.95rem; }
 .mean { color: var(--color-text-muted); margin: 0.1rem 0 0.5rem; font-size: var(--text-sm); }
 .zh-key { display: flex; flex-wrap: wrap; gap: 0.35rem 0.8rem; margin: 0 0 0.6rem; font-size: 0.75rem; letter-spacing: 0.04em; text-transform: uppercase; color: var(--color-text-faint); }
 .zh-key span { font-weight: 650; }
