@@ -294,5 +294,7 @@ NEW = [
 ]
 
 from php_db_questions import EXTRA  # noqa: E402
+from fullstack_questions import EXTRA as FULLSTACK_EXTRA  # noqa: E402
 
 NEW += EXTRA
+NEW += FULLSTACK_EXTRA

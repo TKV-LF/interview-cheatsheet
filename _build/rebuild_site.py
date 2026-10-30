@@ -361,7 +361,7 @@ def new_cards() -> list[dict]:
 
 
 SECTION_RANK = {
-    "php": ["PHP and Laravel", "Pure PHP", "PHP API and React client", "MySQL", "Common questions"],
+    "php": ["PHP and Laravel", "Pure PHP", "PHP API and React client", "MySQL", "SQL", "Common questions"],
     "fit": ["General", "PHP and React", "DevOps", "Node and TypeScript", "Career moves"],
     "behavioral": [
         "Stories", "Conflict", "Judgement", "Leadership", "Collaboration",
