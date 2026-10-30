@@ -292,3 +292,7 @@ NEW = [
         "a_vi": "<p>Tôi ship xuyên PHP và MySQL, TypeScript phía client, và đường tới production — CI, cloud, và support sau release. Tôi nói thẳng độ sâu. PHP và MySQL là nơi tôi có nhiều vết backend nhất. Node trên server, và một số thư viện UI, tôi sẽ học cùng team. Tôi debug bằng bằng chứng, và tôi thà nêu phần chưa làm còn hơn bịa một câu chuyện trận mạc.</p>",
     },
 ]
+
+from php_db_questions import EXTRA  # noqa: E402
+
+NEW += EXTRA

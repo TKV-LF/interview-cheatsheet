@@ -297,6 +297,17 @@ details.q[open] .num { color: var(--color-primary); }
   font-weight: 700;
 }
 .ans p, .notes p { margin: 0.45rem 0; }
+.ans pre, .notes pre {
+  margin: 0.5rem 0;
+  padding: 0.7rem 0.8rem;
+  overflow-x: auto;
+  font-size: 0.82rem;
+  line-height: 1.5;
+  background: color-mix(in srgb, var(--color-primary) 8%, transparent);
+  border: 1px solid var(--color-divider);
+  border-radius: 0.5rem;
+}
+.ans code, .notes code { font-size: 0.9em; }
 .ans ul, .ans ol, .notes ul, .notes ol { margin: 0.4rem 0 0.4rem 1.1rem; padding: 0; }
 .ans li, .notes li { margin: 0.25rem 0; }
 .ans table { width: 100%; border-collapse: collapse; font-size: var(--text-sm); }
@@ -367,7 +378,13 @@ details.q[open] .num { color: var(--color-primary); }
 .brief a { font-weight: 650; }
 .zh { font-size: 1.2rem; font-weight: 700; line-height: 1.75; margin: 0.8rem 0 0.1rem; }
 .py { color: var(--color-primary); margin: 0; font-size: 0.95rem; }
+.hv { color: var(--color-text); margin: 0; font-size: 0.95rem; }
 .mean { color: var(--color-text-muted); margin: 0.1rem 0 0.5rem; font-size: var(--text-sm); }
+.zh-key { display: flex; flex-wrap: wrap; gap: 0.35rem 0.8rem; margin: 0 0 0.6rem; font-size: 0.75rem; letter-spacing: 0.04em; text-transform: uppercase; color: var(--color-text-faint); }
+.zh-key span { font-weight: 650; }
+.words td:first-child { font-weight: 700; font-size: 1.05rem; }
+.words td:nth-child(2) { color: var(--color-primary); }
+.words tr.group td { font-size: 0.78rem; letter-spacing: 0.04em; text-transform: uppercase; color: var(--color-text-faint); padding-top: 0.8rem; }
 
 @media (max-width: 860px) {
   .shell { grid-template-columns: 1fr; padding: 1rem; }

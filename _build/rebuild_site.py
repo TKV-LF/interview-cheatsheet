@@ -346,7 +346,7 @@ def new_cards() -> list[dict]:
     made = []
     for index, item in enumerate(NEW, start=1):
         made.append({
-            "id": f"new-{item['page']}-{index}",
+            "id": item.get("id") or f"new-{item['page']}-{index}",
             "page": item["page"],
             "section": item["section"],
             "title": item["title"],
@@ -355,12 +355,13 @@ def new_cards() -> list[dict]:
             "a_en": item["a_en"],
             "q_vi": f"<p>{html.escape(item['q_vi'])}</p>",
             "a_vi": item["a_vi"],
-            "notes": "",
+            "notes": item.get("notes") or "",
         })
     return made
 
 
 SECTION_RANK = {
+    "php": ["PHP and Laravel", "Pure PHP", "PHP API and React client", "MySQL", "Common questions"],
     "fit": ["General", "PHP and React", "DevOps", "Node and TypeScript", "Career moves"],
     "behavioral": [
         "Stories", "Conflict", "Judgement", "Leadership", "Collaboration",
