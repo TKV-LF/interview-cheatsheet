@@ -434,7 +434,10 @@ def shell(page_id: str, title: str, active: str, body: str) -> str:
 <div class="topbar-inner">
 <div class="brand-row">
 <a class="brand" href="index.html">Interview cheatsheet</a>
+<div class="brand-actions">
+<button class="icon-btn nav-toggle" type="button" data-nav-toggle aria-label="Open menu" aria-expanded="false" aria-controls="site-nav"><span class="nav-toggle-bars" aria-hidden="true"></span></button>
 <button class="icon-btn" type="button" data-theme-toggle aria-label="Switch theme">☾</button>
+</div>
 </div>
 <div class="search-wrap">
 <span class="mag" aria-hidden="true">⌕</span>
@@ -443,7 +446,7 @@ def shell(page_id: str, title: str, active: str, body: str) -> str:
 <p class="search-meta" data-search-meta></p>
 </div>
 </div>
-<nav class="nav-scroll" aria-label="Categories">{nav}</nav>
+<nav class="nav-scroll" id="site-nav" aria-label="Categories">{nav}</nav>
 </header>
 {body}
 <script src="assets/search-index.js"></script>
