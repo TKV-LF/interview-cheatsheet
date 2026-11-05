@@ -1,0 +1,218 @@
+{
+ "page": "debug",
+ "href": "debugging.html",
+ "title": "Debugging",
+ "intro": "Decide the layer, then prove it before you change code.",
+ "sections": [
+  {
+   "name": "Find the layer",
+   "cards": [
+    {
+     "id": "soft-g24",
+     "title": "Frontend or backend? How do you decide?",
+     "hint": "Core method. The Network tab decides, then replay outside the app.",
+     "q_en": "<p>How do you detect whether a bug is frontend or backend?</p>",
+     "a_en": "<p>I reproduce it first, then let the Network tab decide. I look at the request: method, URL, params, headers, and body. Then the response: status, JSON, and timing. If the response is already wrong, with bad data or a 4xx or 5xx, it is the API or the contract. A 200 with wrong business data is still a backend bug. If the response is right but the screen is wrong, it is the frontend: mapping, state, or render. If the request never goes out, or goes out malformed, that is the frontend too. To be sure, I replay the same request with curl or Postman, outside the app. On mobile, where there is no Network tab by default, I log the request in a debug build, or find that request id in the API logs on Cloud Run.</p>",
+     "q_vi": "<p>Làm sao biết bug thuộc frontend hay backend?</p>",
+     "a_vi": "<p>Tôi tái hiện lỗi trước, rồi để tab Network quyết định. Tôi xem request: method, URL, tham số, header và body. Rồi xem response: status, JSON và thời gian. Nếu response đã sai, dữ liệu sai hoặc 4xx, 5xx, thì là API hoặc contract. 200 mà dữ liệu nghiệp vụ sai vẫn là bug backend. Nếu response đúng mà màn hình sai, thì là frontend: mapping, state hoặc render. Nếu request không được gửi, hoặc gửi sai format, cũng là frontend. Để chắc chắn, tôi gửi lại đúng request đó bằng curl hoặc Postman, bên ngoài app. Trên mobile không có sẵn tab Network, nên tôi log request trong bản debug, hoặc tìm request id đó trong log API trên Cloud Run.</p>",
+     "notes": "<p><strong>Know:</strong> Request shape → response status and body → timing. The Network tab is the judge between FE and BE.</p><p><strong>Trap:</strong> Blaming FE or BE from a screenshot. Only watching the Console.</p><p><strong>Follow-up:</strong> 200 OK but an empty array. What next? Check the query params the client sent, then the query on the server.</p>"
+    },
+    {
+     "id": "soft-g26",
+     "title": "Reproduce with curl / Postman",
+     "hint": "Isolate the UI.",
+     "q_en": "<p>Why reproduce a bug with curl or Postman?</p>",
+     "a_en": "<p>Because it answers one question cleanly: is the backend wrong without the app in the way? I copy the request from the browser as curl, or rebuild it in Postman with the same headers, token, and body. If curl gets the same bad data, I debug the API: the Express or PHP handler, the query, the logs. If curl is correct but the screen is wrong, I debug the client: state, render, or mapping. It saves time, and it ends the argument between frontend and backend with evidence. The one trap is sending different headers than the app does, which gives a false answer.</p>",
+     "q_vi": "<p>Vì sao reproduce bug bằng curl hoặc Postman?</p>",
+     "a_vi": "<p>Vì nó trả lời gọn một câu hỏi: không có app chen vào thì backend có sai không? Tôi copy request từ trình duyệt dưới dạng curl, hoặc dựng lại trong Postman với đúng header, token và body. Nếu curl cũng ra dữ liệu sai, tôi debug API: handler Express hoặc PHP, câu query, log. Nếu curl đúng mà màn hình sai, tôi debug client: state, render hoặc mapping. Cách này tiết kiệm thời gian, và kết thúc tranh cãi giữa frontend với backend bằng bằng chứng. Bẫy duy nhất là gửi header khác với app, sẽ ra kết luận sai.</p>",
+     "notes": "<p><strong>Know:</strong> Same request, no browser variables.</p>\n          <p><strong>Trap:</strong> Different headers in curl than the app (false conclusion).</p>\n          <p><strong>Follow-up:</strong> How do you copy a request from Chrome as curl?</p>"
+    },
+    {
+     "id": "soft-g27",
+     "title": "4xx vs 5xx vs CORS",
+     "hint": "Quick triage.",
+     "q_en": "<p>How do status codes help you triage?</p>",
+     "a_en": "<p>The status code narrows it fast. A 4xx usually means the request is the problem: a bad body is 400, a missing or expired token is 401, a user without permission is 403, a wrong URL or missing record is 404. A 5xx means the server failed: an exception, a database that is down, a timeout to a provider. A 502 or 504 often points at the platform or a slow upstream rather than my code. CORS is different. The browser blocks the response, so it shows as a network error even when the server answered. So I check the preflight OPTIONS request and the allowed origins on the API before I touch the React code.</p>",
+     "q_vi": "<p>Status code giúp triage thế nào?</p>",
+     "a_vi": "<p>Status code giúp khoanh vùng rất nhanh. 4xx thường là do request: body sai là 400, thiếu hoặc hết hạn token là 401, user không có quyền là 403, sai URL hoặc không có bản ghi là 404. 5xx là server lỗi: exception, database chết, timeout khi gọi provider. 502 hoặc 504 thường chỉ về phía nền tảng hoặc một upstream chậm hơn là code của tôi. CORS thì khác. Trình duyệt chặn response, nên nó hiện như lỗi mạng dù server đã trả lời. Vì vậy tôi kiểm tra request OPTIONS preflight và danh sách origin được phép trên API trước khi đụng vào code React.</p>",
+     "notes": "<p><strong>Know:</strong> 4xx client/contract; 5xx server; CORS is browser policy.</p>\n          <p><strong>Trap:</strong> Treating every red Network row as backend is down.</p>\n          <p><strong>Follow-up:</strong> How do you debug a CORS error end to end?</p>"
+    },
+    {
+     "id": "soft-g31",
+     "title": "End-to-end debug walkthrough",
+     "hint": "Tell as a story.",
+     "q_en": "<p>Walk me through debugging a production bug from UI to database.</p>",
+     "a_en": "<p>Say a user reports that an export shows the wrong total. I reproduce it on the screen and capture the API call in the Network tab to read the payload. If the total in the API response is wrong, I call the same endpoint with Postman, read the API logs for that request, and inspect the SQL aggregate behind it. I fix the query or the business rule, verify the API, then verify the screen. If the API total was right, the bug is in the client: the mapping, rounding, or formatting. Either way, I finish with a test or a check on that total, so the bug cannot come back quietly. I follow the data, not opinions about which team is guilty.</p>",
+     "q_vi": "<p>Hãy đi qua cách debug bug production từ UI tới database.</p>",
+     "a_vi": "<p>Ví dụ user báo file export hiện sai tổng. Tôi tái hiện trên màn hình và bắt lời gọi API trong tab Network để đọc payload. Nếu tổng trong response API đã sai, tôi gọi lại endpoint đó bằng Postman, đọc log API của request đó, và xem câu SQL tính tổng phía sau. Tôi sửa query hoặc quy tắc nghiệp vụ, kiểm tra lại API, rồi kiểm tra lại màn hình. Nếu tổng trong API đúng, thì bug nằm ở client: mapping, làm tròn, hoặc format. Dù thế nào, tôi kết thúc bằng một test hoặc một bước kiểm tra cho con số đó, để bug không âm thầm quay lại. Tôi đi theo dữ liệu, không theo ý kiến xem team nào có lỗi.</p>",
+     "notes": "<p><strong>S:</strong> Wrong totals on an enterprise reporting screen.</p>\n          <p><strong>T:</strong> Find which layer is lying.</p>\n          <p><strong>A:</strong> UI reproduce → Network → Postman → PHP/SQL → fix → verify both layers.</p>\n          <p><strong>R:</strong> Correct export + clearer ownership of the bug layer.</p>\n          <p class=\"say\"><strong>Say this:</strong> I follow the data, not opinions about which team is guilty.</p>"
+    },
+    {
+     "id": "soft-g36",
+     "title": "UI bug that was actually API",
+     "hint": "FE/BE detective STAR.",
+     "q_en": "<p>Tell me about a time the bug looked like frontend but wasn't.</p>",
+     "a_en": "<p>A screen showed empty or wrong values, so everyone assumed it was a React bug. Before touching the component I opened the Network tab. The API returned 200, but the payload was missing fields the screen needed. I called the same endpoint in Postman with the same token and got the same incomplete JSON, so the backend was confirmed. The fix was in the PHP side, in the query and how the response was shaped. The React code was fine and needed no rewrite. The lesson I keep is to let the Network tab settle the argument before anyone changes code.</p>",
+     "q_vi": "<p>Kể lần bug trông như frontend nhưng không phải.</p>",
+     "a_vi": "<p>Một màn hình hiện giá trị trống hoặc sai, nên ai cũng nghĩ là bug React. Trước khi sửa component, tôi mở tab Network. API trả 200 nhưng payload thiếu các field mà màn hình cần. Tôi gọi lại endpoint đó bằng Postman với cùng token và nhận đúng JSON thiếu như vậy, nên xác nhận là backend. Chỗ sửa nằm ở phía PHP, trong câu query và cách dựng response. Code React không có lỗi và không cần viết lại. Bài học tôi giữ là để tab Network phân xử trước khi ai đó sửa code.</p>",
+     "notes": "<p><strong>S:</strong> UI looked broken.</p><p><strong>T:</strong> Find the real layer.</p><p><strong>A:</strong> Network → Postman → PHP fix → verify UI.</p><p><strong>R:</strong> Root cause fixed, no frontend rewrite.</p><p class=\"say\"><strong>Say this:</strong> Let the Network tab settle the argument.</p><p><strong>TODO Thủy:</strong> confirm which product this was (BaseVN or Akktis) so you can name it if asked.</p>"
+    },
+    {
+     "id": "soft-g37",
+     "title": "Performance complaint on list/report",
+     "hint": "Fullstack perf.",
+     "q_en": "<p>How did you fix a performance issue users felt in the UI?</p>",
+     "a_en": "<p>When users say a page is slow, I first split the time. The Network tab shows how long the API took, and the Performance panel or React DevTools Profiler shows how long the page took to render after the data arrived. If the API is slow, I work on the server: the query and its indexes, an N+1, or sending far more data than the screen shows. That is the kind of work I did on BaseVN reports over 500,000 records. If the API is fast and the page is slow, it is rendering: a long list with no virtualization, or components re-rendering on every keystroke. Measure first, then cut the real bottleneck.</p>",
+     "q_vi": "<p>Bạn sửa performance user cảm thấy trên UI thế nào?</p>",
+     "a_vi": "<p>Khi user nói trang chậm, việc đầu tiên tôi làm là tách thời gian. Tab Network cho biết API mất bao lâu, còn tab Performance hoặc React DevTools Profiler cho biết trang render mất bao lâu sau khi có dữ liệu. Nếu API chậm, tôi xử lý ở server: câu query và index, N+1, hoặc trả nhiều dữ liệu hơn hẳn những gì màn hình hiện. Đó là kiểu việc tôi đã làm với báo cáo hơn 500.000 bản ghi ở BaseVN. Nếu API nhanh mà trang vẫn chậm, thì là phần render: danh sách dài không virtualize, hoặc component render lại sau mỗi lần gõ phím. Đo trước, rồi cắt đúng nút thắt.</p>",
+     "notes": "<p><strong>S:</strong> Slow report/list in enterprise UI.</p>\n          <p><strong>T:</strong> Find FE vs BE bottleneck.</p>\n          <p><strong>A:</strong> Network timing → SQL or React fix → verify.</p>\n          <p><strong>R:</strong> Page felt usable again.</p>\n          <p class=\"say\"><strong>Say this:</strong> I optimize the measured bottleneck, not my favorite layer.</p>"
+    },
+    {
+     "id": "debug-cannot-reproduce",
+     "title": "A bug you cannot reproduce",
+     "hint": "Collect evidence for that exact moment instead of guessing.",
+     "q_en": "<p>A user reports a bug, but you cannot reproduce it. What do you do?</p>",
+     "a_en": "<p>I collect evidence instead of guessing. First the facts: which user, which device and app version, what time, and what they did. Then I find that moment in the logs: the user or request id in the Cloud Run logs, the Sentry event with its breadcrumbs, or the Langfuse trace if AI was involved. The difference usually shows up there: an older app version, a slow network, a user with unusual data, or two requests racing. If the logs are not enough, I add targeted logging around the suspected path, ship it, and wait for the next occurrence, rather than changing code blindly. Once I can reproduce it, I write a test for that case before I fix it. And I tell the user where I am, instead of closing the ticket as cannot reproduce.</p>",
+     "q_vi": "<p>User báo một bug nhưng bạn không tái hiện được. Bạn làm gì?</p>",
+     "a_vi": "<p>Tôi thu thập bằng chứng thay vì đoán. Đầu tiên là thông tin: user nào, thiết bị và phiên bản app nào, lúc mấy giờ, và họ đã làm gì. Rồi tôi tìm đúng thời điểm đó trong log: user id hoặc request id trong log Cloud Run, event trên Sentry kèm breadcrumb, hoặc trace Langfuse nếu có AI. Khác biệt thường lộ ra ở đó: phiên bản app cũ, mạng chậm, user có dữ liệu bất thường, hoặc hai request chạy chen nhau. Nếu log chưa đủ, tôi thêm log có chủ đích quanh đoạn nghi ngờ, ship lên, và chờ lần xảy ra tiếp theo, thay vì sửa code mò. Khi đã tái hiện được, tôi viết test cho đúng trường hợp đó trước khi sửa. Và tôi báo cho user biết tôi đang ở bước nào, thay vì đóng ticket là không tái hiện được.</p>",
+     "notes": "<p><strong>Know:</strong> Symptom → facts (who, version, when) → logs, Sentry, traces → targeted logging → reproduce → test → fix.</p><p><strong>Trap:</strong> Closing as 'works on my machine'. Shipping random fixes and hoping.</p><p><strong>Follow-up:</strong> It happens once a week. How do you catch it? Log the inputs on that path with a correlation id, and alert on the error.</p>"
+    }
+   ]
+  },
+  {
+   "name": "Frontend and mobile",
+   "cards": [
+    {
+     "id": "soft-g28",
+     "title": "React wrong, API fine",
+     "hint": "FE debugging path.",
+     "q_en": "<p>The API is correct, but the UI is wrong. How do you debug?</p>",
+     "a_en": "<p>Once I know the JSON is right, the bug is between the response and the pixels. I check in that order. Mapping first: a wrong field name, a date shown in the wrong time zone, a default value that hides a null. Then state: a stale value, a missing dependency in useEffect, or two fetches racing so the older response lands last. Then render conditions: a loading flag that never clears, or a filter that drops rows by mistake. React DevTools shows the props and state of the broken component, so I can see exactly where the right data turns wrong. For a race, I cancel the old request with an AbortController or ignore any response that is not the latest.</p>",
+     "q_vi": "<p>API đúng nhưng UI sai. Bạn debug thế nào?</p>",
+     "a_vi": "<p>Khi đã biết JSON đúng, thì bug nằm giữa response và những gì hiện trên màn hình. Tôi kiểm tra theo thứ tự. Trước hết là mapping: sai tên field, ngày hiện sai múi giờ, giá trị mặc định che mất null. Rồi đến state: giá trị cũ, thiếu dependency trong useEffect, hoặc hai lần fetch chen nhau khiến response cũ về sau cùng. Rồi điều kiện render: cờ loading không bao giờ tắt, hoặc filter lỡ bỏ mất dòng. React DevTools cho xem props và state của component đang lỗi, nên tôi thấy chính xác chỗ dữ liệu đúng bị biến thành sai. Với race, tôi hủy request cũ bằng AbortController hoặc bỏ qua response không phải cái mới nhất.</p>",
+     "notes": "<p><strong>Know:</strong> Mapping → state → effects → render conditions.</p>\n          <p><strong>Trap:</strong> Rewriting the API when JSON was already right.</p>\n          <p><strong>Follow-up:</strong> How do you debug a race condition in useEffect?</p>"
+    },
+    {
+     "id": "new-react-stale",
+     "title": "Users still see old data after deploy",
+     "hint": "Two caches: index.html, and the API.",
+     "q_en": "<p>You deployed frontend and backend. Users still see old data. What do you check?</p>",
+     "a_en": "<p>Two different caches. The JavaScript: hashed files can be cached for a long time, but index.html must not be, or the browser keeps the old bundle. I look at the Network tab, disable cache, and read Cache-Control on index.html. A service worker can pin the old app too. The API is the other cache: CDN, Cache-Control, or a client cache that still holds the previous JSON. I compare the response with the database. If the response is new and the screen is old, it is the client. If the response is old, it is the server or the CDN. I have hit stale bundles. I do not tell the user to 'clear cache' until I know which cache.</p>",
+     "q_vi": "<p>Đã deploy frontend và backend. User vẫn thấy data cũ. Bạn kiểm tra gì?</p>",
+     "a_vi": "<p>Có hai loại cache khác nhau. Với JavaScript: file có hash thì cache lâu được, nhưng index.html thì không được cache lâu, nếu không trình duyệt cứ giữ bundle cũ. Tôi xem tab Network, tắt cache, và đọc Cache-Control của index.html. Service worker cũng có thể giữ lại app cũ. API là loại cache thứ hai: CDN, Cache-Control, hoặc cache phía client còn giữ JSON lần trước. Tôi so response với database. Response mới mà màn hình cũ thì là client. Response cũ thì là server hoặc CDN. Tôi đã gặp bundle cũ. Tôi không bảo user 'xóa cache' khi chưa biết là cache nào.</p>",
+     "notes": "<p><strong>Know:</strong> index.html versus hashed assets, then the API cache.</p><p><strong>Trap:</strong> One 'clear your cache' reply for both bugs.</p>"
+    },
+    {
+     "id": "debug-mobile-release",
+     "title": "Crash only on the release build, or the store build fails",
+     "hint": "Find what differs from debug. Read the first error, not the last.",
+     "q_en": "<p>The app works in development but crashes in the release build, or the store build fails. How do you debug it?</p>",
+     "a_en": "<p>A crash that only happens in release comes from something that differs from debug: minification or R8 stripping a class, a missing environment value, code that only worked because the dev server was there, or a native module not set up in the release config. First I get the real stack trace from the crash report, with source maps or symbols uploaded so it is readable. Then I reproduce with a release build locally. For an Expo app that means a preview build on a real device, not Expo Go. If the store build itself fails, I read the first error in the build log, not the last one, and check what changed since the last green build: an SDK or dependency bump, an expired certificate or profile, or a signing secret missing in CI. The guard is a preview build on every release branch, so release-only bugs show up before store review.</p>",
+     "q_vi": "<p>App chạy tốt khi dev nhưng crash ở bản release, hoặc build lên store bị lỗi. Bạn debug thế nào?</p>",
+     "a_vi": "<p>Crash chỉ xảy ra ở bản release là do một thứ khác với bản debug: minify hoặc R8 xóa mất một class, thiếu biến môi trường, code chỉ chạy được vì có dev server, hoặc native module chưa được cấu hình cho bản release. Đầu tiên tôi lấy stack trace thật từ báo cáo crash, có upload source map hoặc symbol để đọc được. Rồi tôi tái hiện bằng bản release ở local. Với app Expo, nghĩa là một bản preview build trên máy thật, không phải Expo Go. Nếu chính bản build lên store bị lỗi, tôi đọc lỗi đầu tiên trong log build, không phải lỗi cuối, và kiểm tra cái gì đã đổi so với lần build xanh gần nhất: nâng SDK hay dependency, certificate hoặc profile hết hạn, hoặc thiếu secret ký app trong CI. Lớp bảo vệ là có một bản preview build cho mỗi nhánh release, để bug chỉ có ở release lộ ra trước khi store review.</p>",
+     "notes": "<p><strong>Know:</strong> IELTS and Aquanix are Expo apps live on the stores. Release-only causes: minify/R8, env, dev-only code, native config, Hermes. Build failures: first error, what changed, signing.</p><p><strong>Trap:</strong> Testing only in Expo Go and calling the release ready.</p><p><strong>Follow-up:</strong> How do you keep signing secrets in CI? See <a href=\"devops.html#devops-d13\">Troubleshoot failed mobile builds</a>.</p>"
+    }
+   ]
+  },
+  {
+   "name": "Backend and data",
+   "cards": [
+    {
+     "id": "new-node-slow",
+     "title": "A Node or Express endpoint is slow",
+     "hint": "Name the layer with a number before you add a cache.",
+     "q_en": "<p>A Node or Express endpoint is slow. How do you troubleshoot it?</p>",
+     "a_en": "<p>I measure before I change anything. The request log on Cloud Run gives latency per request, and timing around each await tells me whether the time goes to the database, an outside call, or our own code. Each has its own proof. A slow query shows in EXPLAIN, often a missing index or a full scan. An outside call, like the model provider on IELTS, shows as one long await, often with no timeout. Our own CPU shows when every request on that instance gets slow at once, because something synchronous is blocking the event loop, and a CPU profile with --inspect confirms it. Also common in Node: awaits in a loop that could run in parallel, or N+1 calls. I fix the one thing the timing points at and compare the numbers again. I add caching last, because caching a wrong query only makes the wrong answer faster.</p>",
+     "q_vi": "<p>Một API trả lời quá lâu. Bạn điều tra thế nào?</p>",
+     "a_vi": "<p>Tôi đo trước khi sửa bất cứ thứ gì. Log request trên Cloud Run cho biết độ trễ từng request, còn đo thời gian quanh từng await cho biết thời gian nằm ở database, ở lời gọi ra ngoài, hay ở chính code của chúng tôi. Mỗi loại có cách chứng minh riêng. Query chậm thì thấy qua EXPLAIN, thường là thiếu index hoặc quét cả bảng. Lời gọi ra ngoài, như provider model ở IELTS, hiện ra là một await rất dài, thường do không đặt timeout. Còn CPU của chính service thì lộ ra khi mọi request trên instance đó cùng chậm, vì có việc đồng bộ đang chặn event loop, và CPU profile bằng --inspect sẽ xác nhận. Ở Node còn hay gặp: await trong vòng lặp lẽ ra chạy song song được, hoặc gọi N+1. Tôi sửa đúng chỗ mà số đo chỉ ra rồi đo lại. Cache tôi thêm sau cùng, vì cache một query sai chỉ làm câu trả lời sai đến nhanh hơn.</p>",
+     "notes": "<p><strong>Know:</strong> Symptom → latency per request → time per await → EXPLAIN / long await / CPU profile → one change → re-measure → timeout or index as the guard.</p><p><strong>Trap:</strong> Adding Redis before you know the layer.</p><p><strong>Follow-up:</strong> Why does one sync call slow every request? See <a href=\"node.html#engineering-n2\">The event loop</a>.</p>"
+    },
+    {
+     "id": "soft-g29",
+     "title": "The API returns wrong data",
+     "hint": "Same input, then logs, then the query or the rule.",
+     "q_en": "<p>The UI is fine, but the API returns wrong data. How do you debug it?</p>",
+     "a_en": "<p>I take the exact request that gave the wrong answer and replay it, so I have a fixed input. Then I read the API logs for that request, on Cloud Run for my Express services or the server logs on a PHP app. Next I check where the value is produced. In SQL that means running the query by hand and checking the joins and filters, because a wrong join duplicates rows and a missing filter leaks data from another tenant. In Firestore it means reading the document the code reads. If the stored data is right and the answer is wrong, it is the business rule or the mapping in the handler. If the stored data is wrong, I find what wrote it. I fix the cause, add a test for that input when the path matters, and then check again from the screen.</p>",
+     "q_vi": "<p>UI không lỗi, nhưng API trả dữ liệu sai. Bạn debug thế nào?</p>",
+     "a_vi": "<p>Tôi lấy đúng request đã trả kết quả sai và gửi lại, để có đầu vào cố định. Rồi tôi đọc log API của request đó, trên Cloud Run với các service Express của tôi, hoặc log server với app PHP. Tiếp theo tôi kiểm tra giá trị đó được tạo ra ở đâu. Với SQL, tôi chạy tay câu query và kiểm tra join, filter, vì join sai sẽ nhân đôi dòng, còn thiếu filter thì lộ dữ liệu của khách hàng khác. Với Firestore, tôi đọc đúng document mà code đọc. Nếu dữ liệu lưu đúng mà kết quả sai, thì là quy tắc nghiệp vụ hoặc mapping trong handler. Nếu dữ liệu lưu đã sai, tôi tìm xem cái gì đã ghi nó. Tôi sửa đúng nguyên nhân, thêm test cho đầu vào đó nếu đường này quan trọng, rồi kiểm tra lại từ màn hình.</p>",
+     "notes": "<p><strong>Know:</strong> Replay the exact request · logs · stored data vs returned data · rule or writer · test.</p><p><strong>Trap:</strong> Patching the response in the client to hide a server bug.</p><p><strong>Follow-up:</strong> How do you log enough to debug this later without logging personal data? Log ids and counts, not values.</p>"
+    },
+    {
+     "id": "debug-mysql-deadlock",
+     "title": "MySQL slow query or deadlock",
+     "hint": "Slow: slow log and EXPLAIN. Deadlock: InnoDB status, lock order, retry.",
+     "q_en": "<p>How do you debug a slow MySQL query, or a deadlock?</p>",
+     "a_en": "<p>For a slow query I turn on the slow query log, take the worst offender, and run EXPLAIN, or EXPLAIN ANALYZE on MySQL 8. I look for a full scan, a bad join order, or a filesort. The fix is usually a composite index in the right column order, or reading fewer rows and columns. That is the work I did on BaseVN tax reports over 500,000 records. A deadlock is different. InnoDB detects it and rolls back one transaction with error 1213. SHOW ENGINE INNODB STATUS shows the latest deadlock, with both transactions and the locks they held. The usual cause is two code paths locking the same rows in a different order, or an UPDATE on a column with no index, which locks far more rows than needed. The fixes are a consistent lock order, short transactions, the right index, and retrying the rolled-back transaction a couple of times with a small backoff.</p>",
+     "q_vi": "<p>Bạn debug một query MySQL chậm, hoặc một deadlock, thế nào?</p>",
+     "a_vi": "<p>Với query chậm, tôi bật slow query log, lấy câu tệ nhất, và chạy EXPLAIN, hoặc EXPLAIN ANALYZE trên MySQL 8. Tôi tìm full scan, thứ tự join không tốt, hoặc filesort. Cách sửa thường là một composite index đúng thứ tự cột, hoặc đọc ít dòng, ít cột hơn. Đó là việc tôi đã làm với báo cáo thuế hơn 500.000 bản ghi ở BaseVN. Deadlock thì khác. InnoDB tự phát hiện và rollback một transaction với lỗi 1213. SHOW ENGINE INNODB STATUS cho xem deadlock gần nhất, cả hai transaction và các lock chúng giữ. Nguyên nhân hay gặp là hai đoạn code khóa cùng các dòng theo thứ tự khác nhau, hoặc UPDATE trên cột không có index, khiến khóa nhiều dòng hơn mức cần. Cách sửa là thống nhất thứ tự khóa, giữ transaction ngắn, có đúng index, và retry transaction bị rollback vài lần với khoảng chờ nhỏ.</p>",
+     "notes": "<p><strong>Know:</strong> Slow log (long_query_time) · EXPLAIN ANALYZE (8.0.18+) · equality columns first in a composite index · 1213 deadlock vs 1205 lock wait timeout · REPEATABLE READ gap locks · innodb_print_all_deadlocks.</p><p><strong>Trap:</strong> Claiming you resolved production deadlocks if you have not; the index and report work is your real story.</p><p><strong>Follow-up:</strong> Why does an UPDATE without an index lock so much? InnoDB locks every row it scans.</p>"
+    },
+    {
+     "id": "debug-data-mismatch",
+     "title": "Data does not match between two systems",
+     "hint": "Source is the truth. Compare a small known set field by field.",
+     "q_en": "<p>Two systems that sync with each other show different data. How do you find out why?</p>",
+     "a_en": "<p>I treat the source system as the truth and compare, rather than patching rows by hand. At BaseVN I owned sync jobs between VSS, HRM, and Payroll, and the dangerous bugs there were silent: counts looked fine until a compliance export did not. My method is to take a small known set, like one company and one month, and compare source and destination field by field. The difference usually falls into one of four buckets: a mapping or transform rule, jobs running in the wrong order, a partial failure where a retry wrote twice or not at all, or a time zone or rounding difference. The job and request logs tell me which run wrote the bad value. I fix the cause first, then re-sync the affected records from the source. The guard is a validation step before export, which is what we had on the compliance exports.</p>",
+     "q_vi": "<p>Hai hệ thống đồng bộ với nhau nhưng dữ liệu lệch. Bạn tìm nguyên nhân thế nào?</p>",
+     "a_vi": "<p>Tôi coi hệ nguồn là nguồn sự thật và so sánh, thay vì sửa tay từng dòng. Ở BaseVN tôi phụ trách các job đồng bộ giữa VSS, HRM và Payroll, và bug nguy hiểm nhất ở đó là bug âm thầm: số lượng trông vẫn đúng cho tới khi file xuất báo cáo tuân thủ bị sai. Cách của tôi là lấy một tập nhỏ đã biết, ví dụ một công ty trong một tháng, rồi so nguồn và đích theo từng field. Chênh lệch thường rơi vào một trong bốn nhóm: quy tắc mapping hoặc chuyển đổi, job chạy sai thứ tự, lỗi giữa chừng khiến lần retry ghi hai lần hoặc không ghi, hoặc lệch múi giờ, làm tròn. Log của job và request cho biết lần chạy nào đã ghi giá trị sai. Tôi sửa nguyên nhân trước, rồi đồng bộ lại các bản ghi bị ảnh hưởng từ nguồn. Lớp bảo vệ là bước validate trước khi xuất, đúng như chúng tôi đã có cho các file báo cáo tuân thủ.</p>",
+     "notes": "<p><strong>Know:</strong> CV: VSS, HRM, Payroll sync with field mapping, job order, validation on compliance exports. Buckets: mapping, order, partial failure, time zone or rounding.</p><p><strong>Trap:</strong> Hand-editing destination rows, so the next sync breaks them again.</p><p><strong>Follow-up:</strong> Tell the story version: <a href=\"cv.html#go1-cv-caught\">Hardest problem at BaseVN: a silent sync mismatch</a>.</p>"
+    },
+    {
+     "id": "debug-ai-wrong",
+     "title": "The AI answer looks wrong",
+     "hint": "Open the trace. Model, our input, or the upstream call?",
+     "q_en": "<p>A user says the AI feature gave a wrong or strange answer. How do you debug it?</p>",
+     "a_en": "<p>First I separate the model from everything around it. On IELTS every chat, text-to-speech, and speech-to-text call is traced in Langfuse, so I find that user's trace and read what actually went in and came out. That splits it into three cases. If the upstream call failed or timed out, it is a reliability bug: retry, timeout, and a clear error to the user. If the input was wrong, like the wrong prompt for that skill, a bad transcript from speech-to-text, or history trimmed too far, it is our bug in the workflow. If the input was right and the output was poor, it is a prompt or model issue, so I change the prompt and test it on that exact case plus a few known good ones. For structured output like a study plan, I validate the JSON against a schema, so a bad shape fails visibly instead of reaching the screen.</p>",
+     "q_vi": "<p>User nói tính năng AI trả lời sai hoặc lạ. Bạn debug thế nào?</p>",
+     "a_vi": "<p>Trước hết tôi tách model ra khỏi mọi thứ xung quanh. Ở IELTS, mọi lời gọi chat, text-to-speech và speech-to-text đều có trace trên Langfuse, nên tôi tìm trace của user đó và đọc chính xác cái gì đã gửi vào và trả ra. Từ đó chia ra ba trường hợp. Nếu lời gọi lên provider bị lỗi hoặc timeout, đó là bug về độ tin cậy: retry, timeout, và báo lỗi rõ cho user. Nếu đầu vào sai, như dùng sai prompt cho skill đó, transcript từ speech-to-text bị sai, hoặc lịch sử bị cắt quá nhiều, đó là bug trong luồng xử lý của chúng tôi. Nếu đầu vào đúng mà kết quả kém, đó là vấn đề prompt hoặc model, nên tôi sửa prompt và thử lại trên đúng trường hợp đó cùng vài trường hợp tốt đã biết. Với output có cấu trúc như study plan, tôi validate JSON theo schema, để shape sai thì lỗi hiện rõ chứ không lọt lên màn hình.</p>",
+     "notes": "<p><strong>Know:</strong> Langfuse trace per call (CV). Three buckets: upstream failure, our input, model output. Keep a small set of known cases to re-test a prompt change.</p><p><strong>Trap:</strong> Blaming the model before reading the input. Changing the prompt with no test case.</p><p><strong>Follow-up:</strong> The story version: <a href=\"cv.html#cv-c13\">IELTS AI features and Langfuse</a>.</p>"
+    }
+   ]
+  },
+  {
+   "name": "Production and cloud",
+   "cards": [
+    {
+     "id": "debug-cloud-run-revision",
+     "title": "A new Cloud Run revision fails",
+     "hint": "Roll back first. Then logs for that revision, env, secrets, port.",
+     "q_en": "<p>You deploy a new revision to Cloud Run and it fails. What do you do?</p>",
+     "a_en": "<p>If users are affected, I roll back first. Cloud Run keeps the previous revision, so I send traffic back to it and then debug without pressure. Then I read the logs filtered to the new revision. If it never became ready, the startup log usually says why: the container is not listening on the PORT variable, it crashes on a missing environment value or secret, or the service account cannot read the secret. If it starts but errors, I compare what changed: the image, the env and secrets attached to that revision, and the commits since the last good one. The guard is a startup check that validates config and exits loudly, and checking the new revision before calling a release done, which is how I worked at Akktis. For a risky change I deploy with no traffic, test the revision URL, then move traffic.</p>",
+     "q_vi": "<p>Bạn deploy một revision mới lên Cloud Run và nó lỗi. Bạn làm gì?</p>",
+     "a_vi": "<p>Nếu user bị ảnh hưởng, tôi rollback trước. Cloud Run giữ revision trước đó, nên tôi chuyển traffic về đó rồi mới debug mà không bị áp lực. Sau đó tôi đọc log lọc theo revision mới. Nếu nó không bao giờ sẵn sàng, log khởi động thường nói lý do: container không nghe trên biến PORT, crash vì thiếu biến môi trường hoặc secret, hoặc service account không đọc được secret. Nếu nó khởi động được nhưng báo lỗi, tôi so những gì đã đổi: image, env và secret gắn vào revision đó, và các commit kể từ bản tốt gần nhất. Lớp bảo vệ là bước kiểm tra cấu hình lúc khởi động để thiếu gì thì thoát và báo rõ, và luôn kiểm tra revision mới trước khi coi release là xong, đúng cách tôi làm ở Akktis. Với thay đổi rủi ro, tôi deploy không nhận traffic, test URL của revision, rồi mới chuyển traffic.</p>",
+     "notes": "<p><strong>Know:</strong> gcloud run services update-traffic --to-revisions=PREV=100 · deploy --no-traffic --tag · logs filtered by revision · secretAccessor on the service account.</p><p><strong>Trap:</strong> Debugging live while users are still on the broken revision.</p><p><strong>Follow-up:</strong> More on revisions: <a href=\"devops.html#devops-d65\">Bad Cloud Run revision</a>.</p>"
+    },
+    {
+     "id": "debug-webhook-401",
+     "title": "A webhook starts returning 401",
+     "hint": "Your real PhysioFix case: the webhook secret did not match.",
+     "q_en": "<p>Your webhook suddenly returns 401 to the provider. How do you debug it?</p>",
+     "a_en": "<p>A 401 from my own webhook means my verification rejected the caller. So the first question is whether the caller is real and my secret is wrong, or the caller is not real. On PhysioFix the xAI webhook is verified before anything else, and a wrong webhook secret is a 401. When it happened, the logs showed the requests arriving and failing that check, and the secret set on the service did not match the one configured on the xAI side. The fix was to put the right secret on the service, redeploy, and place a test call. Other causes I check in the same pass: the body was parsed or changed before verification, so the signature is computed on different bytes; the secret was rotated on one side only; or a staging secret on a production service. The guard is logging why verification failed, without logging the secret itself.</p>",
+     "q_vi": "<p>Webhook của bạn bỗng trả 401 cho provider. Bạn debug thế nào?</p>",
+     "a_vi": "<p>401 từ chính webhook của tôi nghĩa là bước verify đã từ chối bên gọi. Nên câu hỏi đầu tiên là bên gọi là thật còn secret của tôi sai, hay bên gọi không phải là thật. Ở PhysioFix, webhook của xAI được verify trước mọi thứ, và webhook secret sai là 401. Khi chuyện đó xảy ra, log cho thấy request vẫn tới và trượt bước kiểm tra, và secret đặt trên service không khớp với secret cấu hình bên xAI. Cách sửa là đặt đúng secret trên service, deploy lại, và gọi thử một cuộc. Các nguyên nhân khác tôi kiểm tra cùng lúc: body bị parse hoặc thay đổi trước khi verify, nên chữ ký được tính trên byte khác; secret chỉ được đổi ở một phía; hoặc service production đang dùng secret của staging. Lớp bảo vệ là log lý do verify thất bại, nhưng không bao giờ log chính secret.</p>",
+     "notes": "<p><strong>Know:</strong> CV: 'A wrong webhook secret is a 401. The handler returns 200, then opens the realtime socket.' Check order: caller real? secret match? raw body? rotation? environment mix-up?</p><p><strong>Trap:</strong> Turning verification off to make the error go away.</p><p><strong>Follow-up:</strong> How should a webhook be secured? See <a href=\"node.html#node-webhook-security\">Securing a webhook</a>.</p><p><strong>TODO Thủy:</strong> confirm how the secret got out of step (rotation, copy error, staging vs production) and how you spotted it, so the story has one concrete detail of yours.</p>"
+    },
+    {
+     "id": "debug-realtime-race",
+     "title": "A realtime or voice flow drops or races",
+     "hint": "Read one call as a timeline. Ordering and timing, not a crash.",
+     "q_en": "<p>A realtime flow, like a voice call, sometimes drops or behaves out of order. How do you debug it?</p>",
+     "a_en": "<p>With a realtime flow the bug is usually ordering or timing, not a crash. On PhysioFix the symptoms would be the assistant talking over the caller, a tool result landing after the next question, or a call that goes silent. I start from one call: every socket event is logged with the call id and a timestamp, so I can read the call as a timeline and see what arrived in what order. Two design rules guard against the races I worry about most. Events go through one queue per call, so a batch of tool calls cannot race the next utterance. And tool calls are acked on the socket immediately, with the Firestore write afterwards, so a slow write cannot stall the voice. For drops, I check who closed the socket, the close code, and whether the instance was stopping for a deploy. Hangup waits until the last spoken line can finish, so the caller is not cut off.</p>",
+     "q_vi": "<p>Một luồng realtime, như cuộc gọi thoại, thỉnh thoảng bị rớt hoặc chạy sai thứ tự. Bạn debug thế nào?</p>",
+     "a_vi": "<p>Với luồng realtime, bug thường là thứ tự hoặc thời điểm, không phải crash. Ở PhysioFix, triệu chứng sẽ là trợ lý nói đè lên người gọi, kết quả tool về sau câu hỏi tiếp theo, hoặc cuộc gọi bỗng im lặng. Tôi bắt đầu từ một cuộc gọi: mọi event trên socket được log kèm call id và timestamp, nên tôi đọc cuộc gọi đó như một dòng thời gian và thấy cái gì tới theo thứ tự nào. Có hai quy tắc thiết kế chặn những race tôi lo nhất. Event đi qua một hàng đợi riêng cho mỗi cuộc gọi, nên một loạt tool call không thể chen ngang câu nói tiếp theo. Và tool call được ack ngay trên socket, ghi Firestore sau, nên ghi chậm không làm giọng nói bị khựng. Với chuyện rớt cuộc gọi, tôi kiểm tra bên nào đóng socket, close code là gì, và instance có đang dừng vì deploy không. Lệnh gác máy chờ câu cuối nói xong, để người gọi không bị cắt ngang.</p>",
+     "notes": "<p><strong>Know:</strong> CV: one event queue, ack before the Firestore write, hangup waits for the last line, voice on a GCE VM with restart on failure and on Cloud Run.</p><p><strong>Trap:</strong> Adding sleeps to 'fix' ordering.</p><p><strong>Follow-up:</strong> How does the whole call path work? See <a href=\"node.html#node-realtime-socket\">WebSockets and realtime</a>.</p>"
+    },
+    {
+     "id": "soft-g30",
+     "title": "Hotfix vs long-term fix",
+     "hint": "JD: long-term solutions.",
+     "q_en": "<p>How do you balance a hotfix and a long-term fix?</p>",
+     "a_en": "<p>If users are blocked, I ship the smallest safe mitigation first: a rollback to the previous revision, a feature flag, or a guard clause around the broken path. That buys time without guessing at the root cause under pressure. Then I schedule the real fix: find the root cause, write a test that reproduces it, fix it properly, and remove the temporary guard. I write down both, the hotfix and the follow-up, in the ticket, so the team knows the hotfix is temporary and we do not end up living on patches. A hotfix with no follow-up is how technical debt quietly grows.</p>",
+     "q_vi": "<p>Bạn cân bằng hotfix và fix dài hạn thế nào?</p>",
+     "a_vi": "<p>Nếu user đang bị chặn, tôi ship biện pháp giảm thiểu nhỏ nhất và an toàn trước: rollback về revision trước, bật tắt bằng feature flag, hoặc thêm điều kiện chặn quanh đoạn lỗi. Cách đó cho thêm thời gian mà không phải đoán nguyên nhân dưới áp lực. Sau đó tôi lên lịch sửa thật: tìm nguyên nhân gốc, viết test tái hiện lỗi, sửa đúng cách, và gỡ phần chặn tạm thời. Tôi ghi cả hai, bản hotfix và việc cần làm tiếp, vào ticket, để team biết hotfix chỉ là tạm và chúng tôi không phải sống bằng các bản vá. Hotfix mà không có bước tiếp theo là cách nợ kỹ thuật âm thầm tăng lên.</p>",
+     "notes": "<p><strong>Know:</strong> Mitigate impact → root cause → prevent repeat.</p>\n          <p><strong>Trap:</strong> Only hotfix and never follow up.</p>\n          <p><strong>Follow-up:</strong> Give an example of a hotfix that became technical debt.</p>"
+    }
+   ]
+  }
+ ]
+}

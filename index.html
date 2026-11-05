@@ -4,6 +4,7 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>Interview cheatsheet</title>
+<script>(function(){try{var t=localStorage.getItem("cheat-theme")||(matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light");document.documentElement.setAttribute("data-theme",t);}catch(e){}})();</script>
 <link href="https://api.fontshare.com/v2/css?f[]=satoshi@400,500,700&f[]=general-sans@500,600,700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="assets/site.css" />
 </head>
@@ -11,39 +12,41 @@
 <a class="skip" href="#content">Skip to questions</a>
 <header class="topbar">
 <div class="topbar-inner">
-<div class="brand-row">
 <a class="brand" href="index.html">Interview cheatsheet</a>
+<div class="search-wrap">
+<span class="mag" aria-hidden="true">⌕</span>
+<input data-search type="search" placeholder="Search all questions — press /" aria-label="Search questions" />
+<div class="hits" data-hits></div>
+<p class="search-meta" data-search-meta></p>
+</div>
 <div class="brand-actions">
 <button class="icon-btn nav-toggle" type="button" data-nav-toggle aria-label="Open menu" aria-expanded="false" aria-controls="site-nav"><span class="nav-toggle-bars" aria-hidden="true"></span></button>
 <button class="icon-btn" type="button" data-theme-toggle aria-label="Switch theme">☾</button>
 </div>
 </div>
-<div class="search-wrap">
-<span class="mag" aria-hidden="true">⌕</span>
-<input data-search type="search" placeholder="Search questions — press /" aria-label="Search questions" />
-<div class="hits" data-hits></div>
-<p class="search-meta" data-search-meta></p>
-</div>
-</div>
-<nav class="nav-scroll" id="site-nav" aria-label="Categories"><a href="index.html" class="is-on">Hub</a>
+<nav class="nav-scroll" id="site-nav" aria-label="Categories"><a href="index.html" class="is-on" aria-current="page">Hub</a>
 <a href="fit.html" class="">Fit and intro</a>
 <a href="behavioral.html" class="">Behavioral</a>
 <a href="english.html" class="">Spoken English</a>
-<a href="php.html" class="">PHP</a>
-<a href="react.html" class="">React and TypeScript</a>
+<a href="cv.html" class="">CV and projects</a>
+<a href="javascript.html" class="">JS and TypeScript</a>
+<a href="react.html" class="">React</a>
 <a href="node.html" class="">Node.js</a>
+<a href="php.html" class="">PHP and MySQL</a>
+<a href="system-design.html" class="">System design</a>
 <a href="devops.html" class="">DevOps and cloud</a>
 <a href="debugging.html" class="">Debugging</a>
-<a href="system-design.html" class="">System design</a>
-<a href="cv.html" class="">CV and projects</a>
-<a href="qnap.html" class="">QNAP</a>
-<a href="intowell.html" class="">INTOWELL</a></nav>
+<a href="intowell.html" class="nav-company">INTOWELL</a>
+<a href="qnap.html" class="nav-company">QNAP</a></nav>
 </header>
 <main class="hub" id="content">
 <h1>Interview cheatsheet</h1>
-<p class="lede">Search by the question, or open a category. Company packs are gone. INTOWELL is the current interview page. QNAP stays as the last Taiwan-product pack. The other questions are filed by subject.</p>
-<div class="cards"><a class="card" href="intowell.html"><span class="kicker">23 questions</span><h2>INTOWELL</h2><p>Fullstack on Dr.AI and Vet.AI. Node you can defend. Vue and Ionic you name as a ramp.</p></a><a class="card" href="qnap.html"><span class="kicker">Past · 30 Oct</span><h2>QNAP Vietnam</h2><p>Partner Portal and Sales Portal. Chinese first, then PHP, Laravel, React, and MySQL.</p></a><a class="card" href="fit.html"><span class="kicker">18 questions</span><h2>Fit and intro</h2><p>Who you are, why this kind of role, and why you are looking.</p></a><a class="card" href="behavioral.html"><span class="kicker">57 questions</span><h2>Behavioral</h2><p>Stories, judgement, teamwork, Agile, and how you use AI.</p></a><a class="card" href="english.html"><span class="kicker">14 questions</span><h2>Spoken English</h2><p>Phrases for the minutes around the technical answer.</p></a><a class="card" href="php.html"><span class="kicker">41 questions</span><h2>PHP</h2><p>Laravel, pure PHP, MySQL, SQL you can write, and the API in front of a React client.</p></a><a class="card" href="react.html"><span class="kicker">83 questions</span><h2>React and TypeScript</h2><p>UI fundamentals, state, workflows, and the libraries you can defend.</p></a><a class="card" href="node.html"><span class="kicker">33 questions</span><h2>Node.js</h2><p>The event loop, Express, and the server work you can honestly claim.</p></a><a class="card" href="devops.html"><span class="kicker">107 questions</span><h2>DevOps and cloud</h2><p>What you have operated, then the cloud and infra questions around it.</p></a><a class="card" href="debugging.html"><span class="kicker">8 questions</span><h2>Debugging</h2><p>Decide the layer, then prove it before you change code.</p></a><a class="card" href="system-design.html"><span class="kicker">21 questions</span><h2>System design</h2><p>A simple path first. Scale only the part that breaks.</p></a><a class="card" href="cv.html"><span class="kicker">48 questions</span><h2>CV and projects</h2><p>Akktis, IELTS, and BaseVN — walk the real work, including the hard fixes.</p></a></div>
-<p class="foot">English and Tiếng Việt on every answer. Press / to search.</p>
+<p class="lede">488 questions. Search by the words you heard, or open a subject. Every answer has English and Tiếng Việt, and an estimate of how long it takes to say. Use Practice mode to try the answer out loud before you read it.</p>
+<h2 class="hub-h">Company pages</h2>
+<div class="cards"><a class="card" href="intowell.html"><span class="kicker">Current · 29 questions</span><h2>INTOWELL</h2><p>Fullstack on Dr.AI and Vet.AI. Node you can defend. Vue and Ionic you name as a ramp.</p></a><a class="card" href="qnap.html"><span class="kicker">Past · 30 Oct · 33 questions</span><h2>QNAP</h2><p>Partner Portal and Sales Portal. Chinese first, then PHP, Laravel, React, and MySQL.</p></a></div>
+<h2 class="hub-h">By subject</h2>
+<div class="cards"><a class="card" href="fit.html"><span class="kicker">22 questions</span><h2>Fit and intro</h2><p>Who you are, why this role, why you are looking, and the HR questions.</p></a><a class="card" href="behavioral.html"><span class="kicker">42 questions</span><h2>Behavioral</h2><p>Stories, judgement, teamwork, Agile, and how you use AI.</p></a><a class="card" href="english.html"><span class="kicker">18 questions</span><h2>Spoken English</h2><p>Phrases for the minutes around the technical answer.</p></a><a class="card" href="cv.html"><span class="kicker">51 questions</span><h2>CV and projects</h2><p>PhysioFix, Aquanix, IELTS, Akktis, and BaseVN. Walk the real work.</p></a><a class="card" href="javascript.html"><span class="kicker">32 questions</span><h2>JS and TypeScript</h2><p>The language questions that come before any framework.</p></a><a class="card" href="react.html"><span class="kicker">64 questions</span><h2>React</h2><p>React core, hooks, performance, React Native, and the libraries you can defend.</p></a><a class="card" href="node.html"><span class="kicker">40 questions</span><h2>Node.js</h2><p>The event loop, Express, auth, and the server work you have shipped.</p></a><a class="card" href="php.html"><span class="kicker">42 questions</span><h2>PHP and MySQL</h2><p>Laravel, pure PHP, MySQL, and SQL you can write on a whiteboard.</p></a><a class="card" href="system-design.html"><span class="kicker">27 questions</span><h2>System design</h2><p>A simple path first. Scale only the part that breaks.</p></a><a class="card" href="devops.html"><span class="kicker">69 questions</span><h2>DevOps and cloud</h2><p>What you have operated, then the fundamentals and cloud around it.</p></a><a class="card" href="debugging.html"><span class="kicker">19 questions</span><h2>Debugging</h2><p>Decide the layer, then prove it before you change code.</p></a></div>
+<p class="foot">Press / to search from any page. Ticks for “I can say this” stay in this browser.</p>
 </main>
 <script src="assets/search-index.js"></script>
 <script src="assets/site.js"></script>

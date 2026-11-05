@@ -20,6 +20,15 @@
   const siteNav = document.getElementById("site-nav");
   const navQuery = window.matchMedia("(max-width: 860px)");
 
+  function topbarHeight() {
+    return topbar ? topbar.getBoundingClientRect().height : 0;
+  }
+  function syncTopbar() {
+    root.style.setProperty("--topbar-h", Math.round(topbarHeight()) + "px");
+  }
+  syncTopbar();
+  window.addEventListener("resize", syncTopbar);
+
   function setNavOpen(open) {
     if (!topbar || !navToggle) return;
     topbar.classList.toggle("is-nav-open", open);
@@ -84,16 +93,34 @@
     const el = document.getElementById(id);
     if (el && el.tagName === "DETAILS") {
       el.open = true;
-      el.scrollIntoView({ block: "start" });
+      requestAnimationFrame(function () { el.scrollIntoView({ block: "start", behavior: "instant" }); });
     }
   }
 
+  function escapeHtml(value) {
+    return String(value).replace(/[&<>"']/g, function (ch) {
+      return { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[ch];
+    });
+  }
+  function matches(text, tokens) {
+    for (let i = 0; i < tokens.length; i += 1) {
+      if (!text.includes(tokens[i])) return false;
+    }
+    return true;
+  }
+  cards.forEach(function (card) {
+    card._blob = norm(card.getAttribute("data-blob") || "");
+  });
+  index.forEach(function (item) {
+    item._text = norm(item.title + " " + item.text);
+  });
+
   function filter(raw) {
     const query = norm(raw.trim());
+    const tokens = query.split(/\s+/).filter(Boolean);
     let shown = 0;
     cards.forEach(function (card) {
-      const blob = norm(card.getAttribute("data-blob") || "");
-      const match = !query || blob.includes(query);
+      const match = !query || matches(card._blob, tokens);
       card.hidden = !match;
       if (match) shown += 1;
       if (query && match) card.open = true;
@@ -111,7 +138,7 @@
       link.hidden = !card || card.hidden;
     });
     if (meta) {
-      meta.textContent = query ? shown + " on this page" : "";
+      meta.textContent = query && pageId !== "hub" ? shown + " here" : "";
     }
     if (!hits) return;
     if (!query) {
@@ -120,15 +147,15 @@
       return;
     }
     const others = index.filter(function (item) {
-      return item.page !== pageId && norm(item.text).includes(query);
-    }).slice(0, 8);
+      return item.page !== pageId && matches(item._text, tokens);
+    }).slice(0, 10);
     if (!others.length) {
       hits.classList.remove("is-on");
       hits.innerHTML = "";
       return;
     }
     hits.innerHTML = others.map(function (item) {
-      return '<a class="hit" href="' + item.href + '"><small>' + item.category + '</small><strong>' + item.title + '</strong></a>';
+      return '<a class="hit" href="' + escapeHtml(item.href) + '"><small>' + escapeHtml(item.category) + '</small><strong>' + escapeHtml(item.title) + '</strong></a>';
     }).join("");
     hits.classList.add("is-on");
   }
@@ -167,19 +194,93 @@
     .map(function (link) { return document.getElementById(link.getAttribute("href").slice(1)); })
     .filter(Boolean);
   function spy() {
-    const marker = 140;
+    const marker = topbarHeight() + 24;
     let current = targets[0] ? targets[0].id : "";
     targets.forEach(function (el) {
       if (el.getBoundingClientRect().top <= marker) current = el.id;
     });
+    let activeLink = null;
     sideLinks.forEach(function (link) {
-      link.classList.toggle("is-active", link.getAttribute("href") === "#" + current);
+      const on = link.getAttribute("href") === "#" + current;
+      link.classList.toggle("is-active", on);
+      if (on) activeLink = link;
     });
+    const box = document.querySelector(".side");
+    if (activeLink && box && box.scrollHeight > box.clientHeight && !navQuery.matches) {
+      const top = activeLink.getBoundingClientRect().top - box.getBoundingClientRect().top + box.scrollTop;
+      if (top < box.scrollTop + 40 || top > box.scrollTop + box.clientHeight - 60) {
+        box.scrollTop = Math.max(0, top - box.clientHeight / 3);
+      }
+    }
   }
   if (targets.length) {
     window.addEventListener("scroll", spy, { passive: true });
     spy();
   }
+
+  // Mobile "On this page" toggle.
+  const side = document.querySelector("[data-side]");
+  const sideToggle = document.querySelector("[data-side-toggle]");
+  if (side && sideToggle) {
+    sideToggle.addEventListener("click", function () {
+      const open = !side.classList.contains("is-open");
+      side.classList.toggle("is-open", open);
+      sideToggle.setAttribute("aria-expanded", open ? "true" : "false");
+    });
+    side.addEventListener("click", function (event) {
+      if (event.target.closest(".side-list a") && navQuery.matches) {
+        side.classList.remove("is-open");
+        sideToggle.setAttribute("aria-expanded", "false");
+      }
+    });
+  }
+
+  // Known cards, practice mode, and progress. Stored in this browser only.
+  const KNOWN_KEY = "cheat-known";
+  let known = {};
+  try { known = JSON.parse(localStorage.getItem(KNOWN_KEY) || "{}") || {}; } catch (e) { known = {}; }
+  const progress = document.querySelector("[data-progress]");
+  function renderProgress() {
+    if (!progress || !cards.length) return;
+    const done = cards.filter(function (card) { return known[card.id]; }).length;
+    progress.textContent = done + " / " + cards.length + " ready";
+  }
+  cards.forEach(function (card) {
+    const box = card.querySelector("[data-known]");
+    const isKnown = !!known[card.id];
+    card.classList.toggle("is-known", isKnown);
+    if (box) {
+      box.checked = isKnown;
+      box.addEventListener("change", function () {
+        if (box.checked) known[card.id] = 1; else delete known[card.id];
+        localStorage.setItem(KNOWN_KEY, JSON.stringify(known));
+        card.classList.toggle("is-known", box.checked);
+        renderProgress();
+      });
+    }
+    const reveal = card.querySelector("[data-reveal]");
+    if (reveal) {
+      reveal.addEventListener("click", function () { card.classList.add("is-revealed"); });
+    }
+    card.addEventListener("toggle", function () {
+      if (!card.open) card.classList.remove("is-revealed");
+    });
+  });
+  renderProgress();
+
+  function bindToggle(selector, bodyClass, storeKey) {
+    const btn = document.querySelector(selector);
+    if (!btn) return;
+    function set(on) {
+      document.body.classList.toggle(bodyClass, on);
+      btn.setAttribute("aria-pressed", on ? "true" : "false");
+      localStorage.setItem(storeKey, on ? "1" : "");
+    }
+    set(localStorage.getItem(storeKey) === "1");
+    btn.addEventListener("click", function () { set(!document.body.classList.contains(bodyClass)); });
+  }
+  bindToggle("[data-practice]", "is-practice", "cheat-practice");
+  bindToggle("[data-hide-known]", "is-hide-known", "cheat-hide-known");
 
   setOpenFromHash();
   window.addEventListener("hashchange", setOpenFromHash);

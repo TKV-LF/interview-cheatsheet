@@ -1,0 +1,218 @@
+{
+ "page": "english",
+ "href": "english.html",
+ "title": "Spoken English",
+ "intro": "Phrases for the minutes around the technical answer.",
+ "sections": [
+  {
+   "name": "Start and finish",
+   "id": "sec-start-and-finish",
+   "cards": [
+    {
+     "id": "soft-g65",
+     "title": "Opening the interview",
+     "hint": "Warm, simple, confident.",
+     "q_en": "<p>How do you start the conversation?</p>",
+     "a_en": "<p>Nice to meet you. Thank you for your time today. / Thanks for having me. / I’m happy to be here and to learn more about the team.</p>",
+     "q_vi": "<p>Bắt đầu cuộc trò chuyện thế nào?</p>",
+     "a_vi": "<p>Rất vui được gặp anh/chị. Cảm ơn anh/chị đã dành thời gian hôm nay. / Cảm ơn anh/chị đã mời tôi. / Tôi rất vui được trao đổi và tìm hiểu thêm về team.</p>",
+     "notes": "<p><strong>Use when:</strong> Mười giây đầu tiên. Cười nhẹ, nói ngắn.</p><p><strong>Trap:</strong> Starting with an apology for your English.</p><p><strong>Follow-up:</strong> “How are you today?” → “I’m good, thanks. How about you?”</p>"
+    },
+    {
+     "id": "soft-g77",
+     "title": "Closing politely",
+     "hint": "Leave a good last impression.",
+     "q_en": "<p>How do you end the interview?</p>",
+     "a_en": "<p>Thank you again for your time. I really enjoyed the conversation. / I appreciate the questions. / I’m looking forward to hearing from you. / Have a great rest of your day.</p>",
+     "q_vi": "<p>Kết thúc buổi phỏng vấn thế nào?</p>",
+     "a_vi": "<p>Cảm ơn anh/chị một lần nữa đã dành thời gian. Tôi rất thích buổi trao đổi hôm nay. / Cảm ơn anh/chị vì những câu hỏi. / Tôi mong sớm nhận được phản hồi từ anh/chị. / Chúc anh/chị một ngày làm việc tốt lành.</p>",
+     "notes": "<p><strong>Use when:</strong> Hai mươi giây cuối. Bình tĩnh, ấm áp.</p><p><strong>Trap:</strong> Rushing off the call before they finish.</p>"
+    }
+   ]
+  },
+  {
+   "name": "Listening and clarifying",
+   "id": "sec-listening-and-clarifying",
+   "cards": [
+    {
+     "id": "soft-g67",
+     "title": "You did not hear clearly",
+     "hint": "Polite. Never guess what they said.",
+     "q_en": "<p>You missed part of the question.</p>",
+     "a_en": "<p>Sorry, could you repeat that, please? / Just to make sure I heard you: did you mean …? / Could you say the last part again?</p>",
+     "q_vi": "<p>Bạn nghe không rõ câu hỏi.</p>",
+     "a_vi": "<p>Xin lỗi, anh/chị có thể nhắc lại giúp tôi được không? / Để chắc tôi nghe đúng: ý anh/chị là … phải không? / Anh/chị nói lại giúp tôi phần cuối được không?</p>",
+     "notes": "<p><strong>Use when:</strong> Ồn, giọng lạ, hoặc câu hỏi dài nhiều phần.</p><p><strong>Trap:</strong> Answering a question you only half heard.</p>"
+    },
+    {
+     "id": "soft-g68",
+     "title": "Clarify before answering",
+     "hint": "Shows you listen carefully.",
+     "q_en": "<p>The question is broad or unclear.</p>",
+     "a_en": "<p>Just to clarify, are you asking about … or …? / Would you like a short overview, or a detailed example? / When you say X, do you mean in my last job, or in general?</p>",
+     "q_vi": "<p>Câu hỏi hơi rộng hoặc chưa rõ.</p>",
+     "a_vi": "<p>Cho tôi hỏi lại một chút: anh/chị đang hỏi về … hay …? / Anh/chị muốn tôi nói tổng quan ngắn, hay đi vào một ví dụ chi tiết? / Khi anh/chị nói X, ý là ở công việc gần nhất của tôi, hay nói chung?</p>",
+     "notes": "<p><strong>Use when:</strong> Câu system design, câu “tell me about a time…”, hoặc câu mơ hồ.</p><p><strong>Trap:</strong> Asking three clarifying questions in a row. One is enough.</p>"
+    },
+    {
+     "id": "soft-g66",
+     "title": "Buy a few seconds to think",
+     "hint": "Better than silence or rushing.",
+     "q_en": "<p>You need a moment before answering.</p>",
+     "a_en": "<p>That’s a good question. Let me think for a second. / Let me put that in order. / Give me a moment to organize my thoughts.</p>",
+     "q_vi": "<p>Bạn cần vài giây trước khi trả lời.</p>",
+     "a_vi": "<p>Câu hỏi hay. Cho tôi nghĩ một chút. / Để tôi sắp xếp lại ý. / Cho tôi một chút để sắp xếp suy nghĩ.</p>",
+     "notes": "<p><strong>Use when:</strong> Câu khó, system design, hoặc câu chuyện behavioral.</p><p><strong>Trap:</strong> Saying “good question” before every answer.</p>"
+    }
+   ]
+  },
+  {
+   "name": "While you answer",
+   "id": "sec-while-you-answer",
+   "cards": [
+    {
+     "id": "soft-g69",
+     "title": "Start your answer smoothly",
+     "hint": "Natural openers, not robotic.",
+     "q_en": "<p>How do you begin an answer?</p>",
+     "a_en": "<p>Sure. / In my experience… / What I usually do is… / A good example is… / From my side…</p>",
+     "q_vi": "<p>Bắt đầu câu trả lời thế nào cho tự nhiên?</p>",
+     "a_vi": "<p>Vâng. / Theo kinh nghiệm của tôi… / Cách tôi thường làm là… / Một ví dụ cụ thể là… / Về phía tôi…</p>",
+     "notes": "<p><strong>Use when:</strong> Hầu hết mọi câu trả lời. Chọn một cụm, đừng dùng hết một lúc.</p>"
+    },
+    {
+     "id": "soft-g70",
+     "title": "Give your answer a structure",
+     "hint": "Helps the interviewer follow you.",
+     "q_en": "<p>You want to sound organized.</p>",
+     "a_en": "<p>I’ll keep this short. / There are two parts to this. / First…, then…, and finally… / The short answer is…, and I can go deeper if you want.</p>",
+     "q_vi": "<p>Bạn muốn nói có cấu trúc, dễ theo dõi.</p>",
+     "a_vi": "<p>Tôi sẽ nói ngắn gọn. / Câu này có hai phần. / Đầu tiên…, sau đó…, và cuối cùng… / Trả lời ngắn gọn là…, và tôi có thể nói sâu hơn nếu anh/chị muốn.</p>",
+     "notes": "<p><strong>Use when:</strong> Câu chuyện dài, tradeoff, debug frontend hay backend.</p>"
+    },
+    {
+     "id": "soft-g74",
+     "title": "Bridge to an example",
+     "hint": "Sound natural, not scripted.",
+     "q_en": "<p>You want to give a concrete story.</p>",
+     "a_en": "<p>For example… / Let me give you a real example from my work. / One case that comes to mind is… / On a recent project…</p>",
+     "q_vi": "<p>Bạn muốn kể một ví dụ cụ thể.</p>",
+     "a_vi": "<p>Ví dụ như… / Để tôi lấy một ví dụ thật từ công việc. / Một trường hợp tôi nghĩ đến là… / Trong một dự án gần đây…</p>",
+     "notes": "<p><strong>Use when:</strong> Câu behavioral và debugging.</p>"
+    },
+    {
+     "id": "soft-g75",
+     "title": "Check if they want more detail",
+     "hint": "Avoid over-talking.",
+     "q_en": "<p>You finished a short answer and are not sure they want more.</p>",
+     "a_en": "<p>I can go into more detail if you like. / Does that answer your question? / Would you like me to walk through an example? / Happy to expand on any part of that.</p>",
+     "q_vi": "<p>Bạn trả lời ngắn xong, chưa rõ họ muốn nghe thêm không.</p>",
+     "a_vi": "<p>Tôi có thể nói chi tiết hơn nếu anh/chị muốn. / Như vậy đã trả lời câu hỏi của anh/chị chưa ạ? / Anh/chị có muốn tôi đi qua một ví dụ không? / Tôi sẵn sàng nói rõ thêm bất kỳ phần nào.</p>",
+     "notes": "<p><strong>Use when:</strong> Sau câu trả lời ngắn, nhất là design hoặc debugging.</p>"
+    },
+    {
+     "id": "soft-g71",
+     "title": "Agree, show you are on the same page",
+     "hint": "Conversational.",
+     "q_en": "<p>The interviewer makes a point and you agree.</p>",
+     "a_en": "<p>Yes, that makes sense. / I agree. / That’s a fair point. / Exactly, that’s how I see it too. / Right, and in my case…</p>",
+     "q_vi": "<p>Người phỏng vấn nói một ý và bạn đồng ý.</p>",
+     "a_vi": "<p>Vâng, điều đó hợp lý. / Tôi đồng ý. / Đó là một ý đúng. / Đúng vậy, tôi cũng nghĩ như thế. / Đúng ạ, và trong trường hợp của tôi…</p>",
+     "notes": "<p><strong>Use when:</strong> Sau khi họ giải thích quy trình của team hoặc kỳ vọng.</p>"
+    },
+    {
+     "id": "soft-g72",
+     "title": "Soft disagreement",
+     "hint": "Respectful, not argumentative.",
+     "q_en": "<p>You see it a bit differently.</p>",
+     "a_en": "<p>I see it a little differently. / In my experience, it depends on… / That’s one way. Another option I’ve used is… / I might be wrong, but I usually…</p>",
+     "q_vi": "<p>Bạn nhìn vấn đề hơi khác.</p>",
+     "a_vi": "<p>Tôi nhìn vấn đề này hơi khác một chút. / Theo kinh nghiệm của tôi, điều đó còn tùy vào… / Đó là một cách. Một cách khác tôi từng dùng là… / Có thể tôi sai, nhưng tôi thường…</p>",
+     "notes": "<p><strong>Use when:</strong> Tranh luận về lựa chọn kỹ thuật. Giữ thái độ khiêm tốn.</p>"
+    },
+    {
+     "id": "soft-g73",
+     "title": "When you do not know",
+     "hint": "Honest, and still useful.",
+     "q_en": "<p>You really do not know the answer.</p>",
+     "a_en": "<p>I haven’t used that in a real project yet. / I’m not sure about the exact detail, but my approach would be… / I don’t know that off the top of my head. I’d check the docs or ask the team. / That’s a gap for me, and this is how I’d learn it…</p>",
+     "q_vi": "<p>Bạn thật sự không biết câu trả lời.</p>",
+     "a_vi": "<p>Tôi chưa dùng cái đó trong dự án thật. / Tôi chưa chắc chi tiết chính xác, nhưng cách tôi tiếp cận sẽ là… / Tôi không nhớ ngay lúc này. Tôi sẽ xem tài liệu hoặc hỏi team. / Đó là phần tôi còn thiếu, và tôi sẽ học nó theo cách này…</p>",
+     "notes": "<p><strong>Use when:</strong> Công cụ mới, lý thuyết sâu. Đừng bịa.</p><p><strong>Trap:</strong> Bluffing. Interviewers ask one more question and it falls apart.</p>"
+    },
+    {
+     "id": "soft-g78",
+     "title": "If your English gets stuck, or you misspeak",
+     "hint": "Rescue phrases. Keep talking.",
+     "q_en": "<p>You lose a word mid-sentence, or say the wrong thing.</p>",
+     "a_en": "<p>Sorry, let me rephrase that. / What I mean is… / In other words… / Sorry, I misspoke. I meant …, not …. / Give me one second. I want to say this clearly.</p>",
+     "q_vi": "<p>Bạn đang nói tiếng Anh thì bị kẹt, hoặc lỡ nói sai.</p>",
+     "a_vi": "<p>Xin lỗi, để tôi nói lại theo cách khác. / Ý tôi là… / Nói cách khác… / Xin lỗi, tôi nói nhầm. Ý tôi là …, không phải …. / Cho tôi một giây. Tôi muốn nói ý này cho rõ.</p>",
+     "notes": "<p><strong>Use when:</strong> Bất cứ lúc nào bị kẹt hoặc nói nhầm. Sửa ngay tốt hơn là im lặng hoặc để sai luôn.</p>"
+    }
+   ]
+  },
+  {
+   "name": "Video calls and live coding",
+   "id": "sec-video-calls-and-live-coding",
+   "cards": [
+    {
+     "id": "english-video-call",
+     "title": "Video call problems",
+     "hint": "Name the problem calmly, then get back on track.",
+     "q_en": "<p>The audio, video, or screen share goes wrong.</p>",
+     "a_en": "<p>Sorry, you’re breaking up a little. Could you say that again? / I think I lost you for a second. The last thing I heard was … / Can you hear me okay? / Can you see my screen? / My connection dropped. Sorry about that. Where were we? / Would it help if I turned off my camera for a moment?</p>",
+     "q_vi": "<p>Âm thanh, hình ảnh hoặc chia sẻ màn hình gặp trục trặc.</p>",
+     "a_vi": "<p>Xin lỗi, tiếng anh/chị bị ngắt quãng. Anh/chị nói lại giúp tôi được không? / Hình như tôi bị mất tiếng một lúc. Câu cuối tôi nghe được là … / Anh/chị nghe tôi rõ không? / Anh/chị có thấy màn hình của tôi không? / Mạng của tôi vừa bị rớt. Xin lỗi anh/chị. Chúng ta đang nói đến đâu rồi ạ? / Tôi tắt camera một lúc cho mạng ổn hơn được không?</p>",
+     "notes": "<p><strong>Use when:</strong> Phỏng vấn online. Kiểm tra mic, camera và chia sẻ màn hình trước giờ hẹn.</p><p><strong>Trap:</strong> Pretending you heard when the audio cut out.</p><p><strong>Follow-up:</strong> If it keeps failing: “Could we switch to a phone call or another link?”</p>"
+    },
+    {
+     "id": "english-live-coding",
+     "title": "Thinking aloud in live coding",
+     "hint": "Say the plan, the assumption, and the check.",
+     "q_en": "<p>You are coding while the interviewer watches.</p>",
+     "a_en": "<p>Let me restate the problem to make sure I understand it. / I’ll assume the input is …. Is that okay? / I’ll start with a simple version that works, then improve it. / Right now I’m thinking about edge cases, like an empty list or a duplicate. / This works, but it’s O(n²). I think a map can make it O(n). / Let me run one example by hand. / I made a mistake here. Let me fix it. / Can I look up the exact name of this method?</p>",
+     "q_vi": "<p>Bạn đang code trực tiếp trong lúc người phỏng vấn theo dõi.</p>",
+     "a_vi": "<p>Để tôi nhắc lại đề bài cho chắc là mình hiểu đúng. / Tôi giả định đầu vào là …. Như vậy có được không ạ? / Tôi sẽ làm một bản đơn giản chạy được trước, rồi cải thiện sau. / Bây giờ tôi đang nghĩ đến các trường hợp đặc biệt, như danh sách rỗng hoặc phần tử trùng. / Cách này chạy được nhưng là O(n²). Tôi nghĩ dùng map sẽ đưa về O(n). / Để tôi chạy thử một ví dụ bằng tay. / Chỗ này tôi làm sai. Để tôi sửa lại. / Tôi tra tên chính xác của hàm này được không?</p>",
+     "notes": "<p><strong>Use when:</strong> Live coding, pair programming, hoặc bài system design trên bảng.</p><p><strong>Trap:</strong> Long silence while you type. Say one sentence every minute.</p><p><strong>Follow-up:</strong> “What is the complexity?” → say time and space, then whether you can improve it.</p>"
+    }
+   ]
+  },
+  {
+   "name": "Questions, next steps, salary",
+   "id": "sec-questions-next-steps-salary",
+   "cards": [
+    {
+     "id": "soft-g76",
+     "title": "Show interest in the company and team",
+     "hint": "Human, not salesy.",
+     "q_en": "<p>They ask if you have questions, or you want to show interest.</p>",
+     "a_en": "<p>I’d love to understand how the team … / I’m curious about … / How does the team usually handle …? / What does success look like in the first few months?</p>",
+     "q_vi": "<p>Bạn muốn thể hiện sự quan tâm.</p>",
+     "a_vi": "<p>Tôi rất muốn hiểu team … như thế nào. / Tôi tò mò về … / Team thường xử lý … như thế nào ạ? / Trong vài tháng đầu, thế nào được coi là thành công?</p>",
+     "notes": "<p><strong>Use when:</strong> Cuối buổi phỏng vấn. Ghép với các câu hỏi đã chuẩn bị trên <a href=\"fit.html#new-behavioral-28\">trang Fit</a>.</p>"
+    },
+    {
+     "id": "english-next-steps",
+     "title": "Asking about next steps",
+     "hint": "Ask once, near the end.",
+     "q_en": "<p>You want to know what happens after this interview.</p>",
+     "a_en": "<p>What are the next steps in the process? / When can I expect to hear back? / Who will I meet in the next round? / Is there anything else you need from me? / If I have a question later, is it okay to email you?</p>",
+     "q_vi": "<p>Bạn muốn biết bước tiếp theo sau buổi phỏng vấn.</p>",
+     "a_vi": "<p>Các bước tiếp theo trong quy trình là gì ạ? / Khi nào tôi có thể nhận được phản hồi? / Ở vòng sau tôi sẽ gặp những ai? / Anh/chị có cần tôi gửi thêm thông tin gì không? / Nếu sau này có câu hỏi, tôi gửi email cho anh/chị được không?</p>",
+     "notes": "<p><strong>Use when:</strong> Năm phút cuối, sau phần câu hỏi của bạn.</p><p><strong>Trap:</strong> Asking “Did I pass?”</p><p><strong>Follow-up:</strong> If they give a date and it passes, a short polite email two days later is fine.</p>"
+    },
+    {
+     "id": "english-salary",
+     "title": "Salary talk",
+     "hint": "A range, gross or net, then their budget.",
+     "q_en": "<p>They ask about salary, or you discuss an offer.</p>",
+     "a_en": "<p>My expected range is … to … gross per month. / Could you share the budget range for this role? / Is that figure gross or net? / I’m flexible depending on the full package. / Is there any flexibility on the base salary? / Thank you for the offer. Could I have a day or two to think it over?</p>",
+     "q_vi": "<p>Họ hỏi về lương, hoặc hai bên trao đổi về offer.</p>",
+     "a_vi": "<p>Mức tôi mong muốn là từ … đến … gross mỗi tháng. / Anh/chị có thể chia sẻ khoảng ngân sách cho vị trí này không? / Con số đó là gross hay net ạ? / Tôi có thể linh hoạt tùy theo tổng đãi ngộ. / Mức lương cơ bản có thể điều chỉnh thêm được không ạ? / Cảm ơn anh/chị về offer. Tôi xin một đến hai ngày để suy nghĩ được không?</p>",
+     "notes": "<p><strong>Use when:</strong> Vòng HR hoặc khi nhận offer. Mức lương cụ thể nằm ở <a href=\"fit.html#fit-hr-salary\">trang Fit</a>.</p><p><strong>Trap:</strong> Accepting or rejecting on the spot. Saying one exact number.</p><p><strong>Follow-up:</strong> “What is your current salary?” → see the Fit card.</p>"
+    }
+   ]
+  }
+ ]
+}

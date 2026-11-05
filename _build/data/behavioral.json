@@ -1,0 +1,476 @@
+{
+ "page": "behavioral",
+ "href": "behavioral.html",
+ "title": "Behavioral",
+ "intro": "Stories, judgement, teamwork, Agile, and how you use AI.",
+ "sections": [
+  {
+   "name": "About you",
+   "id": "sec-about-you",
+   "cards": [
+    {
+     "id": "go1-q14",
+     "title": "What is your biggest weakness?",
+     "hint": "The one weakness, everywhere: sharing progress too late. Then what you changed.",
+     "q_en": "<p>What is your biggest weakness?</p>",
+     "a_en": "<p>I am comfortable investigating a problem alone, and sometimes I wait too long before I share progress or a risk. I want to come back with an answer, not a half-answer, but then the team hears about a risk later than they should.</p><p>I have worked on this in a concrete way. When something will take longer than a day, I post a short update early: what I know, what I am still checking, and what I need from someone. If an estimate is slipping, I say so on the day I notice, not at the deadline. Working remotely and on my own products made this even more important, because nobody can see my progress unless I write it down. I still work independently, but I no longer leave people in the dark.</p>",
+     "q_vi": "<p>Điểm yếu lớn nhất của bạn là gì?</p>",
+     "a_vi": "<p>Tôi quen tự mình điều tra một vấn đề, và đôi khi tôi chờ quá lâu mới chia sẻ tiến độ hoặc rủi ro. Tôi muốn quay lại với một câu trả lời hoàn chỉnh, nhưng như vậy team lại biết về rủi ro muộn hơn mức nên biết.</p><p>Tôi đã sửa điều này bằng những việc cụ thể. Khi một việc mất hơn một ngày, tôi gửi cập nhật ngắn từ sớm: tôi đã biết gì, còn đang kiểm tra gì, và cần ai hỗ trợ gì. Nếu ước lượng bắt đầu trễ, tôi báo ngay trong ngày phát hiện, chứ không đợi đến hạn. Làm remote và làm sản phẩm riêng càng khiến việc này quan trọng hơn, vì không ai thấy được tiến độ của tôi nếu tôi không viết ra. Tôi vẫn làm việc độc lập, nhưng không còn để mọi người phải đoán nữa.</p>",
+     "notes": "<p><strong>Know:</strong> This is the only weakness. Use it on every page and every role.</p><p><strong>Trap:</strong> “I am a perfectionist.” A fake weakness, or a second different one.</p><p><strong>Follow-up:</strong> “Did anyone give you feedback on it?” → <a href=\"behavioral.html#behavioral-hard-feedback\">Hard feedback you received</a>.</p>"
+    },
+    {
+     "id": "behavioral-proud",
+     "title": "What project are you most proud of?",
+     "hint": "IELTS AI Tutor: what you learned, and the decisions that keep it reliable.",
+     "q_en": "<p>What project are you most proud of?</p>",
+     "a_en": "<p>IELTS AI Tutor. It is an IELTS practice app on iOS and Android, with a teacher portal for classes and assignments, and it has about 5,000 users.</p><p>I am proud of it for two reasons. First, I learned a lot to build it. My background was backend and web, and I had to learn React Native, Expo, and the whole store release path while shipping. Second, I made decisions that keep it reliable. The model keys stay on the server, so chat, text-to-speech, and speech-to-text go through Express routes, and every call is traced in Langfuse, so we can tell a bad answer from an upstream failure. Apple and Google purchases are verified on the server before Pro is unlocked. And the assignment rules live in the API, so the app and the portal never implement them twice. It is live on both stores, and I still maintain it.</p>",
+     "q_vi": "<p>Dự án nào bạn tự hào nhất?</p>",
+     "a_vi": "<p>IELTS AI Tutor. Đây là app luyện thi IELTS trên iOS và Android, có cổng cho giáo viên quản lý lớp và bài tập, hiện có khoảng 5.000 người dùng.</p><p>Tôi tự hào vì hai lý do. Thứ nhất, tôi học được rất nhiều để làm ra nó. Nền tảng của tôi là backend và web, và tôi phải học React Native, Expo và toàn bộ quy trình phát hành lên store trong lúc làm. Thứ hai, tôi đưa ra những quyết định giúp app chạy ổn định. Key của model nằm trên server, nên chat, text-to-speech và speech-to-text đều đi qua route Express, và mọi lời gọi đều được trace trên Langfuse, nhờ vậy phân biệt được model trả lời kém với lỗi từ dịch vụ phía trên. Giao dịch mua trên Apple và Google được xác minh ở server trước khi mở gói Pro. Còn luật giao bài nằm ở API, nên app và cổng giáo viên không phải mỗi bên tự làm một kiểu. App đang chạy trên cả hai store và tôi vẫn đang duy trì nó.</p>",
+     "notes": "<p><strong>Know:</strong> About 5,000 users. No growth number.</p><p><strong>Trap:</strong> Only listing features. Say why the decisions matter.</p><p><strong>Follow-up:</strong> “What would you change?” → something honest from the backlog; “How did you test the purchase flow?”</p>"
+    },
+    {
+     "id": "new-behavioral-21",
+     "title": "What is your biggest failure?",
+     "hint": "A real mistake, your part in it, what you changed. No humble-brag.",
+     "q_en": "<p>Tell me about your biggest failure, or a project that did not go well.</p>",
+     "a_en": "<p>Earlier in my career I sometimes built the technically clean version of a feature before the business workflow was clear: who is allowed to do what, and which edge case would create support work. On [the feature], I built the logic and the screens, and then we found the roles worked differently from what I had assumed. We had to redo part of it, and that cost the team time.</p><p>The mistake was mine. I treated clarity as something that would arrive later. Now, before I write real code, I write down my assumptions, confirm the roles and edge cases, and show a thin version someone can click. On Aquanix, for example, I wrote the access rule down clearly, which role and partnership can see which pond, and built every pond route on that one check. Being fast means solving the right problem, not typing quickly.</p>",
+     "q_vi": "<p>Thất bại lớn nhất của bạn là gì?</p>",
+     "a_vi": "<p>Trước đây tôi đôi khi làm phiên bản gọn gàng về mặt kỹ thuật trước khi quy trình nghiệp vụ được làm rõ: ai được làm gì, và trường hợp đặc biệt nào sẽ sinh ra việc hỗ trợ. Với [tính năng đó], tôi làm xong logic và màn hình, rồi mới phát hiện phân quyền thực tế khác với những gì tôi giả định. Chúng tôi phải làm lại một phần, và team mất thời gian vì việc đó.</p><p>Lỗi đó là của tôi. Tôi đã nghĩ sự rõ ràng sẽ tự đến sau. Giờ trước khi viết code thật, tôi ghi lại các giả định, xác nhận phân quyền và các trường hợp đặc biệt, và đưa ra một bản mỏng để người khác bấm thử. Ví dụ với Aquanix, tôi viết rõ luật truy cập, vai trò và đối tác nào được xem ao nào, rồi xây mọi route của ao dựa trên đúng một bước kiểm tra đó. Nhanh là giải đúng bài toán, không phải gõ code nhanh.</p>",
+     "notes": "<p><strong>Know:</strong> Own it: “the mistake was mine”. Then the habit you changed.</p><p><strong>Trap:</strong> A failure that is really a success, or blaming the client for unclear specs.</p><p><strong>Follow-up:</strong> “How did the team react?” “What did it cost?”</p><p><strong>TODO Thủy:</strong> Name the real feature and project where the rework happened (BaseVN? Akktis?), in both EN and VI.</p>"
+    },
+    {
+     "id": "behavioral-hard-feedback",
+     "title": "Hard feedback you received",
+     "hint": "Communication, not code. Same thread as the weakness.",
+     "q_en": "<p>Tell me about a time you received difficult feedback.</p>",
+     "a_en": "<p>The hardest feedback I remember was about communication, not code. A lead told me that I went quiet when I was stuck. My work was fine in the end, but they learned about a risk late, and that made their planning harder.</p><p>My first reaction was to explain that I wanted to be sure before I said anything. Then I accepted they were right: from their side, silence looked the same as no progress. So I changed how I work. I now send a short update early, with what I know, what I am checking, and what I need, and I raise a slipping estimate the day I see it. It is the same weakness I would tell you about today, and I am still working on it.</p>",
+     "q_vi": "<p>Kể về một lần bạn nhận góp ý khó nghe.</p>",
+     "a_vi": "<p>Góp ý khó nhất mà tôi nhớ là về cách giao tiếp, không phải về code. Lead của tôi nói rằng tôi hay im lặng khi gặp khó. Cuối cùng việc vẫn xong, nhưng anh ấy biết về rủi ro quá muộn, và điều đó khiến việc lên kế hoạch khó hơn.</p><p>Phản ứng đầu tiên của tôi là giải thích rằng tôi muốn chắc chắn rồi mới nói. Sau đó tôi nhận ra anh ấy đúng: nhìn từ phía anh ấy, im lặng cũng giống như không có tiến độ. Vì vậy tôi thay đổi cách làm. Giờ tôi gửi cập nhật ngắn từ sớm, gồm những gì tôi biết, đang kiểm tra gì và cần gì, và báo ngay trong ngày khi ước lượng có nguy cơ trễ. Đây cũng chính là điểm yếu tôi sẽ kể với anh/chị hôm nay, và tôi vẫn đang tiếp tục cải thiện.</p>",
+     "notes": "<p><strong>Know:</strong> Listen, accept, change a habit, show it still holds.</p><p><strong>Trap:</strong> Defending yourself in the story. Feedback about something trivial.</p><p><strong>Follow-up:</strong> “How do you give hard feedback?” → say what is wrong, why it matters, and what you would do instead.</p><p><strong>TODO Thủy:</strong> Confirm who gave this feedback and where (BaseVN or Akktis), and one line about the task, so the story is concrete. Adjust “he/anh ấy” if needed.</p>"
+    }
+   ]
+  },
+  {
+   "name": "Conflict and disagreement",
+   "id": "sec-conflict-and-disagreement",
+   "cards": [
+    {
+     "id": "go1-q12",
+     "title": "Disagreeing with a PM or client",
+     "hint": "Akktis Friday deploy. Their goal first, then the risk, then a middle path.",
+     "q_en": "<p>Tell me about a time you disagreed with a manager, PM, or client.</p>",
+     "a_en": "<p>At Akktis, a client PM wanted a change in production on a Friday evening. Their reasons made sense: the customer was waiting and the change looked small. Another engineer was ready to ship it without staging.</p><p>I was not comfortable. We worked across time zones, and if something broke after Europe went offline, rollback would be messy and nobody who knew the change would be online. I did not make it personal. I repeated their goal first, that the customer should get the fix today, and then named the risks: a config difference between environments, a missing variable, and no clean rollback. I proposed a middle path: a short staging check, a written rollback step, then deploy.</p><p>We did that, and the change went live the same evening without problems. The PM still pushed for dates afterward, which is their job, but they started asking for the rollback note themselves.</p>",
+     "q_vi": "<p>Kể một lần bạn bất đồng với quản lý, PM hoặc khách hàng.</p>",
+     "a_vi": "<p>Ở Akktis, PM phía khách muốn đưa một thay đổi lên production vào tối thứ Sáu. Lý do của họ hợp lý: khách hàng đang chờ và thay đổi trông có vẻ nhỏ. Một kỹ sư khác đã sẵn sàng deploy mà không qua staging.</p><p>Tôi thấy không yên tâm. Chúng tôi làm việc ở các múi giờ khác nhau, nếu có lỗi sau khi bên châu Âu đã nghỉ thì rollback sẽ rất rối, và không còn ai hiểu thay đổi đó đang online. Tôi không biến chuyện này thành vấn đề cá nhân. Tôi nhắc lại mục tiêu của họ trước, là khách phải nhận được bản sửa ngay hôm nay, rồi nêu rủi ro: cấu hình giữa các môi trường khác nhau, thiếu biến môi trường, và không có cách rollback gọn. Tôi đề xuất một phương án ở giữa: kiểm tra nhanh trên staging, viết sẵn bước rollback, rồi mới deploy.</p><p>Chúng tôi làm như vậy, và thay đổi vẫn lên ngay tối hôm đó mà không có sự cố. Sau đó PM vẫn hối thúc về thời hạn, vì đó là việc của họ, nhưng họ bắt đầu tự hỏi về ghi chú rollback.</p>",
+     "notes": "<p><strong>Know:</strong> You only hard-block for data loss or security. This was “slow down one hour so we can undo it”.</p><p><strong>Trap:</strong> Telling it as “I was right, they were wrong”.</p><p><strong>Follow-up:</strong> “What if they had said no?” → “I would deploy their way, add a health check and a way to turn the change off, and stay online until it was stable.”</p>"
+    },
+    {
+     "id": "behavioral-commit-plan",
+     "title": "Committing to a plan you disagreed with",
+     "hint": "Base PIT export. Push once, then make their plan safe.",
+     "q_en": "<p>Tell me about a time you committed to a decision you did not agree with.</p>",
+     "a_en": "<p>Before the Base PIT launch, I wanted to move the heavy Excel and XML tax export off the request path into a background job, because the data was already over 500,000 records. I was worried that a large company's first tax period would time out or, worse, produce a file that looked fine but was wrong. I explained that once, in practical terms. The product owner and the tech lead still decided to launch with the existing export, because the date was the real constraint.</p><p>I committed and stopped arguing. Then I made their plan as safe as I could: I fixed slow queries and indexes, removed SELECT star and N plus one queries, processed rows in batches, and checked a small known sample so the files still matched HRM and Payroll. I also wrote down the remaining risk. The launch went fine, and the first clients could export. I push once, clearly, and then I help the team win.</p>",
+     "q_vi": "<p>Kể một lần bạn làm theo quyết định mà bạn không đồng ý.</p>",
+     "a_vi": "<p>Trước khi Base PIT ra mắt, tôi muốn tách phần xuất file Excel và XML thuế ra khỏi request, chuyển sang chạy job nền, vì dữ liệu đã vượt 500.000 bản ghi. Tôi lo kỳ thuế đầu tiên của một công ty lớn sẽ bị timeout, hoặc tệ hơn, xuất ra một file trông thì ổn nhưng sai. Tôi trình bày điều đó một lần, bằng những ví dụ thực tế. Product owner và tech lead vẫn quyết định ra mắt với cách xuất file hiện tại, vì ngày ra mắt mới là ràng buộc chính.</p><p>Tôi làm theo và không tranh luận tiếp. Sau đó tôi làm cho phương án của họ an toàn nhất có thể: sửa các query chậm và index, bỏ SELECT * và các query N+1, xử lý dữ liệu theo từng lô, và kiểm tra một mẫu nhỏ đã biết trước để file vẫn khớp với HRM và Payroll. Tôi cũng ghi lại phần rủi ro còn lại. Buổi ra mắt suôn sẻ, các khách hàng đầu tiên xuất file được. Tôi góp ý một lần thật rõ, rồi giúp team thành công.</p>",
+     "notes": "<p><strong>Know:</strong> Who decided: PO and tech lead. Your job after the decision was to make it work.</p><p><strong>Trap:</strong> Ending with “and later they saw I was right”.</p><p><strong>Follow-up:</strong> “So were you right?” → “Partly. The launch date was right too. My job was to make their plan work and keep the risk visible.”</p>"
+    },
+    {
+     "id": "soft-s-two-solutions",
+     "title": "You and a coworker want different solutions",
+     "hint": "Tradeoffs on the table, evidence, then commit.",
+     "q_en": "<p>What do you do when you and a coworker disagree on a technical solution?</p>",
+     "a_en": "<p>I put both options on the table with their tradeoffs: time, risk, and how hard each is to change later. Then I ask what we are optimizing for right now. A common case for me is a quick UI fix versus fixing the real cause in the API or the data. I bring evidence, like the Network tab or a small reproduce, and often propose both: a short-term mitigation now and the proper fix next.</p><p>I do not need to win the design. If we still disagree, I suggest a small spike or the choice that is easier to reverse, and the person who owns that area decides. After the decision, I build that path properly, not half of my own idea in secret.</p>",
+     "q_vi": "<p>Khi bạn và đồng nghiệp có giải pháp kỹ thuật khác nhau, bạn làm gì?</p>",
+     "a_vi": "<p>Tôi đặt cả hai phương án lên bàn cùng với tradeoff: thời gian, rủi ro, và sau này sửa lại khó đến đâu. Rồi tôi hỏi lúc này chúng ta đang ưu tiên điều gì. Trường hợp tôi hay gặp là sửa nhanh ở UI hay sửa tận gốc ở API hoặc dữ liệu. Tôi đưa ra bằng chứng, như tab Network hoặc một bước tái hiện lỗi nhỏ, và thường đề xuất cả hai: giảm thiệt hại ngay bây giờ, rồi sửa đúng cách ở bước sau.</p><p>Tôi không cần phải thắng trong thiết kế. Nếu vẫn chưa thống nhất, tôi đề xuất làm một spike nhỏ hoặc chọn phương án dễ đảo ngược hơn, và người phụ trách phần đó sẽ quyết. Sau khi đã chốt, tôi làm phương án đó cho tốt, không âm thầm làm nửa vời theo ý mình.</p>",
+     "notes": "<p><strong>Know:</strong> Tradeoffs, evidence, spike if stuck, commit after the decision.</p><p><strong>Trap:</strong> “I usually win these arguments.”</p><p><strong>Follow-up:</strong> “Give me a real example.” → UI fix vs API cause; or the PIT export decision.</p>"
+    },
+    {
+     "id": "behavioral-teammate",
+     "title": "A teammate who was not pulling their weight",
+     "hint": "Private first, about the work, help, then escalate with facts.",
+     "q_en": "<p>How did you handle a teammate who was not doing their share?</p>",
+     "a_en": "<p>First I try to find out what is really happening, because from outside it can look like laziness and it rarely is. Often the person is blocked, unsure about the task, or overloaded with work I cannot see. So I talk to them privately and keep it about the work: this ticket has been open a while, is something blocking you, can I help?</p><p>If the task is unclear, I help split it into smaller pieces with a clear definition of done. If they need context, I pair with them for an hour. If nothing changes and the sprint or the release is at risk, I tell the lead, with facts about the work, not complaints about the person. I would rather raise it early than quietly do their part myself, because that only hides the problem.</p>",
+     "q_vi": "<p>Bạn xử lý thế nào khi một đồng nghiệp không làm tròn phần việc của mình?</p>",
+     "a_vi": "<p>Trước tiên tôi tìm hiểu chuyện gì đang thật sự xảy ra, vì nhìn từ ngoài có thể giống lười, nhưng hiếm khi đúng như vậy. Thường thì người đó đang bị chặn, chưa rõ việc, hoặc đang ôm quá nhiều việc mà tôi không thấy. Nên tôi nói chuyện riêng với họ và chỉ nói về công việc: ticket này mở khá lâu rồi, có gì đang vướng không, tôi giúp được gì không?</p><p>Nếu việc chưa rõ, tôi giúp chia nhỏ ra và định nghĩa rõ thế nào là xong. Nếu họ thiếu bối cảnh, tôi ngồi làm cùng họ một tiếng. Nếu vẫn không thay đổi và sprint hoặc bản release có nguy cơ trễ, tôi báo với lead bằng dữ kiện về công việc, chứ không phàn nàn về con người. Tôi thà nêu vấn đề sớm còn hơn lặng lẽ làm thay, vì như vậy chỉ che giấu vấn đề.</p>",
+     "notes": "<p><strong>Know:</strong> Assume a blocker first. Escalate on risk, with facts.</p><p><strong>Trap:</strong> Gossiping, or silently doing their work and resenting it.</p><p><strong>Follow-up:</strong> “What if it was a senior person?” → same steps; it is about the work, not the title.</p><p><strong>TODO Thủy:</strong> Add one real example (where, what you did, outcome) if you have one, in EN and VI.</p>"
+    }
+   ]
+  },
+  {
+   "name": "Deadlines and pressure",
+   "id": "sec-deadlines-and-pressure",
+   "cards": [
+    {
+     "id": "go1-cv-estimate-wrong",
+     "title": "A time you missed a deadline",
+     "hint": "Tell early, new date with a reason, cut scope. No vendor blame.",
+     "q_en": "<p>Tell me about a time you missed a deadline.</p>",
+     "a_en": "<p>On the VietnamWorks and TopCV integration at BaseVN, my first estimate assumed the vendor APIs would behave like their documentation. They did not always. Some calls failed or came back in a different shape, and I needed retries, request logging, and job monitoring that I had not planned for.</p><p>I saw I would miss the date [two days] before it, and I told the lead that day: what was done, what was left, why it took longer, and a new date. We agreed to ship the main job posting flow first and the extra monitoring right after. Since then I add a short spike for any third-party API before I give a firm number, and I report a slipping date the day I notice it, not on the deadline.</p>",
+     "q_vi": "<p>Kể một lần bạn trễ deadline.</p>",
+     "a_vi": "<p>Khi làm phần tích hợp VietnamWorks và TopCV ở BaseVN, ước lượng ban đầu của tôi dựa trên giả định API của đối tác chạy đúng như tài liệu. Thực tế không phải lúc nào cũng vậy. Có lời gọi bị lỗi hoặc trả về dữ liệu khác định dạng, và tôi phải làm thêm retry, ghi log request và theo dõi job, những thứ tôi chưa tính đến.</p><p>Tôi nhận ra sẽ trễ hạn trước [hai ngày], và báo với lead ngay hôm đó: phần nào đã xong, phần nào còn lại, vì sao lâu hơn, và ngày hoàn thành mới. Chúng tôi thống nhất ship luồng đăng tin tuyển dụng chính trước, phần theo dõi bổ sung làm ngay sau đó. Từ đó, với mọi API bên thứ ba, tôi làm một spike ngắn trước khi đưa ra con số chắc chắn, và báo ngay trong ngày khi thấy có nguy cơ trễ, chứ không đợi đến hạn.</p>",
+     "notes": "<p><strong>Know:</strong> The lesson ties to your one weakness: say it early.</p><p><strong>Trap:</strong> Blaming the vendor. A story where you missed nothing.</p><p><strong>Follow-up:</strong> “What did the lead say?” “How do you estimate now?” → see the estimate card in Planning.</p><p><strong>TODO Thủy:</strong> Confirm this slip really happened and the details (how late, what was cut). If not, replace it with the real case.</p>"
+    },
+    {
+     "id": "soft-g35",
+     "title": "A time you were under pressure",
+     "hint": "BaseVN sync mismatch. Calm, evidence, smallest safe fix, prevent.",
+     "q_en": "<p>Describe a time you worked under pressure, such as a production bug.</p>",
+     "a_en": "<p>At BaseVN, a sync between VSS, HRM, and Payroll looked successful, but some fields were mismatched, and users noticed before we did. That was high pressure, because payroll and compliance data must be right, and a silent wrong value is worse than a loud error.</p><p>I stayed calm and went for evidence. I reproduced it with a small dataset where I knew every expected value, compared source and destination field by field, and found the mapping and job order problem. I shipped a focused fix, then added validation on the export so a mismatch like that would be caught instead of passed through quietly. Under pressure I keep the steps small: reproduce, prove the cause, fix the smallest safe thing, then prevent it from coming back.</p>",
+     "q_vi": "<p>Kể một lần bạn làm việc dưới áp lực, ví dụ một lỗi production.</p>",
+     "a_vi": "<p>Ở BaseVN, phần đồng bộ giữa VSS, HRM và Payroll báo thành công, nhưng một số trường dữ liệu bị lệch, và người dùng phát hiện trước chúng tôi. Áp lực rất lớn, vì dữ liệu lương và báo cáo tuân thủ phải chính xác, và một giá trị sai âm thầm còn nguy hiểm hơn một lỗi hiện rõ.</p><p>Tôi giữ bình tĩnh và tìm bằng chứng. Tôi tái hiện lỗi với một tập dữ liệu nhỏ mà tôi biết trước mọi giá trị đúng, so sánh nguồn và đích từng trường một, và tìm ra lỗi ở phần mapping và thứ tự chạy job. Tôi đưa ra bản sửa tập trung, rồi thêm bước kiểm tra trên file xuất để lỗi lệch như vậy bị phát hiện thay vì lặng lẽ đi qua. Dưới áp lực, tôi đi từng bước nhỏ: tái hiện, chứng minh nguyên nhân, sửa phần nhỏ nhất mà an toàn, rồi ngăn nó lặp lại.</p>",
+     "notes": "<p><strong>Know:</strong> Silent data bugs are the scariest ones.</p><p><strong>Trap:</strong> “I worked all night” as the whole answer.</p><p><strong>Follow-up:</strong> “How did you tell users?” “What validation did you add?” Deeper version on the CV page.</p>"
+    },
+    {
+     "id": "new-behavioral-27",
+     "title": "A production bug at 11pm and the team is asleep",
+     "hint": "Stabilize first, check the usual causes, write it down.",
+     "q_en": "<p>A production bug hits at 11pm and the rest of the team is asleep. What do you do?</p>",
+     "a_en": "<p>Impact first. If users are blocked, I stabilize before I look for a clever cause: roll back to the last good revision, turn the feature off, or apply a workaround. On PhysioFix, for example, the admin has a switch that takes the phone number off the Grok voice trunk and dials a staff phone instead, so calls still reach a person while I investigate.</p><p>Then I check the usual causes: the most recent change, the logs, config and environment variables, a full disk, or a service that is up but cannot reach what it depends on. I write down what I saw and what I did, so the team can continue from there in the morning. I do not refactor at 11pm.</p>",
+     "q_vi": "<p>Lỗi production xảy ra lúc 11 giờ đêm và cả team đã ngủ. Bạn làm gì?</p>",
+     "a_vi": "<p>Ưu tiên mức ảnh hưởng trước. Nếu người dùng bị chặn, tôi làm hệ thống ổn định lại trước khi tìm nguyên nhân: rollback về revision tốt gần nhất, tắt tính năng, hoặc dùng cách tạm thời. Ví dụ với PhysioFix, trang admin có một công tắc chuyển số điện thoại khỏi trunk Grok voice và gọi thẳng đến điện thoại nhân viên, để cuộc gọi vẫn đến được người thật trong lúc tôi điều tra.</p><p>Sau đó tôi kiểm tra các nguyên nhân thường gặp: thay đổi gần nhất, log, cấu hình và biến môi trường, ổ đĩa đầy, hoặc service vẫn chạy nhưng không kết nối được tới thứ nó phụ thuộc. Tôi ghi lại những gì đã thấy và đã làm, để sáng hôm sau team tiếp tục được. Tôi không refactor lúc 11 giờ đêm.</p>",
+     "notes": "<p><strong>Know:</strong> Stabilize, investigate, write it down, hand over.</p><p><strong>Trap:</strong> Starting a big fix alone at night.</p><p><strong>Follow-up:</strong> “When would you wake someone up?” → data loss, security, or a fix you cannot undo.</p>"
+    },
+    {
+     "id": "go1-cv-priority",
+     "title": "What do you fix first when several things are broken?",
+     "hint": "Impact and reversibility. Say what you stop, not only what you start.",
+     "q_en": "<p>How do you decide what to fix first when several things are slow or broken, or priorities change?</p>",
+     "a_en": "<p>I sort by impact and by how easy it is to undo. Users blocked or data wrong comes first. Then anything on a launch path. Then speed and polish. On Base PIT, a wrong XML file for the tax authority beats a slightly slow list page. On IELTS AI Tutor, a failing speech-to-text route that blocks speaking practice beats a slow animation. On a server, a full disk beats a style bug.</p><p>When priorities change in the middle of the work, I do the same check again, and I say out loud what I am stopping, not only what I am starting, so nothing gets dropped without anyone knowing.</p>",
+     "q_vi": "<p>Khi nhiều thứ cùng chậm hoặc hỏng, hoặc ưu tiên thay đổi, bạn quyết định sửa gì trước thế nào?</p>",
+     "a_vi": "<p>Tôi xếp theo mức ảnh hưởng và độ dễ đảo ngược. Người dùng bị chặn hoặc dữ liệu sai thì làm trước. Sau đó là những gì nằm trên đường ra mắt. Cuối cùng mới là tốc độ và phần làm đẹp. Với Base PIT, một file XML sai gửi cơ quan thuế quan trọng hơn một trang danh sách hơi chậm. Với IELTS AI Tutor, route speech-to-text bị lỗi làm học viên không luyện nói được quan trọng hơn một hiệu ứng chậm. Trên server, ổ đĩa đầy quan trọng hơn lỗi giao diện.</p><p>Khi ưu tiên thay đổi giữa chừng, tôi kiểm tra lại theo cách đó, và nói rõ việc gì tôi sẽ dừng, không chỉ việc gì tôi bắt đầu, để không có việc nào bị bỏ dở mà không ai biết.</p>",
+     "notes": "<p><strong>Know:</strong> Impact, then reversibility. Make stopped work visible.</p><p><strong>Trap:</strong> “Whatever the client shouts about first.”</p><p><strong>Follow-up:</strong> “What if two people both say theirs is urgent?” → put both on the table with impact and ask the lead to pick.</p>"
+    }
+   ]
+  },
+  {
+   "name": "Ownership and growth",
+   "id": "sec-ownership-and-growth",
+   "cards": [
+    {
+     "id": "go1-q10",
+     "title": "A time you showed ownership",
+     "hint": "PhysioFix: thinking past the happy path.",
+     "q_en": "<p>Tell me about a time you took ownership of something.</p>",
+     "a_en": "<p>On PhysioFix I own the control path for a clinic's phone assistant. Twilio and Grok voice carry the audio, and my Express server answers the webhook, opens the realtime socket, and sends the instructions and tool results.</p><p>For me, ownership meant thinking past the happy path. A caller should never hear silence, so I ack each tool call on the socket right away and write the contact and transcript to Firestore afterward. Staff need a way out if the assistant misbehaves, so the admin has a switch that moves the number from the Grok trunk to a staff phone. That switch changes Twilio itself, not only a flag in the database. Because the two can still drift apart, the screen shows when they disagree, so staff can resync instead of trusting a flag that is wrong.</p>",
+     "q_vi": "<p>Kể một lần bạn thể hiện tinh thần trách nhiệm với công việc.</p>",
+     "a_vi": "<p>Với PhysioFix, tôi chịu trách nhiệm phần điều khiển cuộc gọi cho trợ lý điện thoại của phòng khám. Twilio và Grok voice xử lý âm thanh, còn server Express của tôi trả lời webhook, mở kết nối realtime và gửi hướng dẫn cùng kết quả của các tool.</p><p>Với tôi, trách nhiệm nghĩa là nghĩ xa hơn trường hợp mọi thứ suôn sẻ. Người gọi không bao giờ nên phải nghe khoảng lặng, nên tôi xác nhận từng tool call trên socket ngay lập tức rồi mới ghi thông tin liên hệ và transcript vào Firestore. Nhân viên cần có lối thoát nếu trợ lý hoạt động sai, nên trang admin có công tắc chuyển số điện thoại từ trunk Grok sang điện thoại của nhân viên. Công tắc đó thay đổi trực tiếp trên Twilio, không chỉ một cờ trong database. Vì hai bên vẫn có thể lệch nhau, màn hình sẽ báo khi chúng không khớp, để nhân viên đồng bộ lại thay vì tin vào một cờ đã sai.</p>",
+     "notes": "<p><strong>Know:</strong> Ack before write; switch changes trunk membership; drift is shown, a human resyncs.</p><p><strong>Trap:</strong> Ownership = “I worked late”.</p><p><strong>Follow-up:</strong> “How do you test this?” → Jest covers the API. “What happens if the socket drops?” Answer only what you have built.</p>"
+    },
+    {
+     "id": "go1-q3",
+     "title": "A time you had to learn something new",
+     "hint": "IELTS: mobile and release were new. Small slices, AI to learn, you still own it.",
+     "q_en": "<p>Tell me about a time you had to learn something new quickly to make progress.</p>",
+     "a_en": "<p>When I started IELTS AI Tutor, my experience was backend and web. I had not built a React Native app or a mobile release pipeline before, and I could not wait until I felt like an expert. So I learned in small slices while shipping: first a screen that ran, then navigation and sign-in, then the API connection, then store builds and the pipeline.</p><p>I used AI tools to explain Expo patterns and errors I had not seen, and to draft config. Then I did the part a model cannot do: I ran it on real devices, read the official docs when an answer looked wrong, and kept only what I understood. The hardest part was the last mile: signing, store requirements, and making releases repeatable. The app is now live on Google Play and the App Store with about 5,000 users, and this year I did the same again with Twilio and Grok voice on PhysioFix.</p>",
+     "q_vi": "<p>Kể một lần bạn phải học nhanh một thứ mới để tiến lên.</p>",
+     "a_vi": "<p>Khi bắt đầu IELTS AI Tutor, kinh nghiệm của tôi là backend và web. Tôi chưa từng làm app React Native hay pipeline phát hành mobile, và tôi không thể đợi đến khi thành chuyên gia. Nên tôi học từng phần nhỏ trong lúc làm: đầu tiên là một màn hình chạy được, rồi điều hướng và đăng nhập, rồi kết nối API, rồi build lên store và pipeline.</p><p>Tôi dùng công cụ AI để giải thích các pattern của Expo và những lỗi tôi chưa gặp, và để viết nháp cấu hình. Sau đó tôi làm phần mà model không làm thay được: chạy thử trên máy thật, đọc tài liệu chính thức khi câu trả lời có vẻ sai, và chỉ giữ lại những gì mình hiểu. Khó nhất là chặng cuối: ký app, yêu cầu của store, và làm cho việc phát hành lặp lại được. Giờ app đã có trên Google Play và App Store với khoảng 5.000 người dùng, và năm nay tôi lặp lại cách đó với Twilio và Grok voice cho PhysioFix.</p>",
+     "notes": "<p><strong>Know:</strong> Honest gap, small slices, AI to learn, you own what ships.</p><p><strong>Trap:</strong> Sounding like the AI built it.</p><p><strong>Follow-up:</strong> “So you just copied ChatGPT?” → “No. The model is fast at a first draft and at explaining an error. I still run the build, read the diff, and own a broken store upload. If I cannot explain a change, I do not merge it.”</p>"
+    },
+    {
+     "id": "go1-q5",
+     "title": "A challenging goal, or a time you felt stuck",
+     "hint": "Base PIT and VSS data: map dependencies before changing anything.",
+     "q_en": "<p>Tell me about a challenging goal, or a time you felt stuck, and how you moved forward.</p>",
+     "a_en": "<p>At BaseVN I worked on HR, payroll, tax, and social insurance systems. Some workflows sat on more than 500,000 records, and data moved between several systems.</p><p>I felt stuck because it was not one slow query. We had to know which system was the source of truth, what missing or duplicate records would do to payroll or reports, and which change was safe. So I made the problem visible first. I mapped the data flow, marked the important entities, checked the current schema and queries, and started with the highest-risk path, the one that could break money or compliance reporting, not the easiest refactor.</p><p>From there I improved the structure and the queries step by step instead of rewriting everything. The lesson: when a system feels too big, I need a picture of the dependencies before I change production data paths.</p>",
+     "q_vi": "<p>Kể về một mục tiêu khó, hoặc lúc bạn thấy bế tắc, và cách bạn đi tiếp.</p>",
+     "a_vi": "<p>Ở BaseVN tôi làm các hệ thống nhân sự, tiền lương, thuế và bảo hiểm xã hội. Một số luồng xử lý trên hơn 500.000 bản ghi, và dữ liệu đi qua nhiều hệ thống.</p><p>Tôi thấy bế tắc vì vấn đề không nằm ở một query chậm. Chúng tôi phải biết hệ thống nào là nguồn dữ liệu chuẩn, bản ghi thiếu hoặc trùng sẽ ảnh hưởng thế nào đến bảng lương hay báo cáo, và thay đổi nào là an toàn. Nên tôi làm cho vấn đề hiện rõ trước. Tôi vẽ luồng dữ liệu, đánh dấu các thực thể quan trọng, xem lại schema và query hiện tại, và bắt đầu từ luồng rủi ro cao nhất, luồng có thể làm sai tiền hoặc báo cáo tuân thủ, chứ không phải phần dễ refactor nhất.</p><p>Từ đó tôi cải thiện cấu trúc và query từng bước thay vì viết lại toàn bộ. Bài học là: khi hệ thống có vẻ quá lớn, tôi cần nhìn rõ các phụ thuộc trước khi đụng vào luồng dữ liệu production.</p>",
+     "notes": "<p><strong>Know:</strong> Map first, highest risk first, step by step.</p><p><strong>Trap:</strong> Saying you rewrote it all.</p><p><strong>Follow-up:</strong> “What was the risk if you were wrong?” “Who did you involve?”</p>"
+    },
+    {
+     "id": "go1-q4",
+     "title": "Improving how a team works, without being the manager",
+     "hint": "Deploy steps in one head → a pipeline anyone can run. Influence by small changes.",
+     "q_en": "<p>Tell me how you improved a team's way of working, or influenced people without being their manager.</p>",
+     "a_en": "<p>At Akktis, on some projects the deploy steps lived in one person's head. Releases were slow, and when that person was away, support got hard. I was not the manager, so I started from the pain everyone felt: missed steps, confusion between environments, and long troubleshooting.</p><p>I wrote down the current flow, then made the pipeline repeatable, with GitHub Actions, GitLab CI, or Jenkins depending on the project, and Docker and Cloud Run where we used them. I documented the build order, environment config, and what to check after a deploy. To get people to use it, I kept each change small and explained the benefit in their terms: fewer mistakes, and less waiting for one person.</p><p>I do not have a timing number I trust, but the change was clear: the pipeline became the source of truth, and other people could ship and debug on their own.</p>",
+     "q_vi": "<p>Kể cách bạn cải thiện cách làm việc của team, hoặc tạo ảnh hưởng khi không phải là quản lý.</p>",
+     "a_vi": "<p>Ở Akktis, một số dự án có các bước deploy chỉ nằm trong đầu một người. Release chậm, và khi người đó vắng thì việc hỗ trợ rất khó. Tôi không phải quản lý, nên tôi bắt đầu từ cái khó mà ai cũng thấy: sót bước, nhầm lẫn giữa các môi trường, và mất nhiều thời gian xử lý sự cố.</p><p>Tôi ghi lại quy trình hiện tại, rồi làm pipeline chạy lặp lại được, với GitHub Actions, GitLab CI hoặc Jenkins tùy dự án, kèm Docker và Cloud Run ở những nơi dùng chúng. Tôi viết tài liệu về thứ tự build, cấu hình môi trường và những gì cần kiểm tra sau khi deploy. Để mọi người chịu dùng, tôi giữ mỗi thay đổi thật nhỏ và giải thích lợi ích theo cách họ quan tâm: ít sai sót hơn, và không phải chờ một người.</p><p>Tôi không có con số thời gian nào đủ chắc để nói, nhưng thay đổi rất rõ: pipeline trở thành nguồn thông tin chuẩn, và người khác có thể tự deploy và debug.</p>",
+     "notes": "<p><strong>Know:</strong> No invented numbers. The win is “only one person could deploy” → “anyone on the team”.</p><p><strong>Trap:</strong> Claiming a title or authority you did not have.</p><p><strong>Follow-up:</strong> “Did anyone resist?” → keep changes small, show one release working the new way.</p>"
+    },
+    {
+     "id": "go1-q22",
+     "title": "A time you went outside your job description",
+     "hint": "Runbooks and Langfuse. Then make the work visible.",
+     "q_en": "<p>Tell me about a time you did something outside your job description.</p>",
+     "a_en": "<p>A few times the most useful work was not on my ticket. At Akktis, release steps and server knowledge were not written down anywhere, so I left a short runbook with each server change and documented the ops path after the MySQL migration, so support did not depend on one person.</p><p>On IELTS AI Tutor, we could not see what the model actually returned to students, so I added Langfuse tracing to the chat, text-to-speech, and speech-to-text routes. I do this kind of work when it unblocks the team or the user, and I tell people about it, so it becomes planned work and not invisible work.</p>",
+     "q_vi": "<p>Kể một lần bạn làm việc nằm ngoài mô tả công việc.</p>",
+     "a_vi": "<p>Có vài lần việc hữu ích nhất lại không nằm trong ticket của tôi. Ở Akktis, các bước release và kiến thức về server không được ghi lại ở đâu, nên với mỗi thay đổi trên server tôi để lại một runbook ngắn, và viết tài liệu vận hành sau đợt chuyển sang MySQL, để việc hỗ trợ không phụ thuộc vào một người.</p><p>Với IELTS AI Tutor, chúng tôi không thấy được model thực sự trả về gì cho học viên, nên tôi thêm trace bằng Langfuse cho các route chat, text-to-speech và speech-to-text. Tôi làm những việc như vậy khi nó gỡ vướng cho team hoặc người dùng, và tôi nói cho mọi người biết, để đó là việc có kế hoạch chứ không phải việc vô hình.</p>",
+     "notes": "<p><strong>Know:</strong> Do it when it unblocks people, then make it visible.</p><p><strong>Trap:</strong> Sounding like you ignore your actual tickets.</p><p><strong>Follow-up:</strong> “How did you find time?” → small pieces, agreed with the lead.</p>"
+    }
+   ]
+  },
+  {
+   "name": "Judgement",
+   "id": "sec-judgement",
+   "cards": [
+    {
+     "id": "go1-q6",
+     "title": "Short-term speed vs long-term quality",
+     "hint": "Say what you cut and what you refused to cut. Also answers “a time you said no”.",
+     "q_en": "<p>How do you balance short-term results with long-term quality? Tell me about a time you said no.</p>",
+     "a_en": "<p>I separate what can be a first version from what we cannot compromise. I will cut scope, polish, and extra features for a first release. I will not cut data correctness, security, basic error handling, or a deploy I can roll back.</p><p>On IELTS AI Tutor there was a push for a broad assistant that did every skill and every mode. That would have been slow to build and very hard to judge. I said no to the extra scope and showed a narrower practice flow instead, so we could ship sooner. But the long-term parts went in from day one: model keys on the server, chat and speech through Express routes, error handling, and Langfuse traces. Then we could improve prompts and screens from real traces instead of guessing. Short-term tradeoffs are fine when they are written down and not hidden debt.</p>",
+     "q_vi": "<p>Bạn cân bằng kết quả ngắn hạn và chất lượng dài hạn thế nào? Kể một lần bạn nói không.</p>",
+     "a_vi": "<p>Tôi tách rõ phần nào có thể làm bản đầu tiên và phần nào không được đánh đổi. Với bản phát hành đầu, tôi sẵn sàng cắt phạm vi, phần làm đẹp và tính năng phụ. Tôi không cắt tính đúng của dữ liệu, bảo mật, xử lý lỗi cơ bản, hay một quy trình deploy có thể rollback.</p><p>Với IELTS AI Tutor, từng có ý muốn làm một trợ lý rộng, làm được mọi kỹ năng và mọi chế độ. Làm vậy sẽ rất lâu và rất khó đánh giá chất lượng. Tôi từ chối phần phạm vi thêm đó và đưa ra một luồng luyện tập hẹp hơn để ship sớm. Nhưng những phần cho lâu dài thì có ngay từ ngày đầu: key của model nằm trên server, chat và giọng nói đi qua route Express, có xử lý lỗi, và có trace trên Langfuse. Nhờ vậy chúng tôi cải thiện prompt và màn hình dựa trên trace thật thay vì đoán. Đánh đổi ngắn hạn là chấp nhận được, miễn là được ghi lại và không thành nợ kỹ thuật ngầm.</p>",
+     "notes": "<p><strong>Know:</strong> Two lists: what you cut, what you never cut.</p><p><strong>Trap:</strong> “I never cut scope.” Lecturing about quality instead of showing a version.</p><p><strong>Follow-up:</strong> “Who wanted the broad assistant?” → keep it neutral: a stakeholder on the project.</p>"
+    },
+    {
+     "id": "go1-q8",
+     "title": "Requirements are unclear",
+     "hint": "Split, ask focused questions, say assumptions. Aquanix access rule.",
+     "q_en": "<p>What do you do when the requirements are unclear?</p>",
+     "a_en": "<p>I do not fake certainty, and I do not start by coding the whole thing. I split the request into the main user flow, the data, the integrations, and the parts that will hurt later, like permissions, empty data, and large files. Then I ask a short list of focused questions and say my assumptions out loud.</p><p>Aquanix is a good example. “Members manage ponds” sounds simple, but it hides real questions: who sees which pond, what an owner can do that a member cannot, and how a partnership changes that. I wrote that rule down first. Now the JWT carries the role and partnership, and every pond route rejects a member who is not assigned to that pond. When something is still unclear, I build a thin first version people can click, because a wrong assumption costs more than one question.</p>",
+     "q_vi": "<p>Khi yêu cầu chưa rõ ràng, bạn làm gì?</p>",
+     "a_vi": "<p>Tôi không tỏ ra chắc chắn khi chưa chắc, và cũng không bắt đầu bằng việc code hết mọi thứ. Tôi chia yêu cầu thành luồng người dùng chính, dữ liệu, các tích hợp, và những phần sẽ gây rắc rối về sau như phân quyền, dữ liệu trống, file lớn. Rồi tôi hỏi một danh sách ngắn những câu trúng trọng tâm và nói rõ các giả định của mình.</p><p>Aquanix là một ví dụ. “Thành viên quản lý ao” nghe thì đơn giản, nhưng ẩn bên trong là nhiều câu hỏi: ai được xem ao nào, chủ ao làm được gì mà thành viên không làm được, và quan hệ đối tác thay đổi điều đó ra sao. Tôi viết rõ luật đó ra trước. Giờ JWT mang theo vai trò và đối tác, và mọi route của ao đều từ chối thành viên không được giao ao đó. Khi vẫn còn chỗ chưa rõ, tôi làm một bản mỏng để mọi người bấm thử, vì một giả định sai tốn kém hơn nhiều so với một câu hỏi.</p>",
+     "notes": "<p><strong>Know:</strong> Scope, success, edge cases, then a thin slice.</p><p><strong>Trap:</strong> Building for a week in silence.</p><p><strong>Follow-up:</strong> “What questions do you ask a PM or BA?” → who uses it, what done looks like, what happens with empty or wrong data, who is not allowed.</p>"
+    },
+    {
+     "id": "go1-q11",
+     "title": "Making a decision with incomplete information",
+     "hint": "Easy to reverse → assume and move. Hard to reverse → slow down.",
+     "q_en": "<p>How do you make a decision when you do not have all the information?</p>",
+     "a_en": "<p>I split decisions by how easy they are to undo. If it is easy to change later, I make a reasonable assumption, write it down, test it, and move on. If it is hard to reverse, like production data, security, or a big architecture choice, I slow down.</p><p>The MySQL migration at Akktis was the second kind. We could not know every way the legacy data was used, so I took backups first and validated reads and writes after the cutover, before calling it done. In both cases I say what I know, what I am assuming, the risk, and what I will check next. That lets the team move without pretending we are certain.</p>",
+     "q_vi": "<p>Bạn ra quyết định thế nào khi chưa có đủ thông tin?</p>",
+     "a_vi": "<p>Tôi phân loại quyết định theo mức độ dễ đảo ngược. Nếu sau này dễ thay đổi, tôi đưa ra một giả định hợp lý, ghi lại, kiểm tra, rồi làm tiếp. Nếu khó đảo ngược, như dữ liệu production, bảo mật hay một lựa chọn kiến trúc lớn, tôi sẽ chậm lại.</p><p>Đợt chuyển database sang MySQL ở Akktis thuộc loại thứ hai. Chúng tôi không thể biết hết dữ liệu cũ được dùng thế nào, nên tôi sao lưu trước, và kiểm tra việc đọc ghi sau khi chuyển rồi mới coi là xong. Trong cả hai trường hợp, tôi nói rõ mình biết gì, đang giả định gì, rủi ro là gì và sẽ kiểm tra gì tiếp. Như vậy team vẫn đi tiếp được mà không phải giả vờ chắc chắn.</p>",
+     "notes": "<p><strong>Know:</strong> Reversibility decides the speed.</p><p><strong>Trap:</strong> Waiting for perfect information, or guessing on irreversible changes.</p><p><strong>Follow-up:</strong> “How did you validate the migration?” → see the DevOps and CV pages.</p>"
+    }
+   ]
+  },
+  {
+   "name": "Working with others",
+   "id": "sec-working-with-others",
+   "cards": [
+    {
+     "id": "soft-s-collab",
+     "title": "How do you work with teammates day to day?",
+     "hint": "Visible work, small PRs, contract first.",
+     "q_en": "<p>How do you work with teammates day to day?</p>",
+     "a_en": "<p>I try to make my work visible: tickets with clear acceptance criteria, small PRs, and a status update before anyone has to chase me. I ask early when the contract or the design is unclear, instead of building the wrong thing. When I review someone's code, I look for risk first, not only style. And when frontend and backend work is split, I agree the API shape first, so nobody throws work over the wall.</p>",
+     "q_vi": "<p>Bạn làm việc với đồng nghiệp hằng ngày thế nào?</p>",
+     "a_vi": "<p>Tôi cố gắng để công việc của mình luôn rõ ràng với mọi người: ticket có tiêu chí nghiệm thu rõ, PR nhỏ, và cập nhật tình hình trước khi ai đó phải hỏi. Tôi hỏi sớm khi contract hoặc thiết kế chưa rõ, thay vì làm sai hướng. Khi review code của người khác, tôi tìm rủi ro trước, không chỉ soi style. Và khi frontend và backend được chia cho nhiều người, tôi thống nhất cấu trúc API trước, để không ai phải làm xong rồi đẩy sang cho người khác tự xoay xở.</p>",
+     "notes": "<p><strong>Know:</strong> Visible work, small PRs, agree the contract first.</p><p><strong>Trap:</strong> “I mostly work alone.” True lately, but not what they want to hear.</p><p><strong>Follow-up:</strong> “How do you handle a teammate who disagrees in review?”</p>"
+    },
+    {
+     "id": "engineering-n7",
+     "title": "Working with product managers and designers",
+     "hint": "User outcome, thin slice, limits early, plain-language contract.",
+     "q_en": "<p>How do you work with product managers and designers?</p>",
+     "a_en": "<p>I start with the user and the constraint: what the user is trying to do, what success looks like, the deadline, and what data we already have. Then I propose a thin vertical slice, one API route and one screen that proves the idea, not a six-month platform.</p><p>I name technical limits early, like latency, cost, permissions, or a third-party API, so we do not design a flow the system cannot keep. I write the contract in plain language so the PM, the designer, and the engineers share one picture. When something is unclear, I prefer a small build we can click through together over a long document. If the scope grows, I say what drops from this sprint, so quality does not collapse.</p>",
+     "q_vi": "<p>Bạn làm việc với product manager và designer thế nào?</p>",
+     "a_vi": "<p>Tôi bắt đầu từ người dùng và các ràng buộc: người dùng đang muốn làm gì, thế nào là thành công, hạn chót, và dữ liệu nào chúng ta đã có. Rồi tôi đề xuất một lát cắt dọc mỏng, một route API và một màn hình đủ để chứng minh ý tưởng, chứ không phải một nền tảng làm sáu tháng.</p><p>Tôi nêu sớm các giới hạn kỹ thuật như độ trễ, chi phí, phân quyền hay API bên thứ ba, để không thiết kế ra một luồng mà hệ thống không đáp ứng được. Tôi viết contract bằng ngôn ngữ dễ hiểu để PM, designer và kỹ sư cùng nhìn một bức tranh. Khi còn điều chưa rõ, tôi thích làm một bản nhỏ để cùng bấm thử hơn là viết tài liệu dài. Nếu phạm vi phình ra, tôi nói rõ sprint này bỏ bớt gì để chất lượng không đi xuống.</p>",
+     "notes": "<p><strong>Know:</strong> Outcome, thin slice, risks early, shared contract.</p><p><strong>Trap:</strong> Jumping to architecture before the user problem is clear.</p><p><strong>Follow-up:</strong> “Give me an example of a slice you shipped.” → IELTS narrow practice flow, or the Aquanix season log.</p>"
+    },
+    {
+     "id": "go1-q13",
+     "title": "Working across countries and time zones",
+     "hint": "Akktis: async updates, written decisions, runbooks.",
+     "q_en": "<p>How do you work with people in different countries and time zones?</p>",
+     "a_en": "<p>At Akktis I worked with a France-based team and international clients, so I could not rely on a quick meeting to fix everything. I wrote updates that work async: what I did, what is blocked, what I need, and what is next. I wrote down technical decisions so someone who was offline still had the context, and I did not assume shared context, especially with clients. I left a short runbook with each server change for the same reason. That made me more independent and more careful. If people cannot see the work, the work is not finished.</p>",
+     "q_vi": "<p>Bạn làm việc với người ở các quốc gia và múi giờ khác nhau thế nào?</p>",
+     "a_vi": "<p>Ở Akktis tôi làm việc với team ở Pháp và khách hàng quốc tế, nên không thể trông vào một cuộc họp nhanh để giải quyết mọi thứ. Tôi viết cập nhật để người khác đọc lúc nào cũng hiểu: tôi đã làm gì, đang vướng gì, cần gì, và bước tiếp theo là gì. Tôi ghi lại các quyết định kỹ thuật để người không online lúc đó vẫn nắm được bối cảnh, và không mặc định rằng mọi người đã cùng hiểu, nhất là với khách hàng. Tôi để lại runbook ngắn cho mỗi thay đổi trên server cũng vì lý do đó. Điều này giúp tôi tự chủ hơn và cẩn thận hơn. Nếu người khác không nhìn thấy công việc, thì công việc đó chưa xong.</p>",
+     "notes": "<p><strong>Know:</strong> Async update template: done, blocked, need, next.</p><p><strong>Trap:</strong> Present tense about Akktis.</p><p><strong>Follow-up:</strong> “What time zone overlap did you have?”</p>"
+    },
+    {
+     "id": "behavioral-mentor",
+     "title": "Helping or mentoring a junior",
+     "hint": "No formal title. Writing things down, guiding not taking over.",
+     "q_en": "<p>Tell me about a time you helped or mentored a less experienced teammate.</p>",
+     "a_en": "<p>I have not had a formal mentor role, so I will tell you what I actually do. My main tool is writing things down so a newer person can do the job without me. At Akktis I left a short runbook with each server change and wrote the ops path after the MySQL migration, so support did not depend on me.</p><p>When someone newer asks for help, I do not take over the keyboard. I ask them to show me what they tried, then we reproduce the problem together, and I explain how I would narrow down the layer: the client, the API, or the data. Then they make the fix. In code review I explain why a change matters, and I mark small things clearly as nits, so they know what is important. The goal is that they need me less next time.</p>",
+     "q_vi": "<p>Kể một lần bạn giúp đỡ hoặc kèm cặp một đồng nghiệp ít kinh nghiệm hơn.</p>",
+     "a_vi": "<p>Tôi chưa từng giữ vai trò mentor chính thức, nên tôi sẽ kể những gì tôi thực sự làm. Cách chính của tôi là ghi lại mọi thứ để người mới có thể tự làm mà không cần đến tôi. Ở Akktis, với mỗi thay đổi trên server tôi để lại một runbook ngắn, và viết tài liệu vận hành sau đợt chuyển sang MySQL, để việc hỗ trợ không phụ thuộc vào tôi.</p><p>Khi người mới nhờ giúp, tôi không làm thay. Tôi nhờ họ cho xem họ đã thử những gì, rồi cùng tái hiện lỗi, và giải thích cách tôi khoanh vùng tầng bị lỗi: client, API hay dữ liệu. Sau đó họ tự sửa. Khi review code, tôi giải thích vì sao một thay đổi quan trọng, và ghi rõ những góp ý nhỏ chỉ là nit, để họ biết đâu là điều quan trọng. Mục tiêu là lần sau họ ít cần đến tôi hơn.</p>",
+     "notes": "<p><strong>Know:</strong> Honest about no title. Show the habit.</p><p><strong>Trap:</strong> Inventing a mentee or a team you led.</p><p><strong>Follow-up:</strong> “How do you know it worked?”</p><p><strong>TODO Thủy:</strong> If you helped a specific newer teammate at BaseVN or Akktis, add one line: who (role only), what task, what changed.</p>"
+    },
+    {
+     "id": "new-behavioral-20",
+     "title": "Explain a technical problem to a non-engineer",
+     "hint": "Start from what they feel. Tool names only if asked.",
+     "q_en": "<p>Explain a technical problem to someone who does not code.</p>",
+     "a_en": "<p>I start from what they feel. For the tax reports at BaseVN: a big company had to wait because the system was doing far more work than it needed for each employee. I made it read the data in batches and use the right shortcuts in the database, and I checked a small group we already knew still matched payroll. If they want the technical names, then I say index and EXPLAIN.</p><p>For the AI tutor: a successful reply from the model only means it answered. We still need a record of what the student actually received, because a fast answer can still be a bad lesson.</p>",
+     "q_vi": "<p>Hãy giải thích một vấn đề kỹ thuật cho người không biết lập trình.</p>",
+     "a_vi": "<p>Tôi bắt đầu từ điều họ cảm nhận được. Với báo cáo thuế ở BaseVN: một công ty lớn phải chờ lâu vì hệ thống làm nhiều việc hơn mức cần thiết cho mỗi nhân viên. Tôi cho hệ thống đọc dữ liệu theo từng lô và dùng đúng lối tắt trong database, rồi kiểm tra một nhóm nhỏ đã biết trước vẫn khớp với bảng lương. Nếu họ muốn biết tên kỹ thuật, lúc đó tôi mới nói đến index và EXPLAIN.</p><p>Với trợ lý AI: model trả lời thành công chỉ có nghĩa là nó đã trả lời. Chúng tôi vẫn cần lưu lại học viên thực sự nhận được gì, vì một câu trả lời nhanh vẫn có thể là một bài học tệ.</p>",
+     "notes": "<p><strong>Know:</strong> Feeling first, fix second, jargon last.</p><p><strong>Trap:</strong> Starting with “so the query planner…”.</p><p><strong>Follow-up:</strong> “Explain Langfuse to my mother.” → a recording of every question and answer, so we can check the bad ones.</p>"
+    },
+    {
+     "id": "new-behavioral-25",
+     "title": "Code review: giving and receiving",
+     "hint": "About the code, not the person. Risk first, nits marked as nits.",
+     "q_en": "<p>How do you approach code review, both giving and receiving it?</p>",
+     "a_en": "<p>When I review, I look at correctness and risk first: edge cases, auth, performance, failure paths, and names that do not match what the code does. I say what is wrong, why it matters, and what I would do instead, and I mark a nit as a nit. I ask questions rather than only push my style, and I learn from other people's designs too.</p><p>When I receive a tough review, I read it as about the code. If I disagree, I ask what risk they see. I change my mind when they have context I missed. If I still disagree, I explain the tradeoff and let the person who owns that area decide. I do not collect comments and complain later.</p>",
+     "q_vi": "<p>Bạn review code và nhận review code thế nào?</p>",
+     "a_vi": "<p>Khi review, tôi xem tính đúng và rủi ro trước: các trường hợp đặc biệt, xác thực và phân quyền, hiệu năng, cách xử lý khi lỗi, và những cái tên không khớp với việc code làm. Tôi nói rõ chỗ nào sai, vì sao quan trọng, và tôi sẽ làm khác thế nào, còn góp ý nhỏ thì ghi rõ là nit. Tôi đặt câu hỏi thay vì chỉ áp đặt style của mình, và tôi cũng học từ thiết kế của người khác.</p><p>Khi nhận một review gắt, tôi hiểu đó là góp ý cho code. Nếu không đồng ý, tôi hỏi họ thấy rủi ro gì. Tôi đổi ý khi họ có bối cảnh mà tôi chưa biết. Nếu vẫn không đồng ý, tôi giải thích tradeoff và để người phụ trách phần đó quyết định. Tôi không giữ trong lòng rồi phàn nàn sau.</p>",
+     "notes": "<p><strong>Know:</strong> Risk over formatting. Owner decides when you disagree.</p><p><strong>Trap:</strong> Huge drive-by rewrites in a review.</p><p><strong>Follow-up:</strong> “How do you review AI-written code?” → see AI-assisted coding below.</p>"
+    },
+    {
+     "id": "new-behavioral-24",
+     "title": "Onboarding to a large unfamiliar codebase",
+     "hint": "Run it, follow one request, ask who owns production, ship small.",
+     "q_en": "<p>How do you get up to speed on a large, unfamiliar codebase?</p>",
+     "a_en": "<p>First I get it running locally. Then I follow one real request from the screen all the way to the data. I find where auth lives, what the main entities are, and how a release is rolled back. I ask early who owns production, instead of guessing for a week. Then I ship a small, safe change, so people can see how I test and how I take review. I would rather ask a basic question on day two than build the wrong thing quietly.</p>",
+     "q_vi": "<p>Bạn làm quen với một codebase lớn, chưa từng biết, thế nào?</p>",
+     "a_vi": "<p>Đầu tiên tôi chạy được nó trên máy của tôi. Sau đó tôi đi theo một request thật từ màn hình đến tận dữ liệu. Tôi tìm xem phần xác thực nằm ở đâu, các thực thể chính là gì, và cách rollback một bản release. Tôi hỏi sớm ai phụ trách production, thay vì tự đoán cả tuần. Rồi tôi làm một thay đổi nhỏ và an toàn, để mọi người thấy cách tôi test và cách tôi tiếp nhận review. Tôi thà hỏi một câu cơ bản vào ngày thứ hai còn hơn lặng lẽ làm sai.</p>",
+     "notes": "<p><strong>Know:</strong> Run, trace one request, ask, ship small.</p><p><strong>Trap:</strong> Reading every file before touching anything.</p><p><strong>Follow-up:</strong> “How would you use AI for this?” → see “Using AI to learn a new stack”.</p>"
+    },
+    {
+     "id": "go1-q17",
+     "title": "What does leadership mean to you?",
+     "hint": "For an IC: clarity, visible risk, ownership, the path you leave behind.",
+     "q_en": "<p>What does leadership mean to you?</p>",
+     "a_en": "<p>For an engineer without a manager title, leadership means helping the group move. That means making things clear, making risks visible, taking ownership when something is fuzzy, and caring about the full outcome, reliable, understandable, and useful, not only that my PR passed. I show it through the work, through what I write down, and through the process I leave behind, like the runbooks and pipelines at Akktis that let other people ship without me.</p>",
+     "q_vi": "<p>Với bạn, leadership nghĩa là gì?</p>",
+     "a_vi": "<p>Với một kỹ sư không có chức danh quản lý, leadership là giúp cả nhóm tiến lên. Nghĩa là làm cho mọi thứ rõ ràng, để rủi ro được nhìn thấy, chủ động nhận việc khi mọi thứ còn mơ hồ, và quan tâm đến toàn bộ kết quả: ổn định, dễ hiểu và hữu ích, chứ không chỉ là PR của mình đã qua. Tôi thể hiện điều đó qua công việc, qua những gì tôi ghi lại, và qua quy trình tôi để lại, như các runbook và pipeline ở Akktis giúp người khác deploy được mà không cần tôi.</p>",
+     "notes": "<p><strong>Know:</strong> Leadership without authority, with one concrete example.</p><p><strong>Trap:</strong> Abstract talk with no example.</p><p><strong>Follow-up:</strong> “What does curiosity mean to you?” → “I do not stop at the first answer: why it broke, what the user was trying to do, what we are trading off.”</p>"
+    },
+    {
+     "id": "go1-q21",
+     "title": "Your first 90 days",
+     "hint": "Month one: learn and ship small. Months two and three: own a real slice.",
+     "q_en": "<p>What would you do in your first 90 days?</p>",
+     "a_en": "<p>In the first month I learn the product, the codebase, and how the team ships and supports releases. I would rather ask simple questions early than silently build the wrong thing. I ship something small and safe, with tests and a clean PR, so people can start to trust my work.</p><p>In months two and three I own a real slice, a feature or a reliability improvement, and leave the path clearer than I found it: better docs, a check in CI, or a better way to see whether a feature actually works for users. I also follow the tools and AI workflow the team already uses, instead of inventing my own.</p>",
+     "q_vi": "<p>Bạn sẽ làm gì trong 90 ngày đầu tiên?</p>",
+     "a_vi": "<p>Tháng đầu tiên, tôi tìm hiểu sản phẩm, codebase, và cách team phát hành cũng như hỗ trợ sau release. Tôi thà hỏi những câu đơn giản từ sớm còn hơn lặng lẽ làm sai. Tôi sẽ ship một thay đổi nhỏ và an toàn, có test và PR gọn gàng, để mọi người bắt đầu tin vào công việc của tôi.</p><p>Tháng thứ hai và thứ ba, tôi nhận một phần việc thật, một tính năng hoặc một cải thiện về độ ổn định, và để lại mọi thứ rõ ràng hơn lúc tôi đến: tài liệu tốt hơn, một bước kiểm tra trong CI, hoặc cách tốt hơn để biết một tính năng có thực sự hoạt động với người dùng hay không. Tôi cũng theo các công cụ và cách dùng AI mà team đang dùng, thay vì tự đặt ra cách riêng.</p>",
+     "notes": "<p><strong>Know:</strong> Learn, ship small, then own a slice.</p><p><strong>Trap:</strong> Promising to re-architect in month one.</p><p><strong>Follow-up:</strong> Pair with “What questions do you have for us?” → ask what good looks like in 90 days.</p>"
+    }
+   ]
+  },
+  {
+   "name": "Planning and Agile",
+   "id": "sec-planning-and-agile",
+   "cards": [
+    {
+     "id": "go1-cv-estimate",
+     "title": "How do you estimate a task?",
+     "hint": "Split known, unknown, test and release. Say assumptions. Buffer only the risky slice.",
+     "q_en": "<p>How do you estimate a task? Do you use story points?</p>",
+     "a_en": "<p>I do not estimate a blurry ticket as one number. I split it first into what is already clear, what is unknown, and the test and release work. The clear part I size from similar work, in story points or whatever scale the team uses. A normal CRUD feature is small. A Base PIT style report on a large table is bigger, because I need time to profile, index, and check a sample. A third-party integration needs time for auth, retries, and failed responses, not only the happy path.</p><p>Then I say my assumptions out loud: three days if the mapping is documented and I have staging data, and if the vendor API differs from the docs, a half-day spike first. I add buffer only to the risky slice, not a secret double on everything. And if the task turns out bigger, I say so the day I see it.</p>",
+     "q_vi": "<p>Bạn ước lượng một task thế nào? Bạn có dùng story point không?</p>",
+     "a_vi": "<p>Tôi không ước lượng một ticket còn mơ hồ thành một con số duy nhất. Tôi chia nó ra trước: phần đã rõ, phần chưa biết, và phần test cùng release. Phần đã rõ tôi ước lượng dựa trên những việc tương tự, bằng story point hoặc thang đo mà team đang dùng. Một tính năng CRUD bình thường là việc nhỏ. Một báo cáo kiểu Base PIT trên bảng lớn thì lớn hơn, vì tôi cần thời gian để đo, thêm index và kiểm tra mẫu. Một tích hợp bên thứ ba cần thời gian cho xác thực, retry và các phản hồi lỗi, không chỉ trường hợp suôn sẻ.</p><p>Sau đó tôi nói rõ giả định: ba ngày nếu mapping có tài liệu và tôi có dữ liệu staging, còn nếu API của đối tác khác tài liệu thì cần nửa ngày spike trước. Tôi chỉ cộng thêm thời gian dự phòng cho phần rủi ro, không âm thầm nhân đôi mọi thứ. Và nếu task hóa ra lớn hơn, tôi báo ngay trong ngày phát hiện.</p>",
+     "notes": "<p><strong>Know:</strong> Relative sizing is fine. Assumptions out loud. Re-estimate early.</p><p><strong>Trap:</strong> “I just feel it.” Promising exact hours.</p><p><strong>Follow-up:</strong> “What if you are wrong?” → <a href=\"behavioral.html#go1-cv-estimate-wrong\">A time you missed a deadline</a>.</p>"
+    },
+    {
+     "id": "soft-g147",
+     "title": "Breaking a large feature into sprint work",
+     "hint": "Vertical slices by value and risk.",
+     "q_en": "<p>How do you break a big feature into sprint-sized work?</p>",
+     "a_en": "<p>I split by user-visible value and by risk. Usually that is the API contract first, then the happy path on screen, then edge cases and permissions, then polish. I avoid “all backend this sprint, all frontend next sprint” when I can, because a thin vertical slice is easier to demo and test.</p><p>For example, on Base PIT I would not size “optimize the database”. I would size “make one period's export finish and match a known sample”, then a next slice for the next report. Each estimate is a range with assumptions, not a promise to the minute.</p>",
+     "q_vi": "<p>Bạn chia một tính năng lớn thành các phần việc trong sprint thế nào?</p>",
+     "a_vi": "<p>Tôi chia theo giá trị người dùng nhìn thấy và theo rủi ro. Thường là contract API trước, rồi luồng chính trên màn hình, rồi các trường hợp đặc biệt và phân quyền, cuối cùng là làm đẹp. Tôi tránh kiểu “sprint này làm hết backend, sprint sau làm hết frontend” khi có thể, vì một lát cắt dọc mỏng dễ demo và dễ test hơn.</p><p>Ví dụ với Base PIT, tôi không ước lượng việc “tối ưu cả database”. Tôi ước lượng “làm cho file xuất của một kỳ chạy xong và khớp với một mẫu đã biết”, rồi đến lát tiếp theo cho báo cáo tiếp theo. Mỗi ước lượng là một khoảng kèm giả định, không phải lời hứa chính xác đến từng phút.</p>",
+     "notes": "<p><strong>Know:</strong> Vertical slices, risk first, estimate as a range.</p><p><strong>Trap:</strong> Horizontal layers that cannot be demoed.</p><p><strong>Follow-up:</strong> “How small is too small?” → if it cannot be tested on its own.</p>"
+    },
+    {
+     "id": "soft-g33",
+     "title": "How do you work in Scrum?",
+     "hint": "Yes, sprints and ceremonies, used for what they are good at.",
+     "q_en": "<p>Are you familiar with Agile and Scrum? How do you work in a Scrum team?</p>",
+     "a_en": "<p>Yes. I have worked in Scrum-style teams with sprints, a backlog, planning, daily standups, and reviews or demos. I use each ceremony for what it is good at. Planning is where we agree the scope and split the work. Standup is where I raise a blocker early, not just say “still working”. The demo shows working software, and the retro is where we fix one thing in how we work.</p><p>I like tickets with clear acceptance criteria, so done is not a debate. I do not need textbook Scrum. I follow the team's cadence first, and if a meeting does not help us ship, I suggest making it lighter.</p>",
+     "q_vi": "<p>Bạn có quen với Agile và Scrum không? Bạn làm việc trong team Scrum thế nào?</p>",
+     "a_vi": "<p>Có. Tôi đã làm trong các team theo kiểu Scrum với sprint, backlog, planning, standup hằng ngày, và review hoặc demo. Tôi dùng mỗi buổi họp đúng mục đích của nó. Planning là lúc thống nhất phạm vi và chia việc. Standup là lúc tôi báo sớm những gì đang vướng, chứ không chỉ nói “vẫn đang làm”. Demo là để cho thấy phần mềm chạy được, còn retro là lúc chọn một điều để cải thiện cách làm việc.</p><p>Tôi thích ticket có tiêu chí nghiệm thu rõ ràng, để không phải tranh luận thế nào là xong. Tôi không cần Scrum đúng sách vở. Tôi theo nhịp của team trước, và nếu một buổi họp không giúp ship tốt hơn, tôi sẽ đề xuất làm nó gọn lại.</p>",
+     "notes": "<p><strong>Know:</strong> Planning, standup, review or demo, retro, acceptance criteria.</p><p><strong>Trap:</strong> Claiming SAFe or Scrum Master expertise.</p><p><strong>Follow-up:</strong> “What if requirements change mid-sprint?” → next card.</p>"
+    },
+    {
+     "id": "soft-g148",
+     "title": "Blocked, or requirements change mid-sprint",
+     "hint": "Say it early. Renegotiate scope instead of overcommitting.",
+     "q_en": "<p>What do you do when you are blocked, or the requirements change in the middle of a sprint?</p>",
+     "a_en": "<p>If I am blocked, waiting on an API, a design, or access, I say it in standup or message the right person straight away. I do not sit silently. If requirements change mid-sprint, I clarify the impact with the PM or lead: what drops or moves to the next sprint, so quality does not collapse. I would rather renegotiate the scope than ship a half-broken feature and call it done.</p>",
+     "q_vi": "<p>Khi bị chặn, hoặc yêu cầu thay đổi giữa sprint, bạn làm gì?</p>",
+     "a_vi": "<p>Nếu bị chặn, như đang chờ API, chờ thiết kế hay chờ quyền truy cập, tôi nói ngay trong standup hoặc nhắn trực tiếp cho người liên quan. Tôi không ngồi im chờ. Nếu yêu cầu thay đổi giữa sprint, tôi làm rõ ảnh hưởng với PM hoặc lead: phần nào bỏ hoặc dời sang sprint sau, để chất lượng không bị kéo xuống. Tôi thà thương lượng lại phạm vi còn hơn ship một tính năng nửa vời rồi gọi là xong.</p>",
+     "notes": "<p><strong>Know:</strong> Surface blockers early. Renegotiate, do not silently overcommit.</p><p><strong>Trap:</strong> Saying yes to everything mid-sprint.</p><p><strong>Follow-up:</strong> “What if the PM insists?” → write down what moves and let the lead decide.</p>"
+    },
+    {
+     "id": "soft-g149",
+     "title": "Definition of Done",
+     "hint": "Merged, reviewed, criteria met, checked in the real flow, a note for the next person.",
+     "q_en": "<p>What is your definition of done for a ticket?</p>",
+     "a_en": "<p>Code merged after review, acceptance criteria met, the happy path and the key edge cases checked, no known critical bugs, and enough of a note for the next person, especially for APIs and data migrations. For a full-stack ticket I also check the frontend and backend together in the real flow, not only unit tests in isolation. And if it changes production, I check the new revision after deploy before I call it done.</p>",
+     "q_vi": "<p>Với bạn, một ticket thế nào là xong?</p>",
+     "a_vi": "<p>Code đã được review và merge, đạt tiêu chí nghiệm thu, đã kiểm tra luồng chính và các trường hợp đặc biệt quan trọng, không còn lỗi nghiêm trọng nào đã biết, và có ghi chú đủ cho người sau, nhất là với API và migration dữ liệu. Với ticket full-stack, tôi kiểm tra cả frontend và backend cùng nhau trên luồng thật, chứ không chỉ unit test riêng lẻ. Và nếu nó thay đổi production, tôi kiểm tra revision mới sau khi deploy rồi mới coi là xong.</p>",
+     "notes": "<p><strong>Know:</strong> Checked the new revision before calling a release done (CV, Akktis).</p><p><strong>Trap:</strong> “Done = merged.”</p><p><strong>Follow-up:</strong> “Who checks it in production?”</p>"
+    },
+    {
+     "id": "soft-g34",
+     "title": "What does clean, maintainable code mean to you?",
+     "hint": "The next reader can change one thing without breaking five.",
+     "q_en": "<p>What does clean, maintainable code mean to you?</p>",
+     "a_en": "<p>Names that match what the code really does, small functions, clear module boundaries, and tests on the risky parts. If a new teammate can change one feature without breaking five others, that is maintainable. In my own APIs, for example, the assignment rules for IELTS AI Tutor live in one place on the server, so the app and the teacher portal do not each have their own copy. Clever code that only I understand is not a win.</p>",
+     "q_vi": "<p>Với bạn, code sạch và dễ bảo trì là gì?</p>",
+     "a_vi": "<p>Tên đặt đúng với những gì code thật sự làm, hàm nhỏ, ranh giới module rõ ràng, và có test ở những chỗ rủi ro. Nếu một đồng nghiệp mới sửa một tính năng mà không làm hỏng năm chỗ khác, thì đó là code dễ bảo trì. Ví dụ trong API của tôi, luật giao bài của IELTS AI Tutor nằm ở một chỗ trên server, nên app và cổng giáo viên không phải mỗi bên giữ một bản riêng. Code khôn ngoan mà chỉ mình tôi hiểu thì không phải là thành công.</p>",
+     "notes": "<p><strong>Know:</strong> Clarity for the next reader. One source of truth for rules.</p><p><strong>Trap:</strong> Abstraction for its own sake.</p><p><strong>Follow-up:</strong> “When is duplication better than the wrong abstraction?”</p>"
+    },
+    {
+     "id": "soft-g158",
+     "title": "How do you keep up with new technology?",
+     "hint": "Learn with a purpose, docs first, verify by building.",
+     "q_en": "<p>How do you keep up with new technology?</p>",
+     "a_en": "<p>I learn with a purpose, usually from the work in front of me. I read the official docs and release notes for the tools we actually use, follow a few trusted sources, and try small spikes on my own projects. This year, for example, I learned Twilio and Grok voice for PhysioFix that way. I use Cursor and Claude Code to explore an unfamiliar API faster, then I verify by building something real. When a job asks for a tool I have not shipped, I study why teams pick it, and I say clearly that I have studied it, not run it in production. I do not chase every new library. I go deeper on what helps me ship.</p>",
+     "q_vi": "<p>Bạn cập nhật công nghệ mới thế nào?</p>",
+     "a_vi": "<p>Tôi học có mục đích, thường xuất phát từ công việc đang làm. Tôi đọc tài liệu chính thức và release notes của những công cụ mình thật sự dùng, theo dõi vài nguồn đáng tin, và thử các spike nhỏ trên dự án của mình. Ví dụ năm nay tôi học Twilio và Grok voice cho PhysioFix theo cách đó. Tôi dùng Cursor và Claude Code để tìm hiểu một API lạ nhanh hơn, rồi kiểm chứng bằng cách làm ra thứ chạy được. Khi một công việc yêu cầu công cụ tôi chưa từng ship, tôi tìm hiểu vì sao các team chọn nó, và nói rõ là tôi mới tìm hiểu, chưa chạy trên production. Tôi không chạy theo mọi thư viện mới. Tôi đi sâu vào những gì giúp mình ship.</p>",
+     "notes": "<p><strong>Know:</strong> Purpose, docs, small spikes, verify by building.</p><p><strong>Trap:</strong> Listing newsletters with no example.</p><p><strong>Follow-up:</strong> “What did you learn most recently?” → Twilio trunks and Grok voice on PhysioFix.</p>"
+    }
+   ]
+  },
+  {
+   "name": "AI-assisted coding",
+   "id": "sec-ai-assisted-coding",
+   "cards": [
+    {
+     "id": "soft-g150",
+     "title": "Do you use AI tools when coding?",
+     "hint": "Yes: Cursor and Claude Code, with ownership. Langfuse in the product.",
+     "q_en": "<p>Do you use AI tools when you code? Which ones?</p>",
+     "a_en": "<p>Yes, every day. I use Cursor as my editor and Claude Code as an agent in the terminal. Both work inside the repo, so they can read the files, run commands and tests, and propose edits. I use Cursor more for focused edits while I write code, and Claude Code more for a bigger task I want planned and done in steps, or for digging through an unfamiliar codebase.</p><p>They help me most with boilerplate, unfamiliar APIs, drafting tests, and a second opinion on a bug. I never paste blindly into production. I read the diff, run the flow, and keep ownership of the design and the edge cases. In the product itself, I use Langfuse to trace the AI calls. AI makes me faster, but it does not replace engineering judgment.</p>",
+     "q_vi": "<p>Bạn có dùng công cụ AI khi code không? Bạn dùng công cụ nào?</p>",
+     "a_vi": "<p>Có, hằng ngày. Tôi dùng Cursor làm editor và Claude Code làm agent trong terminal. Cả hai đều làm việc trực tiếp trong repo, nên đọc được file, chạy lệnh và test, và đề xuất chỉnh sửa. Tôi dùng Cursor nhiều hơn cho những chỉnh sửa tập trung khi đang viết code, còn Claude Code cho các task lớn hơn mà tôi muốn lập kế hoạch rồi làm từng bước, hoặc khi cần tìm hiểu một codebase lạ.</p><p>Chúng giúp tôi nhiều nhất ở code lặp lại, API chưa quen, viết nháp test, và có thêm góc nhìn khi debug. Tôi không bao giờ dán thẳng vào production. Tôi đọc diff, chạy thử luồng, và vẫn tự chịu trách nhiệm với thiết kế và các trường hợp đặc biệt. Trong sản phẩm, tôi dùng Langfuse để trace các lời gọi AI. AI giúp tôi nhanh hơn, nhưng không thay thế được phán đoán kỹ thuật.</p>",
+     "notes": "<p><strong>Know:</strong> CV tools: Cursor, Claude Code, Langfuse. Both editors work in the repo.</p><p><strong>Trap:</strong> “AI writes everything” or “I never use AI.” Calling Claude a chat-only tool.</p><p><strong>Follow-up:</strong> “Show me your workflow.” → next card.</p>"
+    },
+    {
+     "id": "soft-g151",
+     "title": "Your AI coding workflow",
+     "hint": "Spec, plan, small tested steps, read the diff.",
+     "q_en": "<p>Walk me through how you build a feature with an AI agent.</p>",
+     "a_en": "<p>For a feature I do not start with code. First I talk the task through with the agent until there is a short spec I agree with. Then I ask for a plan of small steps, each with a way to test it, and only then do we execute it step by step. A behavior change starts with a failing test, then the smallest code that makes it pass.</p><p>I run the tests myself and read the diff against the spec before I commit. For a bug I still want a reproduce, the logs, or the Network tab, and I do not stop at the AI's first guess. That structure keeps the agent from jumping straight into messy code. I approve the plan, I check the diff, and I own the result. I will not merge a change I cannot explain.</p>",
+     "q_vi": "<p>Hãy kể cách bạn làm một tính năng cùng với AI agent.</p>",
+     "a_vi": "<p>Với một tính năng, tôi không bắt đầu bằng code. Trước tiên tôi trao đổi với agent về task cho đến khi có một spec ngắn mà tôi đồng ý. Sau đó tôi yêu cầu một kế hoạch gồm các bước nhỏ, mỗi bước có cách kiểm tra, rồi mới thực hiện lần lượt từng bước. Một thay đổi về hành vi bắt đầu bằng một test chạy fail, rồi viết đoạn code nhỏ nhất để test đó pass.</p><p>Tôi tự chạy test và đọc diff đối chiếu với spec trước khi commit. Với lỗi, tôi vẫn cần tái hiện được lỗi, có log hoặc tab Network, và không dừng ở phỏng đoán đầu tiên của AI. Cách làm có cấu trúc như vậy giúp agent không lao ngay vào viết code lộn xộn. Tôi duyệt kế hoạch, kiểm tra diff và chịu trách nhiệm với kết quả. Tôi không merge một thay đổi mà tôi không giải thích được.</p>",
+     "notes": "<p><strong>Know:</strong> Spec → plan → small tested steps → read the diff → commit small.</p><p><strong>Trap:</strong> Letting the agent write a whole feature in one go.</p><p><strong>Follow-up:</strong> If you mention a workflow plugin such as Superpowers for Claude Code, be ready to say what it does: brainstorm, plan, execute in steps, systematic debugging.</p>"
+    },
+    {
+     "id": "soft-g154",
+     "title": "How do you review AI-generated code?",
+     "hint": "Same bar as any PR, maybe stricter.",
+     "q_en": "<p>How do you review code that an AI wrote?</p>",
+     "a_en": "<p>The same bar as any pull request, maybe stricter. I check that it matches the real requirement, handles the edge cases, and is safe: SQL injection, auth checks, XSS, and secrets. I check whether it invented an API or a config option that does not exist, and whether the style matches the repo. I watch for wrong assumptions about our framework and for errors that get swallowed silently. Then I run the path myself. If I cannot explain the change, I do not merge it.</p>",
+     "q_vi": "<p>Bạn review code do AI viết thế nào?</p>",
+     "a_vi": "<p>Tiêu chuẩn giống như mọi pull request, có khi còn chặt hơn. Tôi kiểm tra code có đúng yêu cầu thật không, có xử lý các trường hợp đặc biệt không, và có an toàn không: SQL injection, kiểm tra quyền, XSS và secret. Tôi xem nó có tự bịa ra API hay tùy chọn cấu hình không tồn tại không, và style có khớp với repo không. Tôi để ý những giả định sai về framework mà team đang dùng và những chỗ lỗi bị nuốt mất. Rồi tôi tự chạy thử luồng đó. Nếu không giải thích được thay đổi, tôi không merge.</p>",
+     "notes": "<p><strong>Know:</strong> Requirements, security, invented APIs, run it, explain it.</p><p><strong>Trap:</strong> “It passed the tests, so it is fine.”</p><p><strong>Follow-up:</strong> “What is the worst thing you caught?”</p>"
+    },
+    {
+     "id": "soft-g155",
+     "title": "When do you not trust AI for coding?",
+     "hint": "Missing context, data migrations, auth, silent data bugs. No secrets in prompts.",
+     "q_en": "<p>When do you not trust AI for coding?</p>",
+     "a_en": "<p>I do not trust it on its own for production data migrations, security-sensitive auth, unclear business rules, or sync and mapping bugs that look green but are wrong. AI is weak when context is missing: an in-house framework, old legacy PHP, or domain rules that live only in someone's head. Then I slow down: I read the code, talk to the team, and reproduce with real data. And I never put secrets or customer data into a prompt.</p>",
+     "q_vi": "<p>Khi nào bạn không tin AI khi code?</p>",
+     "a_vi": "<p>Tôi không để AI tự làm một mình với migration dữ liệu production, phần xác thực nhạy cảm về bảo mật, luật nghiệp vụ chưa rõ, hoặc các lỗi đồng bộ và mapping trông thì ổn nhưng thực ra sai. AI yếu khi thiếu bối cảnh: một framework nội bộ, code PHP cũ, hoặc luật nghiệp vụ chỉ nằm trong đầu ai đó. Lúc đó tôi chậm lại: đọc code, hỏi team và tái hiện với dữ liệu thật. Và tôi không bao giờ đưa secret hay dữ liệu khách hàng vào prompt.</p>",
+     "notes": "<p><strong>Know:</strong> No secrets in prompts. Weak without domain context.</p><p><strong>Trap:</strong> Saying you trust it fully for tests or migrations.</p><p><strong>Follow-up:</strong> “How do you give it the missing context?” → point it at real files and existing patterns.</p>"
+    },
+    {
+     "id": "soft-g156",
+     "title": "Using AI to learn a new stack",
+     "hint": "Real example: IELTS mobile, PhysioFix voice. Then: point it at the team's repo.",
+     "q_en": "<p>How do you use AI to learn a new stack or codebase faster?</p>",
+     "a_en": "<p>I have done this for real. When I started IELTS AI Tutor I had not built React Native or a mobile release pipeline. I used AI to explain Expo patterns and errors I had not seen, and to draft a first screen or a pipeline step. Then I ran it, read the official docs when something looked wrong, and kept only what I understood. I did the same this year with Twilio and Grok voice on PhysioFix.</p><p>In a new team I would point Cursor or Claude Code at the real repo and ask how things are done there: where auth lives, how a route is tested, how a release works. Then I check the answers against the existing code and make a small first PR in the team's style. The codebase and code review are the source of truth, not the model.</p>",
+     "q_vi": "<p>Bạn dùng AI để học một stack hoặc codebase mới nhanh hơn thế nào?</p>",
+     "a_vi": "<p>Tôi đã làm điều này thật. Khi bắt đầu IELTS AI Tutor, tôi chưa từng làm React Native hay pipeline phát hành mobile. Tôi dùng AI để giải thích các pattern của Expo và những lỗi chưa gặp, và để viết nháp màn hình đầu tiên hay một bước trong pipeline. Sau đó tôi chạy thử, đọc tài liệu chính thức khi thấy có gì sai, và chỉ giữ lại những gì mình hiểu. Năm nay tôi làm lại như vậy với Twilio và Grok voice cho PhysioFix.</p><p>Ở một team mới, tôi sẽ cho Cursor hoặc Claude Code đọc repo thật và hỏi xem mọi thứ ở đây được làm thế nào: phần xác thực nằm đâu, một route được test ra sao, quy trình release thế nào. Rồi tôi đối chiếu câu trả lời với code hiện có và làm một PR nhỏ đầu tiên theo style của team. Codebase và code review mới là nguồn chuẩn, không phải model.</p>",
+     "notes": "<p><strong>Know:</strong> Real ramps: React Native and store releases (IELTS), Twilio and Grok voice (PhysioFix).</p><p><strong>Trap:</strong> Saying you learned a tool “for this interview” and presenting it as experience.</p><p><strong>Follow-up:</strong> “How do you know the AI's explanation is right?” → official docs and running it.</p>"
+    },
+    {
+     "id": "kaopiz-q42",
+     "title": "What AI features have you built?",
+     "hint": "IELTS chat/TTS/STT with Langfuse; PhysioFix Grok voice control path.",
+     "q_en": "<p>What AI features have you built into a product?</p>",
+     "a_en": "<p>Two kinds. On IELTS AI Tutor I built chat, text-to-speech, and speech-to-text as Express routes. The model keys stay on the server, never in the app, and every call is traced in Langfuse, so when a student gets a strange answer we can tell whether the model answered badly or an upstream call failed.</p><p>On PhysioFix I built the control path for a Grok voice assistant that answers clinic calls. Twilio and Grok carry the audio. My server verifies the webhook, opens the realtime socket, sends the instructions, and acks tool calls immediately, writing to Firestore afterward so the voice never waits for the database. I treat the model as an unreliable component: secrets stay on the server, I trace what it does, and I design for the moment it fails.</p>",
+     "q_vi": "<p>Bạn đã xây dựng những tính năng AI nào trong sản phẩm?</p>",
+     "a_vi": "<p>Có hai loại. Với IELTS AI Tutor, tôi làm chat, text-to-speech và speech-to-text dưới dạng route Express. Key của model nằm trên server, không bao giờ nằm trong app, và mọi lời gọi đều được trace trên Langfuse, nên khi học viên nhận câu trả lời lạ, chúng tôi biết được là model trả lời kém hay lời gọi phía trên bị lỗi.</p><p>Với PhysioFix, tôi làm phần điều khiển cho trợ lý giọng nói Grok nhận cuộc gọi của phòng khám. Twilio và Grok xử lý âm thanh. Server của tôi xác minh webhook, mở kết nối realtime, gửi hướng dẫn, và xác nhận tool call ngay lập tức rồi mới ghi vào Firestore, để giọng nói không phải chờ database. Tôi coi model là một thành phần không đáng tin tuyệt đối: secret nằm trên server, mọi hoạt động được trace, và thiết kế sẵn cho lúc nó gặp lỗi.</p>",
+     "notes": "<p><strong>Know:</strong> CV AI features: Grok voice, chat completion, text-to-speech, speech-to-text. Tracing: Langfuse.</p><p><strong>Trap:</strong> Claiming model training or an ML platform. You build product integrations.</p><p><strong>Follow-up:</strong> “What goes wrong with AI in the critical path?” → latency, upstream errors, bad answers; that is why ack-before-write and tracing.</p>"
+    }
+   ]
+  }
+ ]
+}

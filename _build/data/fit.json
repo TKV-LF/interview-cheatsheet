@@ -1,0 +1,258 @@
+{
+ "page": "fit",
+ "href": "fit.html",
+ "title": "Fit and intro",
+ "intro": "Who you are, why this kind of role, and why you are looking.",
+ "sections": [
+  {
+   "name": "Introduce yourself",
+   "id": "sec-introduce-yourself",
+   "cards": [
+    {
+     "id": "go1-q1",
+     "title": "Tell me about yourself",
+     "hint": "90 seconds. Stack line first, then the three jobs in order, then why you are here.",
+     "q_en": "<p>Tell me about yourself.</p>",
+     "a_en": "<p>I’m Thuy, a full-stack engineer with four years of full-time work since 2022. Most of my recent work is TypeScript: React and React Native clients, and Node.js APIs on Express. I still use PHP and MySQL when a project needs them, and I usually own the path to production too: CI/CD, Google Cloud, and support after release.</p><p>I started at BaseVN on HR, payroll, and tax SaaS in PHP and MySQL. That is where I learned how messy real data gets when several systems have to stay in sync. From May 2024 to July 2026 I was at Akktis, a France-based outsourcing company, working on PHP backends, API integrations, Linux servers, and release pipelines.</p><p>Right now I work independently. I built IELTS AI Tutor, which is live on both stores with about 5,000 users, and this year two more Express APIs: PhysioFix, a phone assistant for clinic bookings, and Aquanix, an app for running pond farms.</p><p>Now I want to join one product team for the long run and keep building things that real users depend on.</p>",
+     "q_vi": "<p>Hãy giới thiệu về bản thân.</p>",
+     "a_vi": "<p>Tôi là Thủy, kỹ sư full-stack với bốn năm làm việc toàn thời gian từ năm 2022. Phần lớn công việc gần đây của tôi là TypeScript: client React và React Native, và API Node.js viết bằng Express. Tôi vẫn dùng PHP và MySQL khi dự án cần, và thường lo luôn phần đưa lên production: CI/CD, Google Cloud và hỗ trợ sau khi release.</p><p>Tôi bắt đầu ở BaseVN, làm các sản phẩm SaaS về nhân sự, tiền lương và thuế bằng PHP và MySQL. Ở đó tôi hiểu dữ liệu thực tế phức tạp thế nào khi nhiều hệ thống phải khớp với nhau. Từ tháng 5/2024 đến tháng 7/2026 tôi làm ở Akktis, một công ty outsourcing của Pháp, phụ trách backend PHP, tích hợp API, server Linux và pipeline release.</p><p>Hiện tại tôi làm độc lập. Tôi xây dựng IELTS AI Tutor, đã có trên cả hai store với khoảng 5.000 người dùng, và năm nay làm thêm hai API Express: PhysioFix, trợ lý điện thoại nhận đặt lịch cho phòng khám, và Aquanix, ứng dụng quản lý vận hành ao nuôi.</p><p>Bây giờ tôi muốn gắn bó lâu dài với một product team và tiếp tục xây những sản phẩm mà người dùng thật sự cần đến.</p>",
+     "notes": "<p><strong>Know:</strong> Four years since March 2022, never “about five”. Akktis is past tense (ended July 2026). Swap only the stack sentence for the role: <em>PHP:</em> “My deepest backend is PHP and MySQL, from tax reporting at BaseVN to Laravel at Akktis.” <em>Node:</em> “I have three Express APIs in TypeScript in use today.” <em>DevOps:</em> “My focus is Linux, CI/CD, and Google Cloud, and I also write the apps that run there.”</p><p><strong>Trap:</strong> Touring every CV bullet. Saying “then I moved to Akktis” right after BaseVN: the dates speak for themselves, do not add a link between them.</p><p><strong>Follow-up:</strong> “What are you doing now?” → <a href=\"fit.html#fit-now\">What are you doing right now?</a> · “Why did Akktis end?” → <a href=\"fit.html#fit-leave-akktis\">Why did you leave Akktis?</a></p>"
+    }
+   ]
+  },
+  {
+   "name": "Why this role",
+   "id": "sec-why-this-role",
+   "cards": [
+    {
+     "id": "go1-q7",
+     "title": "Why should we hire you?",
+     "hint": "Three reasons, each with proof. Tailor the first one to the JD.",
+     "q_en": "<p>Why should we hire you?</p>",
+     "a_en": "<p>Three reasons. First, I own a feature end to end. On my current projects I build the client, the Express API, and the deploy to Cloud Run, and I stay with it after release.</p><p>Second, I work well when the spec is thin. Client work at Akktis was rarely fully written, so I learned to ask focused questions, write my assumptions down, and show a small version early.</p><p>Third, I debug with evidence instead of guessing: logs, Sentry, Langfuse traces, or EXPLAIN on a slow query. I use AI tools like Cursor and Claude Code every day, but I still read every diff and own what ships.</p><p>I will not pretend I know every part of your stack. I learn fast, I say clearly what I have not done yet, and I keep what I ship reliable.</p>",
+     "q_vi": "<p>Vì sao chúng tôi nên tuyển bạn?</p>",
+     "a_vi": "<p>Có ba lý do. Thứ nhất, tôi chịu trách nhiệm một tính năng từ đầu đến cuối. Ở các dự án hiện tại, tôi làm client, API Express và deploy lên Cloud Run, và vẫn theo nó sau khi release.</p><p>Thứ hai, tôi làm tốt khi yêu cầu còn sơ sài. Việc cho khách ở Akktis hiếm khi có spec đầy đủ, nên tôi quen hỏi những câu trúng trọng tâm, ghi lại các giả định, và đưa ra một bản nhỏ thật sớm.</p><p>Thứ ba, tôi debug dựa trên bằng chứng chứ không đoán: log, Sentry, trace trên Langfuse, hoặc EXPLAIN cho một query chậm. Tôi dùng các công cụ AI như Cursor và Claude Code hằng ngày, nhưng vẫn tự đọc từng diff và chịu trách nhiệm với những gì được ship.</p><p>Tôi sẽ không nói là mình biết hết stack của anh/chị. Tôi học nhanh, nói rõ phần nào mình chưa làm, và giữ cho những gì tôi ship chạy ổn định.</p>",
+     "notes": "<p><strong>Know:</strong> Tailor reason one: PHP role → schema and query work over 500,000+ records at BaseVN; Node role → three Express APIs in TypeScript; DevOps role → pipelines, Linux, Cloud Run.</p><p><strong>Trap:</strong> A list of adjectives with no proof (“hard-working, fast learner”).</p><p><strong>Follow-up:</strong> “What is your weakness, then?” → use the one on <a href=\"behavioral.html#go1-q14\">behavioral</a>, never a different one.</p>"
+    },
+    {
+     "id": "fit-g4",
+     "title": "What are your strengths?",
+     "hint": "Two strengths, each with a real example. The weakness lives on the behavioral page.",
+     "q_en": "<p>What are your main strengths?</p>",
+     "a_en": "<p>My main strength is following a problem across layers. When something breaks, I reproduce it, read the logs and the data path, and find the layer that is actually wrong: the client, the API, the database, or a third-party service. At BaseVN a slow tax report was a query and index problem, not a screen problem. On IELTS AI Tutor, Langfuse traces let me separate a bad model answer from an upstream failure.</p><p>My second strength is picking up new tools quickly. I learned React Native, Expo, and the store release path while shipping IELTS AI Tutor, and this year I learned Twilio and Grok voice for PhysioFix. I learn enough to ship safely, then go deeper as I work.</p>",
+     "q_vi": "<p>Điểm mạnh chính của bạn là gì?</p>",
+     "a_vi": "<p>Điểm mạnh chính của tôi là lần theo một vấn đề qua nhiều tầng. Khi có lỗi, tôi tái hiện lỗi, đọc log và luồng dữ liệu, rồi tìm ra tầng thật sự sai: client, API, database hay dịch vụ bên thứ ba. Ở BaseVN, một báo cáo thuế chậm hóa ra là vấn đề query và index, không phải do màn hình. Với IELTS AI Tutor, trace trên Langfuse giúp tôi phân biệt model trả lời kém với lỗi từ dịch vụ phía trên.</p><p>Điểm mạnh thứ hai là tôi làm quen công cụ mới nhanh. Tôi học React Native, Expo và cả quy trình phát hành lên store trong lúc làm IELTS AI Tutor, và năm nay học Twilio và Grok voice cho PhysioFix. Tôi học đủ để ship an toàn, rồi đào sâu dần trong lúc làm.</p>",
+     "notes": "<p><strong>Know:</strong> If they ask “strengths and weakness” together, add the weakness from <a href=\"behavioral.html#go1-q14\">behavioral</a> word for word. One weakness on every page.</p><p><strong>Trap:</strong> Saying “I am a perfectionist” or picking a second, different weakness here.</p><p><strong>Follow-up:</strong> “Give me an example of a bug you traced across layers.” → BaseVN sync mismatch or the PIT report.</p>"
+    },
+    {
+     "id": "fit-why-company",
+     "title": "Why do you want to work here?",
+     "hint": "Fill the brackets from the JD the day before. Product, stack, team.",
+     "q_en": "<p>Why do you want to work here?</p>",
+     "a_en": "<p>I looked for three things, and this role has all of them. The first is the product: [one sentence on what they build and who uses it]. I like work where real users depend on what I ship, which is what I have now with IELTS AI Tutor and PhysioFix.</p><p>The second is the stack. [Their stack] is close to what I use every day, so I can contribute early, and I still have room to grow in [the part I have used less].</p><p>The third is the team. I have done a lot of work alone on my own products, and I want to grow inside a team again, with code review, shared ownership, and a product we build together for years. That is the honest reason I applied.</p>",
+     "q_vi": "<p>Vì sao bạn muốn làm việc ở đây?</p>",
+     "a_vi": "<p>Tôi tìm ba điều, và vị trí này có đủ cả ba. Thứ nhất là sản phẩm: [một câu về sản phẩm của công ty và ai dùng nó]. Tôi thích công việc mà người dùng thật phụ thuộc vào thứ mình làm ra, giống như IELTS AI Tutor và PhysioFix hiện nay.</p><p>Thứ hai là stack. [Stack của công ty] rất gần với những gì tôi dùng hằng ngày, nên tôi có thể đóng góp sớm, mà vẫn còn chỗ để phát triển thêm ở [phần tôi ít dùng hơn].</p><p>Thứ ba là đội ngũ. Tôi đã làm nhiều việc một mình trên các sản phẩm của mình, và giờ tôi muốn phát triển trong một team, có code review, cùng chịu trách nhiệm, và cùng xây một sản phẩm trong nhiều năm. Đó là lý do thật khi tôi ứng tuyển.</p>",
+     "notes": "<p><strong>Know:</strong> Product, stack, team. One real sentence about their product beats three compliments.</p><p><strong>Trap:</strong> “You have a great culture.” Generic praise sounds copied.</p><p><strong>Follow-up:</strong> “What do you know about our product?” Read their site, app reviews, and engineering blog the day before.</p>"
+    },
+    {
+     "id": "fit-f-php-why",
+     "title": "Why a PHP and Laravel role?",
+     "hint": "Tailored variant. PHP and MySQL are your deepest SQL.",
+     "q_en": "<p>Why do you want this PHP / Laravel role?</p>",
+     "a_en": "<p>Because PHP and MySQL are where my backend career started, and where I have the most data experience. At BaseVN I designed schemas and tuned queries for tax reporting over more than 500,000 records, and built the sync between VSS, HRM, and Payroll. At Akktis I worked on Laravel, WordPress and WooCommerce, and PrestaShop backends, and deployed them with Docker to Cloud Run.</p><p>My recent projects are TypeScript, so I also bring React and Node. But a PHP team lets me use my deepest SQL experience every day. I want to go further with modern Laravel, queues, and testing, in a team that owns its product for the long run.</p>",
+     "q_vi": "<p>Vì sao bạn muốn vị trí PHP / Laravel này?</p>",
+     "a_vi": "<p>Vì PHP và MySQL là nơi tôi bắt đầu làm backend, và là mảng tôi có nhiều kinh nghiệm dữ liệu nhất. Ở BaseVN tôi thiết kế schema và tối ưu query cho báo cáo thuế trên hơn 500.000 bản ghi, và làm phần đồng bộ giữa VSS, HRM và Payroll. Ở Akktis tôi làm backend Laravel, WordPress/WooCommerce và PrestaShop, rồi deploy bằng Docker lên Cloud Run.</p><p>Các dự án gần đây của tôi là TypeScript, nên tôi cũng mang theo React và Node. Nhưng một team PHP cho tôi dùng thế mạnh SQL sâu nhất của mình mỗi ngày. Tôi muốn đi xa hơn với Laravel hiện đại, queue và testing, trong một team gắn bó lâu dài với sản phẩm của mình.</p>",
+     "notes": "<p><strong>Know:</strong> Laravel 11/12, PHP 8.3+, MySQL 8 if they ask about versions.</p><p><strong>Trap:</strong> Saying your React clients talked to a PHP API. On the CV, the React clients call Express.</p><p><strong>Follow-up:</strong> “Which Laravel features have you used?” Be concrete, and say what you have only read about.</p>"
+    },
+    {
+     "id": "fit-f-node-2",
+     "title": "Why a Node and TypeScript role?",
+     "hint": "Tailored variant. Three Express APIs in production.",
+     "q_en": "<p>Why do you want this Node.js / TypeScript role?</p>",
+     "a_en": "<p>Because it is already my daily stack. I built three Express APIs in TypeScript that are in use now: IELTS AI Tutor on Cloud Run; PhysioFix, which controls live phone calls through Twilio and Grok voice; and Aquanix, with JWT login and an access check on every pond route. I also build the clients, in Expo React Native and Next.js, so I like owning a feature from the API contract to the screen.</p><p>What I want next is a larger typed Node codebase with other engineers, where I can go deeper on things like NestJS, testing at scale, and service boundaries. My PHP and MySQL years help too: I think about data and failure paths, not only routes.</p>",
+     "q_vi": "<p>Vì sao bạn muốn vị trí Node.js / TypeScript này?</p>",
+     "a_vi": "<p>Vì đó đã là stack tôi dùng hằng ngày. Tôi đã xây ba API Express bằng TypeScript đang chạy thật: IELTS AI Tutor trên Cloud Run; PhysioFix, điều khiển cuộc gọi trực tiếp qua Twilio và Grok voice; và Aquanix, có đăng nhập bằng JWT và kiểm tra quyền trên mọi route của ao. Tôi cũng làm client bằng Expo React Native và Next.js, nên tôi thích tự lo một tính năng từ contract API đến màn hình.</p><p>Điều tôi muốn tiếp theo là một codebase Node có type lớn hơn, làm cùng các kỹ sư khác, để tôi đi sâu hơn vào NestJS, testing ở quy mô lớn và cách chia ranh giới service. Những năm làm PHP và MySQL cũng giúp tôi: tôi nghĩ đến dữ liệu và các tình huống lỗi, không chỉ route.</p>",
+     "notes": "<p><strong>Know:</strong> Node 22/24 LTS. Database on these projects is Firestore, a document model, so MongoDB concepts transfer.</p><p><strong>Trap:</strong> Talking as if Node is new for you. It is your current production stack.</p><p><strong>Follow-up:</strong> “Have you used NestJS?” → “Not in production. I know modules, providers, and guards from the docs, and I would ramp on your codebase.”</p>"
+    },
+    {
+     "id": "fit-f-do-4",
+     "title": "Why a DevOps role?",
+     "hint": "Tailored variant. Commit to a healthy environment, with proof.",
+     "q_en": "<p>Why do you want this DevOps role?</p>",
+     "a_en": "<p>Because the part of my work I enjoy most is the path from a commit to a healthy environment. At Akktis I administered Ubuntu and Debian servers, migrated a legacy database to MySQL on Apache, and kept CI/CD running on GitHub Actions, GitLab CI, or Jenkins, depending on the project.</p><p>On my own products I deploy with Cloud Build to Cloud Run and Firebase Hosting, with Sentry for errors and Langfuse for AI traces, and PhysioFix runs its voice process on a GCE VM. Because I also write the application code, I understand what developers need from a pipeline. I want that to be the center of my job. I have not run Kubernetes in production, and I would ramp on it with your team.</p>",
+     "q_vi": "<p>Vì sao bạn muốn vị trí DevOps này?</p>",
+     "a_vi": "<p>Vì phần tôi thích nhất trong công việc là con đường từ một commit đến một môi trường chạy ổn định. Ở Akktis tôi quản trị server Ubuntu và Debian, chuyển một database cũ sang MySQL trên Apache, và duy trì CI/CD trên GitHub Actions, GitLab CI hoặc Jenkins, tùy dự án.</p><p>Với các sản phẩm của mình, tôi deploy bằng Cloud Build lên Cloud Run và Firebase Hosting, dùng Sentry để theo dõi lỗi và Langfuse để trace phần AI, còn PhysioFix chạy tiến trình voice trên một VM GCE. Vì tôi cũng viết code ứng dụng, tôi hiểu developer cần gì ở một pipeline. Tôi muốn đó là trọng tâm công việc của mình. Tôi chưa vận hành Kubernetes trên production, và tôi sẽ học nó cùng team.</p>",
+     "notes": "<p><strong>Know:</strong> Databases you ran: MySQL and Firestore. Never Cloud SQL.</p><p><strong>Trap:</strong> Claiming Kubernetes or Terraform in production.</p><p><strong>Follow-up:</strong> “Walk me through a release that failed.” → stop at the red job, read the stage log, fix the smallest cause, promote only when green.</p>"
+    }
+   ]
+  },
+  {
+   "name": "Career moves",
+   "id": "sec-career-moves",
+   "cards": [
+    {
+     "id": "new-behavioral-23",
+     "title": "Why are you looking for a new role?",
+     "hint": "Positive: what you want next, not what you are running from.",
+     "q_en": "<p>Why are you looking for a new role?</p>",
+     "a_en": "<p>Since Akktis ended in July 2026, I have been working independently on my own products: IELTS AI Tutor, PhysioFix, and Aquanix. I have learned a lot from owning everything, from the app to the API to the deploy.</p><p>But I miss working inside a team: code review from people who know more than me in some areas, shared responsibility for production, and a product that many people build together. I also want to stay on one product for years, long enough to see the results of my decisions, instead of moving from project to project. So I am looking for a full-time role on a product team where my full-stack and delivery experience is useful from day one.</p>",
+     "q_vi": "<p>Vì sao bạn đang tìm việc mới?</p>",
+     "a_vi": "<p>Từ khi công việc ở Akktis kết thúc vào tháng 7/2026, tôi làm độc lập trên các sản phẩm của mình: IELTS AI Tutor, PhysioFix và Aquanix. Tôi học được rất nhiều khi tự lo mọi thứ, từ app, API đến deploy.</p><p>Nhưng tôi nhớ cảm giác làm trong một team: được review code bởi những người giỏi hơn mình ở vài mảng, cùng nhau chịu trách nhiệm production, và cùng xây một sản phẩm. Tôi cũng muốn gắn bó với một sản phẩm nhiều năm, đủ lâu để thấy kết quả của các quyết định mình đưa ra, thay vì đi từ dự án này sang dự án khác. Vì vậy tôi tìm một vị trí toàn thời gian trong một product team, nơi kinh nghiệm full-stack và delivery của tôi có ích ngay từ đầu.</p>",
+     "notes": "<p><strong>Know:</strong> Pull, not push: team, one product, long term.</p><p><strong>Trap:</strong> Complaining about clients, freelancing, or Akktis. Implying you went straight from BaseVN to Akktis.</p><p><strong>Follow-up:</strong> “Why did Akktis end?” → <a href=\"fit.html#fit-leave-akktis\">Why did you leave Akktis?</a></p>"
+    },
+    {
+     "id": "fit-leave-akktis",
+     "title": "Why did you leave Akktis?",
+     "hint": "One neutral sentence of reason, then what you learned. No blame.",
+     "q_en": "<p>Why did you leave Akktis?</p>",
+     "a_en": "<p>My time at Akktis ended in July 2026. [One neutral sentence with the real reason.]</p><p>It was a good two years. I learned Linux server work, CI/CD across many different projects, Cloud Run, and how to deliver for clients in other time zones. Since then I have been working on my own products, PhysioFix, Aquanix, and IELTS AI Tutor. Now I want to bring all of that into one product team for the long term.</p>",
+     "q_vi": "<p>Vì sao bạn rời Akktis?</p>",
+     "a_vi": "<p>Công việc của tôi ở Akktis kết thúc vào tháng 7/2026. [Một câu trung lập nêu lý do thật.]</p><p>Đó là hai năm rất đáng giá. Tôi học được cách làm việc với server Linux, CI/CD trên nhiều dự án khác nhau, Cloud Run, và cách giao việc cho khách hàng ở múi giờ khác. Từ đó đến nay tôi làm các sản phẩm của mình là PhysioFix, Aquanix và IELTS AI Tutor. Giờ tôi muốn mang tất cả những kinh nghiệm đó vào một product team và gắn bó lâu dài.</p>",
+     "notes": "<p><strong>Know:</strong> Short is better. Reason, what you learned, what you want now.</p><p><strong>Trap:</strong> A long story, or anything negative about Akktis or its clients.</p><p><strong>Follow-up:</strong> “Can we contact someone there for a reference?”</p><p><strong>TODO Thủy:</strong> Fill in the real reason Akktis ended (contract or project ended, team change, or you chose to leave) as one neutral sentence, in both EN and VI. Also confirm who could give a reference.</p>"
+    },
+    {
+     "id": "go1-cv-leave",
+     "title": "Why did you leave BaseVN?",
+     "hint": "Praise what you learned, then the growth reason. Do not connect it to Akktis.",
+     "q_en": "<p>Why did you leave BaseVN?</p>",
+     "a_en": "<p>BaseVN was a very good place to learn. I worked close to the product on HR, payroll, and tax systems, and I understood why each feature mattered to customers.</p><p>By 2023 the company was focusing more on other product lines, and the HR suite I worked on had less room to grow. I also wanted to try a different kind of environment, with international clients and different ways of working. I left in October 2023. I am still proud of that work, especially the tax reporting over more than 500,000 records and the sync between VSS, HRM, and Payroll.</p>",
+     "q_vi": "<p>Vì sao bạn rời BaseVN?</p>",
+     "a_vi": "<p>BaseVN là nơi tôi học được rất nhiều. Tôi làm gần với sản phẩm, trên các hệ thống nhân sự, tiền lương và thuế, và hiểu vì sao từng tính năng quan trọng với khách hàng.</p><p>Đến năm 2023, công ty tập trung nhiều hơn vào các dòng sản phẩm khác, và mảng HR tôi làm còn ít cơ hội phát triển. Tôi cũng muốn thử một môi trường khác, có khách hàng quốc tế và cách làm việc khác. Tôi nghỉ vào tháng 10/2023. Đến giờ tôi vẫn tự hào về những gì đã làm ở đó, nhất là báo cáo thuế trên hơn 500.000 bản ghi và phần đồng bộ giữa VSS, HRM và Payroll.</p>",
+     "notes": "<p><strong>Know:</strong> Growth direction plus wanting a new environment. Not a bad place.</p><p><strong>Trap:</strong> “So I moved to Akktis.” Akktis started in May 2024; do not imply a direct move.</p><p><strong>Follow-up:</strong> “Were you unhappy there?” → “No. I am proud of the SaaS depth there. The move was about growth direction.”</p>"
+    },
+    {
+     "id": "fit-now",
+     "title": "What are you doing right now?",
+     "hint": "Three real products, then that you are ready for full-time.",
+     "q_en": "<p>What are you working on right now?</p>",
+     "a_en": "<p>I work independently on three products. IELTS AI Tutor is an IELTS practice app on iOS and Android, with a teacher portal on the same Express API, and it has about 5,000 users. PhysioFix is a phone assistant for clinic bookings: Twilio and Grok voice handle the call audio, and my Express server controls the call, loads known callers from Firestore, and saves the transcript for staff. Aquanix is an Expo app for pond farm operations, from stocking and feed to harvest trace, with an access check per pond.</p><p>They are real products with real users, so I keep them running. But I am ready to make a full-time role my main focus.</p>",
+     "q_vi": "<p>Hiện tại bạn đang làm gì?</p>",
+     "a_vi": "<p>Tôi đang làm độc lập trên ba sản phẩm. IELTS AI Tutor là app luyện thi IELTS trên iOS và Android, kèm cổng cho giáo viên dùng chung một API Express, hiện có khoảng 5.000 người dùng. PhysioFix là trợ lý điện thoại nhận đặt lịch cho phòng khám: Twilio và Grok voice xử lý âm thanh cuộc gọi, còn server Express của tôi điều khiển cuộc gọi, lấy thông tin khách quen từ Firestore và lưu transcript cho nhân viên. Aquanix là app Expo quản lý vận hành ao nuôi, từ thả giống, cho ăn đến truy xuất thu hoạch, có kiểm tra quyền theo từng ao.</p><p>Đây là những sản phẩm thật có người dùng thật, nên tôi vẫn duy trì chúng. Nhưng tôi đã sẵn sàng để một công việc toàn thời gian trở thành trọng tâm chính.</p>",
+     "notes": "<p><strong>Know:</strong> PhysioFix from April 2026, Aquanix from May 2026, IELTS AI Tutor since 2024.</p><p><strong>Trap:</strong> Making it sound like a full business you will not leave.</p><p><strong>Follow-up:</strong> “Will you keep them?” → <a href=\"fit.html#fit-hr-side-projects\">Will you keep your own projects?</a></p>"
+    },
+    {
+     "id": "new-behavioral-22",
+     "title": "Where do you see yourself in a few years?",
+     "hint": "A senior IC path is a valid answer. Tie it to this team.",
+     "q_en": "<p>Where do you see yourself in a few years?</p>",
+     "a_en": "<p>I want to be the engineer people hand a messy production problem to, like wrong data, a bad release, or an AI feature that has to stay useful, and I still want to stay close to the product. A manager title is not the only path I care about. I would like to grow into a senior engineer who makes the team faster and the product more reliable, and who helps newer engineers do the same. To get there I want to learn this team's stack and domain properly, and stay long enough to own the results.</p>",
+     "q_vi": "<p>Vài năm nữa bạn thấy mình ở đâu?</p>",
+     "a_vi": "<p>Tôi muốn trở thành người mà team tìm đến khi có một vấn đề production rắc rối, như dữ liệu sai, một bản release lỗi, hay một tính năng AI cần luôn hữu ích, và tôi vẫn muốn làm gần với sản phẩm. Chức danh quản lý không phải con đường duy nhất tôi quan tâm. Tôi muốn trở thành một kỹ sư senior giúp team làm nhanh hơn, sản phẩm ổn định hơn, và giúp những người mới cũng làm được như vậy. Để đạt được điều đó, tôi muốn học kỹ stack và nghiệp vụ của team, và gắn bó đủ lâu để chịu trách nhiệm với kết quả.</p>",
+     "notes": "<p><strong>Know:</strong> Senior IC, close to product, staying long enough.</p><p><strong>Trap:</strong> “Running my own company” or “in your job”.</p><p><strong>Follow-up:</strong> “Would you want to manage people?” → “Maybe later. First I want to be the strongest engineer I can be here.”</p>"
+    }
+   ]
+  },
+  {
+   "name": "HR questions",
+   "id": "sec-hr-questions",
+   "cards": [
+    {
+     "id": "fit-hr-salary",
+     "title": "What is your salary expectation?",
+     "hint": "A range, gross or net named, then ask their budget.",
+     "q_en": "<p>What is your salary expectation?</p>",
+     "a_en": "<p>Based on my four years of experience and the scope of this role, I am looking for [X to Y] [gross / net] per month. I am flexible inside that range depending on the full package, such as bonus, insurance, equipment, and a learning budget. Could you share the budget range for this position? That would help us see quickly whether we are aligned. If the role turns out to be bigger or smaller than I understood from the job description, I am happy to talk about it again later in the process.</p>",
+     "q_vi": "<p>Mức lương mong muốn của bạn là bao nhiêu?</p>",
+     "a_vi": "<p>Dựa trên bốn năm kinh nghiệm và phạm vi công việc của vị trí này, tôi mong muốn mức [X đến Y] [gross / net] mỗi tháng. Tôi có thể linh hoạt trong khoảng đó tùy vào tổng đãi ngộ, như thưởng, bảo hiểm, thiết bị làm việc và ngân sách học tập. Anh/chị có thể chia sẻ khoảng ngân sách cho vị trí này không? Như vậy hai bên sẽ sớm biết có phù hợp với nhau không. Nếu phạm vi công việc lớn hơn hoặc nhỏ hơn những gì tôi hiểu từ JD, tôi sẵn sàng trao đổi lại ở các vòng sau.</p>",
+     "notes": "<p><strong>Know:</strong> Pick a range whose bottom you would really accept. In Vietnam always say gross or net.</p><p><strong>Trap:</strong> Naming one exact number, or saying “anything is fine”.</p><p><strong>Follow-up:</strong> “What is your current salary?” → “I work independently now, so I do not have a fixed salary to compare. My expectation for this role is the range I gave.”</p><p><strong>TODO Thủy:</strong> Fill the range, currency, and gross/net from a market check for each role type (PHP, Node, DevOps).</p>"
+    },
+    {
+     "id": "fit-hr-start",
+     "title": "When can you start? What is your notice period?",
+     "hint": "Independent now, so no employer notice period.",
+     "q_en": "<p>When could you start? What is your notice period?</p>",
+     "a_en": "<p>I work independently right now, so I do not have a notice period with an employer. I can start [within two weeks] of an offer. I would use that time to wrap up or hand over what my current projects need, so I can focus on the new role from day one. If you need someone sooner, tell me your ideal date, and I will check whether I can move things to make it work. I would rather agree on a date I can really keep than promise one I cannot.</p>",
+     "q_vi": "<p>Khi nào bạn có thể bắt đầu? Thời gian báo trước của bạn là bao lâu?</p>",
+     "a_vi": "<p>Hiện tôi làm độc lập nên không có thời gian báo trước với công ty nào. Tôi có thể bắt đầu [trong vòng hai tuần] sau khi nhận offer. Tôi sẽ dùng khoảng thời gian đó để hoàn tất hoặc bàn giao những việc các dự án hiện tại cần, để có thể tập trung vào công việc mới ngay từ ngày đầu. Nếu công ty cần người sớm hơn, anh/chị cho tôi biết ngày mong muốn, tôi sẽ xem có sắp xếp được không. Tôi muốn thống nhất một ngày mình chắc chắn giữ được, hơn là hứa một ngày không làm được.</p>",
+     "notes": "<p><strong>Know:</strong> A clear date sounds organized.</p><p><strong>Trap:</strong> Saying “tomorrow” and then needing time for client handover.</p><p><strong>Follow-up:</strong> “Can you start earlier?”</p><p><strong>TODO Thủy:</strong> Confirm the real earliest start date.</p>"
+    },
+    {
+     "id": "fit-hr-work-mode",
+     "title": "Remote, hybrid, or on-site?",
+     "hint": "Comfortable with all three. Ask what the team does.",
+     "q_en": "<p>Do you prefer remote, hybrid, or on-site work?</p>",
+     "a_en": "<p>I am based in Hanoi and I am comfortable with all three. I have worked with a team in Hanoi at BaseVN, and remotely with a France-based team at Akktis, so I know how to keep work visible when people are not in the same room: written updates, clear tickets, and decisions written down. [My preference is …, but I can adapt to the team.] What does the team do today?</p>",
+     "q_vi": "<p>Bạn thích làm remote, hybrid hay tại văn phòng?</p>",
+     "a_vi": "<p>Tôi ở Hà Nội và làm được cả ba hình thức. Tôi đã làm với team tại Hà Nội ở BaseVN, và làm remote với team ở Pháp tại Akktis, nên tôi biết cách giữ cho công việc luôn rõ ràng khi mọi người không ngồi cùng phòng: cập nhật bằng văn bản, ticket rõ ràng, và ghi lại các quyết định. [Tôi thích … hơn, nhưng tôi có thể theo cách team đang làm.] Hiện team đang làm việc theo hình thức nào ạ?</p>",
+     "notes": "<p><strong>Know:</strong> Remote experience is real (Akktis, France-based).</p><p><strong>Trap:</strong> Demanding full remote before you know the team.</p><p><strong>Follow-up:</strong> “How many days a week could you come in?”</p><p><strong>TODO Thủy:</strong> Fill your real preference and how many office days you accept. Confirm BaseVN was office-based.</p>"
+    },
+    {
+     "id": "fit-hr-overtime",
+     "title": "How do you feel about overtime?",
+     "hint": "Yes for incidents. Regular overtime is a planning signal.",
+     "q_en": "<p>How do you feel about working overtime?</p>",
+     "a_en": "<p>If production is down or a release is at risk, I stay until it is safe. I have done that on my own products and with clients in other time zones. But I see regular overtime as a planning signal, not a habit. If a deadline keeps needing extra hours, I raise it early with the lead, say what can move, and help adjust the scope. I would rather tell you about a risk on day two than work late quietly and hope.</p>",
+     "q_vi": "<p>Bạn nghĩ sao về việc làm thêm giờ?</p>",
+     "a_vi": "<p>Nếu production gặp sự cố hoặc một bản release đang có rủi ro, tôi sẽ ở lại đến khi mọi thứ an toàn. Tôi đã làm vậy với các sản phẩm của mình và với khách hàng ở múi giờ khác. Nhưng tôi coi việc làm thêm giờ thường xuyên là dấu hiệu kế hoạch có vấn đề, không phải thói quen. Nếu một deadline cứ phải làm thêm giờ, tôi sẽ báo sớm với lead, nói rõ phần nào có thể dời lại, và cùng điều chỉnh phạm vi. Tôi thà báo rủi ro từ ngày thứ hai còn hơn lặng lẽ làm khuya rồi hy vọng.</p>",
+     "notes": "<p><strong>Know:</strong> Matches your one weakness: you now raise risks early.</p><p><strong>Trap:</strong> “I never do overtime” or “I can work every weekend.”</p><p><strong>Follow-up:</strong> “How often did that happen at Akktis?”</p>"
+    },
+    {
+     "id": "fit-hr-offers",
+     "title": "Are you interviewing elsewhere?",
+     "hint": "Honest, calm, and ask their timeline.",
+     "q_en": "<p>Are you interviewing with other companies? Do you have other offers?</p>",
+     "a_en": "<p>Yes, I am talking with a few companies, which is normal at this stage. [I have no offer yet. / I have one offer with a decision date of …] This role is one of the ones I am most interested in, because [one reason from the JD]. If your process has a timeline, I would be glad to know it, so I can plan my decisions fairly for everyone.</p>",
+     "q_vi": "<p>Bạn có đang phỏng vấn ở nơi khác không? Bạn đã có offer nào chưa?</p>",
+     "a_vi": "<p>Có, tôi đang trao đổi với một vài công ty, đó là chuyện bình thường ở giai đoạn này. [Hiện tôi chưa có offer nào. / Tôi có một offer cần trả lời trước ngày …] Đây là một trong những vị trí tôi quan tâm nhất, vì [một lý do từ JD]. Nếu quy trình bên anh/chị có mốc thời gian, tôi rất muốn biết, để có thể sắp xếp quyết định công bằng với tất cả các bên.</p>",
+     "notes": "<p><strong>Know:</strong> Never invent an offer to create pressure.</p><p><strong>Trap:</strong> Naming the other companies or their numbers.</p><p><strong>Follow-up:</strong> “What would make you choose us?”</p><p><strong>TODO Thủy:</strong> Fill in the real status on the day.</p>"
+    },
+    {
+     "id": "fit-hr-team-role",
+     "title": "What was your team size and your role?",
+     "hint": "Role per job, then numbers. Do not guess the numbers.",
+     "q_en": "<p>How big was your team, and what was your role?</p>",
+     "a_en": "<p>At BaseVN I was a full-stack engineer on a product team of [N] people, working on three products: Base PIT, Base VSS, and Base E-Hiring. I built features from the MySQL schema and the PHP backend up to the screen. At Akktis I was a software engineer covering DevOps and full-stack in an international outsourcing team of about [N], so I worked across several client projects, from API integrations to Linux servers and release pipelines. In my independent work I am the only engineer: I build the app, the API, and the deploy, and I work directly with [the client or product owner]. So I am used to both working inside a team and owning everything alone.</p>",
+     "q_vi": "<p>Team của bạn có bao nhiêu người, và bạn giữ vai trò gì?</p>",
+     "a_vi": "<p>Ở BaseVN tôi là kỹ sư full-stack trong một product team khoảng [N] người, làm ba sản phẩm: Base PIT, Base VSS và Base E-Hiring. Tôi làm tính năng từ schema MySQL, backend PHP đến giao diện. Ở Akktis tôi là kỹ sư phần mềm phụ trách cả DevOps và full-stack trong một team outsourcing quốc tế khoảng [N] người, nên tôi làm trên nhiều dự án của khách, từ tích hợp API đến server Linux và pipeline release. Khi làm độc lập, tôi là kỹ sư duy nhất: tôi làm app, API và deploy, và làm việc trực tiếp với [khách hàng hoặc người phụ trách sản phẩm]. Vì vậy tôi quen cả làm trong team lẫn tự lo toàn bộ.</p>",
+     "notes": "<p><strong>Know:</strong> Titles from the CV: Full-stack Engineer (BaseVN), Software Engineer, DevOps and Full-stack (Akktis), Independent Software Engineer.</p><p><strong>Trap:</strong> Guessing a team size on the spot. Claiming you led a team.</p><p><strong>Follow-up:</strong> “Who reviewed your code when you worked alone?”</p><p><strong>TODO Thủy:</strong> Fill the real team sizes at BaseVN and Akktis, who you reported to, and who you work with on PhysioFix and Aquanix. Confirm you are the only engineer on the independent projects.</p>"
+    },
+    {
+     "id": "fit-hr-side-projects",
+     "title": "Will you keep your own projects if you join?",
+     "hint": "Job comes first, outside hours only, follow their policy.",
+     "q_en": "<p>Will you keep working on your own projects if you join us?</p>",
+     "a_en": "<p>My full-time job would be my main focus. IELTS AI Tutor, PhysioFix, and Aquanix have real users, so I would not just switch them off, but I would keep them to [maintenance outside working hours / a handover to someone else]. None of them competes with your product. I am happy to list them openly and follow your policy on outside work, and if there were ever a conflict, I would raise it with you first.</p>",
+     "q_vi": "<p>Nếu vào công ty, bạn có tiếp tục làm các dự án riêng không?</p>",
+     "a_vi": "<p>Công việc toàn thời gian sẽ là ưu tiên chính của tôi. IELTS AI Tutor, PhysioFix và Aquanix đều có người dùng thật, nên tôi sẽ không tắt chúng đi ngay, nhưng tôi sẽ giới hạn ở mức [bảo trì ngoài giờ làm / bàn giao cho người khác]. Không sản phẩm nào cạnh tranh với sản phẩm của công ty. Tôi sẵn sàng khai báo rõ ràng và làm theo chính sách của công ty về việc làm ngoài, và nếu có xung đột, tôi sẽ chủ động trao đổi với anh/chị trước.</p>",
+     "notes": "<p><strong>Know:</strong> Transparency wins here. They worry about focus and conflict of interest.</p><p><strong>Trap:</strong> Sounding like the projects are your real job.</p><p><strong>Follow-up:</strong> “How many hours a week do they take?”</p><p><strong>TODO Thủy:</strong> Decide the plan for each project (keep as maintenance, hand over, or stop) and check that none overlaps with the company's domain.</p>"
+    },
+    {
+     "id": "fit-g5",
+     "title": "How comfortable are you working in English?",
+     "hint": "Daily working English. Honest, not fancy.",
+     "q_en": "<p>How comfortable are you working in English?</p>",
+     "a_en": "<p>I work in English every day. At Akktis I worked with a France-based team and international clients in English, in meetings, tickets, and written updates across time zones. I read docs and write technical notes in English. My spoken English is not perfect, and sometimes I need a second to find a word, but I can explain a design, a bug, or a tradeoff clearly, and I ask when I am not sure I understood.</p>",
+     "q_vi": "<p>Bạn làm việc bằng tiếng Anh có thoải mái không?</p>",
+     "a_vi": "<p>Tôi dùng tiếng Anh trong công việc hằng ngày. Ở Akktis tôi làm việc với team ở Pháp và khách hàng quốc tế bằng tiếng Anh, qua các cuộc họp, ticket và cập nhật bằng văn bản ở nhiều múi giờ. Tôi đọc tài liệu và viết ghi chú kỹ thuật bằng tiếng Anh. Tiếng Anh nói của tôi chưa hoàn hảo, đôi khi tôi cần một giây để tìm từ, nhưng tôi giải thích được một thiết kế, một lỗi hay một tradeoff rõ ràng, và tôi sẽ hỏi lại khi chưa chắc mình hiểu đúng.</p>",
+     "notes": "<p><strong>Know:</strong> Rescue phrases are on <a href=\"english.html#soft-g78\">Spoken English</a>.</p><p><strong>Trap:</strong> Apologizing for your English at the start of every answer.</p><p><strong>Follow-up:</strong> “Tell me about a hard conversation you had in English.” → the Friday deploy with the client PM.</p>"
+    }
+   ]
+  },
+  {
+   "name": "Your questions and closing",
+   "id": "sec-your-questions-and-closing",
+   "cards": [
+    {
+     "id": "new-behavioral-28",
+     "title": "What questions do you have for us?",
+     "hint": "Ask two or three. Skip generic culture questions.",
+     "q_en": "<p>What questions do you have for us?</p>",
+     "a_en": "<p>Yes, a few. What does good look like in the first 90 days on the team I would join? What is the hardest engineering problem on that team right now? How does a normal week work: what is async, and what really needs a meeting? What can engineers decide on their own, and what should they escalate? And how do you tell that a feature was useful after release, not only that it shipped?</p>",
+     "q_vi": "<p>Bạn có câu hỏi gì cho chúng tôi không?</p>",
+     "a_vi": "<p>Dạ có, tôi có vài câu. Trong 90 ngày đầu ở team tôi sẽ vào, thế nào được coi là làm tốt? Bài toán kỹ thuật khó nhất của team lúc này là gì? Một tuần làm việc bình thường diễn ra thế nào: việc gì làm async, việc gì thật sự cần họp? Kỹ sư được tự quyết những gì, và việc gì nên báo lên? Và làm sao anh/chị biết một tính năng thật sự hữu ích sau khi release, chứ không chỉ là đã ship?</p>",
+     "notes": "<p><strong>Know:</strong> Pick two or three that fit who is interviewing you. Ask the engineer about the hard problem, the manager about the 90 days.</p><p><strong>Trap:</strong> “What is the culture like?” Asking about salary before they raise it.</p><p><strong>Follow-up:</strong> Phrases for next steps and salary are on <a href=\"english.html#english-next-steps\">Spoken English</a>.</p>"
+    },
+    {
+     "id": "new-behavioral-29",
+     "title": "Anything else you want to add?",
+     "hint": "Sixty seconds, then stop. Do not undercut your Node work.",
+     "q_en": "<p>Is there anything else you would like to add?</p>",
+     "a_en": "<p>Thank you, just one thing. I build across the whole product: TypeScript clients, Express APIs in production, PHP and MySQL when the data needs it, and the path to production with CI/CD and Google Cloud. My deepest SQL experience comes from PHP and MySQL at BaseVN, and NestJS and larger Node codebases are where I want to go deeper with your team. I debug with evidence, I tell people early when something is at risk, and I am honest about what I have not done yet. I would really like to work on this team.</p>",
+     "q_vi": "<p>Bạn còn muốn chia sẻ thêm điều gì không?</p>",
+     "a_vi": "<p>Cảm ơn anh/chị, tôi chỉ muốn nói thêm một điều. Tôi làm được trên toàn bộ sản phẩm: client TypeScript, API Express chạy production, PHP và MySQL khi bài toán dữ liệu cần, và cả con đường lên production với CI/CD và Google Cloud. Kinh nghiệm SQL sâu nhất của tôi đến từ PHP và MySQL ở BaseVN, còn NestJS và các codebase Node lớn hơn là phần tôi muốn đi sâu cùng team. Tôi debug dựa trên bằng chứng, báo sớm khi có rủi ro, và luôn nói thật về những gì mình chưa làm. Tôi rất mong được làm việc trong team này.</p>",
+     "notes": "<p><strong>Know:</strong> End on interest in the team. Then stop talking.</p><p><strong>Trap:</strong> Saying Node is something you will learn. You have three Express APIs.</p><p><strong>Follow-up:</strong> If they ask about next steps, use the phrases on the English page.</p>"
+    }
+   ]
+  }
+ ]
+}

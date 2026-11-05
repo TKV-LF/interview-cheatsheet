@@ -1,0 +1,560 @@
+{
+ "page": "cv",
+ "href": "cv.html",
+ "title": "CV and projects",
+ "intro": "PhysioFix, Aquanix, IELTS, Akktis, and BaseVN, newest first. For each: the pitch, the architecture, your part, the hardest problem, the result, and what you'd change.",
+ "sections": [
+  {
+   "id": "sec-walkthrough",
+   "name": "Walk me through your CV",
+   "cards": [
+    {
+     "id": "cv-c1",
+     "title": "Walk me through your CV",
+     "hint": "60–90 seconds, newest first, end on the thread that ties it together.",
+     "q_en": "<p>Walk me through your CV.</p>",
+     "a_en": "<p>Sure. I'm a full-stack engineer with four years of full-time work since March 2022. Most of my recent work is TypeScript, React Native, and Node APIs, on top of a solid PHP and MySQL base.</p><p>Since May 2024 I've worked as an independent engineer. Right now that's two client products: PhysioFix, a phone assistant that takes clinic reservation calls with Grok voice and an Express control server, and Aquanix, one Expo app and an Express API for pond farm operations. I also built IELTS AI Tutor, a React Native app live on both stores with about five thousand users.</p><p>Alongside that, until July 2026, I worked with Akktis, a France-based outsourcing team, on PHP apps, Linux servers, CI/CD, and Cloud Run releases.</p><p>Before that I was at BaseVN for about a year and a half, on HRM, payroll, and e-government SaaS: a personal income tax product over 500,000 records, social-security sync, and job-board integrations.</p><p>The thread is the same everywhere: I own a feature from the client through the API, the deploy, and the support after.</p>",
+     "q_vi": "<p>Anh/chị hãy giới thiệu qua CV của bạn.</p>",
+     "a_vi": "<p>Vâng. Tôi là full-stack engineer, có bốn năm làm việc full-time từ tháng 3/2022. Gần đây tôi chủ yếu làm TypeScript, React Native và API Node, trên nền PHP và MySQL khá vững.</p><p>Từ tháng 5/2024 tôi làm độc lập. Hiện tại có hai sản phẩm cho khách: PhysioFix, một trợ lý điện thoại nhận cuộc gọi đặt lịch cho phòng khám, dùng Grok voice và một server Express điều khiển cuộc gọi; và Aquanix, một app Expo cùng API Express để quản lý vận hành ao nuôi. Tôi cũng làm IELTS AI Tutor, app React Native đã lên cả hai store, khoảng năm nghìn người dùng.</p><p>Song song đó, đến tháng 7/2026, tôi làm với Akktis, một team outsourcing ở Pháp: app PHP, server Linux, CI/CD và release lên Cloud Run.</p><p>Trước đó tôi ở BaseVN khoảng một năm rưỡi, làm SaaS về HRM, lương và dịch vụ công: sản phẩm thuế thu nhập cá nhân trên hơn 500.000 bản ghi, đồng bộ bảo hiểm xã hội và tích hợp các trang tuyển dụng.</p><p>Điểm chung là tôi chịu trách nhiệm một tính năng từ client, qua API, deploy, đến hỗ trợ sau khi chạy thật.</p>",
+     "notes": "<p><strong>Know:</strong> Four years since Mar 2022 (the .NET internship Oct–Dec 2021 is extra, not counted). Newest first. Akktis is past tense: it ended July 2026.</p><p><strong>Trap:</strong> Saying \"about five years\". Reading every bullet. Implying you moved straight from BaseVN to Akktis: just tell each job, do not narrate the transitions.</p><p><strong>Follow-up:</strong> \"What are you doing now?\" → next card. \"Which project should we go deep on?\" → offer PhysioFix for a Node role, BaseVN PIT for a PHP/MySQL role, Akktis for a DevOps role.</p>"
+    },
+    {
+     "id": "cv-now",
+     "title": "What are you doing now?",
+     "hint": "Akktis ended July 2026. Answer with the products you are shipping, then what you want next.",
+     "q_en": "<p>What are you doing at the moment? What have you done since Akktis ended?</p>",
+     "a_en": "<p>Since Akktis ended in July 2026, my independent work has been my full-time work. PhysioFix started in April 2026: I built the Express control path for the phone assistant, the Next.js admin, and the deploys to a VM and Cloud Run. Aquanix started in May 2026: one Expo app for iOS, Android, and web, an Express API, and a nightly job for a partner system. And I keep IELTS AI Tutor running, on Cloud Run with Firestore.</p><p>So I'm still shipping and supporting production code every week, on my own clients. What I'm looking for now is a full-time role where I can do the same end-to-end ownership inside a larger product team.</p>",
+     "q_vi": "<p>Hiện tại bạn đang làm gì? Từ khi Akktis kết thúc thì bạn làm gì?</p>",
+     "a_vi": "<p>Từ khi Akktis kết thúc vào tháng 7/2026, công việc độc lập là công việc chính của tôi. PhysioFix bắt đầu từ tháng 4/2026: tôi làm phần Express điều khiển cuộc gọi cho trợ lý điện thoại, trang admin Next.js, và deploy lên VM và Cloud Run. Aquanix bắt đầu từ tháng 5/2026: một app Expo chạy iOS, Android và web, một API Express, và một job chạy hằng đêm cho hệ thống đối tác. Tôi vẫn duy trì IELTS AI Tutor trên Cloud Run và Firestore.</p><p>Nên tuần nào tôi cũng đang ship và hỗ trợ code production cho khách của mình. Điều tôi tìm bây giờ là một vị trí full-time, nơi tôi vẫn làm trọn từ đầu đến cuối như vậy nhưng trong một team sản phẩm lớn hơn.</p>",
+     "notes": "<p><strong>Know:</strong> Independent since May 2024: PhysioFix (Apr 2026–), Aquanix (May 2026–), IELTS AI Tutor (2024–).</p><p><strong>Trap:</strong> Sounding like you are between jobs. You are shipping three products; say so plainly. Do not invent a reason Akktis ended.</p><p><strong>Follow-up:</strong> \"Would you keep the client work if you join us?\" Have a clear, honest answer ready.</p><p><strong>TODO Thủy:</strong> Confirm why Akktis ended (contract end? project end?) in one neutral sentence, and whether PhysioFix/Aquanix continue part-time if hired.</p>"
+    }
+   ]
+  },
+  {
+   "id": "sec-physiofix",
+   "name": "PhysioFix",
+   "cards": [
+    {
+     "id": "cv-physiofix-pitch",
+     "title": "PhysioFix in 30 seconds",
+     "hint": "Audio stays on Twilio and Grok. Your server is the control path.",
+     "q_en": "<p>Tell me about PhysioFix.</p>",
+     "a_en": "<p>PhysioFix is a phone assistant for a clinic's reservation calls. A patient calls the clinic's Twilio number, and Grok voice answers and talks with them. The audio never passes through my server: it stays between Twilio and Grok.</p><p>My Express server is the control path. It accepts the call webhook, sends Grok its instructions and what we already know about the caller, answers its tool calls, saves the contact and transcript to Firestore, and ends the call cleanly. Staff then work from the conversation summary in a Next.js admin, where they can also play the recording, or switch the number back to a human phone.</p>",
+     "q_vi": "<p>Kể về PhysioFix.</p>",
+     "a_vi": "<p>PhysioFix là trợ lý điện thoại nhận cuộc gọi đặt lịch cho phòng khám. Bệnh nhân gọi vào số Twilio của phòng khám, Grok voice nghe máy và nói chuyện với họ. Âm thanh không đi qua server của tôi: nó chỉ đi giữa Twilio và Grok.</p><p>Server Express của tôi là phần điều khiển. Nó nhận webhook cuộc gọi, gửi cho Grok hướng dẫn và thông tin đã có về người gọi, trả lời các tool call, lưu liên hệ và transcript vào Firestore, rồi kết thúc cuộc gọi cho gọn. Sau đó nhân viên làm việc từ bản tóm tắt cuộc gọi trên trang admin Next.js, nghe lại ghi âm, hoặc chuyển số về điện thoại của người thật.</p>",
+     "notes": "<p><strong>Know:</strong> Apr 2026–present. Node, TypeScript, Express, Next.js, Firestore, Jest, Twilio, Grok voice (xAI realtime). No separate booking table: staff fulfil from the summary.</p><p><strong>Trap:</strong> Saying you built speech recognition or streamed audio through Node. You did not; that is the point of the design.</p><p><strong>Follow-up:</strong> Architecture → next card. \"Why return 200 before the socket?\" → cv-physiofix-200.</p><p><strong>TODO Thủy:</strong> Confirm whether it takes real patient calls today, whether you can name the clinic, and whether you are the only engineer.</p>"
+    },
+    {
+     "id": "cv-physiofix-architecture",
+     "title": "PhysioFix architecture",
+     "hint": "Two planes: audio (Twilio + Grok) and control (Express). Walk one call.",
+     "q_en": "<p>Walk me through the PhysioFix architecture.</p>",
+     "a_en": "<p>There are two planes. The audio plane is Twilio and Grok voice: the clinic number routes the call over a SIP trunk to Grok, and the voice stays there. The control plane is mine.</p><p>When a call comes in, xAI sends a webhook to my Express server. I verify it against the shared secret, return 200 right away, and then open a realtime socket for that call. On the socket I send the session instructions, including the caller's record from Firestore if they have called before. Then every event for that call runs through one queue: tool calls, transcript lines, and the hangup. Tool calls are acked immediately and the Firestore writes happen after. When the socket closes, I archive the recording.</p><p>The Next.js admin reads the same Firestore data. Cloud Build deploys the voice process to a GCE VM over HTTPS with restart on failure, and to Cloud Run. The admin deploys separately to Cloud Run.</p>",
+     "q_vi": "<p>Trình bày kiến trúc của PhysioFix.</p>",
+     "a_vi": "<p>Có hai lớp. Lớp âm thanh là Twilio và Grok voice: số của phòng khám chuyển cuộc gọi qua SIP trunk sang Grok, và giọng nói nằm ở đó. Lớp điều khiển là phần tôi làm.</p><p>Khi có cuộc gọi, xAI gửi webhook đến server Express. Tôi kiểm tra bằng secret chung, trả 200 ngay, rồi mới mở realtime socket cho cuộc gọi đó. Trên socket tôi gửi hướng dẫn cho phiên, kèm hồ sơ người gọi từ Firestore nếu họ đã từng gọi. Sau đó mọi sự kiện của cuộc gọi đi qua một hàng đợi duy nhất: tool call, các câu transcript và lệnh cúp máy. Tool call được ack ngay, còn việc ghi Firestore làm sau. Khi socket đóng, tôi lưu bản ghi âm.</p><p>Trang admin Next.js đọc cùng dữ liệu Firestore đó. Cloud Build deploy tiến trình voice lên một VM GCE qua HTTPS, có tự khởi động lại khi lỗi, và lên cả Cloud Run. Admin deploy riêng lên Cloud Run.</p>",
+     "notes": "<p><strong>Know:</strong> Webhook → verify → 200 → socket → one event queue → ack tool, then write → archive recording on close. Firestore is shared by the API and the admin.</p><p><strong>Trap:</strong> Drawing audio flowing through Express. Forgetting the 401 path: a wrong secret is rejected before any work.</p><p><strong>Follow-up:</strong> \"Why one queue?\" → cv-physiofix-hardest. \"Why both a VM and Cloud Run?\" → cv-physiofix-deploy. Diagram practice: <a href=\"system-design.html\">system design</a>.</p>"
+    },
+    {
+     "id": "cv-physiofix-role",
+     "title": "Your role on PhysioFix",
+     "hint": "Server side and admin are yours. Speech is Grok's, telephony is Twilio's.",
+     "q_en": "<p>What exactly was your part on PhysioFix?</p>",
+     "a_en": "<p>I built the server side and the admin. That's the Express control path: verifying the webhook, the realtime socket, the event queue, the tool handlers, the Firestore writes, and the hangup that waits for the last spoken line to finish. In the admin I built the switch that moves the Twilio number between the Grok trunk and a staff phone, the drift warning on that screen, the recording archive and player, and the contact and transcript views. I wrote the Jest tests for the API and set up the Cloud Build deploys.</p><p>What I did not build is the speech itself. Recognition, the voice, and turn-taking belong to Grok, and the phone network belongs to Twilio. My job is everything around the call: control, data, and the tools staff use afterward.</p>",
+     "q_vi": "<p>Cụ thể bạn làm phần nào trong PhysioFix?</p>",
+     "a_vi": "<p>Tôi làm phía server và trang admin. Tức là toàn bộ phần Express điều khiển: kiểm tra webhook, realtime socket, hàng đợi sự kiện, các tool handler, ghi Firestore, và phần cúp máy biết chờ câu nói cuối cùng nói xong. Trong admin tôi làm công tắc chuyển số Twilio giữa Grok trunk và điện thoại nhân viên, cảnh báo lệch trạng thái trên màn hình đó, phần lưu và phát ghi âm, và các màn hình liên hệ, transcript. Tôi viết test Jest cho API và dựng deploy bằng Cloud Build.</p><p>Phần tôi không làm là bản thân giọng nói. Nhận dạng, giọng đọc và việc ai nói lúc nào là của Grok, mạng điện thoại là của Twilio. Việc của tôi là mọi thứ xung quanh cuộc gọi: điều khiển, dữ liệu, và công cụ nhân viên dùng sau đó.</p>",
+     "notes": "<p><strong>Know:</strong> Clear line: you own control and data; Grok owns speech; Twilio owns telephony.</p><p><strong>Trap:</strong> Claiming the voice quality or the model's answers as your work. You wrote the instructions and the tools, not the model.</p><p><strong>Follow-up:</strong> \"Who wrote the session instructions?\" \"How do you test a voice flow?\" → Jest on the API handlers.</p><p><strong>TODO Thủy:</strong> Confirm solo vs team, and who wrote the session prompt.</p>"
+    },
+    {
+     "id": "cv-physiofix-hardest",
+     "title": "Hardest problem on PhysioFix",
+     "hint": "Ordering and latency on a live call: one queue, ack first, write after, polite hangup.",
+     "q_en": "<p>What was the hardest problem on PhysioFix, and how did you solve it?</p>",
+     "a_en": "<p>Timing on a live call. Grok can send a batch of tool calls, and the caller keeps talking while I handle them. If every event is handled as soon as it arrives, a slow tool result can land after the next utterance has started, and the conversation goes out of order.</p><p>So every event for a call goes through one queue and runs in order. A tool batch finishes before the next utterance is handled, so they cannot race.</p><p>The queue also has to stay fast, or the caller hears silence. So I ack each tool call on the socket immediately, and the contact and transcript writes to Firestore happen afterward. Grok keeps speaking while the database catches up.</p><p>The last piece was the end of the call. If I close the session the moment Grok says goodbye, the caller loses the last sentence. So hangup waits until the last spoken line can finish.</p>",
+     "q_vi": "<p>Vấn đề khó nhất ở PhysioFix là gì, bạn giải quyết thế nào?</p>",
+     "a_vi": "<p>Là thời gian trong một cuộc gọi đang diễn ra. Grok có thể gửi một loạt tool call, trong khi người gọi vẫn tiếp tục nói. Nếu sự kiện nào đến là xử lý ngay, một kết quả tool chậm có thể về sau khi câu nói tiếp theo đã bắt đầu, và cuộc hội thoại bị lộn thứ tự.</p><p>Vì vậy mọi sự kiện của một cuộc gọi đi qua một hàng đợi và chạy lần lượt. Loạt tool call xong thì mới đến câu nói tiếp theo, nên không còn tranh nhau.</p><p>Hàng đợi cũng phải nhanh, nếu không người gọi sẽ nghe im lặng. Nên tôi ack từng tool call trên socket ngay lập tức, còn việc ghi liên hệ và transcript vào Firestore làm sau. Grok vẫn nói tiếp trong lúc database ghi xong.</p><p>Phần cuối là lúc kết thúc cuộc gọi. Nếu tôi đóng phiên ngay khi Grok nói lời chào, người gọi sẽ mất câu cuối. Nên lệnh cúp máy chờ đến khi câu nói cuối cùng nói xong.</p>",
+     "notes": "<p><strong>Know:</strong> One queue per call = ordering. Ack before write = latency. Hangup waits = the caller hears the last line.</p><p><strong>Trap:</strong> Saying you made writes \"async\" without saying what happens if one fails. Answer: it is logged against the call; the improvement is a retried outbox (see cv-physiofix-differently).</p><p><strong>Follow-up:</strong> \"What if the Firestore write fails after the ack?\" \"Is the queue per call or global?\" (per call).</p><p><strong>TODO Thủy:</strong> Confirm whether you saw the race in testing or designed for it up front, and how hangup knows the last line finished (event or timer).</p>"
+    },
+    {
+     "id": "cv-physiofix-impact",
+     "title": "PhysioFix: impact",
+     "hint": "No invented numbers. Say what changed for staff and callers.",
+     "q_en": "<p>What did PhysioFix achieve? What was the result?</p>",
+     "a_en": "<p>I don't have call-volume numbers I can quote, so I'll describe what changed. Reservation calls are answered by the assistant, and staff fulfil the request from a conversation summary. There's no separate booking table to keep in sync.</p><p>A returning caller is recognised from Firestore before the session starts, so they skip the privacy question, and Grok can confirm the name already on file. Staff can take the number back to a human phone from the admin with one switch, and the screen warns them if that switch and Twilio disagree. Every call leaves a contact, a transcript, and a recording they can play in the admin. And Jest covers the API, so I can change handlers without testing on live calls.</p>",
+     "q_vi": "<p>PhysioFix đạt được gì? Kết quả ra sao?</p>",
+     "a_vi": "<p>Tôi không có số liệu lượng cuộc gọi để nêu, nên tôi sẽ nói về những gì đã thay đổi. Cuộc gọi đặt lịch được trợ lý nghe máy, và nhân viên xử lý yêu cầu từ bản tóm tắt cuộc gọi. Không có bảng booking riêng phải giữ cho khớp.</p><p>Người gọi quen được nhận ra từ Firestore trước khi phiên bắt đầu, nên họ bỏ qua câu hỏi về quyền riêng tư, và Grok có thể xác nhận tên đã lưu. Nhân viên có thể chuyển số về điện thoại người thật chỉ bằng một công tắc trên admin, và màn hình báo nếu công tắc đó và Twilio không khớp. Cuộc gọi nào cũng để lại liên hệ, transcript và ghi âm nghe lại được trên admin. Và API có test Jest, nên tôi sửa handler mà không phải thử trên cuộc gọi thật.</p>",
+     "notes": "<p><strong>Know:</strong> Only CV facts: returning caller skips privacy question; staff work from summary; one-switch fallback to staff; drift warning; recordings in admin; Jest.</p><p><strong>Trap:</strong> Inventing \"handled 80% of calls\". If they push for numbers, say you do not have them and what you would measure (answered calls, handed to staff, failed sessions).</p><p><strong>Follow-up:</strong> \"How would you measure success?\" → calls answered, calls handed to staff, sessions that failed to open.</p><p><strong>TODO Thủy:</strong> Add real numbers if you have them (calls per week, share handed to staff, live since when).</p>"
+    },
+    {
+     "id": "cv-physiofix-differently",
+     "title": "PhysioFix: what you'd do differently",
+     "hint": "Durable writes, automatic drift alert, replayed call tests.",
+     "q_en": "<p>Looking back, what would you do differently on PhysioFix?</p>",
+     "a_en": "<p>Three things. First, the Firestore write happens after the ack. That keeps the call fluent, but it makes that write the one place a contact could be lost. I'd put those writes behind a small durable outbox with retries, so a failure is retried and visible.</p><p>Second, the trunk drift check shows the difference to a human, who resyncs by hand. That was the right first step, but I'd add a scheduled check that alerts when the stored flag and Twilio disagree, so nobody has to open the screen to find out.</p><p>Third, I'd record a few real event sequences from calls, with tool batches and interruptions, and replay them in Jest. Then ordering bugs show up in a test run, not on a patient's call.</p>",
+     "q_vi": "<p>Nhìn lại, ở PhysioFix bạn sẽ làm khác điều gì?</p>",
+     "a_vi": "<p>Ba điều. Thứ nhất, việc ghi Firestore diễn ra sau khi ack. Cách đó giữ cuộc gọi trôi chảy, nhưng cũng khiến bước ghi đó là chỗ duy nhất có thể mất một liên hệ. Tôi sẽ đưa các lần ghi đó qua một outbox bền, có retry, để lỗi được thử lại và nhìn thấy được.</p><p>Thứ hai, phần kiểm tra lệch trunk hiện cho người xem và họ tự resync. Đó là bước đầu hợp lý, nhưng tôi sẽ thêm một job định kỳ báo cảnh báo khi cờ đã lưu và Twilio không khớp, để không ai phải mở màn hình mới biết.</p><p>Thứ ba, tôi sẽ ghi lại vài chuỗi sự kiện thật từ cuộc gọi, có loạt tool call và chỗ người gọi ngắt lời, rồi phát lại trong Jest. Khi đó lỗi thứ tự lộ ra lúc chạy test, không phải trên cuộc gọi của bệnh nhân.</p>",
+     "notes": "<p><strong>Know:</strong> Each point is a trade-off you made consciously, plus the next step. That reads as judgement, not regret.</p><p><strong>Trap:</strong> Trashing your own design. Frame it as \"the first version was right for launch; next I would…\".</p><p><strong>Follow-up:</strong> \"Why didn't you do the outbox from the start?\" → speed to a working call path first; the risk was known and logged.</p><p><strong>TODO Thủy:</strong> Confirm what happens today when a post-ack write fails (logged? retried?) so this answer stays accurate.</p>"
+    },
+    {
+     "id": "cv-physiofix-200",
+     "title": "Why return 200 before opening the socket?",
+     "hint": "The webhook has a deadline; the socket and Firestore reads do not belong in it.",
+     "q_en": "<p>Why does your webhook handler return 200 before it opens the realtime socket?</p>",
+     "a_en": "<p>Because the webhook has a deadline and the slow work doesn't belong inside it. A caller is waiting on the line, and the sender of a webhook expects a fast answer. If my handler opened the socket, loaded the caller from Firestore, and sent instructions before responding, one slow step could turn into a timeout, and a timeout can mean a retry, which means a second session for the same call.</p><p>So the order is fixed. Check the secret first, and return 401 if it's wrong, so nobody can make my server open sockets by posting to that URL. Then return 200 immediately. Then do the slow work for that call. If something fails after the 200, the sender won't tell me, so I log it against the call ID.</p>",
+     "q_vi": "<p>Tại sao handler webhook trả 200 trước rồi mới mở realtime socket?</p>",
+     "a_vi": "<p>Vì webhook có thời hạn, còn phần việc chậm thì không nên nằm trong đó. Người gọi đang chờ máy, và bên gửi webhook muốn có trả lời nhanh. Nếu handler mở socket, đọc người gọi từ Firestore, gửi hướng dẫn xong mới trả lời, chỉ một bước chậm là có thể timeout, mà timeout có thể dẫn đến gửi lại, tức là thêm một phiên nữa cho cùng một cuộc gọi.</p><p>Nên thứ tự là cố định. Kiểm tra secret trước, sai thì trả 401, để không ai có thể bắt server mở socket chỉ bằng cách gửi request vào URL đó. Rồi trả 200 ngay. Rồi mới làm phần việc chậm cho cuộc gọi đó. Nếu có lỗi sau khi đã trả 200, bên gửi sẽ không báo cho tôi, nên tôi log lỗi theo call ID.</p>",
+     "notes": "<p><strong>Know:</strong> General webhook rule: verify, ack fast, work after. More on retries and idempotency: <a href=\"system-design.html#new-system-19\">Webhook retries</a>.</p><p><strong>Trap:</strong> On Cloud Run, work after the response needs CPU that stays allocated (instance-based billing); with request-based billing the CPU is throttled once the response is sent. That is part of why the voice process also runs on a VM.</p><p><strong>Follow-up:</strong> \"What if the same webhook arrives twice?\" → key the session by call ID and ignore a second open for the same call.</p><p><strong>TODO Thủy:</strong> Confirm whether you de-duplicate by call ID today.</p>"
+    },
+    {
+     "id": "cv-physiofix-trunk",
+     "title": "The switch to a human, and trunk drift",
+     "hint": "Twilio is the source of truth; the Firestore flag is only intent.",
+     "q_en": "<p>How does the switch between the assistant and staff work? What do you mean by drift?</p>",
+     "a_en": "<p>The admin has a switch that takes the Twilio number off the Grok trunk and dials a staff phone instead, and back again. The important part is that the switch changes the real thing, Twilio trunk membership, not only a flag in Firestore.</p><p>But the two can still drift apart. Someone can change the number in the Twilio console, or the call to Twilio can fail after the flag is saved. If the admin trusted the flag, staff would see \"assistant on\" while calls went somewhere else.</p><p>So the screen reads the live trunk membership, compares it with the stored flag, and shows a warning when they disagree, with a way to resync from Twilio. Twilio is the source of truth. The flag is our record of what we meant to do.</p>",
+     "q_vi": "<p>Công tắc chuyển giữa trợ lý và nhân viên hoạt động thế nào? Lệch trạng thái nghĩa là gì?</p>",
+     "a_vi": "<p>Trên admin có một công tắc đưa số Twilio ra khỏi Grok trunk và gọi sang điện thoại nhân viên, và ngược lại. Điểm quan trọng là công tắc thay đổi thứ thật, tức là việc số đó có nằm trong trunk trên Twilio hay không, chứ không chỉ đổi một cờ trong Firestore.</p><p>Nhưng hai thứ đó vẫn có thể lệch nhau. Có người sửa số trực tiếp trên Twilio console, hoặc lệnh gọi sang Twilio lỗi sau khi cờ đã lưu. Nếu admin chỉ tin vào cờ, nhân viên sẽ thấy \"trợ lý đang bật\" trong khi cuộc gọi lại đi chỗ khác.</p><p>Nên màn hình đọc trạng thái trunk thật, so với cờ đã lưu, và báo khi hai bên không khớp, kèm cách resync từ Twilio. Twilio là nguồn sự thật. Cờ chỉ là ghi nhận điều chúng tôi định làm.</p>",
+     "notes": "<p><strong>Know:</strong> Any time you mirror external state, you need a reconciliation: read the real thing, compare, show or fix drift.</p><p><strong>Trap:</strong> Saying \"we store a flag\" as if that were the switch. The flag alone would lie.</p><p><strong>Follow-up:</strong> \"Why not just re-read Twilio every time and drop the flag?\" → the flag records intent and history; the live read shows reality; you need both to detect drift.</p>"
+    },
+    {
+     "id": "cv-physiofix-recordings",
+     "title": "Finding call recordings by caller and time",
+     "hint": "On the SIP path the called party is a SIP URI, not the clinic number.",
+     "q_en": "<p>How did you find and archive the call recordings?</p>",
+     "a_en": "<p>After the socket closes, I archive the recording from the trunk. The obvious lookup is by the number the caller dialed, the clinic's number. But on this path the called party is a SIP address, the Grok trunk, not a phone number, so a lookup by dialed number misses it.</p><p>So I search by the caller's number and a time window around the call, take the matching recording, and save it with the call in Firestore. The Next.js admin plays it next to the transcript.</p><p>The lesson for me was to check what the provider actually records on each leg of a call, not what the business thinks the number is.</p>",
+     "q_vi": "<p>Bạn tìm và lưu bản ghi âm cuộc gọi như thế nào?</p>",
+     "a_vi": "<p>Sau khi socket đóng, tôi lưu bản ghi âm từ trunk. Cách nghĩ đầu tiên là tìm theo số người gọi đã bấm, tức là số của phòng khám. Nhưng trên đường này bên nhận là một địa chỉ SIP, tức là Grok trunk, không phải số điện thoại, nên tìm theo số đã gọi sẽ không ra.</p><p>Vì vậy tôi tìm theo số của người gọi và một khoảng thời gian quanh cuộc gọi, lấy bản ghi âm khớp, rồi lưu cùng cuộc gọi trong Firestore. Trang admin Next.js phát nó ngay cạnh transcript.</p><p>Bài học của tôi là phải xem nhà cung cấp thực sự ghi lại gì trên từng chặng của cuộc gọi, chứ không phải số mà phía kinh doanh nghĩ là đúng.</p>",
+     "notes": "<p><strong>Know:</strong> Caller number + time window, because the To on the trunk leg is a SIP URI.</p><p><strong>Trap:</strong> Two calls from the same caller close together could both match a wide window. Keep the window tight around call start and end.</p><p><strong>Follow-up:</strong> \"What if two recordings match?\" → pick by closest start time; flag ambiguous ones.</p><p><strong>TODO Thủy:</strong> Confirm how a tie is resolved and where the audio file is stored (Firestore holds the reference).</p>"
+    },
+    {
+     "id": "cv-physiofix-deploy",
+     "title": "Why a GCE VM and Cloud Run?",
+     "hint": "The voice process holds a long-lived socket after the HTTP response. Know the Cloud Run CPU setting.",
+     "q_en": "<p>Why does the voice process run on a GCE VM as well as Cloud Run?</p>",
+     "a_en": "<p>Because the voice process isn't a normal request handler. It answers a webhook and then keeps a realtime socket open for the whole call, after the HTTP response has already gone back.</p><p>On a small GCE VM that's simply a long-running Node process behind HTTPS, restarted on failure, and Cloud Build deploys to it. The same service also deploys to Cloud Run, which gives me revisions and an easy rollback. On Cloud Run the thing to get right is that work after the response needs CPU that stays allocated, and the instance has to live for the length of the call, so it can't run on the default request-based settings.</p><p>The Next.js admin is an ordinary web app, so it's its own Cloud Run service and deploys separately.</p>",
+     "q_vi": "<p>Tại sao tiến trình voice chạy trên VM GCE và cả trên Cloud Run?</p>",
+     "a_vi": "<p>Vì tiến trình voice không phải một handler request bình thường. Nó trả lời webhook xong vẫn giữ một realtime socket mở suốt cuộc gọi, sau khi response HTTP đã trả về rồi.</p><p>Trên một VM GCE nhỏ, đó chỉ là một tiến trình Node chạy lâu dài sau HTTPS, lỗi thì tự khởi động lại, và Cloud Build deploy lên đó. Cùng service đó cũng deploy lên Cloud Run, để có revision và rollback dễ. Trên Cloud Run, điểm cần làm đúng là phần việc sau response cần CPU luôn được cấp, và instance phải sống hết thời gian cuộc gọi, nên không chạy được với cấu hình mặc định tính theo request.</p><p>Trang admin Next.js là web app bình thường, nên là một service Cloud Run riêng và deploy riêng.</p>",
+     "notes": "<p><strong>Know:</strong> Cloud Run supports WebSockets; request timeout up to 60 minutes; background work after the response needs instance-based billing (\"CPU always allocated\"); min instances avoids cold starts on the first call. VM vs Cloud Run basics: <a href=\"devops.html#kaopiz-q11\">VM vs Cloud Run vs GKE</a>.</p><p><strong>Trap:</strong> Claiming one is \"better\". Each fits a different shape of work.</p><p><strong>Follow-up:</strong> \"Which one takes live calls?\"</p><p><strong>TODO Thủy:</strong> Confirm which one takes live traffic today and why both exist (fallback? migration in progress?).</p>"
+    }
+   ]
+  },
+  {
+   "id": "sec-aquanix",
+   "name": "Aquanix",
+   "cards": [
+    {
+     "id": "cv-aquanix-pitch",
+     "title": "Aquanix in 30 seconds",
+     "hint": "Pond farm operations; one Expo client on three platforms; one API.",
+     "q_en": "<p>Tell me about Aquanix.</p>",
+     "a_en": "<p>Aquanix is farm operations software for pond farms. An owner sets up zones and ponds, adds members, and runs a crop season. On each pond the team logs stocking, feed, medicine, water readings, sample weighing, costs, and finally the harvest close. From a harvest they build a trace page from a template and share it, and they can export ponds and harvest batches to Excel.</p><p>It's one Expo app that runs on iOS, Android, and desktop web, and every platform calls the same Express API. Sensor readings come from Rangdong, and a nightly job processes queued batches for a partner system, HanoiCheck. I started it in May 2026 and built it end to end.</p>",
+     "q_vi": "<p>Kể về Aquanix.</p>",
+     "a_vi": "<p>Aquanix là phần mềm quản lý vận hành cho trang trại nuôi ao. Chủ trại tạo khu, tạo ao, thêm thành viên và chạy một vụ nuôi. Trên mỗi ao, mọi người ghi thả giống, cho ăn, thuốc, chỉ số nước, cân mẫu, chi phí, và cuối cùng là chốt thu hoạch. Từ một lần thu hoạch, họ tạo trang truy xuất nguồn gốc từ template và chia sẻ được, và có thể xuất ao và lô thu hoạch ra Excel.</p><p>Đó là một app Expo chạy trên iOS, Android và web desktop, và nền tảng nào cũng gọi cùng một API Express. Dữ liệu cảm biến lấy từ Rangdong, và một job hằng đêm xử lý các lô đang chờ cho hệ thống đối tác HanoiCheck. Tôi bắt đầu từ tháng 5/2026 và làm từ đầu đến cuối.</p>",
+     "notes": "<p><strong>Know:</strong> May 2026–present. Expo, React Native, TypeScript, Express, Firestore, JWT, Sentry, Cloud Run, Firebase Hosting (production web: aquanix.co).</p><p><strong>Trap:</strong> Guessing at the species or market. Say \"pond farms\" unless you know more.</p><p><strong>Follow-up:</strong> Architecture → next card. Access rules → cv-aquanix-access.</p><p><strong>TODO Thủy:</strong> Confirm what HanoiCheck is and what a \"batch\" sent to it contains, and whether you are solo on Aquanix.</p>"
+    },
+    {
+     "id": "cv-aquanix-architecture",
+     "title": "Aquanix architecture",
+     "hint": "Client → one API → one access check → Firestore. Cron is a separate door.",
+     "q_en": "<p>Walk me through the Aquanix architecture.</p>",
+     "a_en": "<p>One Expo client in TypeScript builds for iOS, Android, and web. On wide screens the layout switches to a sidebar; otherwise it's the same code. Every client calls the same Express API, so the pond access check lives in one place.</p><p>Login is by phone and issues a JWT that carries the user's role and partnership. Data is in Firestore. Rangdong sensor readings are attached to a pond only after the access check passes. The nightly HanoiCheck job has its own cron route, authenticated separately from user JWTs. API errors go to Sentry.</p><p>For delivery, Cloud Build on the dev branch deploys the API to Cloud Run and the web export to a staging Firebase Hosting site. Production web at aquanix.co is a separate, manual Hosting release after I've checked staging.</p>",
+     "q_vi": "<p>Trình bày kiến trúc của Aquanix.</p>",
+     "a_vi": "<p>Một client Expo viết bằng TypeScript build ra iOS, Android và web. Trên màn hình rộng thì giao diện chuyển sang có sidebar, còn lại là cùng một code. Mọi client gọi cùng một API Express, nên phần kiểm tra quyền vào ao chỉ nằm một chỗ.</p><p>Đăng nhập bằng số điện thoại và nhận một JWT chứa vai trò và partnership của người dùng. Dữ liệu nằm trên Firestore. Dữ liệu cảm biến Rangdong chỉ được gắn vào ao sau khi kiểm tra quyền xong. Job HanoiCheck hằng đêm có route cron riêng, xác thực tách hẳn khỏi JWT của người dùng. Lỗi API gửi về Sentry.</p><p>Về release, Cloud Build trên nhánh dev deploy API lên Cloud Run và bản web lên một site Firebase Hosting staging. Web production ở aquanix.co là một lần release Hosting riêng, làm tay, sau khi tôi đã kiểm tra staging.</p>",
+     "notes": "<p><strong>Know:</strong> One client, one API, one access check. Staging Hosting on every dev build; prod web is a separate manual release.</p><p><strong>Trap:</strong> Implying the web is a separate React app. It is the Expo web export of the same code.</p><p><strong>Follow-up:</strong> \"Why one Expo client for web too?\" → one codebase and one access path; the trade-off is web-specific polish.</p>"
+    },
+    {
+     "id": "cv-aquanix-role",
+     "title": "Your role on Aquanix",
+     "hint": "End to end: client, API, data rules, job, delivery.",
+     "q_en": "<p>What did you build on Aquanix?</p>",
+     "a_en": "<p>I built it end to end. On the client: the Expo app for phone and web, the sidebar layout for wide screens, the season log, cost entries, harvest trace, and Excel export. On the API: phone login that issues the JWT, the pond access rules, the Rangdong sensor integration behind that check, and the nightly HanoiCheck job with its own cron route. And the delivery path: Sentry for API errors, Cloud Build to Cloud Run, and the staging and production Firebase Hosting releases.</p><p>Because it's one person across the whole stack, I kept the rules on the server. The app shows what the API allows; it never decides access itself.</p>",
+     "q_vi": "<p>Bạn đã làm những gì trong Aquanix?</p>",
+     "a_vi": "<p>Tôi làm từ đầu đến cuối. Phía client: app Expo cho điện thoại và web, giao diện sidebar cho màn hình rộng, nhật ký vụ nuôi, nhập chi phí, truy xuất thu hoạch và xuất Excel. Phía API: đăng nhập bằng số điện thoại cấp JWT, quy tắc quyền vào ao, tích hợp cảm biến Rangdong sau bước kiểm tra đó, và job HanoiCheck hằng đêm với route cron riêng. Và cả đường release: Sentry cho lỗi API, Cloud Build lên Cloud Run, và các lần release staging, production trên Firebase Hosting.</p><p>Vì một người làm cả stack, tôi giữ quy tắc ở server. App chỉ hiển thị những gì API cho phép, nó không tự quyết định quyền.</p>",
+     "notes": "<p><strong>Know:</strong> Every CV bullet for Aquanix is yours: client, season log, trace + Excel, JWT, access check, sensors, cron job, Sentry, Cloud Build, Hosting.</p><p><strong>Trap:</strong> \"It's one person\" only if true; see TODO.</p><p><strong>Follow-up:</strong> \"Who designed the screens?\"</p><p><strong>TODO Thủy:</strong> Confirm you are the only engineer and who designed the UI.</p>"
+    },
+    {
+     "id": "cv-aquanix-hardest",
+     "title": "Hardest problem on Aquanix: the nightly job",
+     "hint": "Process the ids you just promoted; do not re-query for them.",
+     "q_en": "<p>What was the hardest problem on Aquanix?</p>",
+     "a_en": "<p>The trickiest one was the nightly HanoiCheck job. It has two steps: promote the queued batches, then process them. The natural way to write the second step is a collection query for the promoted status. But that query could miss writes that had only just landed in step one, so a batch promoted tonight might wait until the next night.</p><p>The fix was to stop depending on the re-query. Step one returns the ids it promoted, and the same request processes exactly those ids. Nothing has to be found again, so nothing can be missed.</p><p>The general lesson I took from it: when one step already knows which records it changed, pass those ids forward instead of asking the database to find them again.</p>",
+     "q_vi": "<p>Vấn đề khó nhất ở Aquanix là gì?</p>",
+     "a_vi": "<p>Khó nhất là job HanoiCheck chạy hằng đêm. Job có hai bước: chuyển trạng thái các lô đang chờ, rồi xử lý chúng. Cách viết tự nhiên cho bước hai là query collection theo trạng thái mới. Nhưng query đó có thể bỏ sót những bản ghi vừa được ghi ở bước một, nên một lô được chuyển đêm nay có thể phải chờ đến đêm sau.</p><p>Cách sửa là không dựa vào việc query lại nữa. Bước một trả về danh sách id nó vừa chuyển, và cùng request đó xử lý đúng những id đó. Không phải tìm lại gì cả, nên không bỏ sót được.</p><p>Bài học chung tôi rút ra: khi một bước đã biết nó vừa đổi những bản ghi nào, hãy chuyển thẳng các id đó sang bước sau, thay vì nhờ database tìm lại.</p>",
+     "notes": "<p><strong>Know:</strong> CV wording: \"processes those ids in the same request, because a collection query can miss writes that just landed.\"</p><p><strong>Trap:</strong> Arguing about Firestore's consistency model. Keep to the design point: the ids are already in hand, so a second read is a needless dependency.</p><p><strong>Follow-up:</strong> \"What if the cron runs twice?\" → processing each id must be safe to repeat; check the batch status before acting.</p><p><strong>TODO Thủy:</strong> Confirm how you saw the miss (a batch processed a night late?), and whether a repeated run is guarded today.</p>"
+    },
+    {
+     "id": "cv-aquanix-impact",
+     "title": "Aquanix: impact",
+     "hint": "Functional results only; no invented adoption numbers.",
+     "q_en": "<p>What has Aquanix achieved so far?</p>",
+     "a_en": "<p>The results I can stand behind are functional, not metrics. A farm keeps one season log per pond, on a phone at the pond or on a laptop in the office, with the same data and the same permissions on both. Owners see costs per pond next to the harvest, and they get a harvest trace page they can share, plus Excel export of ponds and harvest batches. A member only sees the ponds they're assigned to, including the sensor readings. The partner batches go out every night without anyone pressing a button. And releases are low-risk: every dev build reaches staging, and production web is a separate, deliberate step.</p>",
+     "q_vi": "<p>Đến giờ Aquanix đạt được gì?</p>",
+     "a_vi": "<p>Kết quả tôi dám khẳng định là về chức năng, không phải số liệu. Một trang trại giữ một nhật ký vụ nuôi cho mỗi ao, trên điện thoại ở bờ ao hay trên laptop ở văn phòng, cùng dữ liệu và cùng quyền trên cả hai. Chủ trại thấy chi phí từng ao ngay cạnh kết quả thu hoạch, có trang truy xuất thu hoạch để chia sẻ, và xuất Excel ao và lô thu hoạch. Thành viên chỉ thấy những ao được giao, kể cả dữ liệu cảm biến. Các lô cho đối tác được xử lý mỗi đêm mà không ai phải bấm nút. Và release ít rủi ro: bản dev nào cũng lên staging, còn web production là một bước riêng, có chủ đích.</p>",
+     "notes": "<p><strong>Know:</strong> Only CV facts: three platforms one API, season log, per-pond costs, trace page, Excel, member-scoped access, nightly job, staging then prod.</p><p><strong>Trap:</strong> Inventing farms or users counts.</p><p><strong>Follow-up:</strong> \"How many farms use it?\"</p><p><strong>TODO Thủy:</strong> Add real numbers if you have them (farms, ponds, live since when).</p>"
+    },
+    {
+     "id": "cv-aquanix-differently",
+     "title": "Aquanix: what you'd do differently",
+     "hint": "Test the access rule on every route; make the nightly job self-reporting; token freshness.",
+     "q_en": "<p>What would you do differently on Aquanix?</p>",
+     "a_en": "<p>Three things. First, I'd make the access rule impossible to forget. Pond routes call the pond access check today; I'd add a test that walks every pond route and fails if one is missing it, because one missing check would expose another farm's data.</p><p>Second, the nightly job. I'd have it report what it did each night, how many batches it promoted and processed, and alert when that is zero on a night it shouldn't be, so a silent miss doesn't wait for someone to notice.</p><p>Third, the JWT carries role and partnership, which keeps checks fast, but a role change only takes effect when the token is renewed. I'd keep tokens short-lived, or re-check membership on sensitive writes.</p>",
+     "q_vi": "<p>Ở Aquanix bạn sẽ làm khác điều gì?</p>",
+     "a_vi": "<p>Ba điều. Thứ nhất, tôi sẽ làm cho quy tắc quyền không thể bị quên. Hiện các route ao đều gọi bước kiểm tra quyền; tôi sẽ thêm một test duyệt qua mọi route ao và báo lỗi nếu route nào thiếu, vì chỉ thiếu một chỗ là lộ dữ liệu của trang trại khác.</p><p>Thứ hai là job hằng đêm. Tôi sẽ cho nó báo lại mỗi đêm đã làm gì, chuyển và xử lý bao nhiêu lô, và cảnh báo khi con số bằng 0 vào đêm đáng lẽ phải có, để một lần bỏ sót không phải chờ ai đó tình cờ phát hiện.</p><p>Thứ ba, JWT chứa vai trò và partnership nên kiểm tra nhanh, nhưng đổi vai trò chỉ có hiệu lực khi token được cấp lại. Tôi sẽ để token sống ngắn, hoặc kiểm tra lại thành viên với các thao tác ghi nhạy cảm.</p>",
+     "notes": "<p><strong>Know:</strong> JWT claims are a snapshot: fast to check, stale until renewed. More: <a href=\"node.html#new-auth-jwt\">How you check a JWT</a>.</p><p><strong>Trap:</strong> Saying you'd \"rewrite it\". Small, specific improvements only.</p><p><strong>Follow-up:</strong> \"How long do your tokens live today?\"</p><p><strong>TODO Thủy:</strong> Confirm current token lifetime and whether there is any refresh.</p>"
+    },
+    {
+     "id": "cv-aquanix-cron",
+     "title": "How do you stop a user token from starting the batch job?",
+     "hint": "Two doors, two rules: the cron route never accepts a user JWT.",
+     "q_en": "<p>How do you stop a normal user's token from triggering the nightly batch job?</p>",
+     "a_en": "<p>The cron route doesn't accept user JWTs at all. It's a separate route with its own authentication, a credential only the scheduler has, checked by its own middleware. The user JWT middleware isn't a way in, so even an owner with a valid token is rejected there.</p><p>That matters because the batch job acts across all farms with server privileges. If it sat behind the normal user auth, any logged-in user who found the URL could start it, or one bug in a role check could. Keeping them as two separate doors means each door has exactly one rule, and a mistake in one can't open the other.</p>",
+     "q_vi": "<p>Làm sao để token của người dùng không kích hoạt được job batch?</p>",
+     "a_vi": "<p>Route cron hoàn toàn không nhận JWT của người dùng. Đó là một route riêng, có cách xác thực riêng, bằng một thông tin chỉ bộ lập lịch có, và được kiểm tra bằng middleware riêng. Middleware JWT của người dùng không phải đường vào, nên kể cả chủ trại có token hợp lệ cũng bị từ chối ở đó.</p><p>Điều đó quan trọng vì job batch chạy trên mọi trang trại với quyền của server. Nếu nó nằm sau xác thực người dùng thông thường, bất kỳ ai đăng nhập mà biết URL đều có thể chạy nó, hoặc chỉ một lỗi trong kiểm tra vai trò cũng đủ. Tách thành hai cửa riêng thì mỗi cửa chỉ có đúng một quy tắc, và lỗi ở cửa này không mở được cửa kia.</p>",
+     "notes": "<p><strong>Know:</strong> On GCP, Cloud Scheduler can send an OIDC token the service verifies; a shared secret header compared in constant time also works.</p><p><strong>Trap:</strong> Saying \"we check if the user is admin\". That is exactly the coupling you avoided.</p><p><strong>Follow-up:</strong> \"How is the scheduler's credential stored?\" → as a secret on the service, never in the client.</p><p><strong>TODO Thủy:</strong> Confirm what the cron route checks (shared secret header? OIDC token from Cloud Scheduler?) and name it exactly.</p>"
+    },
+    {
+     "id": "cv-aquanix-access",
+     "title": "How the pond access check works",
+     "hint": "JWT gives role + partnership; the route checks the pond before any data, sensors included.",
+     "q_en": "<p>How does the pond access check work in Aquanix?</p>",
+     "a_en": "<p>Phone login gives a JWT with the user's role and partnership. On every pond route the middleware loads the pond and checks it belongs to the user's partnership, then checks the role: an owner can see the ponds in the partnership, while a member is rejected unless they're assigned to that pond. The check runs before any pond data is read.</p><p>Rangdong sensor readings are attached only after that same check, so the sensor feed can't become a side door into someone else's pond. And because the phone and the web call the same API, there's one check, not one per client.</p>",
+     "q_vi": "<p>Bước kiểm tra quyền vào ao trong Aquanix hoạt động thế nào?</p>",
+     "a_vi": "<p>Đăng nhập bằng số điện thoại cho ra một JWT chứa vai trò và partnership của người dùng. Ở mọi route ao, middleware đọc ao đó và kiểm tra nó có thuộc partnership của người dùng không, rồi mới kiểm tra vai trò: chủ trại xem được các ao trong partnership, còn thành viên bị từ chối nếu không được giao ao đó. Bước kiểm tra chạy trước khi đọc bất kỳ dữ liệu nào của ao.</p><p>Dữ liệu cảm biến Rangdong chỉ được gắn vào sau đúng bước kiểm tra đó, nên luồng cảm biến không thành cửa sau để xem ao của người khác. Và vì điện thoại và web gọi cùng một API, chỉ có một bước kiểm tra, không phải mỗi client một bản.</p>",
+     "notes": "<p><strong>Know:</strong> Authenticate with the token; authorise per resource on the server. 401 vs 403: <a href=\"node.html#engineering-n13\">Auth: JWT vs session</a>.</p><p><strong>Trap:</strong> Hiding ponds in the UI and calling that access control.</p><p><strong>Follow-up:</strong> \"What status code for a member on the wrong pond?\" → 403 (or 404 if you do not want to reveal it exists).</p><p><strong>TODO Thủy:</strong> Confirm the exact owner rule (all ponds in the partnership?) and the status code you return.</p>"
+    }
+   ]
+  },
+  {
+   "id": "sec-ielts",
+   "name": "IELTS AI Tutor",
+   "cards": [
+    {
+     "id": "cv-c11",
+     "title": "IELTS AI Tutor in 30 seconds",
+     "hint": "Live on both stores, about 5,000 users. \"I built the app and the Express API.\"",
+     "q_en": "<p>Tell me about the IELTS AI Tutor.</p>",
+     "a_en": "<p>IELTS AI Tutor is an IELTS practice app for iOS and Android, live on both stores, with about five thousand users. Students practice all four skills, follow a study plan, and get AI help: chat, text-to-speech, and speech-to-text. Teachers use a separate portal for classes, assignments, and submissions.</p><p>Both clients use one Express API on Cloud Run, with Firestore for progress, classes, and entitlements, and in-app purchases verified on the server. I built the app and the Express API.</p>",
+     "q_vi": "<p>Kể về IELTS AI Tutor.</p>",
+     "a_vi": "<p>IELTS AI Tutor là app luyện IELTS cho iOS và Android, đã lên cả hai store, khoảng năm nghìn người dùng. Học viên luyện cả bốn kỹ năng, theo lộ trình học, và được AI hỗ trợ: chat, chuyển văn bản thành giọng nói và giọng nói thành văn bản. Giáo viên dùng một portal riêng để quản lý lớp, bài tập và bài nộp.</p><p>Cả hai client dùng chung một API Express trên Cloud Run, Firestore lưu tiến độ, lớp học và quyền Pro, còn mua hàng trong app được xác minh ở server. Tôi làm app và API Express.</p>",
+     "notes": "<p><strong>Know:</strong> About 5,000 users (true; no monthly growth number). 2024–present. Expo, React Native, TypeScript, Express, Cloud Run, Firestore, Langfuse.</p><p><strong>Trap:</strong> Calling it a React web app. It is React Native. Your React web evidence is the PhysioFix Next.js admin.</p><p><strong>Follow-up:</strong> Architecture → engineering-n22. Role → go1-q24.</p>"
+    },
+    {
+     "id": "engineering-n22",
+     "title": "IELTS architecture",
+     "hint": "Two clients, one API. Name four or five domains, then go deep on one.",
+     "q_en": "<p>How is the IELTS AI Tutor built?</p>",
+     "a_en": "<p>Two clients, one API. The Expo React Native app and the teacher portal both call an Express API in TypeScript on Cloud Run. The API is split into routers by domain: sign-in with Google and Apple, practice content, assignments, progress, AI routes for chat, text-to-speech and speech-to-text, and purchases on /api/iap.</p><p>Model keys never leave the server, and every model call is traced in Langfuse. Firestore holds per-user progress, classes, and entitlements. The server owns the assignment rules, so the portal and the app don't each implement them. On sign-in the app loads progress once into local storage instead of asking per topic.</p><p>Releases are container revisions on Cloud Run, with env and secrets set on the service, so I can read logs per revision and roll back.</p>",
+     "q_vi": "<p>IELTS AI Tutor được xây dựng thế nào?</p>",
+     "a_vi": "<p>Hai client, một API. App Expo React Native và portal giáo viên cùng gọi một API Express viết bằng TypeScript trên Cloud Run. API chia router theo nghiệp vụ: đăng nhập Google và Apple, nội dung luyện tập, bài tập, tiến độ, các route AI cho chat, chuyển văn bản thành giọng nói và giọng nói thành văn bản, và mua hàng ở /api/iap.</p><p>Key của model không bao giờ rời server, và mọi lần gọi model đều được trace trên Langfuse. Firestore lưu tiến độ từng người, lớp học và quyền Pro. Quy tắc bài tập nằm ở server, nên portal và app không phải mỗi bên tự cài một bản. Khi đăng nhập, app tải tiến độ một lần vào bộ nhớ máy thay vì hỏi từng chủ đề.</p><p>Mỗi lần release là một revision container trên Cloud Run, env và secret đặt trên service, nên tôi xem log theo revision và rollback được.</p>",
+     "notes": "<p><strong>Know:</strong> One router per domain; auth before most routes; tracing boots before routes so Langfuse sees every model call.</p><p><strong>Trap:</strong> Listing every route. Name four or five domains, then go deep on the one they pick.</p><p><strong>Follow-up:</strong> \"Which routes must stay public?\" → sign-in and the store notification endpoints; everything else needs the user.</p>"
+    },
+    {
+     "id": "go1-q24",
+     "title": "Your role on IELTS AI Tutor",
+     "hint": "\"I built the app and the Express API.\" Be clear about the portal.",
+     "q_en": "<p>What exactly was your role on the IELTS AI Tutor?</p>",
+     "a_en": "<p>I built the app and the Express API. On the app: the Expo React Native client in TypeScript, the four skills, study plans, Google and Apple sign-in, in-app purchases, ads, and the store releases. On the API: sign-in, practice content, assignments, progress, the AI routes, and purchase verification, and I deploy and operate it on Cloud Run: revisions, logs, env, and secrets.</p><p>The teacher portal is a client of that same API, and the assignment rules it depends on live in my server code.</p><p>When I started, I was stronger on backend and web than on mobile. I used Cursor and Claude Code to learn Expo and the store build process faster, and I checked and tested what they produced myself before it shipped.</p>",
+     "q_vi": "<p>Cụ thể vai trò của bạn trong IELTS AI Tutor là gì?</p>",
+     "a_vi": "<p>Tôi làm app và API Express. Về app: client Expo React Native bằng TypeScript, bốn kỹ năng, lộ trình học, đăng nhập Google và Apple, mua hàng trong app, quảng cáo, và các lần release lên store. Về API: đăng nhập, nội dung luyện tập, bài tập, tiến độ, các route AI và xác minh mua hàng, và tôi deploy, vận hành nó trên Cloud Run: revision, log, env và secret.</p><p>Portal giáo viên là một client của chính API đó, và các quy tắc bài tập mà portal dựa vào nằm trong code server của tôi.</p><p>Lúc bắt đầu, tôi mạnh về backend và web hơn mobile. Tôi dùng Cursor và Claude Code để học Expo và quy trình build lên store nhanh hơn, và tự kiểm tra, test những gì chúng tạo ra trước khi ship.</p>",
+     "notes": "<p><strong>Know:</strong> Same sentence everywhere: \"I built the app and the Express API.\"</p><p><strong>Trap:</strong> Mixing \"I work on\", \"we built\", \"I built\" across cards. Also claiming you built the portal UI unless you did.</p><p><strong>Follow-up:</strong> \"How did you check AI-written code?\" → read it, run it, test the path on a device before release.</p><p><strong>TODO Thủy:</strong> Confirm team size, who built the teacher portal UI, and who the product owner is.</p>"
+    },
+    {
+     "id": "cv-ielts-hardest",
+     "title": "Hardest problem on IELTS: the progress loop",
+     "hint": "Real CV story: a request per topic replaced by one progress fetch on sign-in.",
+     "q_en": "<p>What was the hardest problem you solved on the IELTS AI Tutor?</p>",
+     "a_en": "<p>The one I'd pick is the topic list. The app asked the API for progress one topic at a time, so opening a skill fired a request per topic. On a phone network that's slow, and every screen paid the cost again.</p><p>I replaced the loop with one progress fetch on sign-in. The API reads that user's progress from Firestore and returns it in one response, the app stores it in local storage, and the topic screens read from there. So the screens no longer wait on the network for every row.</p><p>The trade-off is that the local copy can go stale, for example if the same account practises on two phones, so the fetch runs again on every sign-in. It's a small change, but it's the clearest example I have of fixing the shape of the requests instead of making each request faster.</p>",
+     "q_vi": "<p>Vấn đề khó nhất bạn giải quyết ở IELTS AI Tutor là gì?</p>",
+     "a_vi": "<p>Tôi sẽ chọn danh sách chủ đề. App hỏi API tiến độ từng chủ đề một, nên mở một kỹ năng là bắn ra một request cho mỗi chủ đề. Trên mạng điện thoại thì chậm, và màn hình nào cũng phải trả lại chi phí đó.</p><p>Tôi thay vòng lặp đó bằng một lần lấy tiến độ khi đăng nhập. API đọc tiến độ của người dùng từ Firestore và trả về trong một response, app lưu vào bộ nhớ máy, và các màn hình chủ đề đọc từ đó. Nên màn hình không còn phải chờ mạng cho từng dòng.</p><p>Đổi lại, bản lưu trên máy có thể bị cũ, ví dụ khi cùng một tài khoản luyện trên hai điện thoại, nên mỗi lần đăng nhập app lại tải lại. Thay đổi nhỏ thôi, nhưng là ví dụ rõ nhất của tôi về việc sửa cách gọi request, thay vì cố làm từng request nhanh hơn.</p>",
+     "notes": "<p><strong>Know:</strong> N+1 over HTTP: the fix is the same as in SQL, fetch the set once.</p><p><strong>Trap:</strong> Saying it is \"offline-first\". It is a cache loaded on sign-in.</p><p><strong>Follow-up:</strong> \"How do writes stay in sync with the local copy?\"</p><p><strong>TODO Thủy:</strong> Confirm how a finished exercise updates the local copy and Firestore (write to server, then update local?).</p>"
+    },
+    {
+     "id": "cv-ielts-impact",
+     "title": "IELTS AI Tutor: impact",
+     "hint": "5,000 users, both stores, server-verified Pro access, traceable AI.",
+     "q_en": "<p>What impact did the IELTS AI Tutor have?</p>",
+     "a_en": "<p>It's live on Google Play and the App Store with about five thousand users. That's the main result: a product people actually install and use.</p><p>A few things behind that I'm proud of. Pro access is decided by the server: Apple and Google purchases are verified on /api/iap and written to Firestore, so unlocking Pro doesn't depend on the client. Teachers and students work on the same assignments through one API, so the rules never disagree between the two apps. And every model call is traced in Langfuse, so when a student reports a strange answer, I can tell a bad prompt from an upstream failure instead of guessing.</p>",
+     "q_vi": "<p>IELTS AI Tutor tạo ra tác động gì?</p>",
+     "a_vi": "<p>App đang chạy trên Google Play và App Store với khoảng năm nghìn người dùng. Đó là kết quả chính: một sản phẩm người ta thật sự cài và dùng.</p><p>Đằng sau đó có vài điều tôi thấy tự hào. Quyền Pro do server quyết định: giao dịch Apple và Google được xác minh ở /api/iap rồi ghi vào Firestore, nên mở Pro không phụ thuộc vào client. Giáo viên và học viên làm việc trên cùng bài tập qua một API, nên quy tắc không bao giờ lệch giữa hai app. Và mọi lần gọi model đều được trace trên Langfuse, nên khi học viên báo câu trả lời lạ, tôi phân biệt được prompt sai với lỗi từ phía nhà cung cấp, chứ không phải đoán.</p>",
+     "notes": "<p><strong>Know:</strong> About 5,000 users is confirmed. Nothing else is a number; do not add one.</p><p><strong>Trap:</strong> Adding \"+1,000 a month\" or ratings you cannot show.</p><p><strong>Follow-up:</strong> \"How do you know what users do?\" → store consoles and the API logs; say what you actually look at.</p>"
+    },
+    {
+     "id": "cv-ielts-differently",
+     "title": "IELTS: what you'd do differently",
+     "hint": "Signed tokens instead of X-Username; tests on the server rules; cost limits on AI routes.",
+     "q_en": "<p>What would you do differently on the IELTS AI Tutor?</p>",
+     "a_en": "<p>Auth first. After Google or Apple sign-in, the app identifies itself to the API with an X-Username header. That's identity, not a signed session. I'd replace it with a short-lived signed token that the API issues after the Google or Apple check, and keep authorising every resource on the server.</p><p>Second, I'd put automated tests around the rules two clients depend on: assignment rules and purchase verification. Those are the places where a regression hurts both the app and the portal at once.</p><p>Third, I'd treat the AI routes as a cost centre from day one, with per-user limits and cost per route visible next to the Langfuse traces, so a spike shows up as a number and not as a bill.</p>",
+     "q_vi": "<p>Ở IELTS AI Tutor bạn sẽ làm khác điều gì?</p>",
+     "a_vi": "<p>Trước hết là xác thực. Sau khi đăng nhập Google hoặc Apple, app tự nhận diện với API bằng header X-Username. Đó là nhận diện, chưa phải một phiên có chữ ký. Tôi sẽ thay bằng một token ký, sống ngắn, do API cấp sau khi kiểm tra Google hoặc Apple, và vẫn kiểm tra quyền từng tài nguyên ở server.</p><p>Thứ hai, tôi sẽ viết test tự động cho những quy tắc mà hai client cùng dựa vào: quy tắc bài tập và xác minh mua hàng. Đó là chỗ một lỗi hồi quy làm hỏng cả app lẫn portal cùng lúc.</p><p>Thứ ba, tôi sẽ coi các route AI là chỗ tốn tiền ngay từ đầu, có giới hạn theo người dùng và chi phí theo route hiện cạnh trace Langfuse, để khi tăng đột biến thì thấy ngay bằng con số chứ không phải bằng hoá đơn.</p>",
+     "notes": "<p><strong>Know:</strong> Say the weakness yourself before they find it: X-Username is not a session.</p><p><strong>Trap:</strong> Calling the header \"OAuth\" or \"JWT\".</p><p><strong>Follow-up:</strong> \"How would you migrate users to tokens without logging everyone out?\" → issue a token on next sign-in; accept both for a while; then drop the header.</p><p><strong>TODO Thủy:</strong> Confirm what tests and AI rate limits exist today so this does not undersell or oversell.</p>"
+    },
+    {
+     "id": "engineering-n23",
+     "title": "IELTS auth and purchases",
+     "hint": "Sign-in is verified on the server; the session is a header; purchases use real crypto.",
+     "q_en": "<p>How does the IELTS app authenticate, and how are purchases verified?</p>",
+     "a_en": "<p>Sign-in is Google or Apple on the device. The Express API verifies the Google token with google-auth-library, or Apple's identity token, then creates or updates the user. After that the app sends an X-Username header. I'll be honest that this is identity, not a signed session on every call.</p><p>Purchases are stricter. On /api/iap the server verifies the purchase with Apple or Google, Apple's signed transaction against its certificate chain and Google Play through a service account, and only then writes the entitlement to Firestore. So Pro access never depends on the client saying it paid. The teacher portal has its own cookie session.</p>",
+     "q_vi": "<p>App IELTS xác thực thế nào, và mua hàng được xác minh ra sao?</p>",
+     "a_vi": "<p>Đăng nhập là Google hoặc Apple trên máy. API Express xác minh token Google bằng google-auth-library, hoặc identity token của Apple, rồi tạo hoặc cập nhật người dùng. Sau đó app gửi header X-Username. Tôi nói thẳng là đây là nhận diện, chưa phải một phiên có chữ ký trên mỗi request.</p><p>Mua hàng thì chặt hơn. Ở /api/iap server xác minh giao dịch với Apple hoặc Google, giao dịch có chữ ký của Apple thì kiểm tra theo chuỗi chứng chỉ, Google Play thì qua service account, rồi mới ghi quyền Pro vào Firestore. Nên quyền Pro không bao giờ dựa vào việc client tự nói là đã trả tiền. Portal giáo viên có phiên cookie riêng.</p>",
+     "notes": "<p><strong>Know:</strong> Server-side verification for both sign-in and purchases. Detail: <a href=\"node.html#engineering-n26\">IAP: Apple and Google on Express</a>.</p><p><strong>Trap:</strong> Calling X-Username a token. Overclaiming refund handling you have not confirmed.</p><p><strong>Follow-up:</strong> \"What happens on a refund or expiry?\" → the store notifications update the entitlement.</p><p><strong>TODO Thủy:</strong> Confirm how refunds and subscription expiry update entitlements (Apple App Store Server Notifications / Google RTDN?).</p>"
+    },
+    {
+     "id": "cv-c13",
+     "title": "IELTS AI features and Langfuse",
+     "hint": "Integrate models into a learning flow; trace every call; HTTP 200 is not a good answer.",
+     "q_en": "<p>What AI features did you build, and how do you debug them?</p>",
+     "a_en": "<p>The AI features are chat, text-to-speech, and speech-to-text, and all of them are Express routes. The phone never calls the model provider directly, so the keys stay on the server. Chat uses prompts specific to each skill, and writing feedback follows the IELTS band criteria.</p><p>Every model call is traced in Langfuse with the prompt, the answer, and the timing. That's what makes it debuggable. When a student says the feedback was strange, I open that trace and see whether our prompt or flow was wrong, or whether the upstream API failed or was slow. A 200 from the model only tells you the call worked, not that the answer was good.</p><p>I integrate models into a learning flow. I don't train them.</p>",
+     "q_vi": "<p>Bạn làm những tính năng AI nào, và debug chúng ra sao?</p>",
+     "a_vi": "<p>Các tính năng AI là chat, chuyển văn bản thành giọng nói và giọng nói thành văn bản, và tất cả đều là route Express. Điện thoại không bao giờ gọi thẳng nhà cung cấp model, nên key nằm ở server. Chat dùng prompt riêng cho từng kỹ năng, còn nhận xét bài viết bám theo tiêu chí chấm band của IELTS.</p><p>Mọi lần gọi model đều được trace trên Langfuse, có prompt, câu trả lời và thời gian. Nhờ vậy mới debug được. Khi học viên nói nhận xét có gì đó lạ, tôi mở trace đó và xem là prompt hay luồng của tôi sai, hay API phía trên bị lỗi hoặc chậm. Model trả 200 chỉ cho biết lời gọi thành công, không cho biết câu trả lời có tốt không.</p><p>Tôi tích hợp model vào luồng học. Tôi không huấn luyện model.</p>",
+     "notes": "<p><strong>Know:</strong> Keys on the server; one route per AI feature; Langfuse separates a bad answer from an upstream failure.</p><p><strong>Trap:</strong> Claiming model training or fine-tuning.</p><p><strong>Follow-up:</strong> \"How do you control cost and latency?\" → be honest about what you measure; see cv-ielts-differently.</p>"
+    }
+   ]
+  },
+  {
+   "id": "sec-akktis",
+   "name": "Akktis",
+   "cards": [
+    {
+     "id": "cv-c3",
+     "title": "Akktis in 30 seconds",
+     "hint": "Past tense: May 2024 – July 2026. Two halves: PHP integrations and operations.",
+     "q_en": "<p>Tell me about your work at Akktis.</p>",
+     "a_en": "<p>Akktis is a France-based outsourcing team. I worked there from May 2024 to July 2026 as a software engineer covering DevOps and full-stack.</p><p>The work had two halves. On the application side, I implemented API integrations for mobile apps and for Laravel, WordPress and WooCommerce, and PrestaShop backends. On the operations side, I ran Ubuntu and Debian servers over SSH, configured Apache, LiteSpeed, and Nginx, maintained CI/CD for web and mobile, and deployed services with Docker to Cloud Run and Cloud Storage. The biggest single piece of work was migrating a legacy custom database to MySQL on Apache.</p>",
+     "q_vi": "<p>Kể về công việc của bạn ở Akktis.</p>",
+     "a_vi": "<p>Akktis là một team outsourcing ở Pháp. Tôi làm ở đó từ tháng 5/2024 đến tháng 7/2026, vị trí software engineer kiêm DevOps và full-stack.</p><p>Công việc có hai nửa. Phía ứng dụng, tôi làm tích hợp API cho app mobile và cho backend Laravel, WordPress và WooCommerce, PrestaShop. Phía vận hành, tôi quản lý server Ubuntu và Debian qua SSH, cấu hình Apache, LiteSpeed và Nginx, duy trì CI/CD cho web và mobile, và deploy service bằng Docker lên Cloud Run và Cloud Storage. Việc lớn nhất là chuyển một database tự xây cũ sang MySQL trên Apache.</p>",
+     "notes": "<p><strong>Know:</strong> Past tense throughout. Cloud: Cloud Run, Cloud Storage, Artifact Registry. Never Cloud SQL.</p><p><strong>Trap:</strong> \"I'm doing\" / \"day to day I…\". It ended in July 2026.</p><p><strong>Follow-up:</strong> Release path → cv-c6. Migration → cv-c8.</p>"
+    },
+    {
+     "id": "cv-c6",
+     "title": "Akktis release path",
+     "hint": "Two targets: Linux hosts for PHP/CMS, Docker → Artifact Registry → Cloud Run for services.",
+     "q_en": "<p>What did a typical release look like at Akktis?</p>",
+     "a_en": "<p>There were two kinds of target. PHP and CMS apps lived on Linux hosts, with Apache, LiteSpeed, or Nginx in front, TLS and firewall rules on each server, and MySQL behind. Containerised services went to Google Cloud: the pipeline built a Docker image, pushed it to Artifact Registry, and deployed a Cloud Run revision with its env and secrets, wired to Cloud Storage for files.</p><p>Each project used its own CI, GitHub Actions, GitLab CI, or Jenkins, depending on what it already had.</p><p>The rule I kept on both paths was that a release isn't done when the deploy step turns green. I checked the new revision or the live site before calling it done, and if something was wrong, I checked config and secrets before touching application code.</p>",
+     "q_vi": "<p>Một lần release điển hình ở Akktis trông thế nào?</p>",
+     "a_vi": "<p>Có hai kiểu đích. App PHP và CMS chạy trên host Linux, phía trước là Apache, LiteSpeed hoặc Nginx, mỗi server có TLS và luật firewall, phía sau là MySQL. Các service đóng container thì lên Google Cloud: pipeline build image Docker, đẩy lên Artifact Registry, rồi deploy một revision Cloud Run với env và secret của nó, nối với Cloud Storage để lưu file.</p><p>Mỗi dự án dùng CI riêng, GitHub Actions, GitLab CI hoặc Jenkins, tuỳ dự án đã có sẵn gì.</p><p>Quy tắc tôi giữ trên cả hai đường là: release chưa xong khi bước deploy chuyển xanh. Tôi kiểm tra revision mới hoặc site thật rồi mới coi là xong, và nếu có gì sai, tôi xem config và secret trước khi đụng vào code ứng dụng.</p>",
+     "notes": "<p><strong>Know:</strong> Docker → Artifact Registry → Cloud Run (env + secrets) → Cloud Storage. More: <a href=\"devops.html#devops-d18\">Deploy Cloud Run service</a>, <a href=\"devops.html#devops-d19\">Env vars and secrets</a>.</p><p><strong>Trap:</strong> Saying Cloud SQL. The databases were MySQL on Linux hosts.</p><p><strong>Follow-up:</strong> \"How do you roll back on Cloud Run?\" → send traffic back to the previous revision.</p>"
+    },
+    {
+     "id": "cv-c10",
+     "title": "Your role at Akktis and how you worked",
+     "hint": "Owned the path from merge to healthy environment; written, async collaboration.",
+     "q_en": "<p>What was your role at Akktis, and how did you work with a France-based team?</p>",
+     "a_en": "<p>My title was Software Engineer, DevOps and Full-stack. In practice I owned the path from a merged change to a healthy environment for the projects I was on, and I also wrote integration code in PHP.</p><p>The team was France-based and international, across time zones, so most of the work was written. Status updates that say what changed and what's next, tickets with the cause and the fix and not only \"done\", and a short runbook with every server change. That habit is also why the migration ended with a documented ops path, so support didn't depend on one person being online.</p>",
+     "q_vi": "<p>Vai trò của bạn ở Akktis là gì, và bạn làm việc với team ở Pháp thế nào?</p>",
+     "a_vi": "<p>Chức danh của tôi là Software Engineer, DevOps và Full-stack. Thực tế tôi chịu trách nhiệm đoạn từ lúc một thay đổi được merge đến lúc môi trường chạy ổn cho các dự án tôi tham gia, và tôi cũng viết code tích hợp bằng PHP.</p><p>Team ở Pháp và có người nhiều nước, lệch múi giờ, nên phần lớn công việc trao đổi bằng văn bản. Cập nhật trạng thái nói rõ đã đổi gì và bước tiếp theo là gì, ticket ghi nguyên nhân và cách sửa chứ không chỉ \"xong\", và một runbook ngắn đi kèm mỗi thay đổi trên server. Thói quen đó cũng là lý do đợt migration kết thúc với một quy trình vận hành có tài liệu, để việc hỗ trợ không phụ thuộc vào một người có đang online hay không.</p>",
+     "notes": "<p><strong>Know:</strong> Async-first, written decisions, runbook per change.</p><p><strong>Trap:</strong> Inventing team size or a lead title.</p><p><strong>Follow-up:</strong> \"How many people / projects?\"</p><p><strong>TODO Thủy:</strong> Confirm team size, how many projects you covered, and who you reported to.</p>"
+    },
+    {
+     "id": "cv-c8",
+     "title": "Hardest problem at Akktis: the legacy migration",
+     "hint": "The hard part was confidence, not the copy: backups, validate the app, document.",
+     "q_en": "<p>Tell me about the legacy database migration. What was hard about it?</p>",
+     "a_en": "<p>The hardest piece of work at Akktis was migrating a legacy custom database to MySQL on Apache. The copy wasn't the hard part; confidence was. A custom setup hides assumptions: what the app expects, which data is really used, and what breaks if a type changes.</p><p>So I worked in order. Backups first. Then move the data, and after the cutover validate the application itself, its reads and writes against MySQL, not only row counts. And then write down the new path: where the database runs, how to back it up, how to restart it, so support didn't depend on one person's memory.</p><p>It left the app on a standard stack that the rest of the team could support.</p>",
+     "q_vi": "<p>Kể về đợt chuyển database cũ. Khó ở chỗ nào?</p>",
+     "a_vi": "<p>Việc khó nhất ở Akktis là chuyển một database tự xây cũ sang MySQL trên Apache. Chép dữ liệu không phải phần khó, phần khó là sự chắc chắn. Một hệ thống tự xây giấu nhiều giả định: app mong đợi gì, dữ liệu nào thật sự được dùng, và cái gì hỏng nếu đổi kiểu dữ liệu.</p><p>Nên tôi làm theo thứ tự. Backup trước. Rồi chuyển dữ liệu, và sau khi chuyển thì kiểm tra chính ứng dụng, đọc và ghi trên MySQL, chứ không chỉ đếm số dòng. Rồi viết lại quy trình mới: database chạy ở đâu, backup thế nào, khởi động lại ra sao, để việc hỗ trợ không phụ thuộc vào trí nhớ của một người.</p><p>Kết quả là app chạy trên một stack chuẩn mà cả team hỗ trợ được.</p>",
+     "notes": "<p><strong>Know:</strong> Backups → cutover → validate app reads/writes → document the ops path.</p><p><strong>Trap:</strong> Overclaiming zero downtime or a rollback rehearsal you did not do.</p><p><strong>Follow-up:</strong> \"What was your rollback plan?\" \"How long was the cutover?\"</p><p><strong>TODO Thủy:</strong> Confirm the rollback plan, how long the cutover took, and roughly how much data moved.</p>"
+    },
+    {
+     "id": "cv-akktis-impact",
+     "title": "Akktis: impact",
+     "hint": "Process results, honestly described. No invented percentages.",
+     "q_en": "<p>What was the impact of your work at Akktis?</p>",
+     "a_en": "<p>I don't have percentages for it, so I'll describe what changed. The legacy app ended up on standard MySQL and Apache, with its reads and writes validated after the cutover and an ops path anyone on the team could follow. Every server change came with a short runbook, and TLS and firewall rules were set per server instead of living in someone's head. Releases stopped at the red job instead of being retried until green, and were promoted only when the run passed. On Cloud Run, a new revision was checked before anyone changed code. For a team spread across time zones, that meant fewer releases that needed one specific person awake.</p>",
+     "q_vi": "<p>Công việc của bạn ở Akktis tạo ra tác động gì?</p>",
+     "a_vi": "<p>Tôi không có số phần trăm, nên tôi sẽ nói những gì đã thay đổi. App cũ chuyển sang MySQL và Apache chuẩn, đọc ghi được kiểm tra sau khi chuyển, và có quy trình vận hành mà ai trong team cũng làm theo được. Mỗi thay đổi trên server có một runbook ngắn, và TLS, luật firewall được cấu hình trên từng server chứ không nằm trong đầu ai đó. Release dừng ở job đỏ thay vì chạy lại đến khi xanh, và chỉ promote khi pipeline qua. Trên Cloud Run, revision mới được kiểm tra trước khi ai đó sửa code. Với một team lệch múi giờ, điều đó nghĩa là ít lần release cần đúng một người phải thức.</p>",
+     "notes": "<p><strong>Know:</strong> Every sentence maps to an Akktis CV bullet.</p><p><strong>Trap:</strong> Making up \"cut release time by 50%\".</p><p><strong>Follow-up:</strong> \"How would you measure it now?\" → deploy frequency, failed releases, time to recover.</p><p><strong>TODO Thủy:</strong> Add any real numbers you have (number of servers, apps, releases per week).</p>"
+    },
+    {
+     "id": "cv-akktis-differently",
+     "title": "Akktis: what you'd do differently",
+     "hint": "Turn the manual checks into automatic ones; rehearse the cutover.",
+     "q_en": "<p>What would you do differently at Akktis?</p>",
+     "a_en": "<p>Two things. First, I'd make the checks automatic instead of a habit. I checked each new revision and each server by hand. I'd add a smoke test that runs after every deploy and fails the release if the main pages or endpoints don't answer, and a disk-usage alert on every Linux host, so a full disk is a warning and not an outage.</p><p>Second, for the migration, I'd rehearse the whole cutover on a copy first, including restoring from the backup, and write the rollback steps down before the day, not only the forward path. We got through it, but a rehearsal would have turned confidence into evidence.</p>",
+     "q_vi": "<p>Ở Akktis bạn sẽ làm khác điều gì?</p>",
+     "a_vi": "<p>Hai điều. Thứ nhất, tôi sẽ biến các bước kiểm tra thành tự động thay vì dựa vào thói quen. Tôi kiểm tra từng revision mới và từng server bằng tay. Tôi sẽ thêm một smoke test chạy sau mỗi lần deploy, làm release thất bại nếu các trang hoặc endpoint chính không trả lời, và cảnh báo dung lượng đĩa trên mọi host Linux, để đầy đĩa là một cảnh báo chứ không phải một sự cố.</p><p>Thứ hai, với đợt migration, tôi sẽ diễn tập toàn bộ việc chuyển trên một bản sao trước, kể cả khôi phục từ backup, và viết sẵn các bước rollback trước ngày chuyển, không chỉ các bước chuyển đi. Lần đó vẫn ổn, nhưng diễn tập sẽ biến sự tự tin thành bằng chứng.</p>",
+     "notes": "<p><strong>Know:</strong> Habit → automation is the honest growth story.</p><p><strong>Trap:</strong> Implying the migration went badly. It did not.</p><p><strong>Follow-up:</strong> \"Why didn't you add the alert then?\"</p>"
+    },
+    {
+     "id": "cv-c4",
+     "title": "Linux and web servers at Akktis",
+     "hint": "SSH, evidence before restarts; Apache, LiteSpeed, Nginx; TLS, firewall, runbook.",
+     "q_en": "<p>You wrote that you managed Linux servers and Apache, LiteSpeed, and Nginx. What did that look like?</p>",
+     "a_en": "<p>I worked on Ubuntu and Debian hosts over SSH: deploys, service restarts, logs, and incidents. I don't restart first. I look at the symptom, then the service status, the logs, disk and memory, and what changed recently, and then I fix the smallest cause.</p><p>The web server layer was Apache, LiteSpeed, or Nginx depending on the app: virtual hosts, PHP handling, TLS certificates, and firewall rules. When a site misbehaved, I checked whether the web server or the app was wrong before editing any code.</p><p>And each change came with a short runbook: what changed, how to check it, and how to undo it.</p>",
+     "q_vi": "<p>Bạn ghi là đã quản lý server Linux và Apache, LiteSpeed, Nginx. Cụ thể là gì?</p>",
+     "a_vi": "<p>Tôi làm trên host Ubuntu và Debian qua SSH: deploy, khởi động lại service, xem log và xử lý sự cố. Tôi không khởi động lại trước. Tôi xem triệu chứng, rồi trạng thái service, log, đĩa và bộ nhớ, và gần đây có gì thay đổi, rồi mới sửa nguyên nhân nhỏ nhất.</p><p>Lớp web server là Apache, LiteSpeed hoặc Nginx tuỳ app: virtual host, cách chạy PHP, chứng chỉ TLS và luật firewall. Khi một site chạy sai, tôi xem web server sai hay app sai trước khi sửa code.</p><p>Và mỗi thay đổi có một runbook ngắn: đã đổi gì, kiểm tra thế nào, và hoàn tác ra sao.</p>",
+     "notes": "<p><strong>Know:</strong> Evidence before restart. Practice: <a href=\"devops.html#devops-d40\">SSH day-to-day</a>, <a href=\"devops.html#devops-d30\">Firewall: GCP tags + UFW</a>.</p><p><strong>Trap:</strong> Using the vague word \"hardening\". Say what you did: TLS, firewall rules, runbook.</p><p><strong>Follow-up:</strong> \"Show me how you'd find what's filling the disk.\" → go1-cv-prod.</p>"
+    },
+    {
+     "id": "cv-c5",
+     "title": "CI/CD you maintained",
+     "hint": "Maintained, not designed. Red job → read the stage log → smallest fix → promote on green.",
+     "q_en": "<p>Tell me about the CI/CD pipelines you worked on. What do you do when one breaks during a release?</p>",
+     "a_en": "<p>I maintained CI/CD for web and mobile across environments. I didn't design one standard pipeline: each project used what it had, GitHub Actions, GitLab CI, or Jenkins, and my job was to keep them working and releases moving. For containerised services the last stage pushed to Artifact Registry and deployed to Cloud Run.</p><p>When a release failed, I stopped at the red job instead of re-running it. I read that stage's log, decided whether it was build, test, or deploy, and checked whether a secret, a runner, or a dependency had changed. Then the smallest fix, a new run, and promotion only when the run was green.</p>",
+     "q_vi": "<p>Kể về CI/CD bạn đã làm. Khi pipeline hỏng giữa lúc release thì bạn làm gì?</p>",
+     "a_vi": "<p>Tôi duy trì CI/CD cho web và mobile qua nhiều môi trường. Tôi không thiết kế một pipeline chuẩn chung: mỗi dự án dùng thứ đã có, GitHub Actions, GitLab CI hoặc Jenkins, và việc của tôi là giữ chúng chạy được và release không bị tắc. Với service đóng container, bước cuối đẩy image lên Artifact Registry và deploy lên Cloud Run.</p><p>Khi release lỗi, tôi dừng ở job đỏ thay vì chạy lại. Tôi đọc log của bước đó, xác định lỗi ở build, test hay deploy, và xem secret, runner hay dependency có thay đổi không. Rồi sửa chỗ nhỏ nhất, chạy lại, và chỉ promote khi pipeline xanh.</p>",
+     "notes": "<p><strong>Know:</strong> CV says \"Maintained\". Pipeline practice: <a href=\"devops.html#devops-d64\">Broken mobile pipeline</a>.</p><p><strong>Trap:</strong> Saying you \"built\" or \"designed\" the pipelines.</p><p><strong>Follow-up:</strong> \"What's the difference between build, test, and deploy failures?\"</p>"
+    }
+   ]
+  },
+  {
+   "id": "sec-basevn",
+   "name": "BaseVN",
+   "cards": [
+    {
+     "id": "engineering-g19",
+     "title": "BaseVN in 30 seconds",
+     "hint": "Three products, PHP + MySQL, data that must be correct.",
+     "q_en": "<p>Tell me about your time at BaseVN.</p>",
+     "a_en": "<p>BaseVN makes HRM, payroll, and e-government SaaS. I was a full-stack engineer there from March 2022 to October 2023, on PHP and MySQL, and I worked on three products.</p><p>Base E-Hiring, the applicant tracking product, where I integrated VietnamWorks and TopCV for job posting and candidate sync. Base PIT, personal income tax, where I designed the schema, tuned queries over more than 500,000 records, and built Excel and XML export for HRM sync and tax filing. And Base VSS, Vietnam Social Security, where I built the sync between VSS, HRM, and Payroll.</p><p>The common thread is data that has to be correct, because it's people's tax, insurance, and hiring.</p>",
+     "q_vi": "<p>Kể về thời gian bạn làm ở BaseVN.</p>",
+     "a_vi": "<p>BaseVN làm SaaS về HRM, lương và dịch vụ công. Tôi làm full-stack engineer ở đó từ tháng 3/2022 đến tháng 10/2023, trên PHP và MySQL, và làm ba sản phẩm.</p><p>Base E-Hiring, sản phẩm quản lý tuyển dụng, tôi tích hợp VietnamWorks và TopCV để đăng tin và đồng bộ ứng viên. Base PIT, thuế thu nhập cá nhân, tôi thiết kế schema, tối ưu query trên hơn 500.000 bản ghi, và làm xuất Excel, XML để đồng bộ với HRM và nộp thuế. Và Base VSS, bảo hiểm xã hội, tôi làm phần đồng bộ giữa VSS, HRM và Payroll.</p><p>Điểm chung là dữ liệu phải đúng, vì đó là thuế, bảo hiểm và tuyển dụng của người thật.</p>",
+     "notes": "<p><strong>Know:</strong> E-Hiring Mar 2022–Oct 2023; PIT Dec 2022–Oct 2023; VSS Jun 2023–Oct 2023.</p><p><strong>Trap:</strong> Putting XML tax export under VSS. XML for tax filing is PIT; VSS is social insurance sync.</p><p><strong>Follow-up:</strong> How they fit → cv-basevn-architecture.</p>"
+    },
+    {
+     "id": "cv-basevn-architecture",
+     "title": "How PIT, VSS, and E-Hiring fit together",
+     "hint": "Shared HR data in the middle; PIT and VSS read it; E-Hiring talks to job boards.",
+     "q_en": "<p>How did those BaseVN products fit together technically?</p>",
+     "a_en": "<p>They were PHP and MySQL products around a shared core of HR data. HRM is where employees live, and Payroll calculates pay.</p><p>PIT works from that data for personal income tax: the schema I designed, heavy queries over more than 500,000 records, and Excel and XML export, the XML for filing with the tax authority.</p><p>VSS sits between social insurance and HRM and Payroll. Sync jobs map fields between them, run in a set order, and validate the data before a compliance export.</p><p>E-Hiring faces outward: jobs go out to VietnamWorks and TopCV, and candidates come back in through sync jobs, with retries, request logging, and job monitoring around them.</p>",
+     "q_vi": "<p>Về kỹ thuật, các sản phẩm đó của BaseVN gắn với nhau thế nào?</p>",
+     "a_vi": "<p>Đó là các sản phẩm PHP và MySQL xoay quanh một lõi dữ liệu nhân sự chung. HRM là nơi lưu nhân viên, Payroll tính lương.</p><p>PIT dùng dữ liệu đó cho thuế thu nhập cá nhân: schema tôi thiết kế, các query nặng trên hơn 500.000 bản ghi, và xuất Excel, XML, trong đó XML để nộp cho cơ quan thuế.</p><p>VSS nằm giữa bảo hiểm xã hội với HRM và Payroll. Các job đồng bộ map trường dữ liệu giữa các bên, chạy theo thứ tự cố định, và kiểm tra dữ liệu trước khi xuất báo cáo tuân thủ.</p><p>E-Hiring hướng ra ngoài: tin tuyển dụng đẩy sang VietnamWorks và TopCV, ứng viên về lại qua các job đồng bộ, có retry, log request và theo dõi job.</p>",
+     "notes": "<p><strong>Know:</strong> Draw it: HRM + Payroll in the middle; PIT and VSS read and export; E-Hiring syncs with job boards.</p><p><strong>Trap:</strong> Claiming a custom framework or internals you cannot describe. Say \"PHP and MySQL\".</p><p><strong>Follow-up:</strong> \"Where's the source of truth for an employee?\" → HRM.</p>"
+    },
+    {
+     "id": "cv-basevn-role",
+     "title": "Your role at BaseVN",
+     "hint": "Full-stack across three overlapping products; be exact about dates.",
+     "q_en": "<p>What was your role at BaseVN?</p>",
+     "a_en": "<p>I was a full-stack engineer, working across the backend and the screens that used it. On PIT I designed the schema and did the index and query work, built the Excel and XML exports, and re-tested those paths through launch. On VSS I built the synchronization and the validation on the compliance exports. On E-Hiring I owned the job-board integrations: posting, candidate sync, retries, logging, and monitoring.</p><p>The products overlapped. E-Hiring ran through my whole time there, PIT from December 2022, and VSS from June 2023, so in the last months I was working on all three at once.</p>",
+     "q_vi": "<p>Vai trò của bạn ở BaseVN là gì?</p>",
+     "a_vi": "<p>Tôi là full-stack engineer, làm cả backend lẫn các màn hình dùng nó. Ở PIT tôi thiết kế schema, làm index và query, làm xuất Excel và XML, và test lại các luồng đó đến lúc ra mắt. Ở VSS tôi làm phần đồng bộ và kiểm tra dữ liệu trên các báo cáo tuân thủ. Ở E-Hiring tôi phụ trách tích hợp các trang tuyển dụng: đăng tin, đồng bộ ứng viên, retry, log và theo dõi.</p><p>Các sản phẩm chồng lên nhau. E-Hiring kéo dài suốt thời gian tôi ở đó, PIT từ tháng 12/2022, VSS từ tháng 6/2023, nên mấy tháng cuối tôi làm cả ba cùng lúc.</p>",
+     "notes": "<p><strong>Know:</strong> Dates from the CV; say \"full-stack\" and mean PHP backend + the screens.</p><p><strong>Trap:</strong> Inventing a team size or a lead role.</p><p><strong>Follow-up:</strong> \"How big was the team?\"</p><p><strong>TODO Thủy:</strong> Confirm team size per product and who you reported to.</p>"
+    },
+    {
+     "id": "go1-cv-caught",
+     "title": "Hardest problem at BaseVN: a silent sync mismatch",
+     "hint": "Not a crash: a green job with wrong data. Known sample → mapping and job order → validation.",
+     "q_en": "<p>What was the hardest problem at BaseVN? What's the most important issue you caught?</p>",
+     "a_en": "<p>The hardest bugs weren't crashes, they were silent mismatches in the VSS sync. The job between VSS, HRM, and Payroll would finish successfully, the counts looked right, and a field was still wrong in the compliance export. Nobody notices that until it's filed.</p><p>So I stopped trusting the job's success log. I took a small known sample, a few employees I could check by hand, and compared the source fields, the destination fields, and the export. The causes were field mapping and job order: if Payroll reads before HRM has finished, it gets yesterday's data.</p><p>I fixed the mapping and the order, then added validation on the export so it had to match the source, and re-ran the sample before the full set. I'd rather catch it on ten rows than explain it on thousands.</p>",
+     "q_vi": "<p>Vấn đề khó nhất ở BaseVN là gì? Lỗi quan trọng nhất bạn phát hiện được?</p>",
+     "a_vi": "<p>Lỗi khó nhất không phải là crash, mà là lệch dữ liệu âm thầm trong đồng bộ VSS. Job giữa VSS, HRM và Payroll chạy thành công, số lượng nhìn vẫn đúng, nhưng một trường trong báo cáo tuân thủ vẫn sai. Không ai thấy cho đến khi đã nộp.</p><p>Nên tôi không tin vào log báo thành công của job nữa. Tôi lấy một mẫu nhỏ đã biết, vài nhân viên tôi kiểm tra được bằng tay, rồi so trường ở nguồn, trường ở đích và file xuất. Nguyên nhân là map trường và thứ tự job: nếu Payroll đọc trước khi HRM chạy xong, nó lấy dữ liệu của hôm qua.</p><p>Tôi sửa phần map và thứ tự, thêm bước kiểm tra trên file xuất để nó phải khớp với nguồn, rồi chạy lại trên mẫu trước khi chạy toàn bộ. Tôi thà bắt lỗi trên mười dòng còn hơn phải giải thích trên hàng nghìn dòng.</p>",
+     "notes": "<p><strong>Know:</strong> CV: \"Traced silent mismatches on a known sample, fixed field mapping and job order, and added validation so compliance exports matched source data.\"</p><p><strong>Trap:</strong> VSS is social insurance, not the tax authority. Keep tax/XML for PIT.</p><p><strong>Follow-up:</strong> \"How did you notice it in the first place?\" \"What validation exactly?\"</p><p><strong>TODO Thủy:</strong> Confirm how the first mismatch was noticed (a customer report? your own check?) and what the validation checked.</p>"
+    },
+    {
+     "id": "cv-basevn-impact",
+     "title": "BaseVN: impact",
+     "hint": "500,000+ records at launch, exports that match, vendor failures visible.",
+     "q_en": "<p>What was the impact of your work at BaseVN?</p>",
+     "a_en": "<p>Base PIT launched on more than 500,000 records, with the schema, indexes, and queries I worked on behind the tax and reporting flows, and Excel and XML export for HRM sync and tax filing that I re-tested through launch. The VSS sync got validation, so compliance exports matched the source data instead of just finishing. And on E-Hiring, failures like rate limits, expired auth, or a changed response from a job board became visible through retries, request logging, and job monitoring, instead of candidates quietly going missing.</p><p>I don't have before-and-after timings I can quote, so I describe the result in those terms.</p>",
+     "q_vi": "<p>Công việc của bạn ở BaseVN tạo ra tác động gì?</p>",
+     "a_vi": "<p>Base PIT ra mắt trên hơn 500.000 bản ghi, với schema, index và query tôi làm nằm sau các luồng thuế và báo cáo, và phần xuất Excel, XML cho đồng bộ HRM và nộp thuế mà tôi đã test lại đến lúc ra mắt. Đồng bộ VSS có bước kiểm tra, nên báo cáo tuân thủ khớp với dữ liệu nguồn chứ không chỉ là chạy xong. Còn ở E-Hiring, các lỗi như giới hạn request, hết hạn xác thực hay response của trang tuyển dụng thay đổi đều hiện ra nhờ retry, log request và theo dõi job, thay vì ứng viên lặng lẽ bị thiếu.</p><p>Tôi không có số đo trước và sau để nêu, nên tôi mô tả kết quả theo cách đó.</p>",
+     "notes": "<p><strong>Know:</strong> 500,000+ is the only number, and it is the data size, not a speedup.</p><p><strong>Trap:</strong> Inventing \"3 s → 300 ms\".</p><p><strong>Follow-up:</strong> \"How did you prove it was faster?\" → the export finished and the screen was usable on real volume; correctness on a known sample.</p>"
+    },
+    {
+     "id": "cv-basevn-differently",
+     "title": "BaseVN: what you'd do differently",
+     "hint": "Automate the known-sample check; record timings; contract tests for job boards.",
+     "q_en": "<p>Looking back at BaseVN, what would you do differently?</p>",
+     "a_en": "<p>I'd turn my manual checks into automated ones. The known-sample comparison I ran by hand for VSS and PIT should be a fixture test that runs on every change: a small company whose tax and insurance numbers are known, run through the sync and the export, compared line by line.</p><p>I'd also record query timings for the heavy reports before and after each change, so I could show the improvement as a number instead of describing it.</p><p>And for E-Hiring, I'd add a contract test against each job board's response format, so a vendor change fails a test before it breaks a sync.</p>",
+     "q_vi": "<p>Nhìn lại BaseVN, bạn sẽ làm khác điều gì?</p>",
+     "a_vi": "<p>Tôi sẽ biến các bước kiểm tra bằng tay thành tự động. Việc so trên mẫu đã biết mà tôi làm tay cho VSS và PIT nên là một fixture test chạy mỗi khi có thay đổi: một công ty nhỏ có số thuế và bảo hiểm đã biết, chạy qua đồng bộ và xuất file, rồi so từng dòng.</p><p>Tôi cũng sẽ ghi lại thời gian chạy query của các báo cáo nặng trước và sau mỗi thay đổi, để chứng minh cải thiện bằng con số thay vì mô tả.</p><p>Và với E-Hiring, tôi sẽ thêm contract test cho định dạng response của từng trang tuyển dụng, để khi bên đó đổi thì test báo lỗi trước khi đồng bộ bị hỏng.</p>",
+     "notes": "<p><strong>Know:</strong> Same growth story as everywhere: manual check → automated test; describe → measure.</p><p><strong>Trap:</strong> Blaming the old team or codebase.</p><p><strong>Follow-up:</strong> \"Why didn't you then?\" → keep it simple: you were learning the domain and the launch came first.</p>"
+    },
+    {
+     "id": "go1-cv-500k",
+     "title": "Base PIT: optimizing for 500,000+ records",
+     "hint": "Correctness before speed. Jobs, EXPLAIN, matching indexes, batches, known sample.",
+     "q_en": "<p>You wrote that you tuned queries over 500,000+ records. Walk me through it.</p>",
+     "a_en": "<p>Base PIT sat on more than 500,000 records, and the slow parts were reporting, export, and list screens over employee and period data.</p><p>First rule: a heavy export doesn't run inside a user request. It runs in chunks as a job, and the user downloads the file.</p><p>Then I found the real slow query, from the slow log or the query behind the screen, and ran EXPLAIN. Usually it was a full scan or a missing index on the columns we actually filter and join, like company, employee, and tax period, or SELECT star and N+1 queries in a loop.</p><p>The fixes were boring and safe: indexes that match the WHERE and JOIN, queries that fetch only the columns they need, batches instead of loading everything into PHP memory, and schema fixes where needed. And I always re-checked correctness on a known sample. For tax data, fast and wrong is worse than slow and right.</p>",
+     "q_vi": "<p>Bạn ghi là đã tối ưu query trên hơn 500.000 bản ghi. Kể cụ thể đi.</p>",
+     "a_vi": "<p>Base PIT có hơn 500.000 bản ghi, và chỗ chậm là báo cáo, xuất file và các màn hình danh sách trên dữ liệu nhân viên theo kỳ.</p><p>Nguyên tắc đầu tiên: xuất file nặng không chạy trong request của người dùng. Nó chạy theo từng phần như một job, rồi người dùng tải file về.</p><p>Sau đó tôi tìm query chậm thật sự, từ slow log hoặc query đằng sau màn hình chậm, rồi chạy EXPLAIN. Thường là quét toàn bảng, hoặc thiếu index trên các cột thật sự dùng để lọc và join, như công ty, nhân viên, kỳ thuế, hoặc SELECT * và N+1 query trong vòng lặp.</p><p>Cách sửa thì đơn giản và an toàn: index khớp với WHERE và JOIN, query chỉ lấy cột cần dùng, xử lý theo lô thay vì nạp hết vào bộ nhớ PHP, và sửa schema khi cần. Và tôi luôn kiểm tra lại độ đúng trên một mẫu đã biết. Với dữ liệu thuế, nhanh mà sai còn tệ hơn chậm mà đúng.</p>",
+     "notes": "<p><strong>Know:</strong> EXPLAIN: type ALL, rows, key. Detail: <a href=\"php.html#new-php-explain\">How you read EXPLAIN</a>. Would you return 500k rows to the phone? No: paginate lists, export files in the background.</p><p><strong>Trap:</strong> Inventing timings. Adding an index on every column: unused indexes slow writes.</p><p><strong>Follow-up:</strong> \"What index exactly?\" → composite on the filter and join columns (company, employee, period), leftmost prefix matters. \"How did you measure?\" → export finished and screens were usable on real volume; correctness on a known sample.</p>"
+    },
+    {
+     "id": "go1-cv-test",
+     "title": "How do you test a report, export, or schema change?",
+     "hint": "A fixture with known numbers; compare old and new; check the write path too.",
+     "q_en": "<p>How do you test a report, export, or schema change?</p>",
+     "a_en": "<p>I keep a fixture: a small company or a few employees whose numbers I already know. I run the old path and the new path and compare. For Excel and XML I check the totals and a few line items, not only that a file downloaded.</p><p>For a schema or index change I check the write path too, inserts and the sync job, because a new index can slow writes down. Then I run the heavy export once on a realistic volume, on a staging copy if I have one, not for the first time in production.</p>",
+     "q_vi": "<p>Bạn test một thay đổi về báo cáo, xuất file hoặc schema thế nào?</p>",
+     "a_vi": "<p>Tôi giữ một bộ dữ liệu mẫu: một công ty nhỏ hoặc vài nhân viên mà tôi đã biết trước các con số. Tôi chạy luồng cũ và luồng mới rồi so. Với Excel và XML tôi kiểm tra tổng và vài dòng chi tiết, không chỉ là file tải về được.</p><p>Với thay đổi schema hoặc index, tôi kiểm tra cả luồng ghi, tức là insert và job đồng bộ, vì index mới có thể làm ghi chậm đi. Rồi tôi chạy xuất file nặng một lần trên khối lượng dữ liệu thực tế, trên bản sao staging nếu có, chứ không chạy lần đầu trên production.</p>",
+     "notes": "<p><strong>Know:</strong> Known sample + compare old vs new + write path + realistic volume.</p><p><strong>Trap:</strong> \"I tested it manually and it looked fine.\"</p><p><strong>Follow-up:</strong> \"Did you have automated tests?\" → be honest; see cv-basevn-differently.</p><p><strong>TODO Thủy:</strong> Confirm whether these checks were automated at BaseVN or by hand.</p>"
+    },
+    {
+     "id": "cv-c18",
+     "title": "E-Hiring and flaky job-board APIs",
+     "hint": "VietnamWorks/TopCV: retries, request logging, job monitoring. Nothing else.",
+     "q_en": "<p>What did you do on E-Hiring, and how did you handle unreliable third-party APIs?</p>",
+     "a_en": "<p>On E-Hiring I integrated VietnamWorks and TopCV for job posting and candidate sync. Third-party APIs fail in a few predictable ways: rate limits, expired auth, and a response that changes shape. So the work was as much about failure as about the happy path.</p><p>I added retries where a retry is safe, request logging with enough context to show the vendor exactly which call failed, and monitoring on the sync jobs, so a failure showed up as a failed job instead of candidates quietly going missing. A retry doesn't fix expired auth or a changed response, so those had to fail visibly and get fixed, not retried forever.</p>",
+     "q_vi": "<p>Bạn làm gì ở E-Hiring, và xử lý API bên thứ ba không ổn định thế nào?</p>",
+     "a_vi": "<p>Ở E-Hiring tôi tích hợp VietnamWorks và TopCV để đăng tin và đồng bộ ứng viên. API bên thứ ba thường lỗi theo vài kiểu dễ đoán: giới hạn request, hết hạn xác thực, và response bị đổi cấu trúc. Nên công việc là xử lý lỗi nhiều không kém luồng chạy đúng.</p><p>Tôi thêm retry ở chỗ retry an toàn, log request đủ thông tin để chỉ cho bên kia đúng lời gọi nào lỗi, và theo dõi các job đồng bộ, để lỗi hiện ra thành một job thất bại thay vì ứng viên lặng lẽ bị thiếu. Retry không sửa được xác thực hết hạn hay response đổi cấu trúc, nên những lỗi đó phải báo ra rõ ràng và được sửa, chứ không retry mãi.</p>",
+     "notes": "<p><strong>Know:</strong> Only what the CV says: posting, candidate sync, retries, request logging, job monitoring. Pattern: <a href=\"system-design.html#new-system-19\">Webhook retries</a>.</p><p><strong>Trap:</strong> Claiming an email server, recruiter dashboards, or an approval workflow. Not on the CV.</p><p><strong>Follow-up:</strong> \"Which errors do you retry?\" → timeouts and 429/5xx, with a limit; never 4xx like auth or validation.</p>"
+    }
+   ]
+  },
+  {
+   "id": "sec-across",
+   "name": "Across projects",
+   "cards": [
+    {
+     "id": "go1-cv-hardest",
+     "title": "The hardest thing you've worked on",
+     "hint": "Pick one story and stay in it. Default: Base PIT launch.",
+     "q_en": "<p>What was the hardest thing you've worked on?</p>",
+     "a_en": "<p>The hardest was Base PIT around launch. It wasn't one slow query. We had more than 500,000 records, reporting that had to be correct, Excel and XML that had to match HRM and Payroll, and a deadline. If I optimised the wrong path, I could make exports fast and the tax numbers wrong.</p><p>What made it hard was the connections. I had to see the flow first: which system is the source of truth, which query is on the launch path, and what a duplicate or missing record does to a report. Then I started with the highest-risk path, money and compliance, not the easiest refactor.</p><p>The method was: map it, measure, change one layer, verify on a known sample, then move to the next layer. I still use that whenever a system feels too big.</p>",
+     "q_vi": "<p>Việc khó nhất bạn từng làm là gì?</p>",
+     "a_vi": "<p>Khó nhất là Base PIT giai đoạn ra mắt. Không phải chỉ một query chậm. Có hơn 500.000 bản ghi, báo cáo phải đúng, Excel và XML phải khớp với HRM và Payroll, và có hạn chót. Nếu tôi tối ưu nhầm chỗ, tôi có thể làm xuất file nhanh mà số thuế lại sai.</p><p>Cái khó là các mối liên kết. Tôi phải nhìn được luồng trước: hệ thống nào là nguồn sự thật, query nào nằm trên đường ra mắt, và một bản ghi trùng hay thiếu sẽ ảnh hưởng thế nào đến báo cáo. Rồi tôi bắt đầu từ chỗ rủi ro cao nhất, tiền và tuân thủ, chứ không phải chỗ dễ sửa nhất.</p><p>Cách làm là: vẽ ra, đo, đổi một lớp, kiểm tra trên mẫu đã biết, rồi mới sang lớp tiếp theo. Đến giờ tôi vẫn dùng cách đó khi một hệ thống có vẻ quá lớn.</p>",
+     "notes": "<p><strong>Know:</strong> For a Node/realtime role, PhysioFix call ordering (cv-physiofix-hardest) is a strong alternative. Second story if asked: the Akktis migration (cv-c8).</p><p><strong>Trap:</strong> Listing five \"hardest\" stories. Pick one.</p><p><strong>Follow-up:</strong> \"What would you do differently?\" → cv-basevn-differently.</p>"
+    },
+    {
+     "id": "go1-cv-prod",
+     "title": "A production incident you handled",
+     "hint": "Disk full on a Linux host: confirm, free safely, restart, verify, write it down.",
+     "q_en": "<p>Tell me about a production incident you handled.</p>",
+     "a_en": "<p>At Akktis the incident I handled most on Linux hosts was a full disk. A site suddenly fails, and the cause is logs or uploads filling the volume.</p><p>I confirm it first: df to see which filesystem is full, du to find what grew. Then I free space safely: rotate or compress the logs and clear only what I know is safe. I never delete blindly under /var. Then I restart the affected service and check that the site actually answers, not just that the process is running. Last, I write down what to watch so the next one is caught early.</p><p>That's my pattern for any incident: confirm the cause, apply the smallest fix, verify from the user's side, and write it down.</p>",
+     "q_vi": "<p>Kể về một sự cố production bạn đã xử lý.</p>",
+     "a_vi": "<p>Ở Akktis, sự cố tôi gặp nhiều nhất trên host Linux là đầy đĩa. Một site đột nhiên lỗi, và nguyên nhân là log hoặc file upload làm đầy ổ.</p><p>Tôi xác nhận trước: df để xem phân vùng nào đầy, du để tìm cái gì tăng lên. Rồi tôi giải phóng dung lượng một cách an toàn: xoay vòng hoặc nén log, và chỉ xoá những gì tôi biết chắc là an toàn. Tôi không bao giờ xoá bừa trong /var. Rồi tôi khởi động lại service bị ảnh hưởng và kiểm tra site thật sự trả lời được, chứ không chỉ là tiến trình đang chạy. Cuối cùng tôi ghi lại cần theo dõi gì để lần sau phát hiện sớm.</p><p>Đó là cách tôi xử lý mọi sự cố: xác nhận nguyên nhân, sửa chỗ nhỏ nhất, kiểm tra từ phía người dùng, và ghi lại.</p>",
+     "notes": "<p><strong>Know:</strong> CV: \"disk-full incidents (confirm with df/du, clear logs safely, restart, then note the check for next time).\" Commands: <a href=\"devops.html#devops-d66\">VM disk full</a>.</p><p><strong>Trap:</strong> Deleting a log file a process still holds open: the space is not freed until the process restarts or the file is truncated.</p><p><strong>Follow-up:</strong> \"Another one?\" → cv-c23 (a deploy with the wrong config).</p><p><strong>TODO Thủy:</strong> Have one specific occurrence ready: which app, what filled the disk.</p>"
+    },
+    {
+     "id": "cv-c23",
+     "title": "A deploy that broke with correct code",
+     "hint": "Wrong env or secret on the new revision. Diff the config, not the code.",
+     "q_en": "<p>Tell me about a deploy that failed even though the code was fine.</p>",
+     "a_en": "<p>This came up in two places. At Akktis, services went to Cloud Run as Docker images with env and secrets. When a new revision misbehaves after a deploy, the first thing I check is that revision's config: the env vars and secret versions it's actually running with, compared with the last good revision. Only after that do I look at code. Cloud Run makes that cheap, because the old revision is still there, so I can send traffic back to it while I fix the config.</p><p>On PhysioFix, a wrong webhook secret shows up as a 401 from my own handler. So if calls stop reaching the server after a deploy, I check the secret on the new revision before anything else. Same lesson both times: when staging works and production doesn't, diff the environments before you rewrite code.</p>",
+     "q_vi": "<p>Kể về một lần deploy lỗi dù code không sai.</p>",
+     "a_vi": "<p>Chuyện này gặp ở hai chỗ. Ở Akktis, service lên Cloud Run dưới dạng image Docker kèm env và secret. Khi revision mới chạy sai sau deploy, việc đầu tiên tôi kiểm tra là config của revision đó: env và phiên bản secret nó thực sự đang dùng, so với revision chạy tốt gần nhất. Sau đó mới xem code. Cloud Run làm việc này dễ, vì revision cũ vẫn còn, nên tôi chuyển traffic về đó trong lúc sửa config.</p><p>Ở PhysioFix, secret webhook sai sẽ hiện ra thành 401 từ chính handler của tôi. Nên nếu cuộc gọi không vào được server sau một lần deploy, tôi kiểm tra secret trên revision mới trước tiên. Bài học giống nhau: khi staging chạy mà production không chạy, hãy so môi trường trước khi viết lại code.</p>",
+     "notes": "<p><strong>Know:</strong> Real tools: Cloud Run revisions, per-revision env and secrets, traffic split for rollback. Practice: <a href=\"devops.html#devops-d65\">Bad Cloud Run revision</a>.</p><p><strong>Trap:</strong> Telling a Cloud SQL connectivity story. You never used Cloud SQL.</p><p><strong>Follow-up:</strong> \"How do you keep secrets out of the image?\" → Secret Manager references on the service, never baked into the Dockerfile.</p><p><strong>TODO Thủy:</strong> Pick one concrete occurrence (which service, which variable) so this is a story and not a pattern.</p>"
+    },
+    {
+     "id": "cv-across-differently",
+     "title": "Across projects: what would you do differently?",
+     "hint": "One lesson: automate the checks you did by hand, and measure on purpose.",
+     "q_en": "<p>In general, looking across your projects, what would you do differently?</p>",
+     "a_en": "<p>The same lesson shows up in every project: the checks I did by hand should have been automated earlier. At BaseVN I proved sync and export correctness on a known sample by hand; that should have been a fixture test. At Akktis I checked each new revision and each server by looking; that should have been a smoke test and a disk alert.</p><p>On PhysioFix and Aquanix I've done more of it from the start, with Jest on the API and Sentry for errors, and the next steps are replaying real call sequences in tests and a test that every pond route has the access check.</p><p>The second lesson is about numbers. I'd measure before and after on purpose, so when someone asks about impact, I can give a number instead of a description.</p>",
+     "q_vi": "<p>Nhìn chung qua các dự án, bạn sẽ làm khác điều gì?</p>",
+     "a_vi": "<p>Dự án nào cũng cho tôi cùng một bài học: những bước kiểm tra tôi làm bằng tay lẽ ra phải tự động sớm hơn. Ở BaseVN tôi chứng minh đồng bộ và xuất file đúng bằng cách so tay trên mẫu đã biết; lẽ ra đó phải là một fixture test. Ở Akktis tôi kiểm tra từng revision mới và từng server bằng mắt; lẽ ra đó phải là smoke test và cảnh báo đầy đĩa.</p><p>Ở PhysioFix và Aquanix tôi làm nhiều hơn ngay từ đầu, có Jest cho API và Sentry cho lỗi, và bước tiếp theo là phát lại chuỗi sự kiện cuộc gọi thật trong test, và một test bảo đảm route ao nào cũng có kiểm tra quyền.</p><p>Bài học thứ hai là về con số. Tôi sẽ chủ động đo trước và sau, để khi có người hỏi về tác động, tôi đưa ra được con số chứ không chỉ mô tả.</p>",
+     "notes": "<p><strong>Know:</strong> One theme, three proofs, and evidence you already apply it on the newest projects.</p><p><strong>Trap:</strong> A list of regrets with no thread.</p><p><strong>Follow-up:</strong> \"What did you change on your latest project because of that?\" → Jest from the start on PhysioFix; Sentry on Aquanix.</p>"
+    },
+    {
+     "id": "engineering-n29",
+     "title": "Firestore on your products vs MySQL at BaseVN",
+     "hint": "Pick the store from the data shape, not the job ad.",
+     "q_en": "<p>Why do your recent products use Firestore if you're strong in MySQL?</p>",
+     "a_en": "<p>Because the data is shaped differently. IELTS progress, PhysioFix contacts and transcripts, and Aquanix pond logs are documents that belong to one user, one call, or one pond, read mostly by that key. Firestore fits that, and it's easy to run with Cloud Run and Firebase.</p><p>Base PIT and VSS needed MySQL: related tables, more than 500,000 rows, joins across employees and periods, exports, and transactions. I wouldn't force tax data into documents, or a phone's nested progress into joins.</p><p>So for a role built on MySQL, I bring BaseVN and the Akktis migration. For document data and realtime products, I bring the recent projects.</p>",
+     "q_vi": "<p>Bạn mạnh MySQL, sao các sản phẩm gần đây lại dùng Firestore?</p>",
+     "a_vi": "<p>Vì hình dạng dữ liệu khác nhau. Tiến độ trên IELTS, liên hệ và transcript của PhysioFix, nhật ký ao của Aquanix là các document thuộc về một người dùng, một cuộc gọi hay một ao, chủ yếu đọc theo khoá đó. Firestore hợp với kiểu này, và dễ chạy cùng Cloud Run và Firebase.</p><p>Base PIT và VSS thì cần MySQL: bảng có quan hệ, hơn 500.000 dòng, join giữa nhân viên và kỳ, xuất file và transaction. Tôi không ép dữ liệu thuế vào document, cũng không ép tiến độ lồng nhau trên điện thoại vào các phép join.</p><p>Nên với vị trí dựa trên MySQL, tôi mang BaseVN và đợt migration ở Akktis ra kể. Với dữ liệu dạng document và sản phẩm realtime, tôi kể các dự án gần đây.</p>",
+     "notes": "<p><strong>Know:</strong> Document store for data owned by one key; relational for related business records.</p><p><strong>Trap:</strong> Saying Firestore and MySQL are interchangeable.</p><p><strong>Follow-up:</strong> \"Would you move IELTS progress to MySQL?\" → only if you needed cross-user reporting with joins.</p>"
+    },
+    {
+     "id": "cv-c19",
+     "title": "Looneyes Studio",
+     "hint": "Small client project. Keep it short.",
+     "q_en": "<p>Tell me about the Looneyes Studio website.</p>",
+     "a_en": "<p>It was a short client project, from February to April 2025: a multilingual WordPress site for a drone show company, on three domains, English, Japanese, and Chinese. I designed and deployed the pages and added the SEO basics, meta tags and schema markup, on each domain. It's a small project, but it was real client delivery: three production sites, live and still online. If you want depth, my newer projects are a better place to go.</p>",
+     "q_vi": "<p>Kể về website Looneyes Studio.</p>",
+     "a_vi": "<p>Đó là một dự án ngắn cho khách, từ tháng 2 đến tháng 4/2025: một site WordPress đa ngôn ngữ cho một công ty trình diễn drone, trên ba domain tiếng Anh, tiếng Nhật và tiếng Trung. Tôi thiết kế, deploy các trang và thêm phần SEO cơ bản, meta tag và schema markup, trên từng domain. Dự án nhỏ, nhưng là giao hàng thật cho khách: ba site production, đang chạy. Nếu anh/chị muốn đi sâu, các dự án gần đây của tôi sẽ có nhiều chuyện để kể hơn.</p>",
+     "notes": "<p><strong>Know:</strong> looneyesstudio.com / .jp / .cn. Feb–Apr 2025.</p><p><strong>Trap:</strong> Spending more than 30 seconds on it.</p><p><strong>Follow-up:</strong> \"How did you handle three languages?\" → one site per domain.</p><p><strong>TODO Thủy:</strong> Confirm how the languages were set up (separate installs per domain? a multilingual plugin?).</p>"
+    }
+   ]
+  }
+ ]
+}

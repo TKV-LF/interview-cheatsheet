@@ -1,0 +1,340 @@
+{
+ "page": "intowell",
+ "href": "intowell.html",
+ "title": "INTOWELL",
+ "intro": "Hanoi, at the office. Node, Vue, and Ionic on a Taiwan healthcare product. Name the gap. Do not invent a Vue story.",
+ "sections": [
+  {
+   "id": "sec-brief",
+   "name": "This interview",
+   "cards": [],
+   "html": "<div class=\"brief\">\n<p><strong>Role.</strong> Full-stack Developer. ITviec listing: at the office, Tầng 4, tòa nhà Lucky, 81 Trần Thái Tông, Cầu Giấy, Hà Nội. Monday to Friday, 8 hours, no OT. Company size 1–50. Meet or on-site details stay in the invite, not here, because this repo is public.</p>\n<p><strong>What this job is.</strong> Design backend in Node.js or PHP, web in Vue, and mobile in Angular plus Ionic or Capacitor, for new products. Also maintain and speed up what already runs. Product, business, and review sit in the same sentence. Quality, performance, security, and scale across the layers.</p>\n<p><strong>What you can say you have seen.</strong> The Hanoi company is INTOWELL Medical Technology, backed by the Taiwan product company IntoWell Biomedical and Meiyo Medical. Public products: <a href=\"https://www.draiai.com/\">Dr.AI</a> (clinical support for clinicians, SOAP, speech, HIS), <a href=\"https://www.vetaiai.com/en\">Vet.AI</a> (24/7 pet voice consult, Chinese / English / Japanese / Vietnamese), Dr.HereOnline for Taiwan clinics, and a Dr.AI Ring on <a href=\"https://intowell.com.tw/en\">intowell.com.tw</a>. Their own pages say Dr.AI assists a clinician and is not a standalone diagnosis. Do not recite user counts or award scores as if you measured them.</p>\n<p><strong>Stack you will defend.</strong> Node: three Express + TypeScript APIs (PhysioFix voice control path, Aquanix, IELTS AI Tutor) on Google Cloud. PHP and MySQL: BaseVN, then Laravel at Akktis (ended July 2026). Frontend shipped: the PhysioFix Next.js admin, plus Expo / React Native apps (IELTS on both stores; Aquanix also on desktop web). CI, Docker, Cursor: real. Cloud: Google Cloud, not AWS or Azure. Vue: not production. Angular, Ionic, Capacitor: not production. CakePHP: not production. Mongo: not a cluster you ran. Healthcare domain: new. Chinese: basic. If they start in Chinese, use the rescue lines on the QNAP page.</p>\n<ul>\n<li>Ninety-second intro. Lead with PhysioFix (closest to Vet.AI’s voice consult). End on this product, then the Vue and Ionic gap.</li>\n<li>Then the Vue and Ionic cards: Composition API, ref vs reactive, Pinia, Router, WebView vs native, Capacitor, the two-week ramp.</li>\n<li>Then the two-client story: IELTS app and teacher portal on one API; Aquanix phone and web on one API.</li>\n<li>Then health data in one minute: permission, no secrets in logs, idempotent webhooks. Not medicine.</li>\n<li>One Base story and one production-bug story, 90 seconds each, on <a href=\"cv.html\">CV and projects</a>.</li>\n<li>Four questions from the close card. The repo question first.</li>\n</ul>\n</div>"
+  },
+  {
+   "id": "sec-why-intowell",
+   "name": "Why INTOWELL",
+   "cards": [
+    {
+     "id": "intowell-self",
+     "title": "Tell me about yourself",
+     "hint": "Ninety seconds. Lead with the PhysioFix voice assistant. End on this product and the Vue/Ionic gap.",
+     "q_en": "<p>Tell me about yourself.</p>",
+     "a_en": "<p>I’m Thuy, a full-stack engineer with four years of full-time work since 2022. Since May 2024 I have worked independently, and the project closest to your products is PhysioFix, a phone assistant for a clinic. The call audio stays on Twilio and Grok voice. My Express and TypeScript server controls the call: it verifies the xAI webhook, opens a realtime socket for each call, answers tool calls, and saves the transcript to Firestore. Staff use a Next.js admin.</p><p>In total I have built three Express APIs in TypeScript: PhysioFix, Aquanix for farm operations, and the IELTS AI Tutor, which has about 5,000 users, with Expo apps on iOS, Android, and web. My deepest SQL is PHP and MySQL from BaseVN, with tax and payroll data over 500,000 records. At Akktis, until July 2026, I worked on Laravel, Linux, CI, and Cloud Run.</p><p>I want this role because it is one product on web and mobile with a Node backend. Vue and Ionic are new for me. I say that early, and I would ramp from the screens you already have.</p>",
+     "q_vi": "<p>Giới thiệu bản thân.</p>",
+     "a_vi": "<p>Tôi là Thủy, kỹ sư full-stack, có bốn năm làm việc toàn thời gian từ năm 2022. Từ tháng 5/2024 tôi làm độc lập, và dự án gần với sản phẩm của anh/chị nhất là PhysioFix, một trợ lý trả lời điện thoại cho phòng khám. Âm thanh cuộc gọi nằm trên Twilio và Grok voice. Server Express viết bằng TypeScript của tôi điều khiển cuộc gọi: xác thực webhook của xAI, mở realtime socket cho từng cuộc gọi, trả lời tool call, và lưu transcript vào Firestore. Nhân viên phòng khám dùng một trang admin Next.js.</p><p>Tổng cộng tôi đã xây ba API Express bằng TypeScript: PhysioFix, Aquanix để quản lý vùng nuôi, và IELTS AI Tutor với khoảng 5.000 người dùng, kèm app Expo trên iOS, Android và web. Phần SQL sâu nhất của tôi là PHP và MySQL ở BaseVN, với dữ liệu thuế và lương hơn 500.000 bản ghi. Ở Akktis, đến tháng 7/2026, tôi làm Laravel, Linux, CI và Cloud Run.</p><p>Tôi muốn vị trí này vì đây là một sản phẩm chạy cả web lẫn mobile, backend là Node. Vue và Ionic thì tôi chưa làm production. Tôi nói rõ điều đó ngay từ đầu, và tôi sẽ bắt nhịp từ chính các màn hình team đang có.</p>",
+     "notes": "<p><strong>Know:</strong> Four years, not five. Akktis is past tense (ended July 2026). Current work: PhysioFix (Apr 2026–), Aquanix (May 2026–), IELTS AI Tutor (2024–).</p><p><strong>Trap:</strong> Touring every job. Stop after the gap and let them ask. Do not say the AI tutor is React web: it is React Native. The React web you shipped is the PhysioFix Next.js admin.</p><p><strong>Follow-up:</strong> “Tell me more about the voice assistant” → <a href=\"#intowell-ai\">Voice and AI</a>. “Why Node?” → <a href=\"#intowell-node\">Node.js backend</a>.</p>"
+    },
+    {
+     "id": "intowell-why",
+     "title": "Why INTOWELL, and why this role?",
+     "hint": "Three reasons: the voice product, the web + mobile + Node shape, the team. Salary last.",
+     "q_en": "<p>Why this company, and why this fullstack role?</p>",
+     "a_en": "<p>Three reasons. First, the product. Vet.AI is a 24/7 voice consult, and the closest thing I have built is a realtime voice assistant for a clinic. I would like to do that kind of work on a product the company owns, not a one-off client site.</p><p>Second, the shape of the job: one Node backend, a web app, and a mobile app. That is what I already run on three projects.</p><p>Third, the team. I have worked with a team in France, so written tickets and small pull requests are normal for me, and Taiwan is only one hour ahead. The honest gap is Vue and Ionic, and I would rather name it than pretend.</p><p>Salary matters, but I would discuss the range once we both understand the role.</p>",
+     "q_vi": "<p>Vì sao INTOWELL, và vì sao vai trò fullstack này?</p>",
+     "a_vi": "<p>Có ba lý do. Thứ nhất là sản phẩm. Vet.AI là dịch vụ tư vấn bằng giọng nói 24/7, và thứ gần nhất tôi từng xây là một trợ lý giọng nói realtime cho phòng khám. Tôi muốn làm loại việc đó trên một sản phẩm công ty tự sở hữu, không phải website làm xong rồi bàn giao.</p><p>Thứ hai là hình dạng công việc: một backend Node, một web app và một app mobile. Đó đúng là thứ tôi đang vận hành ở ba dự án.</p><p>Thứ ba là team. Tôi đã làm với team ở Pháp, nên viết ticket rõ ràng và gửi pull request nhỏ là thói quen của tôi, mà Đài Loan chỉ lệch một tiếng. Chỗ tôi còn thiếu là Vue và Ionic, và tôi muốn nói thẳng thay vì giả vờ.</p><p>Lương cũng quan trọng, nhưng tôi muốn trao đổi về mức lương sau khi hai bên đã hiểu rõ vị trí.</p>",
+     "notes": "<p><strong>Trap:</strong> Quoting a scraped salary band. It is not their offer.</p><p><strong>Follow-up:</strong> “What range?” Give the range you decided before the call. <strong>TODO Thủy:</strong> confirm your expected range and notice period before the interview.</p>"
+    },
+    {
+     "id": "intowell-know",
+     "title": "What do you know about INTOWELL?",
+     "hint": "Two public products, one sentence each. Then ask which one you would join.",
+     "q_en": "<p>What do you know about the company and the products?</p>",
+     "a_en": "<p>The Hanoi company is INTOWELL Medical Technology, and the product side is IntoWell Biomedical in Taiwan. Two public products stand out. Dr.AI supports clinicians: outpatient and inpatient notes, speech to SOAP, and HIS integration. Their own site says it assists a doctor, it does not replace one. Vet.AI is a 24/7 voice consult for pet owners, in Chinese, English, Japanese, and Vietnamese.</p><p>I have not used the internal apps, so I will not describe their screens. What I would like to know is which of these a Hanoi engineer works on in the first month, and whether the mobile app is the Ionic one in the job description.</p>",
+     "q_vi": "<p>Bạn biết gì về công ty và sản phẩm?</p>",
+     "a_vi": "<p>Công ty ở Hà Nội là INTOWELL Medical Technology, còn phía sản phẩm là IntoWell Biomedical ở Đài Loan. Có hai sản phẩm công khai nổi bật. Dr.AI hỗ trợ bác sĩ: ghi chú ngoại trú và nội trú, chuyển lời nói thành SOAP, và tích hợp HIS. Chính trang của họ nói nó hỗ trợ bác sĩ, không thay thế bác sĩ. Vet.AI là dịch vụ tư vấn bằng giọng nói 24/7 cho chủ thú cưng, có tiếng Trung, Anh, Nhật và Việt.</p><p>Tôi chưa dùng các app nội bộ, nên tôi không mô tả màn hình của họ. Điều tôi muốn biết là kỹ sư ở Hà Nội sẽ làm sản phẩm nào trong tháng đầu, và app mobile có phải là app Ionic như trong JD không.</p>",
+     "notes": "<p><strong>Know:</strong> Also public, if they ask for more: Meiyo Medical is behind it with IntoWell Biomedical; the public line is “Health and Care, Everywhere”; Dr.HereOnline is for Taiwan clinics; a Dr.AI Ring is on intowell.com.tw. ITviec skill tags also list Laravel, CakePHP, AngularJS, and native iOS and Android.</p><p><strong>Trap:</strong> Reciting the legal representative, the tax code, user counts, or a diagnostic-accuracy score you did not verify. Do not store HR phone or email in this repo.</p><p><strong>Follow-up:</strong> “Which product interests you?” → Vet.AI, because of the voice work on PhysioFix.</p>"
+    }
+   ]
+  },
+  {
+   "id": "sec-stack",
+   "name": "Node and data",
+   "cards": [
+    {
+     "id": "intowell-node",
+     "title": "Node.js backend",
+     "hint": "Lead with PhysioFix, then the other two Express APIs. NestJS: not owned.",
+     "q_en": "<p>Walk through your Node.js backend experience.</p>",
+     "a_en": "<p>I have built three Express APIs in TypeScript, all on Google Cloud. The newest is PhysioFix, a phone assistant for a clinic. The server verifies the webhook from xAI, returns 200 straight away, and then opens a realtime socket for that call. All socket events for a call go through one queue, so a batch of tool calls cannot race the caller’s next sentence. Tool calls are acknowledged at once and the Firestore write happens after, so the voice never waits on the database. Jest covers the API.</p><p>Aquanix is a farm-operations app: phone login issues a JWT with the role and the partnership, and every pond route rejects a member who is not assigned to that pond. The IELTS AI Tutor API on Cloud Run handles auth, practice content, assignments, purchase verification, and the AI routes.</p><p>I have not owned a NestJS codebase. If the team uses Nest, I would learn modules and providers from your repo.</p>",
+     "q_vi": "<p>Kể kinh nghiệm Node.js backend.</p>",
+     "a_vi": "<p>Tôi đã xây ba API Express bằng TypeScript, đều chạy trên Google Cloud. Mới nhất là PhysioFix, trợ lý trả lời điện thoại cho phòng khám. Server xác thực webhook từ xAI, trả 200 ngay, rồi mới mở realtime socket cho cuộc gọi đó. Mọi event trên socket của một cuộc gọi đi qua một hàng đợi, nên một loạt tool call không thể tranh nhau với câu nói tiếp theo của người gọi. Tool call được trả lời ngay, còn việc ghi vào Firestore làm sau, nên giọng nói không phải chờ database. API có test bằng Jest.</p><p>Aquanix là app quản lý vùng nuôi: đăng nhập bằng số điện thoại sẽ cấp JWT chứa role và đối tác, và mọi route của ao đều từ chối thành viên không được gán vào ao đó. API của IELTS AI Tutor trên Cloud Run lo auth, nội dung luyện tập, bài tập, xác minh giao dịch mua trong app, và các route AI.</p><p>Tôi chưa làm chính một codebase NestJS. Nếu team dùng Nest, tôi sẽ học module và provider từ repo của anh/chị.</p>",
+     "notes": "<p><strong>Know:</strong> Why 200 first: a webhook sender times out and retries if you hold the response while you do slow work. Why one queue per call: events processed concurrently can interleave and answer out of order.</p><p><strong>Trap:</strong> Saying “webhooks for Apple and Google purchases”. The CV says purchases are verified on <code>/api/iap</code> on the server.</p><p><strong>Follow-up:</strong> Longer Node cards live on <a href=\"node.html\">Node.js</a>.</p>"
+    },
+    {
+     "id": "intowell-db",
+     "title": "MySQL or MongoDB",
+     "hint": "MySQL is production (BaseVN, Akktis migration). Firestore is the document store you run. Mongo: not operated.",
+     "q_en": "<p>The JD says MySQL or MongoDB. Which have you used?</p>",
+     "a_en": "<p>MySQL is production for me. At BaseVN I designed the schema and tuned indexes and queries for tax and reporting flows over 500,000 records, and at Akktis I migrated a legacy database to MySQL. I have not operated MongoDB. The document store I run is Firestore, on all three current projects: callers and transcripts on PhysioFix, progress and entitlements on the IELTS tutor. Documents are shaped by how a screen reads them, not by joins, and MongoDB follows the same idea with its own query language and indexes.</p><p>For records that must stay consistent with each other, like a consult and its audit row, I want transactions, and I would ask which database the product uses before I design anything.</p>",
+     "q_vi": "<p>JD ghi MySQL hoặc MongoDB. Bạn dùng cái nào?</p>",
+     "a_vi": "<p>MySQL là thứ tôi đã chạy production. Ở BaseVN tôi thiết kế schema, tối ưu index và query cho luồng thuế và báo cáo trên hơn 500.000 bản ghi, và ở Akktis tôi chuyển một database cũ sang MySQL. Tôi chưa vận hành MongoDB. Document store tôi đang dùng là Firestore, ở cả ba dự án hiện tại: người gọi và transcript ở PhysioFix, tiến độ học và quyền Pro ở IELTS. Document được thiết kế theo cách màn hình đọc dữ liệu, không dựa vào join, và MongoDB cũng theo tư duy đó với ngôn ngữ query và index riêng.</p><p>Với các bản ghi phải luôn khớp nhau, như một lượt tư vấn và dòng audit của nó, tôi muốn có transaction, và tôi sẽ hỏi sản phẩm đang dùng database nào trước khi thiết kế.</p>",
+     "notes": "<p><strong>Know:</strong> MongoDB supports multi-document transactions on replica sets, so do not say it has none. Firestore has transactions too, with limits.</p><p><strong>Trap:</strong> Cloud SQL. You never used it. Do not say Mongo “is the same as Firestore”.</p><p><strong>Follow-up:</strong> The Node Mongo card is <a href=\"node.html#engineering-n9\">here</a>. SQL you can write is on <a href=\"php.html#sec-sql\">PHP → SQL</a>.</p>"
+    },
+    {
+     "id": "intowell-php",
+     "title": "PHP and Laravel, the nice-to-have",
+     "hint": "Laravel is real at Akktis (past). The deepest PHP is the BaseVN SaaS. CakePHP is not shipped.",
+     "q_en": "<p>The posting lists Laravel and CakePHP as nice to have. Where are you?</p>",
+     "a_en": "<p>Laravel is real, from Akktis, where I worked until July 2026: Laravel apps with API integrations for web and mobile clients, plus WordPress and PrestaShop. My deepest PHP is BaseVN, a PHP and MySQL SaaS for HR, payroll, and tax. There I designed the schema and tuned queries for reporting over 500,000 records. I have not shipped CakePHP. If an older product runs on CakePHP, I would read its conventions and work inside them, not rewrite it into Laravel.</p><p>The job says Node.js or PHP for new backend work. I can do both, and I would ask which one the new product uses, so I prepare the right repo.</p>",
+     "q_vi": "<p>JD ghi Laravel và CakePHP là nice-to-have. Bạn ở đâu?</p>",
+     "a_vi": "<p>Laravel là kinh nghiệm thật, ở Akktis, nơi tôi làm đến tháng 7/2026: các app Laravel có tích hợp API cho client web và mobile, cùng WordPress và PrestaShop. Phần PHP sâu nhất của tôi là ở BaseVN, một SaaS PHP và MySQL về nhân sự, lương và thuế. Ở đó tôi thiết kế schema và tối ưu query cho báo cáo trên hơn 500.000 bản ghi. Tôi chưa ship CakePHP. Nếu sản phẩm cũ chạy CakePHP, tôi sẽ đọc convention của nó và làm theo, không viết lại sang Laravel.</p><p>JD ghi Node.js hoặc PHP cho backend mới. Tôi làm được cả hai, và tôi sẽ hỏi sản phẩm mới dùng cái nào để chuẩn bị đúng repo.</p>",
+     "notes": "<p><strong>Know:</strong> PHP depth is on <a href=\"php.html\">PHP</a>.</p><p><strong>Trap:</strong> Claiming you owned a large Laravel platform end to end.</p><p><strong>Follow-up:</strong> “A Laravel feature you built?” Pick one real Akktis integration. <strong>TODO Thủy:</strong> confirm one concrete Akktis Laravel feature you can describe in 30 seconds.</p>"
+    },
+    {
+     "id": "intowell-scale",
+     "title": "Microservices, or modules first",
+     "hint": "You have not run a microservice estate. Say the shape.",
+     "q_en": "<p>Do you understand microservices or scalable design?</p>",
+     "a_en": "<p>I have not operated a microservice platform, and I would not start there with a small team. I start with modules in one app: the API, background jobs, and the two clients. A piece gets split out when it has its own traffic or its own team. If the user is waiting, I call HTTP with a timeout. If the fact has already happened, like a report being ready, that goes on a queue.</p><p>I have done this inside one codebase. At BaseVN the sync between the social-insurance system, HR, and payroll ran as jobs with a fixed order and validation. The hiring integration retried failed calls to the job boards and logged every request. On PhysioFix, each call’s events run through one queue so they stay in order. On a health product the same rule holds: a retry must not create a second charge or a second record.</p>",
+     "q_vi": "<p>Bạn hiểu microservices hoặc thiết kế scale chứ?</p>",
+     "a_vi": "<p>Tôi chưa vận hành một hệ thống microservice, và với team nhỏ tôi cũng không bắt đầu từ đó. Tôi bắt đầu bằng các module trong một app: API, job chạy nền, và hai client. Một phần chỉ được tách ra khi nó có lưu lượng riêng hoặc team riêng. Nếu người dùng đang chờ, tôi gọi HTTP có timeout. Nếu sự việc đã xảy ra rồi, ví dụ báo cáo đã sẵn sàng, thì đưa vào queue.</p><p>Tôi đã làm như vậy trong một codebase. Ở BaseVN, việc đồng bộ giữa hệ thống bảo hiểm xã hội, nhân sự và lương chạy bằng job có thứ tự cố định và có validate. Phần tích hợp tuyển dụng thì retry khi gọi các trang tuyển dụng bị lỗi và ghi log mọi request. Ở PhysioFix, event của mỗi cuộc gọi đi qua một hàng đợi để giữ đúng thứ tự. Với sản phẩm y tế cũng vậy: retry không được tạo ra lần trừ tiền thứ hai hay bản ghi thứ hai.</p>",
+     "notes": "<p><strong>Know:</strong> Idempotency key on the write; outbox pattern when a DB write and a message must both happen.</p><p><strong>Trap:</strong> Claiming a microservice estate, or a hiring workflow engine at Base. E-Hiring was the VietnamWorks/TopCV integration.</p><p><strong>Follow-up:</strong> More of this shape is on <a href=\"system-design.html\">System design</a>.</p>"
+    }
+   ]
+  },
+  {
+   "id": "sec-vue",
+   "name": "Vue and Ionic",
+   "cards": [
+    {
+     "id": "intowell-vue",
+     "title": "Vue.js, said plainly",
+     "hint": "Not shipped. Name the React you did ship, then show you know how Vue differs from hooks.",
+     "q_en": "<p>The JD wants Vue.js. Have you used it in production?</p>",
+     "a_en": "<p>Not in production, and I will not describe a Vue project I did not ship. The frontend I have shipped is React: a Next.js admin for PhysioFix, and React Native apps on Expo. The component model carries over: props in, events out, state in one place, and the server still decides permission.</p><p>I have studied Vue 3, and it is not just hooks with a different name. In Vue, setup runs once per component, and reactivity uses proxies that track what you read. So there are no dependency arrays and no stale closures. <code>computed</code> is close to <code>useMemo</code>, but it tracks its own dependencies, and <code>watch</code> is close to <code>useEffect</code>.</p><p>In the first week I would read the existing screens, the router, and how they call the API, and copy the patterns already in the repo.</p>",
+     "q_vi": "<p>JD muốn Vue.js. Bạn đã dùng trên production chưa?</p>",
+     "a_vi": "<p>Chưa làm production, và tôi sẽ không kể một dự án Vue mình chưa ship. Phần frontend tôi đã ship là React: trang admin Next.js cho PhysioFix, và các app React Native trên Expo. Mô hình component thì dùng lại được: props đi vào, event đi ra, state nằm một chỗ, và server vẫn là bên quyết định quyền.</p><p>Tôi đã học Vue 3, và nó không chỉ là hooks đổi tên. Trong Vue, setup chỉ chạy một lần cho mỗi component, và reactivity dùng Proxy để tự theo dõi những gì mình đọc. Vì vậy không có mảng dependency và không bị stale closure. <code>computed</code> gần giống <code>useMemo</code> nhưng tự theo dõi dependency, còn <code>watch</code> gần giống <code>useEffect</code>.</p><p>Tuần đầu tôi sẽ đọc các màn hình đang có, router, và cách các màn gọi API, rồi làm theo pattern đã có trong repo.</p>",
+     "notes": "<p><strong>Know:</strong> <code>&lt;script setup&gt;</code>, <code>defineProps</code>, <code>defineEmits</code>. <code>v-model</code> on a component is <code>modelValue</code> plus <code>update:modelValue</code>; <code>defineModel()</code> (Vue 3.4+) wraps that. There are no rules-of-hooks: you can call <code>ref()</code> inside an <code>if</code>.</p><p><strong>Trap:</strong> “Composition API is the same as hooks.” Half true, and it sounds like you have not read past the first page.</p><p><strong>Follow-up:</strong> <a href=\"#intowell-vue-api\">Options vs Composition</a>, <a href=\"#intowell-vue-ref\">ref vs reactive</a>, <a href=\"#intowell-pinia\">Pinia</a>, <a href=\"#intowell-vue-router\">Vue Router</a>.</p>"
+    },
+    {
+     "id": "intowell-vue-api",
+     "title": "Vue 3: Options API vs Composition API",
+     "hint": "Both supported. Composition groups by feature and reuses through composables.",
+     "q_en": "<p>What is the difference between the Options API and the Composition API in Vue 3?</p>",
+     "q_vi": "<p>Options API và Composition API trong Vue 3 khác nhau thế nào?</p>",
+     "a_en": "<p>Both are supported in Vue 3. The Options API puts a component into fixed slots: data, methods, computed, watch, and lifecycle hooks like mounted, and you reach everything through <code>this</code>. It is easy to read in a small component.</p><p>The Composition API, usually written with <code>&lt;script setup&gt;</code>, lets you group code by feature instead of by option type. You declare state with <code>ref</code>, derive values with <code>computed</code>, and react to changes with <code>watch</code> or <code>onMounted</code>. The big gain is reuse: a composable like <code>useCase(id)</code> returns its own refs and can be shared between components, which replaces mixins and their name collisions. It also works better with TypeScript.</p><p>In a new Vue 3 codebase I would expect <code>&lt;script setup&gt;</code> and composables. If the existing code uses the Options API, I follow it rather than mixing both styles in one file.</p>",
+     "a_vi": "<p>Vue 3 hỗ trợ cả hai. Options API chia component thành các ô cố định: data, methods, computed, watch, và các lifecycle hook như mounted, và mọi thứ được truy cập qua <code>this</code>. Với component nhỏ thì cách này dễ đọc.</p><p>Composition API, thường viết bằng <code>&lt;script setup&gt;</code>, cho phép gom code theo tính năng thay vì theo loại option. Mình khai báo state bằng <code>ref</code>, tính giá trị dẫn xuất bằng <code>computed</code>, và phản ứng với thay đổi bằng <code>watch</code> hoặc <code>onMounted</code>. Lợi ích lớn nhất là tái sử dụng: một composable như <code>useCase(id)</code> trả về các ref riêng và dùng chung được giữa nhiều component, thay cho mixin và chuyện trùng tên. Nó cũng hợp với TypeScript hơn.</p><p>Với codebase Vue 3 mới, tôi nghĩ team sẽ dùng <code>&lt;script setup&gt;</code> và composable. Nếu code đang có dùng Options API, tôi làm theo, không trộn hai kiểu trong cùng một file.</p>",
+     "notes": "<p><strong>Know:</strong> A composable is the Vue version of a custom hook, but it runs once inside setup, not on every render.</p><p><strong>Trap:</strong> Saying the Options API is deprecated. It is not.</p><p><strong>Follow-up:</strong> “How do you share logic between components?” → composables, not mixins.</p>"
+    },
+    {
+     "id": "intowell-vue-ref",
+     "title": "ref vs reactive",
+     "hint": "ref for most state. reactive loses reactivity when destructured or replaced.",
+     "q_en": "<p>When do you use <code>ref</code> and when do you use <code>reactive</code>?</p>",
+     "q_vi": "<p>Khi nào dùng <code>ref</code>, khi nào dùng <code>reactive</code>?</p>",
+     "a_en": "<p><code>ref</code> wraps any value, including a string or a number. In script you read and write it through <code>.value</code>, and in the template it is unwrapped for you. <code>reactive</code> takes an object and returns a proxy, so you write <code>state.count</code> without <code>.value</code>.</p><p><code>reactive</code> has two traps. You cannot replace the whole object, because the proxy you hold is the reactive one. And if you destructure it, the values stop being reactive unless you use <code>toRefs</code>. The Vue docs recommend <code>ref</code> as the default for that reason.</p><p>So I would use <code>ref</code> for most state, maybe <code>reactive</code> for a form object that stays the same object, and <code>computed</code> for anything derived, instead of copying values into a second ref and keeping them in sync by hand.</p>",
+     "a_vi": "<p><code>ref</code> bọc được mọi giá trị, kể cả string hay number. Trong script mình đọc và ghi qua <code>.value</code>, còn trong template Vue tự mở ra. <code>reactive</code> nhận một object và trả về một Proxy, nên mình viết <code>state.count</code> mà không cần <code>.value</code>.</p><p><code>reactive</code> có hai cái bẫy. Không thể gán lại cả object, vì cái Proxy mình đang giữ mới là cái reactive. Và nếu destructure thì các giá trị mất reactivity, trừ khi dùng <code>toRefs</code>. Vì thế tài liệu Vue khuyên dùng <code>ref</code> làm mặc định.</p><p>Nên tôi dùng <code>ref</code> cho phần lớn state, có thể dùng <code>reactive</code> cho một object form không bị thay thế, và dùng <code>computed</code> cho mọi giá trị dẫn xuất, thay vì copy sang một ref khác rồi tự đồng bộ bằng tay.</p>",
+     "notes": "<p><strong>Know:</strong> A ref holding an object makes it deeply reactive. <code>shallowRef</code> skips that for large data. Refs inside a reactive object are unwrapped.</p><p><strong>Trap:</strong> <code>const { count } = reactive({ count: 0 })</code> — <code>count</code> is now a plain number.</p><p><strong>Follow-up:</strong> “How do you watch a prop?” <code>watch(() =&gt; props.id, load)</code>, a getter, not <code>props.id</code> itself.</p>"
+    },
+    {
+     "id": "intowell-pinia",
+     "title": "Pinia vs Vuex",
+     "hint": "Pinia is the official store now. No mutations, typed, one store per domain.",
+     "q_en": "<p>Pinia or Vuex? What is the difference?</p>",
+     "q_vi": "<p>Pinia hay Vuex? Khác nhau ở đâu?</p>",
+     "a_en": "<p>Pinia is the official store for Vue 3. Vuex is the older one and is in maintenance mode. The difference you feel is less ceremony. In Vuex you change state through mutations and call actions through dispatch with string names. In Pinia you define a store with <code>defineStore</code>, state is plain reactive state, actions are normal functions that can be async, and TypeScript infers the types. Each store is its own module, so a case store and a user store do not live in one big tree. If I destructure a store in a component, I use <code>storeToRefs</code> to keep reactivity.</p><p>What goes in a store is the same rule I use in React: data many screens share, like the signed-in user. Data for one screen stays with that screen, and permission still lives on the API.</p>",
+     "a_vi": "<p>Pinia là store chính thức cho Vue 3. Vuex là thư viện cũ hơn và đang ở chế độ bảo trì. Khác biệt rõ nhất là ít thủ tục hơn. Với Vuex, mình đổi state qua mutation và gọi action bằng dispatch với tên dạng chuỗi. Với Pinia, mình định nghĩa store bằng <code>defineStore</code>, state là state reactive bình thường, action là hàm thường và có thể async, và TypeScript tự suy ra kiểu. Mỗi store là một module riêng, nên store cho case và store cho user không bị nhét chung vào một cây lớn. Nếu destructure store trong component, tôi dùng <code>storeToRefs</code> để giữ reactivity.</p><p>Cái gì nên vào store thì vẫn theo nguyên tắc tôi dùng ở React: dữ liệu nhiều màn hình dùng chung, như người dùng đang đăng nhập. Dữ liệu của một màn thì để ở màn đó, và quyền vẫn do API quyết định.</p>",
+     "notes": "<p><strong>Know:</strong> Setup stores: <code>defineStore('cases', () =&gt; { const list = ref([]); ... return { list } })</code>. Pinia has devtools support and plugins (for example persisted state).</p><p><strong>Trap:</strong> Putting every API response into a global store.</p><p><strong>Follow-up:</strong> React parallel: this is the Zustand-style small store, see <a href=\"react.html\">React</a>.</p>"
+    },
+    {
+     "id": "intowell-vue-router",
+     "title": "Vue Router basics",
+     "hint": "Routes, lazy pages, params, guards. The guard is UX; the API still checks.",
+     "q_en": "<p>How does routing work in a Vue app? How would you protect a page?</p>",
+     "q_vi": "<p>Routing trong app Vue hoạt động thế nào? Bạn bảo vệ một trang ra sao?</p>",
+     "a_en": "<p>You create the router with a list of routes and a history mode, usually <code>createWebHistory</code>. Each route maps a path to a component, and big pages load lazily with a dynamic import, so the first bundle stays small. Params like <code>/cases/:id</code> come in through <code>useRoute</code>, and you navigate in code with <code>useRouter().push</code>. Nested routes render into a nested <code>RouterView</code>, which suits a layout with a sidebar.</p><p>For auth I would add a <code>beforeEach</code> guard that checks route meta, like <code>requiresAuth</code>, and sends the user to login. That guard is only for user experience. The API still checks the token on every request, because anyone can call it directly.</p><p>One thing to watch: when only the param changes, Vue reuses the same component, so I watch the param instead of loading data once on mount.</p>",
+     "a_vi": "<p>Mình tạo router với danh sách route và một chế độ history, thường là <code>createWebHistory</code>. Mỗi route gắn một đường dẫn với một component, và trang lớn thì lazy load bằng dynamic import để bundle đầu tiên nhỏ. Tham số như <code>/cases/:id</code> lấy qua <code>useRoute</code>, còn chuyển trang trong code thì dùng <code>useRouter().push</code>. Route lồng nhau render vào một <code>RouterView</code> lồng bên trong, hợp với layout có sidebar.</p><p>Với auth, tôi thêm guard <code>beforeEach</code> kiểm tra meta của route, ví dụ <code>requiresAuth</code>, rồi chuyển người dùng sang trang đăng nhập. Guard đó chỉ phục vụ trải nghiệm người dùng. API vẫn kiểm tra token ở mọi request, vì ai cũng có thể gọi API trực tiếp.</p><p>Một điểm cần để ý: khi chỉ tham số thay đổi, Vue dùng lại đúng component đó, nên tôi watch tham số thay vì chỉ tải dữ liệu một lần lúc mount.</p>",
+     "notes": "<p><strong>Know:</strong> History mode needs the server to return <code>index.html</code> for unknown paths. Ionic Angular has its own routing on top of the Angular router; this card is the web side.</p><p><strong>Trap:</strong> Treating a route guard as security.</p><p><strong>Follow-up:</strong> React Router parallel: loaders and protected routes on <a href=\"react.html\">React</a>.</p>"
+    },
+    {
+     "id": "intowell-ionic",
+     "title": "Ionic vs React Native",
+     "hint": "Not shipped. The core difference: WebView vs native views. Expo is a toolchain, not a shell.",
+     "q_en": "<p>Have you built mobile apps with Angular and Ionic or Capacitor? How is it different from React Native?</p>",
+     "a_en": "<p>Not with that stack. The mobile apps I shipped are Expo and React Native, and the core difference matters. With Ionic and Capacitor, the app is a web app: HTML, CSS, and Angular components running inside a native WebView. Capacitor gives that web code access to native features through plugins. React Native renders real native views, and Expo is the toolchain and SDK around it.</p><p>So Ionic shares most of its code with the web and is quick for forms and lists. React Native feels more native for heavy animation and very long lists. The work that overlaps is what I already do: store builds, permissions, sign-in, in-app purchase, and one API for two clients.</p><p>I have not written Angular components, so I would start from your project: run it on a real phone and change one existing screen first.</p>",
+     "q_vi": "<p>Bạn đã làm mobile bằng Angular và Ionic hoặc Capacitor chưa? Nó khác React Native thế nào?</p>",
+     "a_vi": "<p>Chưa với stack đó. Các app mobile tôi đã ship là Expo và React Native, và điểm khác cốt lõi rất quan trọng. Với Ionic và Capacitor, app thực chất là một web app: HTML, CSS và component Angular chạy bên trong WebView native. Capacitor cho phần web đó gọi được tính năng native qua plugin. React Native thì render view native thật, còn Expo là bộ công cụ và SDK đi kèm React Native.</p><p>Vì vậy Ionic dùng chung phần lớn code với web và làm form, danh sách rất nhanh. React Native cho cảm giác native hơn khi có nhiều animation hoặc danh sách rất dài. Phần trùng với việc tôi đã làm là build lên store, xin quyền, đăng nhập, mua trong app, và một API cho hai client.</p><p>Tôi chưa viết component Angular, nên tôi sẽ bắt đầu từ project của anh/chị: chạy trên máy thật và sửa một màn hình đã có trước.</p>",
+     "notes": "<p><strong>Know:</strong> Ionic UI components are web components and work with Angular, React, or Vue. The JD says Angular for mobile. Modern Angular: standalone components, signals, services injected by DI, <code>HttpClient</code> returning Observables. Ionic Angular uses <code>ion-router-outlet</code> for page transitions.</p><p><strong>Trap:</strong> “Expo is a native shell around React Native.” It is not a shell; React Native draws native views. Also do not mix AngularJS (1.x, on the company tag list) with Angular. Do not fake an NgRx story.</p><p><strong>Follow-up:</strong> “How do you build and ship it?” → <a href=\"#intowell-capacitor\">Capacitor basics</a>. If the live apps are still native Swift or Kotlin, ask, because the public skill tags include those.</p>"
+    },
+    {
+     "id": "intowell-capacitor",
+     "title": "Ionic and Capacitor basics: plugins and native builds",
+     "hint": "Studied, not shipped. cap sync, native projects in the repo, plugins, permissions, real device.",
+     "q_en": "<p>How does an Ionic app with Capacitor get native features and reach the stores?</p>",
+     "q_vi": "<p>App Ionic dùng Capacitor lấy tính năng native và lên store như thế nào?</p>",
+     "a_en": "<p>Capacitor is the native runtime under an Ionic app. You build the web app, then <code>npx cap sync</code> copies the build into native iOS and Android projects and updates the plugins. Those native projects live in the repo, and you open them in Xcode or Android Studio to sign and build for the stores. Native features come from plugins, for example Camera, Push Notifications, and Preferences for small key-value storage. Each plugin needs its permissions declared, like the camera usage text on iOS.</p><p>For daily work you can run the app on a device with live reload, so a code change shows on the phone without a full rebuild. What I know from Expo still applies: test on a real device, keep tokens out of plain storage, and remember that store review can add days to any release that changes native code.</p>",
+     "a_vi": "<p>Capacitor là lớp runtime native bên dưới app Ionic. Mình build web app, rồi <code>npx cap sync</code> chép bản build vào project native iOS và Android và cập nhật plugin. Hai project native đó nằm trong repo, và mình mở bằng Xcode hoặc Android Studio để ký và build lên store. Tính năng native đến từ plugin, ví dụ Camera, Push Notifications, và Preferences để lưu dữ liệu key-value nhỏ. Mỗi plugin cần khai báo quyền, như dòng mô tả quyền dùng camera trên iOS.</p><p>Khi làm hằng ngày, có thể chạy app trên máy thật với live reload, nên sửa code là thấy ngay trên điện thoại mà không phải build lại toàn bộ. Những gì tôi học từ Expo vẫn đúng: test trên máy thật, không để token trong bộ nhớ thường, và nhớ rằng duyệt store có thể mất vài ngày với mọi bản release có thay đổi phần native.</p>",
+     "notes": "<p><strong>Know:</strong> <code>npx cap add ios</code> / <code>android</code> once; <code>npx cap sync</code> after web builds or plugin changes; <code>npx cap open ios</code>. Preferences is not secure storage: use the platform keychain or keystore through a secure-storage plugin for tokens.</p><p><strong>Trap:</strong> Claiming you shipped a Capacitor app. You studied it; Expo is what you shipped.</p><p><strong>Follow-up:</strong> “Push notifications?” Firebase Cloud Messaging on Android and APNs on iOS, registered through the Push Notifications plugin; the server stores the device token per user.</p>"
+    },
+    {
+     "id": "intowell-ramp",
+     "title": "How would you ramp in the first two weeks?",
+     "hint": "Run everything, follow one request end to end, ship small in each client.",
+     "q_en": "<p>Vue and Ionic are new for you. What would your first two weeks look like?</p>",
+     "q_vi": "<p>Vue và Ionic còn mới với bạn. Hai tuần đầu bạn sẽ làm gì?</p>",
+     "a_en": "<p>Week one is running and reading. I get the API, the Vue web app, and the Ionic app running locally, with the mobile app on a real phone. Then I follow one request end to end: a screen, the API route, the auth check, and the database write. Every setup step missing from the README, I add. I also pick one small bug ticket, so I go through the real review process early.</p><p>In week two I ship small changes in each client, copying the patterns the team already uses, and I ask the reviewer what a Vue or Angular developer would have done differently. By the end I want to know who to ask about product rules, and I want to have done one native build myself, so release day is not the first time I see it.</p>",
+     "a_vi": "<p>Tuần đầu là chạy được và đọc hiểu. Tôi dựng API, web Vue và app Ionic chạy ở local, và cài app mobile lên máy thật. Sau đó tôi đi theo một request từ đầu đến cuối: màn hình, route API, bước kiểm tra auth, và lần ghi vào database. Bước dựng môi trường nào thiếu trong README thì tôi bổ sung. Tôi cũng nhận một ticket bug nhỏ, để sớm đi qua quy trình review thật.</p><p>Tuần thứ hai tôi ship các thay đổi nhỏ ở mỗi client, làm theo pattern team đang dùng, và hỏi người review xem một lập trình viên Vue hay Angular sẽ làm khác chỗ nào. Cuối tuần thứ hai tôi muốn biết nên hỏi ai về luật nghiệp vụ, và muốn tự làm một lần build native, để ngày release không phải là lần đầu tôi thấy nó.</p>",
+     "notes": "<p><strong>Know:</strong> This is how you onboarded onto client codebases at Akktis: read, run, small change, review.</p><p><strong>Trap:</strong> Promising to “learn Vue in a weekend” or to refactor in week one.</p><p><strong>Follow-up:</strong> “What would you need from us?” Access, a working README or a person to ask, and one starter ticket.</p>"
+    },
+    {
+     "id": "intowell-web",
+     "title": "JavaScript, HTML, CSS, RWD",
+     "hint": "You have shipped this. Keep it short.",
+     "q_en": "<p>How solid is your JavaScript, HTML, CSS, and responsive layout?</p>",
+     "a_en": "<p>Every day. TypeScript on the PhysioFix Next.js admin, and on Expo apps that also run on desktop web. I write semantic HTML, and I do not fight CSS with a random <code>!important</code>. Responsive means the layout changes at a real breakpoint. On Aquanix, wide screens get a sidebar and the phone gets a simpler layout from the same client. On a small screen I keep the identifier, the status, and the one action the person came for. I check on a real device, because the browser’s device mode hides some overflow. And I would not build a second mobile website if the Ionic app already covers that screen.</p>",
+     "q_vi": "<p>JavaScript, HTML, CSS, và layout responsive của bạn chắc đến đâu?</p>",
+     "a_vi": "<p>Hằng ngày. TypeScript trên trang admin Next.js của PhysioFix, và trên các app Expo chạy cả trên web desktop. Tôi viết HTML đúng ngữ nghĩa, và không chữa CSS bằng <code>!important</code> tùy tiện. Responsive nghĩa là layout đổi ở breakpoint thật. Ở Aquanix, màn hình rộng có sidebar, còn điện thoại có layout gọn hơn, cùng một client. Trên màn nhỏ tôi giữ mã, trạng thái, và một thao tác chính người dùng cần. Tôi kiểm tra trên máy thật, vì device mode của trình duyệt có thể che mất phần bị tràn. Và tôi sẽ không làm thêm một website mobile thứ hai nếu app Ionic đã có màn đó.</p>",
+     "notes": "<p><strong>Know:</strong> Core Web Vitals: LCP, INP, CLS. Flexbox for one axis, Grid for two.</p><p><strong>Trap:</strong> Calling the IELTS app “web”. It is React Native on the stores.</p>"
+    }
+   ]
+  },
+  {
+   "id": "sec-product",
+   "name": "Product",
+   "cards": [
+    {
+     "id": "intowell-ai",
+     "title": "Voice, SOAP, and the voice assistant you shipped",
+     "hint": "Lead with PhysioFix: realtime voice on Twilio + Grok. Closest match to Vet.AI’s 24/7 voice consult.",
+     "q_en": "<p>Dr.AI does speech and SOAP. Have you done anything like that?</p>",
+     "a_en": "<p>Not SOAP notes, but the closest thing I have built is a realtime voice assistant, which is near Vet.AI’s voice consult. On PhysioFix the audio stays on Twilio and Grok voice. My Express server is the control path: it verifies the xAI webhook, returns 200, and opens a realtime socket for the call. A returning caller is loaded from Firestore first, so they skip the privacy question. Tool calls are acknowledged at once, so the voice keeps talking while the transcript saves, and hangup waits for the last spoken line. Staff then read the summary and play the recording in a Next.js admin.</p><p>On the IELTS tutor, chat, text-to-speech, and speech-to-text are server routes, keys stay on the server, and every call is traced in Langfuse.</p><p>For a clinic tool I would keep the model inside approved notes, and I would ask how the team checks a wrong SOAP line, because a fluent wrong sentence is worse than a slow correct one.</p>",
+     "q_vi": "<p>Dr.AI làm speech và SOAP. Bạn đã làm gì gần vậy?</p>",
+     "a_vi": "<p>Tôi chưa làm SOAP, nhưng thứ gần nhất tôi đã xây là một trợ lý giọng nói realtime, khá gần với tư vấn bằng giọng nói của Vet.AI. Ở PhysioFix, âm thanh nằm trên Twilio và Grok voice. Server Express của tôi điều khiển cuộc gọi: xác thực webhook của xAI, trả 200, rồi mở realtime socket cho cuộc gọi. Người gọi quen được tải từ Firestore trước, nên họ không phải trả lời lại câu hỏi về quyền riêng tư. Tool call được xác nhận ngay, nên giọng nói vẫn tiếp tục trong lúc transcript đang lưu, và khi cúp máy thì server chờ câu nói cuối cùng nói xong. Sau đó nhân viên đọc tóm tắt và nghe lại bản ghi âm trên trang admin Next.js.</p><p>Ở IELTS tutor, chat, chuyển văn bản thành giọng nói và giọng nói thành văn bản đều là route trên server, key nằm trên server, và mọi lời gọi đều được trace trên Langfuse.</p><p>Với công cụ cho phòng khám, tôi sẽ giới hạn model trong các ghi chú đã được duyệt, và tôi sẽ hỏi team kiểm tra một dòng SOAP sai như thế nào, vì trong y tế một câu sai mà trôi chảy còn tệ hơn một câu đúng nhưng chậm.</p>",
+     "notes": "<p><strong>Know:</strong> Other PhysioFix facts if they dig: the admin can flip the Twilio number between the Grok trunk and a staff phone, and the screen shows drift between the stored flag and the live trunk. Recordings are archived after hangup by caller and time window, because the called address on that path is a SIP URI. The voice process runs on a GCE VM over HTTPS and on Cloud Run.</p><p><strong>Trap:</strong> Calling the IELTS tutor the closest match. PhysioFix is. Do not claim SOAP or clinical work.</p><p><strong>Follow-up:</strong> “Why ack the tool call before the write?” So Grok keeps speaking while Firestore catches up; staff work from the summary.</p>"
+    },
+    {
+     "id": "intowell-clients",
+     "title": "One API, web and mobile",
+     "hint": "You already run this on IELTS and Aquanix. Vue web + Angular/Ionic mobile on one API.",
+     "q_en": "<p>How would you build backend, web, and mobile for a new product?</p>",
+     "a_en": "<p>One API, two clients. The API owns auth, validation, and the record. Here the Vue web app and the Angular and Ionic mobile app would be two views of that API, not two backends. I keep the error shape the same, I paginate lists, and long jobs like a PDF report go on a queue, so closing the phone does not kill them.</p><p>I already work this way. On the IELTS tutor, the learner app and the teacher portal use one API, and the assignment rules live on the server so the two clients do not each implement them. On Aquanix, the phone and the web call the same API and pass the same pond access check.</p><p>I would ask which client ships first. That changes the first month more than the choice between Express and Nest.</p>",
+     "q_vi": "<p>Bạn dựng backend, web, và mobile cho sản phẩm mới thế nào?</p>",
+     "a_vi": "<p>Một API, hai client. API nắm auth, validate và bản ghi. Ở đây web Vue và app mobile Angular với Ionic sẽ là hai giao diện của cùng API đó, không phải hai backend. Tôi giữ format lỗi thống nhất, danh sách thì phân trang, còn việc chạy lâu như xuất báo cáo PDF thì đưa vào queue, để người dùng tắt điện thoại cũng không làm hỏng việc.</p><p>Tôi đang làm đúng như vậy. Ở IELTS tutor, app học viên và portal giáo viên dùng chung một API, và luật giao bài nằm trên server để hai client không phải tự cài đặt riêng. Ở Aquanix, điện thoại và web gọi cùng API và đi qua cùng một bước kiểm tra quyền truy cập ao.</p><p>Tôi sẽ hỏi client nào ra trước. Câu đó ảnh hưởng tới tháng đầu nhiều hơn chuyện chọn Express hay Nest.</p>",
+     "notes": "<p><strong>Trap:</strong> Saying you built the teacher portal. The CV says you built the API the portal and the app share.</p>"
+    },
+    {
+     "id": "intowell-health",
+     "title": "Health data on this kind of product",
+     "hint": "You have not built clinical software. Speak security, not medicine.",
+     "q_en": "<p>This is healthcare. How would you treat patient or pet data?</p>",
+     "a_en": "<p>I have not built a clinical system, and I would not design a diagnosis. Dr.AI’s own pages say the tool assists a clinician and is not a standalone diagnosis. I would keep that rule in the API: model output is a suggestion with a source, or it says it does not know.</p><p>On data I use the bar I used on payroll and tax. This user may see this row or not, and a hidden button is not authorization. Names, symptoms, and report text stay out of logs and error messages. On PhysioFix a webhook with the wrong secret gets a 401, and only staff reach transcripts and recordings through the admin. Retries use an idempotency key, so a double notification does not create a second record. I would ask which fields count as health data here and who owns retention, because I will not guess the medical law in an interview.</p>",
+     "q_vi": "<p>Đây là y tế. Bạn xử lý dữ liệu bệnh nhân hoặc thú cưng thế nào?</p>",
+     "a_vi": "<p>Tôi chưa xây hệ thống lâm sàng, và tôi sẽ không tự thiết kế một chẩn đoán. Chính trang của Dr.AI nói công cụ này hỗ trợ bác sĩ, không phải chẩn đoán độc lập. Tôi sẽ giữ đúng nguyên tắc đó trong API: output của model là gợi ý có nguồn, hoặc nó nói là không biết.</p><p>Về dữ liệu, tôi giữ mức cẩn thận như khi làm lương và thuế. Người dùng này có được xem dòng này hay không, và giấu nút không phải là phân quyền. Tên, triệu chứng và nội dung báo cáo không được nằm trong log hay thông báo lỗi. Ở PhysioFix, webhook sai secret sẽ nhận 401, và chỉ nhân viên mới xem được transcript và bản ghi âm qua trang admin. Retry dùng idempotency key, để một thông báo gửi hai lần không tạo bản ghi thứ hai. Tôi sẽ hỏi trường nào được coi là dữ liệu sức khỏe và ai quyết định thời gian lưu trữ, vì tôi không đoán luật y tế trong buổi phỏng vấn.</p>",
+     "notes": "<p><strong>Trap:</strong> Quoting HIPAA, TFDA, or a 95/100 accuracy score as if you audited it.</p><p><strong>Follow-up:</strong> “How would you log a consult?” Request id, status, duration. Not the transcript.</p>"
+    },
+    {
+     "id": "intowell-maintain",
+     "title": "Maintain and speed up what exists",
+     "hint": "Measure. Then the layer. Do not rewrite CakePHP in week one.",
+     "q_en": "<p>How do you maintain and optimize existing web and mobile systems?</p>",
+     "a_en": "<p>I measure the slow path before I rewrite anything. Usually the time goes to one of three places: a query, an outside call with no timeout, or a payload far too big for a phone. At BaseVN I fixed the first kind with schema and index work on reporting tables over 500,000 records. On the IELTS tutor, every AI call is traced in Langfuse, so I can tell a bad model answer from an upstream failure. On the client, I replaced a request per topic with one progress fetch on sign-in.</p><p>Caching a wrong query only makes the wrong answer faster. I would not start a migration away from CakePHP or AngularJS because it looks old. I ship the ticket, add a test around the bug, and leave the module clearer than I found it.</p>",
+     "q_vi": "<p>Bạn maintain và tối ưu hệ web và mobile đang có thế nào?</p>",
+     "a_vi": "<p>Tôi đo đường chậm trước khi viết lại bất cứ thứ gì. Thường thời gian mất ở một trong ba chỗ: query, lời gọi ra ngoài không có timeout, hoặc payload quá lớn cho điện thoại. Ở BaseVN tôi sửa loại đầu bằng cách chỉnh schema và index trên các bảng báo cáo hơn 500.000 bản ghi. Ở IELTS tutor, mọi lời gọi AI đều được trace trên Langfuse, nên tôi phân biệt được câu trả lời tệ của model với lỗi từ phía nhà cung cấp. Phía client, tôi thay việc gửi một request cho mỗi chủ đề bằng một lần lấy toàn bộ tiến độ khi đăng nhập.</p><p>Cache một query sai chỉ làm kết quả sai trả về nhanh hơn. Tôi sẽ không bắt đầu chuyển khỏi CakePHP hay AngularJS chỉ vì nó cũ. Tôi làm xong ticket, thêm test quanh bug, và để module dễ hiểu hơn lúc tôi nhận.</p>",
+     "notes": ""
+    },
+    {
+     "id": "intowell-i18n",
+     "title": "Languages on a global product",
+     "hint": "Vet.AI public site lists Chinese, English, Japanese, Vietnamese.",
+     "q_en": "<p>How would you handle several languages?</p>",
+     "a_en": "<p>Strings live in keyed files, not inside a component, for example with vue-i18n on the web and the same keys in the mobile app. The locale sits on the user or the device, and the API returns dates and copy in that locale. Vet.AI’s public site lists Chinese, English, Japanese, and Vietnamese, so I would expect that set, and I would confirm which ones a new screen must ship with on day one. I format dates and numbers with the locale. I would not machine-translate a diagnosis name and ship it. For Traditional Chinese in Taiwan I would ask who writes the copy, because my own Chinese is basic.</p>",
+     "q_vi": "<p>Bạn xử lý nhiều ngôn ngữ thế nào?</p>",
+     "a_vi": "<p>Chuỗi văn bản nằm trong file có key, không nằm trong component, ví dụ dùng vue-i18n trên web và cùng bộ key đó trong app mobile. Locale gắn với người dùng hoặc thiết bị, và API trả ngày tháng và nội dung theo locale đó. Trang công khai của Vet.AI có tiếng Trung, Anh, Nhật và Việt, nên tôi đoán sẽ cần bộ đó, và tôi sẽ xác nhận màn hình mới phải có những ngôn ngữ nào ngay từ đầu. Ngày tháng và số được format theo locale. Tôi sẽ không dịch máy tên một chẩn đoán rồi đưa lên. Với tiếng Trung phồn thể cho Đài Loan, tôi sẽ hỏi ai viết nội dung, vì tiếng Trung của tôi còn cơ bản.</p>",
+     "notes": "<p><strong>Know:</strong> <code>Intl.DateTimeFormat</code> and <code>Intl.NumberFormat</code>. 03/04 is 3 April or 4 March depending on locale.</p>"
+    },
+    {
+     "id": "intowell-collab",
+     "title": "Product, business, and review",
+     "hint": "Write the behavior before you code the wrong filter.",
+     "q_en": "<p>How do you work with product, business, and other engineers?</p>",
+     "a_en": "<p>I write the behavior I think we are building, the screen, and the edge case, and I ask product to correct it before I code. For a clinic or a pet-owner flow that means: who is the user, what they must never see, and what happens when the model is wrong. In review I keep the pull request small, I write how to test it, and I answer the risk, not the wording. I have done this with a team in France. I would do the same with Taiwan: English in the ticket, a blocker named while it is still a blocker, not at standup the next morning.</p>",
+     "q_vi": "<p>Bạn làm việc với product, business, và kỹ sư khác thế nào?</p>",
+     "a_vi": "<p>Tôi viết ra hành vi mà tôi nghĩ chúng ta đang xây, màn hình nào, và các trường hợp biên, rồi nhờ product sửa trước khi tôi code. Với một luồng cho phòng khám hay chủ thú cưng, nghĩa là: người dùng là ai, họ tuyệt đối không được thấy gì, và chuyện gì xảy ra khi model trả lời sai. Khi review, tôi giữ pull request nhỏ, ghi cách test, và trả lời vào đúng rủi ro chứ không tranh luận câu chữ. Tôi đã làm như vậy với team ở Pháp. Với Đài Loan tôi cũng làm thế: ticket viết bằng tiếng Anh, và báo ngay khi bị chặn chứ không đợi đến buổi standup sáng hôm sau.</p>",
+     "notes": ""
+    }
+   ]
+  },
+  {
+   "id": "sec-team",
+   "name": "Delivery and team",
+   "cards": [
+    {
+     "id": "intowell-cicd",
+     "title": "CI, CD, and Docker",
+     "hint": "Real. Akktis pipelines (past), Cloud Build on Aquanix. Follow their pipeline.",
+     "q_en": "<p>How familiar are you with CI/CD and Docker?</p>",
+     "a_en": "<p>Real, and I would follow your pipeline. At Akktis I maintained CI/CD for web and mobile projects on GitHub Actions, GitLab CI, or Jenkins. Docker images went to Artifact Registry and then Cloud Run, and I checked the new revision before calling a release done. On Aquanix, Cloud Build deploys the API to Cloud Run and the web app to a staging Firebase Hosting site, and production is a separate release after that check.</p><p>Locally I expect a compose file or a documented setup for the API, the database, and the web app. I would not redesign the CI in the first month. On mobile, a Capacitor store build is its own pipeline, and I have done the store side with Expo.</p>",
+     "q_vi": "<p>CI/CD và Docker quen đến mức nào?</p>",
+     "a_vi": "<p>Có thật, và tôi sẽ theo pipeline của team. Ở Akktis tôi duy trì CI/CD cho các dự án web và mobile, dùng GitHub Actions, GitLab CI hoặc Jenkins. Docker image được đẩy lên Artifact Registry rồi deploy lên Cloud Run, và tôi kiểm tra revision mới trước khi coi một bản release là xong. Ở Aquanix, Cloud Build deploy API lên Cloud Run và web lên một site Firebase Hosting staging, còn production là một lần release riêng sau khi kiểm tra.</p><p>Ở máy local tôi mong có file compose hoặc tài liệu dựng môi trường cho API, database và web. Tháng đầu tôi sẽ không thiết kế lại CI. Với mobile, build Capacitor lên store là một pipeline riêng, và phần lên store tôi đã làm với Expo.</p>",
+     "notes": "<p><strong>Trap:</strong> Saying you built or designed the Akktis pipelines. The CV says maintained.</p>"
+    },
+    {
+     "id": "intowell-cloud",
+     "title": "AWS, Azure, or what you actually ran",
+     "hint": "GCP Cloud Run is the honest cloud. Do not invent AWS.",
+     "q_en": "<p>Are you familiar with AWS or Azure?</p>",
+     "a_en": "<p>The cloud I have operated is Google Cloud: Cloud Run for the APIs, Cloud Build, Artifact Registry, Cloud Storage, Firebase Hosting, and one Compute Engine VM for the PhysioFix voice process. I have not owned an AWS or Azure setup. The ideas transfer: a container, env and secrets on the service instead of in git, a health check, and traffic back to the previous revision if the new one is bad. If the team is on AWS, I would learn the service names from your existing deploy.</p>",
+     "q_vi": "<p>Bạn quen AWS hoặc Azure chứ?</p>",
+     "a_vi": "<p>Cloud tôi đã vận hành là Google Cloud: Cloud Run cho các API, Cloud Build, Artifact Registry, Cloud Storage, Firebase Hosting, và một VM Compute Engine cho tiến trình voice của PhysioFix. Tôi chưa làm chính một hệ thống AWS hay Azure. Tư duy thì dùng lại được: container, env và secret nằm trên service chứ không nằm trong git, health check, và chuyển traffic về revision trước nếu bản mới lỗi. Nếu team dùng AWS, tôi sẽ học tên các service từ quy trình deploy đang có.</p>",
+     "notes": "<p><strong>Trap:</strong> Cloud SQL, AWS, or Azure as something you ran.</p><p><strong>Follow-up:</strong> “AWS equivalent of Cloud Run?” App Runner or ECS on Fargate. Say it as a mapping you know, not one you operated.</p>"
+    },
+    {
+     "id": "intowell-taiwan",
+     "title": "A Taiwan product team, a Hanoi role",
+     "hint": "One hour ahead. The writing habit still matters.",
+     "q_en": "<p>The company is Taiwanese. How would you work with that team from Hanoi?</p>",
+     "a_en": "<p>Taiwan is one hour ahead, so meetings are easy. The harder part is a vague ticket about a clinic screen I have not seen. I write down what I think the API and the screen will do, and I ask before I build, not the next morning. I have already worked with a team in France across a bigger time gap, so written updates and small pull requests are normal for me. If someone starts in Chinese, I can manage a short introduction, but my Chinese is basic. For technical detail I switch to English, so we do not leave the meeting with the wrong design.</p>",
+     "q_vi": "<p>Công ty là Đài Loan. Làm việc với team đó từ Hà Nội thế nào?</p>",
+     "a_vi": "<p>Đài Loan chỉ sớm hơn một tiếng, nên họp hành dễ. Phần khó hơn là một ticket mơ hồ về màn hình phòng khám mà tôi chưa từng thấy. Tôi viết ra điều tôi nghĩ API và màn hình sẽ làm, và hỏi trước khi làm, không đợi đến sáng hôm sau. Tôi đã làm với team ở Pháp, lệch giờ còn nhiều hơn, nên cập nhật bằng văn bản và pull request nhỏ là chuyện bình thường với tôi. Nếu ai đó bắt đầu bằng tiếng Trung, tôi giới thiệu ngắn được, nhưng tiếng Trung của tôi còn cơ bản. Phần chi tiết kỹ thuật tôi chuyển sang tiếng Anh, để hai bên không rời buổi họp với một thiết kế sai.</p>",
+     "notes": "<p><strong>Know:</strong> The ITviec listing is at the office in Trần Thái Tông, Monday to Friday, no OT. Only bring it up if they ask about working hours.</p><p><strong>Trap:</strong> Reading their own job listing back to them.</p><p><strong>Follow-up:</strong> Chinese rescue lines are on the <a href=\"qnap.html#qnap-rescue\">QNAP Chinese card</a>.</p>"
+    },
+    {
+     "id": "intowell-cursor",
+     "title": "How you use AI when you build",
+     "hint": "Spec, plan, failing test, then you read the diff.",
+     "q_en": "<p>How do you use AI tools on a feature?</p>",
+     "a_en": "<p>I use Cursor and Claude Code every day. I do not open the chat and say “build the feature.” Spec first, then a plan of small tasks, then a failing test, then the code, and then I read the diff against the spec. The model drafts. I still own the edge cases and the commit. On a health product that matters more, not less. I will not merge a SOAP mapper I cannot explain.</p>",
+     "q_vi": "<p>Bạn dùng AI khi làm một feature thế nào?</p>",
+     "a_vi": "<p>Tôi dùng Cursor và Claude Code hằng ngày. Tôi không mở chat rồi bảo “làm feature này đi”. Viết spec trước, rồi chia thành các task nhỏ, rồi viết test fail, rồi mới code, và cuối cùng đọc diff đối chiếu với spec. Model viết bản nháp. Các trường hợp biên và commit vẫn là trách nhiệm của tôi. Với sản phẩm y tế thì điều này còn quan trọng hơn. Tôi sẽ không merge một đoạn map dữ liệu SOAP mà tôi không giải thích được.</p>",
+     "notes": "<p><strong>Follow-up:</strong> The longer workflow answer is on <a href=\"qnap.html#qnap-ai\">QNAP → AI</a> and <a href=\"behavioral.html\">Behavioral</a>.</p>"
+    }
+   ]
+  },
+  {
+   "id": "sec-close",
+   "name": "Close",
+   "cards": [
+    {
+     "id": "intowell-ask",
+     "title": "Questions you ask them. Pick four.",
+     "hint": "The repo question and the mobile question tell you the job.",
+     "q_en": "<p>What do you want to ask us?</p>",
+     "a_en": "<p>I have a few questions, if we have time.</p>\n<ol>\n<li>Which repo does a Hanoi full-stack engineer open in the first month: the Node and Vue product, or an older Laravel, CakePHP, or native app?</li>\n<li>Is the mobile app Angular with Ionic and Capacitor, or still native iOS and Android?</li>\n<li>For Dr.AI and Vet.AI, who is the Hanoi team’s customer: clinics, pet owners, or both?</li>\n<li>Where does health data live, and who decides retention and audit?</li>\n<li>What does a good first ninety days look like in this role?</li>\n<li>How do you like engineers in Vietnam to work with Taiwan: what goes in a ticket, and what needs a meeting?</li>\n</ol>",
+     "q_vi": "<p>Bạn muốn hỏi chúng tôi gì?</p>",
+     "a_vi": "<p>Tôi có vài câu hỏi, nếu còn thời gian.</p>\n<ol>\n<li>Trong tháng đầu, kỹ sư full-stack ở Hà Nội sẽ làm repo nào: sản phẩm Node và Vue, hay một app Laravel, CakePHP hoặc native cũ hơn?</li>\n<li>App mobile là Angular với Ionic và Capacitor, hay vẫn là iOS và Android native?</li>\n<li>Với Dr.AI và Vet.AI, khách hàng của team Hà Nội là phòng khám, chủ thú cưng, hay cả hai?</li>\n<li>Dữ liệu sức khỏe được lưu ở đâu, và ai quyết định thời gian lưu trữ và audit?</li>\n<li>Chín mươi ngày đầu ở vị trí này thế nào thì được coi là tốt?</li>\n<li>Anh/chị muốn kỹ sư ở Việt Nam làm việc với Đài Loan thế nào: việc gì ghi vào ticket, việc gì cần họp?</li>\n</ol>",
+     "notes": "<p>Pick four. Stop after they answer. The first two questions tell you whether the job description matches the day-to-day work.</p>"
+    },
+    {
+     "id": "intowell-close",
+     "title": "If they ask “anything else?”",
+     "hint": "Name the fit, name the gap, stop.",
+     "q_en": "<p>Anything else you want to add?</p>",
+     "a_en": "<p>I can do the Node API, the database, and the PHP side if that is in the repo. I have shipped a realtime voice assistant, and mobile and web clients on one backend. Vue and Ionic I have not shipped, and I will ramp from the screens you already have. I would like to work on this product.</p>",
+     "q_vi": "<p>Còn gì muốn bổ sung không?</p>",
+     "a_vi": "<p>Phần API Node, database, và PHP nếu có trong repo, tôi làm được. Tôi đã ship một trợ lý giọng nói realtime, và các client mobile và web dùng chung một backend. Vue và Ionic tôi chưa ship, và tôi sẽ bắt nhịp từ các màn hình team đang có. Tôi rất muốn được làm sản phẩm này.</p>",
+     "notes": ""
+    },
+    {
+     "id": "intowell-trap",
+     "title": "Leave these claims out",
+     "hint": "Read this the morning of the interview.",
+     "q_en": "<p>What must you not say?</p>",
+     "a_en": "<ul>\n<li>Vue in production. You have not shipped it.</li>\n<li>Angular, Ionic, or Capacitor as a product you owned.</li>\n<li>CakePHP. You have not shipped it.</li>\n<li>A Mongo cluster, Cloud SQL, or AWS or Azure as the cloud you ran. Google Cloud (Cloud Run, Cloud Build, Firebase Hosting, one GCE VM) is the real one.</li>\n<li>“About five years.” It is four years since March 2022.</li>\n<li>Akktis in the present tense. It ended July 2026.</li>\n<li>The AI tutor as React web. It is React Native. Your React web is the PhysioFix Next.js admin.</li>\n<li>Hiring workflows or review screens at Base. E-Hiring was the VietnamWorks/TopCV integration: candidate sync, retries, request logging.</li>\n<li>Clinical experience, HIPAA, TFDA, or a diagnostic-accuracy number from their marketing page.</li>\n<li>That Dr.AI replaces a doctor. Their own site says it does not.</li>\n<li>The Hanoi legal representative, the tax code, or a salary band from a job scraper.</li>\n<li>That you will rewrite the old stack in the first month.</li>\n</ul>",
+     "q_vi": "<p>Những câu không được nói?</p>",
+     "a_vi": "<ul>\n<li>Vue trên production. Tôi chưa ship.</li>\n<li>Angular, Ionic hoặc Capacitor như một sản phẩm tôi từng làm chính.</li>\n<li>CakePHP. Tôi chưa ship.</li>\n<li>Một cụm Mongo, Cloud SQL, hoặc AWS hay Azure là cloud tôi đã chạy. Cloud thật là Google Cloud (Cloud Run, Cloud Build, Firebase Hosting, một VM GCE).</li>\n<li>“Khoảng năm năm.” Đúng là bốn năm, từ tháng 3/2022.</li>\n<li>Nói về Akktis ở thì hiện tại. Công việc đó kết thúc tháng 7/2026.</li>\n<li>Nói app AI tutor là React web. Nó là React Native. React web của tôi là trang admin Next.js của PhysioFix.</li>\n<li>Quy trình tuyển dụng hay màn hình duyệt ở Base. E-Hiring là tích hợp VietnamWorks/TopCV: đồng bộ ứng viên, retry, ghi log request.</li>\n<li>Kinh nghiệm lâm sàng, HIPAA, TFDA, hoặc con số độ chính xác trên trang marketing của họ.</li>\n<li>Rằng Dr.AI thay bác sĩ. Trang của họ nói là không.</li>\n<li>Người đại diện pháp luật ở Hà Nội, mã số thuế, hoặc mức lương lấy từ trang tổng hợp việc làm.</li>\n<li>Rằng tháng đầu tôi sẽ viết lại stack cũ.</li>\n</ul>",
+     "notes": "<p>Stories with numbers stay on <a href=\"cv.html\">CV and projects</a>. Spoken fillers are on <a href=\"english.html\">Spoken English</a>.</p>"
+    }
+   ]
+  }
+ ]
+}

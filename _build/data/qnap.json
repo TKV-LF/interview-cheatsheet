@@ -1,0 +1,406 @@
+{
+ "page": "qnap",
+ "href": "qnap.html",
+ "title": "QNAP Vietnam",
+ "intro": "Friday 30 October 2026, 14:00 Vietnam time. Chinese first. English when the technical point has to be exact.",
+ "sections": [
+  {
+   "id": "sec-friday",
+   "name": "Friday",
+   "cards": [],
+   "html": "<div class=\"brief\">\n<p><strong>Meet:</strong> the Google Meet link from the invite. Not stored here, because this repo is public.</p>\n<p>Open it five minutes early. Camera on. Water nearby. The Chinese card open on a second window, not memorised as a paragraph you are afraid to drop.</p>\n<p><strong>What this job is.</strong> Fullstack on the Partner Portal and Sales Portal: partner-facing flows and the sales admin behind them. Core flows named in the description are case registration, warehouse and inventory lookup, and partner-application approval. Sales admin means forms, batch operations, advanced filters, and REST APIs. Plus i18n and a layout that works on a phone. Scrum with PM, UI/UX, and QA in Taiwan. Code review with senior engineers. This is product work, not IT helpdesk.</p>\n<p><strong>What you can say you have seen.</strong> QNAP is Quality Network Appliance Provider, founded in Taiwan in 2004. The public product is NAS and networking, and the 2026 public story includes Edge AI NAS and hybrid cloud (myQNAPcloud One). The public partner login is <a href=\"https://direct.qnap.com/user/login\">direct.qnap.com</a>, with QNAP ID and a second verification step. Public partner pages describe deal registration, NFR samples, loaner units, rebates, support, and training. Those are public program pages. They are not proof of how the Vietnam portal schema works. Say you would confirm that in the team.</p>\n<p><strong>The Vietnam office, from the public listing.</strong> ITviec lists the company at Phòng 20, tầng 3, tòa nhà IPH, 241 Xuân Thủy, Cầu Giấy, Hà Nội, size 1–50, Monday to Friday, at the office. Tags on that fullstack posting: PHP, Laravel, MySQL, API, ReactJS, VueJS. Ask whether this interview is that on-site Hanoi seat. <a href=\"https://qnapvn.com/\">qnapvn.com</a> is a distributor site (MaxLink), not this employer.</p>\n<p><strong>Stack you will defend.</strong> PHP and MySQL are the deep work, from BaseVN. Laravel is real, from Akktis (ended July 2026), not a large system you owned. Frontend you shipped: the PhysioFix Next.js admin (React, TypeScript) and React Native apps on Expo. Vue is not a production story. Docker, CI, and Cursor are real. Chinese is basic. You do not write NAS firmware.</p>\n<ul>\n<li>Read the Chinese card out loud until it is boring.</li>\n<li>Then one portal flow: approval, then inventory, then batch.</li>\n<li>Then one Laravel answer and one MySQL answer, in English.</li>\n<li>One Base story and one production-bug story, 90 seconds each. Those live on <a href=\"cv.html\">CV and projects</a>.</li>\n<li>Friday morning: the intro, the word list, and the one-line replies. Nothing new.</li>\n</ul>\n</div>"
+  },
+  {
+   "id": "sec-zh",
+   "name": "Chinese",
+   "cards": [
+    {
+     "id": "qnap-zh",
+     "title": "Short self-introduction. Say this first.",
+     "hint": "",
+     "notes": "<p>About 60 seconds if you do not rush. Read the simplified Chinese out loud, following the pinyin. Stop after 可以吗？ and let them talk. If they answer in Chinese and you only catch half, use a rescue line. Do not keep nodding. If they write Traditional on screen, the sounds are the same.</p>",
+     "body": "<p class=\"zh-key\"><span>中文</span><span>Pinyin</span><span>Nghĩa</span></p>\n<p class=\"zh\" lang=\"zh-Hans\">您好，我叫 Thuy。</p>\n<p class=\"py\">Nín hǎo, wǒ jiào Thuy.</p>\n<p class=\"mean\">Xin chào, tôi tên là Thuy.</p>\n<p class=\"zh\" lang=\"zh-Hans\">我是全栈工程师，有四年的工作经验。</p>\n<p class=\"py\">Wǒ shì quánzhàn gōngchéngshī, yǒu sì nián de gōngzuò jīngyàn.</p>\n<p class=\"mean\">Tôi là kỹ sư fullstack, có bốn năm kinh nghiệm làm việc.</p>\n<p class=\"zh\" lang=\"zh-Hans\">我主要做后端。最熟的是 PHP 跟 MySQL，也用过 Laravel。</p>\n<p class=\"py\">Wǒ zhǔyào zuò hòuduān. Zuì shú de shì PHP gēn MySQL, yě yòngguò Laravel.</p>\n<p class=\"mean\">Tôi chủ yếu làm backend. Thuộc nhất là PHP và MySQL, cũng đã dùng Laravel.</p>\n<p class=\"zh\" lang=\"zh-Hans\">前端方面，我用 React 跟 TypeScript 做过管理后台，也用 React Native 做过已经上线的 App。</p>\n<p class=\"py\">Qiánduān fāngmiàn, wǒ yòng React gēn TypeScript zuòguò guǎnlǐ hòutái, yě yòng React Native zuòguò yǐjīng shàngxiàn de App.</p>\n<p class=\"mean\">Về frontend, tôi đã dùng React và TypeScript làm trang quản trị, và dùng React Native làm app đã lên store.</p>\n<p class=\"zh\" lang=\"zh-Hans\">我做过企业 SaaS 产品，包含人事、薪资，还有招聘平台的对接。</p>\n<p class=\"py\">Wǒ zuòguò qǐyè SaaS chǎnpǐn, bāohán rénshì, xīnzī, hái yǒu zhāopìn píngtái de duìjiē.</p>\n<p class=\"mean\">Tôi đã làm sản phẩm SaaS cho doanh nghiệp, gồm nhân sự, lương, và tích hợp với các trang tuyển dụng.</p>\n<p class=\"zh\" lang=\"zh-Hans\">我也做过远程项目，跟国外的团队一起工作。</p>\n<p class=\"py\">Wǒ yě zuòguò yuǎnchéng xiàngmù, gēn guówài de tuánduì yìqǐ gōngzuò.</p>\n<p class=\"mean\">Tôi cũng đã làm dự án remote, làm việc cùng team ở nước ngoài.</p>\n<p class=\"zh\" lang=\"zh-Hans\">我希望加入 QNAP，一起开发 Partner Portal，帮助全球的合作伙伴。</p>\n<p class=\"py\">Wǒ xīwàng jiārù QNAP, yìqǐ kāifā Partner Portal, bāngzhù quánqiú de hézuò huǒbàn.</p>\n<p class=\"mean\">Tôi muốn gia nhập QNAP, cùng phát triển Partner Portal, giúp đối tác trên toàn cầu.</p>\n<p class=\"zh\" lang=\"zh-Hans\">我的中文还很基础，所以这段自我介绍我有准备。技术细节我想用英文说明，可以吗？谢谢您的时间。</p>\n<p class=\"py\">Wǒ de Zhōngwén hái hěn jīchǔ, suǒyǐ zhè duàn zìwǒ jièshào wǒ yǒu zhǔnbèi. Jìshù xìjié wǒ xiǎng yòng Yīngwén shuōmíng, kěyǐ ma? Xièxie nín de shíjiān.</p>\n<p class=\"mean\">Tiếng Trung của tôi còn rất cơ bản, nên đoạn tự giới thiệu này tôi có chuẩn bị. Chi tiết kỹ thuật tôi muốn giải thích bằng tiếng Anh, được không? Cảm ơn thời gian của anh/chị.</p>",
+     "keywords": "chinese self introduction 自我介绍 简体 您好 全栈工程师 partner portal 人事 薪资 远程 四年 react native",
+     "open": true
+    },
+    {
+     "id": "qnap-rescue",
+     "title": "If you freeze, say one of these.",
+     "hint": "",
+     "notes": "<p>Use the English line early. Waiting until you are lost makes the next five minutes worse.</p>",
+     "body": "<p class=\"zh\" lang=\"zh-Hans\">不好意思，请您再说一次。</p>\n<p class=\"py\">Bù hǎoyìsi, qǐng nín zài shuō yí cì.</p>\n<p class=\"mean\">Xin lỗi, phiền anh/chị nói lại một lần.</p>\n<p class=\"zh\" lang=\"zh-Hans\">这个问题我想用英文说明，可以吗？</p>\n<p class=\"py\">Zhège wèntí wǒ xiǎng yòng Yīngwén shuōmíng, kěyǐ ma?</p>\n<p class=\"mean\">Câu này tôi muốn giải thích bằng tiếng Anh, được không?</p>\n<p class=\"zh\" lang=\"zh-Hans\">我听得懂一些，可是我说得比较慢。</p>\n<p class=\"py\">Wǒ tīng de dǒng yìxiē, kěshì wǒ shuō de bǐjiào màn.</p>\n<p class=\"mean\">Tôi nghe hiểu một phần, nhưng tôi nói chậm.</p>\n<p class=\"zh\" lang=\"zh-Hans\">好的，我明白。</p>\n<p class=\"py\">Hǎo de, wǒ míngbai.</p>\n<p class=\"mean\">Vâng, tôi hiểu.</p>\n<p class=\"zh\" lang=\"zh-Hans\">我有一个问题。</p>\n<p class=\"py\">Wǒ yǒu yí ge wèntí.</p>\n<p class=\"mean\">Tôi có một câu hỏi.</p>\n<p class=\"zh\" lang=\"zh-Hans\">谢谢您今天的时间。</p>\n<p class=\"py\">Xièxie nín jīntiān de shíjiān.</p>\n<p class=\"mean\">Cảm ơn thời gian hôm nay.</p>",
+     "keywords": "rescue phrases 再说一次 用英文 听得懂 谢谢"
+    },
+    {
+     "id": "qnap-words",
+     "title": "Words you will actually say.",
+     "hint": "",
+     "notes": "<p>Build a sentence from these, then stop. 我是工程师。我有四年的经验。我也做前端。我的中文还很基础，所以技术方面我想用英文。 (Wǒ shì gōngchéngshī. Wǒ yǒu sì nián de jīngyàn. Wǒ yě zuò qiánduān. Wǒ de Zhōngwén hái hěn jīchǔ, suǒyǐ jìshù fāngmiàn wǒ xiǎng yòng Yīngwén.)</p><p>The Taiwan group is for listening. You can keep saying the mainland word; just recognise theirs.</p>",
+     "body": "<div class=\"ans\"><table class=\"words\">\n<thead><tr><th>中文</th><th>Pinyin</th><th>Nghĩa</th></tr></thead>\n<tbody>\n<tr class=\"group\"><td colspan=\"3\">People and work</td></tr>\n<tr><td>我</td><td>wǒ</td><td>tôi</td></tr>\n<tr><td>您</td><td>nín</td><td>anh/chị (lịch sự). Họ có thể gọi bạn là 你 nǐ.</td></tr>\n<tr><td>工程师</td><td>gōngchéngshī</td><td>kỹ sư</td></tr>\n<tr><td>经验</td><td>jīngyàn</td><td>kinh nghiệm</td></tr>\n<tr><td>工作</td><td>gōngzuò</td><td>công việc</td></tr>\n<tr><td>公司</td><td>gōngsī</td><td>công ty</td></tr>\n<tr><td>团队</td><td>tuánduì</td><td>team</td></tr>\n<tr><td>产品</td><td>chǎnpǐn</td><td>sản phẩm</td></tr>\n<tr><td>前端</td><td>qiánduān</td><td>frontend</td></tr>\n<tr><td>后端</td><td>hòuduān</td><td>backend</td></tr>\n<tr><td>数据库</td><td>shùjùkù</td><td>database</td></tr>\n<tr><td>合作伙伴</td><td>hézuò huǒbàn</td><td>đối tác</td></tr>\n<tr class=\"group\"><td colspan=\"3\">Taiwan words you may hear (Traditional / Simplified)</td></tr>\n<tr><td>全端工程師 / 全端工程师</td><td>quánduān gōngchéngshī</td><td>kỹ sư fullstack. Bạn nói 全栈 quánzhàn cũng được.</td></tr>\n<tr><td>遠端 / 远端</td><td>yuǎnduān</td><td>remote, làm từ xa. Đại lục hay nói 远程 yuǎnchéng.</td></tr>\n<tr><td>專案 / 专案</td><td>zhuān’àn</td><td>dự án. Đại lục hay nói 项目 xiàngmù.</td></tr>\n<tr><td>軟體 / 软体</td><td>ruǎntǐ</td><td>phần mềm. Đại lục hay nói 软件 ruǎnjiàn.</td></tr>\n<tr><td>資料庫 / 资料库</td><td>zīliàokù</td><td>database. Đại lục hay nói 数据库 shùjùkù.</td></tr>\n<tr><td>網路 / 网路</td><td>wǎnglù</td><td>mạng, internet. Đại lục hay nói 网络 wǎngluò.</td></tr>\n<tr class=\"group\"><td colspan=\"3\">Yes, no, and maybe</td></tr>\n<tr><td>是</td><td>shì</td><td>phải, là</td></tr>\n<tr><td>不是</td><td>bú shì</td><td>không phải</td></tr>\n<tr><td>对</td><td>duì</td><td>đúng</td></tr>\n<tr><td>有</td><td>yǒu</td><td>có</td></tr>\n<tr><td>没有</td><td>méiyǒu</td><td>không có</td></tr>\n<tr><td>会</td><td>huì</td><td>biết, sẽ</td></tr>\n<tr><td>不会</td><td>bú huì</td><td>không biết</td></tr>\n<tr><td>可以</td><td>kěyǐ</td><td>được</td></tr>\n<tr><td>不可以</td><td>bù kěyǐ</td><td>không được</td></tr>\n<tr><td>好的</td><td>hǎo de</td><td>vâng, được</td></tr>\n<tr><td>没问题</td><td>méi wèntí</td><td>không vấn đề</td></tr>\n<tr class=\"group\"><td colspan=\"3\">Glue between sentences</td></tr>\n<tr><td>也</td><td>yě</td><td>cũng</td></tr>\n<tr><td>跟</td><td>gēn</td><td>và, với. Nói chuyện ở Đài Loan hay dùng 跟.</td></tr>\n<tr><td>还是</td><td>háishi</td><td>hay là</td></tr>\n<tr><td>因为</td><td>yīnwèi</td><td>vì</td></tr>\n<tr><td>所以</td><td>suǒyǐ</td><td>nên</td></tr>\n<tr><td>但是</td><td>dànshì</td><td>nhưng</td></tr>\n<tr><td>一下</td><td>yíxià</td><td>một chút</td></tr>\n<tr><td>现在</td><td>xiànzài</td><td>bây giờ</td></tr>\n<tr><td>今天</td><td>jīntiān</td><td>hôm nay</td></tr>\n<tr><td>问题</td><td>wèntí</td><td>câu hỏi, vấn đề</td></tr>\n<tr><td>谢谢</td><td>xièxie</td><td>cảm ơn</td></tr>\n<tr><td>再见</td><td>zàijiàn</td><td>tạm biệt</td></tr>\n</tbody>\n</table></div>",
+     "keywords": "chinese words vocabulary 常用 你好 谢谢 可以 问题 经验 工程师 团队 全端 遠端 專案 軟體 資料庫 taiwan"
+    },
+    {
+     "id": "qnap-lines",
+     "title": "One line, then wait.",
+     "hint": "",
+     "notes": "<p>These replace silence. One line is enough. Do not stack three of them.</p>",
+     "body": "<p class=\"zh\" lang=\"zh-Hans\">您好，很高兴见到您。</p>\n<p class=\"py\">Nín hǎo, hěn gāoxìng jiàndào nín.</p>\n<p class=\"mean\">Xin chào, rất vui được gặp anh/chị.</p>\n<p class=\"zh\" lang=\"zh-Hans\">我听得到。您听得到我吗？</p>\n<p class=\"py\">Wǒ tīng de dào. Nín tīng de dào wǒ ma?</p>\n<p class=\"mean\">Tôi nghe được. Anh/chị nghe được tôi không?</p>\n<p class=\"zh\" lang=\"zh-Hans\">画面清楚。</p>\n<p class=\"py\">Huàmiàn qīngchu.</p>\n<p class=\"mean\">Hình rõ.</p>\n<p class=\"zh\" lang=\"zh-Hans\">好的。</p>\n<p class=\"py\">Hǎo de.</p>\n<p class=\"mean\">Vâng.</p>\n<p class=\"zh\" lang=\"zh-Hans\">是的。 / 对，没错。</p>\n<p class=\"py\">Shì de. / Duì, méi cuò.</p>\n<p class=\"mean\">Phải. / Đúng rồi.</p>\n<p class=\"zh\" lang=\"zh-Hans\">不是。</p>\n<p class=\"py\">Bú shì.</p>\n<p class=\"mean\">Không phải.</p>\n<p class=\"zh\" lang=\"zh-Hans\">没问题。</p>\n<p class=\"py\">Méi wèntí.</p>\n<p class=\"mean\">Không sao.</p>\n<p class=\"zh\" lang=\"zh-Hans\">我想一下。</p>\n<p class=\"py\">Wǒ xiǎng yíxià.</p>\n<p class=\"mean\">Tôi nghĩ một chút.</p>\n<p class=\"zh\" lang=\"zh-Hans\">好问题。</p>\n<p class=\"py\">Hǎo wèntí.</p>\n<p class=\"mean\">Câu hỏi hay.</p>\n<p class=\"zh\" lang=\"zh-Hans\">我明白。</p>\n<p class=\"py\">Wǒ míngbai.</p>\n<p class=\"mean\">Tôi hiểu.</p>\n<p class=\"zh\" lang=\"zh-Hans\">我不太确定。</p>\n<p class=\"py\">Wǒ bú tài quèdìng.</p>\n<p class=\"mean\">Tôi không chắc lắm.</p>\n<p class=\"zh\" lang=\"zh-Hans\">请说慢一点。</p>\n<p class=\"py\">Qǐng shuō màn yìdiǎn.</p>\n<p class=\"mean\">Xin nói chậm một chút.</p>\n<p class=\"zh\" lang=\"zh-Hans\">请等一下。</p>\n<p class=\"py\">Qǐng děng yíxià.</p>\n<p class=\"mean\">Xin đợi một chút.</p>\n<p class=\"zh\" lang=\"zh-Hans\">这个字我不认识。</p>\n<p class=\"py\">Zhège zì wǒ bú rènshi.</p>\n<p class=\"mean\">Chữ này tôi không biết.</p>\n<p class=\"zh\" lang=\"zh-Hans\">我先说重点，细节用英文，可以吗？</p>\n<p class=\"py\">Wǒ xiān shuō zhòngdiǎn, xìjié yòng Yīngwén, kěyǐ ma?</p>\n<p class=\"mean\">Tôi nói ý chính trước, chi tiết bằng tiếng Anh, được không?</p>",
+     "keywords": "chinese short replies 好的 没问题 请说慢一点 听得到 我想一下"
+    },
+    {
+     "id": "qnap-ask-zh",
+     "title": "If they ask in Chinese, answer in one line.",
+     "hint": "",
+     "notes": "<p>Stop after the Chinese line. If they nod and wait, add: 细节我用英文说，可以吗？ Xìjié wǒ yòng Yīngwén shuō, kěyǐ ma?</p>",
+     "body": "<p class=\"mean\"><strong>They say:</strong> 你在哪里？ Nǐ zài nǎlǐ? Bạn ở đâu?</p>\n<p class=\"zh\" lang=\"zh-Hans\">我在越南，在河内。</p>\n<p class=\"py\">Wǒ zài Yuènán, zài Hénèi.</p>\n<p class=\"mean\">Tôi ở Việt Nam, ở Hà Nội.</p>\n<p class=\"mean\"><strong>They say:</strong> 你做这行多久了？ Nǐ zuò zhè háng duōjiǔ le? Bạn làm nghề này bao lâu rồi?</p>\n<p class=\"zh\" lang=\"zh-Hans\">四年了。</p>\n<p class=\"py\">Sì nián le.</p>\n<p class=\"mean\">Bốn năm rồi.</p>\n<p class=\"mean\"><strong>They say:</strong> 你主要做什么？ Nǐ zhǔyào zuò shénme? Bạn chủ yếu làm gì?</p>\n<p class=\"zh\" lang=\"zh-Hans\">我主要做 PHP 跟 MySQL，也做前端。</p>\n<p class=\"py\">Wǒ zhǔyào zuò PHP gēn MySQL, yě zuò qiánduān.</p>\n<p class=\"mean\">Tôi chủ yếu làm PHP và MySQL, cũng làm frontend.</p>\n<p class=\"mean\"><strong>They say:</strong> 你会中文吗？ Nǐ huì Zhōngwén ma? Bạn biết tiếng Trung không?</p>\n<p class=\"zh\" lang=\"zh-Hans\">会一点。我还在学。</p>\n<p class=\"py\">Huì yìdiǎn. Wǒ hái zài xué.</p>\n<p class=\"mean\">Biết một chút. Tôi vẫn đang học.</p>\n<p class=\"mean\"><strong>They say:</strong> 你为什么想来 QNAP？ Nǐ wèishénme xiǎng lái QNAP? Vì sao bạn muốn đến QNAP?</p>\n<p class=\"zh\" lang=\"zh-Hans\">我想做 Partner Portal，也想跟台湾的团队一起工作。</p>\n<p class=\"py\">Wǒ xiǎng zuò Partner Portal, yě xiǎng gēn Táiwān de tuánduì yìqǐ gōngzuò.</p>\n<p class=\"mean\">Tôi muốn làm Partner Portal, và muốn làm cùng team Đài Loan. Then switch to English for the three reasons.</p>\n<p class=\"mean\"><strong>They say:</strong> 你做过 Laravel 吗？ Nǐ zuòguò Laravel ma?</p>\n<p class=\"zh\" lang=\"zh-Hans\">有。我在 Akktis 用过。最熟的是 PHP 跟 MySQL。</p>\n<p class=\"py\">Yǒu. Wǒ zài Akktis yòngguò. Zuì shú de shì PHP gēn MySQL.</p>\n<p class=\"mean\">Có. Tôi dùng ở Akktis. Thuộc nhất là PHP và MySQL.</p>\n<p class=\"mean\"><strong>They say:</strong> 你会 Vue 吗？ Nǐ huì Vue ma?</p>\n<p class=\"zh\" lang=\"zh-Hans\">Vue 我还没有正式做过。React 我有做过。</p>\n<p class=\"py\">Vue wǒ hái méiyǒu zhèngshì zuòguò. React wǒ yǒu zuòguò.</p>\n<p class=\"mean\">Vue tôi chưa làm chính thức. React tôi đã làm.</p>",
+     "keywords": "chinese they ask where how many years vue laravel why qnap"
+    },
+    {
+     "id": "qnap-you-ask",
+     "title": "You ask. Then you close.",
+     "hint": "",
+     "notes": "<p>Ask one question in Chinese. If the answer is long, say 请说慢一点, or 这部分我想用英文听，可以吗？ Zhè bùfen wǒ xiǎng yòng Yīngwén tīng, kěyǐ ma? Phần này tôi muốn nghe bằng tiếng Anh, được không?</p>",
+     "body": "<p class=\"zh\" lang=\"zh-Hans\">我有一个问题，可以吗？</p>\n<p class=\"py\">Wǒ yǒu yí ge wèntí, kěyǐ ma?</p>\n<p class=\"mean\">Tôi có một câu hỏi, được không?</p>\n<p class=\"zh\" lang=\"zh-Hans\">请问，这个工作在河内上班吗？</p>\n<p class=\"py\">Qǐngwèn, zhège gōngzuò zài Hénèi shàngbān ma?</p>\n<p class=\"mean\">Xin hỏi, công việc này làm tại Hà Nội không?</p>\n<p class=\"zh\" lang=\"zh-Hans\">请问，平常用中文还是英文沟通？</p>\n<p class=\"py\">Qǐngwèn, píngcháng yòng Zhōngwén háishi Yīngwén gōutōng?</p>\n<p class=\"mean\">Xin hỏi, hàng ngày giao tiếp bằng tiếng Trung hay tiếng Anh?</p>\n<p class=\"zh\" lang=\"zh-Hans\">请问，前端主要是 React 还是 Vue？</p>\n<p class=\"py\">Qǐngwèn, qiánduān zhǔyào shì React háishi Vue?</p>\n<p class=\"mean\">Xin hỏi, frontend chủ yếu là React hay Vue?</p>\n<p class=\"zh\" lang=\"zh-Hans\">谢谢，我明白了。</p>\n<p class=\"py\">Xièxie, wǒ míngbai le.</p>\n<p class=\"mean\">Cảm ơn, tôi hiểu rồi.</p>\n<p class=\"zh\" lang=\"zh-Hans\">谢谢您今天的时间。今天很高兴有机会跟您交流。</p>\n<p class=\"py\">Xièxie nín jīntiān de shíjiān. Jīntiān hěn gāoxìng yǒu jīhuì gēn nín jiāoliú.</p>\n<p class=\"mean\">Cảm ơn anh/chị đã dành thời gian hôm nay. Hôm nay tôi rất vui có dịp trao đổi với anh/chị.</p>\n<p class=\"zh\" lang=\"zh-Hans\">期待有机会一起合作。再见。</p>\n<p class=\"py\">Qīdài yǒu jīhuì yìqǐ hézuò. Zàijiàn.</p>\n<p class=\"mean\">Mong có cơ hội được làm việc cùng nhau. Tạm biệt.</p>",
+     "keywords": "chinese questions you ask 请问 河内 上班 中文 英文 React Vue 再见"
+    }
+   ],
+   "html": "<p class=\"lede\">Practice simplified Chinese. That is the script you know, and the recruiter already used it in the email. Taiwan often writes Traditional. If a character on their side looks unfamiliar, use a rescue line. Say one short line, then stop. Technical detail still switches to English.</p>"
+  },
+  {
+   "id": "sec-fit",
+   "name": "Why QNAP",
+   "cards": [
+    {
+     "id": "qnap-self",
+     "title": "Tell me about yourself, in English, after the Chinese.",
+     "hint": "",
+     "q_en": "<p>Tell me about yourself, in English, after the Chinese.</p>",
+     "a_en": "<p>I’m Thuy, a full-stack engineer with four years of full-time work since 2022. My deepest PHP and MySQL work is from BaseVN, an HR, payroll, and tax SaaS. On the tax product I designed the schema and tuned queries for reporting over 500,000 records, and built the Excel and XML export. I also built the sync between the social-insurance system, HR, and payroll, and the job-board integration for the hiring product. At Akktis, until July 2026, I worked on Laravel, WordPress, and PrestaShop, plus Linux servers, CI, and Cloud Run. Since 2024 I have also built TypeScript and Express APIs, a Next.js admin, and React Native apps.</p><p>I want this role because the Partner Portal is one product with real flows: cases, inventory, and partner approval. My Chinese is basic, which is why I started with it, and I switch to English for the detail.</p>",
+     "q_vi": "<p>Giới thiệu bản thân bằng tiếng Anh, sau phần tiếng Trung.</p>",
+     "a_vi": "<p>Tôi là Thủy, kỹ sư full-stack, có bốn năm làm việc toàn thời gian từ năm 2022. Phần PHP và MySQL sâu nhất của tôi là ở BaseVN, một SaaS về nhân sự, lương và thuế. Ở sản phẩm thuế, tôi thiết kế schema và tối ưu query cho báo cáo trên hơn 500.000 bản ghi, và làm phần xuất Excel và XML. Tôi cũng làm phần đồng bộ giữa hệ thống bảo hiểm xã hội, nhân sự và lương, và phần tích hợp các trang tuyển dụng cho sản phẩm tuyển dụng. Ở Akktis, đến tháng 7/2026, tôi làm Laravel, WordPress, PrestaShop, cùng server Linux, CI và Cloud Run. Từ năm 2024 tôi còn xây các API TypeScript và Express, một trang admin Next.js, và các app React Native.</p><p>Tôi muốn vị trí này vì Partner Portal là một sản phẩm với các luồng thật: case, tồn kho và duyệt đối tác. Tiếng Trung của tôi còn cơ bản, nên tôi mở đầu bằng phần đó, còn chi tiết thì tôi chuyển sang tiếng Anh.</p>",
+     "notes": "<p><strong>Know:</strong> Four years, not five. Akktis is past tense.</p><p><strong>Trap:</strong> “Hiring workflows” at Base, or “a production React AI tutor”. The tutor is React Native.</p>",
+     "keywords": "tell me about yourself introduce yourself fullstack php mysql laravel react"
+    },
+    {
+     "id": "qnap-why",
+     "title": "Why QNAP, and why this role?",
+     "hint": "",
+     "q_en": "<p>Why QNAP, and why this role?</p>",
+     "a_en": "<p>Three reasons. First, it is a product used by partners, not a one-off client site. Case registration, inventory lookup, and approval are flows I understand from SaaS and from e-commerce support. Second, the stack in the description matches what I can defend: PHP 8, Laravel, MySQL, and a JavaScript UI. Third, the engineers, PM, and QA are in Taiwan, one hour ahead. I have already worked remote with a team in France, so the habit is written updates and small pull requests. What I want to learn is how a global partner portal is structured. I am not applying to write NAS firmware.</p>",
+     "q_vi": "<p>Vì sao QNAP, và vì sao vai trò này?</p>",
+     "a_vi": "<p>Có ba lý do. Một là, đây là sản phẩm cho đối tác, không phải website giao một lần. Đăng ký case, tra cứu kho và duyệt hồ sơ là những luồng tôi hiểu qua SaaS và qua việc hỗ trợ các site thương mại điện tử. Hai là, stack trong JD khớp với những gì tôi đã làm thật: PHP 8, Laravel, MySQL, và UI JavaScript. Ba là, kỹ sư, PM và QA ở Đài Loan, chỉ lệch một tiếng. Tôi đã làm remote với team ở Pháp, nên tôi quen cập nhật bằng văn bản và gửi pull request nhỏ. Tôi muốn học cách một portal đối tác toàn cầu được xây dựng. Tôi không ứng tuyển để viết firmware NAS.</p>",
+     "notes": "",
+     "keywords": "why qnap why this company why this role partner portal taiwan"
+    },
+    {
+     "id": "qnap-know",
+     "title": "What do you know about QNAP?",
+     "hint": "",
+     "q_en": "<p>What do you know about QNAP?</p>",
+     "a_en": "<p>QNAP makes network storage and related networking gear, from Taiwan, since 2004. Partners sell and support that hardware. From the public site, a partner signs in with a QNAP ID and a second check, and the public program talks about deal registration, demo units, support, and training. I expect the portal I would work on is where a partner registers a case, checks stock, and where sales reviews a partner application. I have not seen the internal schema, so I would not guess the tables. I would ask where the inventory data comes from on day one.</p>",
+     "q_vi": "<p>Bạn biết gì về QNAP?</p>",
+     "a_vi": "<p>QNAP làm thiết bị lưu trữ mạng và thiết bị mạng liên quan, từ Đài Loan, từ năm 2004. Đối tác bán và hỗ trợ phần cứng đó. Trên site công khai, đối tác đăng nhập bằng QNAP ID và thêm một bước xác minh. Chương trình công khai nói về đăng ký deal, máy demo, hỗ trợ, và đào tạo. Tôi đoán portal tôi sẽ làm là nơi đối tác đăng ký case, xem tồn kho, và nơi sales duyệt hồ sơ đối tác. Tôi chưa thấy schema nội bộ, nên tôi không đoán tên bảng. Ngày đầu tôi sẽ hỏi dữ liệu tồn kho đang lấy từ đâu.</p>",
+     "notes": "<p>Stop there. Do not recite the product catalog, the tax code, or the legal representative.</p>",
+     "keywords": "what do you know about qnap nas partner program direct.qnap.com"
+    }
+   ],
+   "html": "<p class=\"lede\">After the Chinese intro, this is the English part. Same shape in Vietnamese if they switch.</p>"
+  },
+  {
+   "id": "sec-portal",
+   "name": "Portal flows",
+   "cards": [
+    {
+     "id": "qnap-case",
+     "title": "How would you build case registration?",
+     "hint": "",
+     "q_en": "<p>How would you build case registration?</p>",
+     "a_en": "<p>A partner submits a case: who they are, which customer, which product, and what they need. I keep the controller thin. A Form Request checks required fields and formats, and a Policy checks that this partner may open that kind of case. The service creates one row with a status, for example draft or submitted, and writes an audit row for who did it. The response is the case id and the status, not the whole database row. A double click gets the same result if the form carries an idempotency key. List screens filter by status, partner, and date, with pagination.</p><p>The closest thing I have run is the hiring integration at BaseVN: each candidate synced from VietnamWorks or TopCV had a sync status, failures were retried, and every request was logged, so support could see what failed and why.</p>",
+     "q_vi": "<p>Bạn dựng đăng ký case thế nào?</p>",
+     "a_vi": "<p>Đối tác gửi một case: họ là ai, khách hàng nào, sản phẩm nào, và cần gì. Tôi giữ controller mỏng. Form Request kiểm tra field bắt buộc và định dạng, còn Policy kiểm tra đối tác này có được mở loại case đó không. Service tạo một dòng có trạng thái, ví dụ draft hoặc submitted, và ghi một dòng audit về người thực hiện. Response trả về id và trạng thái của case, không trả cả dòng trong database. Bấm gửi hai lần vẫn ra một kết quả nếu form có idempotency key. Màn danh sách lọc theo trạng thái, đối tác và ngày, có phân trang.</p><p>Thứ gần nhất tôi từng vận hành là phần tích hợp tuyển dụng ở BaseVN: mỗi ứng viên đồng bộ từ VietnamWorks hay TopCV có trạng thái đồng bộ, lỗi thì được retry, và mọi request đều được ghi log, để bộ phận hỗ trợ thấy cái gì lỗi và vì sao.</p>",
+     "notes": "<p><strong>Trap:</strong> Saying you built a hiring state machine at Base. You built the job-board sync.</p>",
+     "keywords": "case registration deal registration partner portal form validation status"
+    },
+    {
+     "id": "qnap-stock",
+     "title": "How would you do warehouse and inventory lookup?",
+     "hint": "",
+     "q_en": "<p>How would you do warehouse and inventory lookup?</p>",
+     "a_en": "<p>Lookup is a read path, so it has to be fast and obvious. Filter by SKU, warehouse, and availability, and page the results. The number a partner should see is available, which is on hand minus reserved, not the raw stock column. Indexes go on the columns in the WHERE and the JOIN, usually SKU and warehouse id, not on every column. I would not lock rows on a search screen. Locking belongs on the write that reserves stock, inside a transaction.</p><p>At BaseVN the heavy reads were tax reports over 500,000 records, and the lesson was the same: select only the columns you render, paginate, and look at the slow query before adding a cache. I would also ask whether stock is owned by this portal or by an ERP we only display.</p>",
+     "q_vi": "<p>Tra cứu kho và tồn kho thế nào?</p>",
+     "a_vi": "<p>Tra cứu là đường đọc, nên phải nhanh và dễ hiểu. Lọc theo SKU, kho và tình trạng còn hàng, và phân trang kết quả. Con số đối tác cần thấy là số khả dụng, tức tồn kho trừ phần đã giữ, không phải cột tồn kho thô. Index đặt trên các cột trong WHERE và JOIN, thường là SKU và id kho, không index mọi cột. Màn tìm kiếm thì không lock dòng. Lock chỉ nằm ở bước ghi khi giữ hàng, bên trong transaction.</p><p>Ở BaseVN, phần đọc nặng là báo cáo thuế trên hơn 500.000 bản ghi, và bài học cũng vậy: chỉ select các cột cần hiển thị, phân trang, và xem slow query trước khi thêm cache. Tôi cũng sẽ hỏi tồn kho do portal này quản lý hay do một hệ ERP mà mình chỉ hiển thị lại.</p>",
+     "notes": "",
+     "keywords": "inventory lookup warehouse stock available reserved index pagination"
+    },
+    {
+     "id": "qnap-approve",
+     "title": "How would you build partner-application approval?",
+     "hint": "",
+     "q_en": "<p>How would you build partner-application approval?</p>",
+     "a_en": "<p>Approval is a state change with a person attached: submitted, in review, approved, rejected. A Policy decides who can move it. Hiding the button is not enough, because someone can call the API. On approve I re-read the row inside a transaction, check the current status, then update it, and record who approved it and when. A rejected application needs a reason, or sales cannot explain it later. I notify the partner after the commit, not before. I have not built an approval workflow like this at a previous job, so I would use the team’s existing status names and rules, and the transaction discipline I used on tax and sync data at BaseVN.</p>",
+     "q_vi": "<p>Duyệt hồ sơ đối tác thế nào?</p>",
+     "a_vi": "<p>Duyệt là một lần đổi trạng thái gắn với một người: submitted, đang xem xét, approved, rejected. Policy quyết định ai được chuyển trạng thái. Giấu nút là chưa đủ, vì người ta có thể gọi API trực tiếp. Khi duyệt, tôi đọc lại dòng đó trong transaction, kiểm tra trạng thái hiện tại, rồi mới update, và ghi lại ai duyệt, lúc nào. Hồ sơ bị từ chối cần có lý do, nếu không sales sẽ không giải thích được về sau. Tôi gửi thông báo cho đối tác sau khi commit, không gửi trước. Tôi chưa từng làm một luồng duyệt như thế này ở công ty cũ, nên tôi sẽ dùng đúng tên trạng thái và luật của team, cùng với cách dùng transaction tôi đã áp dụng cho dữ liệu thuế và đồng bộ ở BaseVN.</p>",
+     "notes": "<p><strong>Know:</strong> Re-read with <code>lockForUpdate()</code> and refuse with 409 if the status already moved.</p><p><strong>Trap:</strong> “At Base, hiring applications moved through review states.” Not on the CV.</p>",
+     "keywords": "partner application approval workflow policy audit state machine"
+    },
+    {
+     "id": "qnap-batch",
+     "title": "How do you handle batch operations?",
+     "hint": "",
+     "q_en": "<p>How do you handle batch operations?</p>",
+     "a_en": "<p>A batch is a job, not a request that holds the browser. Sales uploads a file or selects many rows. I validate the file first and reject it with row numbers if the columns are wrong. Then a queue worker chunks the rows, one transaction per chunk, and records failures instead of rolling back the whole file. The screen shows queued, running, and done, and offers a download of the failed rows. Running the same file twice must not create duplicates, so each row has a natural key. At BaseVN I did this kind of work on the tax export and on the sync jobs between social insurance, HR, and payroll, where job order and validation mattered. I would not run an unbounded update in the web process.</p>",
+     "q_vi": "<p>Xử lý thao tác hàng loạt thế nào?</p>",
+     "a_vi": "<p>Batch là một job, không phải một request bắt trình duyệt chờ. Sales upload file hoặc chọn nhiều dòng. Tôi validate file trước, sai cột thì trả về kèm số dòng bị lỗi. Sau đó worker trong queue chia dữ liệu thành từng phần, mỗi phần một transaction, và ghi lại dòng lỗi thay vì rollback cả file. Màn hình hiện trạng thái đang chờ, đang chạy, đã xong, và cho tải về các dòng lỗi. Chạy cùng một file hai lần không được tạo bản ghi trùng, nên mỗi dòng có một khóa tự nhiên. Ở BaseVN tôi đã làm việc kiểu này với phần xuất dữ liệu thuế và các job đồng bộ giữa bảo hiểm xã hội, nhân sự và lương, nơi thứ tự job và validate rất quan trọng. Tôi không chạy một lệnh update không giới hạn trong tiến trình web.</p>",
+     "notes": "",
+     "keywords": "batch operations bulk update queue chunk import export sales admin"
+    },
+    {
+     "id": "qnap-filter",
+     "title": "Forms and advanced filters on the sales admin.",
+     "hint": "",
+     "q_en": "<p>Forms and advanced filters on the sales admin.</p>",
+     "a_en": "<p>A sales filter has to be shareable. I put the filter in the query string: status, partner, warehouse, date range, page. Then a colleague can open the same URL. On the server I whitelist the fields and the sort column. I never pass the raw query into an order-by. Empty means no filter, not “match empty string”. The form uses the framework’s CSRF token. Errors come back on the fields, not as a single alert at the top. If the filter is slow, I look at the index before I add five more dropdowns.</p>",
+     "q_vi": "<p>Form và bộ lọc nâng cao trên sales admin.</p>",
+     "a_vi": "<p>Bộ lọc cho sales phải chia sẻ được. Tôi để filter trên query string: trạng thái, đối tác, kho, khoảng ngày, trang. Đồng nghiệp mở cùng URL là thấy cùng kết quả. Phía server tôi whitelist field và cột sort. Tôi không đưa query thô vào order-by. Để trống nghĩa là không lọc, không phải “khớp chuỗi rỗng”. Form dùng CSRF token của framework. Lỗi trả về đúng field, không phải một alert chung ở trên. Nếu filter chậm, tôi xem index trước khi thêm năm dropdown nữa.</p>",
+     "notes": "",
+     "keywords": "advanced filters forms query string shareable url whitelist sort"
+    },
+    {
+     "id": "qnap-api",
+     "title": "How do you design the REST API for this portal?",
+     "hint": "",
+     "q_en": "<p>How do you design the REST API for this portal?</p>",
+     "a_en": "<p>Nouns, not verbs. <code>GET /cases</code>, <code>POST /cases</code>, <code>POST /cases/{id}/approve</code> only when approve is a real action, not a disguised update of five fields. Auth is the partner or the sales user on the token or the session, and a Policy checks the record. List endpoints paginate and filter. The JSON shape is an API Resource, so the database column names do not leak. Errors use the right status: 422 for validation, 403 for permission, 404 when they must not even know the row exists, 409 for a bad state change. I document the three or four endpoints a screen needs, not a catalog of fifty.</p>",
+     "q_vi": "<p>Thiết kế REST API cho portal này thế nào?</p>",
+     "a_vi": "<p>Danh từ, không phải động từ. <code>GET /cases</code>, <code>POST /cases</code>, <code>POST /cases/{id}/approve</code> chỉ khi approve là một hành động thật, không phải một lần update năm field trá hình. Auth là đối tác hoặc user sales trên token hoặc session, và Policy kiểm tra đúng bản ghi. API danh sách có phân trang và filter. JSON đi qua API Resource, để tên cột database không lọt ra ngoài. Lỗi dùng đúng status: 422 khi sai dữ liệu, 403 khi không đủ quyền, 404 khi họ không được biết dòng đó tồn tại, 409 khi chuyển trạng thái không hợp lệ. Tôi viết tài liệu cho ba bốn endpoint một màn hình cần, không viết catalog năm mươi cái.</p>",
+     "notes": "",
+     "keywords": "rest api resource pagination auth error shape version laravel"
+    }
+   ],
+   "html": "<p class=\"lede\">These map to the job description. Speak the shape. Do not invent their tables.</p>"
+  },
+  {
+   "id": "sec-php",
+   "name": "Laravel and PHP",
+   "cards": [
+    {
+     "id": "qnap-laravel",
+     "title": "How deep is your Laravel?",
+     "hint": "",
+     "q_en": "<p>How deep is your Laravel?</p>",
+     "a_en": "<p>I built and supported Laravel apps at Akktis, until July 2026, mostly API integrations for web and mobile clients. I have not owned a large Laravel platform end to end. My deepest PHP is the PHP and MySQL SaaS at BaseVN. The mapping is direct. A request hits the route, then middleware, then a controller. The controller should validate and delegate. I put rules in a Form Request, authorization in a Policy, and the business steps in a service or an action class. Eloquent is for the model and its relationships. A reporting query that joins five tables I write with the query builder, so I can see the SQL. I use queues for mail, export, and batch, and I follow the team’s folder layout instead of introducing a new one.</p>",
+     "q_vi": "<p>Laravel của bạn sâu đến đâu?</p>",
+     "a_vi": "<p>Tôi đã xây và hỗ trợ các app Laravel ở Akktis, đến tháng 7/2026, chủ yếu là tích hợp API cho client web và mobile. Tôi chưa làm chính một nền tảng Laravel lớn từ đầu đến cuối. Phần PHP sâu nhất của tôi là SaaS PHP và MySQL ở BaseVN. Cách ánh xạ thì rất thẳng. Request đi vào route, qua middleware, rồi tới controller. Controller chỉ nên validate và giao việc. Tôi để rule trong Form Request, quyền trong Policy, và các bước nghiệp vụ trong service hoặc action class. Eloquent dùng cho model và quan hệ. Query báo cáo join năm bảng thì tôi viết bằng query builder để nhìn được SQL. Tôi dùng queue cho mail, export và batch, và theo cấu trúc thư mục của team thay vì đưa vào một cấu trúc mới.</p>",
+     "notes": "<p><strong>Trap:</strong> Claiming a large Laravel platform. Also do not label BaseVN “custom MVC” unless you are sure.</p><p><strong>TODO Thủy:</strong> confirm whether the BaseVN PHP codebase used a framework, and one concrete Akktis Laravel feature you can describe.</p>",
+     "keywords": "laravel experience mvc request lifecycle service container eloquent honest"
+    },
+    {
+     "id": "qnap-php8",
+     "title": "Which PHP 8 features do you actually use?",
+     "hint": "",
+     "q_en": "<p>Which PHP 8 features do you actually use?</p>",
+     "a_en": "<p>The ones that show up in review. Typed properties and return types, so a status is a string or an enum, not a mixed. Union types where a value really is <code>int|string</code>. The nullsafe operator when a relation may be missing, instead of a nested if. Named arguments at a call site with too many booleans. <code>match</code> instead of a long switch on a status. Constructor promotion on a small readonly DTO. Enums for case status if the codebase already uses them. I do not reach for fibers to sound current. I also still watch for <code>==</code> versus <code>===</code>, because PHP will coerce <code>\"10\"</code> and <code>10</code>.</p>",
+     "q_vi": "<p>Bạn thực sự dùng tính năng PHP 8 nào?</p>",
+     "a_vi": "<p>Những cái hiện ra lúc review. Typed property và kiểu trả về, để trạng thái là string hoặc enum, không phải mixed. Union type khi giá trị thật sự là <code>int|string</code>. Nullsafe khi quan hệ có thể không có, thay cho if lồng nhau. Named argument ở chỗ gọi có quá nhiều boolean. <code>match</code> thay cho switch dài trên trạng thái. Constructor promotion cho DTO nhỏ dạng readonly. Enum cho trạng thái case nếu codebase đã dùng. Tôi không lôi fiber ra để nghe cho mới. Tôi vẫn để ý <code>==</code> với <code>===</code>, vì PHP ép <code>\"10\"</code> và <code>10</code> thành bằng nhau.</p>",
+     "notes": "",
+     "keywords": "php 8 typed properties union types enums match nullsafe named arguments"
+    },
+    {
+     "id": "qnap-oop",
+     "title": "How do you keep MVC from turning into a fat controller?",
+     "hint": "",
+     "q_en": "<p>How do you keep MVC from turning into a fat controller?</p>",
+     "a_en": "<p>The controller knows HTTP. It does not know the approval rules. If I can describe the method as “validate, authorize, call one service, return a resource”, it is the right size. The service knows the business rule and the transaction. The model knows its relations and its own invariants, not how to send mail to Taiwan. I extend a class when the behavior really is the same with one difference. I do not build a base controller with twenty protected methods “for later”.</p>",
+     "q_vi": "<p>Làm sao để MVC không thành controller phình to?</p>",
+     "a_vi": "<p>Controller biết HTTP. Nó không biết luật duyệt. Nếu tôi mô tả method là “validate, authorize, gọi một service, trả resource”, thì kích thước đó đúng. Service biết luật nghiệp vụ và transaction. Model biết quan hệ và bất biến của chính nó, không biết cách gửi mail sang Đài Loan. Tôi kế thừa khi hành vi thật sự giống nhau và chỉ khác một chỗ. Tôi không dựng base controller với hai mươi method protected “để sau này”.</p>",
+     "notes": "",
+     "keywords": "oop mvc solid service controller fat model inheritance"
+    }
+   ],
+   "html": "<p class=\"lede\">Laravel is real at Akktis (until July 2026). The deepest PHP is the BaseVN PHP and MySQL SaaS. Say that before they ask.</p>"
+  },
+  {
+   "id": "sec-fe",
+   "name": "Frontend",
+   "cards": [
+    {
+     "id": "qnap-vue",
+     "title": "The posting says Vue or React. Which have you shipped?",
+     "hint": "",
+     "q_en": "<p>The posting says Vue or React. Which have you shipped?</p>",
+     "a_en": "<p>React and TypeScript, in production. Not Vue, and I will not describe a Vue project I did not ship. My React web work is the Next.js admin for PhysioFix, which reads Firestore and plays call recordings. I have also shipped React Native apps on Expo. What transfers is the component model: props in, events out, state owned in one place, and the server still decides permission. With Laravel I am comfortable with a form-heavy Blade admin: one template, the CSRF field, and validation errors on the inputs. If this portal is a React or Vue SPA on a Laravel API, I would ramp from the existing screens, the router, and how they call the API. I would ask which UI is the main one before I talk as if I know the repo.</p>",
+     "q_vi": "<p>JD ghi Vue hoặc React. Bạn đã ship cái nào?</p>",
+     "a_vi": "<p>React và TypeScript, đã chạy production. Vue thì chưa, và tôi sẽ không kể một dự án Vue mình chưa ship. Phần React web của tôi là trang admin Next.js cho PhysioFix, đọc dữ liệu từ Firestore và phát lại bản ghi âm cuộc gọi. Tôi cũng đã ship các app React Native trên Expo. Phần dùng lại được là mô hình component: props đi vào, event đi ra, state nằm một chỗ, và server vẫn quyết định quyền. Với Laravel, tôi làm quen tay một trang admin nhiều form bằng Blade: một template, field CSRF, và lỗi validate hiện ngay trên input. Nếu portal là SPA React hoặc Vue gọi API Laravel, tôi sẽ bắt nhịp từ các màn hình đang có, router, và cách các màn gọi API. Tôi sẽ hỏi UI chính là cái nào trước khi nói như thể mình đã biết repo.</p>",
+     "notes": "<p>More React detail is on <a href=\"react.html\">React and TypeScript</a>. Vue specifics (Composition API, ref vs reactive, Pinia) are on <a href=\"intowell.html#intowell-vue\">INTOWELL → Vue</a>.</p><p><strong>Trap:</strong> “A production React AI tutor.” The tutor is React Native.</p>",
+     "keywords": "vue react blade honest frontend laravel blade spa"
+    },
+    {
+     "id": "qnap-i18n",
+     "title": "How would you add languages?",
+     "hint": "",
+     "q_en": "<p>How would you add languages?</p>",
+     "a_en": "<p>Strings live in language files, not in the Blade or the component. Laravel’s <code>lang</code> files and <code>__()</code>, or the same idea in the frontend with a key like <code>cases.status.approved</code>. The locale is on the user or the session, and I set it in middleware before the view renders. For QNAP I would expect English for global partners and Traditional Chinese for the Taiwan side, and Vietnamese may matter for local sales. I would ask which locales ship first, and who writes the copy. I also format dates and numbers with the locale, because 03/04 is 3 April in one country and 4 March in another. I do not machine-translate legal status names and ship them.</p>",
+     "q_vi": "<p>Thêm đa ngôn ngữ thế nào?</p>",
+     "a_vi": "<p>Chuỗi văn bản nằm trong file ngôn ngữ, không nằm trong Blade hay component. Dùng file <code>lang</code> của Laravel và <code>__()</code>, hoặc cùng ý đó ở frontend với key kiểu <code>cases.status.approved</code>. Locale gắn với user hoặc session, và tôi set nó trong middleware trước khi render view. Với QNAP, tôi đoán cần tiếng Anh cho đối tác toàn cầu và tiếng Trung phồn thể cho phía Đài Loan, còn tiếng Việt có thể cần cho sales ở đây. Tôi sẽ hỏi locale nào ra trước, và ai viết nội dung. Tôi cũng format ngày và số theo locale, vì 03/04 ở nước này là ngày 3 tháng 4, ở nước khác lại là ngày 4 tháng 3. Tôi không dịch máy tên các trạng thái mang tính pháp lý rồi đưa lên.</p>",
+     "notes": "",
+     "keywords": "i18n localization traditional chinese english vietnamese laravel lang setLocale"
+    },
+    {
+     "id": "qnap-rwd",
+     "title": "A partner will open this on a phone. What do you change?",
+     "hint": "",
+     "q_en": "<p>A partner will open this on a phone. What do you change?</p>",
+     "a_en": "<p>The desktop table is the wrong layout under about 800 pixels. I keep the identifier, the status, and the one action they came for. The rest goes behind a row tap or a second screen. Filters collapse into one panel, and hit targets stay large enough for a thumb. I check in the browser’s device mode and on one real phone, because device mode can hide overflow. On Aquanix, one Expo client runs on phones and desktop web, and wide screens get a sidebar, so the small screen was never an afterthought. I would not build a second mobile site.</p>",
+     "q_vi": "<p>Đối tác mở trên điện thoại. Bạn đổi gì?</p>",
+     "a_vi": "<p>Bảng kiểu desktop là layout sai khi màn hình dưới khoảng 800 pixel. Tôi giữ mã, trạng thái, và một thao tác chính họ cần làm. Phần còn lại nằm sau một lần chạm vào dòng hoặc ở màn thứ hai. Bộ lọc gom vào một panel, và vùng bấm đủ lớn cho ngón tay. Tôi kiểm tra bằng device mode của trình duyệt và trên một điện thoại thật, vì device mode có thể che mất phần bị tràn. Ở Aquanix, một client Expo chạy cả trên điện thoại và web desktop, màn hình rộng thì có sidebar, nên màn nhỏ chưa bao giờ là việc để sau. Tôi sẽ không làm thêm một site mobile riêng.</p>",
+     "notes": "",
+     "keywords": "responsive rwd mobile table filter partner phone"
+    }
+   ]
+  },
+  {
+   "id": "sec-db",
+   "name": "MySQL",
+   "cards": [
+    {
+     "id": "qnap-index",
+     "title": "A stock search is slow. What do you check first?",
+     "hint": "",
+     "q_en": "<p>A stock search is slow. What do you check first?</p>",
+     "a_en": "<p>I look at the query and the page size before I add an index at random. <code>EXPLAIN</code> tells me whether it is scanning the whole stock table. A useful index matches the filter people actually use, often warehouse id plus SKU, with the leftmost column the one that is always present. A leading-wildcard <code>LIKE</code> will not use a normal index. I select the columns the table renders, not <code>SELECT *</code>. Pagination is a limit and a stable order, not loading ten thousand SKUs into PHP. At BaseVN I did this on tax reporting tables over 500,000 records, where a missing index is not a small delay. A cache comes only after the query itself is fast. MariaDB works the same way here.</p>",
+     "q_vi": "<p>Tìm tồn kho bị chậm. Bạn kiểm tra gì trước?</p>",
+     "a_vi": "<p>Tôi xem query và kích thước trang trước khi thêm index một cách tùy tiện. <code>EXPLAIN</code> cho biết nó có đang quét cả bảng tồn kho không. Index có ích phải khớp với bộ lọc người dùng thật sự dùng, thường là id kho cộng SKU, và cột bên trái nhất là cột lúc nào cũng có mặt. <code>LIKE</code> có ký tự % ở đầu sẽ không dùng được index thường. Tôi chỉ select các cột bảng cần hiển thị, không <code>SELECT *</code>. Phân trang là limit với thứ tự sắp xếp ổn định, không kéo mười nghìn SKU vào PHP. Ở BaseVN tôi làm vậy với các bảng báo cáo thuế hơn 500.000 bản ghi, ở quy mô đó thiếu index không còn là chậm một chút. Cache chỉ đến sau khi bản thân query đã nhanh. MariaDB cũng tương tự ở điểm này.</p>",
+     "notes": "<p>Longer index, join, EXPLAIN, and race-condition answers with SQL are on <a href=\"php.html#new-php-index\">PHP → MySQL</a>.</p>",
+     "keywords": "mysql index explain slow query composite index leftmost inventory"
+    },
+    {
+     "id": "qnap-nplus",
+     "title": "Where does N+1 show up on a portal?",
+     "hint": "",
+     "q_en": "<p>Where does N+1 show up on a portal?</p>",
+     "a_en": "<p>A list of fifty cases that each loads its partner, its product, and its warehouse. That is one query plus fifty more, per relation. In Laravel I eager load with <code>with(['partner', 'warehouse'])</code> on the list query, and I do it in the query, not in the Blade loop. I can see it in the query log or Debugbar as a sudden stack of identical selects. On a detail page, one extra query is fine. On the sales list, it is the bug.</p>",
+     "q_vi": "<p>N+1 xuất hiện ở đâu trên portal?</p>",
+     "a_vi": "<p>Một danh sách năm mươi case, mỗi case lại load đối tác, sản phẩm, và kho. Đó là một query cộng thêm năm mươi query, cho mỗi quan hệ. Trong Laravel tôi eager load bằng <code>with(['partner', 'warehouse'])</code> trên query của danh sách, và làm ở query, không làm trong vòng lặp Blade. Tôi thấy nó trong query log hoặc Debugbar: một chồng select giống hệt. Ở trang chi tiết, thêm một query thì ổn. Ở danh sách của sales, đó là bug.</p>",
+     "notes": "",
+     "keywords": "n+1 eager load with() laravel eloquent partner cases"
+    },
+    {
+     "id": "qnap-tx",
+     "title": "Two people reserve the last unit. What happens?",
+     "hint": "",
+     "q_en": "<p>Two people reserve the last unit. What happens?</p>",
+     "a_en": "<p>Without a lock, both requests read one unit available and both reserve it. So the check and the write go in one short transaction, with the stock row locked: <code>SELECT … FOR UPDATE</code> in SQL, or <code>lockForUpdate()</code> in Laravel. The second request waits, then reads zero and gets a clear 409 instead of a half-written case. Another option is a conditional update, <code>WHERE id = ? AND available &gt; 0</code>, and check that one row changed.</p><p>I keep the transaction short and never call an external API while I hold the lock. If two transactions lock rows in a different order, MySQL can deadlock and roll one of them back, so I lock in a consistent order and retry once. The same pattern fits approval: lock the application and refuse a second approve. I would test it with two parallel requests, not one happy click.</p>",
+     "q_vi": "<p>Hai người giữ chiếc cuối cùng. Chuyện gì xảy ra?</p>",
+     "a_vi": "<p>Nếu không lock, cả hai request cùng đọc thấy còn một chiếc và cùng giữ nó. Vì vậy bước kiểm tra và bước ghi phải nằm trong một transaction ngắn, có lock dòng tồn kho: <code>SELECT … FOR UPDATE</code> trong SQL, hoặc <code>lockForUpdate()</code> trong Laravel. Request thứ hai phải chờ, rồi đọc ra số không và nhận một lỗi 409 rõ ràng, thay vì để lại một case ghi dở. Cách khác là update có điều kiện, <code>WHERE id = ? AND available &gt; 0</code>, rồi kiểm tra đúng một dòng bị thay đổi.</p><p>Tôi giữ transaction thật ngắn và không gọi API bên ngoài khi đang giữ lock. Nếu hai transaction lock các dòng theo thứ tự khác nhau, MySQL có thể bị deadlock và rollback một bên, nên tôi lock theo thứ tự cố định và retry một lần. Cùng pattern này dùng cho duyệt hồ sơ: lock đơn và từ chối lần duyệt thứ hai. Tôi sẽ test bằng hai request chạy song song, không phải một cú click đúng đường.</p>",
+     "notes": "<p><strong>Know:</strong> <code>DB::transaction(fn () =&gt; …, 3)</code> retries the closure on a deadlock. InnoDB error 1213 is a deadlock; 1205 is a lock-wait timeout.</p><p><strong>Trap:</strong> Checking stock in PHP, then a plain UPDATE with no lock.</p><p><strong>Follow-up:</strong> The SQL walk-through is on <a href=\"php.html#new-php-race\">PHP → Race condition on the last unit</a>.</p>",
+     "keywords": "transaction lock reservation stock approve race condition"
+    }
+   ]
+  },
+  {
+   "id": "sec-team",
+   "name": "Taiwan team",
+   "cards": [
+    {
+     "id": "qnap-review",
+     "title": "How do you work in code review with a senior engineer?",
+     "hint": "",
+     "q_en": "<p>How do you work in code review with a senior engineer?</p>",
+     "a_en": "<p>I keep the pull request small enough to review in one sitting, and I write what changed and how to test it. If a comment is about a risk, I answer the risk, not the wording. If I disagree, I say why in one paragraph and I ask which option they want. With a reviewer in Taiwan I write in English, clearly, and I do not wait for the standup to unblock a review. I also review other people’s code the same way: a question, the failure case, and a suggestion. I use Cursor to draft, and I read the diff before I push. I will not merge code I cannot explain.</p>",
+     "q_vi": "<p>Review code với kỹ sư senior thế nào?</p>",
+     "a_vi": "<p>Tôi giữ pull request đủ nhỏ để review trong một lần, và viết cái gì đổi, test thế nào. Nếu comment nói về rủi ro, tôi trả lời đúng rủi ro, không cãi từng chữ. Nếu tôi không đồng ý, tôi viết vì sao trong một đoạn và hỏi họ muốn phương án nào. Với người review ở Đài Loan tôi viết tiếng Anh, rõ, và tôi không đợi đến standup mới hỏi để review được tiếp. Tôi review code người khác cùng cách: một câu hỏi, trường hợp có thể lỗi, và một gợi ý. Tôi dùng Cursor để nháp, và tôi đọc diff trước khi push. Tôi không merge code tôi không giải thích được.</p>",
+     "notes": "",
+     "keywords": "code review senior taiwan english pull request"
+    },
+    {
+     "id": "qnap-scrum",
+     "title": "PM, UI/UX, and QA are in Taiwan. How do you work with them?",
+     "hint": "",
+     "q_en": "<p>PM, UI/UX, and QA are in Taiwan. How do you work with them?</p>",
+     "a_en": "<p>Taiwan is one hour ahead, so a daily is easy. The hard part is the ticket that is vague. I write the behavior I think we are building, the screen, and the edge case, and I ask the PM or the designer to correct it before I code the wrong filter. For QA I leave repro steps, the account I used, and the expected status. If I am blocked, the update says blocked, by what, and what I need. I have done this with a team in France, where the gap was larger. Here the gap is small. The writing habit still matters, because they should not have to wake me up to know the state of a case-registration ticket.</p>",
+     "q_vi": "<p>PM, UI/UX và QA ở Đài Loan. Bạn làm việc với họ thế nào?</p>",
+     "a_vi": "<p>Đài Loan sớm hơn một giờ, nên daily thì dễ. Phần khó là ticket mơ hồ. Tôi viết ra hành vi mà tôi hiểu là cần làm, màn hình nào, và edge case, rồi nhờ PM hoặc designer sửa trước khi tôi code nhầm bộ lọc. Cho QA tôi để bước tái hiện, account tôi dùng, và trạng thái mong đợi. Nếu bị kẹt, update ghi là blocked, kẹt vì gì, và tôi cần gì. Tôi đã làm như vậy với team ở Pháp, nơi lệch giờ còn nhiều hơn. Ở đây lệch rất ít. Thói quen viết vẫn cần, vì họ không nên phải đi hỏi mới biết ticket đăng ký case đang đến đâu.</p>",
+     "notes": "",
+     "keywords": "scrum taiwan pm ux qa timezone daily standup blocker"
+    },
+    {
+     "id": "qnap-docker",
+     "title": "Docker and CI. How real is it?",
+     "hint": "",
+     "q_en": "<p>Docker and CI. How real is it?</p>",
+     "a_en": "<p>Real, and not the main story of this job. I have run apps in containers and I have pipelines that test and deploy, including Cloud Run at Akktis and for the AI tutor API. Locally I expect a compose file or their documented setup: PHP, MySQL or MariaDB, and the frontend build. I would not redesign their CI in the first month. I would get a branch green the way the team already does it.</p>",
+     "q_vi": "<p>Docker và CI. Thật đến mức nào?</p>",
+     "a_vi": "<p>Có thật, và không phải câu chuyện chính của job này. Tôi đã chạy app trong container và có pipeline test rồi deploy, gồm Cloud Run ở Akktis và cho API của app AI tutor. Ở local tôi mong có một file compose hoặc cách dựng họ đã viết: PHP, MySQL hoặc MariaDB, và bước build frontend. Tháng đầu tôi không thiết kế lại CI của họ. Tôi sẽ làm cho một nhánh chạy pass CI theo đúng cách team đang làm.</p>",
+     "notes": "",
+     "keywords": "docker ci cd github actions cloud run nice to have"
+    },
+    {
+     "id": "qnap-ai",
+     "title": "How do you use AI when you build a feature?",
+     "hint": "",
+     "q_en": "<p>The job mentions Cursor. How do you actually use it?</p>",
+     "a_en": "<p>I use Cursor and Claude Code every day, with a fixed workflow, so the model works from a spec and not from a vague chat. First I brainstorm against the code that already exists: who the feature is for, what must not change, and how we will know it works. That becomes a short spec, and I approve it before any production code. Then the spec becomes a plan of small tasks, each with its files and its test.</p><p>Then I execute in order. For a behavior change the test comes first: I watch it fail, then write the smallest code that passes. If a test keeps failing, I stop and think instead of letting the model guess. Before I call it done, I run the tests myself and review the diff against the spec. The model drafts. I own the design, the edge cases, and the commit.</p>",
+     "q_vi": "<p>JD có nhắc Cursor. Bạn dùng nó thế nào?</p>",
+     "a_vi": "<p>Tôi dùng Cursor và Claude Code hằng ngày, theo một quy trình cố định, để model làm việc từ một spec chứ không phải từ một đoạn chat mơ hồ. Đầu tiên tôi brainstorm dựa trên code đang có: tính năng cho ai, cái gì không được thay đổi, và làm sao biết nó chạy đúng. Từ đó viết thành một spec ngắn, và tôi duyệt spec trước khi có bất kỳ dòng code production nào. Sau đó spec được chia thành kế hoạch gồm các task nhỏ, mỗi task ghi rõ file nào và test gì.</p><p>Rồi tôi làm lần lượt từng task. Với thay đổi về hành vi, test viết trước: tôi xem nó fail, rồi viết đoạn code nhỏ nhất để pass. Nếu test cứ fail mãi, tôi dừng lại suy nghĩ thay vì để model đoán. Trước khi coi là xong, tôi tự chạy test và review diff đối chiếu với spec. Model viết bản nháp. Thiết kế, các trường hợp biên và commit là trách nhiệm của tôi.</p>",
+     "notes": "<p><strong>If they want one sentence:</strong> Spec, then a plan, then a failing test, then I read the diff.</p><p><strong>Know:</strong> The workflow is the Superpowers plugin for Claude Code (brainstorm → spec → plan → TDD execution). In Cursor you follow the same steps by hand.</p><p><strong>Trap:</strong> “AI writes the code and I just accept it.” Also do not claim the whole team at Base or Akktis used this. This is how you work now.</p>",
+     "keywords": "cursor superpowers ai workflow brainstorm spec plan execute tdd review test"
+    },
+    {
+     "id": "qnap-b2b",
+     "title": "Do you have B2B or e-commerce experience?",
+     "hint": "",
+     "q_en": "<p>Do you have B2B or e-commerce experience?</p>",
+     "a_en": "<p>Adjacent, not a marketplace I owned. At Akktis I supported PrestaShop and WordPress commerce: catalog, orders, and the bugs that show up when a shop is already live. At Base the users were companies, with roles, compliance exports, and data they cannot lose. A partner portal is closer to that second one: accounts with permissions, a workflow, and a record that sales will argue about later. I would not claim I have operated a global distributor network.</p>",
+     "q_vi": "<p>Bạn có kinh nghiệm B2B hoặc thương mại điện tử không?</p>",
+     "a_vi": "<p>Gần, không phải một sàn tôi từng sở hữu. Ở Akktis tôi đã hỗ trợ PrestaShop và WordPress cho phần bán hàng: catalog, đơn, và lỗi xuất hiện khi shop đã chạy. Ở BaseVN người dùng là công ty, có phân quyền, các file xuất theo quy định, và dữ liệu không được mất. Partner portal gần với cái thứ hai hơn: tài khoản có phân quyền, một workflow, và một hồ sơ mà sales sẽ tranh luận sau này. Tôi không nhận là tôi đã vận hành một mạng lưới nhà phân phối toàn cầu.</p>",
+     "notes": "",
+     "keywords": "b2b ecommerce prestashop wordpress honest nice to have"
+    },
+    {
+     "id": "qnap-en",
+     "title": "Your English and your Chinese, said plainly.",
+     "hint": "",
+     "q_en": "<p>Your English and your Chinese, said plainly.</p>",
+     "a_en": "<p>I read technical docs in English every day, and I can explain a design in English, which is what we are doing now. I write tickets and pull requests in English. Chinese is basic. I prepared a short introduction because you asked, and I will keep using simple Chinese where I can. When the sentence is about a transaction or a permission bug, I will switch to English so we do not leave with the wrong design.</p>",
+     "q_vi": "<p>Tiếng Anh và tiếng Trung của bạn, nói thẳng.</p>",
+     "a_vi": "<p>Tôi đọc tài liệu kỹ thuật bằng tiếng Anh mỗi ngày, và tôi giải thích một thiết kế bằng tiếng Anh được, như bây giờ. Ticket và pull request tôi viết tiếng Anh. Tiếng Trung ở mức cơ bản. Tôi đã chuẩn bị một đoạn giới thiệu ngắn vì anh/chị yêu cầu, và tôi sẽ dùng tiếng Trung đơn giản ở chỗ tôi nói được. Khi câu chuyện là transaction hoặc bug phân quyền, tôi chuyển sang tiếng Anh để hai bên không kết thúc buổi họp với một thiết kế sai.</p>",
+     "notes": "",
+     "keywords": "english technical documentation chinese level"
+    }
+   ]
+  },
+  {
+   "id": "sec-close",
+   "name": "Close",
+   "cards": [
+    {
+     "id": "qnap-ask",
+     "title": "Questions you ask them. Pick four.",
+     "hint": "",
+     "q_en": "<p>Questions you ask them. Pick four.</p>",
+     "a_en": "<p>I have a few questions, if we have time.</p>\n<ol>\n<li>Is this the on-site Hanoi role, and how often is the team actually in the Xuân Thủy office?</li>\n<li>Is the portal mainly Laravel with Blade, Vue, or React? I want to know which one I would be in every day.</li>\n<li>Which languages have to work on day one: English, Traditional Chinese, Vietnamese?</li>\n<li>Where do case registration and inventory data live today? In this portal, or in another system we integrate with?</li>\n<li>What does a good first ninety days look like?</li>\n<li>How do you like Vietnam engineers to work with PM, design, and QA in Taiwan: what is a ticket, and what is a meeting?</li>\n</ol>",
+     "q_vi": "<p>Câu hỏi bạn hỏi họ. Chọn bốn câu.</p>",
+     "a_vi": "<p>Tôi có vài câu hỏi, nếu còn thời gian.</p>\n<ol>\n<li>Vị trí này có phải làm tại văn phòng Hà Nội không, và team thực tế ở Xuân Thủy những ngày nào?</li>\n<li>Portal chủ yếu là Laravel với Blade, Vue, hay React? Tôi muốn biết hằng ngày tôi sẽ làm với phần nào.</li>\n<li>Ngày đầu cần ngôn ngữ nào: tiếng Anh, tiếng Trung phồn thể, tiếng Việt?</li>\n<li>Dữ liệu đăng ký case và tồn kho đang nằm ở đâu? Trong portal này, hay ở hệ thống khác mình tích hợp?</li>\n<li>Chín mươi ngày đầu ở vị trí này thế nào thì được coi là tốt?</li>\n<li>Anh/chị muốn kỹ sư ở Việt Nam làm việc với PM, design, và QA ở Đài Loan ra sao: việc gì ghi vào ticket, việc gì cần họp?</li>\n</ol>",
+     "notes": "<p>Pick four. Stop after they answer. Do not stack all six if the clock is gone. The UI question and the data-source question tell you how the job actually feels.</p>",
+     "keywords": "questions to ask interviewer portal locale hanoi on-site ninety days"
+    },
+    {
+     "id": "qnap-close",
+     "title": "If they ask “anything else?”, close in two languages.",
+     "hint": "",
+     "notes": "",
+     "body": "<p class=\"zh\" lang=\"zh-Hans\">谢谢您今天的时间。我很期待加入团队。</p>\n<p class=\"py\">Xièxie nín jīntiān de shíjiān. Wǒ hěn qídài jiārù tuánduì.</p>\n<p class=\"mean\">Cảm ơn thời gian hôm nay. Tôi rất mong được vào team.</p>\n<div class=\"lang\"><button type=\"button\" data-set-lang=\"en\">English</button><button type=\"button\" data-set-lang=\"vi\">Tiếng Việt</button></div>\n<div data-pane=\"en\"><div class=\"ask\"><p>If they ask “anything else?”, close in two languages.</p></div><div class=\"ans\"><p>I can do the PHP, MySQL, and Laravel part of this portal, and I have shipped React: a Next.js admin, and React Native apps. Where I am new, Vue and Chinese, I will say so. I would like to work on it.</p></div></div>\n<div data-pane=\"vi\" hidden><div class=\"ask\"><p>Nếu họ hỏi “còn gì nữa?”, kết bằng hai ngôn ngữ.</p></div><div class=\"ans\"><p>Phần PHP, MySQL và Laravel của portal này tôi làm được, và React thì tôi đã ship: một trang admin Next.js và các app React Native. Chỗ tôi còn mới là Vue và tiếng Trung, tôi sẽ nói thẳng. Tôi rất muốn được làm sản phẩm này.</p></div></div>",
+     "keywords": "closing pitch thank you 谢谢 期待"
+    },
+    {
+     "id": "qnap-trap",
+     "title": "Leave these claims out.",
+     "hint": "",
+     "notes": "<p>Stories with numbers stay on <a href=\"cv.html\">CV and projects</a>. Teamwork and a hard review are on <a href=\"behavioral.html\">Behavioral</a>. Spoken fillers are on <a href=\"english.html\">Spoken English</a>.</p>",
+     "body": "<div class=\"ans\"><ul>\n<li>Vue in production. You have not shipped it.</li>\n<li>Fluent or even intermediate Chinese. Basic, and you prepared.</li>\n<li>Their portal schema, table names, or an ERP you have not seen.</li>\n<li>NAS firmware, QuTS, or storage internals. That is not this job.</li>\n<li>That qnapvn.com or MaxLink is the employer. It is a distributor.</li>\n<li>A founding date for the Vietnam company. The public registry line you saw did not have one.</li>\n<li>That you owned a large Laravel platform. Akktis was real Laravel work (ended July 2026). BaseVN was the deep PHP and MySQL work.</li>\n<li>“About five years.” Four years since March 2022. 四年 sì nián.</li>\n<li>A hiring approval workflow at Base. E-Hiring was the VietnamWorks/TopCV integration: candidate sync, retries, request logging, job monitoring.</li>\n<li>That the AI tutor is React web. It is React Native. The React web is the PhysioFix Next.js admin.</li>\n<li>Cloud SQL. You never used it.</li>\n</ul></div>",
+     "keywords": "do not claim vue fluent chinese nas firmware qnapvn schema"
+    }
+   ]
+  }
+ ]
+}
