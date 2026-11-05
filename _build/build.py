@@ -32,7 +32,8 @@ SUBJECT_PAGES = [
     ("debugging", "Debugging", "Decide the layer, then prove it before you change code."),
 ]
 COMPANY_PAGES = [
-    ("intowell", "INTOWELL", "Fullstack on Dr.AI and Vet.AI. Node you can defend. Vue and Ionic you name as a ramp.", "Current"),
+    ("cyberk", "Cyberk", "TypeScript full-stack for client products in AI, fintech, and Web3. LLMs and AI tools you can defend; Nest, Postgres, Redis, and Web3 you name as a ramp.", "Current"),
+    ("intowell", "INTOWELL", "Fullstack on Dr.AI and Vet.AI. Node you can defend. Vue and Ionic you name as a ramp.", "Earlier"),
     ("qnap", "QNAP", "Partner Portal and Sales Portal. Chinese first, then PHP, Laravel, React, and MySQL.", "Past · 30 Oct"),
 ]
 ALL_PAGES = [p[0] for p in SUBJECT_PAGES] + [p[0] for p in COMPANY_PAGES]
@@ -156,8 +157,8 @@ HEAD_SCRIPT = """<script>(function(){try{var t=localStorage.getItem("cheat-theme
 
 def shell(page_id: str, title: str, active: str, body: str) -> str:
     links = [("index.html", "Hub", "")]
-    links += [(f"{stem}.html", label, "") for stem, label, _ in SUBJECT_PAGES]
     links += [(f"{stem}.html", label, "nav-company") for stem, label, _, _ in COMPANY_PAGES]
+    links += [(f"{stem}.html", label, "nav-subject") for stem, label, _ in SUBJECT_PAGES]
     nav = "\n".join(
         f'<a href="{href}" class="{" ".join(c for c in (cls, "is-on" if href == active else "") if c)}"'
         f'{" aria-current=\"page\"" if href == active else ""}>{esc(label)}</a>'

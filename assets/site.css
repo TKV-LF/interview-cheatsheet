@@ -224,8 +224,8 @@ button, input { font: inherit; color: inherit; }
   white-space: nowrap;
 }
 .nav-scroll a:hover { color: var(--color-primary); }
-.nav-scroll a.nav-company:not(.nav-company ~ .nav-company) { margin-left: 0.6rem; position: relative; }
-.nav-scroll a.nav-company:not(.nav-company ~ .nav-company)::before {
+.nav-scroll a.nav-subject:not(.nav-subject ~ .nav-subject) { margin-left: 0.6rem; position: relative; }
+.nav-scroll a.nav-subject:not(.nav-subject ~ .nav-subject)::before {
   content: ""; position: absolute; left: -0.45rem; top: 25%; bottom: 25%;
   border-left: 1px solid var(--color-border);
 }
@@ -562,8 +562,8 @@ body.is-hide-known details.q.is-known { display: none; }
   .topbar-inner .brand { flex: 1 1 auto; }
   .topbar-inner .search-wrap { order: 3; flex: 1 1 100%; }
   .nav-scroll { overflow-x: visible; }
-  .nav-scroll a.nav-company:not(.nav-company ~ .nav-company) { margin-left: 0; margin-top: 0.5rem; }
-  .nav-scroll a.nav-company:not(.nav-company ~ .nav-company)::before { left: 0; right: 0; top: -0.3rem; bottom: auto; border-left: 0; border-top: 1px solid var(--color-border); }
+  .nav-scroll a.nav-subject:not(.nav-subject ~ .nav-subject) { margin-left: 0; margin-top: 0.5rem; }
+  .nav-scroll a.nav-subject:not(.nav-subject ~ .nav-subject)::before { left: 0; right: 0; top: -0.3rem; bottom: auto; border-left: 0; border-top: 1px solid var(--color-border); }
   .side { max-height: none; padding: 0; overflow: visible; }
   .side-toggle {
     display: flex; width: 100%; justify-content: space-between; align-items: center;
