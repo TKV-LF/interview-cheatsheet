@@ -32,7 +32,8 @@ SUBJECT_PAGES = [
     ("debugging", "Debugging", "Decide the layer, then prove it before you change code."),
 ]
 COMPANY_PAGES = [
-    ("cyberk", "Cyberk", "TypeScript full-stack for client products in AI, fintech, and Web3. LLMs and AI tools you can defend; Nest, Postgres, Redis, and Web3 you name as a ramp.", "Current"),
+    ("vec", "VEC", "Senior full-stack at Vingroup's exhibition centre and stadium. System design first: ticket sales, no overselling, QR gates, space booking, payments, and event-day peaks.", "Next"),
+    ("cyberk", "Cyberk", "TypeScript full-stack for client products in AI, fintech, and Web3. LLMs and AI tools you can defend; Nest, Postgres, Redis, and Web3 you name as a ramp.", "Round 1 done"),
     ("intowell", "INTOWELL", "Fullstack on Dr.AI and Vet.AI. Node you can defend. Vue and Ionic you name as a ramp.", "Earlier"),
     ("qnap", "QNAP", "Partner Portal and Sales Portal. Chinese first, then PHP, Laravel, React, and MySQL.", "Past · 30 Oct"),
 ]
